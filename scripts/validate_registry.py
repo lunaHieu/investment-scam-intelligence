@@ -34,6 +34,9 @@ def main() -> None:
         schema = load_json(path)
         if not isinstance(schema, dict) or not schema.get("required"):
             raise ValueError(f"Schema must declare required fields: {path.name}")
+    readiness = ROOT / "registry" / "source_readiness.md"
+    if not readiness.is_file():
+        raise ValueError("Missing source readiness audit")
     print(f"Registry valid: {len(sources)} sources, {len(codes)} taxonomy subtypes, schemas checked.")
 
 

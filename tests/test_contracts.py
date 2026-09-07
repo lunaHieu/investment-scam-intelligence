@@ -1,4 +1,5 @@
 import unittest
+from pathlib import Path
 
 from src.isi.contracts import assert_feature_columns, assert_gold_is_untouched
 
@@ -17,6 +18,10 @@ class ContractTests(unittest.TestCase):
 
     def test_internal_test_remains_valid_for_evaluation(self):
         assert_gold_is_untouched("internal_test", "evaluate")
+
+    def test_source_readiness_audit_exists(self):
+        root = Path(__file__).resolve().parents[1]
+        self.assertTrue((root / "registry" / "source_readiness.md").is_file())
 
 
 if __name__ == "__main__":

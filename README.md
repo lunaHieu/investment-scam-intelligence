@@ -49,3 +49,13 @@ Các lệnh chỉ kiểm tra contract hiện có; chưa tải dữ liệu, crawl
 5. Chạy TF-IDF baseline khi có vài nghìn mẫu curated hợp lệ.
 
 Chi tiết về điều kiện thu thập của các nguồn Core nằm tại [`registry/source_readiness.md`](registry/source_readiness.md). Không ingest dữ liệu trước khi có manifest đúng schema.
+
+### Mendeley V2 ingestion
+
+Sau khi tải thủ công CSV của đúng bản V2 từ Mendeley, chạy:
+
+```powershell
+python scripts/ingest_mendeley.py --input <downloaded-csv-path>
+```
+
+Adapter chỉ copy raw file bất biến, tạo SHA-256 manifest và profile cột; không đổi nhãn gốc, không upload dữ liệu và không tạo Gold data.

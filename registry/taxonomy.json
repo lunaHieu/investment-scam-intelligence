@@ -1,0 +1,15 @@
+{
+  "version": "V1",
+  "label_model": "one_primary_subtype_with_zero_or_more_secondary_tactics",
+  "subtypes": [
+    {"code": "FAKE_PLATFORM_BROKER", "name": "Fake Platform / Broker", "description": "Sàn, app hoặc broker giả; clone brand, dashboard lợi nhuận giả hoặc phí rút tiền."},
+    {"code": "HIGH_RETURN_GUARANTEE", "name": "High Return / Guarantee", "description": "Cam kết lợi nhuận cao hoặc nhanh, bảo toàn vốn, risk-free hoặc tạo urgency."},
+    {"code": "FAKE_ADVISOR_GROUP", "name": "Fake Advisor / Group", "description": "Chuyên gia giả, nhóm VIP/private, social proof hay testimonial giả."},
+    {"code": "PONZI_HYIP", "name": "Ponzi / HYIP", "description": "Lợi nhuận đều, referral/multi-level hoặc cơ chế tiền mới trả tiền cũ."},
+    {"code": "MARKET_OPPORTUNITY_SCAM", "name": "Market Opportunity Scam", "description": "Scam đóng gói dưới crypto, forex, stock, commodity hoặc pre-IPO."},
+    {"code": "TRAINING_COACHING_SCAM", "name": "Training / Coaching Scam", "description": "Đào tạo, mentoring, signal hoặc robot dẫn tới nạp tiền/đầu tư."},
+    {"code": "OTHER_EMERGING", "name": "Other / Emerging", "description": "Investment scam đã xác minh nhưng chưa phù hợp taxonomy hiện tại."}
+  ],
+  "context_fields": ["investment_instrument", "language", "platform", "country_or_jurisdiction"],
+  "tactic_fields": ["guaranteed_return", "capital_protection", "risk_free_claim", "urgency", "scarcity", "payment_request", "withdrawal_fee", "private_group_migration", "brand_impersonation"]
+}

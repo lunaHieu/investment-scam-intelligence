@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ISI Artifact V1", "type": "object", "additionalProperties": false,
+  "required": ["artifact_id", "source_id", "source_record_id", "artifact_type", "collection_date", "has_text", "has_image", "has_url"],
+  "properties": {
+    "artifact_id": {"type":"string","pattern":"^ART_[A-Z0-9_-]+$"}, "case_id": {"type":["string","null"]},
+    "source_id": {"type":"string"}, "source_record_id": {"type":["string","null"]},
+    "artifact_type": {"enum":["POST","MESSAGE","IMAGE","URL","WEBSITE_SNAPSHOT","ACCOUNT_SNAPSHOT","COMPLAINT","WARNING_DOCUMENT"]},
+    "source_label": {"type":["string","null"]}, "source_label_semantics": {"type":["string","null"]},
+    "text": {"type":["string","null"]}, "language": {"type":["string","null"]},
+    "url": {"type":["string","null"],"format":"uri"}, "domain": {"type":["string","null"]}, "image_path": {"type":["string","null"]},
+    "has_text": {"type":"boolean"}, "has_image": {"type":"boolean"}, "has_url": {"type":"boolean"},
+    "collection_date": {"type":"string","format":"date"}, "content_observed_at": {"type":["string","null"],"format":"date-time"},
+    "near_duplicate_group_id": {"type":["string","null"]}
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "registry_version": "V1",
+  "policy": {
+    "ingest_requires": ["source_id", "source_url", "collection_date", "license_or_terms", "raw_label_semantics"],
+    "gold_prohibited_source_kinds": ["synthetic", "weak_harmonized_label"],
+    "notes": "Each adapter must record the concrete version, download date and terms verification before ingest."
+  },
+  "sources": [
+    {"source_id":"mendeley_investment_deceptive_2026","tier":"CORE","name":"Mendeley Investment Related Deceptive Content","url":"https://data.mendeley.com/datasets/6wnd7jrt6z/2","source_type":"public_dataset","default_evidence_level":"TRAINING_LABEL_ONLY","raw_label_semantics":"harmonized deceptive or suspicious content; not verified investment scam per record","allowed_uses":["text_baseline","behavior_extension","ablation"],"gold_eligible":false},
+    {"source_id":"dfpi_crypto_scam_tracker","tier":"CORE","name":"DFPI Crypto Scam Tracker","url":"https://dfpi.ca.gov/consumers/crypto/crypto-scam-tracker/","source_type":"complaint_case_tracker","default_evidence_level":"SILVER","raw_label_semantics":"consumer complaint and case narrative; requires corroboration for confirmed label","allowed_uses":["case_seed","evidence_linking","financial_claims"],"gold_eligible":true},
+    {"source_id":"crimson_www_2025","tier":"CORE","name":"Crimson WWW 2025","url":"https://github.com/pragseclab/Crimson","source_type":"research_dataset","default_evidence_level":"SILVER","raw_label_semantics":"research-detected cryptocurrency investment-scam websites; not a legal finding","allowed_uses":["url_branch","ocr","case_seed"],"gold_eligible":false},
+    {"source_id":"iosco_i_scan","tier":"CORE","name":"IOSCO I-SCAN","url":"https://www.iosco.org/i-scan/","source_type":"regulator_warning_registry","default_evidence_level":"SILVER","raw_label_semantics":"regulator warning; warning is not a legal conviction","allowed_uses":["entity_verification","url_cross_check","evidence_linking"],"gold_eligible":true},
+    {"source_id":"ubcknn_warnings","tier":"CORE","name":"UBCKNN SSC Vietnam warnings","url":"https://ssc.gov.vn/webcenter/portal/ubck/pages_r/m/nhadautu/khuyencaonhadautu","source_type":"regulator_warning_registry","default_evidence_level":"SILVER","raw_label_semantics":"official Vietnamese investor warning; case-level review determines Gold or Silver","allowed_uses":["vietnamese_case_curation","entity_verification"],"gold_eligible":true},
+    {"source_id":"sec_iapd","tier":"CORE","name":"SEC Investment Adviser Public Disclosure","url":"https://adviserinfo.sec.gov/","source_type":"official_registry","default_evidence_level":"LEGIT_REFERENCE","raw_label_semantics":"official adviser registration reference, not a content-safety label","allowed_uses":["legitimate_reference","hard_negative_verification"],"gold_eligible":false},
+    {"source_id":"fca_warning_list","tier":"AUX","name":"FCA Warning List","url":"https://www.fca.org.uk/consumers/warning-list-unauthorised-firms","source_type":"regulator_warning_registry","default_evidence_level":"SILVER","raw_label_semantics":"unauthorised or clone-firm warning","allowed_uses":["entity_verification","url_cross_check"],"gold_eligible":true},
+    {"source_id":"multi_agent_fraud_bench","tier":"AUX","name":"MultiAgentFraudBench","url":"https://huggingface.co/datasets/ninty-seven/MultiAgentFraudBench","source_type":"synthetic_dataset","default_evidence_level":"SYNTHETIC_ONLY","raw_label_semantics":"synthetic fraud scenarios","allowed_uses":["taxonomy_prototype","financial_claim_prototype","augmentation"],"gold_eligible":false}
+  ]
+}

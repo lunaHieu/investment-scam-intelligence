@@ -1,0 +1,8 @@
+{
+  "version": "V1",
+  "unit_of_split": "case_or_campaign_group",
+  "default_proportions": {"train": 0.7, "validation": 0.15, "internal_test": 0.15},
+  "gold_external_test": "separate_and_untouched",
+  "grouping_keys": ["case_id", "campaign_id", "entity_cluster_id", "domain_family_id", "near_duplicate_group_id"],
+  "forbidden": ["row_level_random_split", "threshold_tuning_on_gold", "model_selection_on_gold"]
+}

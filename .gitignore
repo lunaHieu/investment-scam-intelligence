@@ -1,0 +1,23 @@
+# Data is versioned outside Git; keep the folder scaffold only.
+data/raw/**
+data/interim/**
+data/clean/**
+data/curated/**
+data/gold/**
+data/embeddings/**
+!data/**/.gitkeep
+
+# Local and Python artifacts
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+coverage.xml
+
+# Secrets and downloaded source credentials
+.env
+.env.*
+secrets/
+
+# Document read-only QA intermediates
+_doc_read_*/

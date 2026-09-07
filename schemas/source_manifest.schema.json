@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ISI Source Download Manifest V1", "type": "object", "additionalProperties": false,
+  "required": ["source_id", "source_url", "downloaded_at", "license_or_terms", "raw_label_semantics", "raw_file_sha256", "storage_path"],
+  "properties": {
+    "source_id": {"type":"string"}, "source_url": {"type":"string","format":"uri"}, "downloaded_at": {"type":"string","format":"date-time"}, "source_version": {"type":["string","null"]},
+    "license_or_terms": {"type":"string"}, "raw_label_semantics": {"type":"string"}, "raw_file_sha256": {"type":"string","pattern":"^[a-fA-F0-9]{64}$"}, "storage_path": {"type":"string"}
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ISI Evidence V1", "type": "object", "additionalProperties": false,
+  "required": ["evidence_id", "case_id", "evidence_type", "source_id", "source_url", "observed_at", "collected_at"],
+  "properties": {
+    "evidence_id": {"type":"string","pattern":"^EVD_[A-Z0-9_-]+$"}, "case_id": {"type":"string"}, "artifact_id": {"type":["string","null"]},
+    "evidence_type": {"enum":["regulator_warning","enforcement_record","court_record","official_registry","consumer_complaint","domain_lookup","web_snapshot","payment_signal","cross_check"]},
+    "source_id": {"type":"string"}, "source_url": {"type":"string","format":"uri"},
+    "observed_at": {"type":"string","format":"date-time"}, "collected_at": {"type":"string","format":"date-time"},
+    "summary": {"type":["string","null"]}, "supports": {"type":"array","items":{"enum":["IDENTITY","SCAM_CLAIM","LEGITIMACY","DOMAIN_LINK","PAYMENT_SIGNAL","CAMPAIGN_LINK"]}}, "reviewed": {"type":"boolean"}
+  }
+}

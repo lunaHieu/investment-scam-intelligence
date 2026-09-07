@@ -1,0 +1,6 @@
+{
+  "version": "V1",
+  "evidence_types": ["regulator_warning", "enforcement_record", "court_record", "official_registry", "consumer_complaint", "domain_lookup", "web_snapshot", "payment_signal", "cross_check"],
+  "default_label_levels": {"court_record":"GOLD_CANDIDATE","enforcement_record":"GOLD_CANDIDATE","regulator_warning":"SILVER","official_registry":"LEGIT_REFERENCE","consumer_complaint":"SILVER_OR_CANDIDATE","domain_lookup":"CORROBORATION_ONLY","web_snapshot":"CONTEXT_ONLY"},
+  "hard_rules": ["A single complaint is not automatically CONFIRMED.", "A warning document is evidence, not a positive solicitation artifact by default.", "Synthetic records cannot enter real-world Gold evaluation.", "Absence from a warning list is not proof of legitimacy."]
+}

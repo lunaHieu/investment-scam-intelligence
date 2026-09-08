@@ -68,4 +68,28 @@ python scripts/ingest_mendeley.py --input <downloaded-csv-path>
 
 Adapter chỉ copy raw file bất biến, tạo SHA-256 manifest và profile cột; không đổi nhãn gốc, không upload dữ liệu và không tạo Gold data.
 
+### Crimson ingestion
+
+Chỉ dùng `data/data.json` từ một commit đã pin; không chạy bất kỳ crawler, login automation hoặc truy cập URL nào nằm trong dataset. Ví dụ:
+
+```powershell
+python scripts/ingest_crimson.py --input <data.json> --commit <40-character-commit-sha> --raw-root 'D:\nckh 2026-2027\ISI_Data\raw'
+```
+
+Adapter chỉ lưu tệp JSON bất biến, SHA-256 manifest và profile cấu trúc; dataset Crimson vẫn là nguồn research/Silver, không phải Gold thực tế.
+
+Sau ingest, chuẩn hóa thành candidate URL artifact mà không truy cập bất kỳ URL nào trong dữ liệu:
+
+```powershell
+python scripts/normalize_crimson.py --input <pinned-data.json> --output <candidate-artifacts.jsonl> --report <report.json> --collection-date 2026-09-08
+```
+
+Các artifact này chưa có `case_id`, không được coi là Gold và phải được deduplicate theo domain/campaign trước khi tạo split hoặc dùng cho mô hình.
+
+Kiểm tra contract của tệp candidate mà không mở URL:
+
+```powershell
+python scripts/validate_candidate_artifacts.py --input <candidate-artifacts.jsonl> --source-id crimson_www_2025
+```
+
 Trên máy triển khai hiện tại, raw data được lưu ngoài repository tại `D:\nckh 2026-2027\ISI_Data`. Khi ingest nguồn tiếp theo, chỉ định kho này rõ ràng, ví dụ: `--raw-root 'D:\nckh 2026-2027\ISI_Data\raw'`. Raw data không được commit vào GitHub.

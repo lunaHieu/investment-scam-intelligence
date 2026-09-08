@@ -13,6 +13,8 @@ __pycache__/
 .venv/
 .pytest_cache/
 coverage.xml
+node_modules/
+outputs/
 
 # Secrets and downloaded source credentials
 .env

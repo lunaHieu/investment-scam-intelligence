@@ -1,0 +1,147 @@
+{
+  "pilot_id": "PILOT_UBCKNN_WARNINGS_2026_09_08",
+  "purpose": "Initial evidence-only seed from the public UBCKNN investor-warning archive. This file is a reviewed index of official warning pages, not a collection of solicitation posts and not a Gold evaluation set.",
+  "source_id": "ubcknn_warnings",
+  "collected_at": "2026-09-08T00:00:00+07:00",
+  "collection_method": "Manual review of public SSC Vietnam investor-warning pages surfaced from the official archive.",
+  "cases": [
+    {
+      "case_id": "CASE_UBCKNN_ONLINE_COOPERATION_20260326",
+      "ground_truth_status": "UNCERTAIN",
+      "label_confidence": "MEDIUM",
+      "primary_subtype": null,
+      "secondary_tactics": [],
+      "campaign_id": null,
+      "entity_cluster_id": "ENTITY_UBCKNN_TIKOP_BUFF_TOPI",
+      "review_status": "REVIEWED",
+      "review_rationale": "UBCKNN warned about capital mobilisation through online cooperation-investment applications and websites, including Tikop, Buff and Topi. The warning establishes regulatory-risk context, not a finding that every named service or post is an investment scam.",
+      "created_at": "2026-09-08T00:00:00+07:00",
+      "updated_at": "2026-09-08T00:00:00+07:00"
+    },
+    {
+      "case_id": "CASE_UBCKNN_VICK_UNLICENSED_20240417",
+      "ground_truth_status": "UNCERTAIN",
+      "label_confidence": "MEDIUM",
+      "primary_subtype": null,
+      "secondary_tactics": [],
+      "campaign_id": null,
+      "entity_cluster_id": "ENTITY_VICK_0316298093",
+      "review_status": "REVIEWED",
+      "review_rationale": "The warning reports signs that Vick JSC provided securities-investment advisory services through websites and a mobile app without SSC licensing, management or supervision. Unlicensed status alone is not labelled as a confirmed scam in ISI.",
+      "created_at": "2026-09-08T00:00:00+07:00",
+      "updated_at": "2026-09-08T00:00:00+07:00"
+    },
+    {
+      "case_id": "CASE_UBCKNN_GREENSTOCK_UNLICENSED_20230113",
+      "ground_truth_status": "UNCERTAIN",
+      "label_confidence": "MEDIUM",
+      "primary_subtype": null,
+      "secondary_tactics": [],
+      "campaign_id": null,
+      "entity_cluster_id": "ENTITY_GREENWAY_GREENSTOCK",
+      "review_status": "REVIEWED",
+      "review_rationale": "The warning names Greenway Investment, greenstock.vn and the Greenstock app in relation to online securities trading and brokerage-like services without SSC licensing, management or supervision. It is retained for verification, not as a positive scam-content label.",
+      "created_at": "2026-09-08T00:00:00+07:00",
+      "updated_at": "2026-09-08T00:00:00+07:00"
+    },
+    {
+      "case_id": "CASE_UBCKNN_MINISTRY_DOCUMENT_IMPERSONATION_20250724",
+      "ground_truth_status": "UNCERTAIN",
+      "label_confidence": "MEDIUM",
+      "primary_subtype": "OTHER_EMERGING",
+      "secondary_tactics": ["brand_impersonation"],
+      "campaign_id": null,
+      "entity_cluster_id": null,
+      "review_status": "REVIEWED",
+      "review_rationale": "UBCKNN warned of forged Ministry of Finance/SSC documents connected with securities-company activities. The page supports an impersonation tactic but does not identify a sufficiently bounded scam campaign for Gold use.",
+      "created_at": "2026-09-08T00:00:00+07:00",
+      "updated_at": "2026-09-08T00:00:00+07:00"
+    },
+    {
+      "case_id": "CASE_UBCKNN_FUND_MANAGER_IMPERSONATION_20230302",
+      "ground_truth_status": "CONFIRMED",
+      "label_confidence": "MEDIUM",
+      "primary_subtype": "FAKE_PLATFORM_BROKER",
+      "secondary_tactics": ["brand_impersonation", "private_group_migration"],
+      "campaign_id": null,
+      "entity_cluster_id": "ENTITY_FUND_MANAGER_IMPERSONATION_2023",
+      "review_status": "REVIEWED",
+      "review_rationale": "UBCKNN states that actors used fund-manager names, logos and information to create websites and Facebook/Telegram accounts for defrauding investors. The entities, URLs and posts are not individually enumerated, so this remains evidence-only and is excluded from Gold and model-training artifacts.",
+      "created_at": "2026-09-08T00:00:00+07:00",
+      "updated_at": "2026-09-08T00:00:00+07:00"
+    }
+  ],
+  "evidence": [
+    {
+      "evidence_id": "EVD_UBCKNN_ONLINE_COOPERATION_20260326",
+      "case_id": "CASE_UBCKNN_ONLINE_COOPERATION_20260326",
+      "artifact_id": null,
+      "evidence_type": "regulator_warning",
+      "source_id": "ubcknn_warnings",
+      "source_url": "https://ssc.gov.vn/webcenter/portal/ubck/pages_r/l/chitit?dDocName=APPSSCGOVVN1620165260",
+      "observed_at": "2026-03-26T00:00:00+07:00",
+      "collected_at": "2026-09-08T00:00:00+07:00",
+      "summary": "Warning on online cooperation-investment capital mobilisation through applications and websites, naming Tikop, Buff and Topi.",
+      "supports": ["IDENTITY"],
+      "reviewed": true
+    },
+    {
+      "evidence_id": "EVD_UBCKNN_VICK_UNLICENSED_20240417",
+      "case_id": "CASE_UBCKNN_VICK_UNLICENSED_20240417",
+      "artifact_id": null,
+      "evidence_type": "regulator_warning",
+      "source_id": "ubcknn_warnings",
+      "source_url": "https://ssc.gov.vn/webcenter/portal/ubck/pages_r/l/chitit?dDocName=APPSSCGOVVN1620143649",
+      "observed_at": "2024-04-17T00:00:00+07:00",
+      "collected_at": "2026-09-08T00:00:00+07:00",
+      "summary": "Warning that Vick JSC showed signs of providing securities-investment advisory services through technology platforms without SSC licensing, management or supervision.",
+      "supports": ["IDENTITY", "LEGITIMACY"],
+      "reviewed": true
+    },
+    {
+      "evidence_id": "EVD_UBCKNN_GREENSTOCK_UNLICENSED_20230113",
+      "case_id": "CASE_UBCKNN_GREENSTOCK_UNLICENSED_20230113",
+      "artifact_id": null,
+      "evidence_type": "regulator_warning",
+      "source_id": "ubcknn_warnings",
+      "source_url": "https://ssc.gov.vn/webcenter/portal/ubck/pages_r/l/chitit?dDocName=APPSSCGOVVN1620125422",
+      "observed_at": "2023-01-13T00:00:00+07:00",
+      "collected_at": "2026-09-08T00:00:00+07:00",
+      "summary": "Warning about Greenway Investment, greenstock.vn and the Greenstock app in relation to unlicensed online securities trading and brokerage-like services.",
+      "supports": ["IDENTITY", "LEGITIMACY", "DOMAIN_LINK"],
+      "reviewed": true
+    },
+    {
+      "evidence_id": "EVD_UBCKNN_MINISTRY_DOCUMENT_IMPERSONATION_20250724",
+      "case_id": "CASE_UBCKNN_MINISTRY_DOCUMENT_IMPERSONATION_20250724",
+      "artifact_id": null,
+      "evidence_type": "regulator_warning",
+      "source_id": "ubcknn_warnings",
+      "source_url": "https://ssc.gov.vn/webcenter/portal/ubck/pages_r/l/chitit?dDocName=APPSSCGOVVN1620157074&dID=162841",
+      "observed_at": "2025-07-24T00:00:00+07:00",
+      "collected_at": "2026-09-08T00:00:00+07:00",
+      "summary": "Warning about forged Ministry of Finance and SSC documents related to securities-company activities.",
+      "supports": ["SCAM_CLAIM"],
+      "reviewed": true
+    },
+    {
+      "evidence_id": "EVD_UBCKNN_FUND_MANAGER_IMPERSONATION_20230302",
+      "case_id": "CASE_UBCKNN_FUND_MANAGER_IMPERSONATION_20230302",
+      "artifact_id": null,
+      "evidence_type": "regulator_warning",
+      "source_id": "ubcknn_warnings",
+      "source_url": "https://ssc.gov.vn/webcenter/portal/ubck/pages_r/l/chitit?dDocName=APPSSCGOVVN1620127130",
+      "observed_at": "2023-03-02T00:00:00+07:00",
+      "collected_at": "2026-09-08T00:00:00+07:00",
+      "summary": "Warning that actors created websites, Facebook accounts and Telegram accounts using fund-manager names, logos and information to defraud investors.",
+      "supports": ["SCAM_CLAIM", "CAMPAIGN_LINK"],
+      "reviewed": true
+    }
+  ],
+  "exclusion_rules": [
+    "Do not turn warning-page text into positive solicitation artifacts by default.",
+    "Do not use any of these records for Gold evaluation or threshold tuning.",
+    "Obtain an original post, URL snapshot, app record or another corroborating artifact before using a case as a training example.",
+    "Treat named entities in a broad warning as separate review targets until their relationship is independently verified."
+  ]
+}

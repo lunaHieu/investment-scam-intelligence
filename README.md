@@ -48,6 +48,14 @@ Các lệnh chỉ kiểm tra contract hiện có; chưa tải dữ liệu, crawl
 4. Chạy curated pilot + review guideline trước khi mở rộng quy mô.
 5. Chạy TF-IDF baseline khi có vài nghìn mẫu curated hợp lệ.
 
+### UBCKNN warning pilot
+
+Pilot đầu tiên nằm tại `registry/pilots/ubcknn_warning_seed_2026-09-08.json`. Đây là **5 case/evidence từ cảnh báo công khai của UBCKNN**, dùng để thử nghiệm quy trình case-first và review; không phải tập post lừa đảo, không phải tập huấn luyện và không phải Gold test. Kiểm tra bằng:
+
+```powershell
+python scripts/validate_ubcknn_pilot.py
+```
+
 Chi tiết về điều kiện thu thập của các nguồn Core nằm tại [`registry/source_readiness.md`](registry/source_readiness.md). Không ingest dữ liệu trước khi có manifest đúng schema.
 
 ### Mendeley V2 ingestion

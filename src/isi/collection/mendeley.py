@@ -7,7 +7,7 @@ import hashlib
 import json
 import shutil
 from collections import Counter
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
 
@@ -64,7 +64,7 @@ def ingest_csv(
     if not input_path.is_file():
         raise FileNotFoundError(input_path)
 
-    collected_at = collected_at or datetime.now(UTC)
+    collected_at = collected_at or datetime.now(timezone.utc)
     date_label = collected_at.date().isoformat()
     destination_dir = raw_root / SOURCE_ID / f"v{SOURCE_VERSION}"
     destination_dir.mkdir(parents=True, exist_ok=True)

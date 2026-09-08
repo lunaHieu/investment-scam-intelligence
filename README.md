@@ -86,6 +86,16 @@ python scripts/normalize_crimson.py --input <pinned-data.json> --output <candida
 
 Các artifact này chưa có `case_id`, không được coi là Gold và phải được deduplicate theo domain/campaign trước khi tạo split hoặc dùng cho mô hình.
 
+### Kiểm tra raw data độc lập
+
+Raw data nằm ngoài GitHub để không đưa dữ liệu nguồn lên public. Một người khác có thể đối chiếu source version/commit, SHA-256 và cấu trúc dữ liệu bằng lệnh chỉ đọc:
+
+```powershell
+python scripts/verify_raw_data.py
+```
+
+Xem chi tiết tại [`docs/raw-data-verification.md`](docs/raw-data-verification.md).
+
 Kiểm tra contract của tệp candidate mà không mở URL:
 
 ```powershell

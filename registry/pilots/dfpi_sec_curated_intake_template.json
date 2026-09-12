@@ -1,0 +1,40 @@
+{
+  "batch_id": "DFPI_SEC_PILOT_TEMPLATE",
+  "status": "TEMPLATE_ONLY",
+  "purpose": "Manual, provenance-preserving intake for a maximum 20-case curated pilot.",
+  "source_access_note": "Do not bypass source access controls. DFPI complaint-derived cases begin as UNCERTAIN; SEC registration is reference evidence only.",
+  "records": [
+    {
+      "case_id": "CASE_REPLACE_ME",
+      "ground_truth_status": "UNCERTAIN",
+      "label_confidence": "LOW",
+      "primary_subtype": null,
+      "review_status": "UNREVIEWED",
+      "review_rationale": "Replace this example. Do not infer a conclusion from one complaint or a registry lookup.",
+      "artifact": {
+        "artifact_id": "ART_REPLACE_ME",
+        "source_id": "dfpi_crypto_scam_tracker",
+        "source_record_id": null,
+        "artifact_type": "COMPLAINT",
+        "text": null,
+        "url": null,
+        "has_text": false,
+        "has_image": false,
+        "has_url": false,
+        "collection_date": "YYYY-MM-DD"
+      },
+      "evidence": [
+        {
+          "evidence_id": "EVD_REPLACE_ME",
+          "evidence_type": "consumer_complaint",
+          "source_id": "dfpi_crypto_scam_tracker",
+          "source_url": "https://dfpi.ca.gov/consumers/crypto/crypto-scam-tracker/",
+          "summary": "Replace with a short neutral description of what the source states.",
+          "supports": [],
+          "reviewed": false
+        }
+      ],
+      "sec_reference": null
+    }
+  ]
+}

@@ -28,6 +28,15 @@ class ContractTests(unittest.TestCase):
         root = Path(__file__).resolve().parents[1]
         self.assertTrue((root / "registry" / "source_readiness.md").is_file())
 
+    def test_crimson_url_feature_registry_keeps_training_gate_closed(self):
+        root = Path(__file__).resolve().parents[1]
+        registry = json.loads(
+            (root / "registry" / "features" / "crimson_url_lexical_v1.json").read_text(encoding="utf-8")
+        )
+        self.assertEqual(registry["output_contract"]["label_fields"], [])
+        self.assertEqual(registry["output_contract"]["network_operations"], 0)
+        self.assertFalse(registry["training_gate"]["binary_classifier_allowed"])
+
     def test_mendeley_ingest_creates_immutable_raw_manifest_and_profile(self):
         workspace_root = Path(__file__).resolve().parents[1]
         with TemporaryDirectory(dir=workspace_root) as temp_dir:

@@ -40,13 +40,15 @@ Các lệnh chỉ kiểm tra contract hiện có; chưa tải dữ liệu, crawl
 | `tests/` | Unit test không phụ thuộc dữ liệu bên ngoài. |
 | `configs/` | Cấu hình split và experiment có thể thay đổi qua thực nghiệm. |
 
-## Thứ tự triển khai tiếp theo
+## Trạng thái hiện tại
 
-1. Rà lại registry và điều khoản/license của 3–5 nguồn Core trước khi ingest.
-2. Viết adapter ingest riêng từng nguồn, lưu bản raw bất biến cùng manifest/timestamp/checksum.
-3. Chuẩn hóa sang `ARTIFACTS`, deduplicate và tạo candidate `CASES`.
-4. Chạy curated pilot + review guideline trước khi mở rộng quy mô.
-5. Chạy TF-IDF baseline khi có vài nghìn mẫu curated hợp lệ.
+1. Data contracts, source registry, evidence rules và split policy đã có validator.
+2. Mendeley V2 đã được ingest, audit leakage và chia lại theo duplicate/template group.
+3. Text Baseline V1 đã đóng băng: Naive Bayes làm đối chứng; TF-IDF + Logistic Regression là baseline nội bộ chính.
+4. Crimson pinned raw đã được chuẩn hóa thành URL candidates và lexical feature set không nhãn, hoàn toàn offline.
+5. DFPI và SEC đang hoãn để tải thủ công hợp lệ; xem `docs/curated-evidence-pilot.md`.
+
+Tiếp theo: profiling/clustering URL không nhãn để tạo review queue, sau đó chỉ train URL classifier khi có lớp đối chứng độc lập và external evidence-backed evaluation.
 
 ### UBCKNN warning pilot
 
@@ -95,6 +97,39 @@ python scripts/verify_raw_data.py
 ```
 
 Xem chi tiết tại [`docs/raw-data-verification.md`](docs/raw-data-verification.md).
+
+### Mendeley text baseline
+
+Audit phát hiện split gốc có lượng lớn nội dung trùng giữa train và evaluation. `scripts/build_mendeley_group_split.py` tạo split 70/15/15 mới, giữ duplicate/template candidates trong cùng một partition. Registry đóng băng nằm tại `registry/models/text_baseline_v1.json`.
+
+Hai baseline chỉ dùng `text_content`:
+
+- Multinomial Naive Bayes: baseline tối giản để tái lập.
+- TF-IDF + Logistic Regression: baseline nội bộ chính; tham số chọn bằng validation, không dùng test.
+
+Kết quả vẫn là benchmark label của Mendeley, không phải kết luận scam đã xác minh. Xem `docs/mendeley-text-model-comparison.md` và `docs/mendeley-prediction-error-comparison.md`.
+
+Sau khi train, thử một văn bản (không gửi dữ liệu cá nhân) bằng:
+
+```powershell
+python scripts/predict_mendeley_text_baseline.py --model <model.json> --text "Guaranteed profit with no risk"
+```
+
+Kiểm tra hash, runtime và các điều kiện đóng băng:
+
+```powershell
+.venv\Scripts\python.exe scripts\verify_frozen_model.py --registry registry\models\text_baseline_v1.json
+```
+
+### Crimson URL lexical features
+
+`scripts/extract_crimson_url_features.py` trích xuất feature từ chuỗi domain mà không gọi DNS, HTTP, WHOIS hoặc mở website. Output không có label và chưa được phép dùng để train binary classifier. Xem `docs/crimson-url-feature-readiness.md` và `registry/features/crimson_url_lexical_v1.json`.
+
+Kiểm tra bằng:
+
+```powershell
+python scripts/validate_crimson_url_features.py --input <url-lexical-features.jsonl>
+```
 
 Kiểm tra contract của tệp candidate mà không mở URL:
 

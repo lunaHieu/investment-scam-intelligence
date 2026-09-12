@@ -1,0 +1,106 @@
+{
+  "model_id": "ISI_TEXT_BASELINE_V1",
+  "frozen_at": "2026-09-12",
+  "status": "FROZEN_INTERNAL_BASELINE_NOT_FOR_DEPLOYMENT",
+  "primary_model": {
+    "name": "TF-IDF word unigram+bigram Logistic Regression",
+    "selected_hyperparameters": {
+      "C": 2.0,
+      "class_weight": null,
+      "solver": "liblinear",
+      "threshold": 0.5
+    },
+    "feature_policy": "text_content only; no source ID, partition, metadata, evidence or review fields",
+    "label_semantics": "Mendeley V2 harmonized deceptive/suspicious source label; not verified investment-scam ground truth"
+  },
+  "reference_model": "dependency-free Multinomial Naive Bayes text baseline",
+  "data_contract": {
+    "source_id": "mendeley_investment_deceptive_2026",
+    "source_version": "v2",
+    "split_version": "group_split_v1",
+    "row_count": 16202,
+    "partition_counts": {
+      "train": 11344,
+      "validation": 2429,
+      "test": 2429
+    },
+    "surface_normalized_cross_split_groups": 0,
+    "template_candidate_cross_split_groups": 0,
+    "raw_sha256": "a4b336074176efb5746d1981506c1f1faba19a1b0a20f3b9e95dc8be94ea2504",
+    "derived_split_sha256": "0f540f838dc0050c2cc1f8f8d98c4239acaba1ad0d1407066f1a578e5acdb2ff"
+  },
+  "selection_policy": {
+    "hyperparameter_selection": "validation F1 label 1 only",
+    "test_used_for_selection": false,
+    "paired_test_comparison": {
+      "logreg_fixed_nb_errors": 115,
+      "logreg_regressions": 103,
+      "net_errors_removed": 12,
+      "mcnemar_exact_two_sided_p_value": 0.4563410015092822,
+      "statistically_significant_at_0_05": false
+    }
+  },
+  "metrics": {
+    "validation_f1_label_1": 0.933521,
+    "test_accuracy": 0.899547,
+    "test_f1_label_1": 0.93119,
+    "test_macro_f1": 0.872607,
+    "test_balanced_accuracy": 0.871896,
+    "leave_one_source_out_mean_f1_label_1": 0.60618,
+    "leave_one_source_out_mean_macro_f1": 0.610438,
+    "leave_one_source_out_mean_balanced_accuracy": 0.635738
+  },
+  "runtime": {
+    "python": "3.10.0",
+    "scikit_learn": "1.7.2",
+    "numpy": "2.2.6",
+    "scipy": "1.15.3",
+    "joblib": "1.6.0"
+  },
+  "artifacts": [
+    {
+      "role": "group_split_dataset",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v1\\mendeley_v2_group_split.csv",
+      "sha256": "0f540f838dc0050c2cc1f8f8d98c4239acaba1ad0d1407066f1a578e5acdb2ff"
+    },
+    {
+      "role": "model",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v1\\tfidf_logreg\\model.joblib",
+      "sha256": "6cce0dc42a8fa8a63fffa771e4534727c811b437f6f161be7621e8a50f8499ea"
+    },
+    {
+      "role": "primary_results",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v1\\tfidf_logreg\\results.json",
+      "sha256": "4dcb83c12b2f0112f8d9558887bc2a8022e53779adc8271de5e0a6bbeafe911c"
+    },
+    {
+      "role": "cross_source_results",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v1\\tfidf_logreg\\cross_source_results.json",
+      "sha256": "82d3a189720a3e1d1ba41b712e31a2af5ed1348cba4e190132e5d7b8ceb36973"
+    },
+    {
+      "role": "model_comparison",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v1\\model_comparison.json",
+      "sha256": "58f16578a7208caf79e506697f6ecc222d78ab5e1f1974dde039667fcbd17d69"
+    },
+    {
+      "role": "paired_error_comparison",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v1\\prediction_error_comparison.json",
+      "sha256": "b1acf73ca8c9154bf988e506c63ccca5e8cae59b50a55da61265c095afe543e4"
+    }
+  ],
+  "prohibited_claims": [
+    "Do not describe output probability as real-world scam probability.",
+    "Do not describe Mendeley label 1 as regulator-verified fraud.",
+    "Do not deploy or use the model for enforcement, blocking or financial decisions.",
+    "Do not tune on the frozen test or future Gold/external evaluation set."
+  ],
+  "known_limitations": [
+    "Large performance variation across source datasets.",
+    "Leave-one-source-out performance remains unstable.",
+    "Some source labels appear noisy or semantically heterogeneous.",
+    "Text-only model lacks image, URL, account, financial-claim and evidence context.",
+    "No curated external evidence-backed evaluation has been completed."
+  ],
+  "next_gate": "Evaluate on curated/external evidence-backed cases before any deployment claim."
+}

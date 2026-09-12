@@ -37,7 +37,22 @@ def main() -> None:
     readiness = ROOT / "registry" / "source_readiness.md"
     if not readiness.is_file():
         raise ValueError("Missing source readiness audit")
-    print(f"Registry valid: {len(sources)} sources, {len(codes)} taxonomy subtypes, schemas checked.")
+    feature_registries = sorted((ROOT / "registry" / "features").glob("*.json"))
+    for path in feature_registries:
+        feature_set = load_json(path)
+        if feature_set.get("source", {}).get("source_id") not in source_ids:
+            raise ValueError(f"Unknown source_id in feature registry: {path.name}")
+        contract = feature_set.get("output_contract", {})
+        if contract.get("label_fields") != []:
+            raise ValueError(f"Feature registry must declare no label fields: {path.name}")
+        if contract.get("network_operations") != 0:
+            raise ValueError(f"Offline feature registry reports network operations: {path.name}")
+        if feature_set.get("training_gate", {}).get("binary_classifier_allowed") is not False:
+            raise ValueError(f"Crimson feature set must remain blocked for binary training: {path.name}")
+    print(
+        f"Registry valid: {len(sources)} sources, {len(codes)} taxonomy subtypes, "
+        f"{len(feature_registries)} feature registries, schemas checked."
+    )
 
 
 if __name__ == "__main__":

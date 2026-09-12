@@ -1,0 +1,78 @@
+{
+  "feature_set_id": "CRIMSON_URL_LEXICAL_V1",
+  "created_at": "2026-09-12",
+  "status": "FROZEN_UNLABELED_FEATURE_SET",
+  "source": {
+    "source_id": "crimson_www_2025",
+    "source_version": "b040e2def08ea26058ef9da752b72fa4a5238987",
+    "raw_record_count": 43572,
+    "raw_sha256": "5b6f5d8cbcf780fd63437d8ef3abdc7a261deac5d1845a8ffb4201fbf9e313c0",
+    "raw_label_semantics": "Research-detected cryptocurrency investment-scam websites; not a legal finding or thesis Gold label."
+  },
+  "lineage": {
+    "candidate_artifact_path": "D:\\nckh 2026-2027\\ISI_Data\\interim\\crimson_www_2025\\b040e2def08ea26058ef9da752b72fa4a5238987\\candidate_url_artifacts_v2.jsonl",
+    "candidate_artifact_sha256": "75cb24ec52ecca12e1d4c6e6b2dba27dfdd80d40a16239a8f7dbc2cd8bc401ac",
+    "feature_output_path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\crimson_www_2025\\b040e2def08ea26058ef9da752b72fa4a5238987\\url_lexical_v1\\url_lexical_features_v1.jsonl",
+    "feature_output_sha256": "24831178a40dc0e933883ae4b11b7b587bb2240f5e5180915c0509d43503a6c7",
+    "profile_path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\crimson_www_2025\\b040e2def08ea26058ef9da752b72fa4a5238987\\url_lexical_v1\\profile_v1.json",
+    "profile_sha256": "10c9ba42496497a5ba0021cf757cf06dbb383be03960f7fab5982d75b0e3a83a"
+  },
+  "output_contract": {
+    "record_count": 43572,
+    "unique_artifact_id_count": 43572,
+    "unique_domain_count": 43572,
+    "label_fields": [],
+    "network_operations": 0,
+    "feature_names": [
+      "domain_length",
+      "label_count",
+      "subdomain_depth_naive",
+      "rightmost_label_length",
+      "longest_label_length",
+      "mean_label_length",
+      "letter_count",
+      "digit_count",
+      "hyphen_count",
+      "non_ascii_count",
+      "digit_ratio",
+      "hyphen_ratio",
+      "vowel_ratio_among_letters",
+      "unique_character_ratio",
+      "shannon_entropy",
+      "digit_letter_transition_count",
+      "longest_digit_run",
+      "longest_letter_run",
+      "punycode_label_count",
+      "is_ip_literal",
+      "is_ascii",
+      "rightmost_label_is_numeric",
+      "hex_character_ratio"
+    ],
+    "excluded_raw_fields": [
+      "btc",
+      "countryCode",
+      "eth",
+      "ioc",
+      "isp",
+      "query",
+      "region"
+    ]
+  },
+  "method_constraints": [
+    "Features are computed from the observed domain string only.",
+    "The canonical https scheme is synthetic and is not a feature.",
+    "No DNS, HTTP, WHOIS, certificate, page-content or reputation lookup was performed.",
+    "The rightmost label is not claimed to be an effective top-level domain or registrable-domain boundary."
+  ],
+  "training_gate": {
+    "binary_classifier_allowed": false,
+    "reason": "Crimson does not provide an independently sourced trustworthy legitimate comparison class.",
+    "required_before_training": [
+      "Acquire an independently sourced legitimate/reference URL class.",
+      "Document sampling frame and time period for both classes.",
+      "Deduplicate by registrable domain and campaign before splitting.",
+      "Prevent source identity and collection metadata from entering model features.",
+      "Reserve an external evidence-backed evaluation set."
+    ]
+  }
+}

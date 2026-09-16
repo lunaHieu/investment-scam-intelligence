@@ -37,6 +37,201 @@ class ContractTests(unittest.TestCase):
         self.assertEqual(registry["output_contract"]["network_operations"], 0)
         self.assertFalse(registry["training_gate"]["binary_classifier_allowed"])
 
+    def test_financial_claim_registry_keeps_test_and_training_gates_closed(self):
+        root = Path(__file__).resolve().parents[1]
+        registry = json.loads(
+            (root / "registry" / "features" / "mendeley_financial_claims_v1.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        self.assertEqual(registry["scope"]["test_partition_text_processed"], 0)
+        self.assertFalse(registry["scope"]["source_labels_used_for_extraction"])
+        self.assertEqual(registry["output_contract"]["label_fields"], [])
+        self.assertFalse(registry["training_gate"]["binary_classifier_allowed"])
+
+    def test_crimson_unsupervised_registry_is_exploratory_only(self):
+        root = Path(__file__).resolve().parents[1]
+        registry = json.loads(
+            (root / "registry" / "analyses" / "crimson_domain_unsupervised_v1.json").read_text(encoding="utf-8")
+        )
+        safety = registry["safety_contract"]
+        self.assertEqual(safety["network_operations"], 0)
+        self.assertEqual(safety["labels_created"], 0)
+        self.assertFalse(safety["training_allowed"])
+        self.assertFalse(safety["domain_access_allowed"])
+        self.assertNotEqual(registry["quality"]["stability_assessment"], "HIGH")
+
+    def test_mendeley_image_registry_keeps_image_training_blocked(self):
+        root = Path(__file__).resolve().parents[1]
+        registry = json.loads(
+            (root / "registry" / "analyses" / "mendeley_image_readiness_v1.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        self.assertEqual(registry["status"], "FROZEN_BLOCKED_NO_IMAGE_ASSETS")
+        self.assertFalse(registry["decision"]["has_usable_image_assets"])
+        self.assertFalse(registry["decision"]["image_model_training_allowed"])
+        self.assertEqual(registry["findings"]["actual_image_reference_count"], 0)
+
+    def test_mendeley_text_baseline_v2_error_analysis_is_diagnostic_only(self):
+        root = Path(__file__).resolve().parents[1]
+        registry = json.loads(
+            (
+                root
+                / "registry"
+                / "analyses"
+                / "mendeley_text_baseline_v2_error_analysis.json"
+            ).read_text(encoding="utf-8")
+        )
+        self.assertEqual(
+            registry["status"], "FROZEN_DIAGNOSTIC_ERROR_ANALYSIS_NO_TUNING"
+        )
+        self.assertFalse(registry["scope"]["model_fit_or_refit"])
+        self.assertFalse(registry["scope"]["threshold_changed"])
+        self.assertEqual(registry["scope"]["auxiliary_rows_used"], 0)
+        self.assertEqual(registry["scope"]["quarantine_rows_used"], 0)
+        self.assertEqual(registry["safety_contract"]["labels_created"], 0)
+        self.assertFalse(registry["safety_contract"]["training_allowed"])
+        self.assertFalse(registry["safety_contract"]["test_used_for_tuning"])
+
+    def test_text_baseline_v2_external_readiness_blocks_invalid_scoring(self):
+        root = Path(__file__).resolve().parents[1]
+        registry = json.loads(
+            (
+                root
+                / "registry"
+                / "analyses"
+                / "text_baseline_v2_external_readiness_v1.json"
+            ).read_text(encoding="utf-8")
+        )
+        self.assertEqual(
+            registry["status"], "FROZEN_BLOCKED_NO_ELIGIBLE_EXTERNAL_TEXT_CASES"
+        )
+        self.assertEqual(registry["findings"]["eligible_external_text_records"], 0)
+        self.assertFalse(registry["findings"]["external_reporting_allowed"])
+        self.assertFalse(registry["decision"]["external_text_scoring_performed"])
+        self.assertEqual(registry["safety_contract"]["model_scoring_operations"], 0)
+        self.assertEqual(registry["safety_contract"]["labels_created"], 0)
+        self.assertFalse(registry["safety_contract"]["training_allowed"])
+
+    def test_mendeley_metadata_ablation_does_not_promote_source_shortcuts(self):
+        root = Path(__file__).resolve().parents[1]
+        registry = json.loads(
+            (root / "registry" / "models" / "mendeley_metadata_ablation_v1.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        self.assertFalse(registry["feature_safety"]["source_dataset_used_as_predictive_feature"])
+        self.assertFalse(
+            registry["selection_policy"]["test_used_for_hyperparameter_or_variant_selection"]
+        )
+        self.assertGreater(
+            registry["source_confounding_diagnostics"][
+                "test_missingness_to_source_macro_f1"
+            ],
+            0.5,
+        )
+        self.assertFalse(registry["decision"]["promote_metadata_to_primary_baseline"])
+        self.assertFalse(registry["decision"]["deployment_allowed"])
+
+    def test_mendeley_source_balance_ablation_keeps_source_out_of_features(self):
+        root = Path(__file__).resolve().parents[1]
+        registry = json.loads(
+            (root / "registry" / "models" / "mendeley_source_balance_ablation_v1.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        self.assertFalse(registry["model_contract"]["source_dataset_in_feature_matrix"])
+        self.assertFalse(registry["selection_policy"]["test_used_for_strategy_selection"])
+        self.assertEqual(
+            registry["selection_policy"]["selected_strategy_on_validation"], "unweighted"
+        )
+        self.assertFalse(registry["decision"]["promote_to_primary_internal_baseline"])
+        self.assertFalse(registry["decision"]["deployment_allowed"])
+
+    def test_mendeley_text_representation_ablation_blocks_shortcut_promotion(self):
+        root = Path(__file__).resolve().parents[1]
+        registry = json.loads(
+            (
+                root
+                / "registry"
+                / "models"
+                / "mendeley_text_representation_ablation_v1.json"
+            ).read_text(encoding="utf-8")
+        )
+        self.assertFalse(registry["representation_contract"]["source_dataset_in_feature_matrix"])
+        self.assertFalse(
+            registry["selection_policy"][
+                "test_used_for_hyperparameter_or_representation_selection"
+            ]
+        )
+        self.assertNotIn(
+            "char_3_5", registry["selection_policy"]["promotion_eligible_representations"]
+        )
+        self.assertGreater(
+            registry["data_contract"]["normalized_template_partition_audit"][
+                "cross_partition_template_count"
+            ],
+            0,
+        )
+        self.assertFalse(registry["decision"]["qualifies_as_internal_research_candidate"])
+        self.assertFalse(registry["decision"]["promote_to_primary_internal_baseline"])
+        self.assertFalse(registry["decision"]["deployment_allowed"])
+
+    def test_mendeley_group_split_v2_keeps_auxiliary_and_quarantine_out(self):
+        root = Path(__file__).resolve().parents[1]
+        registry = json.loads(
+            (root / "registry" / "splits" / "mendeley_group_split_v2.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        self.assertEqual(registry["status"], "FROZEN_DERIVED_SPLIT")
+        self.assertEqual(
+            registry["routing_contract"]["partition_counts"],
+            {
+                "train": 3916,
+                "validation": 838,
+                "test": 838,
+                "auxiliary": 10607,
+                "quarantine": 3,
+            },
+        )
+        self.assertEqual(
+            registry["grouping_contract"]["component_cross_partition_count"], 0
+        )
+        self.assertFalse(
+            registry["usage_policy"]["auxiliary_allowed_in_benchmark_training_or_scoring"]
+        )
+        self.assertFalse(
+            registry["usage_policy"]["quarantine_allowed_in_benchmark_training_or_scoring"]
+        )
+        self.assertFalse(registry["usage_policy"]["external_or_gold_test"])
+        self.assertFalse(registry["safety_contract"]["model_training_performed"])
+        self.assertEqual(registry["safety_contract"]["source_labels_changed"], 0)
+
+    def test_mendeley_text_baseline_v2_freezes_selection_before_test(self):
+        root = Path(__file__).resolve().parents[1]
+        registry = json.loads(
+            (root / "registry" / "models" / "text_baseline_v2.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        self.assertEqual(registry["data_contract"]["split_version"], "group_split_v2")
+        self.assertEqual(registry["data_contract"]["auxiliary_rows_used"], 0)
+        self.assertEqual(registry["data_contract"]["quarantine_rows_used"], 0)
+        self.assertEqual(
+            registry["selection_policy"]["test_text_transformed_during_selection"], 0
+        )
+        self.assertEqual(
+            registry["selection_policy"]["test_labels_used_during_selection"], 0
+        )
+        self.assertFalse(registry["selection_policy"]["test_used_for_selection"])
+        self.assertTrue(
+            registry["selection_policy"]["test_opened_after_selection_frozen"]
+        )
+        self.assertEqual(registry["primary_model"]["predictive_input"], ["text_content"])
+        self.assertFalse(registry["safety_contract"]["deployment_allowed"])
+
     def test_mendeley_ingest_creates_immutable_raw_manifest_and_profile(self):
         workspace_root = Path(__file__).resolve().parents[1]
         with TemporaryDirectory(dir=workspace_root) as temp_dir:

@@ -43,12 +43,16 @@ Các lệnh chỉ kiểm tra contract hiện có; chưa tải dữ liệu, crawl
 ## Trạng thái hiện tại
 
 1. Data contracts, source registry, evidence rules và split policy đã có validator.
-2. Mendeley V2 đã được ingest, audit leakage và chia lại theo duplicate/template group.
-3. Text Baseline V1 đã đóng băng: Naive Bayes làm đối chứng; TF-IDF + Logistic Regression là baseline nội bộ chính.
-4. Crimson pinned raw đã được chuẩn hóa thành URL candidates và lexical feature set không nhãn, hoàn toàn offline.
-5. DFPI và SEC đang hoãn để tải thủ công hợp lệ; xem `docs/curated-evidence-pilot.md`.
+2. Mendeley V2 đã có `group_split_v2` strict: 5.592 dòng benchmark bốn nguồn, 10.607 `fake_profile_post` ở auxiliary và 3 dòng nhãn mâu thuẫn ở quarantine; raw vẫn nguyên vẹn.
+3. Text Baseline V2 đã được chọn hoàn toàn trên validation rồi mới mở test: word TF-IDF + Logistic Regression, test Macro-F1 0,7062; error analysis xác nhận 208/246 lỗi đến từ `twitter_bot_detection`. External-evaluation gate hiện bị chặn vì chưa có mẫu text external đủ evidence.
+4. Financial Claims V1 đã trích xuất candidate signals trên train/validation, tạo review queue 120 và workbook pilot 20 record; test vẫn chưa được xử lý, training gate đang đóng.
+5. Metadata ablation trên Mendeley đã hoàn tất; metadata không được promote vì không cải thiện đồng thời internal test và leave-one-source-out, còn missingness nhận diện nguồn rất mạnh.
+6. Source-balance ablation đã hoàn tất; validation vẫn chọn text baseline không trọng số, nên không thay baseline.
+7. Text-representation ablation đã hoàn tất; `word + char_wb` tăng LOSO nhưng giảm internal test, đồng thời audit phát hiện source/template shortcut lớn, nên vẫn giữ word baseline.
+8. Crimson pinned raw đã được chuẩn hóa thành URL candidates, lexical feature set và phân tích clustering/outlier không nhãn, hoàn toàn offline.
+9. DFPI và SEC đang hoãn để tải thủ công hợp lệ; xem `docs/curated-evidence-pilot.md`.
 
-Tiếp theo: profiling/clustering URL không nhãn để tạo review queue, sau đó chỉ train URL classifier khi có lớp đối chứng độc lập và external evidence-backed evaluation.
+Tiếp theo: giữ cấu hình Text Baseline V2 cố định. Error analysis đã hoàn tất và external-readiness gate đã được dựng; model chưa được score ngoài Mendeley vì có 0 mẫu text external đủ điều kiện. Cần ít nhất 10 `CONFIRMED` và 10 `LEGITIMATE` text artifacts đã reconcile trước khi báo pilot metrics. Financial Claims vẫn cần review queue 120 trước khi được dùng làm feature train; nguồn URL đối chứng, nguồn ảnh và các bộ dữ liệu bổ sung vẫn đang hoãn.
 
 ### UBCKNN warning pilot
 
@@ -100,7 +104,31 @@ Xem chi tiết tại [`docs/raw-data-verification.md`](docs/raw-data-verificatio
 
 ### Mendeley text baseline
 
-Audit phát hiện split gốc có lượng lớn nội dung trùng giữa train và evaluation. `scripts/build_mendeley_group_split.py` tạo split 70/15/15 mới, giữ duplicate/template candidates trong cùng một partition. Registry đóng băng nằm tại `registry/models/text_baseline_v1.json`.
+Audit phát hiện split gốc có lượng lớn nội dung trùng giữa train và evaluation. Baseline V1 và registry `registry/models/text_baseline_v1.json` dùng `group_split_v1`, vì vậy chỉ còn vai trò lịch sử và không phải kết quả của split strict mới.
+
+`group_split_v2` giữ đủ 16.202 dòng nhưng chỉ 5.592 dòng từ bốn nguồn được phép vào benchmark; toàn bộ `fake_profile_post` nằm ở auxiliary và ba dòng nhãn mâu thuẫn nằm ở quarantine. Xem `docs/mendeley-group-split-v2.md` và registry `registry/splits/mendeley_group_split_v2.json`. Kiểm tra artifact local bằng:
+
+```powershell
+.venv\Scripts\python.exe scripts\verify_mendeley_group_split_v2_registry.py
+```
+
+Text Baseline V2 dùng word TF-IDF unigram+bigram và Logistic Regression. Mười candidate được xếp hạng trên validation theo source-mean Macro-F1; selection `C=2.0`, không class weight được đóng băng và kiểm tra digest trước khi test được mở. Model cuối refit trên train+validation, không dùng 10.607 auxiliary hoặc 3 quarantine. Xem `docs/mendeley-text-baseline-v2.md` và registry `registry/models/text_baseline_v2.json`.
+
+```powershell
+.venv\Scripts\python.exe scripts\verify_mendeley_text_baseline_v2_registry.py
+```
+
+Error analysis V2 tái tạo đủ 838 dự đoán, ghi nhận 246 lỗi và tạo queue 44 group đại diện mà không fit lại model hoặc tạo nhãn mới. Xem `docs/mendeley-text-baseline-v2-error-analysis.md` và registry tại `registry/analyses/mendeley_text_baseline_v2_error_analysis.json`.
+
+```powershell
+.venv\Scripts\python.exe scripts\verify_mendeley_text_baseline_v2_error_analysis_registry.py
+```
+
+External-evaluation readiness audit kiểm tra Crimson, UBCKNN, DFPI, SEC và IOSCO hoàn toàn offline. Hiện gate đóng do không có observed text artifact đã reconcile; không có model score hay external metric nào được tạo. Xem `docs/text-baseline-v2-external-evaluation-readiness.md`, policy tại `configs/text_baseline_v2_external_eval_policy_v1.json` và registry tại `registry/analyses/text_baseline_v2_external_readiness_v1.json`.
+
+```powershell
+.venv\Scripts\python.exe scripts\verify_text_baseline_v2_external_readiness_registry.py
+```
 
 Hai baseline chỉ dùng `text_content`:
 
@@ -109,7 +137,7 @@ Hai baseline chỉ dùng `text_content`:
 
 Kết quả vẫn là benchmark label của Mendeley, không phải kết luận scam đã xác minh. Xem `docs/mendeley-text-model-comparison.md` và `docs/mendeley-prediction-error-comparison.md`.
 
-Sau khi train, thử một văn bản (không gửi dữ liệu cá nhân) bằng:
+Lệnh dự đoán dưới đây chỉ áp dụng cho model V1 lịch sử. Sau khi train model V2 mới, phải dùng đúng registry/model artifact V2 tương ứng:
 
 ```powershell
 python scripts/predict_mendeley_text_baseline.py --model <model.json> --text "Guaranteed profit with no risk"
@@ -121,6 +149,36 @@ Kiểm tra hash, runtime và các điều kiện đóng băng:
 .venv\Scripts\python.exe scripts\verify_frozen_model.py --registry registry\models\text_baseline_v1.json
 ```
 
+### Mendeley metadata ablation
+
+Chín biến thể tách text, metadata hành vi/tài khoản, thống kê nội dung và cờ thiếu dữ liệu đã được đánh giá trên cùng `group_split_v1`. Missingness đơn thuần nhận diện nguồn với 93,45% accuracy trên test; không biến thể text + metadata nào cải thiện đồng thời internal-test và leave-one-source-out Macro-F1. Vì vậy metadata chưa được đưa vào baseline chính.
+
+Xem `docs/mendeley-metadata-ablation-v1.md` và registry đóng băng tại `registry/models/mendeley_metadata_ablation_v1.json`. Kiểm tra bằng:
+
+```powershell
+.venv\Scripts\python.exe scripts\verify_mendeley_metadata_ablation_registry.py
+```
+
+### Mendeley source-balance ablation
+
+Năm chiến lược trọng số train đã được so sánh trên cùng TF-IDF + Logistic Regression cố định. Inverse-source cải thiện leave-one-source-out nhưng làm giảm mạnh internal test; inverse-source-label chỉ tăng nhẹ test và không có ý nghĩa thống kê. Validation chọn lại mô hình không trọng số, vì vậy `ISI_TEXT_BASELINE_V1` vẫn được giữ nguyên.
+
+Xem `docs/mendeley-source-balance-ablation-v1.md` và registry tại `registry/models/mendeley_source_balance_ablation_v1.json`. Kiểm tra bằng:
+
+```powershell
+.venv\Scripts\python.exe scripts\verify_mendeley_source_balance_ablation_registry.py
+```
+
+### Mendeley text-representation ablation
+
+Word TF-IDF, `char_wb`, raw `char` diagnostic và `word + char_wb` đã được so sánh với cùng Logistic Regression cố định. Validation chọn `word + char_wb` trong nhóm hợp lệ, nhưng biến thể này giảm internal-test Macro-F1, không cải thiện nguồn nào và không vượt paired group-bootstrap gate. Audit bổ sung còn phát hiện 193 normalized template vượt partition và character text nhận diện nguồn rất mạnh. Vì vậy `ISI_TEXT_BASELINE_V1` vẫn được giữ nguyên; mọi thử nghiệm normalization tiếp theo phải dựng lại split bằng cùng normalizer.
+
+Xem `docs/mendeley-text-representation-ablation-v1.md` và registry tại `registry/models/mendeley_text_representation_ablation_v1.json`. Kiểm tra bằng:
+
+```powershell
+.venv\Scripts\python.exe scripts\verify_mendeley_text_representation_ablation_registry.py
+```
+
 ### Crimson URL lexical features
 
 `scripts/extract_crimson_url_features.py` trích xuất feature từ chuỗi domain mà không gọi DNS, HTTP, WHOIS hoặc mở website. Output không có label và chưa được phép dùng để train binary classifier. Xem `docs/crimson-url-feature-readiness.md` và `registry/features/crimson_url_lexical_v1.json`.
@@ -130,6 +188,11 @@ Kiểm tra bằng:
 ```powershell
 python scripts/validate_crimson_url_features.py --input <url-lexical-features.jsonl>
 ```
+
+Phân tích không nhãn dùng clustering/outlier để tạo review queue 100 domain,
+không tạo nhãn và không truy cập website. Xem
+`docs/crimson-domain-unsupervised-analysis.md` và
+`registry/analyses/crimson_domain_unsupervised_v1.json`.
 
 Kiểm tra contract của tệp candidate mà không mở URL:
 

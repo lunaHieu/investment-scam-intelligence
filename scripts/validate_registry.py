@@ -48,10 +48,61 @@ def main() -> None:
         if contract.get("network_operations") != 0:
             raise ValueError(f"Offline feature registry reports network operations: {path.name}")
         if feature_set.get("training_gate", {}).get("binary_classifier_allowed") is not False:
-            raise ValueError(f"Crimson feature set must remain blocked for binary training: {path.name}")
+            raise ValueError(f"Feature set must remain blocked for binary training: {path.name}")
+    analysis_registries = sorted((ROOT / "registry" / "analyses").glob("*.json"))
+    for path in analysis_registries:
+        analysis = load_json(path)
+        if analysis.get("source_id") not in source_ids:
+            raise ValueError(f"Unknown source_id in analysis registry: {path.name}")
+        safety = analysis.get("safety_contract", {})
+        if safety.get("network_operations") != 0 or safety.get("labels_created") != 0:
+            raise ValueError(f"Analysis must report zero network operations and labels: {path.name}")
+        if safety.get("training_allowed") is not False or safety.get("domain_access_allowed") is not False:
+            raise ValueError(f"Analysis safety gate is open: {path.name}")
+        quality = analysis.get("quality", {})
+        if quality.get("mean_adjusted_rand_index_across_seeds", 1.0) < 0.6 and quality.get("stability_assessment") == "HIGH":
+            raise ValueError(f"Low-stability clustering cannot be marked HIGH: {path.name}")
+    split_registries = sorted((ROOT / "registry" / "splits").glob("*.json"))
+    for path in split_registries:
+        split = load_json(path)
+        if split.get("source", {}).get("source_id") not in source_ids:
+            raise ValueError(f"Unknown source_id in split registry: {path.name}")
+        if split.get("status") != "FROZEN_DERIVED_SPLIT":
+            raise ValueError(f"Split registry must be frozen: {path.name}")
+        safety = split.get("safety_contract", {})
+        if safety.get("raw_files_modified") is not False:
+            raise ValueError(f"Split must preserve raw files: {path.name}")
+        if safety.get("network_operations") != 0 or safety.get("source_labels_changed") != 0:
+            raise ValueError(f"Split reports network use or label changes: {path.name}")
+        if safety.get("model_training_performed") is not False:
+            raise ValueError(f"Split construction cannot train a model: {path.name}")
+        if split.get("usage_policy", {}).get("external_or_gold_test") is not False:
+            raise ValueError(f"Internal split cannot be marked external/Gold: {path.name}")
+        roles = {artifact.get("role") for artifact in split.get("artifacts", [])}
+        required_roles = {"raw_csv", "derived_split_csv", "split_report", "split_audit"}
+        if roles != required_roles:
+            raise ValueError(f"Split artifact roles mismatch: {path.name}")
+    model_registries = sorted((ROOT / "registry" / "models").glob("*.json"))
+    for path in model_registries:
+        model = load_json(path)
+        if model.get("model_id") != "ISI_TEXT_BASELINE_V2":
+            continue
+        if model.get("status") != "FROZEN_INTERNAL_BASELINE_NOT_FOR_DEPLOYMENT":
+            raise ValueError("Text baseline V2 must remain frozen and non-deployable")
+        if model.get("data_contract", {}).get("split_version") != "group_split_v2":
+            raise ValueError("Text baseline V2 must use group_split_v2")
+        if model.get("data_contract", {}).get("auxiliary_rows_used") != 0:
+            raise ValueError("Text baseline V2 cannot use auxiliary rows")
+        if model.get("data_contract", {}).get("quarantine_rows_used") != 0:
+            raise ValueError("Text baseline V2 cannot use quarantine rows")
+        if model.get("selection_policy", {}).get("test_used_for_selection") is not False:
+            raise ValueError("Text baseline V2 cannot use test for selection")
+        if model.get("safety_contract", {}).get("deployment_allowed") is not False:
+            raise ValueError("Text baseline V2 deployment gate must remain closed")
     print(
         f"Registry valid: {len(sources)} sources, {len(codes)} taxonomy subtypes, "
-        f"{len(feature_registries)} feature registries, schemas checked."
+        f"{len(feature_registries)} feature registries, {len(analysis_registries)} analysis registries, "
+        f"{len(split_registries)} split registries, {len(model_registries)} model/ablation registries, schemas checked."
     )
 
 

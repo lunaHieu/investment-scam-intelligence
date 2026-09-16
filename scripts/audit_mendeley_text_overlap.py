@@ -24,6 +24,19 @@ URL_RE = re.compile(r"(?:https?://|www\.)\S+|\[URL\]", re.IGNORECASE)
 EMAIL_RE = re.compile(r"\b[^\s@]+@[^\s@]+\.[^\s@]+\b|\[EMAIL\]", re.IGNORECASE)
 HANDLE_RE = re.compile(r"(?<!\w)@[A-Za-z0-9_]+|\[HANDLE\]", re.IGNORECASE)
 NUMBER_RE = re.compile(r"\b\d+(?:[.,]\d+)*\b")
+NEAR_TEMPLATE_V2_URL_RE = re.compile(r"(?:\bhttps?://|\bwww\.)\S+", re.IGNORECASE)
+NEAR_TEMPLATE_V2_EMAIL_RE = re.compile(
+    r"\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b", re.IGNORECASE
+)
+NEAR_TEMPLATE_V2_HANDLE_RE = re.compile(r"(?<!\w)@[A-Za-z0-9_]{1,30}")
+NEAR_TEMPLATE_V2_PLACEHOLDER_RE = re.compile(
+    r"\[(?:phone|email|url|user|username|account|id|number)\]", re.IGNORECASE
+)
+NEAR_TEMPLATE_V2_DIGIT_RUN_RE = re.compile(r"\d+")
+TEMPLATE_V2_PLACEHOLDER_RE = re.compile(
+    r"\[(phone|email|url|user|username|handle|account|id|number)\]", re.IGNORECASE
+)
+TEMPLATE_V2_NUMBER_ANYWHERE_RE = re.compile(r"\d+(?:[.,]\d+)*")
 
 
 def normalize_surface(text: str) -> str:
@@ -37,6 +50,48 @@ def normalize_template(text: str) -> str:
     text = EMAIL_RE.sub(" tokenemail ", text)
     text = HANDLE_RE.sub(" tokenhandle ", text)
     text = NUMBER_RE.sub(" tokennumber ", text)
+    return " ".join(TOKEN_RE.findall(text))
+
+
+def normalize_near_template_v2(text: str) -> str:
+    """Normalize short digit/placeholder variants for split grouping.
+
+    Unlike ``normalize_template``, this preserves punctuation and emoji because
+    they can be part of repeated social-post templates. It intentionally has no
+    token-count gate; callers must skip only an empty normalized value.
+    """
+
+    text = unicodedata.normalize("NFKC", text).lower()
+    text = NEAR_TEMPLATE_V2_URL_RE.sub(" <url> ", text)
+    text = NEAR_TEMPLATE_V2_EMAIL_RE.sub(" <email> ", text)
+    text = NEAR_TEMPLATE_V2_HANDLE_RE.sub(" <user> ", text)
+    text = NEAR_TEMPLATE_V2_PLACEHOLDER_RE.sub(" <placeholder> ", text)
+    text = NEAR_TEMPLATE_V2_DIGIT_RUN_RE.sub("0", text)
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def normalize_template_v2(text: str) -> str:
+    """Normalize long templates, including digits embedded in alphanumerics."""
+
+    text = unicodedata.normalize("NFKC", text).casefold()
+    text = URL_RE.sub(" tokenurl ", text)
+    text = EMAIL_RE.sub(" tokenemail ", text)
+    text = HANDLE_RE.sub(" tokenhandle ", text)
+
+    def replace_placeholder(match: re.Match[str]) -> str:
+        kind = match.group(1).casefold()
+        if kind in {"user", "username", "handle"}:
+            return " tokenhandle "
+        if kind == "url":
+            return " tokenurl "
+        if kind == "email":
+            return " tokenemail "
+        if kind == "phone":
+            return " tokenphone "
+        return " tokennumber "
+
+    text = TEMPLATE_V2_PLACEHOLDER_RE.sub(replace_placeholder, text)
+    text = TEMPLATE_V2_NUMBER_ANYWHERE_RE.sub(" tokennumber ", text)
     return " ".join(TOKEN_RE.findall(text))
 
 

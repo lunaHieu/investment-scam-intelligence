@@ -1,0 +1,185 @@
+{
+  "split_id": "MENDELEY_GROUP_SPLIT_V2",
+  "frozen_at": "2026-09-15",
+  "status": "FROZEN_DERIVED_SPLIT",
+  "purpose": "Create an internal four-source text benchmark after isolating the unsplittable fake-profile entity/template graph and quarantining contradictory duplicate labels.",
+  "label_semantics": "Mendeley V2 harmonized deceptive/suspicious source label; not verified investment-scam ground truth",
+  "source": {
+    "source_id": "mendeley_investment_deceptive_2026",
+    "source_version": "2",
+    "raw_row_count": 16202,
+    "raw_column_count": 32,
+    "raw_sha256": "a4b336074176efb5746d1981506c1f1faba19a1b0a20f3b9e95dc8be94ea2504"
+  },
+  "routing_contract": {
+    "partition_counts": {
+      "train": 3916,
+      "validation": 838,
+      "test": 838,
+      "auxiliary": 10607,
+      "quarantine": 3
+    },
+    "benchmark_eligible_rows": 5592,
+    "benchmark_partition_ratios": {
+      "train": 0.70028612,
+      "validation": 0.14985694,
+      "test": 0.14985694
+    },
+    "benchmark_sources": [
+      "cresci_stock_2018",
+      "phishing",
+      "spam_email",
+      "twitter_bot_detection"
+    ],
+    "benchmark_label_counts": {
+      "0": 2844,
+      "1": 2748
+    },
+    "auxiliary": {
+      "source_dataset": "fake_profile_post",
+      "row_count": 10607,
+      "entity_count": 1387,
+      "label_counts": {
+        "0": 1548,
+        "1": 9059
+      },
+      "reason": "entity_template_graph_not_splittable_without_leakage"
+    },
+    "quarantine": {
+      "row_count": 3,
+      "component_count": 1,
+      "record_ids": [
+        "phishing_14168",
+        "phishing_5164",
+        "phishing_5168"
+      ],
+      "label_counts": {
+        "0": 1,
+        "1": 2
+      },
+      "reason": "conflicting_labels_within_duplicate_template_group",
+      "source_labels_preserved": true
+    }
+  },
+  "grouping_contract": {
+    "normalizer_version": "mendeley_text_component_union_v2",
+    "transitive_union": true,
+    "rules": [
+      {
+        "name": "surface_normalized",
+        "minimum_tokens": 1
+      },
+      {
+        "name": "legacy_template",
+        "minimum_tokens": 10
+      },
+      {
+        "name": "near_template_v2",
+        "minimum_tokens": 1
+      },
+      {
+        "name": "template_v2",
+        "minimum_tokens": 10
+      }
+    ],
+    "blank_keys_skipped": true,
+    "text_component_count": 5762,
+    "benchmark_component_count": 5399,
+    "largest_text_component_rows": 398,
+    "largest_benchmark_component_rows": 12,
+    "component_cross_partition_count": 0,
+    "grouping_key_cross_partition_counts": {
+      "surface_normalized": 0,
+      "legacy_template": 0,
+      "near_template_v2": 0,
+      "template_v2": 0
+    },
+    "stable_group_id": "GRP2_ plus first 16 uppercase hex characters of SHA-256 over sorted record_id membership"
+  },
+  "split_quality": {
+    "maximum_partition_ratio_deviation": 0.00028612,
+    "maximum_source_label_ratio_deviation": 0.00165746,
+    "minimum_evaluation_rows_per_source_label_stratum": 45,
+    "minimum_evaluation_groups_per_source_label_stratum": 45,
+    "group_count_by_partition": {
+      "train": 3783,
+      "validation": 808,
+      "test": 808,
+      "auxiliary": 362,
+      "quarantine": 1
+    },
+    "all_source_label_strata_present_in_each_benchmark_partition": true,
+    "all_builder_quality_gates_passed": true,
+    "all_independent_structural_audit_gates_passed": true
+  },
+  "residual_similarity_diagnostic": {
+    "space": "train-fitted char_wb TF-IDF, ngrams 3-5, cosine nearest-neighbor",
+    "hard_quality_gate": false,
+    "validation": {
+      "row_count": 838,
+      "mean": 0.417931,
+      "median": 0.336507,
+      "p95": 0.952089,
+      "maximum": 1.0,
+      "count_gte_0_90": 67,
+      "count_gte_0_95": 43,
+      "count_gte_0_99": 11
+    },
+    "test": {
+      "row_count": 838,
+      "mean": 0.413861,
+      "median": 0.333169,
+      "p95": 0.927411,
+      "maximum": 0.999899,
+      "count_gte_0_90": 55,
+      "count_gte_0_95": 31,
+      "count_gte_0_99": 5
+    },
+    "interpretation": "Known exact/normalized template leakage is controlled, but high cosine similarity remains diagnostic evidence that semantic near-duplicates cannot be claimed absent."
+  },
+  "artifacts": [
+    {
+      "role": "raw_csv",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\raw\\mendeley_investment_deceptive_2026\\v2\\Multimodal_Dataset_for_Investment-Related_Deceptive_Content_Detection_on_Social_Platforms.csv",
+      "sha256": "a4b336074176efb5746d1981506c1f1faba19a1b0a20f3b9e95dc8be94ea2504"
+    },
+    {
+      "role": "derived_split_csv",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\mendeley_v2_group_split_v2.csv",
+      "sha256": "98f75387a4a598d85a6f721d10808979bda694dad8f85354d595679bdd96e734"
+    },
+    {
+      "role": "split_report",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\split_report_v2.json",
+      "sha256": "7b03aecbb0206c5ce6296d2b05683a2fd98812e18dbe74f83ad3e4f7585e88b2"
+    },
+    {
+      "role": "split_audit",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\split_audit_v2.json",
+      "sha256": "2c58eca02fff8cd8eb32847896a10b54772cb7d17537c3c6934c19984981f9de"
+    }
+  ],
+  "safety_contract": {
+    "raw_files_modified": false,
+    "network_operations": 0,
+    "source_labels_changed": 0,
+    "all_raw_rows_retained_in_derived_output": true,
+    "model_training_performed": false,
+    "model_artifacts_created": []
+  },
+  "usage_policy": {
+    "external_or_gold_test": false,
+    "reason": "The V2 design was created after group_split_v1 results and leakage diagnostics had already been inspected.",
+    "auxiliary_allowed_in_benchmark_training_or_scoring": false,
+    "quarantine_allowed_in_benchmark_training_or_scoring": false,
+    "reuse_group_split_v1_model_metrics_as_v2_results": false,
+    "next_gate": "Train a fresh text baseline from scratch using only V2 benchmark train, select only on V2 validation, and open V2 test only after the choice is frozen."
+  },
+  "prohibited_claims": [
+    "Do not call this an external, unopened, regulator-verified, or Gold test.",
+    "Do not describe source label 1 as verified investment fraud.",
+    "Do not include auxiliary or quarantine rows in benchmark fitting, model selection, or scoring.",
+    "Do not claim that zero known-template overlap proves zero semantic near-duplicates.",
+    "Do not reuse group_split_v1 metrics as results for this split."
+  ]
+}

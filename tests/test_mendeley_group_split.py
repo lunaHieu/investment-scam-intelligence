@@ -7,11 +7,20 @@ SCRIPTS = Path(__file__).resolve().parents[1] / "scripts"
 if str(SCRIPTS) not in sys.path:
     sys.path.insert(0, str(SCRIPTS))
 
-from audit_mendeley_text_overlap import normalize_surface, normalize_template
+from audit_mendeley_text_overlap import (
+    normalize_surface,
+    normalize_template,
+    normalize_template_v2,
+)
 from build_mendeley_group_split import assign_groups, build_groups, cross_split_group_count
 
 
 class MendeleyGroupSplitTests(unittest.TestCase):
+    def test_template_v2_masks_digits_inside_alphanumeric_claims(self):
+        left = "Guaranteed plan turns $25K into 5x returns with [PHONE] contact today now"
+        right = "Guaranteed plan turns $500K into 1000x returns with [phone] contact today now"
+        self.assertEqual(normalize_template_v2(left), normalize_template_v2(right))
+
     def make_rows(self):
         rows = []
         for index in range(40):

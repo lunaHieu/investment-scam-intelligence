@@ -1,0 +1,168 @@
+{
+  "analysis_id": "MENDELEY_METADATA_ABLATION_V1",
+  "frozen_at": "2026-09-14",
+  "run_at": "2026-09-14T09:37:15.556935+00:00",
+  "status": "FROZEN_RESEARCH_ABLATION_NOT_FOR_DEPLOYMENT",
+  "purpose": "Measure whether Mendeley V2 account/behaviour metadata and content statistics add robust predictive value beyond the frozen text-only baseline without mistaking source-specific missingness for behavioural evidence.",
+  "label_semantics": "Mendeley V2 harmonized deceptive/suspicious source label; not verified investment-scam ground truth",
+  "data_contract": {
+    "source_id": "mendeley_investment_deceptive_2026",
+    "source_version": "v2",
+    "split_version": "group_split_v1",
+    "row_count": 16202,
+    "partition_counts": {
+      "train": 11344,
+      "validation": 2429,
+      "test": 2429
+    },
+    "split_group_cross_partition_count": 0,
+    "raw_sha256": "a4b336074176efb5746d1981506c1f1faba19a1b0a20f3b9e95dc8be94ea2504",
+    "derived_split_sha256": "0f540f838dc0050c2cc1f8f8d98c4239acaba1ad0d1407066f1a578e5acdb2ff"
+  },
+  "feature_groups": {
+    "account_behaviour": [
+      "followers",
+      "friends_following",
+      "statuses_posts",
+      "account_age_days",
+      "repost_count",
+      "follower_following_ratio",
+      "engagement_to_follower_ratio",
+      "activity_burstiness",
+      "verified_bool",
+      "has_bio",
+      "has_location",
+      "has_url",
+      "is_private",
+      "default_profile_image_flag"
+    ],
+    "content_statistics": [
+      "mention_count",
+      "hashtag_count",
+      "content_length",
+      "word_count",
+      "mention_intensity",
+      "hashtag_loading"
+    ]
+  },
+  "feature_safety": {
+    "source_dataset_used_as_predictive_feature": false,
+    "source_dataset_uses": [
+      "stratified reporting",
+      "leave-one-source-out evaluation",
+      "separate source-confounding diagnostics"
+    ],
+    "prohibited_predictive_fields": [
+      "record_id",
+      "source_dataset",
+      "source_modality",
+      "has_metadata",
+      "label",
+      "partition",
+      "gate_path",
+      "investment_score",
+      "lexicon_hits",
+      "lexicon_score",
+      "semantic_score",
+      "original_partition",
+      "split_group_id"
+    ],
+    "raw_files_modified": false,
+    "network_operations": 0
+  },
+  "selection_policy": {
+    "selection_partitions": [
+      "train",
+      "validation"
+    ],
+    "test_used_for_feature_fitting": false,
+    "test_used_for_hyperparameter_or_variant_selection": false,
+    "primary_metric": "validation f1_label_1; ties by validation accuracy then lower C",
+    "selected_combined_variant_on_validation": "text_plus_content_statistics_values"
+  },
+  "source_confounding_diagnostics": {
+    "metadata_missingness_signature_count_in_train": 7,
+    "validation_missingness_to_source_accuracy": 0.934953,
+    "validation_missingness_to_source_macro_f1": 0.735772,
+    "validation_missingness_to_source_balanced_accuracy": 0.8,
+    "test_missingness_to_source_accuracy": 0.934541,
+    "test_missingness_to_source_macro_f1": 0.735234,
+    "test_missingness_to_source_balanced_accuracy": 0.8,
+    "test_global_majority_source_accuracy": 0.65459,
+    "test_source_majority_label_accuracy": 0.760395,
+    "interpretation": "Missingness alone identifies four of five source families almost perfectly and cannot distinguish only phishing from spam_email. Missingness is therefore a high-risk source shortcut, not trustworthy behavioural evidence."
+  },
+  "metrics": {
+    "text_only": {
+      "validation_f1_label_1": 0.933521,
+      "test_f1_label_1": 0.93119,
+      "test_macro_f1": 0.872607,
+      "test_balanced_accuracy": 0.871896,
+      "leave_one_source_out_mean_f1_label_1": 0.60618,
+      "leave_one_source_out_mean_macro_f1": 0.610438,
+      "leave_one_source_out_mean_balanced_accuracy": 0.635738
+    },
+    "validation_selected_text_plus_content_statistics_values": {
+      "validation_f1_label_1": 0.934459,
+      "test_f1_label_1": 0.899592,
+      "test_macro_f1": 0.793836,
+      "test_balanced_accuracy": 0.775956,
+      "leave_one_source_out_mean_f1_label_1": 0.596202,
+      "leave_one_source_out_mean_macro_f1": 0.604466,
+      "leave_one_source_out_mean_balanced_accuracy": 0.635596,
+      "paired_test_net_errors_removed_vs_text_only": -125,
+      "paired_test_mcnemar_exact_p_value": 1.4814257246694026e-23
+    },
+    "other_combined_variants": {
+      "text_plus_account_behaviour_values": {
+        "test_macro_f1": 0.833438,
+        "leave_one_source_out_mean_macro_f1": 0.648732
+      },
+      "text_plus_all_metadata_values": {
+        "test_macro_f1": 0.821453,
+        "leave_one_source_out_mean_macro_f1": 0.578397
+      },
+      "text_plus_all_metadata_with_missingness": {
+        "test_macro_f1": 0.854845,
+        "leave_one_source_out_mean_macro_f1": 0.639533
+      }
+    }
+  },
+  "decision": {
+    "promote_metadata_to_primary_baseline": false,
+    "retain_primary_baseline": "ISI_TEXT_BASELINE_V1",
+    "reason": "No metadata-augmented variant improves both internal-test and leave-one-source-out macro-F1 over text-only, and metadata missingness strongly identifies source dataset.",
+    "allowed_use": "Research diagnostic and thesis ablation evidence only",
+    "deployment_allowed": false
+  },
+  "runtime": {
+    "python": "3.10.0",
+    "scikit_learn": "1.7.2",
+    "numpy": "2.2.6",
+    "scipy": "1.15.3"
+  },
+  "artifacts": [
+    {
+      "role": "group_split_dataset",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v1\\mendeley_v2_group_split.csv",
+      "sha256": "0f540f838dc0050c2cc1f8f8d98c4239acaba1ad0d1407066f1a578e5acdb2ff"
+    },
+    {
+      "role": "ablation_results",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v1\\metadata_ablation_v1\\metadata_ablation_results_v1.json",
+      "sha256": "8113aca11e52ad14bc4fe4d0277558299ac435a6a6a66d38839addab02074980"
+    },
+    {
+      "role": "test_predictions",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v1\\metadata_ablation_v1\\metadata_ablation_test_predictions_v1.jsonl",
+      "sha256": "fad1c38e407e3de70344455a5c809169590edf905f60adfc6a910099fa26910f"
+    }
+  ],
+  "prohibited_claims": [
+    "Do not describe source label 1 as regulator-verified investment fraud.",
+    "Do not describe model scores as real-world scam probabilities.",
+    "Do not treat source-specific missingness as a legitimate behavioural signal.",
+    "Do not deploy this research ablation for blocking, enforcement or financial decisions."
+  ],
+  "next_gate": "Acquire metadata measured consistently across sources, then repeat a pre-specified group- and source-aware evaluation before reconsidering metadata."
+}

@@ -1,0 +1,137 @@
+{
+  "analysis_id": "MENDELEY_SOURCE_BALANCE_ABLATION_V1",
+  "frozen_at": "2026-09-15",
+  "run_at": "2026-09-15T07:45:33.586078+00:00",
+  "status": "FROZEN_RESEARCH_ABLATION_NOT_FOR_DEPLOYMENT",
+  "purpose": "Test whether the dominant fake_profile_post source is distorting the frozen text baseline and whether training-time source balancing improves robust source transfer.",
+  "label_semantics": "Mendeley V2 harmonized deceptive/suspicious source label; not verified investment-scam ground truth",
+  "data_contract": {
+    "source_id": "mendeley_investment_deceptive_2026",
+    "source_version": "v2",
+    "split_version": "group_split_v1",
+    "row_count": 16202,
+    "partition_counts": {
+      "train": 11344,
+      "validation": 2429,
+      "test": 2429
+    },
+    "train_source_counts": {
+      "cresci_stock_2018": 545,
+      "fake_profile_post": 7426,
+      "phishing": 740,
+      "spam_email": 777,
+      "twitter_bot_detection": 1856
+    },
+    "split_group_cross_partition_count": 0,
+    "raw_sha256": "a4b336074176efb5746d1981506c1f1faba19a1b0a20f3b9e95dc8be94ea2504",
+    "derived_split_sha256": "0f540f838dc0050c2cc1f8f8d98c4239acaba1ad0d1407066f1a578e5acdb2ff"
+  },
+  "model_contract": {
+    "feature": "text_content TF-IDF only",
+    "source_dataset_in_feature_matrix": false,
+    "source_dataset_allowed_uses": [
+      "training sample-weight calculation",
+      "validation-only strategy selection",
+      "stratified reporting",
+      "leave-one-source-out evaluation"
+    ],
+    "fixed_hyperparameters": {
+      "C": 2.0,
+      "class_weight": null,
+      "solver": "liblinear",
+      "threshold": 0.5
+    },
+    "raw_files_modified": false,
+    "network_operations": 0
+  },
+  "selection_policy": {
+    "candidate_strategies": [
+      "unweighted",
+      "sqrt_inverse_source_frequency",
+      "inverse_source_frequency",
+      "sqrt_inverse_source_label_frequency",
+      "inverse_source_label_frequency"
+    ],
+    "primary_metric": "unweighted mean of per-source validation Macro-F1",
+    "test_used_for_vectorizer_or_model_fitting": false,
+    "test_used_for_strategy_selection": false,
+    "selected_strategy_on_validation": "unweighted"
+  },
+  "metrics": {
+    "unweighted": {
+      "validation_source_mean_macro_f1": 0.836147,
+      "validation_worst_source_macro_f1": 0.504003,
+      "test_macro_f1": 0.872607,
+      "test_balanced_accuracy": 0.871896,
+      "leave_one_source_out_mean_macro_f1": 0.610438,
+      "leave_one_source_out_mean_balanced_accuracy": 0.635738,
+      "leave_one_source_out_worst_source_macro_f1": 0.324337,
+      "effective_sample_size": 11344.0
+    },
+    "sqrt_inverse_source_frequency": {
+      "validation_source_mean_macro_f1": 0.77902,
+      "validation_worst_source_macro_f1": 0.514125,
+      "test_macro_f1": 0.796769,
+      "leave_one_source_out_mean_macro_f1": 0.621432,
+      "leave_one_source_out_worst_source_macro_f1": 0.376681,
+      "effective_sample_size": 8626.1
+    },
+    "inverse_source_frequency": {
+      "validation_source_mean_macro_f1": 0.784023,
+      "validation_worst_source_macro_f1": 0.527239,
+      "test_macro_f1": 0.795447,
+      "leave_one_source_out_mean_macro_f1": 0.631419,
+      "leave_one_source_out_worst_source_macro_f1": 0.409808,
+      "effective_sample_size": 4857.5
+    },
+    "sqrt_inverse_source_label_frequency": {
+      "validation_source_mean_macro_f1": 0.779047,
+      "validation_worst_source_macro_f1": 0.513063,
+      "test_macro_f1": 0.797899,
+      "leave_one_source_out_mean_macro_f1": 0.627437,
+      "leave_one_source_out_worst_source_macro_f1": 0.383124,
+      "effective_sample_size": 8003.2
+    },
+    "inverse_source_label_frequency": {
+      "validation_source_mean_macro_f1": 0.778295,
+      "validation_worst_source_macro_f1": 0.513545,
+      "test_macro_f1": 0.877946,
+      "leave_one_source_out_mean_macro_f1": 0.610443,
+      "leave_one_source_out_worst_source_macro_f1": 0.371065,
+      "effective_sample_size": 4354.4,
+      "paired_test_net_errors_removed_vs_unweighted": 8,
+      "paired_test_mcnemar_exact_p_value": 0.2558750795433298
+    }
+  },
+  "decision": {
+    "promote_to_primary_internal_baseline": false,
+    "retain_primary_baseline": "ISI_TEXT_BASELINE_V1",
+    "reason": "Validation selected the unweighted model. Full inverse-source weighting improved leave-one-source-out mean and worst-source Macro-F1 but sharply reduced same-source validation and internal-test performance. The only weighted strategy with a small internal-test gain was not selected on validation and its paired improvement was not statistically significant.",
+    "allowed_use": "Research evidence about source imbalance and robustness trade-offs only",
+    "deployment_allowed": false
+  },
+  "artifacts": [
+    {
+      "role": "group_split_dataset",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v1\\mendeley_v2_group_split.csv",
+      "sha256": "0f540f838dc0050c2cc1f8f8d98c4239acaba1ad0d1407066f1a578e5acdb2ff"
+    },
+    {
+      "role": "ablation_results",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v1\\source_balance_ablation_v1\\source_balance_ablation_results_v1.json",
+      "sha256": "397ec9c033c19cfb8bf37700c2599688e5f89f332a2f15dd2513e0f5378fc830"
+    },
+    {
+      "role": "test_predictions",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v1\\source_balance_ablation_v1\\source_balance_ablation_test_predictions_v1.jsonl",
+      "sha256": "99c4bd92f6c12464d18bfb808a735c10cbaf1c737fafd04d1d9aabc9feed33d0"
+    }
+  ],
+  "prohibited_claims": [
+    "Do not describe source label 1 as regulator-verified investment fraud.",
+    "Do not describe scores as real-world scam probabilities.",
+    "Do not include source_dataset in deployed or experimental predictive features.",
+    "Do not deploy this ablation for blocking, enforcement or financial decisions."
+  ],
+  "next_gate": "Do not replace the frozen text baseline. Treat source balancing as an explored trade-off and require external evidence-backed evaluation before any model promotion."
+}

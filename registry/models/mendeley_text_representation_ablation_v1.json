@@ -1,0 +1,216 @@
+{
+  "analysis_id": "MENDELEY_TEXT_REPRESENTATION_ABLATION_V1",
+  "frozen_at": "2026-09-15",
+  "run_at": "2026-09-15T08:11:11.092099+00:00",
+  "status": "FROZEN_RESEARCH_ABLATION_NOT_FOR_DEPLOYMENT",
+  "purpose": "Measure whether character TF-IDF or word-plus-character TF-IDF improves the frozen word TF-IDF baseline without changing the downstream classifier.",
+  "label_semantics": "Mendeley V2 harmonized deceptive/suspicious source label; not verified investment-scam ground truth",
+  "data_contract": {
+    "source_id": "mendeley_investment_deceptive_2026",
+    "source_version": "v2",
+    "split_version": "group_split_v1",
+    "row_count": 16202,
+    "partition_counts": {
+      "train": 11344,
+      "validation": 2429,
+      "test": 2429
+    },
+    "split_group_cross_partition_count": 0,
+    "raw_sha256": "a4b336074176efb5746d1981506c1f1faba19a1b0a20f3b9e95dc8be94ea2504",
+    "derived_split_sha256": "0f540f838dc0050c2cc1f8f8d98c4239acaba1ad0d1407066f1a578e5acdb2ff",
+    "normalized_template_partition_audit": {
+      "normalizer_used_to_build_current_split": false,
+      "cross_partition_template_count": 193,
+      "affected_row_count": 4072,
+      "affected_sources": [
+        "fake_profile_post"
+      ],
+      "label_conflict_template_count": 0,
+      "fake_profile_validation_match_to_train": {
+        "matching_rows": 684,
+        "source_rows": 1591,
+        "matching_ratio": 0.429918
+      },
+      "fake_profile_test_match_to_train": {
+        "matching_rows": 758,
+        "source_rows": 1590,
+        "matching_ratio": 0.47673
+      }
+    }
+  },
+  "representation_contract": {
+    "predictive_input": [
+      "text_content"
+    ],
+    "source_dataset_in_feature_matrix": false,
+    "source_dataset_allowed_uses": [
+      "validation-only representation selection and stratified metrics",
+      "source-predictability and within-source label-shuffle diagnostics",
+      "test stratified reporting after selection",
+      "strict leave-one-source-out evaluation"
+    ],
+    "frozen_classifier": {
+      "C": 2.0,
+      "class_weight": null,
+      "solver": "liblinear",
+      "threshold": 0.5,
+      "random_state": 20260914
+    },
+    "word": {
+      "analyzer": "word",
+      "ngram_range": [
+        1,
+        2
+      ],
+      "max_features": 100000
+    },
+    "character": {
+      "ngram_range": [
+        3,
+        5
+      ],
+      "min_df": 2,
+      "max_df": 0.995,
+      "max_features": 100000,
+      "sublinear_tf": true
+    },
+    "combined_normalization": "L2 normalization after sparse word and char_wb horizontal stacking",
+    "raw_files_modified": false,
+    "network_operations": 0
+  },
+  "selection_policy": {
+    "validation_candidates": [
+      "word_1_2",
+      "char_wb_3_5",
+      "char_3_5",
+      "word_1_2_plus_char_wb_3_5"
+    ],
+    "promotion_eligible_representations": [
+      "word_1_2",
+      "char_wb_3_5",
+      "word_1_2_plus_char_wb_3_5"
+    ],
+    "char_3_5_role": "validation-only source-shortcut stress test",
+    "primary_metric": "unweighted mean of per-source validation Macro-F1",
+    "tie_breakers": [
+      "worst-source validation Macro-F1",
+      "pooled validation Macro-F1",
+      "simpler earlier representation"
+    ],
+    "all_classifier_hyperparameters_frozen": true,
+    "test_used_for_vectorizer_or_model_fitting": false,
+    "test_used_for_hyperparameter_or_representation_selection": false,
+    "selected_representation_on_validation": "word_1_2_plus_char_wb_3_5",
+    "representations_opened_on_internal_test": [
+      "word_1_2",
+      "word_1_2_plus_char_wb_3_5"
+    ]
+  },
+  "metrics": {
+    "word_1_2": {
+      "feature_count": 63745,
+      "train_nnz": 721819,
+      "validation_macro_f1": 0.876546,
+      "validation_source_mean_macro_f1": 0.836147,
+      "validation_worst_source_macro_f1": 0.504003,
+      "validation_source_predictability_macro_f1": 0.815628,
+      "within_source_label_shuffle_validation_macro_f1": 0.527746,
+      "test_macro_f1": 0.872607,
+      "test_source_mean_macro_f1": 0.829611,
+      "test_worst_source_macro_f1": 0.490907,
+      "test_macro_f1_after_excluding_similarity_gte_0_95": 0.84197,
+      "leave_one_source_out_mean_macro_f1": 0.610438,
+      "leave_one_source_out_worst_source_macro_f1": 0.324337
+    },
+    "char_wb_3_5": {
+      "feature_count": 65510,
+      "train_nnz": 4022375,
+      "validation_macro_f1": 0.721659,
+      "validation_source_mean_macro_f1": 0.776579,
+      "validation_worst_source_macro_f1": 0.505164,
+      "validation_source_predictability_macro_f1": 0.882434,
+      "within_source_label_shuffle_validation_macro_f1": 0.525852,
+      "internal_test_opened": false
+    },
+    "char_3_5": {
+      "feature_count": 100000,
+      "train_nnz": 6563427,
+      "hit_max_features_cap": true,
+      "validation_macro_f1": 0.887118,
+      "validation_source_mean_macro_f1": 0.847822,
+      "validation_worst_source_macro_f1": 0.550379,
+      "validation_source_predictability_macro_f1": 0.883514,
+      "within_source_label_shuffle_validation_macro_f1": 0.533342,
+      "internal_test_opened": false
+    },
+    "word_1_2_plus_char_wb_3_5": {
+      "feature_count": 129255,
+      "train_nnz": 4744194,
+      "validation_macro_f1": 0.874234,
+      "validation_source_mean_macro_f1": 0.842038,
+      "validation_worst_source_macro_f1": 0.472467,
+      "validation_source_predictability_macro_f1": 0.880418,
+      "within_source_label_shuffle_validation_macro_f1": 0.522503,
+      "test_macro_f1": 0.871226,
+      "test_source_mean_macro_f1": 0.825334,
+      "test_worst_source_macro_f1": 0.49061,
+      "test_macro_f1_after_excluding_similarity_gte_0_95": 0.840159,
+      "leave_one_source_out_mean_macro_f1": 0.646374,
+      "leave_one_source_out_worst_source_macro_f1": 0.44127
+    }
+  },
+  "near_duplicate_diagnostic": {
+    "space": "train-fitted char_wb 3-5 TF-IDF",
+    "validation_rows_similarity_gte_0_95": 515,
+    "test_rows_similarity_gte_0_95": 811,
+    "test_fake_profile_rows_similarity_gte_0_95": 770,
+    "test_fake_profile_row_count": 1590
+  },
+  "paired_group_bootstrap": {
+    "comparison": "word_1_2_plus_char_wb_3_5 minus word_1_2",
+    "unit": "split_group_id",
+    "cluster_count": 1026,
+    "largest_cluster_rows": 127,
+    "replicates": 10000,
+    "macro_f1_difference": -0.001381,
+    "difference_percentile_95_ci": [
+      -0.009524,
+      0.006597
+    ],
+    "probability_candidate_difference_gt_0": 0.364,
+    "ci_lower_bound_gt_0": false
+  },
+  "decision": {
+    "qualifies_as_internal_research_candidate": false,
+    "promote_to_primary_internal_baseline": false,
+    "retain_primary_baseline": "ISI_TEXT_BASELINE_V1",
+    "improved_internal_test_source_count": 0,
+    "reason": "Word plus char_wb won the promotion-eligible validation ranking by 0.59 percentage points in source-mean Macro-F1, but missed the predeclared one-point threshold, reduced validation worst-source and internal-test performance, improved none of five test sources, and had a group-bootstrap interval spanning zero. Its LOSO gain is retained as robustness evidence only. Raw char scored highest on validation but was a predeclared source-shortcut stress test and was never opened on test.",
+    "external_evidence_gate_required": true,
+    "deployment_allowed": false
+  },
+  "artifacts": [
+    {
+      "role": "group_split_dataset",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v1\\mendeley_v2_group_split.csv",
+      "sha256": "0f540f838dc0050c2cc1f8f8d98c4239acaba1ad0d1407066f1a578e5acdb2ff"
+    },
+    {
+      "role": "ablation_results",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v1\\text_representation_ablation_v1\\text_representation_ablation_results_v1.json",
+      "sha256": "6bac84678e40bbe968a6a23e0d1190e58451b46af03ab4061f9c68be76f73ba9"
+    },
+    {
+      "role": "test_predictions",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v1\\text_representation_ablation_v1\\text_representation_ablation_test_predictions_v1.jsonl",
+      "sha256": "f4b1560e2a56532106aed4d77bf9410b7217ad03e9a2dd835c31db2fb84d276f"
+    }
+  ],
+  "prohibited_claims": [
+    "Do not describe source label 1 as regulator-verified investment fraud.",
+    "Do not describe model scores as real-world scam probabilities.",
+    "Do not interpret character fragments, source fingerprints, or template matches as causal scam evidence.",
+    "Do not promote from this repeatedly used internal test or deploy for blocking, enforcement, or financial decisions."
+  ],
+  "next_gate": "Keep ISI_TEXT_BASELINE_V1. Rebuild the split with the intended text normalizer before any normalized-text experiment, and evaluate future candidates on an unopened external or evidence-backed curated set."
+}

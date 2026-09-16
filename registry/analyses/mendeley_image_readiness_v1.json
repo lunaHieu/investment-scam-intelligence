@@ -1,0 +1,53 @@
+{
+  "analysis_id": "MENDELEY_IMAGE_READINESS_V1",
+  "created_at": "2026-09-14",
+  "status": "FROZEN_BLOCKED_NO_IMAGE_ASSETS",
+  "source_id": "mendeley_investment_deceptive_2026",
+  "source_version": "2",
+  "input": {
+    "csv_path": "D:\\nckh 2026-2027\\ISI_Data\\raw\\mendeley_investment_deceptive_2026\\v2\\Multimodal_Dataset_for_Investment-Related_Deceptive_Content_Detection_on_Social_Platforms.csv",
+    "csv_sha256": "a4b336074176efb5746d1981506c1f1faba19a1b0a20f3b9e95dc8be94ea2504",
+    "record_count": 16202,
+    "column_count": 32
+  },
+  "findings": {
+    "text_plus_metadata_records": 14035,
+    "text_only_records": 2167,
+    "image_related_columns": [
+      "default_profile_image_flag"
+    ],
+    "actual_image_reference_count": 0,
+    "raw_folder_image_file_count": 0,
+    "xlsx_embedded_media_entry_count": 0,
+    "xlsx_external_link_entry_count": 0,
+    "default_profile_image_flag_semantics": "Behavioral metadata flag only; not an image, image path, embedding, or pixel representation."
+  },
+  "decision": {
+    "has_usable_image_assets": false,
+    "image_model_training_allowed": false,
+    "mendeley_supported_modalities": [
+      "text",
+      "behavioral_metadata"
+    ],
+    "required_to_unblock": "Acquire a separately licensed image-containing dataset with per-record provenance and labels whose semantics are compatible with the thesis task."
+  },
+  "outputs": [
+    {
+      "role": "image_readiness_report",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\image_readiness_v1\\image_readiness_report.json",
+      "sha256": "50a55af15abe42a6ef5e50e2c6b7d9f5ef10ed65531c1000f297cfec4b4da591"
+    }
+  ],
+  "safety_contract": {
+    "network_operations": 0,
+    "labels_created": 0,
+    "training_allowed": false,
+    "domain_access_allowed": false,
+    "raw_files_modified": false,
+    "prohibited_claims": [
+      "Do not describe default_profile_image_flag as image input.",
+      "Do not claim that Mendeley V2 supports image-model training from the deposited files.",
+      "Do not infer verified investment-scam ground truth from the source label."
+    ]
+  }
+}

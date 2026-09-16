@@ -1,0 +1,127 @@
+{
+  "feature_set_id": "MENDELEY_FINANCIAL_CLAIMS_V1",
+  "created_at": "2026-09-14",
+  "status": "FROZEN_CANDIDATE_FEATURES_REVIEW_REQUIRED",
+  "source": {
+    "source_id": "mendeley_investment_deceptive_2026",
+    "source_version": "v2",
+    "split_version": "group_split_v1",
+    "input_path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v1\\mendeley_v2_group_split.csv",
+    "input_sha256": "0f540f838dc0050c2cc1f8f8d98c4239acaba1ad0d1407066f1a578e5acdb2ff"
+  },
+  "scope": {
+    "included_partitions": [
+      "train",
+      "validation"
+    ],
+    "processed_record_count": 13773,
+    "processed_partition_counts": {
+      "train": 11344,
+      "validation": 2429
+    },
+    "frozen_test_record_count": 2429,
+    "test_partition_text_processed": 0,
+    "source_labels_used_for_extraction": false
+  },
+  "method": {
+    "type": "deterministic bilingual lexical rules with evidence spans",
+    "rule_count": 11,
+    "rule_set_sha256": "3e0f13e55b5755d4307ee1991e9a3190834b245a609dd6cbbd173a9ce36fabb7",
+    "signal_types": [
+      "RETURN_RATE",
+      "RETURN_MULTIPLE",
+      "MONEY_AMOUNT",
+      "GUARANTEED_RETURN",
+      "NO_RISK",
+      "URGENCY_SCARCITY",
+      "PASSIVE_OR_EASY_INCOME",
+      "RECRUITMENT_REWARD",
+      "PAYMENT_OR_TRANSFER_REQUEST",
+      "ADVANCE_FEE_OR_WITHDRAWAL",
+      "CRYPTO_INVESTMENT_OR_PAYMENT"
+    ],
+    "methodology_sources": [
+      "https://www.investor.gov/protect-your-investments/fraud/protect-your-money",
+      "https://www.investor.gov/protect-your-investments/fraud/how-avoid-fraud/red-flags-investment-fraud-checklist",
+      "https://consumer.ftc.gov/articles/investment-scams",
+      "https://consumer.ftc.gov/articles/what-know-about-cryptocurrency-scams"
+    ]
+  },
+  "profile": {
+    "candidate_record_count": 7513,
+    "candidate_record_ratio": 0.545488,
+    "signal_record_counts": {
+      "RETURN_RATE": 48,
+      "RETURN_MULTIPLE": 388,
+      "MONEY_AMOUNT": 6462,
+      "GUARANTEED_RETURN": 19,
+      "NO_RISK": 26,
+      "URGENCY_SCARCITY": 651,
+      "PASSIVE_OR_EASY_INCOME": 1056,
+      "RECRUITMENT_REWARD": 1,
+      "PAYMENT_OR_TRANSFER_REQUEST": 4,
+      "ADVANCE_FEE_OR_WITHDRAWAL": 0,
+      "CRYPTO_INVESTMENT_OR_PAYMENT": 883
+    },
+    "interpretation": "Counts describe lexical candidates, not verified financial claims or scam prevalence. MONEY_AMOUNT is a neutral extraction type and dominates the candidate count."
+  },
+  "output_contract": {
+    "feature_record_count": 13773,
+    "predictive_feature_container": "features",
+    "label_fields": [],
+    "source_label_emitted": false,
+    "network_operations": 0,
+    "raw_files_modified": false,
+    "provenance_only_top_level_fields": [
+      "record_id",
+      "partition",
+      "split_group_id",
+      "feature_version"
+    ],
+    "excluded_predictive_fields": [
+      "label",
+      "source_label",
+      "source_dataset",
+      "original_partition",
+      "ground_truth_status",
+      "label_confidence",
+      "review_notes",
+      "verification_status"
+    ]
+  },
+  "review_queue": {
+    "record_count": 120,
+    "unique_split_group_count": 120,
+    "signal_candidates": 80,
+    "no_signal_audit": 40,
+    "review_status": "UNREVIEWED",
+    "purpose": "Estimate rule precision and inspect missed-signal coverage before any model use."
+  },
+  "artifacts": [
+    {
+      "role": "feature_records",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\financial_claims_v1\\financial_claim_features_v1.jsonl",
+      "sha256": "cda3b59c793f31377ad8714607e073c949176a1822d6f399085b01627e66e977"
+    },
+    {
+      "role": "profile",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\financial_claims_v1\\profile_v1.json",
+      "sha256": "72192430a814591ad4e1119ee699b726fc32b08938f2bf81e961f8030d0db4f4"
+    },
+    {
+      "role": "review_queue",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\financial_claims_v1\\review_queue_120.jsonl",
+      "sha256": "1bdd6485e385e28e40bf0aa95eb6de7946439a2073e6edcaf4d5feefe85625cd"
+    }
+  ],
+  "training_gate": {
+    "binary_classifier_allowed": false,
+    "reason": "The rule set has not yet received independent human precision and missed-signal review; source labels are not claim labels or verified scam truth.",
+    "required_to_open": [
+      "Complete review of the 120-record queue without consulting the frozen test partition.",
+      "Report per-signal precision and qualitative false-negative findings.",
+      "Freeze any rule revisions using train/validation only.",
+      "Keep the test partition unavailable until a later, pre-specified evaluation."
+    ]
+  }
+}

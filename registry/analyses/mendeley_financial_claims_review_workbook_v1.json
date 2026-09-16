@@ -1,0 +1,78 @@
+{
+  "analysis_id": "MENDELEY_FINANCIAL_CLAIMS_REVIEW_WORKBOOK_V1",
+  "source_id": "mendeley_investment_deceptive_2026",
+  "created_at": "2026-09-16",
+  "status": "PILOT_READY_UNREVIEWED",
+  "purpose": "Collect human review of Financial Claims V1 rule outputs without creating scam ground truth.",
+  "source": {
+    "feature_set_id": "MENDELEY_FINANCIAL_CLAIMS_V1",
+    "review_queue_path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\financial_claims_v1\\review_queue_120.jsonl",
+    "review_queue_sha256": "1bdd6485e385e28e40bf0aa95eb6de7946439a2073e6edcaf4d5feefe85625cd",
+    "record_count": 120,
+    "unique_record_count": 120,
+    "unique_split_group_count": 120,
+    "included_partitions": [
+      "train",
+      "validation"
+    ],
+    "test_partition_text_processed": 0
+  },
+  "review_design": {
+    "authoritative_input_sheet": "Danh gia",
+    "source_reference_sheet": "Nguon 120",
+    "review_unit_count": 203,
+    "signal_review_unit_count": 163,
+    "no_signal_audit_unit_count": 40,
+    "pilot_source_record_count": 20,
+    "pilot_review_unit_count": 43,
+    "pilot_selection": "The first 20 records in the deterministic review queue.",
+    "candidate_outcomes": [
+      "CORRECT",
+      "INCORRECT",
+      "UNCERTAIN"
+    ],
+    "no_signal_audit_outcomes": [
+      "NO_MISSED_SIGNAL",
+      "MISSED_SIGNAL",
+      "UNCERTAIN"
+    ],
+    "editable_fields": [
+      "review_outcome",
+      "missed_signal_type",
+      "rationale",
+      "reviewer",
+      "reviewed_date"
+    ],
+    "completion_gate": "Formula-driven. A review unit is complete only when the outcome is valid for the unit type and all conditionally required fields are present."
+  },
+  "artifact": {
+    "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\financial_claims_v1\\ISI_Financial_Claims_V1_Review.xlsx",
+    "sha256": "97a0a81c39ec0554e4d9ab9c767195d464c3bb44fea433ff29a7ef0f98d9e153",
+    "size_bytes": 84103,
+    "sheet_names": [
+      "Tong quan",
+      "Danh gia",
+      "Nguon 120"
+    ]
+  },
+  "verification": {
+    "source_hash_matches_feature_registry": true,
+    "source_record_and_group_uniqueness_checked": true,
+    "formula_error_scan_count": 0,
+    "saved_workbook_reimported": true,
+    "all_sheets_visually_reviewed": true,
+    "completion_gate_candidate_tested": true,
+    "completion_gate_no_signal_audit_tested": true,
+    "source_files_modified": false
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "labels_created": 0,
+    "training_allowed": false,
+    "domain_access_allowed": false,
+    "raw_files_modified": false,
+    "test_partition_text_processed": 0
+  },
+  "interpretation": "Workbook decisions validate lexical rule behavior only. They are not scam labels, risk probabilities, or verified financial-claim truth.",
+  "training_gate": "CLOSED_PENDING_HUMAN_REVIEW"
+}

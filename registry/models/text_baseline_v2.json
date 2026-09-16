@@ -1,0 +1,221 @@
+{
+  "model_id": "ISI_TEXT_BASELINE_V2",
+  "frozen_at": "2026-09-16",
+  "status": "FROZEN_INTERNAL_BASELINE_NOT_FOR_DEPLOYMENT",
+  "purpose": "Fresh text-only baseline on strict Mendeley group_split_v2 with validation selection frozen before internal test access.",
+  "label_semantics": "Mendeley V2 harmonized deceptive/suspicious source label; not verified investment-scam ground truth",
+  "primary_model": {
+    "name": "Word TF-IDF unigram+bigram Logistic Regression",
+    "predictive_input": [
+      "text_content"
+    ],
+    "selected_hyperparameters": {
+      "C": 2.0,
+      "class_weight": null,
+      "solver": "liblinear",
+      "threshold": 0.5,
+      "random_state": 20260916
+    },
+    "vectorizer": {
+      "analyzer": "word",
+      "ngram_range": [
+        1,
+        2
+      ],
+      "lowercase": true,
+      "strip_accents": "unicode",
+      "min_df": 2,
+      "max_df": 0.995,
+      "max_features": 100000,
+      "sublinear_tf": true,
+      "final_vocabulary_size": 78316
+    }
+  },
+  "data_contract": {
+    "source_id": "mendeley_investment_deceptive_2026",
+    "source_version": "2",
+    "split_version": "group_split_v2",
+    "split_sha256": "98f75387a4a598d85a6f721d10808979bda694dad8f85354d595679bdd96e734",
+    "partition_counts": {
+      "train": 3916,
+      "validation": 838,
+      "test": 838,
+      "auxiliary": 10607,
+      "quarantine": 3
+    },
+    "selection_fit_rows": 3916,
+    "selection_validation_rows": 838,
+    "final_fit_rows": 4754,
+    "final_test_rows": 838,
+    "auxiliary_rows_used": 0,
+    "quarantine_rows_used": 0,
+    "source_dataset_in_feature_matrix": false,
+    "metadata_in_feature_matrix": false
+  },
+  "selection_policy": {
+    "selection_id": "MENDELEY_TEXT_BASELINE_V2_VALIDATION_SELECTION",
+    "selection_status": "FROZEN_VALIDATION_SELECTION_TEST_UNOPENED",
+    "selection_artifact_sha256": "a506fde7a22ff2a27a9d97506a28c95bd714aa80438e2a30c9ecb5947783092b",
+    "selection_digest": "fcb455d05264411e2f97e13eea53bd3d2c75c8f0809bb1d1d71ecb7c457b684b",
+    "candidate_count": 10,
+    "selected_candidate_index": 3,
+    "primary_metric": "unweighted mean of per-source validation Macro-F1",
+    "tie_breakers": [
+      "worst-source validation Macro-F1",
+      "pooled validation Macro-F1",
+      "pooled validation balanced accuracy",
+      "earlier predeclared candidate"
+    ],
+    "test_text_transformed_during_selection": 0,
+    "test_labels_used_during_selection": 0,
+    "test_used_for_selection": false,
+    "final_refit_partitions": [
+      "train",
+      "validation"
+    ],
+    "test_opened_after_selection_frozen": true
+  },
+  "metrics": {
+    "validation": {
+      "row_count": 838,
+      "threshold_label_1": 0.5,
+      "confusion_matrix": {
+        "tn": 308,
+        "fp": 118,
+        "fn": 133,
+        "tp": 279
+      },
+      "accuracy": 0.700477,
+      "balanced_accuracy": 0.700095,
+      "macro_f1": 0.700118,
+      "roc_auc": 0.797478,
+      "average_precision": 0.79598,
+      "per_label": {
+        "0": {
+          "precision": 0.698413,
+          "recall": 0.723005,
+          "f1": 0.710496,
+          "support": 426
+        },
+        "1": {
+          "precision": 0.702771,
+          "recall": 0.677184,
+          "f1": 0.68974,
+          "support": 412
+        }
+      }
+    },
+    "validation_source_summary": {
+      "source_count": 4,
+      "unweighted_mean_macro_f1_across_sources": 0.778049,
+      "worst_source_macro_f1": 0.480842,
+      "worst_source_dataset": "twitter_bot_detection",
+      "unweighted_mean_balanced_accuracy_across_sources": 0.778116
+    },
+    "test": {
+      "row_count": 838,
+      "threshold_label_1": 0.5,
+      "confusion_matrix": {
+        "tn": 308,
+        "fp": 118,
+        "fn": 128,
+        "tp": 284
+      },
+      "accuracy": 0.706444,
+      "balanced_accuracy": 0.706163,
+      "macro_f1": 0.706203,
+      "roc_auc": 0.810868,
+      "average_precision": 0.812506,
+      "per_label": {
+        "0": {
+          "precision": 0.706422,
+          "recall": 0.723005,
+          "f1": 0.714617,
+          "support": 426
+        },
+        "1": {
+          "precision": 0.706468,
+          "recall": 0.68932,
+          "f1": 0.697789,
+          "support": 412
+        }
+      }
+    },
+    "test_source_summary": {
+      "source_count": 4,
+      "unweighted_mean_macro_f1_across_sources": 0.795517,
+      "worst_source_macro_f1": 0.476064,
+      "worst_source_dataset": "twitter_bot_detection",
+      "unweighted_mean_balanced_accuracy_across_sources": 0.799166
+    },
+    "test_macro_f1_by_source_dataset": {
+      "cresci_stock_2018": 0.836195,
+      "phishing": 0.900733,
+      "spam_email": 0.969076,
+      "twitter_bot_detection": 0.476064
+    }
+  },
+  "runtime": {
+    "python": "3.10.0",
+    "scikit_learn": "1.7.2",
+    "numpy": "2.2.6",
+    "scipy": "1.15.3",
+    "joblib": "1.6.0"
+  },
+  "artifacts": [
+    {
+      "role": "group_split_dataset",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\mendeley_v2_group_split_v2.csv",
+      "sha256": "98f75387a4a598d85a6f721d10808979bda694dad8f85354d595679bdd96e734"
+    },
+    {
+      "role": "validation_selection",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\text_baseline_v2\\validation_selection_v2.json",
+      "sha256": "a506fde7a22ff2a27a9d97506a28c95bd714aa80438e2a30c9ecb5947783092b"
+    },
+    {
+      "role": "model",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\text_baseline_v2\\text_baseline_v2_model.joblib",
+      "sha256": "c58444996e0ae67a9739c588e3d088f1f57eb1af7f9105e10a647303ce72fc71"
+    },
+    {
+      "role": "results",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\text_baseline_v2\\text_baseline_v2_results.json",
+      "sha256": "dfd0de31eccf380919908e347e98e4089f1d99fd12fb672f13f5d7cf7c52f91d"
+    },
+    {
+      "role": "test_predictions",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\text_baseline_v2\\text_baseline_v2_test_predictions.jsonl",
+      "sha256": "21b3cae925a192df64c782e5d08591c5aacefa54f96b8f470aeadd89e8699cd1"
+    }
+  ],
+  "safety_contract": {
+    "raw_files_modified": false,
+    "split_file_modified": false,
+    "source_labels_changed": 0,
+    "network_operations": 0,
+    "test_used_for_selection": false,
+    "auxiliary_or_quarantine_rows_used": false,
+    "deployment_allowed": false
+  },
+  "decision": {
+    "retain_as_internal_text_baseline": true,
+    "promote_for_deployment": false,
+    "reason": "The frozen word TF-IDF Logistic Regression establishes a reproducible V2 reference, but pooled test Macro-F1 is 0.706 and twitter_bot_detection is below chance by ROC-AUC. Source robustness and external evidence-backed evaluation remain unresolved."
+  },
+  "known_limitations": [
+    "Performance varies sharply by source; twitter_bot_detection test Macro-F1 is 0.476064 and ROC-AUC is 0.456413.",
+    "The strict V2 benchmark excludes the 10,607-row fake_profile_post auxiliary source and three quarantined conflicting-label rows.",
+    "The internal V2 test was designed after V1 findings were known and is not external or Gold evaluation.",
+    "Residual high character similarity remains in some evaluation rows despite zero known normalized-template crossings.",
+    "The text-only model can learn source/style artifacts and lacks image, URL, account, financial-claim and case evidence context."
+  ],
+  "prohibited_claims": [
+    "Do not describe score_label_1 as a real-world investment-scam probability.",
+    "Do not describe Mendeley label 1 as regulator-verified fraud.",
+    "Do not use test V2 to change model, threshold, vectorizer or feature policy.",
+    "Do not use auxiliary or quarantine rows for fitting, selection or scoring.",
+    "Do not deploy for enforcement, blocking, financial advice or automated decisions."
+  ],
+  "next_gate": "Keep the configuration frozen. Perform error analysis without tuning on test, then evaluate unchanged behavior on evidence-backed curated or genuinely external cases."
+}

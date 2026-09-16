@@ -1,0 +1,86 @@
+{
+  "analysis_id": "CRIMSON_DOMAIN_UNSUPERVISED_V1",
+  "created_at": "2026-09-14",
+  "status": "FROZEN_EXPLORATORY_NOT_A_CLASSIFIER",
+  "source_id": "crimson_www_2025",
+  "source_version": "b040e2def08ea26058ef9da752b72fa4a5238987",
+  "input": {
+    "feature_set_id": "CRIMSON_URL_LEXICAL_V1",
+    "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\crimson_www_2025\\b040e2def08ea26058ef9da752b72fa4a5238987\\url_lexical_v1\\url_lexical_features_v1.jsonl",
+    "sha256": "24831178a40dc0e933883ae4b11b7b587bb2240f5e5180915c0509d43503a6c7",
+    "record_count": 43572,
+    "input_feature_count": 23,
+    "active_feature_count": 19,
+    "dropped_constant_features": [
+      "is_ascii",
+      "is_ip_literal",
+      "non_ascii_count",
+      "rightmost_label_is_numeric"
+    ]
+  },
+  "method": {
+    "count_transform": "log1p",
+    "scaling": "StandardScaler",
+    "dimension_reduction": "PCA 95% variance",
+    "pca_component_count": 9,
+    "pca_explained_variance_ratio_sum": 0.982361,
+    "clustering": "MiniBatchKMeans",
+    "cluster_candidates": [4, 6, 8, 10, 12, 16],
+    "selected_cluster_count": 4,
+    "selection_primary_metric": "sampled silhouette",
+    "outlier_ranking": "IsolationForest continuous score",
+    "random_seed": 20260914
+  },
+  "quality": {
+    "selected_silhouette": 0.238179,
+    "selected_davies_bouldin": 1.3321,
+    "selected_calinski_harabasz": 12220.37052,
+    "mean_adjusted_rand_index_across_seeds": 0.42707,
+    "minimum_adjusted_rand_index_across_seeds": 0.285967,
+    "stability_assessment": "LOW_TO_MODERATE",
+    "cluster_interpretation": "Exploratory sampling groups only; do not treat as stable domain types."
+  },
+  "cluster_sizes": {
+    "0": 14236,
+    "1": 6484,
+    "2": 20887,
+    "3": 1965
+  },
+  "review_queue": {
+    "record_count": 100,
+    "unique_domain_count": 100,
+    "lexical_outliers": 50,
+    "cluster_representatives": 50,
+    "review_status": "UNREVIEWED",
+    "meaning": "Prioritized diversity/outlier queue, not scam labels."
+  },
+  "outputs": [
+    {
+      "role": "analysis_report",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\crimson_www_2025\\b040e2def08ea26058ef9da752b72fa4a5238987\\unsupervised_v1\\analysis_report.json",
+      "sha256": "c8b70d6b2714aba55bb79a88e36cc09d5714c5cf3f21f0723c71aadc74edbf15"
+    },
+    {
+      "role": "domain_assignments",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\crimson_www_2025\\b040e2def08ea26058ef9da752b72fa4a5238987\\unsupervised_v1\\domain_assignments.jsonl",
+      "sha256": "3a884afb1abe9d42182f2940f8351482b24de33325e8c4941c8784867834f667"
+    },
+    {
+      "role": "review_queue",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\crimson_www_2025\\b040e2def08ea26058ef9da752b72fa4a5238987\\unsupervised_v1\\review_queue_100.jsonl",
+      "sha256": "f7e379c38887f271433c6a0334d1108eb1101e3aedbddc48a026e498d968d1ca"
+    }
+  ],
+  "safety_contract": {
+    "network_operations": 0,
+    "labels_created": 0,
+    "training_allowed": false,
+    "domain_access_allowed": false,
+    "prohibited_claims": [
+      "Do not call cluster IDs scam types.",
+      "Do not interpret anomaly score as scam probability or severity.",
+      "Do not open queued domains directly for review.",
+      "Do not train a binary URL classifier from this one-source analysis."
+    ]
+  }
+}

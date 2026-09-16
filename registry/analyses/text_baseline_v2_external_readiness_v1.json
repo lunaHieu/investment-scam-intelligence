@@ -1,0 +1,108 @@
+{
+  "analysis_id": "ISI_TEXT_BASELINE_V2_EXTERNAL_EVAL_READINESS_V1",
+  "created_at": "2026-09-16",
+  "status": "FROZEN_BLOCKED_NO_ELIGIBLE_EXTERNAL_TEXT_CASES",
+  "source_id": "mendeley_investment_deceptive_2026",
+  "source_version": "2",
+  "model_id": "ISI_TEXT_BASELINE_V2",
+  "policy_id": "ISI_TEXT_BASELINE_V2_EXTERNAL_EVAL_POLICY_V1",
+  "purpose": "Audit whether current local assets support a valid frozen external text pilot without scoring, fitting, opening candidate URLs, or creating labels.",
+  "raw_root": "D:\\nckh 2026-2027\\ISI_Data\\raw",
+  "candidate_sources": [
+    "crimson_www_2025",
+    "ubcknn_warnings",
+    "dfpi_crypto_scam_tracker",
+    "sec_iapd",
+    "iosco_i_scan"
+  ],
+  "inputs": [
+    {
+      "role": "policy",
+      "path": "C:\\Users\\hieu\\Documents\\ChatGPT\\invesment scam intelligence\\configs\\text_baseline_v2_external_eval_policy_v1.json",
+      "sha256": "67eec8ac78c9c83679b3df88ac4a3cd0981e19b0884b01aee68d9d0127e35777"
+    },
+    {
+      "role": "model",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\text_baseline_v2\\text_baseline_v2_model.joblib",
+      "sha256": "c58444996e0ae67a9739c588e3d088f1f57eb1af7f9105e10a647303ce72fc71"
+    },
+    {
+      "role": "crimson_raw",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\raw\\crimson_www_2025\\b040e2def08ea26058ef9da752b72fa4a5238987\\data.json",
+      "sha256": "5b6f5d8cbcf780fd63437d8ef3abdc7a261deac5d1845a8ffb4201fbf9e313c0"
+    },
+    {
+      "role": "crimson_review_workbook",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\ISI_Crimson_Curated_Pilot_Review.xlsx",
+      "sha256": "99bad3e460dd08d3205262f1a47ffbaa45d26442c5daec19213b7cb960d74a87"
+    },
+    {
+      "role": "ubcknn_pilot",
+      "path": "C:\\Users\\hieu\\Documents\\ChatGPT\\invesment scam intelligence\\registry\\pilots\\ubcknn_warning_seed_2026-09-08.json",
+      "sha256": "f6673a2c427c9ebacc94a2a28af06dd277c453ab85bfff535e2f7ca7986050fa"
+    },
+    {
+      "role": "dfpi_template",
+      "path": "C:\\Users\\hieu\\Documents\\ChatGPT\\invesment scam intelligence\\registry\\pilots\\dfpi_sec_curated_intake_template.json",
+      "sha256": "36addcded8b17987cedcd5c6c38a31c5a755ac37ae905db69478206381f09e5a"
+    }
+  ],
+  "findings": {
+    "eligible_external_text_records": 0,
+    "eligible_confirmed_records": 0,
+    "eligible_legitimate_records": 0,
+    "external_reporting_allowed": false,
+    "crimson_raw_rows": 43572,
+    "crimson_raw_rows_with_observed_text": 0,
+    "crimson_review_rows": 100,
+    "crimson_unreviewed_rows": 100,
+    "crimson_rows_with_evidence": 0,
+    "crimson_reconciled_rows": 0,
+    "ubcknn_warning_documents": 5,
+    "ubcknn_warning_documents_with_observed_text": 0,
+    "ubcknn_uncertain_cases": 5,
+    "dfpi_raw_files": 0,
+    "sec_iapd_raw_files": 0,
+    "iosco_raw_files": 0
+  },
+  "reporting_gate": {
+    "minimum_total_eligible_records": 20,
+    "minimum_confirmed_records": 10,
+    "minimum_legitimate_records": 10,
+    "all_requirements_met": false,
+    "scope_if_met": "small external pilot only; not a deployment or population-performance claim"
+  },
+  "outputs": [
+    {
+      "role": "readiness_report",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\text_baseline_v2\\external_eval_readiness_v1\\external_evaluation_readiness_report_v1.json",
+      "sha256": "d946c83189c0a3de1335e3cb09ed0025b41b3b8f479b583a17195c90821088de"
+    }
+  ],
+  "decision": {
+    "external_text_scoring_performed": false,
+    "external_metrics_reported": false,
+    "model_configuration_changed": false,
+    "deployment_allowed": false,
+    "reason": "Current assets contain zero evidence-backed, reconciled external text artifacts eligible under the policy.",
+    "next_action": "Acquire or curate observed POST, MESSAGE, or WEBSITE_SNAPSHOT text, reconcile evidence, and re-run the readiness gate before scoring the unchanged model."
+  },
+  "safety_contract": {
+    "raw_files_modified": false,
+    "review_workbook_modified": false,
+    "labels_created": 0,
+    "model_scoring_operations": 0,
+    "model_fit_operations": 0,
+    "network_operations": 0,
+    "candidate_url_access_operations": 0,
+    "training_allowed": false,
+    "domain_access_allowed": false,
+    "deployment_allowed": false
+  },
+  "blocked_manual_inputs": [
+    "DFPI Crypto Scam Tracker raw/export is not present and still requires a lawful manual download if access is available.",
+    "SEC IAPD/Form ADV raw reference is not present and still requires a manual official download.",
+    "IOSCO I-SCAN export is not present.",
+    "Crimson review requires human evidence review; candidate URLs must not be opened automatically by the pipeline."
+  ]
+}

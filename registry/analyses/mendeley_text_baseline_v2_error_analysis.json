@@ -1,0 +1,106 @@
+{
+  "analysis_id": "MENDELEY_TEXT_BASELINE_V2_ERROR_ANALYSIS",
+  "created_at": "2026-09-16",
+  "status": "FROZEN_DIAGNOSTIC_ERROR_ANALYSIS_NO_TUNING",
+  "source_id": "mendeley_investment_deceptive_2026",
+  "source_version": "2",
+  "model_id": "ISI_TEXT_BASELINE_V2",
+  "purpose": "Describe failure modes on the already-opened frozen group_split_v2 internal test without selecting, fitting, or changing any model component.",
+  "scope": {
+    "split_version": "group_split_v2",
+    "test_partition_role": "diagnostic-only after final evaluation",
+    "model_fit_or_refit": false,
+    "threshold_changed": false,
+    "feature_policy_changed": false,
+    "candidate_selection_performed": false,
+    "fit_reference_for_similarity": [
+      "train",
+      "validation"
+    ],
+    "auxiliary_rows_used": 0,
+    "quarantine_rows_used": 0
+  },
+  "inputs": [
+    {
+      "role": "group_split_dataset",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\mendeley_v2_group_split_v2.csv",
+      "sha256": "98f75387a4a598d85a6f721d10808979bda694dad8f85354d595679bdd96e734"
+    },
+    {
+      "role": "model",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\text_baseline_v2\\text_baseline_v2_model.joblib",
+      "sha256": "c58444996e0ae67a9739c588e3d088f1f57eb1af7f9105e10a647303ce72fc71"
+    },
+    {
+      "role": "results",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\text_baseline_v2\\text_baseline_v2_results.json",
+      "sha256": "dfd0de31eccf380919908e347e98e4089f1d99fd12fb672f13f5d7cf7c52f91d"
+    },
+    {
+      "role": "test_predictions",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\text_baseline_v2\\text_baseline_v2_test_predictions.jsonl",
+      "sha256": "21b3cae925a192df64c782e5d08591c5aacefa54f96b8f470aeadd89e8699cd1"
+    }
+  ],
+  "findings": {
+    "test_rows": 838,
+    "correct_rows": 592,
+    "error_rows": 246,
+    "error_rate": 0.293556,
+    "false_positive_rows": 118,
+    "false_negative_rows": 128,
+    "high_confidence_error_rows_gte_0_90": 1,
+    "twitter_error_rows": 208,
+    "twitter_share_of_all_errors": 0.845528,
+    "short_error_rows_lte_12_surface_tokens": 192,
+    "brier_score_against_source_labels": 0.175458,
+    "expected_calibration_error_against_source_labels": 0.05059,
+    "median_surface_tokens_correct": 28.0,
+    "median_surface_tokens_error": 11.0,
+    "median_unique_vocabulary_coverage_correct": 0.642972,
+    "median_unique_vocabulary_coverage_error": 0.529412,
+    "median_nearest_fit_cosine_correct": 0.287994,
+    "median_nearest_fit_cosine_error": 0.264897,
+    "unique_error_split_groups": 245,
+    "review_queue_rows": 44,
+    "review_queue_unique_split_groups": 44
+  },
+  "outputs": [
+    {
+      "role": "error_analysis_report",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\text_baseline_v2\\text_baseline_v2_error_analysis.json",
+      "sha256": "d53e9c958345f9f0b2dac4e6b08252ea6d20efcde6d9b98da99f60db269466bd"
+    },
+    {
+      "role": "error_review_queue",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\text_baseline_v2\\text_baseline_v2_error_review_queue.jsonl",
+      "sha256": "1e905e2b90dae1ca4a3d106a433e8e53745e3e25e64068ac9ee2e548a2970cef",
+      "row_count": 44
+    }
+  ],
+  "decision": {
+    "model_configuration_remains_frozen": true,
+    "tune_from_this_test": false,
+    "promote_for_deployment": false,
+    "primary_failure_mode": "Errors are concentrated in short twitter_bot_detection texts; the frozen text representation does not separate that source reliably.",
+    "next_gate": "Evaluate the unchanged frozen model on evidence-backed curated or genuinely external cases."
+  },
+  "safety_contract": {
+    "raw_files_modified": false,
+    "split_file_modified": false,
+    "model_file_modified": false,
+    "source_labels_changed": 0,
+    "labels_created": 0,
+    "network_operations": 0,
+    "training_allowed": false,
+    "domain_access_allowed": false,
+    "test_used_for_tuning": false,
+    "deployment_allowed": false
+  },
+  "prohibited_claims": [
+    "Do not interpret the error queue as a relabeling queue or new ground truth.",
+    "Do not tune the model, threshold, vectorizer, or feature policy from this internal test and re-report the same test as unbiased evaluation.",
+    "Do not describe score_label_1 as a real-world investment-scam probability.",
+    "Do not infer causal evidence from TF-IDF feature contributions or nearest-neighbor similarity."
+  ]
+}

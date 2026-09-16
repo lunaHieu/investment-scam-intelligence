@@ -1,0 +1,52 @@
+{
+  "policy_id": "ISI_TEXT_BASELINE_V2_EXTERNAL_EVAL_POLICY_V1",
+  "status": "FROZEN_BEFORE_EXTERNAL_TEXT_EVALUATION",
+  "model_id": "ISI_TEXT_BASELINE_V2",
+  "purpose": "Define the minimum evidence, review, content, and sample-size gates for a diagnostic external pilot without changing the frozen model.",
+  "eligible_record_contract": {
+    "source_must_be_external_to_mendeley": true,
+    "allowed_ground_truth_status": [
+      "CONFIRMED",
+      "LEGITIMATE"
+    ],
+    "required_label_confidence": "HIGH",
+    "required_review_status": "RECONCILED",
+    "allowed_artifact_types": [
+      "POST",
+      "MESSAGE",
+      "WEBSITE_SNAPSHOT"
+    ],
+    "prohibited_artifact_types": [
+      "WARNING_DOCUMENT",
+      "COMPLAINT"
+    ],
+    "requires_observed_text": true,
+    "minimum_non_whitespace_text_characters": 20,
+    "requires_at_least_one_reviewed_evidence_item": true,
+    "confirmed_requires_support": "SCAM_CLAIM",
+    "legitimate_requires_support": "LEGITIMACY",
+    "case_or_campaign_group_id_required": true,
+    "near_duplicate_group_id_required": true
+  },
+  "pilot_reporting_gate": {
+    "minimum_total_eligible_records": 20,
+    "minimum_confirmed_records": 10,
+    "minimum_legitimate_records": 10,
+    "interpretation": "These counts permit only a small external pilot report, not a deployment or population-performance claim."
+  },
+  "evaluation_contract": {
+    "model_fit_or_refit_allowed": false,
+    "threshold_change_allowed": false,
+    "vectorizer_change_allowed": false,
+    "feature_policy_change_allowed": false,
+    "partial_below_gate_metrics_allowed": false,
+    "score_semantics": "frozen Mendeley source-label score transferred to an external diagnostic; not real-world scam probability",
+    "deployment_allowed": false
+  },
+  "split_contract": {
+    "same_case_or_campaign_must_stay_together": true,
+    "near_duplicates_must_stay_together": true,
+    "mendeley_rows_allowed": false,
+    "internal_test_reuse_allowed": false
+  }
+}

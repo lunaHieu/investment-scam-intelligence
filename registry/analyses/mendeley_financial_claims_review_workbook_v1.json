@@ -2,7 +2,8 @@
   "analysis_id": "MENDELEY_FINANCIAL_CLAIMS_REVIEW_WORKBOOK_V1",
   "source_id": "mendeley_investment_deceptive_2026",
   "created_at": "2026-09-16",
-  "status": "PILOT_READY_UNREVIEWED",
+  "updated_at": "2026-09-20",
+  "status": "PILOT_AI_ASSISTED_CONFIRMED_RULE_REVISION_REQUIRED",
   "purpose": "Collect human review of Financial Claims V1 rule outputs without creating scam ground truth.",
   "source": {
     "feature_set_id": "MENDELEY_FINANCIAL_CLAIMS_V1",
@@ -45,10 +46,40 @@
     ],
     "completion_gate": "Formula-driven. A review unit is complete only when the outcome is valid for the unit type and all conditionally required fields are present."
   },
+  "ai_assistance": {
+    "status": "AI_ASSISTED_SUGGESTIONS_CONFIRMED_BY_USER",
+    "scope": "PILOT_20_ONLY",
+    "suggestion_path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\financial_claims_v1\\ai_pilot_suggestions_v1.json",
+    "suggestion_sha256": "31a237c88e34d4e96850accc9e04141e696ec0227a88a751b253d2bc2d329a51",
+    "suggestion_count": 43,
+    "suggested_correct_count": 37,
+    "suggested_incorrect_count": 6,
+    "suggested_uncertain_count": 0,
+    "high_confidence_count": 39,
+    "medium_confidence_count": 4,
+    "low_confidence_count": 0,
+    "human_decision_count": 43,
+    "counts_as_human_review": true,
+    "independent_blind_review": false,
+    "changes_completion_status": true
+  },
+  "human_confirmation": {
+    "review_mode": "AI_ASSISTED_HUMAN_CONFIRMATION",
+    "reviewer": "Van Hieu",
+    "reviewed_date": "2026-09-20",
+    "confirmation_path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\financial_claims_v1\\human_assisted_confirmation_2026-09-20.json",
+    "confirmation_sha256": "9a86e58708cf53b78e85ca30f220dfe810f48d6f6730a6ef7474b34f6fa1a6d5",
+    "confirmed_review_unit_count": 43,
+    "correct_count": 37,
+    "incorrect_count": 6,
+    "uncertain_count": 0,
+    "independent_blind_review": false,
+    "scope_warning": "Targeted pilot confirmation only; this is not an independent estimate of model accuracy or dataset-level recall."
+  },
   "artifact": {
     "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\financial_claims_v1\\ISI_Financial_Claims_V1_Review.xlsx",
-    "sha256": "97a0a81c39ec0554e4d9ab9c767195d464c3bb44fea433ff29a7ef0f98d9e153",
-    "size_bytes": 84103,
+    "sha256": "62af71bf80d28155a252ab847fcbe31f87f8adf0c4512dfdc5a29ad7b75ab74f",
+    "size_bytes": 90288,
     "sheet_names": [
       "Tong quan",
       "Danh gia",
@@ -63,16 +94,23 @@
     "all_sheets_visually_reviewed": true,
     "completion_gate_candidate_tested": true,
     "completion_gate_no_signal_audit_tested": true,
+    "ai_scope_isolation_tested": true,
+    "pilot_human_decisions_materialized": true,
+    "non_pilot_human_input_columns_remain_blank": true,
+    "pilot_completion_count": 43,
+    "non_pilot_incomplete_count": 160,
+    "ai_suggestions_do_not_complete_unconfirmed_reviews": true,
     "source_files_modified": false
   },
   "safety_contract": {
     "network_operations": 0,
     "labels_created": 0,
+    "rule_review_decisions_created": 43,
     "training_allowed": false,
     "domain_access_allowed": false,
     "raw_files_modified": false,
     "test_partition_text_processed": 0
   },
   "interpretation": "Workbook decisions validate lexical rule behavior only. They are not scam labels, risk probabilities, or verified financial-claim truth.",
-  "training_gate": "CLOSED_PENDING_HUMAN_REVIEW"
+  "training_gate": "CLOSED_PENDING_V2_INDEPENDENT_REVIEW_AND_MISSED_SIGNAL_AUDIT"
 }

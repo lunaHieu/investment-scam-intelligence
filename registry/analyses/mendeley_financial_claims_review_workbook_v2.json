@@ -1,0 +1,120 @@
+{
+  "analysis_id": "MENDELEY_FINANCIAL_CLAIMS_REVIEW_WORKBOOK_V2",
+  "source_id": "mendeley_investment_deceptive_2026",
+  "created_at": "2026-09-20",
+  "status": "PILOT_HUMAN_CONFIRMED_AI_ASSISTED",
+  "purpose": "Review Financial Claims V2 rule precision and missed-signal coverage without creating scam ground truth.",
+  "source": {
+    "feature_set_id": "MENDELEY_FINANCIAL_CLAIMS_V2",
+    "feature_records_path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\financial_claims_v2\\financial_claim_features_v2.jsonl",
+    "feature_records_sha256": "8482543d3b704a45df17d3a764f7650f3334b57d4f5702e92bba5203e4814067",
+    "review_queue_path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\financial_claims_v2\\review_queue_120.jsonl",
+    "review_queue_sha256": "aeb0de9f28617a636f59030a2e8895ca3c78015a52c30343ad9b3c91156cfa6c",
+    "record_count": 120,
+    "unique_split_group_count": 120,
+    "included_partitions": [
+      "train",
+      "validation"
+    ],
+    "test_partition_text_processed": 0
+  },
+  "review_design": {
+    "review_unit_count": 198,
+    "signal_review_unit_count": 158,
+    "no_signal_audit_unit_count": 40,
+    "pilot_scope": "PILOT_30",
+    "pilot_record_ranks": "1-20,81-90",
+    "pilot_source_record_count": 30,
+    "pilot_signal_candidate_record_count": 20,
+    "pilot_no_signal_record_count": 10,
+    "pilot_review_unit_count": 52,
+    "target_specific_evidence": true,
+    "candidate_outcomes": [
+      "CORRECT",
+      "INCORRECT",
+      "UNCERTAIN"
+    ],
+    "no_signal_audit_outcomes": [
+      "NO_MISSED_SIGNAL",
+      "MISSED_SIGNAL",
+      "UNCERTAIN"
+    ]
+  },
+  "ai_assistance": {
+    "status": "AI_SUGGESTIONS_HUMAN_CONFIRMED",
+    "suggestion_path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\financial_claims_v2\\ai_pilot_suggestions_v2.json",
+    "suggestion_sha256": "3b8538fa981bac3ff08236981f3775bc0dbde97f6d827ca1b901339615dda5f4",
+    "suggestion_count": 52,
+    "suggested_correct_count": 38,
+    "suggested_incorrect_count": 4,
+    "suggested_no_missed_signal_count": 10,
+    "suggested_missed_signal_count": 0,
+    "suggested_uncertain_count": 0,
+    "coverage_finding_record_count": 5,
+    "human_decision_count": 52,
+    "counts_as_human_review": true,
+    "changes_completion_status": true
+  },
+  "human_confirmation": {
+    "review_mode": "AI_ASSISTED_HUMAN_CONFIRMATION",
+    "independent_blind_review": false,
+    "reviewer": "Van Hieu",
+    "reviewed_date": "2026-09-20",
+    "action": "ACCEPT_ALL_AI_SUGGESTIONS",
+    "confirmed_review_unit_count": 52,
+    "confirmed_coverage_finding_record_count": 5,
+    "override_count": 0,
+    "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\financial_claims_v2\\human_assisted_confirmation_2026-09-20.json",
+    "sha256": "4c78d3d1c1946bf385ecabbb702c0be96901064094add4af7a167e013f8262c9"
+  },
+  "provisional_findings": {
+    "false_positive_types": [
+      "RETURN_RATE on working-interest ownership percentage",
+      "NO_RISK on a product money-back guarantee",
+      "GUARANTEED_RETURN on a government contract guarantee",
+      "NO_RISK on risk-free benchmark curve terminology"
+    ],
+    "potential_missed_signal_records": 5,
+    "potential_missed_signal_themes": [
+      "Crypto asset and Nx claim separated by more than the current context window",
+      "NFT absent from crypto asset cues",
+      "Turn one money amount into another not recognized as RETURN_MULTIPLE",
+      "Made money with a Bitcoin or NFT system not connected by the current crypto rule"
+    ],
+    "interpretation": "The user confirmed these targeted pilot findings through an AI-assisted review. They remain a purposive pilot, not an independent blind estimate of precision or recall."
+  },
+  "artifact": {
+    "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\financial_claims_v2\\ISI_Financial_Claims_V2_Review_Confirmed.xlsx",
+    "sha256": "9df9cfc73ea5e90fb54bd11edf35a964a47395d91ec8cf0b63d0ac797f779cff",
+    "size_bytes": 88898,
+    "sheet_names": [
+      "Tong quan",
+      "Danh gia",
+      "Nguon 120"
+    ]
+  },
+  "verification": {
+    "source_hashes_match_feature_registry": true,
+    "target_specific_evidence_checked": true,
+    "source_record_and_group_uniqueness_checked": true,
+    "formula_error_scan_count": 0,
+    "saved_workbook_reimported": true,
+    "all_sheets_visually_reviewed": true,
+    "candidate_and_no_signal_completion_gates_tested": true,
+    "ai_scope_isolation_tested": true,
+    "human_input_columns_remain_blank": false,
+    "human_confirmation_package_validated": true,
+    "confirmed_pilot_completion_count": 52,
+    "ai_suggestions_do_not_complete_reviews": true,
+    "source_files_modified": false
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "labels_created": 0,
+    "training_allowed": false,
+    "domain_access_allowed": false,
+    "raw_files_modified": false,
+    "test_partition_text_processed": 0
+  },
+  "training_gate": "CLOSED_PENDING_V3_INCREMENTAL_REVIEW"
+}

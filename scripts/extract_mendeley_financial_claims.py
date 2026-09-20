@@ -1,4 +1,4 @@
-"""Extract transparent Financial Claims V1 signals from the Mendeley group split.
+"""Extract transparent, versioned Financial Claims signals from the Mendeley group split.
 
 This is a deterministic candidate-signal extractor, not a scam classifier.  It
 processes only train and validation rows; the frozen test partition is skipped.
@@ -22,6 +22,15 @@ from pathlib import Path
 
 
 FEATURE_VERSION = "MENDELEY_FINANCIAL_CLAIMS_V1"
+FEATURE_VERSION_V2 = "MENDELEY_FINANCIAL_CLAIMS_V2"
+FEATURE_VERSION_V3 = "MENDELEY_FINANCIAL_CLAIMS_V3"
+FEATURE_VERSION_V4 = "MENDELEY_FINANCIAL_CLAIMS_V4"
+SUPPORTED_FEATURE_VERSIONS = (
+    FEATURE_VERSION,
+    FEATURE_VERSION_V2,
+    FEATURE_VERSION_V3,
+    FEATURE_VERSION_V4,
+)
 ALLOWED_PARTITIONS = frozenset({"train", "validation"})
 SIGNAL_TYPES = (
     "RETURN_RATE",
@@ -49,6 +58,12 @@ CURRENCY_AMOUNT = (
 )
 PAYMENT_ASSET = r"(?:money|funds?|cash|crypto|bitcoin|ethereum|usdt|wallet|bank\s+account|tiền|ví)"
 INVESTMENT_ASSET_CUE = r"(?:crypto(?:currency)?|bitcoin|ethereum|btc|eth|usdt|tokens?|coins?|altcoins?|stocks?)"
+V3_INVESTMENT_ASSET_CUE = (
+    r"(?:crypto(?:currency)?|bitcoin|ethereum|btc|eth|usdt|tokens?|coins?|altcoins?|stocks?|nfts?)"
+)
+V3_CRYPTO_ASSET_CUE = (
+    r"(?:crypto(?:currency)?|bitcoin|ethereum|btc|eth|usdt|tokens?|coins?|altcoins?|nfts?)"
+)
 
 
 @dataclass(frozen=True)
@@ -166,7 +181,261 @@ RULES = (
 )
 
 
+V3_ADDITIONAL_RULES = (
+    compile_rule(
+        "FCV3_RETURN_MULTIPLE_GROWTH_01",
+        "RETURN_MULTIPLE",
+        rf"\b{V3_INVESTMENT_ASSET_CUE}\b.{{0,120}}\b(?:jump|rise|grow|increase|skyrocket)\w*\b.{{0,35}}\b\d+(?:[.,]\d+)?\s*x\b",
+        "A crypto or NFT asset is connected to an explicit Nx growth claim within one sentence-sized window.",
+    ),
+    compile_rule(
+        "FCV3_RETURN_MULTIPLE_TURN_01",
+        "RETURN_MULTIPLE",
+        rf"\bturn(?:ing)?\s+{CURRENCY_AMOUNT}\s+into\s+{CURRENCY_AMOUNT}",
+        "One explicit currency amount is promised to turn into another amount.",
+    ),
+    compile_rule(
+        "FCV3_CRYPTO_GROWTH_01",
+        "CRYPTO_INVESTMENT_OR_PAYMENT",
+        rf"\b{V3_CRYPTO_ASSET_CUE}\b.{{0,120}}\b(?:jump|rise|grow|increase|skyrocket)\w*\b.{{0,35}}\b\d+(?:[.,]\d+)?\s*x\b",
+        "A crypto or NFT asset is connected to an explicit Nx growth claim.",
+    ),
+    compile_rule(
+        "FCV3_CRYPTO_EARNINGS_01",
+        "CRYPTO_INVESTMENT_OR_PAYMENT",
+        rf"(?:\b(?:made|earned?)\b.{{0,20}}{CURRENCY_AMOUNT}.{{0,100}}\b{V3_CRYPTO_ASSET_CUE}\b|"
+        rf"\b{V3_CRYPTO_ASSET_CUE}\b.{{0,100}}\b(?:made|earned?)\b.{{0,20}}{CURRENCY_AMOUNT})",
+        "A money-making claim is connected to a crypto or NFT system or asset.",
+    ),
+)
+
+
+V4_ADDITIONAL_RULES = (
+    compile_rule(
+        "FCV4_RETURN_MULTIPLE_ROCKET_01",
+        "RETURN_MULTIPLE",
+        rf"\b(?:trading|{V3_INVESTMENT_ASSET_CUE})\b.{{0,80}}🚀.{{0,25}}\b\d+(?:[.,]\d+)?\s*x\b",
+        "Trading, crypto, or NFT is connected to an explicit Nx claim through a rocket emoji.",
+    ),
+    compile_rule(
+        "FCV4_CRYPTO_ROCKET_01",
+        "CRYPTO_INVESTMENT_OR_PAYMENT",
+        rf"\b{V3_CRYPTO_ASSET_CUE}\b.{{0,80}}🚀.{{0,25}}\b\d+(?:[.,]\d+)?\s*x\b",
+        "A crypto or NFT asset is connected to an explicit Nx claim through a rocket emoji.",
+    ),
+    compile_rule(
+        "FCV4_URGENCY_ATTENTION_DM_01",
+        "URGENCY_SCARCITY",
+        r"\battention\b.{0,160}\bdm\s+me\b",
+        "An attention cue is paired with a direct-message call to action.",
+    ),
+    compile_rule(
+        "FCV4_GUARANTEED_ANNUITY_RATE_01",
+        "GUARANTEED_RETURN",
+        r"(?:\brates?\b.{0,35}\bguaranteed?\b.{0,80}\bannuity\b|"
+        r"\bannuity\b.{0,80}\brates?\b.{0,35}\bguaranteed?\b)",
+        "An annuity rate is explicitly described as guaranteed.",
+    ),
+)
+
+
 PERCENT_VALUE = re.compile(r"(?i)(\d{1,4}(?:[.,]\d{1,2})?)\s*(?:%|percent\b|per\s+cent\b|phần\s+trăm\b)")
+
+V2_FALSE_POSITIVE_FILTERS = (
+    {
+        "filter_id": "FCV2_RETURN_MULTIPLE_DOUBLE_DIGIT",
+        "signal_type": "RETURN_MULTIPLE",
+        "description": "Exclude double-digit/triple-digit rate wording that does not claim an Nx multiple.",
+    },
+    {
+        "filter_id": "FCV2_RETURN_RATE_DISCOUNT",
+        "signal_type": "RETURN_RATE",
+        "description": "Exclude percentages explicitly described as discounts rather than returns.",
+    },
+    {
+        "filter_id": "FCV2_NO_RISK_CONTEXT",
+        "signal_type": "NO_RISK",
+        "description": "Exclude risk-free rate terminology and no-risk-or-obligation form language.",
+    },
+    {
+        "filter_id": "FCV2_EASY_INCOME_NEGATION",
+        "signal_type": "PASSIVE_OR_EASY_INCOME",
+        "description": "Exclude negated get-rich-quick phrases.",
+    },
+    {
+        "filter_id": "FCV2_PAYMENT_NEGATION",
+        "signal_type": "PAYMENT_OR_TRANSFER_REQUEST",
+        "description": "Exclude explicit instructions not to send, transfer, deposit, pay, wire, or fund.",
+    },
+)
+
+V3_FALSE_POSITIVE_FILTERS = (
+    {
+        "filter_id": "FCV3_RETURN_RATE_WORKING_INTEREST",
+        "signal_type": "RETURN_RATE",
+        "description": "Exclude ownership percentages described as a working interest.",
+    },
+    {
+        "filter_id": "FCV3_GUARANTEE_GOVERNMENT_CONTRACT",
+        "signal_type": "GUARANTEED_RETURN",
+        "description": "Exclude government or contract guarantees that are not return guarantees.",
+    },
+    {
+        "filter_id": "FCV3_NO_RISK_REFUND_GUARANTEE",
+        "signal_type": "NO_RISK",
+        "description": "Exclude no-risk wording that only describes a product refund guarantee.",
+    },
+    {
+        "filter_id": "FCV3_NO_RISK_BENCHMARK_CURVE",
+        "signal_type": "NO_RISK",
+        "description": "Exclude risk-free benchmark curve terminology.",
+    },
+)
+
+
+V4_FALSE_POSITIVE_FILTERS = (
+    {
+        "filter_id": "FCV4_RETURN_MULTIPLE_TURN_NEGATION",
+        "signal_type": "RETURN_MULTIPLE",
+        "description": "Exclude Turn amount into amount wording when the claim is explicitly negated.",
+    },
+    {
+        "filter_id": "FCV4_NO_RISK_REJECTED_AUDIENCE",
+        "signal_type": "NO_RISK",
+        "description": "Exclude no-risk wording used to reject or contrast with the promoted opportunity.",
+    },
+    {
+        "filter_id": "FCV4_RETURN_RATE_INCOME_DISTRIBUTION",
+        "signal_type": "RETURN_RATE",
+        "description": "Exclude percentages that describe shares of an income distribution rather than return rates.",
+    },
+)
+
+
+def should_suppress_v2_match(signal_type: str, text: str, start: int, end: int) -> bool:
+    snippet = re.sub(r"\s+", " ", text[max(0, start - 35) : min(len(text), end + 35)]).strip()
+    if signal_type == "RETURN_MULTIPLE" and re.search(
+        r"\b(?:double|triple)(?:\s*-\s*|\s+)digit\b", snippet, re.IGNORECASE
+    ):
+        return True
+    if signal_type == "RETURN_RATE" and re.search(
+        rf"(?:{PERCENT}.{{0,25}}\bdiscount\b|\bdiscount\b.{{0,25}}{PERCENT})", snippet, re.IGNORECASE
+    ):
+        return True
+    if signal_type == "NO_RISK" and re.search(
+        r"(?:\brisk[ -]?free\s+rates?\b|\bno\s+risk\s+or\s+obligations?\b)", snippet, re.IGNORECASE
+    ):
+        return True
+    if signal_type == "PASSIVE_OR_EASY_INCOME" and re.search(
+        r"\b(?:not|is\s+not|isn't|isnt|no)\s+(?:a\s+)?get\s+rich\s+quick\b", snippet, re.IGNORECASE
+    ):
+        return True
+    if signal_type == "PAYMENT_OR_TRANSFER_REQUEST" and re.search(
+        r"\b(?:do\s+not|don't|dont|never)\s+(?:send|transfer|deposit|pay|wire|fund)\w*\b", snippet, re.IGNORECASE
+    ):
+        return True
+    return False
+
+
+def parse_currency_value(value: str) -> float | None:
+    match = re.fullmatch(r"\s*([$€£¥₫])?\s*(\d[\d,.]*)\s*([kmb])?\s*", value, re.IGNORECASE)
+    if not match:
+        return None
+    number_text = match.group(2)
+    if "," in number_text and "." not in number_text:
+        number_text = number_text.replace(",", "")
+    else:
+        number_text = number_text.replace(",", "")
+    try:
+        number = float(number_text)
+    except ValueError:
+        return None
+    multiplier = {"k": 1_000, "m": 1_000_000, "b": 1_000_000_000}.get(
+        (match.group(3) or "").lower(), 1
+    )
+    return number * multiplier
+
+
+def should_suppress_v3_match(
+    rule_id: str, signal_type: str, text: str, start: int, end: int
+) -> bool:
+    snippet = re.sub(r"\s+", " ", text[max(0, start - 45) : min(len(text), end + 55)]).strip()
+    if signal_type == "RETURN_RATE" and re.search(
+        rf"(?:{PERCENT}.{{0,30}}\bworking\s+interest\b|\bworking\s+interest\b.{{0,30}}{PERCENT})",
+        snippet,
+        re.IGNORECASE,
+    ):
+        return True
+    if signal_type == "GUARANTEED_RETURN" and re.search(
+        r"\b(?:state\s+)?government\b.{0,35}\bguarantee\b|\bguarantee\b.{0,35}\b(?:government|contract)\b",
+        snippet,
+        re.IGNORECASE,
+    ):
+        return True
+    if signal_type == "NO_RISK" and re.search(
+        r"(?:\bno\s+risk\b.{0,55}\b(?:money\s*-?\s*back|\d{2,3}\s+day)\s+guarantee\b|"
+        r"\bmoney\s*-?\s*back\s+guarantee\b.{0,55}\bno\s+risk\b)",
+        snippet,
+        re.IGNORECASE,
+    ):
+        return True
+    if signal_type == "NO_RISK" and re.search(
+        r"\brisk[ -]?free\s+(?:benchmark\s+)?curve\b",
+        snippet,
+        re.IGNORECASE,
+    ):
+        return True
+    if rule_id == "FCV3_RETURN_MULTIPLE_TURN_01":
+        matched_text = re.sub(r"\s+", " ", text[start:end]).strip()
+        amounts = re.findall(r"[$€£¥₫]\s*\d[\d,.]*(?:\s*[kmb])?", matched_text, re.IGNORECASE)
+        values = [parse_currency_value(amount) for amount in amounts]
+        if len(values) >= 2 and values[0] is not None and values[1] is not None:
+            return values[1] <= values[0]
+    return False
+
+
+def should_suppress_v4_match(
+    rule_id: str, signal_type: str, text: str, start: int, end: int
+) -> bool:
+    snippet = re.sub(r"\s+", " ", text[max(0, start - 110) : min(len(text), end + 120)]).strip()
+    if rule_id == "FCV3_RETURN_MULTIPLE_TURN_01" and re.search(
+        r"\b(?:not|never|won't|will\s+not|isn't|ain't|aint)\b.{0,35}\bturn(?:ing)?\b",
+        snippet,
+        re.IGNORECASE,
+    ):
+        return True
+    if signal_type == "NO_RISK" and re.search(
+        r"\bno\s+risk\b.{0,110}\b(?:ain\s*['’]?\s*t|is\s+not|is\s*['’]?\s*t)\b.{0,25}\byour\s+kind\b",
+        snippet,
+        re.IGNORECASE,
+    ):
+        return True
+    if signal_type == "RETURN_RATE" and re.search(
+        rf"(?:\baverage\s+(?:an\s+)?income\b.{{0,90}}{PERCENT}|"
+        rf"{PERCENT}.{{0,30}}\baverage\s+(?:an\s+)?income\b)",
+        snippet,
+        re.IGNORECASE,
+    ):
+        return True
+    return False
+
+
+def rules_for_version(feature_version: str) -> tuple[Rule, ...]:
+    if feature_version == FEATURE_VERSION_V4:
+        return RULES + V3_ADDITIONAL_RULES + V4_ADDITIONAL_RULES
+    if feature_version == FEATURE_VERSION_V3:
+        return RULES + V3_ADDITIONAL_RULES
+    return RULES
+
+
+def post_filters_for_version(feature_version: str) -> tuple[dict[str, str], ...]:
+    if feature_version == FEATURE_VERSION_V4:
+        return V2_FALSE_POSITIVE_FILTERS + V3_FALSE_POSITIVE_FILTERS + V4_FALSE_POSITIVE_FILTERS
+    if feature_version == FEATURE_VERSION_V3:
+        return V2_FALSE_POSITIVE_FILTERS + V3_FALSE_POSITIVE_FILTERS
+    if feature_version == FEATURE_VERSION_V2:
+        return V2_FALSE_POSITIVE_FILTERS
+    return ()
 
 
 def sha256_file(path: Path) -> str:
@@ -193,11 +462,27 @@ def compact_excerpt(text: str, limit: int = 320) -> str:
     return excerpt if len(excerpt) <= limit else excerpt[:limit].rstrip() + "…"
 
 
-def extract_signals(text: str) -> tuple[list[dict[str, object]], dict[str, int | float | bool]]:
+def extract_signals(
+    text: str, feature_version: str = FEATURE_VERSION
+) -> tuple[list[dict[str, object]], dict[str, int | float | bool]]:
+    if feature_version not in SUPPORTED_FEATURE_VERSIONS:
+        raise ValueError(f"Unsupported feature version: {feature_version}")
     matches: list[dict[str, object]] = []
     seen: set[tuple[str, int, int]] = set()
-    for rule in RULES:
+    for rule in rules_for_version(feature_version):
         for match in rule.pattern.finditer(text):
+            if feature_version in {FEATURE_VERSION_V2, FEATURE_VERSION_V3, FEATURE_VERSION_V4} and should_suppress_v2_match(
+                rule.signal_type, text, match.start(), match.end()
+            ):
+                continue
+            if feature_version in {FEATURE_VERSION_V3, FEATURE_VERSION_V4} and should_suppress_v3_match(
+                rule.rule_id, rule.signal_type, text, match.start(), match.end()
+            ):
+                continue
+            if feature_version == FEATURE_VERSION_V4 and should_suppress_v4_match(
+                rule.rule_id, rule.signal_type, text, match.start(), match.end()
+            ):
+                continue
             key = (rule.signal_type, match.start(), match.end())
             if key in seen:
                 continue
@@ -237,11 +522,13 @@ def extract_signals(text: str) -> tuple[list[dict[str, object]], dict[str, int |
     return matches, features
 
 
-def deterministic_key(record_id: str, salt: str) -> str:
-    return hashlib.sha256(f"{FEATURE_VERSION}|{salt}|{record_id}".encode()).hexdigest()
+def deterministic_key(record_id: str, salt: str, feature_version: str = FEATURE_VERSION) -> str:
+    return hashlib.sha256(f"{feature_version}|{salt}|{record_id}".encode()).hexdigest()
 
 
-def rule_set_sha256() -> str:
+def rule_set_sha256(feature_version: str = FEATURE_VERSION) -> str:
+    if feature_version not in SUPPORTED_FEATURE_VERSIONS:
+        raise ValueError(f"Unsupported feature version: {feature_version}")
     payload = [
         {
             "rule_id": rule.rule_id,
@@ -249,20 +536,27 @@ def rule_set_sha256() -> str:
             "pattern": rule.pattern.pattern,
             "description": rule.description,
         }
-        for rule in RULES
+        for rule in rules_for_version(feature_version)
     ]
+    post_filters = post_filters_for_version(feature_version)
+    if post_filters:
+        payload.append({"post_filters": post_filters})
     serialized = json.dumps(payload, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
     return hashlib.sha256(serialized.encode("utf-8")).hexdigest()
 
 
 def select_review_queue(
-    records: list[dict[str, object]], candidate_target: int = 80, no_signal_target: int = 40
+    records: list[dict[str, object]],
+    candidate_target: int = 80,
+    no_signal_target: int = 40,
+    feature_version: str = FEATURE_VERSION,
 ) -> list[dict[str, object]]:
     buckets: dict[str, list[dict[str, object]]] = {}
     for signal_type in SIGNAL_TYPES:
         bucket = [record for record in records if signal_type in record["signal_types"]]
         buckets[signal_type] = sorted(
-            bucket, key=lambda record: deterministic_key(str(record["record_id"]), signal_type)
+            bucket,
+            key=lambda record: deterministic_key(str(record["record_id"]), signal_type, feature_version),
         )
 
     selected: list[dict[str, object]] = []
@@ -292,7 +586,7 @@ def select_review_queue(
 
     no_signal = sorted(
         (record for record in records if not record["signal_types"]),
-        key=lambda record: deterministic_key(str(record["record_id"]), "NO_SIGNAL_AUDIT"),
+        key=lambda record: deterministic_key(str(record["record_id"]), "NO_SIGNAL_AUDIT", feature_version),
     )
     for record in no_signal:
         if len(selected) >= candidate_target + no_signal_target:
@@ -315,7 +609,9 @@ def main() -> int:
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--report", type=Path, required=True)
     parser.add_argument("--review-queue", type=Path, required=True)
+    parser.add_argument("--feature-version", choices=SUPPORTED_FEATURE_VERSIONS, default=FEATURE_VERSION)
     args = parser.parse_args()
+    feature_version = args.feature_version
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.report.parent.mkdir(parents=True, exist_ok=True)
@@ -350,13 +646,13 @@ def main() -> int:
             if not group_id:
                 raise ValueError(f"row {row_number}: missing split_group_id")
             text = row.get("text_content") or ""
-            signals, features = extract_signals(text)
+            signals, features = extract_signals(text, feature_version=feature_version)
             signal_types = sorted({str(item["signal_type"]) for item in signals})
             output_record = {
                 "record_id": record_id,
                 "partition": partition,
                 "split_group_id": group_id,
-                "feature_version": FEATURE_VERSION,
+                "feature_version": feature_version,
                 "signal_types": signal_types,
                 "signals": signals,
                 "features": features,
@@ -382,7 +678,7 @@ def main() -> int:
                 }
             )
 
-    queue = select_review_queue(review_source)
+    queue = select_review_queue(review_source, feature_version=feature_version)
     with args.review_queue.open("w", encoding="utf-8", newline="\n") as destination:
         for item in queue:
             destination.write(json.dumps(item, ensure_ascii=False, separators=(",", ":")) + "\n")
@@ -393,7 +689,7 @@ def main() -> int:
             queue_signal_types[str(signal_type)] += 1
     report = {
         "run_at": datetime.now(timezone.utc).isoformat(),
-        "feature_version": FEATURE_VERSION,
+        "feature_version": feature_version,
         "input": str(args.input),
         "input_sha256": sha256_file(args.input),
         "included_partitions": sorted(ALLOWED_PARTITIONS),
@@ -409,16 +705,17 @@ def main() -> int:
         "candidate_record_ratio": round(candidate_records / max(1, sum(processed_counts.values())), 6),
         "signal_record_counts": {name: signal_record_counts[name] for name in SIGNAL_TYPES},
         "signal_match_counts": {name: signal_match_counts[name] for name in SIGNAL_TYPES},
-        "rule_count": len(RULES),
-        "rule_set_sha256": rule_set_sha256(),
+        "rule_count": len(rules_for_version(feature_version)),
+        "rule_set_sha256": rule_set_sha256(feature_version),
         "rules": [
             {
                 "rule_id": rule.rule_id,
                 "signal_type": rule.signal_type,
                 "description": rule.description,
             }
-            for rule in RULES
+            for rule in rules_for_version(feature_version)
         ],
+        "post_filters": list(post_filters_for_version(feature_version)),
         "output": str(args.output),
         "output_sha256": sha256_file(args.output),
         "review_queue": str(args.review_queue),
@@ -446,7 +743,7 @@ def main() -> int:
     print(
         json.dumps(
             {
-                "feature_version": FEATURE_VERSION,
+                "feature_version": feature_version,
                 "processed_record_count": report["processed_record_count"],
                 "test_partition_text_processed": 0,
                 "candidate_record_count": candidate_records,

@@ -1,0 +1,92 @@
+{
+  "analysis_id": "MENDELEY_FINANCIAL_CLAIMS_REVIEW_WORKBOOK_V4",
+  "source_id": "mendeley_investment_deceptive_2026",
+  "created_at": "2026-09-20",
+  "status": "PILOT_AI_SUGGESTED_PENDING_HUMAN_REVIEW",
+  "purpose": "Targeted review of Financial Claims V4 incremental rule precision and high-information no-signal controls without creating scam ground truth.",
+  "source": {
+    "feature_set_id": "MENDELEY_FINANCIAL_CLAIMS_V4",
+    "feature_records_path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\financial_claims_v4\\financial_claim_features_v4.jsonl",
+    "feature_records_sha256": "f88026183421008d59846ca7949aa604459964f2dc7e9fe5e9a3face1d9bec8e",
+    "review_queue_path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\financial_claims_v4\\review_queue_120.jsonl",
+    "review_queue_sha256": "1f1e544ddb56de087b3958d4cf7a6eda7a26afae933e6e8aab83b31646144b12",
+    "record_count": 120,
+    "unique_split_group_count": 120,
+    "included_partitions": ["train", "validation"],
+    "test_partition_text_processed": 0
+  },
+  "review_design": {
+    "review_unit_count": 228,
+    "signal_review_unit_count": 188,
+    "no_signal_audit_unit_count": 40,
+    "pilot_scope": "PILOT_20",
+    "pilot_record_ranks": "1,2,4,12,16,34,36,44,54,58,81,84,94,106,107,111,113,115,119,120",
+    "pilot_source_record_count": 20,
+    "pilot_signal_candidate_record_count": 10,
+    "pilot_no_signal_record_count": 10,
+    "pilot_review_unit_count": 37,
+    "target_specific_evidence": true,
+    "selection": "Purposive V4 challenge sample covering every new positive rule, multiple rocket/attention templates, one annuity example, two broader positive controls, and high-information no-signal controls.",
+    "candidate_outcomes": ["CORRECT", "INCORRECT", "UNCERTAIN"],
+    "no_signal_audit_outcomes": ["NO_MISSED_SIGNAL", "MISSED_SIGNAL", "UNCERTAIN"]
+  },
+  "ai_assistance": {
+    "status": "PROVISIONAL_AI_SUGGESTIONS_ONLY",
+    "suggestion_path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\financial_claims_v4\\ai_pilot_suggestions_v4.json",
+    "suggestion_sha256": "e10f5bbe62f04e2b63620069c4e8605457e2902872323e64b980ad1352f30b8b",
+    "suggestion_count": 37,
+    "suggested_correct_count": 27,
+    "suggested_incorrect_count": 0,
+    "suggested_no_missed_signal_count": 10,
+    "suggested_missed_signal_count": 0,
+    "suggested_uncertain_count": 0,
+    "coverage_finding_record_count": 0,
+    "human_decision_count": 0,
+    "counts_as_human_review": false,
+    "changes_completion_status": false
+  },
+  "scope_note": {
+    "positive_rule_reviewed_in_pilot": [
+      "FCV4_RETURN_MULTIPLE_ROCKET_01",
+      "FCV4_CRYPTO_ROCKET_01",
+      "FCV4_URGENCY_ATTENTION_DM_01",
+      "FCV4_GUARANTEED_ANNUITY_RATE_01"
+    ],
+    "post_filter_regression_tested_only": [
+      "FCV4_RETURN_MULTIPLE_TURN_NEGATION",
+      "FCV4_NO_RISK_REJECTED_AUDIENCE",
+      "FCV4_RETURN_RATE_INCOME_DISTRIBUTION"
+    ],
+    "interpretation": "The deterministic V4 review queue does not contain the exact three filtered V3 false-positive records. Those cases are protected by automated regression tests but still require a separate human spot-check before promotion."
+  },
+  "artifact": {
+    "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\financial_claims_v4\\ISI_Financial_Claims_V4_Review.xlsx",
+    "sha256": "5b14398ea3398fce991a7b5b37f04781675064973adfc20a5664ea6dd7ef0a13",
+    "size_bytes": 88903,
+    "sheet_names": ["Tong quan", "Danh gia", "Nguon 120"]
+  },
+  "verification": {
+    "source_hashes_match_feature_registry": true,
+    "target_specific_evidence_checked": true,
+    "source_record_and_group_uniqueness_checked": true,
+    "formula_error_scan_count": 0,
+    "saved_workbook_reimported": true,
+    "all_sheets_visually_reviewed": true,
+    "candidate_and_no_signal_completion_gates_tested": true,
+    "ai_scope_isolation_tested": true,
+    "human_input_columns_remain_blank": true,
+    "human_confirmation_package_validated": false,
+    "confirmed_pilot_completion_count": 0,
+    "ai_suggestions_do_not_complete_reviews": true,
+    "source_files_modified": false
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "labels_created": 0,
+    "training_allowed": false,
+    "domain_access_allowed": false,
+    "raw_files_modified": false,
+    "test_partition_text_processed": 0
+  },
+  "training_gate": "CLOSED_PENDING_V4_HUMAN_CONFIRMATION_AND_FILTER_SPOT_CHECK"
+}

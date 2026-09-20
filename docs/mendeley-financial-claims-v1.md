@@ -87,15 +87,21 @@ giá độ đúng theo từng signal và xem nhóm no-signal có bỏ sót gì h
 Workbook review đã được tạo tại
 `D:\nckh 2026-2027\ISI_Data\derived\mendeley_investment_deceptive_2026\financial_claims_v1\ISI_Financial_Claims_V1_Review.xlsx`.
 SHA-256 của workbook là
-`97a0a81c39ec0554e4d9ab9c767195d464c3bb44fea433ff29a7ef0f98d9e153`.
+`62af71bf80d28155a252ab847fcbe31f87f8adf0c4512dfdc5a29ad7b75ab74f`.
 
 - Sheet `Tong quan` giải thích mục tiêu, outcome và tiến độ.
 - Sheet `Danh gia` là nơi nhập review duy nhất. 120 record được tách thành 203
   review unit để mỗi signal có quyết định độc lập; 20 record đầu tương ứng 43
   review unit `PILOT_20`.
+- Ba cột `ai_suggested_outcome`, `ai_confidence` và `ai_rationale` chứa gợi ý
+  AI cho đúng 43 review unit pilot: 37 `CORRECT`, 6 `INCORRECT`, không có
+  `UNCERTAIN`; 39 gợi ý có confidence `HIGH` và 4 có confidence `MEDIUM`.
+- Ngày 20/09/2026, người dùng xác nhận đã đọc và chấp nhận toàn bộ 43 gợi ý.
+  Workbook ghi nhận 43 quyết định dưới chế độ `AI_ASSISTED_HUMAN_CONFIRMATION`.
+  Đây là xác nhận có AI hỗ trợ, **không phải blind review độc lập**.
 - Sheet `Nguon 120` giữ đủ 120 record nguồn để đối chiếu.
-- Các cột màu vàng là cột nhập. `completion_status` chỉ chuyển thành
-  `HOÀN TẤT` khi outcome hợp lệ và đủ các trường bắt buộc.
+- Các cột màu vàng là cột nhập. 43 unit pilot hiện là `HOÀN TẤT`; 160 unit còn
+  lại vẫn là `CHƯA ĐÁNH GIÁ`.
 - Việc review chỉ đánh giá rule. Không gán nhãn scam và không mở test.
 
 Registry kiểm toán của workbook nằm tại
@@ -103,8 +109,10 @@ Registry kiểm toán của workbook nằm tại
 
 ## Quyết định
 
-Feature set được đóng băng ở trạng thái
-`FROZEN_CANDIDATE_FEATURES_REVIEW_REQUIRED`. Training gate vẫn đóng. Việc cần
-làm tiếp theo là hoàn thành pilot 20 record trong workbook, kiểm tra tính rõ
-ràng của protocol rồi mới review phần còn lại. Không được gọi Financial Claims
-V1 là đã được xác thực trước khi review hoàn tất và được tổng hợp.
+Pilot có 37/43 tín hiệu đúng và 6/43 tín hiệu sai trong mẫu được chọn có chủ
+đích. Tỷ lệ này chỉ dùng để tìm lỗi quy tắc, không phải recall, độ chính xác mô
+hình hay ước lượng đại diện cho toàn tập.
+
+Sáu lỗi đã được dùng để xây dựng candidate rules V2 trên train/validation.
+Training gate vẫn đóng cho đến khi V2 được review độc lập hơn, gồm cả kiểm tra
+no-signal để tìm false negative. Test vẫn được giữ kín.

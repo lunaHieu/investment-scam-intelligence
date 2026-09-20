@@ -1,4 +1,4 @@
-"""Verify frozen hashes and gates for Mendeley Financial Claims V1."""
+"""Verify frozen hashes and gates for a versioned Mendeley Financial Claims registry."""
 
 from __future__ import annotations
 
@@ -7,7 +7,7 @@ import hashlib
 import json
 from pathlib import Path
 
-from extract_mendeley_financial_claims import FEATURE_VERSION, rule_set_sha256
+from extract_mendeley_financial_claims import SUPPORTED_FEATURE_VERSIONS, rule_set_sha256
 
 
 def load_json(path: Path) -> dict[str, object]:
@@ -32,6 +32,9 @@ def main() -> int:
     args = parser.parse_args()
     registry = load_json(args.registry)
     errors: list[str] = []
+    feature_version = str(registry.get("feature_set_id", ""))
+    if feature_version not in SUPPORTED_FEATURE_VERSIONS:
+        raise ValueError(f"Unsupported feature version: {feature_version}")
 
     source = registry.get("source", {})
     input_path = Path(source.get("input_path", ""))
@@ -63,11 +66,11 @@ def main() -> int:
     review_queue = registry.get("review_queue", {})
     training_gate = registry.get("training_gate", {})
 
-    if registry.get("feature_set_id") != FEATURE_VERSION:
-        errors.append("Feature version mismatch")
-    if registry.get("method", {}).get("rule_set_sha256") != rule_set_sha256():
+    if registry.get("method", {}).get("rule_set_sha256") != rule_set_sha256(feature_version):
         errors.append("Current rule set differs from frozen registry")
-    if profile.get("rule_set_sha256") != rule_set_sha256():
+    if profile.get("feature_version") != feature_version:
+        errors.append("Profile feature version mismatch")
+    if profile.get("rule_set_sha256") != rule_set_sha256(feature_version):
         errors.append("Profile rule fingerprint mismatch")
     if profile.get("processed_record_count") != scope.get("processed_record_count"):
         errors.append("Processed count differs between profile and registry")

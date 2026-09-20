@@ -1,4 +1,4 @@
-"""Validate Financial Claims V1 outputs against the frozen group-split CSV."""
+"""Validate versioned Financial Claims outputs against the frozen group-split CSV."""
 
 from __future__ import annotations
 
@@ -12,6 +12,7 @@ from pathlib import Path
 from extract_mendeley_financial_claims import (
     ALLOWED_PARTITIONS,
     FEATURE_VERSION,
+    SUPPORTED_FEATURE_VERSIONS,
     SIGNAL_TYPES,
     extract_signals,
     rule_set_sha256,
@@ -38,7 +39,11 @@ def main() -> int:
     parser.add_argument("--features", type=Path, required=True)
     parser.add_argument("--report", type=Path, required=True)
     parser.add_argument("--review-queue", type=Path, required=True)
+    parser.add_argument(
+        "--feature-version", choices=SUPPORTED_FEATURE_VERSIONS, default=FEATURE_VERSION
+    )
     args = parser.parse_args()
+    feature_version = args.feature_version
 
     source: dict[str, tuple[str, str, str]] = {}
     test_count = 0
@@ -66,9 +71,9 @@ def main() -> int:
             partition, group_id, text = source[record_id]
             if record.get("partition") != partition or record.get("split_group_id") != group_id:
                 raise ValueError(f"line {line_number}: partition/group provenance mismatch")
-            if record.get("feature_version") != FEATURE_VERSION:
+            if record.get("feature_version") != feature_version:
                 raise ValueError(f"line {line_number}: wrong feature version")
-            signals, features = extract_signals(text)
+            signals, features = extract_signals(text, feature_version=feature_version)
             expected_types = sorted({str(item["signal_type"]) for item in signals})
             if record.get("signals") != signals or record.get("features") != features:
                 raise ValueError(f"line {line_number}: deterministic recomputation mismatch")
@@ -104,6 +109,8 @@ def main() -> int:
                 queue_signal_types[str(signal_type)] += 1
 
     report = json.loads(args.report.read_text(encoding="utf-8"))
+    if report.get("feature_version") != feature_version:
+        raise ValueError("Report feature version mismatch")
     expected_partitions = {"train": 11344, "validation": 2429}
     if dict(partition_counts) != expected_partitions:
         raise ValueError(f"Unexpected processed partitions: {dict(partition_counts)}")
@@ -120,7 +127,7 @@ def main() -> int:
     expected_queue_signal_counts = {name: queue_signal_types[name] for name in SIGNAL_TYPES}
     if report.get("review_queue_signal_type_counts") != expected_queue_signal_counts:
         raise ValueError("Report queue signal type counts mismatch")
-    if report.get("rule_set_sha256") != rule_set_sha256():
+    if report.get("rule_set_sha256") != rule_set_sha256(feature_version):
         raise ValueError("Rule-set fingerprint mismatch")
     if report.get("source_labels_used_for_extraction") is not False:
         raise ValueError("Source-label extraction gate is open")
@@ -131,6 +138,7 @@ def main() -> int:
         json.dumps(
             {
                 "status": "VALID",
+                "feature_version": feature_version,
                 "feature_record_count": len(feature_ids),
                 "candidate_record_count": candidate_count,
                 "test_partition_text_processed": 0,

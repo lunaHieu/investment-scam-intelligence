@@ -1,0 +1,138 @@
+{
+  "analysis_id": "MENDELEY_FINANCIAL_CLAIMS_REVIEW_WORKBOOK_V3",
+  "source_id": "mendeley_investment_deceptive_2026",
+  "created_at": "2026-09-20",
+  "status": "PILOT_HUMAN_CONFIRMED_AI_ASSISTED",
+  "purpose": "Targeted review of Financial Claims V3 incremental rule precision and no-signal coverage without creating scam ground truth.",
+  "source": {
+    "feature_set_id": "MENDELEY_FINANCIAL_CLAIMS_V3",
+    "feature_records_path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\financial_claims_v3\\financial_claim_features_v3.jsonl",
+    "feature_records_sha256": "8982d5362e6f0f55dda1d7223db9045f0a3dbb35e6b5d6221d26297dd18c3a96",
+    "review_queue_path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\financial_claims_v3\\review_queue_120.jsonl",
+    "review_queue_sha256": "42c1a829d463063b09b9035174ee10af4de240341b1a9686492ba68f42392baa",
+    "record_count": 120,
+    "unique_split_group_count": 120,
+    "included_partitions": [
+      "train",
+      "validation"
+    ],
+    "test_partition_text_processed": 0
+  },
+  "review_design": {
+    "review_unit_count": 217,
+    "signal_review_unit_count": 177,
+    "no_signal_audit_unit_count": 40,
+    "pilot_scope": "PILOT_20",
+    "pilot_record_ranks": "2,10,12,16,17,19,30,38,50,52,55,57,60,66,70,81,89,98,112,115",
+    "pilot_source_record_count": 20,
+    "pilot_signal_candidate_record_count": 15,
+    "pilot_no_signal_record_count": 5,
+    "pilot_review_unit_count": 44,
+    "target_specific_evidence": true,
+    "selection": "Purposive challenge sample covering all four V3 additions, varied synthetic templates, a long negated spam context, and high-information no-signal cases.",
+    "candidate_outcomes": [
+      "CORRECT",
+      "INCORRECT",
+      "UNCERTAIN"
+    ],
+    "no_signal_audit_outcomes": [
+      "NO_MISSED_SIGNAL",
+      "MISSED_SIGNAL",
+      "UNCERTAIN"
+    ]
+  },
+  "ai_assistance": {
+    "status": "AI_SUGGESTIONS_HUMAN_CONFIRMED",
+    "suggestion_path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\financial_claims_v3\\ai_pilot_suggestions_v3.json",
+    "suggestion_sha256": "2e6d12dd6c2bbed914588be894c674fa1c715f2e04da2e0b3d7dc949d0ada230",
+    "suggestion_count": 44,
+    "suggested_correct_count": 36,
+    "suggested_incorrect_count": 3,
+    "suggested_no_missed_signal_count": 2,
+    "suggested_missed_signal_count": 3,
+    "suggested_uncertain_count": 0,
+    "coverage_finding_record_count": 3,
+    "human_decision_count": 44,
+    "counts_as_human_review": true,
+    "changes_completion_status": true
+  },
+  "human_confirmation": {
+    "review_mode": "AI_ASSISTED_HUMAN_CONFIRMATION",
+    "independent_blind_review": false,
+    "reviewer": "Van Hieu",
+    "reviewed_date": "2026-09-20",
+    "action": "ACCEPT_ALL_AI_SUGGESTIONS",
+    "confirmed_review_unit_count": 44,
+    "confirmed_coverage_finding_record_count": 3,
+    "override_count": 0,
+    "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\financial_claims_v3\\human_assisted_confirmation_2026-09-20.json",
+    "sha256": "d4990f601266d4e1b3fcdb2be39827810305d3e45b8887e175de953998a71a47"
+  },
+  "provisional_findings": {
+    "v3_rule_review": {
+      "FCV3_RETURN_MULTIPLE_TURN_01": {
+        "suggested_correct": 5,
+        "reviewed_examples": 6,
+        "note": "One negated claim was incorrectly matched."
+      },
+      "FCV3_RETURN_MULTIPLE_GROWTH_01": {
+        "suggested_correct": 5,
+        "reviewed_examples": 5
+      },
+      "FCV3_CRYPTO_GROWTH_01": {
+        "suggested_correct": 5,
+        "reviewed_examples": 5
+      },
+      "FCV3_CRYPTO_EARNINGS_01": {
+        "suggested_correct": 4,
+        "reviewed_examples": 4
+      }
+    },
+    "false_positive_units": [
+      "RETURN_MULTIPLE on a negated 'not going to turn $2 into $5' statement",
+      "NO_RISK on a contrastive sentence rejecting no-risk retirement investors",
+      "RETURN_RATE on percentages describing an income distribution rather than investment returns"
+    ],
+    "potential_missed_signal_records": 3,
+    "potential_missed_signal_themes": [
+      "Rocket emoji used in place of a lexical growth verb for NFT or trading Nx claims",
+      "Urgency expressed through ATTENTION, insider information and a direct-message call to action",
+      "Guaranteed annuity rates without an explicit percentage"
+    ],
+    "interpretation": "The user confirmed these findings through an AI-assisted purposive challenge pilot. They are not independent blind precision estimates, recall estimates, scam labels or training labels."
+  },
+  "artifact": {
+    "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\financial_claims_v3\\ISI_Financial_Claims_V3_Review_Confirmed.xlsx",
+    "sha256": "916ad948ae4c08c46face2df36cc1330616716ef1f306d539637045ae859e847",
+    "size_bytes": 91849,
+    "sheet_names": [
+      "Tong quan",
+      "Danh gia",
+      "Nguon 120"
+    ]
+  },
+  "verification": {
+    "source_hashes_match_feature_registry": true,
+    "target_specific_evidence_checked": true,
+    "source_record_and_group_uniqueness_checked": true,
+    "formula_error_scan_count": 0,
+    "saved_workbook_reimported": true,
+    "all_sheets_visually_reviewed": true,
+    "candidate_and_no_signal_completion_gates_tested": true,
+    "ai_scope_isolation_tested": true,
+    "human_input_columns_remain_blank": false,
+    "human_confirmation_package_validated": true,
+    "confirmed_pilot_completion_count": 44,
+    "ai_suggestions_do_not_complete_reviews": true,
+    "source_files_modified": false
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "labels_created": 0,
+    "training_allowed": false,
+    "domain_access_allowed": false,
+    "raw_files_modified": false,
+    "test_partition_text_processed": 0
+  },
+  "training_gate": "CLOSED_PENDING_V4_INCREMENTAL_REVIEW"
+}

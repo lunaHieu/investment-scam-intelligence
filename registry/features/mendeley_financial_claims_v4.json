@@ -1,0 +1,139 @@
+{
+  "feature_set_id": "MENDELEY_FINANCIAL_CLAIMS_V4",
+  "created_at": "2026-09-20",
+  "status": "CANDIDATE_RULES_V4_REVIEW_REQUIRED",
+  "source": {
+    "source_id": "mendeley_investment_deceptive_2026",
+    "source_version": "v2",
+    "split_version": "group_split_v1",
+    "input_path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v1\\mendeley_v2_group_split.csv",
+    "input_sha256": "0f540f838dc0050c2cc1f8f8d98c4239acaba1ad0d1407066f1a578e5acdb2ff"
+  },
+  "scope": {
+    "included_partitions": ["train", "validation"],
+    "processed_record_count": 13773,
+    "processed_partition_counts": {"train": 11344, "validation": 2429},
+    "frozen_test_record_count": 2429,
+    "test_partition_text_processed": 0,
+    "source_labels_used_for_extraction": false
+  },
+  "method": {
+    "type": "V3 deterministic lexical rules plus three confirmed context filters and four targeted coverage rules",
+    "base_feature_set_id": "MENDELEY_FINANCIAL_CLAIMS_V3",
+    "rule_count": 19,
+    "post_filter_count": 12,
+    "rule_set_sha256": "b992a0ee5ab657e30434730aeaf7194c98174b89039849a5a59b4a0f43328a01",
+    "revision_basis": {
+      "review_mode": "AI_ASSISTED_HUMAN_CONFIRMATION",
+      "confirmed_pilot_review_unit_count": 44,
+      "confirmed_correct_count": 36,
+      "confirmed_incorrect_count": 3,
+      "confirmed_no_missed_signal_count": 2,
+      "confirmed_missed_signal_count": 3,
+      "confirmed_coverage_finding_record_count": 3,
+      "independent_blind_review": false
+    },
+    "v4_filters": [
+      "Exclude negated Turn amount into amount claims from RETURN_MULTIPLE.",
+      "Exclude no-risk wording used to reject or contrast with the promoted opportunity.",
+      "Exclude percentages that describe shares of an income distribution from RETURN_RATE."
+    ],
+    "v4_additions": [
+      "Connect trading, crypto, or NFT rocket-emoji wording to an explicit Nx claim.",
+      "Emit the crypto signal only when the rocket-emoji Nx claim contains a crypto or NFT asset.",
+      "Detect urgency when ATTENTION is paired with a direct-message call to action.",
+      "Detect guaranteed rates only in a bounded annuity context."
+    ]
+  },
+  "profile": {
+    "candidate_record_count": 7754,
+    "candidate_record_ratio": 0.562768,
+    "signal_record_counts": {
+      "RETURN_RATE": 42,
+      "RETURN_MULTIPLE": 1750,
+      "MONEY_AMOUNT": 6462,
+      "GUARANTEED_RETURN": 18,
+      "NO_RISK": 21,
+      "URGENCY_SCARCITY": 1274,
+      "PASSIVE_OR_EASY_INCOME": 1055,
+      "RECRUITMENT_REWARD": 1,
+      "PAYMENT_OR_TRANSFER_REQUEST": 3,
+      "ADVANCE_FEE_OR_WITHDRAWAL": 0,
+      "CRYPTO_INVESTMENT_OR_PAYMENT": 2635
+    },
+    "v3_to_v4_record_delta": {
+      "RETURN_RATE": -1,
+      "RETURN_MULTIPLE": 241,
+      "MONEY_AMOUNT": 0,
+      "GUARANTEED_RETURN": 1,
+      "NO_RISK": -1,
+      "URGENCY_SCARCITY": 623,
+      "PASSIVE_OR_EASY_INCOME": 0,
+      "RECRUITMENT_REWARD": 0,
+      "PAYMENT_OR_TRANSFER_REQUEST": 0,
+      "ADVANCE_FEE_OR_WITHDRAWAL": 0,
+      "CRYPTO_INVESTMENT_OR_PAYMENT": 126
+    },
+    "candidate_record_delta": 243,
+    "confirmed_pilot_effects": {
+      "false_positive_record_assignments_removed": 3,
+      "coverage_finding_records_fixed": 3,
+      "negative_control_records_preserved": 2
+    },
+    "interpretation": "The confirmed examples now behave as expected. Large positive deltas still mainly reflect repeated synthetic templates and require a fresh incremental review before downstream use."
+  },
+  "review_queue": {
+    "record_count": 120,
+    "unique_split_group_count": 120,
+    "signal_candidates": 80,
+    "no_signal_audit": 40,
+    "review_status": "UNREVIEWED",
+    "purpose": "Review V4 incremental precision, broad template effects and no-signal coverage before any downstream model use."
+  },
+  "output_contract": {
+    "feature_record_count": 13773,
+    "predictive_feature_container": "features",
+    "label_fields": [],
+    "source_label_emitted": false,
+    "network_operations": 0,
+    "raw_files_modified": false,
+    "provenance_only_top_level_fields": ["record_id", "partition", "split_group_id", "feature_version"],
+    "excluded_predictive_fields": [
+      "label", "source_label", "source_dataset", "original_partition", "ground_truth_status",
+      "label_confidence", "review_notes", "verification_status"
+    ]
+  },
+  "artifacts": [
+    {
+      "role": "feature_records",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\financial_claims_v4\\financial_claim_features_v4.jsonl",
+      "sha256": "f88026183421008d59846ca7949aa604459964f2dc7e9fe5e9a3face1d9bec8e"
+    },
+    {
+      "role": "profile",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\financial_claims_v4\\profile_v4.json",
+      "sha256": "75deb45e64644c9cd381395040f7da9527baf5535a3332ffca5ac50ef9890b4f"
+    },
+    {
+      "role": "review_queue",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\financial_claims_v4\\review_queue_120.jsonl",
+      "sha256": "1f1e544ddb56de087b3958d4cf7a6eda7a26afae933e6e8aab83b31646144b12"
+    }
+  ],
+  "safety_contract": {
+    "network_operations": 0,
+    "raw_files_modified": false,
+    "source_labels_emitted": false,
+    "test_partition_text_processed": 0
+  },
+  "training_gate": {
+    "binary_classifier_allowed": false,
+    "reason": "V4 produces substantial incremental candidates from repeated synthetic templates and has not yet received a fresh human-confirmed challenge review.",
+    "required_to_open": [
+      "Review a targeted V4 sample that covers every new rule and each new filter.",
+      "Review V4 no-signal audit records without consulting the frozen test partition.",
+      "Report per-rule precision with denominators and qualitative false-negative findings.",
+      "Freeze further revisions using train/validation only and keep test unavailable until pre-specified evaluation."
+    ]
+  }
+}

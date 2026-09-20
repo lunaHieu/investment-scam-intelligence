@@ -1,0 +1,137 @@
+{
+  "feature_set_id": "MENDELEY_FINANCIAL_CLAIMS_V2",
+  "created_at": "2026-09-20",
+  "status": "CANDIDATE_RULES_V2_REVIEW_REQUIRED",
+  "source": {
+    "source_id": "mendeley_investment_deceptive_2026",
+    "source_version": "v2",
+    "split_version": "group_split_v1",
+    "input_path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v1\\mendeley_v2_group_split.csv",
+    "input_sha256": "0f540f838dc0050c2cc1f8f8d98c4239acaba1ad0d1407066f1a578e5acdb2ff"
+  },
+  "scope": {
+    "included_partitions": [
+      "train",
+      "validation"
+    ],
+    "processed_record_count": 13773,
+    "processed_partition_counts": {
+      "train": 11344,
+      "validation": 2429
+    },
+    "frozen_test_record_count": 2429,
+    "test_partition_text_processed": 0,
+    "source_labels_used_for_extraction": false
+  },
+  "method": {
+    "type": "V1 deterministic bilingual lexical rules plus five reviewed-context suppression filters",
+    "base_feature_set_id": "MENDELEY_FINANCIAL_CLAIMS_V1",
+    "rule_count": 11,
+    "post_filter_count": 5,
+    "rule_set_sha256": "e462fae5e77320bd5c50c38d56e3068248c86cc177bac7d17bc30314d6fef71a",
+    "revision_basis": {
+      "review_mode": "AI_ASSISTED_HUMAN_CONFIRMATION",
+      "confirmed_pilot_review_unit_count": 43,
+      "confirmed_correct_count": 37,
+      "confirmed_incorrect_count": 6,
+      "independent_blind_review": false
+    },
+    "post_filters": [
+      "Exclude double-digit/triple-digit rate wording from RETURN_MULTIPLE.",
+      "Exclude discount percentages from RETURN_RATE.",
+      "Exclude risk-free rate terminology and no-risk-or-obligation form language from NO_RISK.",
+      "Exclude negated get-rich-quick wording from PASSIVE_OR_EASY_INCOME.",
+      "Exclude explicit do-not-send/payment instructions from PAYMENT_OR_TRANSFER_REQUEST."
+    ]
+  },
+  "profile": {
+    "candidate_record_count": 7512,
+    "candidate_record_ratio": 0.545415,
+    "signal_record_counts": {
+      "RETURN_RATE": 47,
+      "RETURN_MULTIPLE": 387,
+      "MONEY_AMOUNT": 6462,
+      "GUARANTEED_RETURN": 19,
+      "NO_RISK": 24,
+      "URGENCY_SCARCITY": 651,
+      "PASSIVE_OR_EASY_INCOME": 1055,
+      "RECRUITMENT_REWARD": 1,
+      "PAYMENT_OR_TRANSFER_REQUEST": 3,
+      "ADVANCE_FEE_OR_WITHDRAWAL": 0,
+      "CRYPTO_INVESTMENT_OR_PAYMENT": 883
+    },
+    "v1_to_v2_removed_record_matches": {
+      "RETURN_RATE": 1,
+      "RETURN_MULTIPLE": 1,
+      "NO_RISK": 2,
+      "PASSIVE_OR_EASY_INCOME": 1,
+      "PAYMENT_OR_TRANSFER_REQUEST": 1
+    },
+    "interpretation": "Six reviewed false-positive signal assignments were removed. Counts remain lexical candidates, not verified financial claims or scam prevalence."
+  },
+  "review_queue": {
+    "record_count": 120,
+    "unique_split_group_count": 120,
+    "signal_candidates": 80,
+    "no_signal_audit": 40,
+    "review_status": "UNREVIEWED",
+    "purpose": "Independently review revised-rule precision and inspect missed-signal coverage before model use."
+  },
+  "output_contract": {
+    "feature_record_count": 13773,
+    "predictive_feature_container": "features",
+    "label_fields": [],
+    "source_label_emitted": false,
+    "network_operations": 0,
+    "raw_files_modified": false,
+    "provenance_only_top_level_fields": [
+      "record_id",
+      "partition",
+      "split_group_id",
+      "feature_version"
+    ],
+    "excluded_predictive_fields": [
+      "label",
+      "source_label",
+      "source_dataset",
+      "original_partition",
+      "ground_truth_status",
+      "label_confidence",
+      "review_notes",
+      "verification_status"
+    ]
+  },
+  "artifacts": [
+    {
+      "role": "feature_records",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\financial_claims_v2\\financial_claim_features_v2.jsonl",
+      "sha256": "8482543d3b704a45df17d3a764f7650f3334b57d4f5702e92bba5203e4814067"
+    },
+    {
+      "role": "profile",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\financial_claims_v2\\profile_v2.json",
+      "sha256": "7c6c7b152bf3395c7bdd242778851092f82f29533d7974ec74050ff062fcc856"
+    },
+    {
+      "role": "review_queue",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\financial_claims_v2\\review_queue_120.jsonl",
+      "sha256": "aeb0de9f28617a636f59030a2e8895ca3c78015a52c30343ad9b3c91156cfa6c"
+    }
+  ],
+  "safety_contract": {
+    "network_operations": 0,
+    "raw_files_modified": false,
+    "source_labels_emitted": false,
+    "test_partition_text_processed": 0
+  },
+  "training_gate": {
+    "binary_classifier_allowed": false,
+    "reason": "The V2 rules were derived from an AI-assisted targeted pilot and have not received independent review or a completed no-signal missed-coverage audit.",
+    "required_to_open": [
+      "Review the V2 queue without consulting the frozen test partition.",
+      "Report per-signal precision with denominators and qualitative false-negative findings.",
+      "Freeze further revisions using train/validation only.",
+      "Keep the test partition unavailable until a later pre-specified evaluation."
+    ]
+  }
+}

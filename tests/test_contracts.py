@@ -49,6 +49,18 @@ class ContractTests(unittest.TestCase):
         self.assertEqual(registry["output_contract"]["label_fields"], [])
         self.assertFalse(registry["training_gate"]["binary_classifier_allowed"])
 
+    def test_financial_claim_v2_registry_keeps_test_and_training_gates_closed(self):
+        root = Path(__file__).resolve().parents[1]
+        registry = json.loads(
+            (root / "registry" / "features" / "mendeley_financial_claims_v2.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        self.assertEqual(registry["scope"]["test_partition_text_processed"], 0)
+        self.assertFalse(registry["scope"]["source_labels_used_for_extraction"])
+        self.assertFalse(registry["safety_contract"]["raw_files_modified"])
+        self.assertFalse(registry["training_gate"]["binary_classifier_allowed"])
+
     def test_crimson_unsupervised_registry_is_exploratory_only(self):
         root = Path(__file__).resolve().parents[1]
         registry = json.loads(
@@ -60,6 +72,83 @@ class ContractTests(unittest.TestCase):
         self.assertFalse(safety["training_allowed"])
         self.assertFalse(safety["domain_access_allowed"])
         self.assertNotEqual(registry["quality"]["stability_assessment"], "HIGH")
+
+    def test_financial_claim_v2_review_records_ai_assisted_human_confirmation(self):
+        root = Path(__file__).resolve().parents[1]
+        registry = json.loads(
+            (root / "registry" / "analyses" / "mendeley_financial_claims_review_workbook_v2.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        self.assertEqual(registry["source"]["test_partition_text_processed"], 0)
+        self.assertEqual(registry["ai_assistance"]["human_decision_count"], 52)
+        self.assertTrue(registry["ai_assistance"]["counts_as_human_review"])
+        self.assertEqual(registry["human_confirmation"]["review_mode"], "AI_ASSISTED_HUMAN_CONFIRMATION")
+        self.assertFalse(registry["human_confirmation"]["independent_blind_review"])
+        self.assertFalse(registry["safety_contract"]["training_allowed"])
+
+    def test_financial_claim_v3_registry_keeps_test_and_training_gates_closed(self):
+        root = Path(__file__).resolve().parents[1]
+        registry = json.loads(
+            (root / "registry" / "features" / "mendeley_financial_claims_v3.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        self.assertEqual(registry["scope"]["test_partition_text_processed"], 0)
+        self.assertFalse(registry["scope"]["source_labels_used_for_extraction"])
+        self.assertFalse(registry["safety_contract"]["raw_files_modified"])
+        self.assertFalse(registry["training_gate"]["binary_classifier_allowed"])
+
+    def test_financial_claim_v3_review_records_ai_assisted_confirmation(self):
+        root = Path(__file__).resolve().parents[1]
+        registry = json.loads(
+            (
+                root
+                / "registry"
+                / "analyses"
+                / "mendeley_financial_claims_review_workbook_v3.json"
+            ).read_text(encoding="utf-8")
+        )
+        self.assertEqual(registry["source"]["test_partition_text_processed"], 0)
+        self.assertEqual(registry["ai_assistance"]["suggestion_count"], 44)
+        self.assertEqual(registry["ai_assistance"]["human_decision_count"], 44)
+        self.assertTrue(registry["ai_assistance"]["counts_as_human_review"])
+        self.assertTrue(registry["ai_assistance"]["changes_completion_status"])
+        self.assertEqual(registry["human_confirmation"]["review_mode"], "AI_ASSISTED_HUMAN_CONFIRMATION")
+        self.assertFalse(registry["human_confirmation"]["independent_blind_review"])
+        self.assertFalse(registry["verification"]["human_input_columns_remain_blank"])
+        self.assertFalse(registry["safety_contract"]["training_allowed"])
+
+    def test_financial_claim_v4_registry_keeps_test_and_training_gates_closed(self):
+        root = Path(__file__).resolve().parents[1]
+        registry = json.loads(
+            (root / "registry" / "features" / "mendeley_financial_claims_v4.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        self.assertEqual(registry["scope"]["test_partition_text_processed"], 0)
+        self.assertFalse(registry["scope"]["source_labels_used_for_extraction"])
+        self.assertFalse(registry["safety_contract"]["raw_files_modified"])
+        self.assertFalse(registry["training_gate"]["binary_classifier_allowed"])
+
+    def test_financial_claim_v4_review_is_provisional_and_does_not_complete_human_review(self):
+        root = Path(__file__).resolve().parents[1]
+        registry = json.loads(
+            (
+                root
+                / "registry"
+                / "analyses"
+                / "mendeley_financial_claims_review_workbook_v4.json"
+            ).read_text(encoding="utf-8")
+        )
+        self.assertEqual(registry["source"]["test_partition_text_processed"], 0)
+        self.assertEqual(registry["ai_assistance"]["suggestion_count"], 37)
+        self.assertEqual(registry["ai_assistance"]["human_decision_count"], 0)
+        self.assertFalse(registry["ai_assistance"]["counts_as_human_review"])
+        self.assertFalse(registry["ai_assistance"]["changes_completion_status"])
+        self.assertTrue(registry["verification"]["human_input_columns_remain_blank"])
+        self.assertFalse(registry["safety_contract"]["training_allowed"])
+        self.assertIn("PENDING", registry["training_gate"])
 
     def test_mendeley_image_registry_keeps_image_training_blocked(self):
         root = Path(__file__).resolve().parents[1]

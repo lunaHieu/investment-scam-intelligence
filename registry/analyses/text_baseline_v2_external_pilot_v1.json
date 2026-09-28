@@ -1,0 +1,98 @@
+{
+  "evaluation_id": "ISI_TEXT_BASELINE_V2_EXTERNAL_PILOT_V1",
+  "created_at": "2026-09-24",
+  "status": "FROZEN_MODEL_EXTERNAL_DIAGNOSTIC_COMPLETE_NOT_FOR_DEPLOYMENT",
+  "source_id": "mendeley_investment_deceptive_2026",
+  "target_model_id": "ISI_TEXT_BASELINE_V2",
+  "purpose": "Measure unchanged Text Baseline V2 transfer behavior on the first evidence-backed 21-case external pilot without fitting or tuning.",
+  "inputs": {
+    "model_registry": {
+      "path": "registry/models/text_baseline_v2.json",
+      "sha256": "0485439ddc34c56d05587c85cd0520f519a4feb9dd7887d16e46273bc7b1d7f5"
+    },
+    "reconciled_intake": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_intake_v1\\reconciled_pilot_v1\\external_text_reconciled_pilot_v1.json",
+      "sha256": "aab86486376d23d1eeca19e31d987d04ec88cb3432f71d0fdde0feceb799319e"
+    },
+    "intake_validation_report": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_intake_v1\\reconciled_pilot_v1\\validation_report_v1.json",
+      "sha256": "e3157d1b9bd69e704edbba6341ffa23815037b57784a9feab3e084239ca554fe"
+    }
+  },
+  "implementation": [
+    {
+      "role": "external_evaluator",
+      "path": "scripts/evaluate_text_baseline_v2_external_pilot.py",
+      "sha256": "87eb8fc537f2f686c55b7fa7e620693f1d8e4d179a2502defbeaa43c6edd6b0d"
+    },
+    {
+      "role": "external_evaluation_verifier",
+      "path": "scripts/verify_text_baseline_v2_external_pilot.py",
+      "sha256": "5563b654c8cb8e4c415f925fbf480a19a6fd43c381b074857aad30924d06f90e"
+    },
+    {
+      "role": "unit_tests",
+      "path": "tests/test_text_baseline_v2_external_pilot.py",
+      "sha256": "f9c6795da4655b2dca4a196f7c366280dfb5a4972637cc2400011da9232e4a98"
+    },
+    {
+      "role": "method_documentation",
+      "path": "docs/text-baseline-v2-external-pilot-v1.md",
+      "sha256": "52e8c696ef9ad9656884efe3abbcae62b4c7be69f7c7c171f72a80ed4141f326"
+    }
+  ],
+  "outputs": [
+    {
+      "role": "results_json",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\text_baseline_v2\\external_pilot_v1\\external_pilot_results_v1.json",
+      "sha256": "70f1bde76487dddbbbe3631da9e5a451c0f79d6e9e4010c528d323149630df18"
+    },
+    {
+      "role": "predictions_jsonl",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\text_baseline_v2\\external_pilot_v1\\external_pilot_predictions_v1.jsonl",
+      "sha256": "389edfebfe1caa7ca021e26cd32ca2cbba85bf815ac4c8f54e794fe38405ed3c",
+      "record_count": 21
+    },
+    {
+      "role": "report_markdown",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\text_baseline_v2\\external_pilot_v1\\external_pilot_report_v1.md",
+      "sha256": "3a44d3aeea3cf59f1b675a39b75056709fb65e8d472c01821f5ecf929b385421"
+    }
+  ],
+  "metrics": {
+    "row_count": 21,
+    "accuracy": 0.619048,
+    "balanced_accuracy": 0.627273,
+    "macro_f1": 0.611111,
+    "roc_auc": 0.545455,
+    "average_precision": 0.558249,
+    "confusion_matrix": {
+      "tn": 5,
+      "fp": 6,
+      "fn": 2,
+      "tp": 8
+    },
+    "bootstrap_95_percent_macro_f1": [
+      0.375286,
+      0.805556
+    ]
+  },
+  "decision": {
+    "model_configuration_changed": false,
+    "threshold_changed": false,
+    "use_pilot_for_tuning": false,
+    "promote_for_deployment": false,
+    "reason": "The small pilot shows weak ranking and six false positives on legitimate sites; wide bootstrap intervals and class/source confounding prohibit a robustness or deployment claim.",
+    "next_action": "Perform frozen diagnostic error analysis and expand to an independently second-reviewed, multi-source benchmark; do not tune directly on these 21 cases."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "domain_access_allowed": false,
+    "labels_created": 0,
+    "model_fit_operations": 0,
+    "threshold_changes": 0,
+    "vectorizer_changes": 0,
+    "training_allowed": false,
+    "deployment_allowed": false
+  }
+}

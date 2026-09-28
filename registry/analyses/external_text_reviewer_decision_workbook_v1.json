@@ -1,0 +1,118 @@
+{
+  "analysis_id": "EXTERNAL_TEXT_REVIEWER_DECISION_WORKBOOK_V1",
+  "created_at": "2026-09-24",
+  "status": "TWENTY_ONE_PENDING_HUMAN_REVIEWS_ZERO_DECISIONS_ZERO_ELIGIBLE",
+  "source_id": "mendeley_investment_deceptive_2026",
+  "source_version": "2",
+  "target_model_id": "ISI_TEXT_BASELINE_V2",
+  "purpose": "Freeze a controlled reviewer-decision layer for all 21 external-text drafts while keeping every human field blank and every downstream gate closed.",
+  "inputs": {
+    "confirmed_reconciliation_registry": {
+      "path": "registry/analyses/external_text_confirmed_reconciliation_packet_v1.json",
+      "sha256": "1f7732bb97881f3e8c8313f6c690ffd63f96670abe5ddac6aa1a50749cf80975"
+    },
+    "legitimate_reconciliation_registry": {
+      "path": "registry/analyses/external_text_legitimate_reconciliation_packet_v1.json",
+      "sha256": "00842a982360f3356c7fa1998ed27a75fc543d9ecb5954ecaa338a44efaab62f"
+    }
+  },
+  "implementation": [
+    {
+      "role": "review_decision_module",
+      "path": "src/isi/curation/external_text_reviewer_decisions.py",
+      "sha256": "b6b945236e1e63b516d885f3e34b90fa735f2cc3edf6191f6ae5fb200b722de0"
+    },
+    {
+      "role": "workbook_builder",
+      "path": "scripts/build_external_text_reviewer_decision_workbook.py",
+      "sha256": "e363b5bea5c615033b9f42b6218655d45f899c34827bdd3c1d9ce755d7b0efa3"
+    },
+    {
+      "role": "decision_recorder",
+      "path": "scripts/record_external_text_reviewer_decision.py",
+      "sha256": "06e865e5f9b596a973e99bc77e881e991b10a0e7e557151f9567cfc13dc15514"
+    },
+    {
+      "role": "workbook_verifier",
+      "path": "scripts/verify_external_text_reviewer_decision_workbook.py",
+      "sha256": "e3803b93b62bb5080c69186b58d29295aec400d5fdf7540f9f777ed985c1eaba"
+    },
+    {
+      "role": "unit_tests",
+      "path": "tests/test_external_text_reviewer_decisions.py",
+      "sha256": "aa6485454b5d52fa50874d1b4da919db342b46824bf33d7e0cfa297a8d8ed65d"
+    },
+    {
+      "role": "method_documentation",
+      "path": "docs/external-text-reviewer-decision-workbook-v1.md",
+      "sha256": "10e6281ca78c4f496a2f22b7b55e0dad06c07be865bb6f26d197022085d6a32e"
+    }
+  ],
+  "outputs": [
+    {
+      "role": "reviewer_workbook_json",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_intake_v1\\reviewer_decision_workbook_v1\\reviewer_decision_workbook_v1.json",
+      "sha256": "2a6338459f3fdeced3ea9cc81612cea53d13116eccac9d4ca5d549acc1398c5d",
+      "record_count": 21
+    },
+    {
+      "role": "reviewer_workbook_markdown",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_intake_v1\\reviewer_decision_workbook_v1\\reviewer_decision_workbook_v1.md",
+      "sha256": "14356d228fbd1fa35c0545174d850c37e8bf651c708e7b48291abdf8a65e50c4"
+    }
+  ],
+  "review_policy": {
+    "confirmed_allowed_decisions": [
+      "CONFIRMED",
+      "UNCERTAIN"
+    ],
+    "legitimate_allowed_decisions": [
+      "LEGITIMATE",
+      "UNCERTAIN"
+    ],
+    "explicit_human_confirmation_required": true,
+    "all_branch_checks_required": true,
+    "target_decision_with_unresolved_contradiction_allowed": false,
+    "target_decision_requires_high_confidence_for_materialization": true,
+    "decision_recording_directly_modifies_intake": false
+  },
+  "coverage": {
+    "record_count": 21,
+    "confirmed_branch_count": 10,
+    "legitimate_branch_count": 11,
+    "priority_counts": {
+      "P1_CONFIRMED_LOCAL_WARNING_IDENTITY_VISIBLE": 2,
+      "P2_CONFIRMED_MANUAL_WARNING_FOLLOW_UP": 8,
+      "P3_LEGITIMATE_HIGH_ALIGNMENT": 6,
+      "P4_LEGITIMATE_EXTRA_IDENTITY_REVIEW": 5
+    },
+    "pending_review_count": 21,
+    "completed_review_count": 0,
+    "ready_for_reconciled_intake_count": 0,
+    "labels_created": 0,
+    "external_evaluation_eligible_count": 0
+  },
+  "manual_follow_up": {
+    "deferred_by_user": true,
+    "confirmed_warning_follow_up_count": 8,
+    "legitimate_site_control_follow_up_count": 11,
+    "instruction": "Use the workbook and validated recorder only after completing the branch-specific manual evidence checks."
+  },
+  "decision": {
+    "record_human_decisions_now": false,
+    "materialize_reconciled_intake": false,
+    "open_external_scoring": false,
+    "next_action": "Keep the blank workbook frozen until manual review is resumed; meanwhile continue acquisition or another non-decisional project branch without treating these drafts as labels."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "candidate_domain_access_operations": 0,
+    "domain_access_allowed": false,
+    "source_intake_files_modified": false,
+    "labels_created": 0,
+    "model_scoring_operations": 0,
+    "model_fit_operations": 0,
+    "training_allowed": false,
+    "deployment_allowed": false
+  }
+}

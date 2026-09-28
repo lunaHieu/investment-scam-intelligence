@@ -1,0 +1,101 @@
+{
+  "analysis_id": "EXTERNAL_TEXT_AI_MANUAL_ADJUDICATION_V1",
+  "created_at": "2026-09-24",
+  "status": "TWENTY_ONE_AI_REVIEWS_COMPLETE_HUMAN_CONFIRMATION_PENDING_ZERO_ELIGIBLE",
+  "source_id": "mendeley_investment_deceptive_2026",
+  "target_model_id": "ISI_TEXT_BASELINE_V2",
+  "purpose": "Freeze the authorized AI manual assessment of all 21 external-text review cases without representing it as human confirmation or creating labels.",
+  "inputs": {
+    "reviewer_workbook_registry": {
+      "path": "registry/analyses/external_text_reviewer_decision_workbook_v1.json",
+      "sha256": "429af69ac91aa1e4dbb64769826fe016925e648cf1e0161da38619cfb87078cf"
+    },
+    "confirmed_reconciliation_registry": {
+      "path": "registry/analyses/external_text_confirmed_reconciliation_packet_v1.json",
+      "sha256": "1f7732bb97881f3e8c8313f6c690ffd63f96670abe5ddac6aa1a50749cf80975"
+    },
+    "legitimate_reconciliation_registry": {
+      "path": "registry/analyses/external_text_legitimate_reconciliation_packet_v1.json",
+      "sha256": "00842a982360f3356c7fa1998ed27a75fc543d9ecb5954ecaa338a44efaab62f"
+    },
+    "ai_review_specification": {
+      "path": "configs/external_text_ai_manual_adjudication_v1.json",
+      "sha256": "5e26c61633f83df976307ffeb95b5bbcb7b381927fe3d795e1f658ed33fc9595"
+    }
+  },
+  "implementation": [
+    {
+      "role": "ai_adjudication_module",
+      "path": "src/isi/curation/external_text_ai_adjudication.py",
+      "sha256": "5cad65df8c472a5d05c9110ad5253149e7d096d1ba24b4abc67a40e81c7aaf91"
+    },
+    {
+      "role": "artifact_builder",
+      "path": "scripts/build_external_text_ai_manual_adjudication.py",
+      "sha256": "fd669ba6c22a2a79507e9f00445cabf8bdec6a501fbb23dc69fa9197b0867298"
+    },
+    {
+      "role": "artifact_verifier",
+      "path": "scripts/verify_external_text_ai_manual_adjudication.py",
+      "sha256": "51ad04b35b9161614563535dd6729c7e1530d560495d1e63c74831d29108cc47"
+    },
+    {
+      "role": "unit_tests",
+      "path": "tests/test_external_text_ai_adjudication.py",
+      "sha256": "2aa259231f57617d0a1c09bd51da24cfa452dbec250d039f13ce3903a8335bb7"
+    },
+    {
+      "role": "method_documentation",
+      "path": "docs/external-text-ai-manual-adjudication-v1.md",
+      "sha256": "6b9a991b931bed8a41a627be50add6ea332ce428069d7bf6c2b19521e84c92bc"
+    }
+  ],
+  "outputs": [
+    {
+      "role": "ai_adjudication_json",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_intake_v1\\ai_manual_adjudication_v1\\ai_manual_adjudication_v1.json",
+      "sha256": "83becfda0776707b3f5b2ce2a23611e423b399a07d3d5d0881116e093d0e8dd0",
+      "record_count": 21
+    },
+    {
+      "role": "ai_adjudication_markdown",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_intake_v1\\ai_manual_adjudication_v1\\ai_manual_adjudication_v1.md",
+      "sha256": "142016c5ba03e9d68cf1ceee6782f6ab4aa7bee1c838f847e75c50b7b6878dd0"
+    }
+  ],
+  "review_result": {
+    "ai_review_completed_count": 21,
+    "confirmed_recommendation_count": 10,
+    "legitimate_recommendation_count": 11,
+    "high_confidence_recommendation_count": 21,
+    "hard_contradiction_count": 0,
+    "ready_for_human_adoption_count": 21,
+    "human_confirmation_count": 0,
+    "labels_created": 0,
+    "external_evaluation_eligible_count": 0
+  },
+  "evidence_policy": {
+    "confirmed_cases_use_official_regulator_reference": true,
+    "legitimate_cases_use_frozen_sec_iapd_record_and_capture": true,
+    "sec_registration_is_identity_evidence_not_endorsement": true,
+    "candidate_live_domains_opened": false,
+    "warning_text_used_as_model_input": false
+  },
+  "decision": {
+    "ai_manual_review_complete": true,
+    "record_human_confirmation_now": false,
+    "materialize_reconciled_intake": false,
+    "open_external_scoring": false,
+    "next_action": "If the responsible human adopts the AI recommendations, record that adoption explicitly and then materialize a separate reconciled intake; do not silently convert this artifact into labels."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "domain_access_allowed": false,
+    "source_intake_files_modified": false,
+    "labels_created": 0,
+    "model_scoring_operations": 0,
+    "model_fit_operations": 0,
+    "training_allowed": false,
+    "deployment_allowed": false
+  }
+}

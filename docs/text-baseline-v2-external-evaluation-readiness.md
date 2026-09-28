@@ -13,9 +13,12 @@ Chưa được phép chạy external evaluation. Hiện có **0 mẫu text exter
 | Crimson raw | 43.572 URL/network/IOC records | 0 | Không áp dụng | Không |
 | Crimson review workbook | 100 candidate domains | 0 | 0; toàn bộ `UNREVIEWED` | Không |
 | UBCKNN pilot | 5 warning documents | 0 | 5 case đều `UNCERTAIN` | Không |
-| DFPI | Chỉ có template | 0 | 0 | Không |
-| SEC IAPD | Chưa có raw reference | Không phải content source | 0 | Không |
-| IOSCO I-SCAN | Chưa có export | 0 | 0 | Không |
+| DFPI | Chỉ có template; raw 0 file | 0 | 0 | Không |
+| SEC IAPD | 23.927 firm reference đã xác minh | Không phải content source | 0 | Không |
+| IOSCO I-SCAN | 47.001 warning reference đã xác minh | 0 | 0 | Không |
+| Capture candidate queue V1 | 15 warning + 15 legitimate candidate | Queue, chưa phải artifact | 0; toàn bộ `UNCERTAIN` | Không |
+| SEC legitimate capture pilots | 11 raw HTML (2 chính + 9 reserve) | 11 website snapshot đã trích text | 0; toàn bộ `UNCERTAIN + IN_REVIEW` | Không |
+| SEC reserve queue V1 | 30 legitimate reserve candidate | 9/10 ứng viên đầu đã capture | 0; 9 AI first-pass recommendation, chưa có human confirmation | Không |
 
 Crimson raw chỉ có các trường `url`, `isp`, `ioc`, `query`, `countryCode`, `region`, `eth` và `btc`. Nó không chứa page text, HTML hay OCR. Workbook Crimson vẫn có 100/100 dòng `UNREVIEWED`; các trường ground truth, evidence URL và rationale đều trống.
 
@@ -40,11 +43,11 @@ Pilot chỉ được báo metric khi có tối thiểu 20 mẫu: ít nhất 10 `
 
 ## Những việc đang chờ thao tác thủ công
 
-1. Tải hợp lệ DFPI export/raw nếu tài khoản/trình duyệt của bạn truy cập được.
-2. Tải SEC IAPD/Form ADV snapshot chính thức để làm evidence tham chiếu entity hợp pháp.
-3. Tải IOSCO I-SCAN CSV export nếu dùng nguồn này.
-4. Review Crimson bằng evidence độc lập. Không để pipeline tự mở candidate URL.
-5. Thu thập chính nội dung post/message/website snapshot có provenance; URL hoặc warning page một mình chưa đủ.
+1. Review official reference trong capture candidate queue; warning không phải label.
+2. Thu thập chính nội dung post/message/website snapshot có provenance; URL hoặc warning page một mình chưa đủ.
+3. Với nhánh cảnh báo, ưu tiên historical/regulator-preserved artifact, không tự mở live suspicious domain.
+4. Với nhánh hợp pháp, xác minh identity và exact registered host trước controlled capture.
+5. Tải DFPI export/raw sau nếu trình duyệt cung cấp first-party export; không vượt Cloudflare.
 
 Sau khi có tệp, lưu bản gốc vào `D:\nckh 2026-2027\ISI_Data\raw\<source_id>\<date>\` và báo đường dẫn. Pipeline sẽ hash, kiểm tra cấu trúc, giữ nguyên provenance rồi chạy lại gate.
 
@@ -63,3 +66,27 @@ Chạy verifier:
 ```
 
 Audit hoàn toàn offline: không mở domain, không sửa workbook, không tạo nhãn, không fit hoặc score model.
+
+## Cổng intake được bổ sung ngày 2026-09-23
+
+Đã thêm template trống
+`registry/pilots/external_text_evaluation_intake_template.json` và validator
+`scripts/validate_external_text_intake.py`. Validator kiểm tra file capture và
+SHA-256, exact text hash, evidence, human review status, case/campaign group,
+near-duplicate group và ngưỡng 10 `CONFIRMED` + 10 `LEGITIMATE`. Nó không mở
+URL hoặc tự tạo nhãn.
+
+Sau snapshot ban đầu, SEC IAPD và IOSCO đã được tải, xác minh và lập reference
+index. Tiếp đó hệ thống tạo hàng đợi dự phòng 30 ứng viên tại
+`registry/pilots/external_text_capture_candidate_queue_v1.json`. Hai nguồn này
+vẫn chỉ là evidence/reference, nên external text đủ điều kiện vẫn là 0. Hướng
+dẫn thao tác nằm tại `docs/external-text-intake-workflow.md`; scoring tiếp tục bị
+chặn cho đến khi intake thực tế vượt toàn bộ gate.
+
+Ngày 2026-09-24, 30 SEC reserve candidate có độ khớp identity cao hơn được tạo
+thêm và mười ứng viên đầu đã được thử capture. Chín raw HTML mới pass hash/schema;
+cộng với hai capture chính, nhánh legitimate hiện có 11 artifact đã trích text.
+Cả chín reserve record đều được first pass đề xuất `SAME_ENTITY_LIKELY`, nhưng
+đây không phải nhãn: human-confirmed vẫn là 0 và eligible legitimate vẫn là 0.
+Nhánh `CONFIRMED` chưa có observed solicitation artifact, nên external scoring
+tiếp tục bị chặn.

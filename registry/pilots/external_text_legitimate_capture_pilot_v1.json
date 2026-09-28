@@ -1,0 +1,124 @@
+{
+  "pilot_id": "EXTERNAL_TEXT_LEGIT_CAPTURE_PILOT_V1",
+  "created_at": "2026-09-24",
+  "status": "TWO_CAPTURES_IN_REVIEW_ZERO_ELIGIBLE_RECORDS",
+  "source_id": "sec_iapd_homepage_capture_2026_09_24",
+  "purpose": "Exercise the raw-capture, text-extraction, provenance, and intake-validation path on SEC/IAPD-linked hosts without creating legitimate labels.",
+  "inputs": {
+    "capture_candidate_queue_registry": "registry/pilots/external_text_capture_candidate_queue_v1.json",
+    "capture_candidate_queue_sha256": "ae843f5723d66e7e996300424c5f11663fb513bbb94a52ad282de38d52fa1b29",
+    "sec_reference_feed_sha256": "262b2151a6d6289119a104fd03ea6fbc9d44c38c7f4c52584865244777f65366",
+    "normalizer": {
+      "path": "src/isi/normalization/external_text.py",
+      "sha256": "5b5b283ad83f234a9f52d3f426e254845b25e18cdb98ab1cb3d649b62db9fe38"
+    },
+    "preparation_script": {
+      "path": "scripts/prepare_external_text_capture_intake.py",
+      "sha256": "1c434d25ac7f2ceb047b50e7b69211c0a76e56c00cd27b9c55c443d607e5800c"
+    },
+    "capture_script": {
+      "path": "scripts/capture_sec_candidate_homepages.ps1",
+      "sha256": "4a2dc36fb4ffba4ab59501d495e5f2b377fd13eaa20e9d0317e3f820ca05c2be"
+    }
+  },
+  "acquisition": {
+    "attempted_candidate_count": 15,
+    "successful_capture_count": 2,
+    "unsuccessful_candidate_count": 13,
+    "retryable_environment_failure_count": 10,
+    "retry_policy": "The ten uniform DNS-resolution failures from EXTCAP_LEGIT_006 through EXTCAP_LEGIT_015 are environment failures, not evidence that the sites are inactive. Preserve them for a later retry.",
+    "unsuccessful_candidates": [
+      {
+        "candidate_id": "EXTCAP_LEGIT_001",
+        "host": "edmpinc.org",
+        "reason": "TLS connection could not be established"
+      },
+      {
+        "candidate_id": "EXTCAP_LEGIT_002",
+        "host": "maltesecap.com",
+        "reason": "request timed out"
+      },
+      {
+        "candidate_id": "EXTCAP_LEGIT_003",
+        "host": "compassfinancialservicesgroup.com",
+        "reason": "HTTP 403"
+      }
+    ],
+    "raw_captures": [
+      {
+        "candidate_id": "EXTCAP_LEGIT_004",
+        "source_record_id": "162012",
+        "path": "D:\\nckh 2026-2027\\ISI_Data\\raw\\external_text_captures\\2026-09-24\\legitimate\\EXTCAP_LEGIT_004__greenlealane.com.html",
+        "sha256": "146a77257994b2f0c8a8dbcfe4c7f6d84fadb30f11a9f083210db3cc384d9e98",
+        "bytes": 387350,
+        "manifest": "registry/manifests/sec_iapd_homepage_capture__greenlea_lane__2026-09-24.json"
+      },
+      {
+        "candidate_id": "EXTCAP_LEGIT_005",
+        "source_record_id": "164832",
+        "path": "D:\\nckh 2026-2027\\ISI_Data\\raw\\external_text_captures\\2026-09-24\\legitimate\\EXTCAP_LEGIT_005__paragonfinancial.com.html",
+        "sha256": "c36bbbb19f8a319061b9961c9a076e9685b5af5730d9183d2f1b7aa806627a85",
+        "bytes": 78143,
+        "manifest": "registry/manifests/sec_iapd_homepage_capture__paragon_financial__2026-09-24.json"
+      }
+    ]
+  },
+  "normalization": {
+    "method": "HTMLParser visible text; exclude script/style/noscript/svg/template; collapse whitespace; collapse exact repeated text nodes of at least 40 characters",
+    "raw_html_modified": false,
+    "identity_check": "Lexical first pass only",
+    "identity_full_token_match_count": 2,
+    "human_identity_reconciliation_required": true
+  },
+  "outputs": [
+    {
+      "role": "intake_draft_v2",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_intake_v1\\legitimate_capture_pilot_v1\\intake_draft_v2.json",
+      "sha256": "26ee0514fd74d7067490287e6f704da124717f08e73bbd4d17293c07dbde29b8",
+      "record_count": 2
+    },
+    {
+      "role": "preparation_report_v2",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_intake_v1\\legitimate_capture_pilot_v1\\preparation_report_v2.json",
+      "sha256": "370915314e60e306a2a8a534a5093d07edc1572271e3053eb2d6886062368a1e"
+    },
+      {
+        "role": "validation_report_v2",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_intake_v1\\legitimate_capture_pilot_v1\\validation_report_v2.json",
+      "sha256": "ae65ff5690b4ec667186dfe51da5f76f87b9d4943c1d2f7db3285eb9aecb731c"
+    },
+    {
+      "role": "capture_run_006_015_v1",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_intake_v1\\legitimate_capture_pilot_v1\\capture_run_006_015_v1.json",
+      "sha256": "64a5948d6ef4636e0333aac2a8158c9fa3d0a23ce5df23d7a5a2a0b2006bf5bb"
+    }
+  ],
+  "readiness": {
+    "captured_record_count": 2,
+    "structural_error_count": 0,
+    "capture_hash_valid_count": 2,
+    "human_reconciled_count": 0,
+    "eligible_legitimate_count": 0,
+    "eligible_confirmed_count": 0,
+    "reporting_allowed": false
+  },
+  "review_state": {
+    "ai_assisted_first_pass_registry": "registry/analyses/external_text_legitimate_ai_assisted_first_pass_v1.json",
+    "same_entity_likely_recommendations": 2,
+    "legitimate_recommendations_for_human_review": 2,
+    "human_confirmed_record_count": 0,
+    "intake_state_changed": false
+  },
+  "safety_contract": {
+    "recorded_http_request_operations": 17,
+    "additional_browser_probe_attempts": 3,
+    "live_suspicious_domain_access_operations": 0,
+    "raw_files_created": 2,
+    "raw_files_modified_after_capture": false,
+    "labels_created": 0,
+    "model_scoring_operations": 0,
+    "model_fit_operations": 0,
+    "training_allowed": false,
+    "deployment_allowed": false
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "analysis_id": "EXTERNAL_TEXT_CONFIRMED_RECONCILIATION_PACKET_V1",
+  "created_at": "2026-09-24",
+  "status": "SECOND_PASS_COMPLETE_HUMAN_DECISION_REQUIRED_ZERO_ELIGIBLE",
+  "source_id": "iosco_i_scan",
+  "purpose": "Freeze and verify a reproducible second-pass contradiction and claim review for ten confirmed-candidate drafts without creating labels or changing intake state.",
+  "inputs": {
+    "pilot_registry": {
+      "path": "registry/pilots/external_text_confirmed_capture_pilot_v1.json",
+      "sha256": "ca97535f93428204ec3f1ea468b39f502c8d9c45bc03cfd1af488b6b750bf0e9"
+    },
+    "review_index": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_intake_v1\\confirmed_review_index_v1.json",
+      "sha256": "3420f51927f6411efddc1d591d4a9efd320018c07e12e282f1ff36817f3e1ab8"
+    }
+  },
+  "implementation": [
+    {
+      "role": "reconciliation_module",
+      "path": "src/isi/curation/confirmed_reconciliation_review.py",
+      "sha256": "56b45e5e0ebf9f95946166560af6a6379d7daf20a626896b23a0b3abae558c5d"
+    },
+    {
+      "role": "packet_builder",
+      "path": "scripts/prepare_confirmed_reconciliation_packet.py",
+      "sha256": "9883f5365b83b25ecf72027375fa2ec7efd38d6cc6625dc516b20fb75901669b"
+    },
+    {
+      "role": "packet_verifier",
+      "path": "scripts/verify_external_text_confirmed_reconciliation_packet.py",
+      "sha256": "de8e64e45c0c409fed704ba7183f9f3e7d0ecb14a5987164cace6dd6fe38b9fb"
+    },
+    {
+      "role": "unit_tests",
+      "path": "tests/test_confirmed_reconciliation_review.py",
+      "sha256": "bab534c7f90b0da600ecf19f941567bea2b05fbf1c52d64f5235a97c7d5d8e05"
+    },
+    {
+      "role": "method_documentation",
+      "path": "docs/external-text-confirmed-reconciliation-packet-v1.md",
+      "sha256": "7ba3f4bd66ceb51235d4f5d29659dad363d367799270f93104b850ebb9ff4aae"
+    }
+  ],
+  "outputs": [
+    {
+      "role": "decision_packet_json",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_intake_v1\\confirmed_reconciliation_packet_v1\\decision_packet_v1.json",
+      "sha256": "bdd24c28bf931ecf420303c0b51356f67c06d339fa64fc8fe3de005ad7349f7c",
+      "record_count": 10
+    },
+    {
+      "role": "decision_packet_markdown",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_intake_v1\\confirmed_reconciliation_packet_v1\\decision_packet_v1.md",
+      "sha256": "ed5a452701dc61f02a73468ca201f3a1bbc254bb1db7ad9bd12f5a673b1e26cd"
+    }
+  ],
+  "method": {
+    "source_scope": "Frozen local intake text, raw captures, first-pass metadata, and official-warning reference metadata only.",
+    "automatic_gates": [
+      "frozen draft state",
+      "raw capture hash",
+      "normalized text hash",
+      "archive replay host",
+      "candidate identity token match",
+      "snapshot/reference temporal order",
+      "official warning reference presence",
+      "preserved-text solicitation support"
+    ],
+    "caution_policy": "Self-claims, absent local warning visibility, missing warning category codes, long temporal gaps, and missing detected risk disclosures are recorded for human review but are not silently converted into hard contradictions or labels."
+  },
+  "coverage": {
+    "record_count": 10,
+    "raw_capture_hash_valid_count": 10,
+    "normalized_text_hash_valid_count": 10,
+    "all_automatic_gates_pass_count": 10,
+    "hard_contradiction_case_count": 0,
+    "confirmed_proposal_for_human_review_count": 10,
+    "local_warning_identity_visible_count": 2,
+    "manual_warning_follow_up_count": 8,
+    "human_decision_count": 0,
+    "external_evaluation_eligible_count": 0,
+    "labels_created": 0
+  },
+  "evidence_profile": {
+    "unregistered_or_unlicensed_warning_count": 5,
+    "impersonation_or_clone_warning_count": 3,
+    "fraud_or_misconduct_warning_count": 2,
+    "candidate_page_self_claims_are_independent_evidence": false,
+    "warning_text_used_as_model_input": false
+  },
+  "manual_follow_up": {
+    "case_ids": [
+      "CASE_CONF_001",
+      "CASE_CONF_005",
+      "CASE_RESERVE2_CONF_004",
+      "CASE_RESERVE2_CONF_005",
+      "CASE_RESERVE2_CONF_008",
+      "CASE_RESERVE2_CONF_012",
+      "CASE_RESERVE2_CONF_035",
+      "CASE_RESERVE_CONF_036"
+    ],
+    "reason": "Seven official pages were not locally captured; the MoneySmart capture for CASE_RESERVE_CONF_036 is an application shell without visible candidate identity.",
+    "deferred_by_user": true
+  },
+  "decision": {
+    "promote_to_confirmed_label": false,
+    "change_intake_record_state": false,
+    "open_external_scoring": false,
+    "next_action": "Run the same second-pass decision-packet process on the eleven legitimate drafts, then return to the deferred official-warning browser checks before creating any reconciled intake."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "candidate_domain_access_operations": 0,
+    "domain_access_allowed": false,
+    "warning_text_used_as_model_input": false,
+    "labels_created": 0,
+    "model_scoring_operations": 0,
+    "model_fit_operations": 0,
+    "raw_files_modified": false,
+    "intake_files_modified": false,
+    "training_allowed": false,
+    "deployment_allowed": false
+  }
+}

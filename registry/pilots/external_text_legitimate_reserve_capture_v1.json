@@ -1,0 +1,186 @@
+{
+  "pilot_id": "EXTERNAL_TEXT_LEGITIMATE_RESERVE_CAPTURE_V1",
+  "created_at": "2026-09-24",
+  "status": "NINE_RESERVE_CAPTURES_IN_REVIEW_ZERO_ELIGIBLE_RECORDS",
+  "source_id": "sec_iapd_homepage_capture_2026_09_24",
+  "purpose": "Recover from an application-resolver failure, capture a bounded SEC/IAPD reserve batch, and prepare provenance-preserving external-text review records without creating labels.",
+  "inputs": {
+    "reserve_queue_registry": "registry/pilots/sec_legitimate_capture_reserve_v1.json",
+    "reserve_queue_sha256": "3a6f905be34330c8b541eee21c1c5d08ee6adb3a187b585a059eccafd315edd2",
+    "sec_reference_feed_sha256": "262b2151a6d6289119a104fd03ea6fbc9d44c38c7f4c52584865244777f65366",
+    "normalizer": {
+      "path": "src/isi/normalization/external_text.py",
+      "sha256": "5b5b283ad83f234a9f52d3f426e254845b25e18cdb98ab1cb3d649b62db9fe38"
+    },
+    "capture_script": {
+      "path": "scripts/capture_sec_reserve_homepages_v2.ps1",
+      "sha256": "f9aefbc4e1e72427ccdd655739e031e68b8ce99e5fed5ade51ba583613c013c4"
+    },
+    "preparation_script": {
+      "path": "scripts/prepare_external_text_reserve_intake.py",
+      "sha256": "dfaa898a131a10cfc648910f7bd59818da7f6b374af9efc5317cee38e334f369"
+    },
+    "first_pass_script": {
+      "path": "scripts/prepare_external_text_legitimate_first_pass.py",
+      "sha256": "1396a7f5b694f23208752e72f0a6eb9a5aab85eda307ab1067f640ebaf77b6b6"
+    }
+  },
+  "acquisition": {
+    "selected_candidate_count": 10,
+    "initial_application_resolver_attempt_count": 10,
+    "initial_application_resolver_failure_count": 10,
+    "resolver_pinned_candidate_count": 10,
+    "successful_capture_count": 9,
+    "http_status_rejection_count": 1,
+    "recorded_http_request_operations": 24,
+    "diagnosis": "Resolve-DnsName returned A records while both Invoke-WebRequest and ordinary curl reported host-resolution failure. V2 pinned the regulator-filed hostname to a freshly resolved A record and manually allowed only HTTPS redirects to the same host or its www variant.",
+    "unsuccessful_candidates": [
+      {
+        "candidate_id": "EXTCAP_RESERVE_LEGIT_009",
+        "host": "woodleyfarra.com",
+        "reason": "HTTP 403; no bypass attempted"
+      }
+    ],
+    "raw_captures": [
+      {
+        "candidate_id": "EXTCAP_RESERVE_LEGIT_001",
+        "source_record_id": "2993",
+        "path": "D:\\nckh 2026-2027\\ISI_Data\\raw\\external_text_captures\\2026-09-24\\legitimate\\EXTCAP_RESERVE_LEGIT_001__hmpayson.com.html",
+        "sha256": "879c28895b1c952b218cdb6680781de59056d9211da1a7ffdb2429e832c8c611",
+        "bytes": 29408,
+        "manifest": "registry/manifests/sec_iapd_homepage_capture__h_m_payson__2026-09-24.json"
+      },
+      {
+        "candidate_id": "EXTCAP_RESERVE_LEGIT_002",
+        "source_record_id": "105087",
+        "path": "D:\\nckh 2026-2027\\ISI_Data\\raw\\external_text_captures\\2026-09-24\\legitimate\\EXTCAP_RESERVE_LEGIT_002__bristolgroupinc.com.html",
+        "sha256": "c34d730370a2d329a2ac4e9a50d68e9aeabb36503ff91d8b45ac552a86990789",
+        "bytes": 115680,
+        "manifest": "registry/manifests/sec_iapd_homepage_capture__bristol_group__2026-09-24.json"
+      },
+      {
+        "candidate_id": "EXTCAP_RESERVE_LEGIT_003",
+        "source_record_id": "105254",
+        "path": "D:\\nckh 2026-2027\\ISI_Data\\raw\\external_text_captures\\2026-09-24\\legitimate\\EXTCAP_RESERVE_LEGIT_003__nefpg.com.html",
+        "sha256": "1f46557a477bd8e5b7ba024b0370275ae956a082a357c8b9d8628e67c43a90e1",
+        "bytes": 63549,
+        "manifest": "registry/manifests/sec_iapd_homepage_capture__nefpg__2026-09-24.json"
+      },
+      {
+        "candidate_id": "EXTCAP_RESERVE_LEGIT_004",
+        "source_record_id": "108293",
+        "path": "D:\\nckh 2026-2027\\ISI_Data\\raw\\external_text_captures\\2026-09-24\\legitimate\\EXTCAP_RESERVE_LEGIT_004__hinsdaleassociates.com.html",
+        "sha256": "6217617bf3a47400f48b5fcd64c3c77be7d2ec208b86faff62b31c3d411e3920",
+        "bytes": 59118,
+        "manifest": "registry/manifests/sec_iapd_homepage_capture__hinsdale_associates__2026-09-24.json"
+      },
+      {
+        "candidate_id": "EXTCAP_RESERVE_LEGIT_005",
+        "source_record_id": "110867",
+        "path": "D:\\nckh 2026-2027\\ISI_Data\\raw\\external_text_captures\\2026-09-24\\legitimate\\EXTCAP_RESERVE_LEGIT_005__orioninvestmentco.com.html",
+        "sha256": "2c675687c25e332417b0114fe69971d9f73dbec21d2ddfed0639f7edcb012f06",
+        "bytes": 3502,
+        "manifest": "registry/manifests/sec_iapd_homepage_capture__orion_investment__2026-09-24.json"
+      },
+      {
+        "candidate_id": "EXTCAP_RESERVE_LEGIT_006",
+        "source_record_id": "105364",
+        "path": "D:\\nckh 2026-2027\\ISI_Data\\raw\\external_text_captures\\2026-09-24\\legitimate\\EXTCAP_RESERVE_LEGIT_006__certifiedplannersinc.com.html",
+        "sha256": "21f88daae259d26af681eca9d608965ab8bcbd2eb3774bc168989a364afc4f8b",
+        "bytes": 34597,
+        "manifest": "registry/manifests/sec_iapd_homepage_capture__certified_planners__2026-09-24.json"
+      },
+      {
+        "candidate_id": "EXTCAP_RESERVE_LEGIT_007",
+        "source_record_id": "107128",
+        "path": "D:\\nckh 2026-2027\\ISI_Data\\raw\\external_text_captures\\2026-09-24\\legitimate\\EXTCAP_RESERVE_LEGIT_007__hamelassociatesinc.com.html",
+        "sha256": "887e3959ed00e398b8e0eb10aa42692826e2adb2ee557f16270ed587b031074c",
+        "bytes": 129787,
+        "manifest": "registry/manifests/sec_iapd_homepage_capture__hamel_associates__2026-09-24.json"
+      },
+      {
+        "candidate_id": "EXTCAP_RESERVE_LEGIT_008",
+        "source_record_id": "106255",
+        "path": "D:\\nckh 2026-2027\\ISI_Data\\raw\\external_text_captures\\2026-09-24\\legitimate\\EXTCAP_RESERVE_LEGIT_008__financiallyspeakinginc.com.html",
+        "sha256": "e2abacb4e68603a49a3fe46b0cffe021e20cdf54d24e0147ad72cbb705a02e77",
+        "bytes": 111290,
+        "manifest": "registry/manifests/sec_iapd_homepage_capture__financially_speaking__2026-09-24.json"
+      },
+      {
+        "candidate_id": "EXTCAP_RESERVE_LEGIT_010",
+        "source_record_id": "106135",
+        "path": "D:\\nckh 2026-2027\\ISI_Data\\raw\\external_text_captures\\2026-09-24\\legitimate\\EXTCAP_RESERVE_LEGIT_010__portfoliomanagementtechnology.com.html",
+        "sha256": "fd270aeaad70724a2e96aec0d9f35feb8f5dd82dfc6a99ce02e5e91c289786b9",
+        "bytes": 19583,
+        "manifest": "registry/manifests/sec_iapd_homepage_capture__portfolio_management_technology__2026-09-24.json"
+      }
+    ]
+  },
+  "outputs": [
+    {
+      "role": "initial_resolver_failure_report",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_intake_v1\\legitimate_capture_pilot_v1\\capture_run_reserve_001_010_v1.json",
+      "sha256": "5f1cf3b31f8c07beba3a8d45fa8b682006ac18eac3db8a5fb3c737f7fb7dc75f"
+    },
+    {
+      "role": "resolver_pinned_probe_report",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_intake_v1\\legitimate_capture_pilot_v1\\capture_run_reserve_001_v2_probe.json",
+      "sha256": "63b992666f41ce2491a009b0a88f0e97daaeb96e8ef50f1e123ae0018b5348a7"
+    },
+    {
+      "role": "resolver_pinned_batch_report",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_intake_v1\\legitimate_capture_pilot_v1\\capture_run_reserve_002_010_v2.json",
+      "sha256": "aa020b788429cca6e7ff5903f338a33beed751de80affaea3bcee6a5bc4e9d1d"
+    },
+    {
+      "role": "intake_draft_v1",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_intake_v1\\legitimate_reserve_capture_v1\\intake_draft_v1.json",
+      "sha256": "471c95de3dba2bbbfec8dcc199401890a70a92dc0e718f6a60691ceed5e40e73",
+      "record_count": 9
+    },
+    {
+      "role": "preparation_report_v1",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_intake_v1\\legitimate_reserve_capture_v1\\preparation_report_v1.json",
+      "sha256": "da68f56267834295f6f314614d2991de2ac5e6540b96fea0f26d6c3add54878c"
+    },
+    {
+      "role": "validation_report_v1",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_intake_v1\\legitimate_reserve_capture_v1\\validation_report_v1.json",
+      "sha256": "700add01c5c8fb5d0e65da4aa1a49c6f4b871afd35dcd9064fb8b29022d44ab8"
+    },
+    {
+      "role": "ai_assisted_first_pass_v1",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_intake_v1\\legitimate_reserve_capture_v1\\ai_assisted_first_pass_v1.json",
+      "sha256": "d828969ffcc1e794217d7ad08a2b3f5ec609c0f88d45eef487b17669ba110f3f",
+      "record_count": 9
+    }
+  ],
+  "readiness": {
+    "reserve_captured_record_count": 9,
+    "combined_legitimate_captured_record_count": 11,
+    "structural_error_count": 0,
+    "capture_hash_valid_count": 9,
+    "same_entity_likely_recommendation_count": 9,
+    "high_recommendation_confidence_count": 5,
+    "medium_high_recommendation_confidence_count": 4,
+    "human_reconciled_count": 0,
+    "eligible_legitimate_count": 0,
+    "reporting_allowed": false
+  },
+  "decision": {
+    "promote_to_legitimate_label": false,
+    "change_intake_record_state": false,
+    "open_external_scoring": false,
+    "next_action": "Perform human contradiction and identity review on the nine reserve briefs plus the two primary briefs; acquire the confirmed-warning branch independently."
+  },
+  "safety_contract": {
+    "live_suspicious_domain_access_operations": 0,
+    "raw_files_created": 9,
+    "raw_files_modified_after_capture": false,
+    "labels_created": 0,
+    "model_scoring_operations": 0,
+    "model_fit_operations": 0,
+    "training_allowed": false,
+    "deployment_allowed": false
+  }
+}

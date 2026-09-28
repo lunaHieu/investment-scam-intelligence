@@ -1,0 +1,94 @@
+{
+  "analysis_id": "EXTERNAL_TEXT_RECONCILED_PILOT_V1",
+  "created_at": "2026-09-24",
+  "status": "RECONCILED_21_OF_21_ELIGIBLE_REPORTING_GATE_OPEN",
+  "source_id": "external_text_intake_v1",
+  "purpose": "Freeze the human-owner-adopted AI review results as a separate 21-case reconciled external evaluation intake while preserving every source draft and raw capture.",
+  "raw_root": "D:\\nckh 2026-2027\\ISI_Data\\raw",
+  "inputs": {
+    "ai_adjudication_registry": {
+      "path": "registry/analyses/external_text_ai_manual_adjudication_v1.json",
+      "sha256": "e8b4baf8fa141acf6441d8221482b3d6eaea3b5d0e6e9d778639dc4ef34e9979"
+    },
+    "reconciliation_adoption": {
+      "path": "configs/external_text_reconciliation_adoption_v1.json",
+      "sha256": "c4dfb3e4be23322b1fa08a1a0a213e8dfc46fdb22d0f51aa1801d87879492ae9"
+    }
+  },
+  "implementation": [
+    {
+      "role": "reconciliation_module",
+      "path": "src/isi/curation/external_text_reconciled_intake.py",
+      "sha256": "50beb6ec48b3afcf399c2de0b18f3433d51586e23541d1823f243cc7638e8955"
+    },
+    {
+      "role": "materializer",
+      "path": "scripts/materialize_external_text_reconciled_intake.py",
+      "sha256": "d8f795408a42bbd2669e2692ab3bf79500fb4c129911e2df1c9a9c499a0068cb"
+    },
+    {
+      "role": "intake_validator",
+      "path": "scripts/validate_external_text_intake.py",
+      "sha256": "b3d996cdcf50f76c91d49fb8880971143dd41dfa413a21088865f78413d908a0"
+    },
+    {
+      "role": "pilot_verifier",
+      "path": "scripts/verify_external_text_reconciled_pilot.py",
+      "sha256": "9a8616e186ff215465ebcd23af30985eab6ded778191c8ab0b8bdfe49d6c005b"
+    },
+    {
+      "role": "unit_tests",
+      "path": "tests/test_external_text_reconciled_intake.py",
+      "sha256": "5f29f4461608d2c2abb090e5ed06842c16a660f4b6585f672836fca2645de9bf"
+    },
+    {
+      "role": "method_documentation",
+      "path": "docs/external-text-reconciled-pilot-v1.md",
+      "sha256": "67bb9097dfe5b9299ca79d5e9d0fb2038f2637bf3110bdca2ca954b0b692f579"
+    }
+  ],
+  "outputs": [
+    {
+      "role": "reconciled_intake_json",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_intake_v1\\reconciled_pilot_v1\\external_text_reconciled_pilot_v1.json",
+      "sha256": "aab86486376d23d1eeca19e31d987d04ec88cb3432f71d0fdde0feceb799319e",
+      "record_count": 21
+    },
+    {
+      "role": "reconciled_intake_markdown",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_intake_v1\\reconciled_pilot_v1\\external_text_reconciled_pilot_v1.md",
+      "sha256": "0e2fd83b10552a0415e975f68af896c05a79729d121cb9e24206808e59dc9498"
+    },
+    {
+      "role": "validation_report",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_intake_v1\\reconciled_pilot_v1\\validation_report_v1.json",
+      "sha256": "e3157d1b9bd69e704edbba6341ffa23815037b57784a9feab3e084239ca554fe"
+    }
+  ],
+  "coverage": {
+    "record_count": 21,
+    "confirmed_count": 10,
+    "legitimate_count": 11,
+    "high_confidence_count": 21,
+    "reconciled_count": 21,
+    "valid_capture_hash_count": 21,
+    "eligible_count": 21,
+    "reporting_allowed": true
+  },
+  "review_provenance": {
+    "ai_manual_review_completed": true,
+    "project_owner_adopted_progression": true,
+    "independent_human_evidence_rereview": false,
+    "double_reviewed_gold_benchmark": false
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "source_drafts_modified": false,
+    "raw_files_modified": false,
+    "reconciled_labels_created": 21,
+    "model_scoring_operations": 0,
+    "model_fit_operations": 0,
+    "training_allowed": false,
+    "deployment_allowed": false
+  }
+}

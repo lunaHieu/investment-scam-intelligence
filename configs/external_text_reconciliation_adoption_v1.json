@@ -1,0 +1,46 @@
+{
+  "adoption_id": "EXTERNAL_TEXT_RECONCILIATION_ADOPTION_V1",
+  "adopted_at": "2026-09-24T00:00:00+07:00",
+  "adopter_role": "PROJECT_OWNER",
+  "authorization_source": "User follow-up instruction 'tiến hành tiếp' after receiving the complete 21-case AI adjudication report.",
+  "accepted_all_ai_recommendations": true,
+  "independent_human_evidence_rereview_claimed": false,
+  "scope": {
+    "ai_adjudication_analysis_id": "EXTERNAL_TEXT_AI_MANUAL_ADJUDICATION_V1",
+    "case_count": 21,
+    "confirmed_count": 10,
+    "legitimate_count": 11
+  },
+  "source_intakes": [
+    {
+      "role": "legitimate_primary",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_intake_v1\\legitimate_capture_pilot_v1\\intake_draft_v2.json",
+      "sha256": "26ee0514fd74d7067490287e6f704da124717f08e73bbd4d17293c07dbde29b8"
+    },
+    {
+      "role": "legitimate_reserve",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_intake_v1\\legitimate_reserve_capture_v1\\intake_draft_v1.json",
+      "sha256": "471c95de3dba2bbbfec8dcc199401890a70a92dc0e718f6a60691ceed5e40e73"
+    },
+    {
+      "role": "confirmed_primary",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_intake_v1\\confirmed_wayback_intake_v1.json",
+      "sha256": "5baac7a59074d459eeb29b0801530d6237eacd0382bd0b22163991702c8319ed"
+    },
+    {
+      "role": "confirmed_reserve_v1",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_intake_v1\\confirmed_wayback_reserve_intake_v1.json",
+      "sha256": "feb1047c2dc60e3c2b8151b277c515293262bbd3c5e6ab70c922bfec1eb1cb27"
+    },
+    {
+      "role": "confirmed_reserve_v2_001_030",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_intake_v1\\confirmed_wayback_reserve_intake_v2.json",
+      "sha256": "725f16b9b83443889c9243e5219c49be5af20badad3ce8e3921e91eaf1801839"
+    },
+    {
+      "role": "confirmed_reserve_v2_031_040",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_intake_v1\\confirmed_wayback_reserve_intake_v2_batch_031_040.json",
+      "sha256": "fa0a4fa1fc7f239ad722163b148cbdbd944c78890cb6aef561f0829ad3556f19"
+    }
+  ]
+}

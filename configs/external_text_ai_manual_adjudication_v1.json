@@ -1,0 +1,405 @@
+{
+  "specification_id": "EXTERNAL_TEXT_AI_MANUAL_ADJUDICATION_SPEC_V1",
+  "reviewed_at": "2026-09-24T00:00:00+07:00",
+  "authorization": "User explicitly authorized Codex to conduct manual review and evaluation in this turn on 2026-09-24.",
+  "policy": {
+    "reviewer_type": "AI_AGENT",
+    "human_confirmation_must_remain_false": true,
+    "candidate_live_domains_must_not_be_opened": true,
+    "official_warning_text_must_not_become_model_input": true,
+    "recommendations_do_not_create_labels": true
+  },
+  "records": [
+    {
+      "case_id": "CASE_CONF_001",
+      "recommended_decision": "CONFIRMED",
+      "recommended_confidence": "HIGH",
+      "rationale": "The archived page identifies Falcon International Limited on falconinterhk.group and offers wealth/investment management. The New Zealand FMA warning names the same entity and exact domain; chronology and identity align with no hard contradiction.",
+      "official_evidence": {
+        "source_type": "OFFICIAL_REGULATOR_WARNING",
+        "regulator": "New Zealand Financial Markets Authority",
+        "source_url": "https://www.fma.govt.nz/library/warnings-and-alerts/barox-international/",
+        "review_status": "OFFICIAL_PAGE_REVIEWED",
+        "exact_candidate_alignment": true,
+        "summary": "The warning lists Falcon International Limited and falconinterhk.group in a scam/fake-investment-platform alert."
+      },
+      "caution_dispositions": {
+        "OFFICIAL_WARNING_NOT_LOCALLY_CAPTURED": "Resolved for AI review by opening the official FMA page; the original local-capture provenance remains unchanged.",
+        "RETURN_OR_PERFORMANCE_CLAIM_WITHOUT_DETECTED_RISK_DISCLOSURE": "Supports scrutiny of the candidate page and does not contradict the official warning."
+      },
+      "residual_limitations": ["The official page was reviewed live but is not copied into model-input text."]
+    },
+    {
+      "case_id": "CASE_CONF_005",
+      "recommended_decision": "CONFIRMED",
+      "recommended_confidence": "HIGH",
+      "rationale": "The archived tagmarkets.com page promotes FX/CFD brokerage and claims regulation. Québec AMF identifies Tag Markets at the exact domain as unregistered and unauthorized to solicit investors; no identity or timing contradiction remains.",
+      "official_evidence": {
+        "source_type": "OFFICIAL_REGULATOR_WARNING",
+        "regulator": "Autorité des marchés financiers Québec",
+        "source_url": "https://lautorite.qc.ca/en/general-public/media-centre/investor-warnings/investor-warnings-sheet/tag-markets",
+        "review_status": "OFFICIAL_PAGE_REVIEWED",
+        "exact_candidate_alignment": true,
+        "summary": "The warning names Tag Markets, tagmarkets.com and T.M. Financials LTD and states that it is not registered or authorized in Québec."
+      },
+      "caution_dispositions": {
+        "OFFICIAL_WARNING_NOT_LOCALLY_CAPTURED": "Resolved for AI review through the official AMF page; local provenance is not rewritten.",
+        "CANDIDATE_PAGE_SELF_ASSERTS_REGULATION_LICENSE_OR_SAFETY": "Treated only as candidate-page content and not as independent evidence against the regulator warning."
+      },
+      "residual_limitations": ["Regulatory scope is Québec; the decision records warning-grounded confirmed evidence, not a universal legal conclusion."]
+    },
+    {
+      "case_id": "CASE_CONF_008",
+      "recommended_decision": "CONFIRMED",
+      "recommended_confidence": "HIGH",
+      "rationale": "The archived kuberamarkets.com page identifies Kubera Capital Markets Ltd and offers CFD/prop trading. The Alberta Securities Commission caution list names the same firm and exact site as not registered to trade or advise in Alberta.",
+      "official_evidence": {
+        "source_type": "OFFICIAL_REGULATOR_WARNING",
+        "regulator": "Alberta Securities Commission",
+        "source_url": "https://www.asc.ca/Enforcement/Investment-Caution-List/k/Kubera-Capital-Markets-Ltd",
+        "review_status": "OFFICIAL_PAGE_AND_LOCAL_CAPTURE_REVIEWED",
+        "exact_candidate_alignment": true,
+        "summary": "The ASC entry names Kubera Capital Markets Ltd and kuberamarkets.com and states it is not registered in Alberta."
+      },
+      "caution_dispositions": {
+        "CANDIDATE_PAGE_SELF_ASSERTS_REGULATION_LICENSE_OR_SAFETY": "The page's own disclaimer or regulatory language is not treated as independent authorization evidence."
+      },
+      "residual_limitations": ["Registration status is stated for Alberta and is not generalized beyond the warning's scope."]
+    },
+    {
+      "case_id": "CASE_RESERVE_CONF_008",
+      "recommended_decision": "CONFIRMED",
+      "recommended_confidence": "HIGH",
+      "rationale": "The preserved Dutch-language page at veld-luxaris.com solicits AI-assisted crypto trading and estimated returns. The Dutch AFM warning names Veld Luxaris and the exact domain as a suspected boiler room/online investment fraud.",
+      "official_evidence": {
+        "source_type": "OFFICIAL_REGULATOR_WARNING",
+        "regulator": "Netherlands Authority for the Financial Markets",
+        "source_url": "https://www.afm.nl/nl-nl/consumenten/waarschuwingen/bekijk-de-waarschuwingen/boilerroom/veld-luxaris",
+        "review_status": "OFFICIAL_PAGE_AND_LOCAL_CAPTURE_REVIEWED",
+        "exact_candidate_alignment": true,
+        "summary": "The AFM tells consumers not to engage with Veld Luxaris and links the exact domain to suspected boiler-room or online-investment fraud."
+      },
+      "caution_dispositions": {
+        "RETURN_OR_PERFORMANCE_CLAIM_WITHOUT_DETECTED_RISK_DISCLOSURE": "Consistent with the solicitation pattern under warning and not contradictory evidence."
+      },
+      "residual_limitations": ["The label recommendation is tied to the preserved capture and dated regulator warning."]
+    },
+    {
+      "case_id": "CASE_RESERVE_CONF_036",
+      "recommended_decision": "CONFIRMED",
+      "recommended_confidence": "HIGH",
+      "rationale": "The archived nexfengrowth.com page presents a global derivatives broker and trading products. ASIC MoneySmart's official investor-alert list identifies the exact domain as an impersonation of MEX Australia Pty Ltd.",
+      "official_evidence": {
+        "source_type": "OFFICIAL_REGULATOR_ALERT_LIST",
+        "regulator": "Australian Securities and Investments Commission / MoneySmart",
+        "source_url": "https://moneysmart.gov.au/check-and-report-scams/investor-alert-list#!impersonation-of-mex-australia-pty-ltd--nexfengrowth-com--4691",
+        "review_status": "OFFICIAL_LIST_EXACT_MATCH_DYNAMIC_DETAIL",
+        "exact_candidate_alignment": true,
+        "summary": "The official list contains an exact nexfengrowth.com entry classified as an imposter of MEX Australia Pty Ltd."
+      },
+      "caution_dispositions": {
+        "LOCAL_WARNING_CAPTURE_DOES_NOT_EXPOSE_CANDIDATE_IDENTITY": "Resolved at AI-review level through the exact official alert-list entry; the dynamic local shell remains documented.",
+        "CANDIDATE_PAGE_SELF_ASSERTS_REGULATION_LICENSE_OR_SAFETY": "Self-asserted credentials are not treated as proof against an official impersonation alert."
+      },
+      "residual_limitations": ["The MoneySmart detail view is dynamic; exact identity was verified in the official list entry rather than static local page text."]
+    },
+    {
+      "case_id": "CASE_RESERVE2_CONF_004",
+      "recommended_decision": "CONFIRMED",
+      "recommended_confidence": "HIGH",
+      "rationale": "The archived fortradelimited.com page offers crypto, forex, stocks, loans and investment plans under the Fortrade name. The UK FCA names the exact domain as a clone of an authorized firm and distinguishes it from the genuine fortrade.com site.",
+      "official_evidence": {
+        "source_type": "OFFICIAL_REGULATOR_WARNING",
+        "regulator": "UK Financial Conduct Authority",
+        "source_url": "https://www.fca.org.uk/news/warnings/fortradelimitedcom-clone-fca-authorised-firm",
+        "review_status": "OFFICIAL_PAGE_REVIEWED",
+        "exact_candidate_alignment": true,
+        "summary": "The FCA identifies fortradelimited.com as an unauthorized clone and separately lists the genuine firm's details."
+      },
+      "caution_dispositions": {
+        "OFFICIAL_WARNING_NOT_LOCALLY_CAPTURED": "Resolved for AI review using the official FCA page; source capture history remains unchanged.",
+        "ARCHIVE_TO_REFERENCE_GAP_EXCEEDS_365_DAYS": "The long gap lowers temporal precision but the FCA's exact-domain clone warning resolves entity scope.",
+        "CANDIDATE_PAGE_SELF_ASSERTS_REGULATION_LICENSE_OR_SAFETY": "Self-claims are overridden as evidence by the FCA's exact-domain clone finding.",
+        "RETURN_OR_PERFORMANCE_CLAIM_WITHOUT_DETECTED_RISK_DISCLOSURE": "Supports risk review and does not contradict the clone warning.",
+        "WARNING_CATEGORY_CODE_MISSING": "Resolved by the FCA page's explicit clone classification."
+      },
+      "residual_limitations": ["The archive predates the warning by more than one year, so the recommendation is scoped to the exact domain/entity linkage rather than continuous operation."]
+    },
+    {
+      "case_id": "CASE_RESERVE2_CONF_005",
+      "recommended_decision": "CONFIRMED",
+      "recommended_confidence": "HIGH",
+      "rationale": "The archived alpha-flow.ai page advertises AI trading and quantified returns. The FCA warning names the exact website as potentially providing or promoting financial services without permission.",
+      "official_evidence": {
+        "source_type": "OFFICIAL_REGULATOR_WARNING",
+        "regulator": "UK Financial Conduct Authority",
+        "source_url": "https://www.fca.org.uk/news/warnings/alpha-flowai",
+        "review_status": "OFFICIAL_PAGE_REVIEWED",
+        "exact_candidate_alignment": true,
+        "summary": "The FCA states that alpha-flow.ai is not authorized and may be providing or promoting financial services without permission."
+      },
+      "caution_dispositions": {
+        "OFFICIAL_WARNING_NOT_LOCALLY_CAPTURED": "Resolved for AI review by direct review of the official FCA warning."
+      },
+      "residual_limitations": ["The recommendation follows the FCA warning's authorization scope and date."]
+    },
+    {
+      "case_id": "CASE_RESERVE2_CONF_008",
+      "recommended_decision": "CONFIRMED",
+      "recommended_confidence": "HIGH",
+      "rationale": "The archived zenithgrow.com page solicits CFD, crypto, forex and other investment activity. The FCA identifies the exact domain as a clone and provides different details for the genuine Zenith Investment Management Ltd.",
+      "official_evidence": {
+        "source_type": "OFFICIAL_REGULATOR_WARNING",
+        "regulator": "UK Financial Conduct Authority",
+        "source_url": "https://www.fca.org.uk/news/warnings/zenith-grow-clone-fca-authorised-firm",
+        "review_status": "OFFICIAL_PAGE_REVIEWED",
+        "exact_candidate_alignment": true,
+        "summary": "The FCA lists zenithgrow.com as a clone and distinguishes the genuine authorized firm and website."
+      },
+      "caution_dispositions": {
+        "OFFICIAL_WARNING_NOT_LOCALLY_CAPTURED": "Resolved for AI review using the official FCA page.",
+        "CANDIDATE_PAGE_SELF_ASSERTS_REGULATION_LICENSE_OR_SAFETY": "Self-assertions are not accepted as independent evidence against the clone warning.",
+        "RETURN_OR_PERFORMANCE_CLAIM_WITHOUT_DETECTED_RISK_DISCLOSURE": "Supports risk scrutiny and does not contradict the FCA evidence."
+      },
+      "residual_limitations": ["The decision is specific to the warned clone domain, not the genuine Zenith entity."
+      ]
+    },
+    {
+      "case_id": "CASE_RESERVE2_CONF_012",
+      "recommended_decision": "CONFIRMED",
+      "recommended_confidence": "HIGH",
+      "rationale": "The archived ledgerholm.com page promotes automated crypto trading, future-balance projections and safety claims. The FCA warning names the exact website as unauthorized.",
+      "official_evidence": {
+        "source_type": "OFFICIAL_REGULATOR_WARNING",
+        "regulator": "UK Financial Conduct Authority",
+        "source_url": "https://www.fca.org.uk/news/warnings/ledgerholm",
+        "review_status": "OFFICIAL_PAGE_REVIEWED",
+        "exact_candidate_alignment": true,
+        "summary": "The FCA identifies ledgerholm.com as an unauthorized firm website."
+      },
+      "caution_dispositions": {
+        "OFFICIAL_WARNING_NOT_LOCALLY_CAPTURED": "Resolved for AI review using the official FCA page.",
+        "CANDIDATE_PAGE_SELF_ASSERTS_REGULATION_LICENSE_OR_SAFETY": "Candidate safety guarantees are treated as page claims, not independent authorization evidence."
+      },
+      "residual_limitations": ["The recommendation is warning-grounded and does not reuse warning prose as a model feature."
+      ]
+    },
+    {
+      "case_id": "CASE_RESERVE2_CONF_035",
+      "recommended_decision": "CONFIRMED",
+      "recommended_confidence": "HIGH",
+      "rationale": "The archived gulflinecapital.com page offers loans and finance products under Gulf Line Capital. Finansinspektionen's warning names the exact website, states that the entity is not authorized or supervised, and notes that it could not establish it as a real company.",
+      "official_evidence": {
+        "source_type": "OFFICIAL_REGULATOR_WARNING",
+        "regulator": "Swedish Financial Supervisory Authority",
+        "source_url": "https://www.fi.se/en/our-registers/investor-alerts/investor-alerts/2026/augusti/warning-regarding-gulf-line-capital/",
+        "review_status": "OFFICIAL_PAGE_REVIEWED",
+        "exact_candidate_alignment": true,
+        "summary": "The Swedish FI warning names Gulf Line Capital and gulflinecapital.com and states it is not authorized or supervised."
+      },
+      "caution_dispositions": {
+        "OFFICIAL_WARNING_NOT_LOCALLY_CAPTURED": "Resolved for AI review using the official FI warning.",
+        "ARCHIVE_TO_REFERENCE_GAP_EXCEEDS_365_DAYS": "The gap limits continuity claims, but the exact domain/entity warning resolves the reviewed artifact's scope.",
+        "CANDIDATE_PAGE_SELF_ASSERTS_REGULATION_LICENSE_OR_SAFETY": "Self-described expertise and guarantees are not treated as independent authorization evidence.",
+        "RETURN_OR_PERFORMANCE_CLAIM_WITHOUT_DETECTED_RISK_DISCLOSURE": "Consistent with the risky solicitation context and not contradictory."
+      },
+      "residual_limitations": ["The archive-to-warning interval exceeds one year; no claim is made about uninterrupted site control throughout that period."]
+    },
+    {
+      "case_id": "CASE_LEGIT_004",
+      "recommended_decision": "LEGITIMATE",
+      "recommended_confidence": "HIGH",
+      "rationale": "The exact SEC-filed host greenlealane.com shows Greenlea Lane Capital Management LLC and coherent legal/contact/disclaimer navigation. The short page is sparse but identity-consistent and shows no parking, unrelated content or visible impersonation cue.",
+      "official_evidence": {
+        "source_type": "SEC_IAPD_REGISTRATION_RECORD",
+        "crd": "162012",
+        "review_status": "LOCAL_OFFICIAL_RECORD_AND_CAPTURE_REVIEWED",
+        "exact_candidate_alignment": true,
+        "summary": "Registered/APPROVED SEC/IAPD record, exact filed host and full firm-name token match."
+      },
+      "caution_dispositions": {
+        "NO_SEC_CONTACT_FIELD_MATCH_IN_CAPTURE": "The minimal page does not expose the filed phone, but exact host plus full legal-name identity provides stronger direct alignment.",
+        "SHORT_PRESERVED_VISIBLE_TEXT_UNDER_500_CHARACTERS": "Reviewed manually; the 332-character page is coherent branded legal/footer content rather than a parked or unrelated page."
+      },
+      "residual_limitations": ["A frozen capture supports but cannot conclusively prove site control; human confirmation remains required by policy."
+      ]
+    },
+    {
+      "case_id": "CASE_LEGIT_005",
+      "recommended_decision": "LEGITIMATE",
+      "recommended_confidence": "HIGH",
+      "rationale": "The exact SEC-filed host paragonfinancial.com contains a coherent current financial-planning site, the matching firm identity, five of five available contact fields, Registered Investment Advisor disclosure and Form CRS references.",
+      "official_evidence": {
+        "source_type": "SEC_IAPD_REGISTRATION_RECORD",
+        "crd": "164832",
+        "review_status": "LOCAL_OFFICIAL_RECORD_AND_CAPTURE_REVIEWED",
+        "exact_candidate_alignment": true,
+        "summary": "Registered/APPROVED record, exact filed host, full identity match and 5/5 contact-field alignment."
+      },
+      "caution_dispositions": {
+        "REGULATORY_OR_SAFETY_LANGUAGE_REQUIRES_CONTEXT_REVIEW": "The language appears in ordinary adviser disclosure and Form CRS context, not as an implausible guarantee."
+      },
+      "residual_limitations": ["SEC registration is identity evidence, not an endorsement of every site statement."
+      ]
+    },
+    {
+      "case_id": "CASE_RESERVE_LEGIT_001",
+      "recommended_decision": "LEGITIMATE",
+      "recommended_confidence": "HIGH",
+      "rationale": "The exact SEC-filed host hmpayson.com identifies H.M. Payson and contains current official fund documentation, account/IRA forms, prospectus and reports. The content is coherent and not parked or unrelated despite absent contact-field matches.",
+      "official_evidence": {
+        "source_type": "SEC_IAPD_REGISTRATION_RECORD",
+        "crd": "2993",
+        "review_status": "LOCAL_OFFICIAL_RECORD_AND_CAPTURE_REVIEWED",
+        "exact_candidate_alignment": true,
+        "summary": "Registered/APPROVED record, exact filed host and full business/legal identity alignment."
+      },
+      "caution_dispositions": {
+        "NO_SEC_CONTACT_FIELD_MATCH_IN_CAPTURE": "The captured fund-document page omits general contact fields but contains strong firm and product-document identity.",
+        "RETURN_OR_PERFORMANCE_LANGUAGE_REQUIRES_CONTEXT_REVIEW": "Reviewed as fund-document/performance context rather than a guaranteed-return solicitation."
+      },
+      "residual_limitations": ["The captured page is a fund-document subcontext and does not independently prove all-site control."
+      ]
+    },
+    {
+      "case_id": "CASE_RESERVE_LEGIT_002",
+      "recommended_decision": "LEGITIMATE",
+      "recommended_confidence": "HIGH",
+      "rationale": "The exact SEC-filed host bristolgroupinc.com presents a coherent Bristol Group real-estate investment business with matching identity and four of five available contact fields. No contradictory or impersonation indicator appears in the frozen capture.",
+      "official_evidence": {
+        "source_type": "SEC_IAPD_REGISTRATION_RECORD",
+        "crd": "105087",
+        "review_status": "LOCAL_OFFICIAL_RECORD_AND_CAPTURE_REVIEWED",
+        "exact_candidate_alignment": true,
+        "summary": "Registered/APPROVED record, exact filed host, full identity and 4/5 contact-field alignment."
+      },
+      "caution_dispositions": {
+        "RETURN_OR_PERFORMANCE_LANGUAGE_REQUIRES_CONTEXT_REVIEW": "Reviewed in ordinary investment-business context; no guaranteed-return claim or identity contradiction was found."
+      },
+      "residual_limitations": ["Legitimacy recommendation is scoped to identity/domain reconciliation at capture time."
+      ]
+    },
+    {
+      "case_id": "CASE_RESERVE_LEGIT_003",
+      "recommended_decision": "LEGITIMATE",
+      "recommended_confidence": "HIGH",
+      "rationale": "The exact SEC-filed nefpg.com host contains a detailed New England Financial Planning Group site with matching services, disclosures, Raymond James relationship, Form CRS material and four of five contact fields.",
+      "official_evidence": {
+        "source_type": "SEC_IAPD_REGISTRATION_RECORD",
+        "crd": "105254",
+        "review_status": "LOCAL_OFFICIAL_RECORD_AND_CAPTURE_REVIEWED",
+        "exact_candidate_alignment": true,
+        "summary": "Registered/APPROVED record, exact filed host, full identity and 4/5 contact-field alignment."
+      },
+      "caution_dispositions": {},
+      "residual_limitations": ["Registration supports identity and does not constitute endorsement of individual financial claims."
+      ]
+    },
+    {
+      "case_id": "CASE_RESERVE_LEGIT_004",
+      "recommended_decision": "LEGITIMATE",
+      "recommended_confidence": "HIGH",
+      "rationale": "The exact SEC-filed hinsdaleassociates.com host presents a coherent advisory site with the matching Hinsdale Associates identity, address/phone alignment, Form CRS material and current copyright context.",
+      "official_evidence": {
+        "source_type": "SEC_IAPD_REGISTRATION_RECORD",
+        "crd": "108293",
+        "review_status": "LOCAL_OFFICIAL_RECORD_AND_CAPTURE_REVIEWED",
+        "exact_candidate_alignment": true,
+        "summary": "Registered/APPROVED record, exact filed host, full identity and 3/5 contact-field alignment."
+      },
+      "caution_dispositions": {
+        "RETURN_OR_PERFORMANCE_LANGUAGE_REQUIRES_CONTEXT_REVIEW": "Reviewed in advisory/disclosure context; no guaranteed return or host-identity contradiction was found."
+      },
+      "residual_limitations": ["The decision is an identity/domain assessment, not an evaluation of investment performance."
+      ]
+    },
+    {
+      "case_id": "CASE_RESERVE_LEGIT_005",
+      "recommended_decision": "LEGITIMATE",
+      "recommended_confidence": "HIGH",
+      "rationale": "The exact SEC-filed orioninvestmentco.com host identifies Orion Investment Company and links to FINRA BrokerCheck. The short page is coherent branded content rather than parking or an unrelated takeover.",
+      "official_evidence": {
+        "source_type": "SEC_IAPD_REGISTRATION_RECORD",
+        "crd": "110867",
+        "review_status": "LOCAL_OFFICIAL_RECORD_AND_CAPTURE_REVIEWED",
+        "exact_candidate_alignment": true,
+        "summary": "Registered/APPROVED record, exact filed host and full firm-identity match."
+      },
+      "caution_dispositions": {
+        "NO_SEC_CONTACT_FIELD_MATCH_IN_CAPTURE": "The minimal landing page omits contact details, but exact host and full entity name align.",
+        "SHORT_PRESERVED_VISIBLE_TEXT_UNDER_500_CHARACTERS": "Reviewed manually; the 224-character capture is coherent firm identification with a BrokerCheck link, not a parked page."
+      },
+      "residual_limitations": ["The sparse capture provides less control evidence than a full site; human adoption remains a separate step."
+      ]
+    },
+    {
+      "case_id": "CASE_RESERVE_LEGIT_006",
+      "recommended_decision": "LEGITIMATE",
+      "recommended_confidence": "HIGH",
+      "rationale": "The exact SEC-filed certifiedplannersinc.com host presents a detailed advisory site with the matching firm identity, four of five contact fields, ADV/Form CRS links and coherent disclosures.",
+      "official_evidence": {
+        "source_type": "SEC_IAPD_REGISTRATION_RECORD",
+        "crd": "105364",
+        "review_status": "LOCAL_OFFICIAL_RECORD_AND_CAPTURE_REVIEWED",
+        "exact_candidate_alignment": true,
+        "summary": "Registered/APPROVED record, exact filed host, full identity and 4/5 contact-field alignment."
+      },
+      "caution_dispositions": {},
+      "residual_limitations": ["SEC registration is not a guarantee of future conduct or site security."
+      ]
+    },
+    {
+      "case_id": "CASE_RESERVE_LEGIT_007",
+      "recommended_decision": "LEGITIMATE",
+      "recommended_confidence": "HIGH",
+      "rationale": "The exact SEC-filed hamelassociatesinc.com host contains a coherent fee-based wealth-management site, matching Hamel Associates identity, offices/services, Form CRS and ADV links, and current copyright text.",
+      "official_evidence": {
+        "source_type": "SEC_IAPD_REGISTRATION_RECORD",
+        "crd": "107128",
+        "review_status": "LOCAL_OFFICIAL_RECORD_AND_CAPTURE_REVIEWED",
+        "exact_candidate_alignment": true,
+        "summary": "Registered/APPROVED record, exact filed host, full identity and one direct contact-field match."
+      },
+      "caution_dispositions": {
+        "FEWER_THAN_TWO_SEC_CONTACT_FIELDS_MATCH_IN_CAPTURE": "Only one structured contact match was detected, but extensive matching firm/service/disclosure content provides independent identity support."
+      },
+      "residual_limitations": ["Structured contact matching is limited; recommendation relies additionally on exact filed host and coherent identity content."
+      ]
+    },
+    {
+      "case_id": "CASE_RESERVE_LEGIT_008",
+      "recommended_decision": "LEGITIMATE",
+      "recommended_confidence": "HIGH",
+      "rationale": "The exact SEC-filed financiallyspeakinginc.com host presents a coherent fee-only adviser site with matching firm identity and four of five available phone/address/email fields.",
+      "official_evidence": {
+        "source_type": "SEC_IAPD_REGISTRATION_RECORD",
+        "crd": "106255",
+        "review_status": "LOCAL_OFFICIAL_RECORD_AND_CAPTURE_REVIEWED",
+        "exact_candidate_alignment": true,
+        "summary": "Registered/APPROVED record, exact filed host, full identity and 4/5 contact-field alignment."
+      },
+      "caution_dispositions": {},
+      "residual_limitations": ["The recommendation concerns captured identity/domain legitimacy and is not financial advice."
+      ]
+    },
+    {
+      "case_id": "CASE_RESERVE_LEGIT_010",
+      "recommended_decision": "LEGITIMATE",
+      "recommended_confidence": "HIGH",
+      "rationale": "The exact SEC-filed portfoliomanagementtechnology.com host identifies Portfolio Management Technology as a San Francisco registered investment adviser and describes global fixed-income consulting since 1988. The content coherently matches the filed business identity.",
+      "official_evidence": {
+        "source_type": "SEC_IAPD_REGISTRATION_RECORD",
+        "crd": "106135",
+        "review_status": "LOCAL_OFFICIAL_RECORD_AND_CAPTURE_REVIEWED",
+        "exact_candidate_alignment": true,
+        "summary": "Registered/APPROVED record, exact filed host, full business-identity match and one contact-field match."
+      },
+      "caution_dispositions": {
+        "FEWER_THAN_TWO_SEC_CONTACT_FIELDS_MATCH_IN_CAPTURE": "One structured contact match is supplemented by exact filed host and detailed matching business/service identity.",
+        "RETURN_OR_PERFORMANCE_LANGUAGE_REQUIRES_CONTEXT_REVIEW": "Reviewed as fixed-income consulting/service description rather than a guaranteed-return solicitation."
+      },
+      "residual_limitations": ["Legal name differs from the business name; the SEC record explicitly links both and the site matches the business name."
+      ]
+    }
+  ]
+}

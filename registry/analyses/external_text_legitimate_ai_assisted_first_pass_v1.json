@@ -1,0 +1,125 @@
+{
+  "analysis_id": "EXTERNAL_TEXT_LEGITIMATE_AI_ASSISTED_FIRST_PASS_V1",
+  "created_at": "2026-09-24",
+  "status": "TWO_AI_RECOMMENDATIONS_HUMAN_CONFIRMATION_REQUIRED_NOT_LABELED",
+  "source_id": "sec_iapd",
+  "source_version": "IA_FIRM_SEC_Feed_09_22_2026 plus homepage captures 2026-09-24",
+  "purpose": "Compare two captured SEC-linked homepages with the immutable SEC/IAPD feed and prepare bounded recommendations without creating ground truth.",
+  "inputs": [
+    {
+      "role": "sec_iapd_feed",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\raw\\sec_iapd\\IA_FIRM_SEC_Feed_09_22_2026.xml.gz",
+      "sha256": "262b2151a6d6289119a104fd03ea6fbc9d44c38c7f4c52584865244777f65366"
+    },
+    {
+      "role": "intake_draft_v2",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_intake_v1\\legitimate_capture_pilot_v1\\intake_draft_v2.json",
+      "sha256": "26ee0514fd74d7067490287e6f704da124717f08e73bbd4d17293c07dbde29b8"
+    },
+    {
+      "role": "review_module",
+      "path": "src/isi/curation/external_text_review.py",
+      "sha256": "f0460ea295957b8cb4ad3ad40cf839209e4cab1cc6ee6378d7138c0ef4eaee74"
+    },
+    {
+      "role": "preparation_script",
+      "path": "scripts/prepare_external_text_legitimate_first_pass.py",
+      "sha256": "1396a7f5b694f23208752e72f0a6eb9a5aab85eda307ab1067f640ebaf77b6b6"
+    }
+  ],
+  "method": {
+    "sec_fields_checked": [
+      "CRD number",
+      "SEC number",
+      "business/legal name",
+      "registration type/status",
+      "filing date",
+      "filed website",
+      "available address/phone/fax"
+    ],
+    "capture_checks": [
+      "exact normalized host match",
+      "full non-legal entity-token match",
+      "available address/phone/fax text match"
+    ],
+    "recommendation_is_not_label": true,
+    "human_reconciliation_required": true
+  },
+  "coverage": {
+    "record_count": 2,
+    "same_entity_likely_recommendations": 2,
+    "registration_relevant_recommendations": 2,
+    "legitimate_recommendations_for_human_review": 2,
+    "high_recommendation_confidence_count": 1,
+    "medium_high_recommendation_confidence_count": 1,
+    "human_confirmed_record_count": 0,
+    "external_evaluation_eligible_count": 0,
+    "labels_created": 0
+  },
+  "recommendations": [
+    {
+      "case_id": "CASE_LEGIT_004",
+      "crd": "162012",
+      "identity_relationship": "SAME_ENTITY_LIKELY",
+      "evidence_assessment": "REGISTRATION_RELEVANT",
+      "outcome_for_human_review": "LEGITIMATE",
+      "recommendation_confidence": "MEDIUM_HIGH",
+      "decisive_signals": [
+        "capture host exactly appears in the SEC filing",
+        "registered/approved status",
+        "full firm-name token match in capture"
+      ],
+      "limitation": "The SEC feed exposes only a phone number for the main address and that phone is not present on the captured landing page."
+    },
+    {
+      "case_id": "CASE_LEGIT_005",
+      "crd": "164832",
+      "identity_relationship": "SAME_ENTITY_LIKELY",
+      "evidence_assessment": "REGISTRATION_RELEVANT",
+      "outcome_for_human_review": "LEGITIMATE",
+      "recommendation_confidence": "HIGH",
+      "decisive_signals": [
+        "capture host exactly appears in the SEC filing",
+        "registered/approved status",
+        "full firm-name token match in capture",
+        "street, city, postal code, phone, and fax all match the filing"
+      ],
+      "limitation": "Registration and identity alignment still require a human contradiction/impersonation check before a legitimate ground-truth decision."
+    }
+  ],
+  "outputs": [
+    {
+      "role": "first_pass_records",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_intake_v1\\legitimate_capture_pilot_v1\\ai_assisted_first_pass_v2.json",
+      "sha256": "3868f3eacf6475a7d99160dc0261db2f40b0f164a9d07d57191713d30d4a5340",
+      "record_count": 2
+    },
+    {
+      "role": "case_004_review_brief",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_intake_v1\\legitimate_capture_pilot_v1\\review_briefs_v2\\CASE_LEGIT_004_review_brief_v1.md",
+      "sha256": "668b0f7976e84b6602672d456c491b0b09e9ebdcd29adf1a54efc9de9c4f27e0"
+    },
+    {
+      "role": "case_005_review_brief",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_intake_v1\\legitimate_capture_pilot_v1\\review_briefs_v2\\CASE_LEGIT_005_review_brief_v1.md",
+      "sha256": "95635a621949909e0142973df36cf4f8177f6c8ca97de6278933a936506010c1"
+    }
+  ],
+  "decision": {
+    "promote_to_legitimate_label": false,
+    "change_intake_record_state": false,
+    "open_external_scoring": false,
+    "next_action": "Human reviewer checks the two briefs, raw captures, SEC identities, and contradictory evidence before any LEGITIMATE/HIGH/RECONCILED decision."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "domain_access_operations": 0,
+    "labels_created": 0,
+    "model_scoring_operations": 0,
+    "model_fit_operations": 0,
+    "raw_files_modified": false,
+    "training_allowed": false,
+    "domain_access_allowed": false,
+    "deployment_allowed": false
+  }
+}

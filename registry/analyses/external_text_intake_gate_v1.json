@@ -1,0 +1,119 @@
+{
+  "analysis_id": "ISI_EXTERNAL_TEXT_INTAKE_GATE_V1",
+  "created_at": "2026-09-24",
+  "status": "TWENTY_ONE_DRAFTS_IN_REVIEW_BLOCKED_ZERO_ELIGIBLE_RECORDS",
+  "source_id": "mendeley_investment_deceptive_2026",
+  "source_version": "2",
+  "target_model_id": "ISI_TEXT_BASELINE_V2",
+  "policy_id": "ISI_TEXT_BASELINE_V2_EXTERNAL_EVAL_POLICY_V1",
+  "purpose": "Provide an offline, provenance-preserving intake gate for future evidence-backed external text artifacts without scoring the model or creating labels.",
+  "inputs": [
+    {
+      "role": "intake_template",
+      "path": "registry/pilots/external_text_evaluation_intake_template.json",
+      "sha256": "f442c85b361b432180dd4af606e00d510031e8871a8d65191d41d292bed2bb29"
+    },
+    {
+      "role": "validator",
+      "path": "scripts/validate_external_text_intake.py",
+      "sha256": "b3d996cdcf50f76c91d49fb8880971143dd41dfa413a21088865f78413d908a0"
+    },
+    {
+      "role": "workflow_documentation",
+      "path": "docs/external-text-intake-workflow.md",
+      "sha256": "184f25ccb1dede808d399f158c6e3d72089f6b855d9b413074489d495cb017e6"
+    },
+    {
+      "role": "legitimate_primary_capture_registry",
+      "path": "registry/pilots/external_text_legitimate_capture_pilot_v1.json",
+      "sha256": "f7bdf4d1ce375b5f36cf165c58802fd83dd482cd155f1ae420bd8feb6828d62c"
+    },
+    {
+      "role": "legitimate_reserve_queue_registry",
+      "path": "registry/pilots/sec_legitimate_capture_reserve_v1.json",
+      "sha256": "60c44f00d4b9a1e69d6f8383998ec2e853cd51596ed0db76420be7283ee36dbb"
+    },
+    {
+      "role": "legitimate_reserve_capture_registry",
+      "path": "registry/pilots/external_text_legitimate_reserve_capture_v1.json",
+      "sha256": "5972c8451ca35085d6230c336ea077eabe3b7a4ae0ef7c9bca5bd931131b29c1"
+    },
+    {
+      "role": "confirmed_capture_registry",
+      "path": "registry/pilots/external_text_confirmed_capture_pilot_v1.json",
+      "sha256": "ca97535f93428204ec3f1ea468b39f502c8d9c45bc03cfd1af488b6b750bf0e9"
+    }
+  ],
+  "raw_inventory": {
+    "checked_at": "2026-09-24",
+    "raw_root": "D:\\nckh 2026-2027\\ISI_Data\\raw",
+    "dfpi_crypto_scam_tracker_files": 0,
+    "sec_iapd_files": 1,
+    "iosco_i_scan_files": 1,
+    "ubcknn_warning_capture_files": 0,
+    "external_text_capture_files": 33,
+    "external_warning_evidence_files": 12,
+    "external_text_draft_records": 21,
+    "external_text_confirmed_draft_records": 10,
+    "external_text_legitimate_draft_records": 11,
+    "external_text_eligible_records": 0,
+    "external_text_capture_candidate_count": 30,
+    "external_text_capture_candidate_registry": "registry/pilots/external_text_capture_candidate_queue_v1.json",
+    "external_text_reserve_candidate_count": 30,
+    "external_text_reserve_candidate_registry": "registry/pilots/sec_legitimate_capture_reserve_v1.json",
+    "crimson_review_workbook_last_modified_utc": "2026-09-08T15:44:09.8596703Z"
+  },
+  "gate_contract": {
+    "allowed_artifact_types": [
+      "POST",
+      "MESSAGE",
+      "WEBSITE_SNAPSHOT"
+    ],
+    "minimum_non_whitespace_text_characters": 20,
+    "capture_file_and_sha256_required": true,
+    "case_or_campaign_group_required": true,
+    "near_duplicate_group_required": true,
+    "required_label_confidence": "HIGH",
+    "required_review_status": "RECONCILED",
+    "minimum_eligible_records": 20,
+    "minimum_confirmed_records": 10,
+    "minimum_legitimate_records": 10,
+    "warning_or_complaint_text_allowed_as_model_input": false,
+    "single_complaint_sufficient_for_confirmed": false,
+    "absence_from_warning_list_sufficient_for_legitimate": false
+  },
+  "template_validation": {
+    "structural_error_count": 0,
+    "eligible_records": 0,
+    "eligible_confirmed_records": 0,
+    "eligible_legitimate_records": 0,
+    "reporting_allowed": false,
+    "report_path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_intake_v1\\template_validation_report.json",
+    "report_sha256": "21110f2666afb86bfe26a96dcf226139091e8a2908c34b7e2e24b10d0f1135d9"
+  },
+  "decision": {
+    "external_text_scoring_performed": false,
+    "external_metrics_reported": false,
+    "model_configuration_changed": false,
+    "reporting_gate_open": false,
+    "deployment_allowed": false,
+    "reason": "Eleven SEC-linked legitimate drafts and ten Wayback-derived confirmed drafts now pass structural/hash validation. All 21 remain UNCERTAIN, LOW, IN_REVIEW with no human confirmation, so the eligible/reporting count remains 0/20.",
+    "next_action": "Human-review the eleven legitimate briefs and ten confirmed briefs for identity, contradiction, impersonation, and evidence sufficiency; only reviewer-approved records may be copied into a reconciled intake."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "candidate_url_access_operations": 0,
+    "model_scoring_operations": 0,
+    "model_fit_operations": 0,
+    "labels_created": 0,
+    "raw_files_modified": false,
+    "training_allowed": false,
+    "domain_access_allowed": false,
+    "deployment_allowed": false
+  },
+  "blocked_manual_inputs": [
+    "DFPI raw/export or lawful capture (deferred; not required for the first 10+10 gate)",
+    "Manual official-warning verification for seven confirmed cases whose regulator pages returned HTTP 403/timeout and one MoneySmart app-shell capture",
+    "Human evidence reconciliation for the eleven LEGITIMATE drafts and ten CONFIRMED drafts"
+  ]
+}

@@ -1,0 +1,134 @@
+{
+  "analysis_id": "EXTERNAL_TEXT_LEGITIMATE_RECONCILIATION_PACKET_V1",
+  "created_at": "2026-09-24",
+  "status": "SECOND_PASS_COMPLETE_HUMAN_DECISION_REQUIRED_ZERO_ELIGIBLE",
+  "source_id": "sec_iapd",
+  "purpose": "Freeze and verify a reproducible second-pass identity, registration, chronology, and contradiction review for eleven legitimate-candidate drafts without creating labels.",
+  "inputs": {
+    "primary_pilot": {
+      "path": "registry/pilots/external_text_legitimate_capture_pilot_v1.json",
+      "sha256": "f7bdf4d1ce375b5f36cf165c58802fd83dd482cd155f1ae420bd8feb6828d62c"
+    },
+    "reserve_pilot": {
+      "path": "registry/pilots/external_text_legitimate_reserve_capture_v1.json",
+      "sha256": "5972c8451ca35085d6230c336ea077eabe3b7a4ae0ef7c9bca5bd931131b29c1"
+    },
+    "primary_first_pass_registry": {
+      "path": "registry/analyses/external_text_legitimate_ai_assisted_first_pass_v1.json",
+      "sha256": "760928e2aceacfea080d900e7370dc75417dee763f1c78b2bb2d9847111fadbe"
+    }
+  },
+  "implementation": [
+    {
+      "role": "reconciliation_module",
+      "path": "src/isi/curation/legitimate_reconciliation_review.py",
+      "sha256": "f4775b373c2bb86afb538afb2ce3076e25260cfe62000c40941a1699ca43e2b3"
+    },
+    {
+      "role": "shared_text_signal_profiler",
+      "path": "src/isi/curation/confirmed_reconciliation_review.py",
+      "sha256": "56b45e5e0ebf9f95946166560af6a6379d7daf20a626896b23a0b3abae558c5d"
+    },
+    {
+      "role": "packet_builder",
+      "path": "scripts/prepare_legitimate_reconciliation_packet.py",
+      "sha256": "24bb0e80c72b0438cf356bffecd3448a13172a3294be3488153551e0da5067cf"
+    },
+    {
+      "role": "packet_verifier",
+      "path": "scripts/verify_external_text_legitimate_reconciliation_packet.py",
+      "sha256": "ffd0710604cb299744410b662ca90fb182f9d734d5c09d9e59e9d720e3392067"
+    },
+    {
+      "role": "unit_tests",
+      "path": "tests/test_legitimate_reconciliation_review.py",
+      "sha256": "ba0b996097627b84b53b08c1c0cdbd12cf69c5bead6d9f1195daa2b42f488024"
+    },
+    {
+      "role": "method_documentation",
+      "path": "docs/external-text-legitimate-reconciliation-packet-v1.md",
+      "sha256": "50d398018310aad031a45edee32128dfdfafdd6deffe79e91b574c4264246f6b"
+    }
+  ],
+  "outputs": [
+    {
+      "role": "decision_packet_json",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_intake_v1\\legitimate_reconciliation_packet_v1\\decision_packet_v1.json",
+      "sha256": "ab6c510c326b8ee8f1068a0edbb512dd0f9510bc2b0cafa440f51ba1ab99af90",
+      "record_count": 11
+    },
+    {
+      "role": "decision_packet_markdown",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_intake_v1\\legitimate_reconciliation_packet_v1\\decision_packet_v1.md",
+      "sha256": "6841a797658823adf856520cc20cc975773d077ff6dae46a343dd3f5fb81ca0b"
+    }
+  ],
+  "method": {
+    "source_scope": "Frozen local intake text, raw captures, first-pass results, and SEC/IAPD metadata only.",
+    "registration_semantics": "Registered/APPROVED status and an exact SEC-filed host support identity reconciliation; they are not an endorsement of the site's claims or proof that the site was never compromised.",
+    "automatic_gates": [
+      "frozen draft state",
+      "raw capture hash",
+      "normalized text hash",
+      "source CRD/profile alignment",
+      "exact SEC-filed host",
+      "Registered/APPROVED state",
+      "firm identity-token match",
+      "filing/capture chronology",
+      "minimum preserved visible text",
+      "first-pass alignment"
+    ]
+  },
+  "coverage": {
+    "record_count": 11,
+    "raw_capture_hash_valid_count": 11,
+    "normalized_text_hash_valid_count": 11,
+    "all_automatic_gates_pass_count": 11,
+    "hard_contradiction_case_count": 0,
+    "legitimate_proposal_for_human_review_count": 11,
+    "high_recommendation_count": 6,
+    "medium_high_recommendation_count": 5,
+    "human_decision_count": 0,
+    "external_evaluation_eligible_count": 0,
+    "labels_created": 0
+  },
+  "caution_profile": {
+    "zero_contact_match_case_ids": [
+      "CASE_LEGIT_004",
+      "CASE_RESERVE_LEGIT_001",
+      "CASE_RESERVE_LEGIT_005"
+    ],
+    "single_contact_match_case_ids": [
+      "CASE_RESERVE_LEGIT_007",
+      "CASE_RESERVE_LEGIT_010"
+    ],
+    "short_text_case_ids": [
+      "CASE_LEGIT_004",
+      "CASE_RESERVE_LEGIT_005"
+    ],
+    "cautions_are_labels": false
+  },
+  "manual_follow_up": {
+    "case_count": 11,
+    "instruction": "Human reviewer must confirm site control and inspect impersonation, compromise, misleading claims, and adverse regulator evidence before any LEGITIMATE decision.",
+    "deferred_by_user": true
+  },
+  "decision": {
+    "promote_to_legitimate_label": false,
+    "change_intake_record_state": false,
+    "open_external_scoring": false,
+    "next_action": "Keep both reconciliation packets frozen and prepare a reviewer decision-recording layer; do not create reconciled labels until the deferred manual checks are completed."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "domain_access_operations": 0,
+    "domain_access_allowed": false,
+    "labels_created": 0,
+    "model_scoring_operations": 0,
+    "model_fit_operations": 0,
+    "raw_files_modified": false,
+    "intake_files_modified": false,
+    "training_allowed": false,
+    "deployment_allowed": false
+  }
+}

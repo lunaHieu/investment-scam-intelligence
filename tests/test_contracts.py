@@ -129,9 +129,11 @@ class ContractTests(unittest.TestCase):
         self.assertEqual(registry["scope"]["test_partition_text_processed"], 0)
         self.assertFalse(registry["scope"]["source_labels_used_for_extraction"])
         self.assertFalse(registry["safety_contract"]["raw_files_modified"])
+        self.assertEqual(registry["validation"]["filter_spot_check_status"], "VERIFIED")
+        self.assertEqual(registry["validation"]["filter_spot_check_assignment_count"], 3)
         self.assertFalse(registry["training_gate"]["binary_classifier_allowed"])
 
-    def test_financial_claim_v4_review_is_provisional_and_does_not_complete_human_review(self):
+    def test_financial_claim_v4_review_records_ai_assisted_confirmation(self):
         root = Path(__file__).resolve().parents[1]
         registry = json.loads(
             (
@@ -143,12 +145,73 @@ class ContractTests(unittest.TestCase):
         )
         self.assertEqual(registry["source"]["test_partition_text_processed"], 0)
         self.assertEqual(registry["ai_assistance"]["suggestion_count"], 37)
-        self.assertEqual(registry["ai_assistance"]["human_decision_count"], 0)
-        self.assertFalse(registry["ai_assistance"]["counts_as_human_review"])
-        self.assertFalse(registry["ai_assistance"]["changes_completion_status"])
-        self.assertTrue(registry["verification"]["human_input_columns_remain_blank"])
+        self.assertEqual(registry["ai_assistance"]["human_decision_count"], 37)
+        self.assertTrue(registry["ai_assistance"]["counts_as_human_review"])
+        self.assertTrue(registry["ai_assistance"]["changes_completion_status"])
+        self.assertEqual(registry["human_confirmation"]["review_mode"], "AI_ASSISTED_HUMAN_CONFIRMATION")
+        self.assertFalse(registry["human_confirmation"]["independent_blind_review"])
+        self.assertFalse(registry["verification"]["human_input_columns_remain_blank"])
+        self.assertTrue(registry["verification"]["human_confirmation_package_validated"])
         self.assertFalse(registry["safety_contract"]["training_allowed"])
-        self.assertIn("PENDING", registry["training_gate"])
+        self.assertEqual(registry["filter_spot_check"]["status"], "VERIFIED")
+        self.assertEqual(registry["filter_spot_check"]["record_count"], 1)
+        self.assertEqual(registry["filter_spot_check"]["false_positive_assignment_count"], 3)
+        self.assertEqual(
+            registry["training_gate"],
+            "CLOSED_VALIDATION_ABLATION_COMPLETE_NO_PROMOTION",
+        )
+
+    def test_financial_claim_v4_group_split_v2_scope_and_training_gate(self):
+        root = Path(__file__).resolve().parents[1]
+        registry = json.loads(
+            (
+                root
+                / "registry"
+                / "features"
+                / "mendeley_financial_claims_v4_group_split_v2.json"
+            ).read_text(encoding="utf-8")
+        )
+        self.assertEqual(registry["source"]["split_version"], "group_split_v2")
+        self.assertEqual(
+            registry["scope"]["processed_partition_counts"],
+            {"train": 3916, "validation": 838},
+        )
+        self.assertEqual(
+            registry["scope"]["excluded_partition_counts"],
+            {"test": 838, "auxiliary": 10607, "quarantine": 3},
+        )
+        self.assertEqual(registry["scope"]["test_partition_text_processed"], 0)
+        self.assertEqual(registry["scope"]["auxiliary_rows_processed"], 0)
+        self.assertEqual(registry["scope"]["quarantine_rows_processed"], 0)
+        self.assertTrue(registry["validation"]["two_run_feature_hash_match"])
+        self.assertTrue(registry["validation"]["full_deterministic_recomputation_passed"])
+        self.assertFalse(registry["training_gate"]["binary_classifier_allowed"])
+        self.assertFalse(registry["training_gate"]["validation_ablation_allowed"])
+        self.assertFalse(registry["training_gate"]["test_evaluation_allowed"])
+
+    def test_financial_claim_ablation_retains_text_only_without_opening_test(self):
+        root = Path(__file__).resolve().parents[1]
+        registry = json.loads(
+            (
+                root
+                / "registry"
+                / "models"
+                / "mendeley_financial_claims_ablation_v1.json"
+            ).read_text(encoding="utf-8")
+        )
+        self.assertEqual(
+            registry["status"],
+            "FROZEN_VALIDATION_SELECTION_RETAIN_TEXT_ONLY_TEST_UNOPENED",
+        )
+        self.assertEqual(registry["decision"]["selected_variant"], "text_only")
+        self.assertFalse(registry["decision"]["challenger_passes_all_promotion_gates"])
+        self.assertFalse(registry["decision"]["open_internal_test_for_challenger"])
+        self.assertEqual(registry["data_contract"]["test_rows_used"], 0)
+        self.assertEqual(registry["data_contract"]["auxiliary_rows_used"], 0)
+        self.assertEqual(registry["data_contract"]["quarantine_rows_used"], 0)
+        self.assertFalse(registry["safety_contract"]["model_artifact_created"])
+        self.assertFalse(registry["safety_contract"]["test_opened"])
+        self.assertFalse(registry["safety_contract"]["deployment_allowed"])
 
     def test_mendeley_image_registry_keeps_image_training_blocked(self):
         root = Path(__file__).resolve().parents[1]
@@ -201,6 +264,46 @@ class ContractTests(unittest.TestCase):
         self.assertFalse(registry["decision"]["external_text_scoring_performed"])
         self.assertEqual(registry["safety_contract"]["model_scoring_operations"], 0)
         self.assertEqual(registry["safety_contract"]["labels_created"], 0)
+        self.assertFalse(registry["safety_contract"]["training_allowed"])
+
+    def test_external_text_intake_gate_stays_blocked_without_reconciled_records(self):
+        root = Path(__file__).resolve().parents[1]
+        registry = json.loads(
+            (
+                root
+                / "registry"
+                / "analyses"
+                / "external_text_intake_gate_v1.json"
+            ).read_text(encoding="utf-8")
+        )
+        self.assertEqual(
+            registry["status"],
+            "TWENTY_ONE_DRAFTS_IN_REVIEW_BLOCKED_ZERO_ELIGIBLE_RECORDS",
+        )
+        self.assertEqual(registry["raw_inventory"]["sec_iapd_files"], 1)
+        self.assertEqual(registry["raw_inventory"]["iosco_i_scan_files"], 1)
+        self.assertEqual(
+            registry["raw_inventory"]["external_text_capture_candidate_count"], 30
+        )
+        self.assertEqual(
+            registry["raw_inventory"]["external_text_reserve_candidate_count"], 30
+        )
+        self.assertEqual(registry["raw_inventory"]["external_text_capture_files"], 33)
+        self.assertEqual(registry["raw_inventory"]["external_warning_evidence_files"], 12)
+        self.assertEqual(registry["raw_inventory"]["external_text_draft_records"], 21)
+        self.assertEqual(
+            registry["raw_inventory"]["external_text_confirmed_draft_records"], 10
+        )
+        self.assertEqual(
+            registry["raw_inventory"]["external_text_legitimate_draft_records"], 11
+        )
+        self.assertEqual(registry["raw_inventory"]["external_text_eligible_records"], 0)
+        self.assertEqual(registry["template_validation"]["structural_error_count"], 0)
+        self.assertEqual(registry["template_validation"]["eligible_records"], 0)
+        self.assertFalse(registry["template_validation"]["reporting_allowed"])
+        self.assertFalse(registry["decision"]["external_text_scoring_performed"])
+        self.assertFalse(registry["decision"]["external_metrics_reported"])
+        self.assertFalse(registry["safety_contract"]["domain_access_allowed"])
         self.assertFalse(registry["safety_contract"]["training_allowed"])
 
     def test_mendeley_metadata_ablation_does_not_promote_source_shortcuts(self):

@@ -7,14 +7,24 @@ from __future__ import annotations
 
 import argparse
 import csv
+import gzip
 import hashlib
 import json
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST_ROOT = ROOT / "registry" / "manifests"
-SUPPORTED_SOURCE_IDS = {"mendeley_investment_deceptive_2026", "crimson_www_2025"}
+SUPPORTED_SOURCE_IDS = {
+    "mendeley_investment_deceptive_2026",
+    "crimson_www_2025",
+    "iosco_i_scan",
+    "sec_iapd",
+    "sec_iapd_homepage_capture_2026_09_24",
+    "wayback_confirmed_capture_2026_09_24",
+    "official_warning_capture_2026_09_24",
+}
 
 
 def sha256_file(path: Path) -> str:
@@ -26,7 +36,7 @@ def sha256_file(path: Path) -> str:
 
 
 def compact_profile(source_id: str, path: Path) -> dict[str, object]:
-    if source_id == "mendeley_investment_deceptive_2026":
+    if source_id in {"mendeley_investment_deceptive_2026", "iosco_i_scan"}:
         with path.open(encoding="utf-8-sig", newline="") as file:
             reader = csv.reader(file)
             header = next(reader)
@@ -38,6 +48,45 @@ def compact_profile(source_id: str, path: Path) -> dict[str, object]:
             raise ValueError("Crimson raw file does not have the expected list-of-objects structure")
         fields = sorted({field for item in records for field in item})
         return {"format": "JSON", "row_count": len(records), "fields": fields}
+    if source_id == "sec_iapd":
+        root_element = None
+        firm_count = 0
+        with gzip.open(path, "rb") as file:
+            for event, element in ET.iterparse(file, events=("start", "end")):
+                local_name = element.tag.rsplit("}", 1)[-1]
+                if event == "start" and root_element is None:
+                    root_element = local_name
+                if event == "end" and local_name == "Firm":
+                    firm_count += 1
+                    element.clear()
+        return {
+            "format": "GZIP_XML",
+            "root_element": root_element,
+            "firm_count": firm_count,
+        }
+    if source_id in {
+        "sec_iapd_homepage_capture_2026_09_24",
+        "official_warning_capture_2026_09_24",
+    }:
+        raw = path.read_bytes()
+        prefix = raw[:4096].lower()
+        return {
+            "format": "HTML",
+            "file_size_bytes": len(raw),
+            "html_marker_present": b"<html" in prefix or b"<!doctype html" in prefix,
+            "utf8_replacement_character_count": raw.decode("utf-8", errors="replace").count("\ufffd"),
+        }
+    if source_id == "wayback_confirmed_capture_2026_09_24":
+        raw = path.read_bytes()
+        is_gzip = raw.startswith(b"\x1f\x8b")
+        decoded = gzip.decompress(raw) if is_gzip else raw
+        prefix = decoded[:4096].lower()
+        return {
+            "format": "GZIP_HTML" if is_gzip else "HTML",
+            "file_size_bytes": len(raw),
+            "decoded_size_bytes": len(decoded),
+            "html_marker_present": b"<html" in prefix or b"<!doctype html" in prefix,
+        }
     raise ValueError(f"Unsupported source_id: {source_id}")
 
 

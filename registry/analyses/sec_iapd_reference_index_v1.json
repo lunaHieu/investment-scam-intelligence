@@ -1,0 +1,50 @@
+{
+  "analysis_id": "SEC_IAPD_REFERENCE_INDEX_V1",
+  "created_at": "2026-09-23",
+  "status": "FROZEN_OFFLINE_REFERENCE_INDEX_NOT_A_LABEL",
+  "source_id": "sec_iapd",
+  "source_version": "IA_FIRM_SEC_Feed_09_22_2026",
+  "input": {
+    "manifest": "registry/manifests/sec_iapd__ia_firm_sec_feed_2026-09-22__2026-09-23.json",
+    "path": "D:\\nckh 2026-2027\\ISI_Data\\raw\\sec_iapd\\IA_FIRM_SEC_Feed_09_22_2026.xml.gz",
+    "sha256": "262b2151a6d6289119a104fd03ea6fbc9d44c38c7f4c52584865244777f65366",
+    "record_count": 23927
+  },
+  "method": {
+    "schema_version": "external_reference_index_v1",
+    "entity_name_normalization": "Unicode NFKC, casefold, non-alphanumeric to space, whitespace collapse; reject U+FFFD",
+    "host_normalization": "offline URL/host parse, lowercase, IDNA, trim initial www; no public-suffix inference",
+    "contact_data_copied": false
+  },
+  "coverage": {
+    "record_count": 23927,
+    "records_with_entity_name_key": 23927,
+    "records_with_observed_host": 21071,
+    "records_without_entity_name_key": 0,
+    "records_without_observed_host": 2856,
+    "unique_entity_key_count": 29495,
+    "unique_host_count": 33173
+  },
+  "outputs": [
+    {
+      "role": "reference_index",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_reference_indices_v1\\sec_registration_reference_v1.jsonl",
+      "sha256": "7004453a5e5e71747f4f8b2f65cb79ed9359c482fd7f3f2abedfa75540890807",
+      "record_count": 23927
+    },
+    {
+      "role": "build_report",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_reference_indices_v1\\index_report_v1.json",
+      "sha256": "034c180763da4c83e73757a98991eb591832cd1f17ab864680cb6cc690d9b3b8"
+    }
+  ],
+  "safety_contract": {
+    "network_operations": 0,
+    "labels_created": 0,
+    "training_allowed": false,
+    "domain_access_allowed": false,
+    "automatic_entity_resolution_allowed": false,
+    "manual_evidence_review_required": true,
+    "interpretation": "A match is a registration reference, not a content-safety or legitimacy label and not proof against impersonation."
+  }
+}

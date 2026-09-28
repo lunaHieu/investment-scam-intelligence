@@ -1,0 +1,10 @@
+{
+  "source_id": "iosco_i_scan",
+  "source_url": "https://www.iosco.org/i-scan/",
+  "downloaded_at": "2026-09-23T03:38:24Z",
+  "source_version": "visible portal export 2026-09-23; latest validation_date 2026-09-21",
+  "license_or_terms": "Public IOSCO I-SCAN portal export acquired through the visible Export to CSV control. IOSCO states that member alerts are voluntary, incomplete, and remain the responsibility of the issuing member.",
+  "raw_label_semantics": "Regulator alert or warning record. A warning is evidence for entity or domain review; it is not proof of a criminal conviction and absence from I-SCAN is not evidence of legitimacy.",
+  "raw_file_sha256": "2d592f2e8b4fda6d6d9ba102571561a7e3bb00150e9eb24849c919b28c0458ab",
+  "storage_path": "D:/nckh 2026-2027/ISI_Data/raw/iosco_i_scan/I-SCAN Export.csv"
+}

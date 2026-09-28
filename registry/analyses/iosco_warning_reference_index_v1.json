@@ -1,0 +1,50 @@
+{
+  "analysis_id": "IOSCO_WARNING_REFERENCE_INDEX_V1",
+  "created_at": "2026-09-23",
+  "status": "FROZEN_OFFLINE_REFERENCE_INDEX_NOT_A_LABEL",
+  "source_id": "iosco_i_scan",
+  "source_version": "visible portal export 2026-09-23; latest validation_date 2026-09-21",
+  "input": {
+    "manifest": "registry/manifests/iosco_i_scan__export__2026-09-23.json",
+    "path": "D:\\nckh 2026-2027\\ISI_Data\\raw\\iosco_i_scan\\I-SCAN Export.csv",
+    "sha256": "2d592f2e8b4fda6d6d9ba102571561a7e3bb00150e9eb24849c919b28c0458ab",
+    "record_count": 47001
+  },
+  "method": {
+    "schema_version": "external_reference_index_v1",
+    "entity_name_normalization": "Unicode NFKC, casefold, non-alphanumeric to space, whitespace collapse; reject U+FFFD",
+    "host_normalization": "offline URL/host parse, lowercase, IDNA, trim initial www; no public-suffix inference",
+    "free_text_narratives_copied": false
+  },
+  "coverage": {
+    "record_count": 47001,
+    "records_with_entity_name_key": 43433,
+    "records_with_observed_host": 19192,
+    "records_without_entity_name_key": 3568,
+    "records_without_observed_host": 27809,
+    "unique_entity_key_count": 41397,
+    "unique_host_count": 19222
+  },
+  "outputs": [
+    {
+      "role": "reference_index",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_reference_indices_v1\\iosco_warning_reference_v1.jsonl",
+      "sha256": "578b2681f8d638d7b1a4d19882fc40b26965e397cef24f5a452f76cac229a5e2",
+      "record_count": 47001
+    },
+    {
+      "role": "build_report",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_reference_indices_v1\\index_report_v1.json",
+      "sha256": "034c180763da4c83e73757a98991eb591832cd1f17ab864680cb6cc690d9b3b8"
+    }
+  ],
+  "safety_contract": {
+    "network_operations": 0,
+    "labels_created": 0,
+    "training_allowed": false,
+    "domain_access_allowed": false,
+    "automatic_entity_resolution_allowed": false,
+    "manual_evidence_review_required": true,
+    "interpretation": "A match is regulator-warning evidence for review, not a conviction or scam truth label; absence is not evidence of legitimacy."
+  }
+}

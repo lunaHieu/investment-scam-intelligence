@@ -1,0 +1,10 @@
+{
+  "source_id": "sec_iapd",
+  "source_url": "https://adviserinfo.sec.gov/compilation",
+  "downloaded_at": "2026-09-23T03:53:37Z",
+  "source_version": "IA_FIRM_SEC_Feed_09_22_2026",
+  "license_or_terms": "Public SEC/IAPD investment adviser compilation report. The source states that the data comes from Form ADV submissions and that neither the SEC nor state securities authorities approve the filed information or guarantee its accuracy.",
+  "raw_label_semantics": "Official adviser registration and exempt-reporting reference data. A matching registration is an entity-reference signal only; it is not a content-safety label and does not rule out impersonation.",
+  "raw_file_sha256": "262b2151a6d6289119a104fd03ea6fbc9d44c38c7f4c52584865244777f65366",
+  "storage_path": "D:/nckh 2026-2027/ISI_Data/raw/sec_iapd/IA_FIRM_SEC_Feed_09_22_2026.xml.gz"
+}

@@ -1,0 +1,10 @@
+{
+  "source_id": "official_warning_capture_2026_09_24",
+  "source_url": "https://www.asc.ca/Enforcement/Investment-Caution-List/d/DFX-Trade-Systems",
+  "downloaded_at": "2026-09-24T00:00:00+07:00",
+  "source_version": "EXTCAP_CONF_010 official warning capture",
+  "license_or_terms": "Public regulator page captured for internal evidence review. This manifest grants no redistribution right; source terms continue to apply.",
+  "raw_label_semantics": "Official warning evidence only. It is not observed solicitation text, is not model input, and does not automatically create a ground-truth label.",
+  "raw_file_sha256": "aabd5b110ef00e61722f4c0fc7c950f701ec8e50065f22a880751c00077cfaff",
+  "storage_path": "D:/nckh 2026-2027/ISI_Data/raw/external_warning_evidence/2026-09-24/official_notices/EXTCAP_CONF_010__asc.ca.html"
+}

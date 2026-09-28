@@ -1,0 +1,10 @@
+{
+  "source_id": "official_warning_capture_2026_09_24",
+  "source_url": "https://moneysmart.gov.au/check-and-report-scams/investor-alert-list#!forex-futures-market--forexfuturesmarket-com--4783",
+  "downloaded_at": "2026-09-24T00:00:00+07:00",
+  "source_version": "EXTCAP_CONF_002 official warning capture",
+  "license_or_terms": "Public regulator page captured for internal evidence review. This manifest grants no redistribution right; source terms continue to apply.",
+  "raw_label_semantics": "Official warning evidence only. It is not observed solicitation text, is not model input, and does not automatically create a ground-truth label.",
+  "raw_file_sha256": "1772716f0454cbf56d821c4b2529c70dc8dc7b090028c0fe41adde51fe06733f",
+  "storage_path": "D:/nckh 2026-2027/ISI_Data/raw/external_warning_evidence/2026-09-24/official_notices/EXTCAP_CONF_002__moneysmart.gov.au.html"
+}

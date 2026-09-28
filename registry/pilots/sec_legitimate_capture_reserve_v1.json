@@ -1,0 +1,93 @@
+{
+  "pilot_id": "SEC_LEGITIMATE_CAPTURE_RESERVE_V1",
+  "created_at": "2026-09-24",
+  "status": "FROZEN_OFFLINE_RESERVE_QUEUE_CAPTURE_REQUIRED_NOT_LABELED",
+  "source_scope": [
+    "sec_iapd",
+    "iosco_i_scan"
+  ],
+  "purpose": "Provide 30 higher-identity-affinity SEC/IAPD reserve candidates after the primary legitimate capture queue produced only two captures.",
+  "inputs": [
+    {
+      "role": "iosco_reference_index",
+      "registry": "registry/analyses/iosco_warning_reference_index_v1.json",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_reference_indices_v1\\iosco_warning_reference_v1.jsonl",
+      "sha256": "578b2681f8d638d7b1a4d19882fc40b26965e397cef24f5a452f76cac229a5e2",
+      "record_count": 47001
+    },
+    {
+      "role": "sec_iapd_reference_index",
+      "registry": "registry/analyses/sec_iapd_reference_index_v1.json",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_reference_indices_v1\\sec_registration_reference_v1.jsonl",
+      "sha256": "7004453a5e5e71747f4f8b2f65cb79ed9359c482fd7f3f2abedfa75540890807",
+      "record_count": 23927
+    },
+    {
+      "role": "primary_capture_queue",
+      "registry": "registry/pilots/external_text_capture_candidate_queue_v1.json",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_capture_queue_v1\\capture_candidates_v1.jsonl",
+      "sha256": "ae843f5723d66e7e996300424c5f11663fb513bbb94a52ad282de38d52fa1b29",
+      "record_count": 30
+    }
+  ],
+  "selection_protocol": {
+    "selection_seed": "20260924",
+    "requested_reserve_size": 30,
+    "candidate_is_not_a_label": true,
+    "filters": [
+      "exactly one clean observed host",
+      "host absent from the 30-candidate primary queue",
+      "host absent from the IOSCO warning reference index",
+      "host unique across SEC/IAPD records",
+      "no quality flags",
+      "SEC firm type Registered and status APPROVED",
+      "registration date no later than 2023-12-31",
+      "filing date no earlier than 2025-01-01",
+      "domain-to-entity affinity at least 0.45"
+    ],
+    "ranking": "Descending domain-to-entity affinity, then older registration date, then deterministic seed tie-breaker."
+  },
+  "coverage": {
+    "input_record_count": 70928,
+    "existing_primary_host_count": 30,
+    "eligible_sec_pool": 2222,
+    "reserve_candidate_count": 30,
+    "minimum_domain_identity_affinity": 1.0,
+    "maximum_domain_identity_affinity": 1.0,
+    "capture_complete_count": 0,
+    "reconciled_count": 0,
+    "external_evaluation_eligible_count": 0,
+    "labels_created": 0
+  },
+  "outputs": [
+    {
+      "role": "sec_legitimate_reserve_queue",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_capture_queue_v1\\sec_legitimate_reserve_v1.jsonl",
+      "sha256": "3a6f905be34330c8b541eee21c1c5d08ee6adb3a187b585a059eccafd315edd2",
+      "record_count": 30
+    },
+    {
+      "role": "selection_report",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_capture_queue_v1\\sec_legitimate_reserve_selection_report_v1.json",
+      "sha256": "3318e9b4f26a7bb9ca313f3623093d7aaf588e88676c403c4ff1ed38616a2739"
+    }
+  ],
+  "next_gate": {
+    "purpose": "Use only after confirming network reliability; each successful capture still requires identity reconciliation and evidence review.",
+    "minimum_legitimate_for_external_pilot": 10,
+    "currently_captured_from_primary_queue": 2,
+    "currently_eligible": 0,
+    "model_scoring_allowed": false
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "candidate_domain_access_operations": 0,
+    "labels_created": 0,
+    "model_scoring_operations": 0,
+    "model_fit_operations": 0,
+    "raw_files_modified": false,
+    "training_allowed": false,
+    "domain_access_allowed": false,
+    "deployment_allowed": false
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "source_id": "official_warning_capture_2026_09_24",
+  "source_url": "https://www.finma.ch/en/finma-public/warnungen/warning-list/swiss-broker-experts-ag/",
+  "downloaded_at": "2026-09-24T00:00:00+07:00",
+  "source_version": "EXTCAP_CONF_011 official warning capture",
+  "license_or_terms": "Public regulator page captured for internal evidence review. This manifest grants no redistribution right; source terms continue to apply.",
+  "raw_label_semantics": "Official warning evidence only. It is not observed solicitation text, is not model input, and does not automatically create a ground-truth label.",
+  "raw_file_sha256": "ba4f87ccf545107ebfb7d4f0fbc44f56c5af0575ad16aa0099372400fac06f58",
+  "storage_path": "D:/nckh 2026-2027/ISI_Data/raw/external_warning_evidence/2026-09-24/official_notices/EXTCAP_CONF_011__finma.ch.html"
+}

@@ -1,0 +1,10 @@
+{
+  "source_id": "official_warning_capture_2026_09_24",
+  "source_url": "https://www.afm.nl/nl-nl/consumenten/waarschuwingen/bekijk-de-waarschuwingen/boilerroom/veld-luxaris",
+  "downloaded_at": "2026-09-24T00:00:00+07:00",
+  "source_version": "EXTCAP_RESERVE_CONF_008 official warning capture",
+  "license_or_terms": "Public regulator page captured for internal evidence review. This manifest grants no redistribution right; source terms continue to apply.",
+  "raw_label_semantics": "Official warning evidence only. It is not observed solicitation text, is not model input, and does not automatically create a ground-truth label.",
+  "raw_file_sha256": "df107c22651cae96980b56cc48ceb5a440bc690ee8ca73bee804f11143e25edd",
+  "storage_path": "D:/nckh 2026-2027/ISI_Data/raw/external_warning_evidence/2026-09-24/official_notices/EXTCAP_RESERVE_CONF_008__afm.nl.html"
+}

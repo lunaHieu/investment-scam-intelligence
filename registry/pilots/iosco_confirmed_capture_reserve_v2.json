@@ -1,0 +1,91 @@
+{
+  "pilot_id": "IOSCO_CONFIRMED_CAPTURE_RESERVE_V2",
+  "created_at": "2026-09-24",
+  "status": "ONE_HUNDRED_UNLABELED_RESERVE_CANDIDATES_CAPTURE_REQUIRED",
+  "source_id": "iosco_i_scan",
+  "purpose": "Extend the high-affinity IOSCO reserve with 100 new hosts after excluding the primary queue and all 40 V1 reserve hosts.",
+  "inputs": [
+    {
+      "role": "iosco_reference_index",
+      "registry": "registry/analyses/iosco_warning_reference_index_v1.json",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_reference_indices_v1\\iosco_warning_reference_v1.jsonl",
+      "sha256": "578b2681f8d638d7b1a4d19882fc40b26965e397cef24f5a452f76cac229a5e2",
+      "record_count": 47001
+    },
+    {
+      "role": "primary_capture_queue",
+      "registry": "registry/pilots/external_text_capture_candidate_queue_v1.json",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_capture_queue_v1\\capture_candidates_v1.jsonl",
+      "sha256": "ae843f5723d66e7e996300424c5f11663fb513bbb94a52ad282de38d52fa1b29",
+      "record_count": 30
+    },
+    {
+      "role": "confirmed_reserve_v1",
+      "registry": "registry/pilots/iosco_confirmed_capture_reserve_v1.json",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_capture_queue_v1\\iosco_confirmed_reserve_v1.jsonl",
+      "sha256": "7a1586b4ca78c6fb7c71d7bd3cbed5bbb1352ab7cd915ab15a92fafecd9f7ede",
+      "record_count": 40
+    },
+    {
+      "role": "selector_module",
+      "path": "src/isi/curation/external_text_capture_queue.py",
+      "sha256": "aff4c55403f9f03c16cb0307e22cdb62ef474e67973f118352a799db692576b4"
+    },
+    {
+      "role": "selection_script",
+      "path": "scripts/select_confirmed_capture_reserve.py",
+      "sha256": "cd29c5d8b5949c33301ac9d57cec8fd1d6ca79b87e3b4d04499d3ea870865601"
+    }
+  ],
+  "selection_protocol": {
+    "selection_seed": "20260924-confirmed-v2",
+    "candidate_id_prefix": "EXTCAP_RESERVE2_CONF",
+    "reserve_size": 100,
+    "excluded_host_count": 70,
+    "minimum_warning_date": "2025-01-01",
+    "minimum_domain_identity_affinity": 0.45,
+    "observed_affinity_range": {
+      "minimum": 1.0,
+      "maximum": 1.0
+    },
+    "candidate_is_not_a_label": true
+  },
+  "coverage": {
+    "eligible_pool_count": 8143,
+    "reserve_candidate_count": 100,
+    "jurisdiction_count": 16,
+    "capture_complete_count": 0,
+    "human_reconciled_count": 0,
+    "external_evaluation_eligible_count": 0,
+    "labels_created": 0
+  },
+  "outputs": [
+    {
+      "role": "confirmed_reserve_queue",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_capture_queue_v1\\iosco_confirmed_reserve_v2.jsonl",
+      "sha256": "118194378269a8d1b532ed41882675990c6792f41c2fb39c5cecfbbe23d7fa80",
+      "record_count": 100
+    },
+    {
+      "role": "selection_report",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_capture_queue_v1\\iosco_confirmed_reserve_selection_report_v2.json",
+      "sha256": "dc0df8e516cc7fb9d6570817ab7822742dfea9ede6b8a79b6998034aa08ae032"
+    }
+  ],
+  "next_gate": {
+    "acquisition_method": "Internet Archive availability and raw replay only; do not open live candidate domains",
+    "required_state": "Human-reconciled CONFIRMED + HIGH with valid raw capture hash and reviewed evidence",
+    "current_eligible": 0,
+    "model_scoring_allowed": false
+  },
+  "safety_contract": {
+    "network_operations_during_selection": 0,
+    "candidate_domain_access_operations": 0,
+    "labels_created": 0,
+    "model_scoring_operations": 0,
+    "model_fit_operations": 0,
+    "training_allowed": false,
+    "domain_access_allowed": false,
+    "deployment_allowed": false
+  }
+}

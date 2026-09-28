@@ -1,0 +1,10 @@
+{
+  "source_id": "official_warning_capture_2026_09_24",
+  "source_url": "https://www.asc.ca/Enforcement/Investment-Caution-List/k/Kubera-Capital-Markets-Ltd",
+  "downloaded_at": "2026-09-24T00:00:00+07:00",
+  "source_version": "EXTCAP_CONF_008 official warning capture",
+  "license_or_terms": "Public regulator page captured for internal evidence review. This manifest grants no redistribution right; source terms continue to apply.",
+  "raw_label_semantics": "Official warning evidence only. It is not observed solicitation text, is not model input, and does not automatically create a ground-truth label.",
+  "raw_file_sha256": "f21511b3ac6a1b1dfaa093db148c0d4cc76812b8ddfdc5af1b31985a3bb46d68",
+  "storage_path": "D:/nckh 2026-2027/ISI_Data/raw/external_warning_evidence/2026-09-24/official_notices/EXTCAP_CONF_008__asc.ca.html"
+}

@@ -1,0 +1,89 @@
+{
+  "analysis_id": "CRIMSON_EXTERNAL_REFERENCE_MATCH_V1",
+  "created_at": "2026-09-23",
+  "status": "FROZEN_OFFLINE_REFERENCE_MATCHES_NOT_LABELS",
+  "source_id": "crimson_www_2025",
+  "source_version": "b040e2def08ea26058ef9da752b72fa4a5238987",
+  "inputs": {
+    "crimson": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\interim\\crimson_www_2025\\b040e2def08ea26058ef9da752b72fa4a5238987\\candidate_url_artifacts_v2.jsonl",
+      "sha256": "75cb24ec52ecca12e1d4c6e6b2dba27dfdd80d40a16239a8f7dbc2cd8bc401ac",
+      "record_count": 43572
+    },
+    "iosco": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_reference_indices_v1\\iosco_warning_reference_v1.jsonl",
+      "sha256": "578b2681f8d638d7b1a4d19882fc40b26965e397cef24f5a452f76cac229a5e2"
+    },
+    "sec": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_reference_indices_v1\\sec_registration_reference_v1.jsonl",
+      "sha256": "7004453a5e5e71747f4f8b2f65cb79ed9359c482fd7f3f2abedfa75540890807"
+    }
+  },
+  "method": {
+    "exact_relation": "Canonical Crimson host equals canonical reference host.",
+    "hierarchy_relations": [
+      "CRIMSON_SUBDOMAIN_OF_REFERENCE_HOST",
+      "REFERENCE_SUBDOMAIN_OF_CRIMSON_HOST"
+    ],
+    "www_normalization": "Initial www is removed only for matching; every original Crimson artifact remains in match lineage.",
+    "review_deduplication": "Review rows are grouped by canonical Crimson match host; original artifact IDs and observed source domains are retained.",
+    "public_suffix_inference": false,
+    "automatic_identity_resolution": false
+  },
+  "coverage": {
+    "crimson_record_count": 43572,
+    "unique_crimson_match_host_count": 43487,
+    "crimson_records_with_reference_match": 345,
+    "crimson_records_without_reference_match": 43227,
+    "unique_crimson_match_hosts_with_reference_match": 344,
+    "unique_crimson_match_hosts_without_reference_match": 43143,
+    "reference_match_pair_count": 370,
+    "ambiguous_match_pair_count": 49,
+    "pair_counts_by_source": {
+      "iosco_i_scan": 362,
+      "sec_iapd": 8
+    },
+    "pair_counts_by_host_relation": {
+      "CRIMSON_SUBDOMAIN_OF_REFERENCE_HOST": 47,
+      "EXACT_HOST": 322,
+      "REFERENCE_SUBDOMAIN_OF_CRIMSON_HOST": 1
+    },
+    "queue_counts_by_reason": {
+      "IOSCO_EXACT_HOST": 298,
+      "IOSCO_HOST_HIERARCHY": 38,
+      "SEC_EXACT_HOST": 6,
+      "SEC_HOST_HIERARCHY": 2
+    },
+    "iosco_and_sec_same_host_count": 0
+  },
+  "outputs": [
+    {
+      "role": "analysis_report",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\crimson_www_2025\\b040e2def08ea26058ef9da752b72fa4a5238987\\external_reference_match_v1\\match_report_v1.json",
+      "sha256": "7ffdb3b5124bb7fb30e96c406e838825c8103f3a8eebcc72a6fc61d4c11e79d1"
+    },
+    {
+      "role": "reference_matches",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\crimson_www_2025\\b040e2def08ea26058ef9da752b72fa4a5238987\\external_reference_match_v1\\reference_matches_v1.jsonl",
+      "sha256": "bd1a58555b78b07653406756a5211bdb3b5d95102e19b8487bf7577b2669eead",
+      "record_count": 370
+    },
+    {
+      "role": "review_queue",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\crimson_www_2025\\b040e2def08ea26058ef9da752b72fa4a5238987\\external_reference_match_v1\\review_queue_v1.jsonl",
+      "sha256": "d73be96ef20ec6867458134b0ab56d2327de4a4be8bb70b9b3b01efa338defd1",
+      "record_count": 344
+    }
+  ],
+  "safety_contract": {
+    "network_operations": 0,
+    "labels_created": 0,
+    "training_allowed": false,
+    "domain_access_allowed": false,
+    "automatic_entity_resolution_allowed": false,
+    "manual_evidence_review_required": true,
+    "unmatched_means_safe": false,
+    "sec_match_means_legitimate": false,
+    "iosco_match_means_convicted": false
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "analysis_id": "CRIMSON_HUMAN_REVIEW_PLAN_V1",
+  "created_at": "2026-09-23",
+  "status": "PRIORITIZED_HUMAN_REVIEW_PLAN_READY_NOT_FOR_TRAINING",
+  "source_id": "crimson_www_2025",
+  "source_version": "b040e2def08ea26058ef9da752b72fa4a5238987",
+  "inputs": {
+    "pilot_registry": "registry/pilots/crimson_external_reference_review_pilot_v1.json",
+    "sec_first_pass": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\crimson_external_reference_review_pilot_v1\\sec_ai_assisted_first_pass_v1.jsonl",
+      "sha256": "314b283e3fb2ce224087a52d07f74b503cb5fbd377ab8f9f6bc370dc37e43465"
+    },
+    "iosco_first_pass": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\crimson_external_reference_review_pilot_v1\\iosco_ai_assisted_first_pass_v1.jsonl",
+      "sha256": "3120e1003ae2ac061731270f1b243770a7462ddfec4795b649fd9ed9795ba8dd"
+    }
+  },
+  "method": {
+    "priority_order": [
+      "P0_IMPERSONATION_SUSPECTED",
+      "P1_SECOND_REVIEW_WITH_LIVE_GAP",
+      "P2_SECOND_REVIEW_LIVE_CONFIRMED",
+      "P3_SINGLE_REVIEW_WITH_LIVE_GAP",
+      "P4_SINGLE_REVIEW_OFFICIAL_REFERENCE"
+    ],
+    "ordering_rule": "Sort by priority band, then by frozen pilot rank.",
+    "workbook_link_rule": "Review plan status columns are formulas linked to the authoritative Review sheet.",
+    "human_gate": "Only a human may confirm the official reference and complete a review.",
+    "crimson_domain_access": false
+  },
+  "coverage": {
+    "record_count": 40,
+    "priority_counts": {
+      "P0_IMPERSONATION_SUSPECTED": 2,
+      "P1_SECOND_REVIEW_WITH_LIVE_GAP": 11,
+      "P2_SECOND_REVIEW_LIVE_CONFIRMED": 8,
+      "P3_SINGLE_REVIEW_WITH_LIVE_GAP": 3,
+      "P4_SINGLE_REVIEW_OFFICIAL_REFERENCE": 16
+    },
+    "second_review_required_count": 21,
+    "manual_live_url_followup_count": 16,
+    "review_status_counts": {
+      "IN_PROGRESS": 40
+    },
+    "adjudication_status_counts": {
+      "NOT_READY": 40
+    },
+    "training_eligible_count": 0,
+    "labels_created": 0
+  },
+  "outputs": [
+    {
+      "role": "human_review_plan",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\crimson_external_reference_review_pilot_v1\\human_review_plan_v1.jsonl",
+      "sha256": "dee1bfe1ee588d1fcec92049a6f8c5980a5806ea5bb812027696637e7e9d7e2c",
+      "record_count": 40
+    },
+    {
+      "role": "review_workbook",
+      "path": "C:\\Users\\hieu\\Documents\\ChatGPT\\invesment scam intelligence\\outputs\\crimson_external_reference_review_pilot_v1\\Crimson_External_Reference_Review_Pilot_V1.xlsx",
+      "sha256": "32ac154ce640a9cb7615b348257062ba9576d36c312ad6553f2c77ee4f8e1fc4"
+    }
+  ],
+  "safety_contract": {
+    "network_operations": 0,
+    "labels_created": 0,
+    "training_allowed": false,
+    "domain_access_allowed": false,
+    "automatic_adjudication_allowed": false,
+    "human_confirmation_required": true,
+    "training_eligible_default": "NO"
+  }
+}

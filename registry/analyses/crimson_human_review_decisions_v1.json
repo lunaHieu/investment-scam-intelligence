@@ -1,0 +1,61 @@
+{
+  "analysis_id": "CRIMSON_HUMAN_REVIEW_DECISIONS_V1",
+  "created_at": "2026-09-23",
+  "status": "ONE_FIRST_HUMAN_REVIEW_RECORDED_SECOND_REVIEW_REQUIRED_NOT_FOR_TRAINING",
+  "source_id": "crimson_www_2025",
+  "source_version": "b040e2def08ea26058ef9da752b72fa4a5238987",
+  "inputs": {
+    "pilot_registry": "registry/pilots/crimson_external_reference_review_pilot_v1.json",
+    "review_brief": {
+      "path": "reports/crimson_external_reference_review_pilot_v1/PILOT_CRIMSON_REF_018_review_brief_v1.json",
+      "sha256": "76f88e99772921436ab40a6cb23190a424cc8b64ae3b8aec2abecd341ffbda01"
+    },
+    "confirmation": {
+      "reviewer": "Hieu",
+      "confirmed_at": "2026-09-23",
+      "source": "Explicit user confirmation in the Codex task"
+    }
+  },
+  "method": {
+    "decision_stage": "HUMAN_FIRST_REVIEW",
+    "write_rule": "Append only after explicit user confirmation of the evidence-backed recommendation.",
+    "second_review_rule": "Suspected impersonation remains SECOND_REVIEW_REQUIRED after the first human review.",
+    "training_rule": "A human review decision does not create a model label or training eligibility."
+  },
+  "coverage": {
+    "decision_count": 1,
+    "review_status_counts": {
+      "COMPLETED": 1
+    },
+    "adjudication_status_counts": {
+      "SECOND_REVIEW_REQUIRED": 1
+    },
+    "second_review_status_counts": {
+      "REQUESTED": 1
+    },
+    "training_eligible_count": 0,
+    "labels_created": 0
+  },
+  "outputs": [
+    {
+      "role": "human_review_decisions",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\crimson_external_reference_review_pilot_v1\\human_review_decisions_v1.jsonl",
+      "sha256": "675689e236107a26a21f8590457bfd7dd49e564a157470c0a16b11452515f457",
+      "record_count": 1
+    },
+    {
+      "role": "review_workbook",
+      "path": "C:\\Users\\hieu\\Documents\\ChatGPT\\invesment scam intelligence\\outputs\\crimson_external_reference_review_pilot_v1\\Crimson_External_Reference_Review_Pilot_V1.xlsx",
+      "sha256": "32ac154ce640a9cb7615b348257062ba9576d36c312ad6553f2c77ee4f8e1fc4"
+    }
+  ],
+  "safety_contract": {
+    "network_operations": 0,
+    "labels_created": 0,
+    "training_allowed": false,
+    "domain_access_allowed": false,
+    "automatic_second_review_allowed": false,
+    "second_human_review_required": true,
+    "training_eligible_default": "NO"
+  }
+}

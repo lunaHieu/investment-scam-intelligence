@@ -1,0 +1,78 @@
+{
+  "analysis_id": "CRIMSON_IOSCO_AI_ASSISTED_FIRST_PASS_V1",
+  "created_at": "2026-09-23",
+  "status": "FIRST_PASS_COMPLETE_AWAITING_HUMAN_CONFIRMATION_NOT_FOR_TRAINING",
+  "source_id": "crimson_www_2025",
+  "source_version": "b040e2def08ea26058ef9da752b72fa4a5238987",
+  "inputs": {
+    "pilot_registry": "registry/pilots/crimson_external_reference_review_pilot_v1.json",
+    "iosco_reference_index": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_reference_indices_v1\\iosco_warning_reference_v1.jsonl",
+      "sha256": "578b2681f8d638d7b1a4d19882fc40b26965e397cef24f5a452f76cac229a5e2",
+      "source_raw_sha256": "2d592f2e8b4fda6d6d9ba102571561a7e3bb00150e9eb24849c919b28c0458ab"
+    },
+    "live_reference_check": {
+      "path": "configs/crimson_iosco_live_reference_check_v1.json",
+      "sha256": "d6b4d656e707cb61d60257cb1edf603847420264b5db261721dccdcf7d38fe8c",
+      "url_count": 41,
+      "live_confirmed_count": 23,
+      "live_not_confirmed_count": 18
+    }
+  },
+  "method": {
+    "review_scope": "All 32 IOSCO I-SCAN matches in the frozen 40-host pilot.",
+    "identity_rule": "SAME_ENTITY is suggested when the Crimson host equals or is a subdomain of the warned host. Explicit clone/imposter evidence is suggested as IMPERSONATION_SUSPECTED.",
+    "evidence_rule": "WARNING_RELEVANT means the regulator warning is relevant to the host; it is not a conviction or automatic scam label.",
+    "live_url_rule": "Live availability is recorded separately from the frozen I-SCAN evidence. Failure to render a live page does not invalidate the snapshot record.",
+    "review_status": "IN_PROGRESS until a human confirms the official record and rationale.",
+    "crimson_domain_access": false
+  },
+  "coverage": {
+    "iosco_pilot_record_count": 32,
+    "evidence_record_count": 53,
+    "identity_relationship_counts": {
+      "SAME_ENTITY": 30,
+      "IMPERSONATION_SUSPECTED": 2
+    },
+    "evidence_assessment_counts": {
+      "WARNING_RELEVANT": 32
+    },
+    "live_reference_status_counts": {
+      "ALL_URLS_LIVE_CONFIRMED": 16,
+      "PARTIAL_URLS_LIVE_CONFIRMED": 9,
+      "SNAPSHOT_ONLY_LIVE_NOT_CONFIRMED": 7
+    },
+    "manual_live_url_followup_required_count": 16,
+    "second_review_requested_count": 21,
+    "review_status_counts": {
+      "IN_PROGRESS": 32
+    },
+    "human_confirmation_required_count": 32,
+    "training_eligible_count": 0,
+    "labels_created": 0
+  },
+  "outputs": [
+    {
+      "role": "first_pass_records",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\crimson_external_reference_review_pilot_v1\\iosco_ai_assisted_first_pass_v1.jsonl",
+      "sha256": "3120e1003ae2ac061731270f1b243770a7462ddfec4795b649fd9ed9795ba8dd",
+      "record_count": 32
+    },
+    {
+      "role": "review_workbook",
+      "path": "C:\\Users\\hieu\\Documents\\ChatGPT\\invesment scam intelligence\\outputs\\crimson_external_reference_review_pilot_v1\\Crimson_External_Reference_Review_Pilot_V1.xlsx",
+      "sha256": "32ac154ce640a9cb7615b348257062ba9576d36c312ad6553f2c77ee4f8e1fc4"
+    }
+  ],
+  "safety_contract": {
+    "network_operations": 0,
+    "labels_created": 0,
+    "training_allowed": false,
+    "domain_access_allowed": false,
+    "artifact_generation_network_operations": 0,
+    "official_reference_web_verification_performed": true,
+    "crimson_domain_access_allowed": false,
+    "automatic_final_entity_resolution_allowed": false,
+    "human_confirmation_required": true
+  }
+}

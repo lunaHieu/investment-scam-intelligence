@@ -1,0 +1,118 @@
+{
+  "pilot_id": "CRIMSON_EXTERNAL_REFERENCE_REVIEW_PILOT_V1",
+  "created_at": "2026-09-23",
+  "status": "ONE_HUMAN_FIRST_REVIEW_COMPLETED_SECOND_REVIEW_REQUIRED_NOT_FOR_TRAINING",
+  "source_id": "crimson_www_2025",
+  "source_version": "b040e2def08ea26058ef9da752b72fa4a5238987",
+  "inputs": {
+    "reference_match_registry": "registry/analyses/crimson_external_reference_match_v1.json",
+    "reference_matches_sha256": "bd1a58555b78b07653406756a5211bdb3b5d95102e19b8487bf7577b2669eead",
+    "review_queue_sha256": "d73be96ef20ec6867458134b0ab56d2327de4a4be8bb70b9b3b01efa338defd1"
+  },
+  "selection_protocol": {
+    "pilot_size": 40,
+    "selection_seed": "20260923",
+    "strata": {
+      "ALL_SEC_MATCHES": 8,
+      "IOSCO_SHARED_EXACT": 12,
+      "IOSCO_HOST_HIERARCHY": 10,
+      "IOSCO_EXACT_HASH_SAMPLE": 10
+    },
+    "order": [
+      "Include every SEC/IAPD match.",
+      "Include up to 12 IOSCO exact-host candidates whose reference host is shared by multiple source records.",
+      "Include 10 IOSCO host-hierarchy candidates.",
+      "Fill to 40 with a deterministic SHA-256-ranked sample of remaining IOSCO exact-host candidates."
+    ]
+  },
+  "coverage": {
+    "pilot_record_count": 40,
+    "evidence_record_count": 61,
+    "sec_host_count": 8,
+    "iosco_host_count": 32,
+    "review_status_counts": {
+      "NOT_STARTED": 40
+    },
+    "workbook_review_status_counts": {
+      "IN_PROGRESS": 39,
+      "COMPLETED": 1
+    },
+    "human_review_plan_count": 40,
+    "training_eligible_count": 0,
+    "labels_created": 0
+  },
+  "outputs": [
+    {
+      "role": "pilot_records",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\crimson_external_reference_review_pilot_v1\\pilot_records_v1.jsonl",
+      "sha256": "f422afb61376dca421c00591e86536d2d422130a77b6a8aa189e2ff90b6ea20a",
+      "record_count": 40
+    },
+    {
+      "role": "evidence_records",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\crimson_external_reference_review_pilot_v1\\evidence_records_v1.jsonl",
+      "sha256": "03ce29e8aabb43ac85b625c1ec043213a03b8d6582246ed0de4b6ac62a91afcb",
+      "record_count": 61
+    },
+    {
+      "role": "selection_report",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\crimson_external_reference_review_pilot_v1\\selection_report_v1.json",
+      "sha256": "42af93fbcc302b63a25183d3a7e078318f8a489d6cf9d1a93ab909ad7afdcce8"
+    },
+    {
+      "role": "review_workbook",
+      "path": "C:\\Users\\hieu\\Documents\\ChatGPT\\invesment scam intelligence\\outputs\\crimson_external_reference_review_pilot_v1\\Crimson_External_Reference_Review_Pilot_V1.xlsx",
+      "sha256": "32ac154ce640a9cb7615b348257062ba9576d36c312ad6553f2c77ee4f8e1fc4"
+    }
+  ],
+  "review_contract": {
+    "editable_fields": [
+      "review_status",
+      "official_reference_checked",
+      "identity_relationship",
+      "evidence_assessment",
+      "reviewer",
+      "reviewed_date",
+      "review_notes",
+      "second_review_status",
+      "second_reviewer"
+    ],
+    "allowed_identity_relationships": [
+      "SAME_ENTITY",
+      "IMPERSONATION_SUSPECTED",
+      "UNRELATED",
+      "UNCLEAR"
+    ],
+    "allowed_evidence_assessments": [
+      "WARNING_RELEVANT",
+      "REGISTRATION_RELEVANT",
+      "REFERENCE_NOT_APPLICABLE",
+      "INSUFFICIENT_EVIDENCE"
+    ],
+    "second_review_required_when": [
+      "identity_relationship is IMPERSONATION_SUSPECTED",
+      "identity_relationship is UNCLEAR",
+      "reference host is shared by multiple source records"
+    ]
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "labels_created": 0,
+    "model_scoring_operations": 0,
+    "training_allowed": false,
+    "domain_access_allowed": false,
+    "automatic_entity_resolution_allowed": false,
+    "manual_review_required": true,
+    "training_eligible_default": "NO"
+  },
+  "review_state": {
+    "sec_ai_assisted_first_pass_registry": "registry/analyses/crimson_sec_ai_assisted_first_pass_v1.json",
+    "iosco_ai_assisted_first_pass_registry": "registry/analyses/crimson_iosco_ai_assisted_first_pass_v1.json",
+    "human_review_plan_registry": "registry/analyses/crimson_human_review_plan_v1.json",
+    "human_review_decisions_registry": "registry/analyses/crimson_human_review_decisions_v1.json",
+    "human_confirmation_required": true,
+    "completed_human_reviews": 1,
+    "completed_second_reviews": 0,
+    "ready_for_adjudication": 0
+  }
+}

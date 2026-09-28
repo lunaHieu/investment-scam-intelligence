@@ -1,0 +1,56 @@
+{
+  "brief_id": "PILOT_CRIMSON_REF_018_REVIEW_BRIEF_V1",
+  "created_at": "2026-09-23",
+  "pilot_id": "PILOT_CRIMSON_REF_018",
+  "pilot_rank": 18,
+  "crimson_host": "passinvestmentmanagers.com",
+  "review_scope": "Official regulator references only; the Crimson host was not opened.",
+  "previous_live_reference_status": "PARTIAL_URLS_LIVE_CONFIRMED",
+  "current_live_reference_status": "ALL_URLS_LIVE_CONFIRMED",
+  "official_reference_checks": [
+    {
+      "regulator": "Central Bank of Ireland",
+      "url": "https://www.centralbank.ie/news/article/pass-investment-managers-(clone)---central-bank-of-ireland-issues-warning-on-unregistered-firm",
+      "status": "LIVE_CONFIRMED",
+      "notice_date": "2025-08-05",
+      "facts": [
+        "The notice identifies Pass Investment Managers as a clone.",
+        "The notice lists passinvestmentmanagers.com and pass-im.io.",
+        "The notice states the clone used details of the authorised PassIM Structured Funds Plc and has no connection to that legitimate fund.",
+        "The notice states the clone is not registered to provide virtual-asset services in Ireland."
+      ]
+    },
+    {
+      "regulator": "Comisión Nacional del Mercado de Valores",
+      "url": "https://www.cnmv.es/portal/resultadobusqueda?idAdv=5289&lang=es&tipo=1",
+      "document_url": "https://www.cnmv.es/webservices/verdocumento/ver?e=65KqtjAjXqiNQFFEgdtQv5qsmhmHlGKVzGKYDPXP7jQPj57IXgF7VdIcuAns0KKL",
+      "status": "LIVE_CONFIRMED",
+      "notice_date": "2025-11-24",
+      "facts": [
+        "The warning identifies Pass Investment Managers and passinvestmentmanagers.com.",
+        "The warning states the entity is not authorised to provide the specified investment or crypto-asset services in Spain."
+      ]
+    }
+  ],
+  "evidence_consistency": {
+    "host_relation": "EXACT_HOST",
+    "sources_agree_on_host": true,
+    "explicit_clone_language_present": true,
+    "contradictory_official_evidence_found": false
+  },
+  "recommended_human_decision": {
+    "official_reference_checked": "YES",
+    "identity_relationship": "IMPERSONATION_SUSPECTED",
+    "evidence_assessment": "WARNING_RELEVANT",
+    "second_review_required": "YES",
+    "rationale": "Two official regulator records identify the exact host. The Central Bank of Ireland explicitly describes the entity as a clone with no connection to the authorised fund."
+  },
+  "workflow_state": {
+    "review_status": "IN_PROGRESS",
+    "adjudication_status": "NOT_READY",
+    "human_confirmation_required": true,
+    "second_human_review_required": true,
+    "training_eligible": "NO",
+    "label_created": false
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "analysis_id": "CRIMSON_SEC_AI_ASSISTED_FIRST_PASS_V1",
+  "created_at": "2026-09-23",
+  "status": "FIRST_PASS_COMPLETE_AWAITING_HUMAN_CONFIRMATION_NOT_FOR_TRAINING",
+  "source_id": "crimson_www_2025",
+  "source_version": "b040e2def08ea26058ef9da752b72fa4a5238987",
+  "inputs": {
+    "pilot_registry": "registry/pilots/crimson_external_reference_review_pilot_v1.json",
+    "sec_reference_index": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_reference_indices_v1\\sec_registration_reference_v1.jsonl",
+      "sha256": "7004453a5e5e71747f4f8b2f65cb79ed9359c482fd7f3f2abedfa75540890807",
+      "source_raw_sha256": "262b2151a6d6289119a104fd03ea6fbc9d44c38c7f4c52584865244777f65366"
+    }
+  },
+  "method": {
+    "review_scope": "All eight SEC/IAPD matches in the frozen 40-host pilot.",
+    "identity_rule": "SAME_ENTITY is suggested only when the Crimson host equals or is a subdomain of a host explicitly listed in the SEC/IAPD snapshot.",
+    "evidence_rule": "REGISTRATION_RELEVANT means the official filing is relevant to identity review; it is not a legitimacy or content-safety label.",
+    "review_status": "IN_PROGRESS until a human confirms the official record and rationale.",
+    "crimson_domain_access": false
+  },
+  "coverage": {
+    "sec_pilot_record_count": 8,
+    "identity_relationship_counts": {
+      "SAME_ENTITY": 8
+    },
+    "evidence_assessment_counts": {
+      "REGISTRATION_RELEVANT": 8
+    },
+    "registration_type_counts": {
+      "Registered": 6,
+      "ERA": 2
+    },
+    "review_status_counts": {
+      "IN_PROGRESS": 8
+    },
+    "human_confirmation_required_count": 8,
+    "training_eligible_count": 0,
+    "labels_created": 0
+  },
+  "outputs": [
+    {
+      "role": "first_pass_records",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\crimson_external_reference_review_pilot_v1\\sec_ai_assisted_first_pass_v1.jsonl",
+      "sha256": "314b283e3fb2ce224087a52d07f74b503cb5fbd377ab8f9f6bc370dc37e43465",
+      "record_count": 8
+    },
+    {
+      "role": "review_workbook",
+      "path": "C:\\Users\\hieu\\Documents\\ChatGPT\\invesment scam intelligence\\outputs\\crimson_external_reference_review_pilot_v1\\Crimson_External_Reference_Review_Pilot_V1.xlsx",
+      "sha256": "32ac154ce640a9cb7615b348257062ba9576d36c312ad6553f2c77ee4f8e1fc4"
+    }
+  ],
+  "safety_contract": {
+    "network_operations": 0,
+    "domain_access_allowed": false,
+    "artifact_generation_network_operations": 0,
+    "official_reference_web_verification_performed": true,
+    "crimson_domain_access_allowed": false,
+    "automatic_final_entity_resolution_allowed": false,
+    "human_confirmation_required": true,
+    "training_allowed": false,
+    "labels_created": 0
+  }
+}

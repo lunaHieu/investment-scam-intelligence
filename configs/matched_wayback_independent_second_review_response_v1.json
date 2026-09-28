@@ -1,0 +1,168 @@
+{
+  "packet_sha256": "6de57e3a5612ae33241527a5764a89e35d4ed59f65744a55179c54d623dd0571",
+  "reviewed_at": "2026-09-24T00:00:00+07:00",
+  "reviewer": "OpenAI Codex independent blinded AI reviewer",
+  "review_type": "INDEPENDENT_BLINDED_AI_SECOND_REVIEW_NOT_HUMAN",
+  "reviews": [
+    {
+      "blind_review_id": "BRV1_1844DCED8B61",
+      "decision": "CONFIRMED",
+      "confidence": "HIGH",
+      "rationale": "The archived ledgerholm.com artifact consistently presents itself as Ledgerholm and solicits deposits for AI-driven cryptocurrency trading. The FCA warning metadata names Ledgerholm, supports both SCAM_CLAIM and DOMAIN_LINK, and aligns with the captured identity and hostname. No repurpose evidence appears in the artifact.",
+      "evidence_checks": ["Compared the archived hostname with the displayed Ledgerholm identity.", "Checked the regulator-warning URL identity and DOMAIN_LINK support metadata.", "Reviewed the capture for completeness, financial solicitation, and repurpose indicators.", "Checked for identity conflicts or benign content inconsistent with the warning."],
+      "contradictions": []
+    },
+    {
+      "blind_review_id": "BRV1_22E8A24398F0",
+      "decision": "LEGITIMATE",
+      "confidence": "HIGH",
+      "rationale": "The capture consistently identifies CFM Advisors, Inc., uses the matching cfmadvisorsinc.com domain and email, provides a physical address, and describes a coherent fiduciary-advisory business. The SEC/IAPD metadata supports identity and registration, while the snapshot metadata supplies the domain and observed-text link. No impersonation or adverse-evidence contradiction is present in the packet.",
+      "evidence_checks": ["Compared the firm name, hostname, email domain, address, and advisory description.", "Checked the SEC/IAPD evidence scope as identity and registration evidence only.", "Checked the snapshot metadata for identity and domain linkage.", "Reviewed the artifact for impersonation, repurpose, and adverse-evidence indicators."],
+      "contradictions": ["The New York address is paired with an 818 telephone number, but this isolated anomaly does not overcome the otherwise consistent identity evidence."]
+    },
+    {
+      "blind_review_id": "BRV1_24E32FCC19BE",
+      "decision": "LEGITIMATE",
+      "confidence": "HIGH",
+      "rationale": "The archived domain, company name, domain-based email, San Francisco address, and nationwide real-estate investment description consistently identify Bristol Group, Inc. The registry metadata supports identity and legitimacy, and the snapshot metadata links the displayed identity to bristolgroupinc.com. The packet contains no adverse warning or impersonation conflict.",
+      "evidence_checks": ["Matched the Bristol Group, Inc. name to the hostname and domain-based email.", "Checked the registry evidence for identity and legitimacy support without treating registration as site control by itself.", "Reviewed the physical contact details and business description for internal consistency.", "Checked for repurpose, impersonation, and adverse-evidence contradictions."],
+      "contradictions": []
+    },
+    {
+      "blind_review_id": "BRV1_3A630A676603",
+      "decision": "LEGITIMATE",
+      "confidence": "HIGH",
+      "rationale": "The artifact consistently presents New England Financial Planning Group at nefpg.com, supplies a Burlington address and telephone details, and contains specific Raymond James and advisory disclosures. Registry metadata supports the firm's identity and legitimacy, while the snapshot supports domain linkage. No unresolved impersonation or adverse-evidence indication appears.",
+      "evidence_checks": ["Matched the New England Financial Planning Group identity to nefpg.com.", "Checked address, telephone, service descriptions, and legal disclosures for coherence.", "Treated the registry evidence as identity/legitimacy evidence rather than automatic proof of site control.", "Checked the capture for repurpose, impersonation, and adverse evidence."],
+      "contradictions": []
+    },
+    {
+      "blind_review_id": "BRV1_5675AB653CA3",
+      "decision": "LEGITIMATE",
+      "confidence": "MEDIUM",
+      "rationale": "The archived page identifies Portfolio Management Technology on the matching domain and gives a specific, coherent description of its San Francisco fixed-income advisory work. Registry metadata supports identity and legitimacy, with snapshot metadata linking the observed identity to the domain. The old and brief capture limits corroboration but does not show repurpose or impersonation.",
+      "evidence_checks": ["Matched the displayed firm name to portfoliomanagementtechnology.com.", "Checked the specialized service description and stated operating history for internal coherence.", "Used registry evidence only for identity/legitimacy and snapshot metadata for domain linkage.", "Assessed capture completeness and searched the supplied text for repurpose or impersonation indicators."],
+      "contradictions": ["The capture is brief and dates to 2016, so current site control cannot be established from this artifact."]
+    },
+    {
+      "blind_review_id": "BRV1_5D3370ED00D4",
+      "decision": "LEGITIMATE",
+      "confidence": "HIGH",
+      "rationale": "The capture consistently identifies Financially Speaking, Inc. on financiallyspeakinginc.com, with matching email, telephone, Colorado address, fee-only positioning, and coherent advisory services. Registry metadata supports identity and legitimacy and the snapshot supplies domain linkage. No adverse or impersonation contradiction is present.",
+      "evidence_checks": ["Matched firm name, hostname, domain-based email, address, and telephone.", "Checked the advisory-service descriptions and fee-only claim for internal consistency.", "Treated registry evidence as identity/legitimacy evidence rather than independent proof of domain control.", "Checked for repurpose, impersonation, and adverse evidence."],
+      "contradictions": []
+    },
+    {
+      "blind_review_id": "BRV1_5E9B70D22260",
+      "decision": "CONFIRMED",
+      "confidence": "HIGH",
+      "rationale": "The archived gulflinecapital.com page repeatedly identifies Gulf Line Capital, matching the entity named by the regulator-warning URL and the packet's DOMAIN_LINK metadata. The artifact solicits loans and financial business while mixing locations, brands, and copied-looking personas, reinforcing rather than contradicting the warning. No benign domain repurpose is evident.",
+      "evidence_checks": ["Matched the Gulf Line Capital identity and gulflinecapital.com hostname to the warning metadata.", "Checked the warning evidence for SCAM_CLAIM and DOMAIN_LINK support.", "Reviewed geographic, branding, testimonial, and service-description consistency.", "Checked for capture failure or an unrelated repurposed site."],
+      "contradictions": ["The warning is dated after the archived capture, but it names the same entity and the evidence metadata links the same domain.", "The artifact alternates among Gulf Line Capital, Gulf Private Finance, and inHouse and mixes Poland, U.S., and Gulf-region narratives."]
+    },
+    {
+      "blind_review_id": "BRV1_5EF2927715F5",
+      "decision": "LEGITIMATE",
+      "confidence": "HIGH",
+      "rationale": "The artifact consistently identifies Woodley Farra Manion Portfolio Management at woodleyfarra.com, includes a stable Indianapolis address and telephone details, and presents detailed, coherent investment-management services and disclosures. SEC/IAPD metadata supports identity and registration, and the snapshot links the identity to the domain. No adverse conflict is supplied.",
+      "evidence_checks": ["Matched the firm identity to the hostname, address, and contact details.", "Reviewed service, personnel, award, and disclosure content for consistency.", "Treated SEC/IAPD registration as identity evidence and separately checked snapshot domain linkage.", "Checked for impersonation, repurpose, and adverse-evidence contradictions."],
+      "contradictions": []
+    },
+    {
+      "blind_review_id": "BRV1_6863E4CC6AA1",
+      "decision": "LEGITIMATE",
+      "confidence": "MEDIUM",
+      "rationale": "The capture identifies Excelsior Investors on the matching excelsiorinvestors.com domain and exposes Form ADV, Form CRS, team, contact, and client-login links consistent with an advisory firm. SEC/IAPD metadata supports identity and registration and snapshot metadata supplies domain linkage. The sparse homepage reduces independent corroboration but shows no impersonation or adverse contradiction.",
+      "evidence_checks": ["Matched the displayed Excelsior Investors identity to the hostname.", "Checked for advisory-specific indicators including Form ADV and Form CRS links.", "Used registry evidence for identity/registration and snapshot evidence for domain linkage.", "Assessed the sparse capture for repurpose, impersonation, or adverse evidence."],
+      "contradictions": ["The homepage text is sparse and contains no visible address or named personnel, limiting artifact-level corroboration."]
+    },
+    {
+      "blind_review_id": "BRV1_6FE932F5CC04",
+      "decision": "LEGITIMATE",
+      "confidence": "HIGH",
+      "rationale": "The archived page consistently identifies Valley View Consulting, L.L.C. on valleyviewconsultingllc.com, provides a telephone number, and describes a focused public-funds investment-management practice dating to 1998. SEC/IAPD metadata supports identity and registration and the snapshot supports domain linkage. No adverse or impersonation conflict appears.",
+      "evidence_checks": ["Matched the legal name to the hostname and contact details.", "Reviewed the public-funds focus, service descriptions, and operating-history claim for coherence.", "Separated registry identity/registration evidence from snapshot domain evidence.", "Checked for repurpose, impersonation, and adverse evidence."],
+      "contradictions": []
+    },
+    {
+      "blind_review_id": "BRV1_73F2CFB7C8E6",
+      "decision": "LEGITIMATE",
+      "confidence": "MEDIUM",
+      "rationale": "The capture consistently presents Proctor Financial on proctorfinancial.com and describes coherent individual-retirement and business-plan services. SEC/IAPD metadata supports identity and registration and the snapshot supports the domain association. The dated footer weakens freshness but does not establish repurpose or impersonation.",
+      "evidence_checks": ["Matched the Proctor Financial identity to the hostname and service narrative.", "Checked the artifact for client-oriented advisory content and internally coherent navigation.", "Used SEC/IAPD metadata for identity/registration and snapshot metadata for domain linkage.", "Assessed the stale footer and checked for repurpose or adverse evidence."],
+      "contradictions": ["The 2026 archive displays a 2017 copyright notice, indicating stale content, but the captured identity remains internally consistent."]
+    },
+    {
+      "blind_review_id": "BRV1_84F630DBC337",
+      "decision": "CONFIRMED",
+      "confidence": "HIGH",
+      "rationale": "The archived tagmarkets.com artifact identifies itself as Tag Markets, exactly aligning with the regulator-warning identity and the packet's DOMAIN_LINK support. It actively markets leveraged FX/CFD and amplification services. Its asserted Mauritius registration does not negate the aligned official investor warning, and no domain repurpose is visible.",
+      "evidence_checks": ["Matched the Tag Markets identity and tagmarkets.com hostname to the warning metadata.", "Checked the regulator evidence for SCAM_CLAIM and DOMAIN_LINK support.", "Reviewed the artifact's trading solicitation, legal identity, and jurisdictional disclosures.", "Checked for an unrelated repurpose or capture-quality failure."],
+      "contradictions": ["The artifact claims regulation in Mauritius while acknowledging no EU authorization; that assertion was not independently verified and does not resolve the official warning."]
+    },
+    {
+      "blind_review_id": "BRV1_85E601EBBCD0",
+      "decision": "LEGITIMATE",
+      "confidence": "HIGH",
+      "rationale": "The capture consistently identifies Hanover Advisors, Inc. at hanoveradvisorsinc.com, supplies named leadership, contact details, a physical address, and detailed SEC-registration disclosures. SEC/IAPD metadata supports identity and registration and snapshot metadata supports domain linkage. No impersonation or adverse-evidence conflict appears.",
+      "evidence_checks": ["Matched the legal name, hostname, email domain, personnel, address, and telephone details.", "Reviewed the advisory services and registration disclosures for internal consistency.", "Treated SEC/IAPD as identity/registration evidence and separately checked the snapshot-domain connection.", "Checked for repurpose, impersonation, and adverse evidence."],
+      "contradictions": []
+    },
+    {
+      "blind_review_id": "BRV1_8A3B9A15A99C",
+      "decision": "CONFIRMED",
+      "confidence": "HIGH",
+      "rationale": "The archived fortradelimited.com page uses the exact identity and domain named in the FCA clone warning. It solicits deposits into plans advertising extreme short-term returns and claims funds are fully guaranteed, with no evidence that the domain was repurposed for unrelated content. The warning and artifact therefore align directly.",
+      "evidence_checks": ["Matched the Fortrade Limited identity and hostname to the FCA warning URL.", "Checked SCAM_CLAIM and DOMAIN_LINK support metadata.", "Reviewed the investment plans, return promises, safety claims, and contact details.", "Checked for capture failure, unrelated content, or benign domain repurpose."],
+      "contradictions": []
+    },
+    {
+      "blind_review_id": "BRV1_C257AB2A1A6D",
+      "decision": "CONFIRMED",
+      "confidence": "HIGH",
+      "rationale": "The archived nexfengrowth.com artifact identifies NexFen Growth, exactly matching the domain cited in the regulator-warning URL, which describes an impersonation. The capture contains implausible returns, extensive regulatory assertions, guaranteed-withdrawal language, and unresolved template variables. These features are consistent with, and do not contradict, the aligned warning.",
+      "evidence_checks": ["Matched NexFen Growth and nexfengrowth.com to the regulator-warning metadata.", "Checked SCAM_CLAIM and DOMAIN_LINK support.", "Reviewed claimed returns, regulatory assertions, withdrawal guarantees, and template artifacts.", "Checked for unrelated repurpose or an identity change at capture time."],
+      "contradictions": ["The artifact claims regulation by numerous authorities and a long operating history, but those self-assertions conflict with its unresolved template variables and the official impersonation warning."]
+    },
+    {
+      "blind_review_id": "BRV1_D2581F6CF2C7",
+      "decision": "CONFIRMED",
+      "confidence": "HIGH",
+      "rationale": "The archived veld-luxaris.com page consistently identifies Veld Luxaris, matching the AFM warning identity and the packet's domain-link metadata. It solicits deposits for AI-assisted crypto and CFD activity while making strong performance, security, and regulatory claims. No unrelated repurpose or identity discontinuity is apparent.",
+      "evidence_checks": ["Matched the Veld Luxaris identity and hostname to the regulator-warning URL.", "Checked SCAM_CLAIM and DOMAIN_LINK support metadata.", "Reviewed deposit solicitation, AI-performance claims, regulatory assertions, and broker-matching disclosure.", "Checked capture completeness and possible domain repurpose."],
+      "contradictions": ["The artifact claims compliance with strict Dutch financial regulation while also telling users to verify partner brokers themselves; the packet provides no independent support for the site's claim."]
+    },
+    {
+      "blind_review_id": "BRV1_D3B2F9654DED",
+      "decision": "CONFIRMED",
+      "confidence": "HIGH",
+      "rationale": "The capture identifies Kubera Capital Markets Ltd. and kuberamarkets.com, aligning with the entity named in the Alberta regulator-warning URL and the packet's DOMAIN_LINK metadata. It offers prop and CFD trading services from the captured domain. Its claimed Malaysian authorization does not negate an aligned Canadian investor caution, and no repurpose is evident.",
+      "evidence_checks": ["Matched Kubera Capital Markets Ltd. and kuberamarkets.com to the warning metadata.", "Checked the warning evidence for SCAM_CLAIM and DOMAIN_LINK support.", "Reviewed the legal identity, address, license assertion, and trading solicitation.", "Checked for unrelated domain repurpose or identity mismatch."],
+      "contradictions": ["The artifact claims Labuan authorization, but this unverified assertion does not resolve or contradict a jurisdiction-specific Canadian investor caution."]
+    },
+    {
+      "blind_review_id": "BRV1_E4D80619AD3A",
+      "decision": "CONFIRMED",
+      "confidence": "HIGH",
+      "rationale": "The archived alpha-flow.ai artifact prominently identifies Alpha-Flow.AI, directly aligning with the FCA warning name and domain-link metadata. It markets automated trading using exceptional performance figures and paid performance-fee arrangements. The artifact is complete enough to establish identity, and no repurpose contradiction appears.",
+      "evidence_checks": ["Matched Alpha-Flow.AI and alpha-flow.ai to the regulator-warning metadata.", "Checked SCAM_CLAIM and DOMAIN_LINK support.", "Reviewed performance claims, pricing, fund-control representations, team claims, and trading solicitation.", "Checked capture quality and possible domain repurpose."],
+      "contradictions": ["The site says results are independently verified, but the packet contains no supporting verification; this self-assertion does not overcome the warning."]
+    },
+    {
+      "blind_review_id": "BRV1_F04078D4BAD4",
+      "decision": "CONFIRMED",
+      "confidence": "HIGH",
+      "rationale": "The archived zenithgrow.com page identifies Zenith Grow, matching the FCA clone-warning identity and domain-link metadata. It claims FCA authorization while advertising very high fixed returns over periods as short as five days, referral commissions, and rapid cryptocurrency withdrawals. No benign repurpose is evident.",
+      "evidence_checks": ["Matched the Zenith Grow identity and zenithgrow.com hostname to the FCA warning.", "Checked SCAM_CLAIM and DOMAIN_LINK support metadata.", "Reviewed authorization claims, investment-plan returns, referral program, withdrawal claims, and contact details.", "Checked for capture failure or unrelated domain repurpose."],
+      "contradictions": ["The artifact claims FCA authorization, directly creating the kind of identity-risk tension described by the FCA clone-warning title."]
+    },
+    {
+      "blind_review_id": "BRV1_F2267A1612AA",
+      "decision": "UNCERTAIN",
+      "confidence": "HIGH",
+      "rationale": "The artifact is a usable capture of Falcon International Limited at falconinterhk.group, but the supplied regulator-warning URL is titled for Barox International. Although the evidence metadata asserts SCAM_CLAIM and DOMAIN_LINK, the packet includes no warning text explaining how Barox International, Falcon International Limited, and falconinterhk.group are connected. The required identity alignment therefore remains unresolved.",
+      "evidence_checks": ["Matched the artifact's Falcon International Limited identity to falconinterhk.group.", "Compared that identity with the Barox International name in the regulator-warning URL.", "Considered the DOMAIN_LINK support tag but did not treat it as sufficient to resolve the entity-name mismatch without warning content.", "Checked the capture for repurpose, alternative names, or references to Barox International."],
+      "contradictions": ["The regulator-warning URL names Barox International, while the artifact exclusively identifies Falcon International Limited.", "The evidence metadata asserts a domain link, but the packet provides no warning text or alternate-name evidence that reconciles the two identities."]
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "packet_sha256": "4699d369cf8763b9864927c49818cc6eab852e402a556e1cff1073030cc8e80d",
+  "reviewed_at": "2026-09-24T00:00:00+07:00",
+  "reviewer": "OpenAI Codex independent blinded AI reviewer",
+  "review_type": "INDEPENDENT_BLINDED_AI_SECOND_REVIEW_NOT_HUMAN",
+  "reviews": [
+    {
+      "blind_review_id": "BRV1_89DE982E5746",
+      "decision": "LEGITIMATE",
+      "confidence": "HIGH",
+      "rationale": "The artifact consistently identifies Access Wealth on access-wealth.com and provides a matching firm identity, New Jersey address, telephone details, advisory services, ADV disclosures, current articles, and a long operating history. SEC/IAPD metadata supports identity and registration, while the archived snapshot supplies domain linkage. No adverse evidence, impersonation indicator, or repurpose conflict appears in the packet.",
+      "evidence_checks": ["Matched the Access Wealth identity to the archived hostname.", "Checked the address, telephone details, services, disclosures, and dated articles for internal consistency.", "Treated SEC/IAPD as identity and registration evidence rather than automatic proof of site control.", "Used the snapshot metadata to assess identity, domain linkage, capture quality, and possible repurpose.", "Checked for adverse evidence or impersonation conflicts."],
+      "contradictions": []
+    },
+    {
+      "blind_review_id": "BRV1_B380635828BF",
+      "decision": "LEGITIMATE",
+      "confidence": "MEDIUM",
+      "rationale": "The captured crimsonmanagement.com page identifies Crimson Management, names its owner, describes its advisory clientele, and links to Form ADV, brochure-supplement, and client-relationship documents. SEC/IAPD metadata supports identity and registration, and snapshot metadata links the observed identity to the domain. The page is sparse and visibly dated, limiting confidence, but contains no adverse or impersonation contradiction.",
+      "evidence_checks": ["Matched the Crimson Management identity to crimsonmanagement.com.", "Checked the named owner, advisory description, and regulatory-document references for coherence.", "Separated SEC/IAPD identity and registration support from snapshot domain linkage.", "Assessed the brief capture for completeness, domain repurpose, impersonation, and adverse evidence."],
+      "contradictions": ["The 2025 capture retains a 2007 copyright notice and old site design, indicating stale content.", "The homepage provides limited contact and operational detail, reducing artifact-level corroboration."]
+    },
+    {
+      "blind_review_id": "BRV1_C9496ADEBB11",
+      "decision": "LEGITIMATE",
+      "confidence": "HIGH",
+      "rationale": "The artifact consistently presents Paragon Financial Services on paragonfinancial.com, with a Richmond address, matching domain email, telephone details, named advisory process, LPL relationship disclosure, Form ADV and Form CRS links, and registered-adviser language. Registry metadata supports identity and legitimacy, while the snapshot establishes the domain association. No unresolved adverse or impersonation evidence is present.",
+      "evidence_checks": ["Matched the Paragon Financial Services identity to the hostname and domain-based email.", "Checked the address, telephone numbers, service narrative, and branded advisory process for consistency.", "Reviewed the LPL, Registered Investment Advisor, Form ADV, and Form CRS disclosures.", "Used registry evidence for identity and legitimacy and snapshot evidence for domain linkage.", "Checked for capture failure, repurpose, impersonation, and adverse evidence."],
+      "contradictions": []
+    },
+    {
+      "blind_review_id": "BRV1_CBABBC7CC07F",
+      "decision": "LEGITIMATE",
+      "confidence": "HIGH",
+      "rationale": "The capture consistently identifies Certified Planners, Inc. on certifiedplannersinc.com and supplies a matching email domain, San Ramon address, telephone details, fee-based advisory description, Form CRS, ADV, fiduciary, privacy, and jurisdiction disclosures. Registry metadata supports identity and legitimacy and the snapshot supplies domain linkage. No adverse-evidence or impersonation conflict appears.",
+      "evidence_checks": ["Matched the company name to the hostname and domain-based email.", "Checked the physical address, telephone numbers, service descriptions, and fiduciary statements.", "Reviewed the ADV, Form CRS, privacy, and jurisdiction disclosure references.", "Treated registry metadata as identity and legitimacy evidence and separately assessed snapshot domain linkage.", "Checked for capture-quality problems, repurpose, impersonation, and adverse evidence."],
+      "contradictions": []
+    },
+    {
+      "blind_review_id": "BRV1_FDB1D1F5E8C6",
+      "decision": "LEGITIMATE",
+      "confidence": "HIGH",
+      "rationale": "The artifact consistently identifies Hinsdale Associates on hinsdaleassociates.com, provides a matching Illinois address and telephone details, describes a specific fee-based wealth-management practice, names personnel and institutional relationships, links a CRS disclosure, and contains a long, current commentary archive. Registry metadata supports identity and legitimacy and snapshot metadata links the identity to the domain. No adverse or impersonation conflict is supplied.",
+      "evidence_checks": ["Matched the Hinsdale Associates identity to the archived hostname.", "Checked the address, telephone details, personnel, operating history, and service descriptions for consistency.", "Reviewed the CRS reference, fee-based compensation description, and stated institutional relationships.", "Checked the dated commentary archive for continuity and signs of domain repurpose.", "Used registry metadata for identity and legitimacy and snapshot metadata for domain linkage.", "Checked for adverse evidence and impersonation indicators."],
+      "contradictions": ["The 2026 capture displays a 2025 copyright notice, but the artifact also includes June 2026 commentary and otherwise coherent identity evidence."]
+    }
+  ]
+}

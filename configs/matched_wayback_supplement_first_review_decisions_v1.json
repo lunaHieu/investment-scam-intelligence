@@ -1,0 +1,75 @@
+{
+  "review_id": "MATCHED_WAYBACK_SUPPLEMENT_FIRST_REVIEW_DECISIONS_V1",
+  "reviewed_at": "2026-09-24T00:00:00+07:00",
+  "reviewer": "OpenAI Codex primary expansion reviewer",
+  "review_type": "AI_PRIMARY_REVIEW_NOT_HUMAN",
+  "source_packet_sha256": "0e1c3fb32472e9d6bccaed7367ae8f67626132c20bb69d3d18b14208e7b1b5b4",
+  "model_outputs_consulted": false,
+  "decisions": [
+    {
+      "candidate_id": "MATCHWB_SUPP_EXTCAP_RESERVE_LEGIT_009",
+      "decision": "LEGITIMATE",
+      "confidence": "HIGH",
+      "rationale": "The archived page repeatedly identifies Woodley Farra Manion Portfolio Management, presents coherent investment-management and financial-planning services, and links disclosures; the exact host is the SEC/IAPD-filed host and the capture postdates registration.",
+      "contradictions": []
+    },
+    {
+      "candidate_id": "MATCHWB_SUPP_EXTCAP_RESERVE_LEGIT_011",
+      "decision": "LEGITIMATE",
+      "confidence": "HIGH",
+      "rationale": "The archived page visibly identifies Valley View Consulting, L.L.C., describes investment advisory services and contact information, and matches the exact SEC/IAPD-filed host after registration; no parking or conflicting identity cue is present.",
+      "contradictions": []
+    },
+    {
+      "candidate_id": "MATCHWB_SUPP_EXTCAP_RESERVE_LEGIT_013",
+      "decision": "LEGITIMATE",
+      "confidence": "HIGH",
+      "rationale": "The archived page identifies CFM Advisors, Inc., contains coherent advisory-service, fiduciary, risk and disclosure language, and matches the exact SEC/IAPD-filed host after registration without a visible contradiction.",
+      "contradictions": []
+    },
+    {
+      "candidate_id": "MATCHWB_SUPP_EXTCAP_RESERVE_LEGIT_014",
+      "decision": "LEGITIMATE",
+      "confidence": "HIGH",
+      "rationale": "The archived page identifies Excelsior Investors, presents consistent long-term wealth-management content and ADV/CRS links, and matches the exact SEC/IAPD-filed host after registration; no contradictory identity signal is visible.",
+      "contradictions": []
+    },
+    {
+      "candidate_id": "MATCHWB_SUPP_EXTCAP_RESERVE_LEGIT_017",
+      "decision": "LEGITIMATE",
+      "confidence": "HIGH",
+      "rationale": "The archived Access Wealth page contains extensive financial-planning and investment-management services, client resources and firm identity on the exact SEC/IAPD-filed host after registration, with no parking or repurpose cue.",
+      "contradictions": []
+    },
+    {
+      "candidate_id": "MATCHWB_SUPP_EXTCAP_RESERVE_LEGIT_021",
+      "decision": "LEGITIMATE",
+      "confidence": "HIGH",
+      "rationale": "The archived page identifies Proctor Financial, presents coherent retirement and financial-advisory material with disclosure and client-center navigation, and matches the exact SEC/IAPD-filed host after registration.",
+      "contradictions": []
+    },
+    {
+      "candidate_id": "MATCHWB_SUPP_EXTCAP_RESERVE_LEGIT_022",
+      "decision": "LEGITIMATE",
+      "confidence": "HIGH",
+      "rationale": "The archived page repeatedly identifies Crimson Management, describes investment advice and provides ADV-related material on the exact SEC/IAPD-filed host after registration, without a visible identity conflict.",
+      "contradictions": []
+    },
+    {
+      "candidate_id": "MATCHWB_SUPP_EXTCAP_RESERVE_LEGIT_023",
+      "decision": "UNCERTAIN",
+      "confidence": "MEDIUM",
+      "rationale": "The page is a coherent wealth-management site, but the lexical identity check for WP Advisors relies only on the generic token 'advisors'; independent entity reconciliation is insufficient for a high-confidence decision.",
+      "contradictions": [
+        "Firm-specific identity alignment is weak because the distinctive 'WP' token is absent from the normalized identity match."
+      ]
+    },
+    {
+      "candidate_id": "MATCHWB_SUPP_EXTCAP_RESERVE_LEGIT_024",
+      "decision": "LEGITIMATE",
+      "confidence": "HIGH",
+      "rationale": "The archived page names Hanover Advisors, Inc., explicitly describes SEC registration and advisory services, and matches the exact filed host after registration with disclosure language and no contradictory identity cue.",
+      "contradictions": []
+    }
+  ]
+}

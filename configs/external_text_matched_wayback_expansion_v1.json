@@ -1,0 +1,45 @@
+{
+  "protocol_id": "EXTERNAL_TEXT_MATCHED_WAYBACK_EXPANSION_V1",
+  "created_at": "2026-09-24",
+  "capture_stratum": "WAYBACK_ARCHIVED_HOMEPAGE_HTML",
+  "target_per_class": 10,
+  "classes": [
+    "CONFIRMED",
+    "LEGITIMATE"
+  ],
+  "selection_seed": "isi-matched-wayback-expansion-v1",
+  "capture_policy": {
+    "confirmed": "Reuse the ten hash-pinned reviewable Wayback captures from the frozen reconciled pilot.",
+    "legitimate": "Query and capture Wayback snapshots for SEC/IAPD-linked hosts; never use the current live-page capture as the matched artifact.",
+    "candidate_live_domain_access_allowed": false,
+    "archive_hosts_allowed": [
+      "archive.org",
+      "web.archive.org"
+    ],
+    "minimum_visible_non_whitespace_characters": 200,
+    "identity_token_alignment_required": true,
+    "minimum_investment_markers": 2,
+    "raw_capture_overwrite_allowed": false
+  },
+  "second_review_policy": {
+    "blind_to_first_review_decision": true,
+    "blind_to_model_prediction_and_score": true,
+    "blind_to_original_case_id": true,
+    "evidence_sources_visible": true,
+    "reviewer_must_not_be_the_first_review_context": true,
+    "allowed_decisions": [
+      "CONFIRMED",
+      "LEGITIMATE",
+      "UNCERTAIN",
+      "REJECT_CAPTURE"
+    ],
+    "agreement_required_for_benchmark": true,
+    "disagreements_require_adjudication": true,
+    "independent_ai_review_must_not_be_described_as_independent_human_review": true
+  },
+  "evaluation_policy": {
+    "model_scoring_before_second_review_reconciliation_allowed": false,
+    "model_tuning_on_expansion_allowed": false,
+    "deployment_claim_allowed": false
+  }
+}

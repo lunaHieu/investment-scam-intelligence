@@ -2,7 +2,8 @@
   "analysis_id": "MENDELEY_FINANCIAL_CLAIMS_REVIEW_WORKBOOK_V4",
   "source_id": "mendeley_investment_deceptive_2026",
   "created_at": "2026-09-20",
-  "status": "PILOT_AI_SUGGESTED_PENDING_HUMAN_REVIEW",
+  "confirmed_at": "2026-09-21",
+  "status": "PILOT_HUMAN_CONFIRMED_FILTERS_VERIFIED",
   "purpose": "Targeted review of Financial Claims V4 incremental rule precision and high-information no-signal controls without creating scam ground truth.",
   "source": {
     "feature_set_id": "MENDELEY_FINANCIAL_CLAIMS_V4",
@@ -31,7 +32,7 @@
     "no_signal_audit_outcomes": ["NO_MISSED_SIGNAL", "MISSED_SIGNAL", "UNCERTAIN"]
   },
   "ai_assistance": {
-    "status": "PROVISIONAL_AI_SUGGESTIONS_ONLY",
+    "status": "AI_SUGGESTIONS_HUMAN_CONFIRMED",
     "suggestion_path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\financial_claims_v4\\ai_pilot_suggestions_v4.json",
     "suggestion_sha256": "e10f5bbe62f04e2b63620069c4e8605457e2902872323e64b980ad1352f30b8b",
     "suggestion_count": 37,
@@ -41,9 +42,21 @@
     "suggested_missed_signal_count": 0,
     "suggested_uncertain_count": 0,
     "coverage_finding_record_count": 0,
-    "human_decision_count": 0,
-    "counts_as_human_review": false,
-    "changes_completion_status": false
+    "human_decision_count": 37,
+    "counts_as_human_review": true,
+    "changes_completion_status": true
+  },
+  "human_confirmation": {
+    "review_mode": "AI_ASSISTED_HUMAN_CONFIRMATION",
+    "independent_blind_review": false,
+    "reviewer": "Van Hieu",
+    "reviewed_date": "2026-09-21",
+    "action": "ACCEPT_ALL_AI_SUGGESTIONS",
+    "confirmed_review_unit_count": 37,
+    "confirmed_coverage_finding_record_count": 0,
+    "override_count": 0,
+    "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\financial_claims_v4\\human_assisted_confirmation_2026-09-21.json",
+    "sha256": "a7b4d946add38a35eda43c948ab222a53674d389b3aca296ba71972c6a99f7d1"
   },
   "scope_note": {
     "positive_rule_reviewed_in_pilot": [
@@ -57,12 +70,27 @@
       "FCV4_NO_RISK_REJECTED_AUDIENCE",
       "FCV4_RETURN_RATE_INCOME_DISTRIBUTION"
     ],
-    "interpretation": "The deterministic V4 review queue does not contain the exact three filtered V3 false-positive records. Those cases are protected by automated regression tests but still require a separate human spot-check before promotion."
+    "interpretation": "The deterministic V4 review queue does not contain spam_email_489, which held all three confirmed false-positive signal assignments. A separate deterministic spot-check verified that V4 removes those three assignments and preserves all 12 MONEY_AMOUNT matches."
+  },
+  "filter_spot_check": {
+    "status": "VERIFIED",
+    "record_count": 1,
+    "false_positive_assignment_count": 3,
+    "record_ids": ["spam_email_489"],
+    "filter_ids": [
+      "FCV4_RETURN_MULTIPLE_TURN_NEGATION",
+      "FCV4_NO_RISK_REJECTED_AUDIENCE",
+      "FCV4_RETURN_RATE_INCOME_DISTRIBUTION"
+    ],
+    "unrelated_money_amount_matches_preserved": 12,
+    "corpus_record_ids_equal_between_v3_and_v4": true,
+    "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\financial_claims_v4\\filter_spot_check_2026-09-21.json",
+    "sha256": "ac2ad9ac1f3ed04d717e823395e72653451a898e15cbad475fdfb4ad63f9e182"
   },
   "artifact": {
-    "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\financial_claims_v4\\ISI_Financial_Claims_V4_Review.xlsx",
-    "sha256": "5b14398ea3398fce991a7b5b37f04781675064973adfc20a5664ea6dd7ef0a13",
-    "size_bytes": 88903,
+    "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\financial_claims_v4\\ISI_Financial_Claims_V4_Review_Confirmed.xlsx",
+    "sha256": "04d2a37057b701a5c5833a5455e84a0a7adfb6dbdf5a60bc554603d390f9c271",
+    "size_bytes": 89131,
     "sheet_names": ["Tong quan", "Danh gia", "Nguon 120"]
   },
   "verification": {
@@ -74,9 +102,9 @@
     "all_sheets_visually_reviewed": true,
     "candidate_and_no_signal_completion_gates_tested": true,
     "ai_scope_isolation_tested": true,
-    "human_input_columns_remain_blank": true,
-    "human_confirmation_package_validated": false,
-    "confirmed_pilot_completion_count": 0,
+    "human_input_columns_remain_blank": false,
+    "human_confirmation_package_validated": true,
+    "confirmed_pilot_completion_count": 37,
     "ai_suggestions_do_not_complete_reviews": true,
     "source_files_modified": false
   },
@@ -88,5 +116,5 @@
     "raw_files_modified": false,
     "test_partition_text_processed": 0
   },
-  "training_gate": "CLOSED_PENDING_V4_HUMAN_CONFIRMATION_AND_FILTER_SPOT_CHECK"
+  "training_gate": "CLOSED_VALIDATION_ABLATION_COMPLETE_NO_PROMOTION"
 }

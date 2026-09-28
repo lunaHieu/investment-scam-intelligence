@@ -66,26 +66,36 @@ tăng lớn chủ yếu đến từ template tổng hợp lặp lại có `ATTEN
 
 ## Gói pilot V4
 
-Workbook pilot có chủ đích được tạo ngày 2026-09-20 từ queue V4 đã khóa. Pilot
-gồm 20 record nguồn và 37 review unit: 27 quyết định trên tín hiệu dương và 10
-no-signal audit. Gợi ý AI chỉ là tạm thời; các cột người review còn trống và mọi
-`completion_status` vẫn là `CHƯA ĐÁNH GIÁ`.
+Workbook pilot có chủ đích được tạo ngày 2026-09-20 từ queue V4 đã khóa. Ngày
+2026-09-21, người dùng chấp nhận toàn bộ 37 gợi ý AI mà không override: 27 quyết
+định `CORRECT` trên tín hiệu dương và 10 quyết định `NO_MISSED_SIGNAL` trên
+no-signal audit. Đây là AI-assisted human confirmation, không phải blind review.
 
 Pilot bao phủ cả bốn rule dương mới, gồm annuity và nhiều biến thể
-rocket/attention. Ba post-filter mới đã có kiểm thử hồi quy tự động, nhưng ba
-record dương tính giả chính xác từ V3 không nằm trong queue V4 tất định. Vì vậy
-vẫn cần spot-check thủ công riêng ba record này trước khi promote.
+rocket/attention. Ba post-filter mới đã có kiểm thử hồi quy tự động. Cả ba lỗi
+thực tế là ba signal assignment trên cùng `spam_email_489`, không phải ba record.
+Record này không nằm trong queue V4 tất định nên được kiểm tra riêng.
 
-Training gate tiếp tục đóng. Workbook và gợi ý AI không phải nhãn train, nhãn
-scam, ước lượng precision độc lập hoặc ước lượng recall.
+Spot-check ngày 2026-09-21 xác nhận V4 loại đúng `RETURN_MULTIPLE`, `NO_RISK` và
+`RETURN_RATE` khỏi `spam_email_489`. Cả 12 match `MONEY_AMOUNT` được giữ nguyên.
+So sánh toàn bộ 13.773 record cho thấy đây là record duy nhất bị loại khỏi từng
+loại signal tương ứng. Workbook và gợi ý AI không phải nhãn train, nhãn scam,
+ước lượng precision độc lập hoặc ước lượng recall.
 
 ## Trạng thái
 
 Feature records, profile và queue 120 record của V4 đã được tái lập, kiểm tra
 determinism và xác minh hash trên ổ D. Queue gồm 80 signal candidate và 40
-no-signal audit, mỗi record thuộc một split group riêng và vẫn hoàn toàn
-`UNREVIEWED`.
+no-signal audit, mỗi record thuộc một split group riêng. Queue nguồn vẫn giữ
+`UNREVIEWED`; kết quả xác nhận được lưu riêng trong workbook và confirmation
+package để không sửa artifact nguồn.
 
-Training gate vẫn đóng. Bước tiếp theo là pilot V4 có chủ đích, tập trung vào
-emoji 🚀, urgency, annuity guarantee và các ngữ cảnh phủ định. Chỉ sau khi người
-dùng xác nhận pilot này mới quyết định khóa V4 hay sửa tiếp.
+Pilot V4 đã được người dùng xác nhận theo quy trình có AI hỗ trợ và ba
+post-filter đã qua spot-check. Rule set V4 được khóa. Ngày 2026-09-22, chính
+rule set này đã được tái trích xuất trên train/validation của `group_split_v2`,
+loại auxiliary, quarantine và không xử lý text test. Artifact `group_split_v1`
+trong tài liệu này vẫn chỉ là lịch sử và không được ghép với baseline hiện hành.
+Kết quả mới được mô tả tại `docs/mendeley-financial-claims-v4-group-split-v2.md`.
+Một ablation đã khóa trước ngày 2026-09-23 không promote 11 cờ presence vào
+baseline và không mở test; xem
+`docs/mendeley-financial-claims-ablation-v1.md`.

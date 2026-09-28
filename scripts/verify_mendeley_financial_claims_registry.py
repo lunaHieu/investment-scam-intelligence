@@ -32,7 +32,10 @@ def main() -> int:
     args = parser.parse_args()
     registry = load_json(args.registry)
     errors: list[str] = []
-    feature_version = str(registry.get("feature_set_id", ""))
+    feature_set_id = str(registry.get("feature_set_id", ""))
+    feature_version = str(
+        registry.get("method", {}).get("rule_feature_version") or feature_set_id
+    )
     if feature_version not in SUPPORTED_FEATURE_VERSIONS:
         raise ValueError(f"Unsupported feature version: {feature_version}")
 
@@ -94,7 +97,8 @@ def main() -> int:
         errors.append("Training gate must remain closed")
 
     result = {
-        "feature_set_id": registry.get("feature_set_id"),
+        "feature_set_id": feature_set_id,
+        "rule_feature_version": feature_version,
         "status": "VALID" if not errors else "INVALID",
         "test_partition_text_processed": profile.get("test_partition_text_processed"),
         "training_allowed": training_gate.get("binary_classifier_allowed"),

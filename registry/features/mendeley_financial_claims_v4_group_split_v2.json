@@ -1,0 +1,160 @@
+{
+  "feature_set_id": "MENDELEY_FINANCIAL_CLAIMS_V4_GROUP_SPLIT_V2",
+  "created_at": "2026-09-22",
+  "status": "FROZEN_REEXTRACTION_VALIDATION_ABLATION_COMPLETE_NO_PROMOTION",
+  "purpose": "Materialize the human-confirmed Financial Claims V4 lexical features on the active group_split_v2 train and validation partitions without processing test, auxiliary, or quarantine text.",
+  "source": {
+    "source_id": "mendeley_investment_deceptive_2026",
+    "source_version": "v2",
+    "split_id": "MENDELEY_GROUP_SPLIT_V2",
+    "split_version": "group_split_v2",
+    "input_path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\mendeley_v2_group_split_v2.csv",
+    "input_sha256": "98f75387a4a598d85a6f721d10808979bda694dad8f85354d595679bdd96e734",
+    "split_registry_sha256": "22fa918ff9eb0407a430d0c62d023bca645dcbfa1cab4af59c627c0c3d46f776"
+  },
+  "scope": {
+    "included_partitions": [
+      "train",
+      "validation"
+    ],
+    "processed_record_count": 4754,
+    "processed_partition_counts": {
+      "train": 3916,
+      "validation": 838
+    },
+    "processed_unique_group_counts": {
+      "train": 3783,
+      "validation": 808
+    },
+    "excluded_partition_counts": {
+      "test": 838,
+      "auxiliary": 10607,
+      "quarantine": 3
+    },
+    "test_partition_text_processed": 0,
+    "auxiliary_rows_processed": 0,
+    "quarantine_rows_processed": 0,
+    "source_labels_used_for_extraction": false
+  },
+  "method": {
+    "type": "Frozen V4 deterministic lexical rules with evidence spans and confirmed context filters",
+    "rule_feature_version": "MENDELEY_FINANCIAL_CLAIMS_V4",
+    "base_feature_registry": "registry/features/mendeley_financial_claims_v4.json",
+    "rule_count": 19,
+    "post_filter_count": 12,
+    "rule_set_sha256": "b992a0ee5ab657e30434730aeaf7194c98174b89039849a5a59b4a0f43328a01",
+    "rule_changes_during_reextraction": 0,
+    "prior_review_evidence": {
+      "review_mode": "AI_ASSISTED_HUMAN_CONFIRMATION",
+      "confirmed_pilot_review_unit_count": 37,
+      "confirmed_correct_count": 27,
+      "confirmed_no_missed_signal_count": 10,
+      "filter_spot_check_status": "VERIFIED",
+      "filter_spot_check_assignment_count": 3,
+      "independent_blind_review": false
+    }
+  },
+  "profile": {
+    "candidate_record_count": 407,
+    "candidate_record_ratio": 0.085612,
+    "signal_record_counts": {
+      "RETURN_RATE": 45,
+      "RETURN_MULTIPLE": 6,
+      "MONEY_AMOUNT": 345,
+      "GUARANTEED_RETURN": 19,
+      "NO_RISK": 19,
+      "URGENCY_SCARCITY": 40,
+      "PASSIVE_OR_EASY_INCOME": 10,
+      "RECRUITMENT_REWARD": 1,
+      "PAYMENT_OR_TRANSFER_REQUEST": 4,
+      "ADVANCE_FEE_OR_WITHDRAWAL": 0,
+      "CRYPTO_INVESTMENT_OR_PAYMENT": 22
+    },
+    "interpretation": "The large reduction from the group_split_v1 V4 profile is expected because group_split_v2 excludes the 10,607-row fake_profile_post source from benchmark train and validation. Counts measure lexical feature coverage, not scam prevalence or model quality."
+  },
+  "review_queue": {
+    "record_count": 120,
+    "unique_split_group_count": 120,
+    "signal_candidates": 80,
+    "no_signal_audit": 40,
+    "review_status": "UNREVIEWED",
+    "purpose": "Optional scope-specific audit source. It is not a label file and is not required to reproduce the frozen rule extraction."
+  },
+  "validation": {
+    "split_input_hash_verified": true,
+    "split_partition_counts_verified": true,
+    "full_deterministic_recomputation_passed": true,
+    "two_run_feature_hash_match": true,
+    "two_run_review_queue_hash_match": true,
+    "normalized_profile_match": true,
+    "validator_status": "VALID",
+    "rule_set_matches_confirmed_v4": true
+  },
+  "output_contract": {
+    "feature_record_count": 4754,
+    "predictive_feature_container": "features",
+    "label_fields": [],
+    "source_label_emitted": false,
+    "network_operations": 0,
+    "raw_files_modified": false,
+    "provenance_only_top_level_fields": [
+      "record_id",
+      "partition",
+      "split_group_id",
+      "feature_version"
+    ],
+    "excluded_predictive_fields": [
+      "label",
+      "source_label",
+      "source_dataset",
+      "original_partition",
+      "ground_truth_status",
+      "label_confidence",
+      "review_notes",
+      "verification_status"
+    ]
+  },
+  "artifacts": [
+    {
+      "role": "feature_records",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\financial_claims_v4_group_split_v2\\financial_claim_features_v4.jsonl",
+      "sha256": "8e222b3cace3f6c922da8044c34e9481badb73ac52fdc8b44b64449f1656badc"
+    },
+    {
+      "role": "profile",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\financial_claims_v4_group_split_v2\\profile_v4.json",
+      "sha256": "b67ce76d7da56b405b23c9279d4612e1fc69f7bbf6b335d354caca44454a638a"
+    },
+    {
+      "role": "review_queue",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\financial_claims_v4_group_split_v2\\review_queue_120.jsonl",
+      "sha256": "25312d239b5ef201d2f71be22426c0580cbd21d22ce0f8f8f39e4519a592b21c"
+    }
+  ],
+  "safety_contract": {
+    "network_operations": 0,
+    "raw_files_modified": false,
+    "source_labels_emitted": false,
+    "test_partition_text_processed": 0,
+    "auxiliary_or_quarantine_text_processed": false
+  },
+  "training_gate": {
+    "binary_classifier_allowed": false,
+    "validation_ablation_allowed": false,
+    "test_evaluation_allowed": false,
+    "reason": "The predeclared validation-only V1 ablation is complete. The text-plus-presence challenger failed three of four promotion gates, so text_only remains selected and the challenger must not be opened on test. The review queue remains an optional unreviewed audit source, not training labels.",
+    "required_to_open": [
+      "Do not open test for the failed V1 challenger.",
+      "Any materially different integration must use a new frozen protocol and should avoid repeated tuning on the same validation partition.",
+      "Prefer nested validation or new evidence-backed data before reconsidering model integration."
+    ]
+  },
+  "prohibited_claims": [
+    "Do not treat lexical signals as scam labels, verified claims, or probabilities.",
+    "Do not infer feature quality from raw candidate counts alone.",
+    "Do not use the review queue as labels unless it receives a separately documented annotation protocol.",
+    "Do not use test, auxiliary, or quarantine rows for feature selection or fitting.",
+    "Do not describe any later internal-test result as external or Gold evaluation."
+  ],
+  "next_gate": "Retain Financial Claims V4 for explainability and audit only. Keep ISI_TEXT_BASELINE_V2 unchanged; do not open test for the failed V1 challenger."
+}

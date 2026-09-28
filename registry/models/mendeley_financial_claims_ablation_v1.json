@@ -1,0 +1,178 @@
+{
+  "model_id": "ISI_FINANCIAL_CLAIMS_ABLATION_V1",
+  "frozen_at": "2026-09-23",
+  "status": "FROZEN_VALIDATION_SELECTION_RETAIN_TEXT_ONLY_TEST_UNOPENED",
+  "purpose": "Test whether eleven reviewed Financial Claims V4 presence flags improve the frozen group_split_v2 text baseline under a predeclared validation-only protocol.",
+  "label_semantics": "Mendeley V2 harmonized deceptive/suspicious source label; not verified investment-scam ground truth",
+  "protocol_contract": {
+    "protocol_id": "MENDELEY_FINANCIAL_CLAIMS_ABLATION_V1_PROTOCOL",
+    "status": "FROZEN_BEFORE_VALIDATION_SELECTION",
+    "path": "configs/mendeley_financial_claims_ablation_v1_protocol.json",
+    "sha256": "e9fa5fa6dbcdf51e93671f327af5606141a7b1fd639102cf52f6eadb43555de2",
+    "protocol_unchanged_during_selection": true
+  },
+  "data_contract": {
+    "source_id": "mendeley_investment_deceptive_2026",
+    "source_version": "v2",
+    "split_version": "group_split_v2",
+    "split_sha256": "98f75387a4a598d85a6f721d10808979bda694dad8f85354d595679bdd96e734",
+    "financial_claim_feature_set_id": "MENDELEY_FINANCIAL_CLAIMS_V4_GROUP_SPLIT_V2",
+    "financial_claim_feature_sha256": "8e222b3cace3f6c922da8044c34e9481badb73ac52fdc8b44b64449f1656badc",
+    "fit_rows": 3916,
+    "validation_rows": 838,
+    "test_rows_used": 0,
+    "auxiliary_rows_used": 0,
+    "quarantine_rows_used": 0,
+    "feature_coverage_exact": true
+  },
+  "feature_contract": {
+    "text_vectorizer": "Frozen ISI_TEXT_BASELINE_V2 word TF-IDF unigram+bigram configuration",
+    "financial_claim_columns": [
+      "has_return_rate",
+      "has_return_multiple",
+      "has_money_amount",
+      "has_guaranteed_return",
+      "has_no_risk",
+      "has_urgency_scarcity",
+      "has_passive_or_easy_income",
+      "has_recruitment_reward",
+      "has_payment_or_transfer_request",
+      "has_advance_fee_or_withdrawal",
+      "has_crypto_investment_or_payment"
+    ],
+    "financial_claim_encoding": "raw boolean 0/1",
+    "financial_claim_scaler": null,
+    "post_stack_normalization": null,
+    "count_or_magnitude_features_used": false,
+    "source_dataset_in_feature_matrix": false,
+    "review_or_evidence_fields_in_feature_matrix": false
+  },
+  "classifier_contract": {
+    "type": "LogisticRegression",
+    "C": 2.0,
+    "class_weight": null,
+    "solver": "liblinear",
+    "max_iter": 2000,
+    "random_state": 20260916,
+    "threshold": 0.5
+  },
+  "selection_policy": {
+    "fit_partition": "train",
+    "selection_partition": "validation",
+    "primary_metric": "unweighted mean of per-source validation Macro-F1",
+    "primary_minimum_absolute_improvement": 0.01,
+    "worst_source_macro_f1_must_not_decrease": true,
+    "pooled_macro_f1_must_not_decrease": true,
+    "maximum_allowed_macro_f1_drop_for_any_source": 0.01,
+    "all_gates_required": true,
+    "test_used_for_selection": false,
+    "test_opened_after_selection": false
+  },
+  "variants": {
+    "text_only": {
+      "role": "baseline",
+      "promotion_eligible": true,
+      "validation_macro_f1": 0.700118,
+      "validation_roc_auc": 0.797478,
+      "validation_source_mean_macro_f1": 0.778049,
+      "validation_worst_source_macro_f1": 0.480842
+    },
+    "text_plus_financial_claim_presence": {
+      "role": "single_challenger",
+      "promotion_eligible": true,
+      "validation_macro_f1": 0.698788,
+      "validation_roc_auc": 0.797923,
+      "validation_source_mean_macro_f1": 0.777705,
+      "validation_worst_source_macro_f1": 0.480947
+    },
+    "financial_claim_presence_only": {
+      "role": "diagnostic_only",
+      "promotion_eligible": false,
+      "validation_macro_f1": 0.362593,
+      "validation_roc_auc": 0.508475,
+      "validation_source_mean_macro_f1": 0.376215,
+      "validation_worst_source_macro_f1": 0.276011
+    }
+  },
+  "decision": {
+    "selected_variant": "text_only",
+    "challenger_passes_all_promotion_gates": false,
+    "primary_metric_delta": -0.000344,
+    "pooled_macro_f1_delta": -0.00133,
+    "worst_source_macro_f1_delta": 0.000105,
+    "per_source_macro_f1_deltas": {
+      "cresci_stock_2018": 0.008729,
+      "phishing": -0.025866,
+      "spam_email": 0.015655,
+      "twitter_bot_detection": 0.000105
+    },
+    "promotion_gates": {
+      "primary_metric_improves_by_at_least_0_01": false,
+      "worst_source_macro_f1_not_decreased": true,
+      "pooled_macro_f1_not_decreased": false,
+      "no_source_macro_f1_drop_exceeds_0_01": false
+    },
+    "promote_financial_claim_features_to_baseline": false,
+    "open_internal_test_for_challenger": false,
+    "retain_primary_baseline": "ISI_TEXT_BASELINE_V2",
+    "reason": "The challenger changed source-mean validation Macro-F1 by -0.000344 and pooled Macro-F1 by -0.001330, while phishing Macro-F1 fell by 0.025866. It failed three of four predeclared promotion gates, so the text-only baseline is retained and the challenger is not opened on test."
+  },
+  "feature_support_limitations": {
+    "validation_zero_support_columns": [
+      "has_return_multiple",
+      "has_recruitment_reward",
+      "has_payment_or_transfer_request",
+      "has_advance_fee_or_withdrawal"
+    ],
+    "train_zero_support_columns": [
+      "has_advance_fee_or_withdrawal"
+    ],
+    "interpretation": "Most reviewed claim types are sparse in this four-source benchmark. Absence of validation support prevents this experiment from estimating their individual utility reliably."
+  },
+  "artifacts": [
+    {
+      "role": "protocol",
+      "path": "configs/mendeley_financial_claims_ablation_v1_protocol.json",
+      "sha256": "e9fa5fa6dbcdf51e93671f327af5606141a7b1fd639102cf52f6eadb43555de2"
+    },
+    {
+      "role": "group_split_dataset",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\mendeley_v2_group_split_v2.csv",
+      "sha256": "98f75387a4a598d85a6f721d10808979bda694dad8f85354d595679bdd96e734"
+    },
+    {
+      "role": "financial_claim_features",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\financial_claims_v4_group_split_v2\\financial_claim_features_v4.jsonl",
+      "sha256": "8e222b3cace3f6c922da8044c34e9481badb73ac52fdc8b44b64449f1656badc"
+    },
+    {
+      "role": "validation_selection",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\financial_claims_ablation_v1\\validation_selection_v1.json",
+      "sha256": "391649445e476e39e7ffadc1552ca0c872312d503d3e92ccc569d56bb0d627b2"
+    }
+  ],
+  "validation": {
+    "two_run_exact_hash_match": true,
+    "all_quality_gates_passed": true,
+    "selection_artifact_sha256": "391649445e476e39e7ffadc1552ca0c872312d503d3e92ccc569d56bb0d627b2"
+  },
+  "safety_contract": {
+    "raw_files_modified": false,
+    "split_file_modified": false,
+    "feature_artifact_modified": false,
+    "protocol_modified": false,
+    "network_operations": 0,
+    "model_artifact_created": false,
+    "test_opened": false,
+    "test_predictions_created": false,
+    "deployment_allowed": false
+  },
+  "prohibited_claims": [
+    "Do not claim that Financial Claims V4 improved the current baseline.",
+    "Do not tune another Financial Claims variant against test after this validation result.",
+    "Do not interpret presence-only coefficients as causal effects or real-world fraud risk.",
+    "Do not describe the Mendeley source label as verified investment fraud.",
+    "Do not deploy either model for blocking, enforcement, financial advice, or automated decisions."
+  ],
+  "next_gate": "Retain ISI_TEXT_BASELINE_V2. Do not open test for this challenger. Any materially different Financial Claims V2 integration requires a new predeclared hypothesis and should preferably be evaluated with nested validation or new evidence-backed data rather than repeated tuning on the same validation partition."
+}

@@ -1,7 +1,7 @@
 {
   "feature_set_id": "MENDELEY_FINANCIAL_CLAIMS_V4",
   "created_at": "2026-09-20",
-  "status": "CANDIDATE_RULES_V4_REVIEW_REQUIRED",
+  "status": "FROZEN_RULESET_V4_VALIDATED_REEXTRACTED_ON_GROUP_SPLIT_V2_NO_MODEL_PROMOTION",
   "source": {
     "source_id": "mendeley_investment_deceptive_2026",
     "source_version": "v2",
@@ -80,15 +80,27 @@
       "coverage_finding_records_fixed": 3,
       "negative_control_records_preserved": 2
     },
-    "interpretation": "The confirmed examples now behave as expected. Large positive deltas still mainly reflect repeated synthetic templates and require a fresh incremental review before downstream use."
+    "interpretation": "The human-confirmed V4 pilot and the three-filter spot-check passed. Large positive deltas mainly reflect repeated synthetic templates, so these counts remain feature coverage rather than scam prevalence or labels."
   },
   "review_queue": {
     "record_count": 120,
     "unique_split_group_count": 120,
     "signal_candidates": 80,
     "no_signal_audit": 40,
-    "review_status": "UNREVIEWED",
-    "purpose": "Review V4 incremental precision, broad template effects and no-signal coverage before any downstream model use."
+    "review_status": "PILOT_HUMAN_CONFIRMED_AI_ASSISTED",
+    "purpose": "Document the completed V4 challenge pilot and retain the remaining queue as an audit source, not as training labels."
+  },
+  "validation": {
+    "pilot_review_status": "HUMAN_CONFIRMED_AI_ASSISTED",
+    "pilot_review_unit_count": 37,
+    "confirmed_correct_count": 27,
+    "confirmed_no_missed_signal_count": 10,
+    "filter_spot_check_status": "VERIFIED",
+    "filter_spot_check_record_count": 1,
+    "filter_spot_check_assignment_count": 3,
+    "filter_spot_check_path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\financial_claims_v4\\filter_spot_check_2026-09-21.json",
+    "filter_spot_check_sha256": "ac2ad9ac1f3ed04d717e823395e72653451a898e15cbad475fdfb4ad63f9e182",
+    "independent_blind_review": false
   },
   "output_contract": {
     "feature_record_count": 13773,
@@ -128,12 +140,11 @@
   },
   "training_gate": {
     "binary_classifier_allowed": false,
-    "reason": "V4 produces substantial incremental candidates from repeated synthetic templates and has not yet received a fresh human-confirmed challenge review.",
+    "reason": "This legacy artifact remains keyed to group_split_v1 and must not be mixed with the active baseline. The frozen V4 rules were re-extracted on group_split_v2, but their predeclared presence-feature challenger failed validation promotion gates and was not opened on test.",
     "required_to_open": [
-      "Review a targeted V4 sample that covers every new rule and each new filter.",
-      "Review V4 no-signal audit records without consulting the frozen test partition.",
-      "Report per-rule precision with denominators and qualitative false-negative findings.",
-      "Freeze further revisions using train/validation only and keep test unavailable until pre-specified evaluation."
+      "Use registry/features/mendeley_financial_claims_v4_group_split_v2.json instead of this group_split_v1 artifact.",
+      "Do not use this group_split_v1 artifact for the active group_split_v2 model.",
+      "Do not open test for the failed Financial Claims V1 challenger."
     ]
   }
 }

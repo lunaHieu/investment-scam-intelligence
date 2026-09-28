@@ -1,0 +1,149 @@
+{
+  "protocol_id": "MENDELEY_FINANCIAL_CLAIMS_ABLATION_V1_PROTOCOL",
+  "frozen_at": "2026-09-23",
+  "status": "FROZEN_BEFORE_VALIDATION_SELECTION",
+  "purpose": "Test whether the reviewed Financial Claims V4 signal-presence features add validation robustness to the frozen group_split_v2 text baseline without using test, auxiliary, or quarantine records.",
+  "label_semantics": "Mendeley V2 harmonized deceptive/suspicious source label; not verified investment-scam ground truth",
+  "data_contract": {
+    "split_id": "MENDELEY_GROUP_SPLIT_V2",
+    "split_sha256": "98f75387a4a598d85a6f721d10808979bda694dad8f85354d595679bdd96e734",
+    "feature_set_id": "MENDELEY_FINANCIAL_CLAIMS_V4_GROUP_SPLIT_V2",
+    "feature_artifact_sha256": "8e222b3cace3f6c922da8044c34e9481badb73ac52fdc8b44b64449f1656badc",
+    "fit_partition": "train",
+    "selection_partition": "validation",
+    "test_allowed_during_selection": false,
+    "auxiliary_allowed": false,
+    "quarantine_allowed": false,
+    "expected_rows": {
+      "train": 3916,
+      "validation": 838,
+      "test_processed": 0,
+      "auxiliary_processed": 0,
+      "quarantine_processed": 0
+    }
+  },
+  "baseline_contract": {
+    "model_id": "ISI_TEXT_BASELINE_V2",
+    "predictive_input": [
+      "text_content"
+    ],
+    "vectorizer": {
+      "analyzer": "word",
+      "lowercase": true,
+      "strip_accents": "unicode",
+      "ngram_range": [
+        1,
+        2
+      ],
+      "min_df": 2,
+      "max_df": 0.995,
+      "max_features": 100000,
+      "sublinear_tf": true
+    },
+    "classifier": {
+      "type": "LogisticRegression",
+      "C": 2.0,
+      "class_weight": null,
+      "solver": "liblinear",
+      "max_iter": 2000,
+      "random_state": 20260916,
+      "threshold": 0.5
+    }
+  },
+  "financial_claim_feature_contract": {
+    "container": "features",
+    "columns": [
+      "has_return_rate",
+      "has_return_multiple",
+      "has_money_amount",
+      "has_guaranteed_return",
+      "has_no_risk",
+      "has_urgency_scarcity",
+      "has_passive_or_easy_income",
+      "has_recruitment_reward",
+      "has_payment_or_transfer_request",
+      "has_advance_fee_or_withdrawal",
+      "has_crypto_investment_or_payment"
+    ],
+    "encoding": "Boolean false/true converted to numeric 0/1 in the declared column order",
+    "scaling": "No fitted scaler and no manual weighting",
+    "combination": "Sparse horizontal stack after the train-fitted text TF-IDF matrix; no post-stack renormalization",
+    "excluded_from_v1": [
+      "all signal count fields",
+      "signal_match_count",
+      "signal_type_count",
+      "return_percentage_count",
+      "max_return_percentage",
+      "evidence spans and matched text",
+      "partition and split_group_id",
+      "source_dataset and source labels",
+      "review decisions and queue fields"
+    ],
+    "reason_for_presence_only": "Use the smallest reviewed signal representation and avoid magnifying repeated templates or raw monetary and percentage magnitudes in the first integration test."
+  },
+  "predeclared_variants": [
+    {
+      "variant_id": "text_only",
+      "inputs": [
+        "text_content"
+      ],
+      "role": "baseline",
+      "promotion_eligible": true
+    },
+    {
+      "variant_id": "text_plus_financial_claim_presence",
+      "inputs": [
+        "text_content",
+        "financial_claim_presence_11"
+      ],
+      "role": "single_challenger",
+      "promotion_eligible": true
+    },
+    {
+      "variant_id": "financial_claim_presence_only",
+      "inputs": [
+        "financial_claim_presence_11"
+      ],
+      "role": "diagnostic_only",
+      "promotion_eligible": false
+    }
+  ],
+  "selection_policy": {
+    "primary_metric": "unweighted mean of per-source validation Macro-F1",
+    "secondary_metrics": [
+      "worst-source validation Macro-F1",
+      "pooled validation Macro-F1",
+      "per-source validation Macro-F1"
+    ],
+    "challenger_promotion_gates": {
+      "primary_metric_minimum_absolute_improvement": 0.01,
+      "worst_source_macro_f1_must_not_decrease": true,
+      "pooled_macro_f1_must_not_decrease": true,
+      "maximum_allowed_macro_f1_drop_for_any_source": 0.01
+    },
+    "all_gates_required": true,
+    "tie_breakers": [
+      "higher worst-source validation Macro-F1",
+      "higher pooled validation Macro-F1",
+      "simpler text_only baseline"
+    ],
+    "if_challenger_fails_any_gate": "retain text_only",
+    "test_opening_after_selection": false,
+    "reason_test_remains_closed": "This stage decides only whether the feature family is worth retaining as a validation-selected research candidate. The already-used internal test must not drive feature design."
+  },
+  "output_contract": {
+    "selection_report_only": true,
+    "model_artifact_created": false,
+    "test_predictions_created": false,
+    "validation_predictions_may_be_saved": true,
+    "deployment_allowed": false
+  },
+  "prohibited_changes_after_freeze": [
+    "feature columns or their order",
+    "feature scaling or weighting",
+    "text vectorizer settings",
+    "classifier hyperparameters or threshold",
+    "candidate eligibility",
+    "primary metric, gates, thresholds, or tie-breakers"
+  ]
+}

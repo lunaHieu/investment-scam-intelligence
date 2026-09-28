@@ -446,6 +446,35 @@ def sha256_file(path: Path) -> str:
     return digest.hexdigest()
 
 
+def load_split_contract(path: Path) -> tuple[str, str, dict[str, int]]:
+    """Load the pinned derived-split hash and routing counts from a split registry."""
+    registry = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(registry, dict):
+        raise ValueError(f"Split registry must contain a JSON object: {path}")
+    split_id = str(registry.get("split_id") or "").strip()
+    routing = registry.get("routing_contract")
+    if not split_id or not isinstance(routing, dict):
+        raise ValueError(f"Split registry is missing split_id/routing_contract: {path}")
+    raw_counts = routing.get("partition_counts")
+    if not isinstance(raw_counts, dict) or not raw_counts:
+        raise ValueError(f"Split registry is missing partition_counts: {path}")
+    expected_counts: dict[str, int] = {}
+    for partition, count in raw_counts.items():
+        if not isinstance(partition, str) or not isinstance(count, int) or count < 0:
+            raise ValueError(f"Invalid partition count in split registry: {partition!r}={count!r}")
+        expected_counts[partition.strip().lower()] = count
+
+    derived_hashes = {
+        str(artifact.get("sha256") or "").strip().lower()
+        for artifact in registry.get("artifacts", [])
+        if isinstance(artifact, dict) and artifact.get("role") == "derived_split_csv"
+    }
+    derived_hashes.discard("")
+    if len(derived_hashes) != 1:
+        raise ValueError(f"Split registry must pin exactly one derived_split_csv hash: {path}")
+    return split_id, next(iter(derived_hashes)), expected_counts
+
+
 def compact_context(text: str, start: int, end: int, radius: int = 70) -> str:
     left = max(0, start - radius)
     right = min(len(text), end + radius)
@@ -610,8 +639,28 @@ def main() -> int:
     parser.add_argument("--report", type=Path, required=True)
     parser.add_argument("--review-queue", type=Path, required=True)
     parser.add_argument("--feature-version", choices=SUPPORTED_FEATURE_VERSIONS, default=FEATURE_VERSION)
+    parser.add_argument(
+        "--split-registry",
+        type=Path,
+        help="Optional frozen split registry used to pin the input hash and partition counts.",
+    )
     args = parser.parse_args()
     feature_version = args.feature_version
+
+    split_id: str | None = None
+    split_registry_sha256: str | None = None
+    expected_partition_counts: dict[str, int] | None = None
+    input_sha256 = sha256_file(args.input)
+    if args.split_registry is not None:
+        split_id, expected_input_sha256, expected_partition_counts = load_split_contract(
+            args.split_registry
+        )
+        split_registry_sha256 = sha256_file(args.split_registry)
+        if input_sha256 != expected_input_sha256:
+            raise ValueError(
+                f"Input SHA-256 does not match {split_id}: "
+                f"expected {expected_input_sha256}, got {input_sha256}"
+            )
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.report.parent.mkdir(parents=True, exist_ok=True)
@@ -678,6 +727,16 @@ def main() -> int:
                 }
             )
 
+    observed_partition_counts = {
+        partition: processed_counts[partition] + skipped_counts[partition]
+        for partition in sorted(set(processed_counts) | set(skipped_counts))
+    }
+    if expected_partition_counts is not None and observed_partition_counts != expected_partition_counts:
+        raise ValueError(
+            "Input partition counts do not match the frozen split registry: "
+            f"expected {expected_partition_counts}, got {observed_partition_counts}"
+        )
+
     queue = select_review_queue(review_source, feature_version=feature_version)
     with args.review_queue.open("w", encoding="utf-8", newline="\n") as destination:
         for item in queue:
@@ -690,8 +749,16 @@ def main() -> int:
     report = {
         "run_at": datetime.now(timezone.utc).isoformat(),
         "feature_version": feature_version,
+        "split_contract": {
+            "split_id": split_id,
+            "registry": str(args.split_registry) if args.split_registry is not None else None,
+            "registry_sha256": split_registry_sha256,
+            "expected_partition_counts": expected_partition_counts,
+            "observed_partition_counts": observed_partition_counts,
+            "input_hash_verified": args.split_registry is not None,
+        },
         "input": str(args.input),
-        "input_sha256": sha256_file(args.input),
+        "input_sha256": input_sha256,
         "included_partitions": sorted(ALLOWED_PARTITIONS),
         "total_input_record_count": total_input,
         "processed_record_count": sum(processed_counts.values()),
@@ -735,8 +802,8 @@ def main() -> int:
             "risk probabilities, or verified financial claims."
         ),
         "training_gate": (
-            "Do not use these features for model training until the review queue has been independently "
-            "annotated and rule precision/coverage have been documented."
+            "Do not use these features for model training until the applicable review evidence and a "
+            "validation-only experiment protocol have been documented for this split."
         ),
     }
     args.report.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

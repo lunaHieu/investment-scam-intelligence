@@ -85,6 +85,26 @@ def main() -> None:
     model_registries = sorted((ROOT / "registry" / "models").glob("*.json"))
     for path in model_registries:
         model = load_json(path)
+        if model.get("model_id") == "ISI_FINANCIAL_CLAIMS_ABLATION_V1":
+            if model.get("status") != "FROZEN_VALIDATION_SELECTION_RETAIN_TEXT_ONLY_TEST_UNOPENED":
+                raise ValueError("Financial Claims ablation must retain text-only with test unopened")
+            data_contract = model.get("data_contract", {})
+            if data_contract.get("split_version") != "group_split_v2":
+                raise ValueError("Financial Claims ablation must use group_split_v2")
+            if data_contract.get("test_rows_used") != 0:
+                raise ValueError("Financial Claims ablation cannot use test rows")
+            if data_contract.get("auxiliary_rows_used") != 0:
+                raise ValueError("Financial Claims ablation cannot use auxiliary rows")
+            if data_contract.get("quarantine_rows_used") != 0:
+                raise ValueError("Financial Claims ablation cannot use quarantine rows")
+            decision = model.get("decision", {})
+            if decision.get("selected_variant") != "text_only":
+                raise ValueError("Failed Financial Claims challenger cannot replace text-only")
+            if decision.get("open_internal_test_for_challenger") is not False:
+                raise ValueError("Failed Financial Claims challenger cannot open test")
+            if model.get("safety_contract", {}).get("deployment_allowed") is not False:
+                raise ValueError("Financial Claims ablation deployment gate must remain closed")
+            continue
         if model.get("model_id") != "ISI_TEXT_BASELINE_V2":
             continue
         if model.get("status") != "FROZEN_INTERNAL_BASELINE_NOT_FOR_DEPLOYMENT":

@@ -15,7 +15,9 @@ from extract_mendeley_financial_claims import (
     SUPPORTED_FEATURE_VERSIONS,
     SIGNAL_TYPES,
     extract_signals,
+    load_split_contract,
     rule_set_sha256,
+    sha256_file,
 )
 
 
@@ -42,20 +44,44 @@ def main() -> int:
     parser.add_argument(
         "--feature-version", choices=SUPPORTED_FEATURE_VERSIONS, default=FEATURE_VERSION
     )
+    parser.add_argument(
+        "--split-registry",
+        type=Path,
+        help="Optional frozen split registry used to verify input hash and routing counts.",
+    )
     args = parser.parse_args()
     feature_version = args.feature_version
 
+    split_id: str | None = None
+    expected_all_partitions: dict[str, int] | None = None
+    if args.split_registry is not None:
+        split_id, expected_input_sha256, expected_all_partitions = load_split_contract(
+            args.split_registry
+        )
+        actual_input_sha256 = sha256_file(args.input)
+        if actual_input_sha256 != expected_input_sha256:
+            raise ValueError(
+                f"Input SHA-256 does not match {split_id}: "
+                f"expected {expected_input_sha256}, got {actual_input_sha256}"
+            )
+
     source: dict[str, tuple[str, str, str]] = {}
-    test_count = 0
+    input_partition_counts: Counter[str] = Counter()
     with args.input.open("r", encoding="utf-8-sig", newline="") as file:
         reader = csv.DictReader(file)
         for row in reader:
             partition = (row.get("partition") or "").strip().lower()
-            if partition == "test":
-                test_count += 1
-                continue
+            input_partition_counts[partition or "<MISSING>"] += 1
             if partition in ALLOWED_PARTITIONS:
                 source[row["record_id"]] = (partition, row["split_group_id"], row.get("text_content") or "")
+
+    if expected_all_partitions is not None:
+        observed_all_partitions = dict(sorted(input_partition_counts.items()))
+        if observed_all_partitions != expected_all_partitions:
+            raise ValueError(
+                "Input partition counts differ from the frozen split registry: "
+                f"expected {expected_all_partitions}, got {observed_all_partitions}"
+            )
 
     feature_ids: set[str] = set()
     partition_counts: Counter[str] = Counter()
@@ -111,11 +137,46 @@ def main() -> int:
     report = json.loads(args.report.read_text(encoding="utf-8"))
     if report.get("feature_version") != feature_version:
         raise ValueError("Report feature version mismatch")
-    expected_partitions = {"train": 11344, "validation": 2429}
+    expected_partitions = (
+        {
+            partition: count
+            for partition, count in expected_all_partitions.items()
+            if partition in ALLOWED_PARTITIONS
+        }
+        if expected_all_partitions is not None
+        else {"train": 11344, "validation": 2429}
+    )
     if dict(partition_counts) != expected_partitions:
         raise ValueError(f"Unexpected processed partitions: {dict(partition_counts)}")
-    if test_count != 2429 or report.get("test_partition_text_processed") != 0:
+    expected_test_count = (
+        expected_all_partitions.get("test", 0)
+        if expected_all_partitions is not None
+        else 2429
+    )
+    if input_partition_counts["test"] != expected_test_count or report.get("test_partition_text_processed") != 0:
         raise ValueError("Frozen test partition was not preserved")
+    expected_skipped = {
+        partition: count
+        for partition, count in (
+            expected_all_partitions.items()
+            if expected_all_partitions is not None
+            else {"test": 2429}.items()
+        )
+        if partition not in ALLOWED_PARTITIONS
+    }
+    if report.get("skipped_partition_counts") != expected_skipped:
+        raise ValueError(
+            "Report skipped-partition counts mismatch: "
+            f"expected {expected_skipped}, got {report.get('skipped_partition_counts')}"
+        )
+    if args.split_registry is not None:
+        split_contract = report.get("split_contract", {})
+        if split_contract.get("split_id") != split_id:
+            raise ValueError("Report split ID mismatch")
+        if split_contract.get("input_hash_verified") is not True:
+            raise ValueError("Report did not record verified split input hash")
+        if split_contract.get("observed_partition_counts") != expected_all_partitions:
+            raise ValueError("Report split partition contract mismatch")
     if report.get("processed_record_count") != len(feature_ids):
         raise ValueError("Report processed count mismatch")
     if report.get("candidate_record_count") != candidate_count:
@@ -139,9 +200,11 @@ def main() -> int:
             {
                 "status": "VALID",
                 "feature_version": feature_version,
+                "split_id": split_id,
                 "feature_record_count": len(feature_ids),
                 "candidate_record_count": candidate_count,
                 "test_partition_text_processed": 0,
+                "excluded_partition_counts": expected_skipped,
                 "review_queue_reason_counts": dict(sorted(queue_reasons.items())),
                 "errors": [],
             },

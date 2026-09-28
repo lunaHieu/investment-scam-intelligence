@@ -14,6 +14,7 @@ from extract_mendeley_financial_claims import (
     FEATURE_VERSION_V4,
     compact_excerpt,
     extract_signals,
+    load_split_contract,
     rule_set_sha256,
     select_review_queue,
 )
@@ -76,6 +77,30 @@ class MendeleyFinancialClaimsTests(unittest.TestCase):
         excerpt = compact_excerpt("word " * 100, limit=40)
         self.assertLessEqual(len(excerpt), 41)
         self.assertTrue(excerpt.endswith("…"))
+
+    def test_group_split_v2_contract_pins_hash_and_all_partition_counts(self):
+        registry = (
+            Path(__file__).resolve().parents[1]
+            / "registry"
+            / "splits"
+            / "mendeley_group_split_v2.json"
+        )
+        split_id, input_sha256, counts = load_split_contract(registry)
+        self.assertEqual(split_id, "MENDELEY_GROUP_SPLIT_V2")
+        self.assertEqual(
+            input_sha256,
+            "98f75387a4a598d85a6f721d10808979bda694dad8f85354d595679bdd96e734",
+        )
+        self.assertEqual(
+            counts,
+            {
+                "train": 3916,
+                "validation": 838,
+                "test": 838,
+                "auxiliary": 10607,
+                "quarantine": 3,
+            },
+        )
 
     def test_queue_has_unique_groups_and_both_audit_reasons(self):
         records = []

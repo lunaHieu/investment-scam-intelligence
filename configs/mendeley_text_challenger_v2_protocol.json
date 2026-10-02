@@ -1,0 +1,99 @@
+{
+  "protocol_id": "MENDELEY_TEXT_CHALLENGER_V2_VALIDATION_PROTOCOL",
+  "frozen_at": "2026-09-30T00:00:00+07:00",
+  "status": "FROZEN_BEFORE_VALIDATION_TEST_AND_EXTERNAL_UNOPENED",
+  "authorization_source": "User instruction 'tiến hành tiếp' after the matched-Wayback frozen-model error analysis was reported.",
+  "hypothesis": "Adding bounded within-word character 3-5 gram TF-IDF to the frozen word unigram-bigram representation may improve robustness to spelling and language variation, but must not worsen source shortcut behavior.",
+  "prior_evidence": {
+    "group_split_v1_word_plus_char_ablation_promoted": false,
+    "group_split_v1_limitation": "The earlier experiment used group_split_v1, which retained normalized-template leakage and the auxiliary fake_profile_post source.",
+    "matched_wayback_observation": "One confirmed non-English page had only 0.070981 frozen word-vocabulary coverage, while 14 of 18 nearest fit rows came from spam_email.",
+    "interpretation": "The prior failed ablation is adverse evidence. This protocol permits one corrected-split replication, not a new hyperparameter search."
+  },
+  "data_contract": {
+    "source_id": "mendeley_investment_deceptive_2026",
+    "source_version": "2",
+    "split_version": "group_split_v2",
+    "split_path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\mendeley_v2_group_split_v2.csv",
+    "split_sha256": "98f75387a4a598d85a6f721d10808979bda694dad8f85354d595679bdd96e734",
+    "baseline_registry_path": "registry/models/text_baseline_v2.json",
+    "baseline_registry_sha256": "0485439ddc34c56d05587c85cd0520f519a4feb9dd7887d16e46273bc7b1d7f5",
+    "fit_partition": "train",
+    "selection_partition": "validation",
+    "internal_test_text_access_allowed": false,
+    "internal_test_label_access_allowed": false,
+    "auxiliary_or_quarantine_access_allowed": false,
+    "external_benchmark_access_allowed": false
+  },
+  "fixed_classifier": {
+    "type": "LogisticRegression",
+    "C": 2.0,
+    "class_weight": null,
+    "solver": "liblinear",
+    "max_iter": 2000,
+    "random_state": 20260916,
+    "threshold": 0.5
+  },
+  "representations": {
+    "baseline": {
+      "id": "word_1_2",
+      "analyzer": "word",
+      "ngram_range": [1, 2],
+      "lowercase": true,
+      "strip_accents": "unicode",
+      "min_df": 2,
+      "max_df": 0.995,
+      "max_features": 100000,
+      "sublinear_tf": true
+    },
+    "single_challenger": {
+      "id": "word_1_2_plus_char_wb_3_5",
+      "word_branch": "identical to baseline",
+      "character_branch": {
+        "analyzer": "char_wb",
+        "ngram_range": [3, 5],
+        "lowercase": true,
+        "strip_accents": "unicode",
+        "min_df": 2,
+        "max_df": 0.995,
+        "max_features": 100000,
+        "sublinear_tf": true
+      },
+      "combination": "Sparse horizontal stack followed by row-wise L2 normalization"
+    }
+  },
+  "selection_policy": {
+    "primary_metric": "unweighted mean of per-source validation Macro-F1",
+    "promotion_requires_every_gate": true,
+    "promotion_gates": {
+      "source_mean_macro_f1_delta_minimum": 0.01,
+      "worst_source_macro_f1_delta_minimum": 0.0,
+      "pooled_macro_f1_delta_minimum": -0.005,
+      "maximum_single_source_macro_f1_decline": 0.02,
+      "source_predictability_macro_f1_delta_maximum": 0.02,
+      "within_source_label_shuffle_macro_f1_delta_maximum": 0.02,
+      "paired_group_bootstrap_macro_f1_delta_ci_lower_minimum": 0.0
+    },
+    "if_any_gate_fails": "Retain ISI_TEXT_BASELINE_V2; do not open internal test; do not create a challenger model artifact.",
+    "if_all_gates_pass": "Freeze the validation selection only. Internal test still requires a separate owner-approved gate and external evaluation must use a new untouched benchmark."
+  },
+  "diagnostics": {
+    "source_dataset_allowed_as_predictive_feature": false,
+    "source_dataset_allowed_for_stratified_metrics": true,
+    "source_dataset_allowed_as_diagnostic_target": true,
+    "within_source_label_shuffle_required": true,
+    "paired_bootstrap_unit": "split_group_id",
+    "paired_bootstrap_replicates": 10000,
+    "paired_bootstrap_seed": 20260930
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "raw_files_modified": false,
+    "source_labels_changed": 0,
+    "candidate_count": 1,
+    "threshold_candidates": 1,
+    "external_benchmark_scoring_operations": 0,
+    "internal_test_scoring_operations": 0,
+    "deployment_allowed": false
+  }
+}

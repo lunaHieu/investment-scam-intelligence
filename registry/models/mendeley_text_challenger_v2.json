@@ -1,0 +1,158 @@
+{
+  "model_id": "ISI_TEXT_CHALLENGER_V2_VALIDATION_ABLATION",
+  "created_at": "2026-09-30",
+  "status": "FROZEN_VALIDATION_CHALLENGER_REJECTED_TEST_UNOPENED",
+  "source_id": "mendeley_investment_deceptive_2026",
+  "purpose": "Test one predeclared word-plus-character representation on group_split_v2 train/validation while keeping internal test and all external benchmarks unopened.",
+  "data_contract": {
+    "split_version": "group_split_v2",
+    "split_path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\mendeley_v2_group_split_v2.csv",
+    "split_sha256": "98f75387a4a598d85a6f721d10808979bda694dad8f85354d595679bdd96e734",
+    "train_rows_used": 3916,
+    "validation_rows_used": 838,
+    "test_rows_used": 0,
+    "external_benchmark_rows_used": 0,
+    "auxiliary_rows_used": 0,
+    "quarantine_rows_used": 0
+  },
+  "inputs": [
+    {
+      "role": "frozen_protocol",
+      "path": "configs/mendeley_text_challenger_v2_protocol.json",
+      "sha256": "3b98519b7fa9bd77fff80517d1e0fd24a3321a96cbc7f054431424f9a6c1e685"
+    },
+    {
+      "role": "baseline_registry",
+      "path": "registry/models/text_baseline_v2.json",
+      "sha256": "0485439ddc34c56d05587c85cd0520f519a4feb9dd7887d16e46273bc7b1d7f5"
+    },
+    {
+      "role": "group_split_dataset",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\mendeley_v2_group_split_v2.csv",
+      "sha256": "98f75387a4a598d85a6f721d10808979bda694dad8f85354d595679bdd96e734"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "validation_selector",
+      "path": "scripts/select_mendeley_text_challenger_v2.py",
+      "sha256": "693a0b3405f2073a4885e69b31ed06ed0c022f9ba6f06395e3fce32d5185570b"
+    },
+    {
+      "role": "verifier",
+      "path": "scripts/verify_mendeley_text_challenger_v2.py",
+      "sha256": "0fa24d499f56d18515e33945dcf91c8ebddaa5b66984e8a2b4ed9c3ff95cb701"
+    },
+    {
+      "role": "unit_tests",
+      "path": "tests/test_mendeley_text_challenger_v2.py",
+      "sha256": "3bb7bb87ce981ad4501f3dc26614886a54ba4814c3ad159a35973e7ed50fe0b6"
+    },
+    {
+      "role": "method_documentation",
+      "path": "docs/mendeley-text-challenger-v2.md",
+      "sha256": "91db8b41679da5893872529095a7b3020b11ccf72210c5cf0b46c837cfc2e70f"
+    }
+  ],
+  "representations": {
+    "baseline": "word_1_2",
+    "single_challenger": "word_1_2_plus_char_wb_3_5",
+    "classifier": "LogisticRegression C=2.0, class_weight=null, liblinear, threshold=0.5",
+    "source_dataset_in_predictive_matrix": false
+  },
+  "validation_metrics": {
+    "baseline": {
+      "pooled_macro_f1": 0.700118,
+      "source_mean_macro_f1": 0.778049,
+      "worst_source_macro_f1": 0.480842,
+      "source_predictability_macro_f1": 0.907602,
+      "within_source_label_shuffle_macro_f1": 0.542893
+    },
+    "challenger": {
+      "pooled_macro_f1": 0.70863,
+      "source_mean_macro_f1": 0.785748,
+      "worst_source_macro_f1": 0.493497,
+      "source_predictability_macro_f1": 0.95311,
+      "within_source_label_shuffle_macro_f1": 0.54464
+    },
+    "challenger_minus_baseline": {
+      "pooled_macro_f1": 0.008512,
+      "source_mean_macro_f1": 0.007699,
+      "worst_source_macro_f1": 0.012655,
+      "source_predictability_macro_f1": 0.045508,
+      "within_source_label_shuffle_macro_f1": 0.001747,
+      "maximum_single_source_macro_f1_decline": 0.013002
+    },
+    "paired_group_bootstrap": {
+      "validation_group_count": 808,
+      "replicates": 10000,
+      "seed": 20260930,
+      "macro_f1_delta": 0.008512,
+      "difference_percentile_95_ci": [
+        -0.007058,
+        0.024308
+      ],
+      "probability_challenger_better": 0.858
+    }
+  },
+  "promotion_gates": {
+    "passed": [
+      "worst_source_macro_f1_delta_minimum",
+      "pooled_macro_f1_delta_minimum",
+      "maximum_single_source_macro_f1_decline",
+      "within_source_label_shuffle_macro_f1_delta_maximum"
+    ],
+    "failed": [
+      "source_mean_macro_f1_delta_minimum",
+      "source_predictability_macro_f1_delta_maximum",
+      "paired_group_bootstrap_macro_f1_delta_ci_lower_minimum"
+    ],
+    "all_required": true,
+    "all_passed": false
+  },
+  "outputs": [
+    {
+      "role": "validation_selection",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\text_challenger_v2_validation\\text_challenger_v2_validation_selection.json",
+      "sha256": "9e5dd6df282040f0d47cf3dab62f6868a27da688b89c691d6a6cf47390dea2e7"
+    },
+    {
+      "role": "validation_predictions",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\text_challenger_v2_validation\\text_challenger_v2_validation_predictions.jsonl",
+      "sha256": "6728afb70315197bfe8b334848b7445d9d9d545b557a12831e7401179eecd484",
+      "record_count": 838
+    }
+  ],
+  "decision": {
+    "selected_variant": "word_1_2",
+    "retain_primary_baseline": "ISI_TEXT_BASELINE_V2",
+    "challenger_passes_all_promotion_gates": false,
+    "open_internal_test": false,
+    "score_existing_external_benchmarks": false,
+    "challenger_model_artifact_created": false,
+    "promote_for_deployment": false,
+    "reason": "The challenger gained 0.007699 source-mean validation Macro-F1, below the predeclared 0.01 minimum; source predictability rose by 0.045508, above the 0.02 ceiling; and the paired group-bootstrap interval crossed zero.",
+    "next_action": "Do not test more character variants on this validation partition. Expand new matched external data by language/capture stratum before defining any materially different multilingual challenger."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "raw_files_modified": false,
+    "split_file_modified": false,
+    "source_labels_changed": 0,
+    "model_fit_operations": 6,
+    "test_rows_used": 0,
+    "external_benchmark_rows_used": 0,
+    "auxiliary_rows_used": 0,
+    "quarantine_rows_used": 0,
+    "threshold_changes": 0,
+    "model_artifact_created": false,
+    "training_allowed": false,
+    "deployment_allowed": false
+  },
+  "prohibited_claims": [
+    "Do not describe the challenger as improved or selected merely because pooled validation Macro-F1 increased.",
+    "Do not open internal test for this rejected challenger.",
+    "Do not score this rejected challenger on any existing external benchmark.",
+    "Do not interpret character fragments or source-predictability results as causal scam evidence."
+  ]
+}

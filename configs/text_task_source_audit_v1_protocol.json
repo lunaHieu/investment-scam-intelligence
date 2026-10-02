@@ -1,0 +1,116 @@
+{
+  "protocol_id": "ISI_TEXT_TASK_SOURCE_AUDIT_V1",
+  "frozen_at": "2026-10-02T18:57:58+07:00",
+  "status": "LOCKED_BEFORE_NEW_SYNTHESIS_NO_NEW_DATA",
+  "authorization_source": "Project owner instructed continuation after accepting the progress plan; Phase 1 is the planned audit of task definition and source roles.",
+  "purpose": "Determine whether the pooled Mendeley binary source labels are semantically aligned with investment-scam content detection, and assign research roles to each source without changing labels, partitions, model configuration, or data eligibility.",
+  "official_source_statement": {
+    "url": "https://data.mendeley.com/datasets/6wnd7jrt6z/2",
+    "version": "2",
+    "accessed_at": "2026-10-02",
+    "declared_scope": "Five public groups covering phishing text, spam email, fake-profile posts, Twitter bot-detection records, and finance-related social-media data were harmonized into a common binary schema and filtered for investment relevance.",
+    "declared_label_limit": "Labels represent harmonized deceptive or suspicious behaviour and are not verified investment-scam ground truth for every record."
+  },
+  "inputs": [
+    {
+      "role": "mendeley_manifest",
+      "path": "registry/manifests/mendeley_investment_deceptive_2026__v2__2026-09-07.json",
+      "sha256": "2991888803d52f6d65686af3d760abdeb4219b1d63b238f1d4dcccf979c001a9"
+    },
+    {
+      "role": "group_split_registry",
+      "path": "registry/splits/mendeley_group_split_v2.json",
+      "sha256": "22fa918ff9eb0407a430d0c62d023bca645dcbfa1cab4af59c627c0c3d46f776"
+    },
+    {
+      "role": "baseline_registry",
+      "path": "registry/models/text_baseline_v2.json",
+      "sha256": "0485439ddc34c56d05587c85cd0520f519a4feb9dd7887d16e46273bc7b1d7f5"
+    },
+    {
+      "role": "baseline_error_registry",
+      "path": "registry/analyses/mendeley_text_baseline_v2_error_analysis.json",
+      "sha256": "e48d25b3cef4f673285bb23c15772c4e3118827631b85bf5b7b392239c68eade"
+    },
+    {
+      "role": "metadata_ablation_registry",
+      "path": "registry/models/mendeley_metadata_ablation_v1.json",
+      "sha256": "5e445d6c134491c178621e97ba0f51443019ef485500d33bec775c10003b1eb0"
+    },
+    {
+      "role": "representation_ablation_registry",
+      "path": "registry/models/mendeley_text_representation_ablation_v1.json",
+      "sha256": "282d7fc83d8999b13b65404f09903d0274bec5e456fddc36ebd36e2ab44e3eff"
+    },
+    {
+      "role": "character_challenger_registry",
+      "path": "registry/models/mendeley_text_challenger_v2.json",
+      "sha256": "92d6643738973954cb1080d893cb3b3d1422d0aeb6b5625275cbe0641959e2c5"
+    },
+    {
+      "role": "stopword_challenger_registry",
+      "path": "registry/models/mendeley_text_challenger_v3.json",
+      "sha256": "f521411d4ad88980f876a11c706c9e5b3742e589e10b16447f7e72a9a142c90c"
+    },
+    {
+      "role": "semantic_challenger_registry",
+      "path": "registry/models/mendeley_text_challenger_v4.json",
+      "sha256": "3ab3b824ef51cfe7f7dab82c4288d6bc2b3d2d5134b1694cfeb3e901f445b8c5"
+    },
+    {
+      "role": "semantic_error_registry",
+      "path": "registry/analyses/mendeley_text_challenger_v4_oof_error_analysis.json",
+      "sha256": "11436de3f1ed0635920af31f27ab3586f0e641845f71ee397a1b292caf2aa779"
+    },
+    {
+      "role": "wayback_language_error_registry",
+      "path": "registry/analyses/text_baseline_v2_wayback_language_v2_error_analysis.json",
+      "sha256": "160b1872cf1454a121690123b896cacfe29303c0de679c73ab838ca6e9fd9200"
+    },
+    {
+      "role": "wayback_holdout_error_registry",
+      "path": "registry/analyses/text_baseline_v2_wayback_holdout_v3_error_analysis.json",
+      "sha256": "885ed398c8a75947e903773e34ad016c8fc1d016e0485f56825891bfd67fa60c"
+    }
+  ],
+  "audit_dimensions": [
+    "raw label meaning versus verified investment-scam status",
+    "whether the requested target is identifiable from text alone",
+    "source and template shortcut risk",
+    "transfer relevance to evidence-backed external website cases",
+    "permitted role in future train, validation, test, auxiliary, or reference workflows"
+  ],
+  "allowed_evidence": [
+    "published Mendeley V2 description",
+    "hash-pinned local registries and their already-opened aggregate metrics",
+    "already-completed diagnostic conclusions",
+    "source names and modality/missingness summaries"
+  ],
+  "prohibited_operations": [
+    "read new row-level validation or test text",
+    "fit, refit, score, or select any model",
+    "generate embeddings or features",
+    "change any source label, split, training eligibility, threshold, or model configuration",
+    "silently remove twitter_bot_detection or any other source from an existing benchmark",
+    "reuse an opened external cohort for model selection"
+  ],
+  "decision_categories": [
+    "HISTORICAL_HETEROGENEOUS_BENCHMARK",
+    "RELATED_CONTENT_AUXILIARY_RESEARCH",
+    "ACCOUNT_OR_BEHAVIOR_AUXILIARY_TASK",
+    "TARGET_DOMAIN_EVIDENCE_ONLY",
+    "QUARANTINE"
+  ],
+  "safety_contract": {
+    "network_research_operations_after_protocol_freeze": 0,
+    "new_row_level_data_access": 0,
+    "model_fit_operations": 0,
+    "model_scoring_operations": 0,
+    "labels_changed": 0,
+    "split_changes": 0,
+    "training_eligibility_changes": 0,
+    "validation_or_test_openings": 0,
+    "deployment_allowed": false
+  },
+  "next_gate": "Publish a source-role recommendation and task-definition decision. Any implementation that changes the training corpus requires a separate owner-visible protocol before data construction or modeling."
+}

@@ -1,0 +1,178 @@
+{
+  "protocol_id": "MENDELEY_TEXT_CHALLENGER_V4_TRAIN_OOF_ERROR_ANALYSIS",
+  "frozen_at": "2026-10-02T14:51:11+07:00",
+  "status": "LOCKED_BEFORE_ROW_LEVEL_DIAGNOSTIC",
+  "authorization_source": "User instruction to analyze OOF errors on train only without silently trying another encoder, chunking rule or hyperparameter.",
+  "purpose": "Describe where and how the rejected frozen E5 challenger differs from the word TF-IDF reference using already-created train-only OOF predictions and embeddings, without fitting, scoring or selecting another model.",
+  "inputs": [
+    {
+      "role": "challenger_registry",
+      "path": "registry/models/mendeley_text_challenger_v4.json",
+      "sha256": "3ab3b824ef51cfe7f7dab82c4288d6bc2b3d2d5134b1694cfeb3e901f445b8c5"
+    },
+    {
+      "role": "development_oof_result",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\text_challenger_v4\\development\\text_challenger_v4_development_oof_result.json",
+      "sha256": "26696c61cca0ea679882386d7d195d5b9bc6f7311d45266173e007cd8e2ff07c"
+    },
+    {
+      "role": "development_oof_predictions",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\text_challenger_v4\\development\\text_challenger_v4_development_oof_predictions.jsonl",
+      "sha256": "b95e655e080e0aad6752665b71d465014470432013105e688b716dcda55f05dc"
+    },
+    {
+      "role": "train_embedding_cache",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\text_challenger_v4\\embeddings\\train_e5_small_v2_ffb93f3b_embeddings.npz",
+      "sha256": "5bfe656fbe68a259856476f2697b95249ef9b1d031983008c1aa3f151ddc8818"
+    },
+    {
+      "role": "train_embedding_metadata",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\text_challenger_v4\\embeddings\\train_e5_small_v2_ffb93f3b_metadata.json",
+      "sha256": "dfa5c419b683ed9eca24bba43083a692966f37bc167609d970018ac27826bfde"
+    }
+  ],
+  "scope": {
+    "partition": "train",
+    "expected_rows": 3916,
+    "expected_groups": 3783,
+    "validation_text_access_allowed": false,
+    "validation_label_access_allowed": false,
+    "test_access_allowed": false,
+    "auxiliary_or_quarantine_access_allowed": false,
+    "external_benchmark_access_allowed": false,
+    "new_embedding_computation_allowed": false,
+    "model_fit_allowed": false,
+    "model_scoring_allowed": false
+  },
+  "predeclared_questions": [
+    "Which sources, labels and OOF folds contain E5 regressions versus recoveries?",
+    "Are E5 regressions descriptively concentrated among records truncated by the frozen 512-token limit?",
+    "How do regression and recovery counts vary across fixed pre-truncation token-length buckets?",
+    "Does frozen E5 nearest-neighbor geometry align more strongly with source identity than source label, especially among E5 regressions?",
+    "Which high-confidence OOF disagreements are suitable for bounded human inspection without turning the diagnostic into tuning?"
+  ],
+  "transition_definitions": {
+    "both_correct": "baseline_prediction == label and challenger_prediction == label",
+    "e5_regression": "baseline_prediction == label and challenger_prediction != label",
+    "e5_recovery": "baseline_prediction != label and challenger_prediction == label",
+    "both_wrong": "baseline_prediction != label and challenger_prediction != label"
+  },
+  "fixed_strata": {
+    "dimensions": [
+      "source_dataset",
+      "source_label",
+      "development_fold",
+      "transition",
+      "truncated_at_512",
+      "pre_truncation_token_bucket"
+    ],
+    "pre_truncation_token_buckets": [
+      {
+        "id": "le_32",
+        "minimum_inclusive": 0,
+        "maximum_inclusive": 32
+      },
+      {
+        "id": "33_128",
+        "minimum_inclusive": 33,
+        "maximum_inclusive": 128
+      },
+      {
+        "id": "129_512",
+        "minimum_inclusive": 129,
+        "maximum_inclusive": 512
+      },
+      {
+        "id": "gt_512",
+        "minimum_inclusive": 513,
+        "maximum_inclusive": null
+      }
+    ]
+  },
+  "truncation_diagnostic": {
+    "tokenizer": "Pinned local tokenizer from the frozen E5 snapshot",
+    "prefix": "query: ",
+    "add_special_tokens": true,
+    "truncation_during_length_measurement": false,
+    "forward_pass_allowed": false,
+    "outputs": [
+      "counts and transition rates by truncation status",
+      "counts and transition rates by fixed token-length bucket",
+      "source-stratified truncation cross-tab"
+    ],
+    "interpretation": "Descriptive association only; truncation is confounded with source and document type and must not be described as a causal explanation."
+  },
+  "nearest_neighbor_diagnostic": {
+    "space": "existing row-wise L2-normalized frozen E5 train embeddings",
+    "similarity": "cosine via dot product",
+    "candidate_exclusions": [
+      "self",
+      "same split_group_id"
+    ],
+    "tie_breaker": "lexicographically smaller neighbor record_id",
+    "block_rows": 256,
+    "reported_fields": [
+      "same_source_rate",
+      "same_label_rate",
+      "same_source_and_label_rate",
+      "similarity_mean",
+      "similarity_p50",
+      "similarity_p95"
+    ],
+    "reported_cohorts": [
+      "all train rows",
+      "both_correct",
+      "e5_regression",
+      "e5_recovery",
+      "both_wrong"
+    ],
+    "interpretation": "A high same-source rate is evidence of source/style geometry, not proof of why an individual classification was made."
+  },
+  "review_queue": {
+    "purpose": "Bounded qualitative inspection only",
+    "categories": [
+      "e5_regression",
+      "e5_recovery",
+      "both_wrong"
+    ],
+    "maximum_records_per_source_per_category": 5,
+    "unique_split_group_within_each_source_category": true,
+    "ranking": {
+      "e5_regression": "descending challenger confidence in its wrong prediction, then record_id",
+      "e5_recovery": "descending challenger confidence in its correct prediction, then record_id",
+      "both_wrong": "descending challenger confidence in its wrong prediction, then record_id"
+    },
+    "excerpt_character_limit": 240,
+    "redaction_required": true,
+    "human_relabeling_allowed": false,
+    "training_eligibility_change_allowed": false
+  },
+  "allowed_statistics": [
+    "counts",
+    "rates",
+    "absolute rate differences",
+    "confusion transitions",
+    "descriptive quantiles",
+    "nearest-neighbor same-source and same-label rates"
+  ],
+  "prohibited_operations": [
+    "fit or refit any classifier",
+    "run any encoder forward pass",
+    "generate validation, test or external embeddings",
+    "alter the 512-token limit or chunk long texts",
+    "try a different encoder, pooling rule, prefix, normalization, C value or threshold",
+    "select a new model direction from validation, test or external evidence",
+    "change any source label or training eligibility"
+  ],
+  "safety_contract": {
+    "new_embedding_operations": 0,
+    "model_fit_operations": 0,
+    "model_scoring_operations": 0,
+    "validation_rows_used": 0,
+    "test_rows_used": 0,
+    "external_rows_used": 0,
+    "labels_changed": 0,
+    "deployment_allowed": false
+  },
+  "next_gate": "Use the frozen diagnostic to decide whether evidence supports only a data/representation limitation statement. Any new modeling hypothesis requires a separate protocol before computation."
+}

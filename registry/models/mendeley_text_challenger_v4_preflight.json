@@ -1,0 +1,71 @@
+{
+  "model_id": "MENDELEY_TEXT_CHALLENGER_V4_FROZEN_E5_LINEAR",
+  "created_at": "2026-10-02T14:13:35+07:00",
+  "status": "PREFLIGHT_VERIFIED_NOT_RUN_NOT_A_MODEL_ARTIFACT",
+  "purpose": "Record the immutable encoder snapshot, runtime, licenses and predeclared development gates for the first frozen semantic challenger before any embeddings or classifier fits exist.",
+  "protocol": {
+    "path": "configs/mendeley_text_challenger_v4_protocol.json",
+    "sha256": "2513ac96d5d209a1e04adedd30da5ab78e31146cd0e6962d77a6939cd6d75b77"
+  },
+  "encoder_snapshot": {
+    "repository": "intfloat/e5-small-v2",
+    "revision": "ffb93f3bd4047442299a41ebb6fa998a38507c52",
+    "license": "MIT",
+    "weight_sha256": "45bfa60070649aae2244fbc9d508537779b93b6f353c17b0f95ceccb1c5116c1",
+    "manifest_path": "registry/manifests/huggingface_intfloat_e5_small_v2__ffb93f3b__2026-10-02.json",
+    "manifest_sha256": "25dd547dd16ee2c4bfb00ee1dc2409c2833a4098f0cb0f35dbc71bdc6f46c48e"
+  },
+  "runtime": {
+    "requirements_lock_path": "configs/text_semantic_challenger_v4_requirements.lock.txt",
+    "requirements_lock_sha256": "7543e49b5880797d19bad84d61004a0c61a147a6a843e8a36281ddf691d9aee2",
+    "offline_load_verified": true,
+    "device": "cpu",
+    "all_encoder_parameters_frozen_in_smoke_test": true
+  },
+  "implementation": [
+    {
+      "role": "preflight_verifier",
+      "path": "scripts/verify_mendeley_text_challenger_v4_preflight.py",
+      "sha256": "5d02a1dabbf27aafcebec140f8c047f3e599ee3cf2e5057c079c68bce052ad8a"
+    },
+    {
+      "role": "preflight_tests",
+      "path": "tests/test_mendeley_text_challenger_v4_preflight.py",
+      "sha256": "0dfb1f8c186b4b708f0ce282fadc1ed8387b6d842003c55e3f10bacdb37d727f"
+    },
+    {
+      "role": "method_documentation",
+      "path": "docs/mendeley-text-challenger-v4-preflight.md",
+      "sha256": "e33a04ac8f42c341bb6eb35d7be2941d1965feee6260f643cb2d4c31d81cf20a"
+    }
+  ],
+  "verification": {
+    "unit_tests_passed": 6,
+    "manifest_file_count": 10,
+    "safetensors_structurally_complete": true,
+    "tensor_count": 200,
+    "parameter_count": 33360000,
+    "hidden_size": 384,
+    "max_position_embeddings": 512,
+    "runtime_smoke_test_passed": true,
+    "forward_passes": 0,
+    "embeddings_computed": 0,
+    "classifier_fits": 0,
+    "scores_computed": 0
+  },
+  "decision": {
+    "preflight_passed": true,
+    "development_authorized_by_protocol": true,
+    "validation_authorized_now": false,
+    "internal_test_authorized": false,
+    "external_scoring_authorized": false,
+    "deployment_authorized": false,
+    "next_gate": "Implement deterministic offline embedding generation and identical-fold OOF comparison. Stop before validation unless every development gate passes."
+  },
+  "prohibited_claims": [
+    "This preflight contains no evidence that the semantic challenger is better than Text Baseline V2.",
+    "The presence of a verified encoder snapshot is not a trained classifier or deployable model.",
+    "Mendeley label 1 is not regulator-verified investment fraud.",
+    "Opened internal-test and Wayback V1/V2/V3 records cannot select or tune this challenger."
+  ]
+}

@@ -1,0 +1,149 @@
+{
+  "analysis_id": "MENDELEY_TEXT_CHALLENGER_V4_TRAIN_OOF_ERROR_ANALYSIS",
+  "created_at": "2026-10-02",
+  "status": "COMPLETE_TRAIN_ONLY_DIAGNOSTIC_NO_MODEL_CHANGE",
+  "source_id": "mendeley_investment_deceptive_2026",
+  "purpose": "Explain the rejected frozen E5 challenger's train-only OOF failures using only already-created predictions and embeddings, without fitting, scoring, model selection, relabeling, or access to validation, test, external, auxiliary, or quarantine data.",
+  "inputs": [
+    {
+      "role": "error_analysis_protocol",
+      "path": "configs/mendeley_text_challenger_v4_oof_error_analysis_protocol.json",
+      "sha256": "46deee65e3a12ea1d2de6927863ef8aaad718541954f8d34702eb8a1dff3e4b4"
+    },
+    {
+      "role": "parent_challenger_registry",
+      "path": "registry/models/mendeley_text_challenger_v4.json",
+      "sha256": "3ab3b824ef51cfe7f7dab82c4288d6bc2b3d2d5134b1694cfeb3e901f445b8c5"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "analysis_builder",
+      "path": "scripts/analyze_mendeley_text_challenger_v4_oof_errors.py",
+      "sha256": "34f7cacaacfc4b05988ea2d1eba5d2de60c9c4048a9ddd39931f96daa84802fd"
+    },
+    {
+      "role": "analysis_verifier",
+      "path": "scripts/verify_mendeley_text_challenger_v4_oof_error_analysis.py",
+      "sha256": "c9daba640a9252ca43a8057b46606b9834457e3dfc8b3720b1aecd6db2006536"
+    },
+    {
+      "role": "registry_verifier",
+      "path": "scripts/verify_mendeley_text_challenger_v4_oof_error_analysis_registry.py",
+      "sha256": "c38991d3244239f24d68cb9d64d337ace0db43bbaec38746598ff9f7ef612e3c"
+    },
+    {
+      "role": "analysis_unit_tests",
+      "path": "tests/test_mendeley_text_challenger_v4_oof_error_analysis.py",
+      "sha256": "9fdff92946a03b61d387ce37d0fef996feb873d9feeb0853f20b82050d523398"
+    },
+    {
+      "role": "analysis_verifier_tests",
+      "path": "tests/test_verify_mendeley_text_challenger_v4_oof_error_analysis.py",
+      "sha256": "ee0dec5f1c74550fb6f19e5ce2b8663ef146e6fafef18e75e155e20293e2b266"
+    },
+    {
+      "role": "registry_verifier_tests",
+      "path": "tests/test_verify_mendeley_text_challenger_v4_oof_error_analysis_registry.py",
+      "sha256": "6aec5ca1d77be4771c9f11a5f5a5b8e8bfc6a462a1e544aa4d0026912d6ec090"
+    },
+    {
+      "role": "method_documentation",
+      "path": "docs/mendeley-text-challenger-v4-oof-error-analysis.md",
+      "sha256": "ddd8f95dbe973e6320002e3e5c53be78347e8bb403ecb1d3940c2420f38bf5f1"
+    }
+  ],
+  "outputs": [
+    {
+      "role": "error_analysis_report",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\text_challenger_v4\\error_analysis\\text_challenger_v4_train_oof_error_analysis.json",
+      "sha256": "3e0060c86a5b828f4b0e8c9c14ddb596ad5a4b1dd937bbe7662833b58809a950"
+    },
+    {
+      "role": "row_diagnostics",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\text_challenger_v4\\error_analysis\\text_challenger_v4_train_oof_row_diagnostics.jsonl",
+      "sha256": "5bef46feddee010c264592701d3001beeb286f4b98ed74cc0d9c9763d5a53724"
+    },
+    {
+      "role": "bounded_review_queue",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\text_challenger_v4\\error_analysis\\text_challenger_v4_train_oof_review_queue.jsonl",
+      "sha256": "857521d2a3beda2f9bfc246d8208dc48cfde223e54be55cc03a8214c55967521"
+    }
+  ],
+  "findings": {
+    "headline": {
+      "row_count": 3916,
+      "group_count": 3783,
+      "baseline_error_count": 1091,
+      "e5_error_count": 1214,
+      "e5_regression_count": 567,
+      "e5_recovery_count": 444,
+      "net_e5_regression_count": 123,
+      "net_e5_regression_rate": 0.03141,
+      "nearest_neighbor_same_source_rate": 0.945097,
+      "nearest_neighbor_same_label_rate": 0.719356,
+      "truncated_row_count": 379,
+      "truncated_net_e5_regression_rate": 0.116095,
+      "nontruncated_net_e5_regression_rate": 0.022335,
+      "review_queue_count": 60
+    },
+    "source_net_e5_regression_rate": {
+      "cresci_stock_2018": 0.025688,
+      "phishing": 0.031165,
+      "spam_email": 0.070785,
+      "twitter_bot_detection": 0.016703
+    },
+    "source_label_net_e5_regression_rate": {
+      "cresci_stock_2018|label=0": 0.110236,
+      "cresci_stock_2018|label=1": -0.04811,
+      "phishing|label=0": 0.08209,
+      "phishing|label=1": 0.002128,
+      "spam_email|label=0": -0.001767,
+      "spam_email|label=1": 0.265403,
+      "twitter_bot_detection|label=0": 0.056416,
+      "twitter_bot_detection|label=1": -0.021008
+    },
+    "bounded_qualitative_observations": [
+      "Long investment and stock-promotion spam examples are prominent among high-confidence spam_email regressions, but the review cannot separate truncation, source style, and label imbalance causally.",
+      "Some label-0 Cresci and phishing regressions contain semantically risky or promotional language, while the lexical baseline may retain corpus-specific templates.",
+      "Short Twitter bios and synthetic-looking word sequences provide weak text-only evidence for account- or behavior-derived bot labels.",
+      "Suspicious-looking label-0 excerpts must not be treated as proven label noise because labels are harmonized corpus labels rather than record-level regulator verification."
+    ]
+  },
+  "decision": {
+    "challenger_status": "REJECTED_AT_DEVELOPMENT_GATE",
+    "primary_supported_explanation": "SOURCE_STYLE_GEOMETRY_INTERACTING_WITH_WITHIN_SOURCE_LABEL_IMBALANCE",
+    "truncation_role": "SECONDARY_ASSOCIATED_FACTOR_NOT_CAUSALLY_ESTABLISHED",
+    "twitter_role": "TEXT_ONLY_INPUT_APPEARS_INSUFFICIENT_FOR_MANY_ACCOUNT_OR_BEHAVIOR_LABELS",
+    "causal_claim_allowed": false,
+    "new_model_or_configuration_authorized": false,
+    "validation_opened": false,
+    "test_opened": false,
+    "external_benchmark_opened": false,
+    "next_gate": "Any encoder, prefix, pooling, chunking, classifier, hyperparameter, or threshold hypothesis requires a separate protocol frozen before computation."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "domain_access_allowed": false,
+    "labels_created": 0,
+    "new_embedding_operations": 0,
+    "encoder_forward_passes": 0,
+    "model_fit_operations": 0,
+    "model_scoring_operations": 0,
+    "validation_rows_used": 0,
+    "test_rows_used": 0,
+    "external_rows_used": 0,
+    "labels_changed": 0,
+    "training_eligibility_changes": 0,
+    "model_selection_changes": 0,
+    "training_allowed": false,
+    "deployment_allowed": false
+  },
+  "prohibited_claims": [
+    "Do not claim truncation caused the V4 failure.",
+    "Do not claim the frozen encoder alone caused source-majority behavior.",
+    "Do not treat suspicious-looking excerpts as proven label errors.",
+    "Do not use this analysis to silently select a new encoder, chunking rule, prefix, pooling method, classifier setting, threshold, or hyperparameter.",
+    "Do not generalize the train-only diagnostic to unopened validation, test, or external data."
+  ]
+}

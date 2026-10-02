@@ -1,0 +1,277 @@
+{
+  "protocol_id": "MENDELEY_TEXT_CHALLENGER_V4_FROZEN_E5_LINEAR_PROTOCOL",
+  "frozen_at": "2026-10-02T14:13:35+07:00",
+  "status": "FROZEN_BEFORE_EMBEDDING_AND_DEVELOPMENT_TEST_EXTERNAL_UNOPENED",
+  "authorization_source": "User instruction 'tiến hành bước tiếp' after completion of the Text Model Direction V4 evidence synthesis.",
+  "research_question": "Can one frozen sentence-level semantic representation improve cross-source label discrimination over the frozen word TF-IDF baseline without increasing measurable source/style dependence?",
+  "hypothesis_origin": {
+    "analysis_id": "ISI_TEXT_MODEL_DIRECTION_V4_EVIDENCE_SYNTHESIS",
+    "registry_path": "registry/analyses/text_model_direction_v4.json",
+    "registry_sha256": "c80ce11d8e03147611f59206ac8e0e982107a413ff83c7cded0a51eb76b80a1d",
+    "interpretation_limit": "Opened internal test and Wayback V1/V2/V3 evidence may motivate a materially different semantic representation, but none may select an encoder, classifier, threshold or hyperparameter."
+  },
+  "encoder_selection_audit": {
+    "selection_basis": [
+      "permissive license",
+      "English scope matching this internal experiment",
+      "small frozen encoder feasible on the available machine",
+      "at least 384 output dimensions",
+      "at least 512-token model context preferred for heterogeneous source text",
+      "officially documented feature-extraction or classification usage"
+    ],
+    "selection_must_not_use": [
+      "opened internal test scores",
+      "Wayback V1/V2/V3 scores or records",
+      "task-specific fine-tuning",
+      "post-hoc encoder comparison on validation"
+    ],
+    "candidates_reviewed": [
+      {
+        "repository": "sentence-transformers/all-MiniLM-L6-v2",
+        "license": "Apache-2.0",
+        "dimension": 384,
+        "context_tokens": 256,
+        "decision": "NOT_SELECTED",
+        "reason": "The 256-token limit discards more long-form content than the available 512-token alternatives."
+      },
+      {
+        "repository": "BAAI/bge-small-en-v1.5",
+        "license": "MIT",
+        "dimension": 384,
+        "decision": "NOT_SELECTED_BUT_VIABLE",
+        "reason": "It meets the size and license screen, but E5 has an explicit official instruction for using a query prefix when embeddings are linear-probing features, which yields a clearer frozen contract."
+      },
+      {
+        "repository": "intfloat/e5-small-v2",
+        "license": "MIT",
+        "dimension": 384,
+        "context_tokens": 512,
+        "parameter_count": 33360000,
+        "decision": "SELECTED_AS_THE_ONLY_CHALLENGER"
+      }
+    ],
+    "candidate_count_after_freeze": 1
+  },
+  "encoder": {
+    "repository": "intfloat/e5-small-v2",
+    "revision": "ffb93f3bd4047442299a41ebb6fa998a38507c52",
+    "license": "MIT",
+    "manifest_path": "registry/manifests/huggingface_intfloat_e5_small_v2__ffb93f3b__2026-10-02.json",
+    "manifest_sha256": "25dd547dd16ee2c4bfb00ee1dc2409c2833a4098f0cb0f35dbc71bdc6f46c48e",
+    "local_snapshot_root": "D:\\nckh 2026-2027\\ISI_Data\\models\\intfloat_e5-small-v2\\ffb93f3bd4047442299a41ebb6fa998a38507c52",
+    "weight_file": "model.safetensors",
+    "weight_sha256": "45bfa60070649aae2244fbc9d508537779b93b6f353c17b0f95ceccb1c5116c1",
+    "offline_only": true,
+    "trust_remote_code": false,
+    "fine_tuning_allowed": false,
+    "gradient_computation_allowed": false,
+    "mode": "eval",
+    "device": "cpu",
+    "dtype": "float32"
+  },
+  "runtime": {
+    "python": "3.10.0",
+    "requirements_lock_path": "configs/text_semantic_challenger_v4_requirements.lock.txt",
+    "requirements_lock_sha256": "7543e49b5880797d19bad84d61004a0c61a147a6a843e8a36281ddf691d9aee2",
+    "primary_packages": {
+      "torch": "2.9.1+cpu",
+      "transformers": "4.57.6",
+      "tokenizers": "0.22.1",
+      "safetensors": "0.7.0",
+      "huggingface_hub": "0.36.0",
+      "numpy": "2.2.6",
+      "scikit_learn": "1.7.2",
+      "scipy": "1.15.3",
+      "joblib": "1.6.0"
+    },
+    "license_audit": [
+      {
+        "component": "intfloat/e5-small-v2",
+        "version": "ffb93f3bd4047442299a41ebb6fa998a38507c52",
+        "license": "MIT",
+        "status": "PERMISSIVE"
+      },
+      {
+        "component": "torch",
+        "version": "2.9.1",
+        "license": "BSD-3-Clause",
+        "status": "PERMISSIVE"
+      },
+      {
+        "component": "transformers",
+        "version": "4.57.6",
+        "license": "Apache-2.0",
+        "status": "PERMISSIVE"
+      },
+      {
+        "component": "tokenizers",
+        "version": "0.22.1",
+        "license": "Apache-2.0",
+        "status": "PERMISSIVE"
+      },
+      {
+        "component": "safetensors",
+        "version": "0.7.0",
+        "license": "Apache-2.0",
+        "status": "PERMISSIVE"
+      },
+      {
+        "component": "huggingface-hub",
+        "version": "0.36.0",
+        "license": "Apache-2.0",
+        "status": "PERMISSIVE"
+      }
+    ],
+    "license_conclusion": "No restrictive license was identified among the selected model and direct model-loading dependencies. Preserve notices and attribution when redistributing model or software artifacts."
+  },
+  "data_contract": {
+    "source_id": "mendeley_investment_deceptive_2026",
+    "source_version": "2",
+    "split_version": "group_split_v2",
+    "split_path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\mendeley_v2_group_split_v2.csv",
+    "split_sha256": "98f75387a4a598d85a6f721d10808979bda694dad8f85354d595679bdd96e734",
+    "baseline_registry_path": "registry/models/text_baseline_v2.json",
+    "baseline_registry_sha256": "0485439ddc34c56d05587c85cd0520f519a4feb9dd7887d16e46273bc7b1d7f5",
+    "predictive_field": "text_content",
+    "required_nonempty_text": true,
+    "development_partition": "train",
+    "development_rows": 3916,
+    "confirmation_partition": "validation",
+    "confirmation_rows": 838,
+    "internal_test_text_access_allowed": false,
+    "internal_test_label_access_allowed": false,
+    "auxiliary_or_quarantine_access_allowed": false,
+    "existing_external_benchmark_access_allowed": false,
+    "metadata_as_predictive_input_allowed": false,
+    "source_dataset_as_predictive_input_allowed": false
+  },
+  "text_to_embedding_contract": {
+    "external_text_normalization": "none",
+    "prefix": "query: ",
+    "prefix_reason": "The pinned model card explicitly prescribes query: when embeddings are used as linear-probing classification features.",
+    "tokenizer": "pinned local AutoTokenizer fast implementation",
+    "add_special_tokens": true,
+    "max_length": 512,
+    "truncation": true,
+    "truncation_side": "right",
+    "padding": "dynamic_to_longest_sequence_in_batch",
+    "batch_size": 16,
+    "pooling": "Set padded token vectors to zero using attention_mask, sum token vectors, divide by attention-mask token count.",
+    "special_tokens_in_pooling": true,
+    "normalization": "row-wise L2 norm with p=2 after mean pooling",
+    "output_dimension": 384,
+    "output_dtype": "float32",
+    "inference_context": "torch.inference_mode",
+    "row_order": "ascending record_id within each requested partition",
+    "embedding_cache_key_fields": [
+      "split_sha256",
+      "partition",
+      "ordered_record_id_and_prefixed_text_sha256",
+      "encoder_revision",
+      "weight_sha256",
+      "tokenizer_json_sha256",
+      "prefix",
+      "max_length",
+      "pooling",
+      "normalization",
+      "runtime_lock_sha256"
+    ],
+    "cache_reuse_rule": "Reuse only if every key field and expected matrix shape matches; otherwise stop rather than silently recompute into the same path."
+  },
+  "development_design": {
+    "method": "deterministic four-fold grouped out-of-fold comparison within the original train partition",
+    "fold_count": 4,
+    "fold_seed": "MENDELEY_TEXT_CHALLENGER_V4_20261002",
+    "assignment": "Within each source_dataset and source label stratum, sort complete split_group_id values by SHA-256(seed|group_id), then assign round-robin to folds. A group is never split.",
+    "baseline_recomputed_on_identical_folds": true,
+    "baseline_representation": "Frozen Text Baseline V2 word TF-IDF unigram+bigram settings fit separately inside each fold.",
+    "candidate_count": 1,
+    "encoder_search": false,
+    "hyperparameter_search": false,
+    "threshold_search": false,
+    "confirmation_rule": "Only after complete development OOF predictions and diagnostics exist, fit both frozen representations on all train rows and score the existing validation partition once."
+  },
+  "fixed_classifier": {
+    "type": "LogisticRegression",
+    "C": 2.0,
+    "class_weight": null,
+    "solver": "liblinear",
+    "max_iter": 2000,
+    "random_state": 20260916,
+    "threshold": 0.5,
+    "input_standardization": false,
+    "reason": "Use the frozen baseline classifier and threshold so the single planned change is the representation."
+  },
+  "selection_policy": {
+    "primary_metric": "unweighted mean of per-source Macro-F1",
+    "promotion_requires_every_gate": true,
+    "development_oof_gates": {
+      "source_mean_macro_f1_delta_minimum": 0.005,
+      "worst_source_macro_f1_delta_minimum": 0.0,
+      "pooled_macro_f1_delta_minimum": -0.005,
+      "maximum_single_source_macro_f1_decline": 0.01,
+      "source_predictability_macro_f1_delta_maximum": 0.0,
+      "within_source_label_shuffle_macro_f1_delta_maximum": 0.01
+    },
+    "validation_confirmation_gates": {
+      "source_mean_macro_f1_delta_minimum": 0.0,
+      "worst_source_macro_f1_delta_minimum": 0.0,
+      "pooled_macro_f1_delta_minimum": -0.005,
+      "maximum_single_source_macro_f1_decline": 0.01,
+      "source_predictability_macro_f1_delta_maximum": 0.0,
+      "paired_group_bootstrap_macro_f1_delta_ci_lower_minimum": -0.01
+    },
+    "if_any_development_gate_fails": "Retain ISI_TEXT_BASELINE_V2 and do not access validation, internal test or external benchmarks for this challenger.",
+    "if_development_passes_but_any_validation_gate_fails": "Retain ISI_TEXT_BASELINE_V2; retire this exact semantic challenger; do not access internal test or external benchmarks.",
+    "if_all_gates_pass": "Freeze a validation-confirmed research candidate only. Internal test remains closed, deployment remains prohibited, and headline external evaluation requires a newly collected untouched evidence-backed cohort."
+  },
+  "diagnostics": {
+    "source_dataset_allowed_for_stratification_and_diagnostics_only": true,
+    "source_predictability_target": "source_dataset",
+    "source_predictability_classifier": "LogisticRegression with C=2.0, liblinear, max_iter=2000, random_state=20260916 evaluated OOF on the same grouped folds",
+    "within_source_label_shuffle_required_on_development_oof": true,
+    "shuffle_seed": 20261002,
+    "paired_bootstrap_unit": "split_group_id",
+    "paired_bootstrap_replicates": 10000,
+    "paired_bootstrap_seed": 20261002,
+    "truncation_report_required": true,
+    "truncation_report_fields": [
+      "partition",
+      "source_dataset",
+      "row_count",
+      "truncated_count",
+      "truncated_rate",
+      "pre_truncation_token_p50",
+      "pre_truncation_token_p95",
+      "pre_truncation_token_max"
+    ]
+  },
+  "safety_contract": {
+    "raw_files_modified": false,
+    "split_file_modified": false,
+    "source_labels_changed": 0,
+    "candidate_count": 1,
+    "threshold_candidates": 1,
+    "encoder_trainable_parameters": 0,
+    "embedding_operations_before_protocol_freeze": 0,
+    "model_fit_operations_before_protocol_freeze": 0,
+    "existing_external_benchmark_scoring_operations": 0,
+    "internal_test_scoring_operations": 0,
+    "deployment_allowed": false
+  },
+  "known_limitations": [
+    "E5-small-v2 is English-only; this protocol does not evaluate multilingual behavior.",
+    "Texts longer than 512 tokens are right-truncated, so late-page evidence may be lost.",
+    "Mendeley source label 1 is not regulator-verified investment-scam ground truth.",
+    "Frozen general-purpose embeddings may still encode source, genre and marketing style.",
+    "CPU execution improves local reproducibility but may be slow."
+  ],
+  "prohibited_interpretations": [
+    "Do not call the output score a real-world investment-scam probability.",
+    "Do not claim semantic embeddings are superior before all predeclared gates are evaluated.",
+    "Do not compare alternative encoders on validation after this freeze.",
+    "Do not use opened Wayback V1/V2/V3 records to tune this challenger.",
+    "Do not open the internal test or create a deployable model artifact in this stage."
+  ],
+  "next_gate": "Implement and independently verify deterministic offline embedding generation and OOF-only development evaluation exactly as frozen here; stop before validation unless every development gate passes."
+}

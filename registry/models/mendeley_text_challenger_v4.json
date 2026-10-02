@@ -1,0 +1,219 @@
+{
+  "model_id": "ISI_TEXT_CHALLENGER_V4_FROZEN_E5_LINEAR",
+  "run_at": "2026-10-02T14:38:00+07:00",
+  "status": "FROZEN_DEVELOPMENT_CHALLENGER_REJECTED_VALIDATION_TEST_EXTERNAL_UNOPENED",
+  "purpose": "Evaluate one predeclared frozen E5-small-v2 representation against the word TF-IDF reference using deterministic grouped OOF predictions on group_split_v2 train only.",
+  "label_semantics": "Mendeley V2 harmonized deceptive/suspicious source label; not verified investment-scam ground truth",
+  "inputs": [
+    {
+      "role": "protocol",
+      "path": "configs/mendeley_text_challenger_v4_protocol.json",
+      "sha256": "2513ac96d5d209a1e04adedd30da5ab78e31146cd0e6962d77a6939cd6d75b77"
+    },
+    {
+      "role": "group_split_dataset",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\mendeley_v2_group_split_v2.csv",
+      "sha256": "98f75387a4a598d85a6f721d10808979bda694dad8f85354d595679bdd96e734"
+    },
+    {
+      "role": "baseline_registry",
+      "path": "registry/models/text_baseline_v2.json",
+      "sha256": "0485439ddc34c56d05587c85cd0520f519a4feb9dd7887d16e46273bc7b1d7f5"
+    },
+    {
+      "role": "encoder_snapshot_manifest",
+      "path": "registry/manifests/huggingface_intfloat_e5_small_v2__ffb93f3b__2026-10-02.json",
+      "sha256": "25dd547dd16ee2c4bfb00ee1dc2409c2833a4098f0cb0f35dbc71bdc6f46c48e"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "offline_embedding_generator",
+      "path": "scripts/generate_mendeley_text_challenger_v4_embeddings.py",
+      "sha256": "3f8fc0699fb92937d89ae1b925e3526c608a2092e8832aa1f603c73b24d89f20"
+    },
+    {
+      "role": "development_oof_runner",
+      "path": "scripts/run_mendeley_text_challenger_v4_development.py",
+      "sha256": "8ec5aa88553c09b49ae2c4fe55441383a8ab273b3324fbc868387113137ac493"
+    },
+    {
+      "role": "independent_development_verifier",
+      "path": "scripts/verify_mendeley_text_challenger_v4_development.py",
+      "sha256": "fcb463d69af8f1cd1f7a7f4452643716426bd3e8e02193fd5ac6e1770086d37e"
+    },
+    {
+      "role": "development_tests",
+      "path": "tests/test_mendeley_text_challenger_v4_development.py",
+      "sha256": "fbf98b0279532e912e921e9115774b7d91f349d34b51cbe2c59982798fcce861"
+    },
+    {
+      "role": "verification_tests",
+      "path": "tests/test_verify_mendeley_text_challenger_v4_development.py",
+      "sha256": "3a170972b7007762c721ac0b8276bea0d6226defbb70573b3f0b1898cb261642"
+    },
+    {
+      "role": "frozen_registry_verifier",
+      "path": "scripts/verify_mendeley_text_challenger_v4.py",
+      "sha256": "5d7fa3dc071fef8bee8f66810527d80c1b561d3cf6728c3ceca4547e0616afee"
+    },
+    {
+      "role": "frozen_registry_tests",
+      "path": "tests/test_verify_mendeley_text_challenger_v4.py",
+      "sha256": "0ed4d5ae2abf87f867fa06fc18e9ea35bc3108a950158e9c5ffedb3bc9ef8ce2"
+    },
+    {
+      "role": "method_documentation",
+      "path": "docs/mendeley-text-challenger-v4.md",
+      "sha256": "bb0435a7414d1eeeab06b03932fb41c1b0e363ac06b20cb770e3e3d66b1b2dd5"
+    }
+  ],
+  "outputs": [
+    {
+      "role": "train_embedding_cache",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\text_challenger_v4\\embeddings\\train_e5_small_v2_ffb93f3b_embeddings.npz",
+      "sha256": "5bfe656fbe68a259856476f2697b95249ef9b1d031983008c1aa3f151ddc8818",
+      "bytes": 5517897
+    },
+    {
+      "role": "train_embedding_metadata",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\text_challenger_v4\\embeddings\\train_e5_small_v2_ffb93f3b_metadata.json",
+      "sha256": "dfa5c419b683ed9eca24bba43083a692966f37bc167609d970018ac27826bfde",
+      "bytes": 7353
+    },
+    {
+      "role": "development_oof_result",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\text_challenger_v4\\development\\text_challenger_v4_development_oof_result.json",
+      "sha256": "26696c61cca0ea679882386d7d195d5b9bc6f7311d45266173e007cd8e2ff07c",
+      "bytes": 17356
+    },
+    {
+      "role": "development_oof_predictions",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\text_challenger_v4\\development\\text_challenger_v4_development_oof_predictions.jsonl",
+      "sha256": "b95e655e080e0aad6752665b71d465014470432013105e688b716dcda55f05dc",
+      "bytes": 1355652,
+      "record_count": 3916
+    }
+  ],
+  "embedding_audit": {
+    "shape": [
+      3916,
+      384
+    ],
+    "dtype": "float32",
+    "all_values_finite": true,
+    "all_rows_l2_normalized": true,
+    "truncated_rows": 379,
+    "truncated_rate": 0.096782,
+    "truncated_by_source": {
+      "cresci_stock_2018": 0,
+      "phishing": 15,
+      "spam_email": 364,
+      "twitter_bot_detection": 0
+    },
+    "encoder_fine_tuned": false,
+    "network_operations": 0
+  },
+  "development_design": {
+    "partition": "train",
+    "row_count": 3916,
+    "group_count": 3783,
+    "fold_count": 4,
+    "row_count_by_fold": {
+      "0": 989,
+      "1": 980,
+      "2": 979,
+      "3": 968
+    },
+    "baseline_id": "word_1_2",
+    "challenger_id": "frozen_e5_small_v2_ffb93f3b",
+    "same_folds_used": true,
+    "same_shuffled_training_labels_used_for_diagnostics": true
+  },
+  "metrics": {
+    "baseline": {
+      "pooled_macro_f1": 0.721038,
+      "source_mean_macro_f1": 0.793988,
+      "worst_source_macro_f1": 0.518193,
+      "worst_source_dataset": "twitter_bot_detection",
+      "source_predictability_macro_f1": 0.916352,
+      "within_source_shuffle_macro_f1": 0.567752
+    },
+    "challenger": {
+      "pooled_macro_f1": 0.689907,
+      "source_mean_macro_f1": 0.747965,
+      "worst_source_macro_f1": 0.500136,
+      "worst_source_dataset": "twitter_bot_detection",
+      "source_predictability_macro_f1": 0.932908,
+      "within_source_shuffle_macro_f1": 0.586306
+    },
+    "deltas": {
+      "pooled_macro_f1": -0.031131,
+      "source_mean_macro_f1": -0.046023,
+      "worst_source_macro_f1": -0.018057,
+      "maximum_single_source_macro_f1_decline": 0.103227,
+      "source_predictability_macro_f1": 0.016556,
+      "within_source_shuffle_macro_f1": 0.018554,
+      "per_source_macro_f1": {
+        "cresci_stock_2018": -0.027852,
+        "phishing": -0.034955,
+        "spam_email": -0.103227,
+        "twitter_bot_detection": -0.018057
+      }
+    }
+  },
+  "decision": {
+    "all_development_gates_passed": false,
+    "failed_gate_count": 6,
+    "failed_gates": [
+      "maximum_single_source_macro_f1_decline",
+      "pooled_macro_f1_delta_minimum",
+      "source_mean_macro_f1_delta_minimum",
+      "source_predictability_macro_f1_delta_maximum",
+      "within_source_label_shuffle_macro_f1_delta_maximum",
+      "worst_source_macro_f1_delta_minimum"
+    ],
+    "selected_variant": "word_1_2",
+    "retain_text_baseline_v2": true,
+    "open_validation": false,
+    "open_internal_test": false,
+    "score_existing_external_benchmarks": false,
+    "create_challenger_model_artifact": false,
+    "promote_for_deployment": false,
+    "reason": "The exact frozen semantic challenger underperformed the lexical reference overall and for every source, increased source predictability, and failed every predeclared development gate."
+  },
+  "verification": {
+    "independent_verifier_passed": true,
+    "prediction_rows_recomputed": 3916,
+    "unique_groups_verified": 3783,
+    "prediction_reproducible_performance_gate_failures": 4,
+    "development_and_verification_tests_passed": 10
+  },
+  "safety_contract": {
+    "raw_files_modified": false,
+    "split_file_modified": false,
+    "source_labels_changed": 0,
+    "encoder_trainable_parameters": 0,
+    "embedding_scope": "train only",
+    "classifier_fit_calls": 24,
+    "validation_rows_used": 0,
+    "validation_labels_accessed": 0,
+    "validation_scoring_operations": 0,
+    "internal_test_rows_used": 0,
+    "external_benchmark_rows_used": 0,
+    "auxiliary_rows_used": 0,
+    "quarantine_rows_used": 0,
+    "threshold_changes": 0,
+    "model_artifact_created": false,
+    "training_allowed": false,
+    "deployment_allowed": false
+  },
+  "prohibited_claims": [
+    "Do not generalize this rejection to every semantic encoder, pooling, chunking or hybrid method.",
+    "Do not open validation for this exact challenger after its development failure.",
+    "Do not reuse validation, internal test or Wayback V1/V2/V3 to search for a replacement encoder or hyperparameter.",
+    "Do not describe Mendeley label 1 as regulator-verified investment fraud.",
+    "Do not describe the OOF score as external generalization or deployment readiness."
+  ],
+  "next_gate": "Keep Text Baseline V2. Any follow-up may analyze train-only OOF failure modes without tuning; a materially new model direction requires a separate frozen hypothesis and protocol before computation."
+}

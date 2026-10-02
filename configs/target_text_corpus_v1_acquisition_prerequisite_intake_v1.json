@@ -1,0 +1,110 @@
+{
+  "protocol_id": "ISI_TARGET_TEXT_CORPUS_V1_ACQUISITION_PREREQUISITE_INTAKE_V1",
+  "frozen_at": "2026-10-03T11:00:00+07:00",
+  "status": "FROZEN_INTAKE_STRUCTURE_EXTERNAL_INPUTS_MISSING",
+  "purpose": "Provide a verified, privacy-preserving intake path for the missing CFTC reference artifact and SEC EDGAR User-Agent identity without exposing contact information or prematurely opening candidate enumeration.",
+  "basis": [
+    {
+      "role": "schema_review_pilot_registry",
+      "path": "registry/analyses/target_text_corpus_v1_schema_review_pilot_v1.json",
+      "sha256": "ada140aba416e4c9718964296f0c63cd36684c98653c7232d71b40107f765881"
+    },
+    {
+      "role": "prerequisite_ledger_schema",
+      "path": "schemas/target_text_acquisition_prerequisite_ledger.schema.json",
+      "sha256": "904ea77b7b60df52aadc3d279d663d1ec348b486d58a167a5e9ffa96d091b5a7"
+    },
+    {
+      "role": "public_example_ledger",
+      "path": "configs/target_text_corpus_v1_acquisition_prerequisites_v1.example.json",
+      "sha256": "18ac4ab8039b2bce5b58376a0da16430b62ee940ddac30d5bc229488ca3d2ea8"
+    },
+    {
+      "role": "local_prerequisite_ledger",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\governance\\target_text_corpus_v1\\acquisition_prerequisite_ledger_v1.json",
+      "sha256": "18ac4ab8039b2bce5b58376a0da16430b62ee940ddac30d5bc229488ca3d2ea8"
+    },
+    {
+      "role": "intake_documentation",
+      "path": "docs/target-text-corpus-v1-acquisition-prerequisite-intake.md",
+      "sha256": "04d859b8ab4831813af63aa742bcd396740eb41fd5b24f21f6ff3c5d4bed7f7f"
+    }
+  ],
+  "storage_contract": {
+    "data_root": "D:\\nckh 2026-2027\\ISI_Data",
+    "cftc_raw_directory": "D:\\nckh 2026-2027\\ISI_Data\\raw\\cftc_red_list",
+    "sec_private_directory": "D:\\nckh 2026-2027\\ISI_Data\\private",
+    "local_ledger_directory": "D:\\nckh 2026-2027\\ISI_Data\\governance\\target_text_corpus_v1",
+    "all_paths_must_resolve_under_data_root": true,
+    "raw_artifact_overwrite_allowed": false
+  },
+  "privacy_contract": {
+    "repository_is_public": true,
+    "contact_identity_allowed_in_repository": false,
+    "contact_email_allowed_in_repository_registry": false,
+    "private_identity_file_path_allowed_in_repository": true,
+    "private_identity_file_contents_allowed_in_repository": false,
+    "private_identity_file_sha256_allowed_in_repository": false,
+    "future_public_readiness_disclosure": "BOOLEAN_ONLY",
+    "truthful_identity_required_before_sec_network_access": true
+  },
+  "private_sec_file_contract": {
+    "path": "D:\\nckh 2026-2027\\ISI_Data\\private\\sec_edgar_user_agent_v1.json",
+    "required_fields": ["organization_or_project", "contact_email", "purpose"],
+    "contact_email_must_be_monitored": true,
+    "purpose_must_match_project": true,
+    "file_must_not_be_committed": true,
+    "file_must_not_be_hashed_into_public_registry": true
+  },
+  "cftc_artifact_contract": {
+    "directory": "D:\\nckh 2026-2027\\ISI_Data\\raw\\cftc_red_list",
+    "allowed_acquisition_modes": ["MANUAL_DOWNLOAD", "EXPLICIT_OFFICIAL_DOWNLOAD"],
+    "official_source_host": "www.cftc.gov",
+    "original_bytes_required": true,
+    "sha256_registration_required": true,
+    "source_acknowledgement_required": true,
+    "generic_scraping_authorized": false
+  },
+  "sec_access_contract": {
+    "allowed_access_modes": ["DOCUMENTED_API", "OFFICIAL_BULK_ARCHIVE"],
+    "official_hosts": ["www.sec.gov", "data.sec.gov"],
+    "project_request_rate_per_second_maximum": 1,
+    "stop_on_http_429_or_policy_change": true,
+    "contact_identity_currently_configured": false,
+    "network_execution_allowed": false
+  },
+  "current_blockers": [
+    {
+      "prerequisite_id": "CFTC_RED_REFERENCE_ARTIFACT",
+      "status": "MISSING",
+      "blocks_channel": "CONFIRMED_CFTC_RED_LINKED_WAYBACK_WEBSITE"
+    },
+    {
+      "prerequisite_id": "SEC_EDGAR_USER_AGENT_IDENTITY",
+      "status": "MISSING",
+      "blocks_channel": "LEGITIMATE_SEC_EDGAR_LINKED_WAYBACK_WEBSITE"
+    }
+  ],
+  "release_rule": {
+    "all_prerequisites_must_be_ready": true,
+    "independent_intake_verification_required": true,
+    "new_versioned_ledger_required_on_state_change": true,
+    "existing_frozen_ledger_may_be_overwritten": false,
+    "candidate_enumeration_allowed": false,
+    "network_execution_allowed": false
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "domain_access_allowed": false,
+    "candidate_records_enumerated": 0,
+    "new_records_acquired": 0,
+    "new_artifact_captures": 0,
+    "labels_created": 0,
+    "labels_changed": 0,
+    "model_fit_operations": 0,
+    "model_scoring_operations": 0,
+    "validation_or_test_openings": 0,
+    "training_allowed": false,
+    "deployment_allowed": false
+  }
+}

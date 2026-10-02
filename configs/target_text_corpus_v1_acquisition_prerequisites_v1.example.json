@@ -1,0 +1,52 @@
+{
+  "ledger_id": "ISI_TARGET_TEXT_CORPUS_V1_ACQUISITION_PREREQUISITES",
+  "ledger_version": 1,
+  "updated_at": "2026-10-03T11:00:00+07:00",
+  "status": "BLOCKED_MISSING_EXTERNAL_INPUTS",
+  "public_repo_contains_contact_identity": false,
+  "prerequisites": [
+    {
+      "prerequisite_id": "CFTC_RED_REFERENCE_ARTIFACT",
+      "channel_id": "CONFIRMED_CFTC_RED_LINKED_WAYBACK_WEBSITE",
+      "readiness": "MISSING",
+      "required_action": "Save a manually acquired or explicit official-download CFTC RED reference artifact at the declared local path. Do not transform or overwrite it before SHA-256 registration.",
+      "official_source_url": "https://www.cftc.gov/LearnAndProtect/Resources/Check/redlist.htm",
+      "official_policy_url": "https://www.cftc.gov/WebPolicy/index.htm",
+      "local_artifact": {
+        "path": "D:\\nckh 2026-2027\\ISI_Data\\raw\\cftc_red_list\\PLACE_OFFICIAL_REFERENCE_ARTIFACT_HERE",
+        "exists": false,
+        "sha256": null,
+        "recorded_at": null
+      },
+      "public_registry_disclosure": {
+        "readiness_only": true,
+        "artifact_hash_allowed": true,
+        "contact_identity_allowed": false
+      }
+    },
+    {
+      "prerequisite_id": "SEC_EDGAR_USER_AGENT_IDENTITY",
+      "channel_id": "LEGITIMATE_SEC_EDGAR_LINKED_WAYBACK_WEBSITE",
+      "readiness": "MISSING",
+      "required_action": "Create the private local JSON file from the documented field contract with a truthful organization or project name and monitored contact email. Never add its contents to Git.",
+      "official_source_url": "https://www.sec.gov/search-filings/edgar-application-programming-interfaces",
+      "official_policy_url": "https://www.sec.gov/about/privacy-information",
+      "local_artifact": {
+        "path": "D:\\nckh 2026-2027\\ISI_Data\\private\\sec_edgar_user_agent_v1.json",
+        "exists": false,
+        "sha256": null,
+        "recorded_at": null
+      },
+      "public_registry_disclosure": {
+        "readiness_only": true,
+        "artifact_hash_allowed": false,
+        "contact_identity_allowed": false
+      }
+    }
+  ],
+  "release_gate": {
+    "all_prerequisites_ready": false,
+    "candidate_enumeration_allowed": false,
+    "network_execution_allowed": false
+  }
+}

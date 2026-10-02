@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ISI Target Text Acquisition Prerequisite Ledger V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "ledger_id",
+    "ledger_version",
+    "updated_at",
+    "status",
+    "public_repo_contains_contact_identity",
+    "prerequisites",
+    "release_gate"
+  ],
+  "properties": {
+    "ledger_id": {"const": "ISI_TARGET_TEXT_CORPUS_V1_ACQUISITION_PREREQUISITES"},
+    "ledger_version": {"const": 1},
+    "updated_at": {"type": "string", "format": "date-time"},
+    "status": {"enum": ["BLOCKED_MISSING_EXTERNAL_INPUTS", "READY_FOR_BALANCED_ENUMERATION"]},
+    "public_repo_contains_contact_identity": {"const": false},
+    "prerequisites": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "prerequisite_id",
+          "channel_id",
+          "readiness",
+          "required_action",
+          "official_source_url",
+          "official_policy_url",
+          "local_artifact",
+          "public_registry_disclosure"
+        ],
+        "properties": {
+          "prerequisite_id": {"enum": ["CFTC_RED_REFERENCE_ARTIFACT", "SEC_EDGAR_USER_AGENT_IDENTITY"]},
+          "channel_id": {
+            "enum": [
+              "CONFIRMED_CFTC_RED_LINKED_WAYBACK_WEBSITE",
+              "LEGITIMATE_SEC_EDGAR_LINKED_WAYBACK_WEBSITE"
+            ]
+          },
+          "readiness": {"enum": ["MISSING", "READY"]},
+          "required_action": {"type": "string", "minLength": 1},
+          "official_source_url": {"type": "string", "format": "uri", "pattern": "^https://"},
+          "official_policy_url": {"type": "string", "format": "uri", "pattern": "^https://"},
+          "local_artifact": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["path", "exists", "sha256", "recorded_at"],
+            "properties": {
+              "path": {"type": "string", "minLength": 1},
+              "exists": {"type": "boolean"},
+              "sha256": {"type": ["string", "null"], "pattern": "^[a-f0-9]{64}$"},
+              "recorded_at": {"type": ["string", "null"], "format": "date-time"}
+            }
+          },
+          "public_registry_disclosure": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["readiness_only", "artifact_hash_allowed", "contact_identity_allowed"],
+            "properties": {
+              "readiness_only": {"const": true},
+              "artifact_hash_allowed": {"type": "boolean"},
+              "contact_identity_allowed": {"const": false}
+            }
+          }
+        }
+      }
+    },
+    "release_gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "all_prerequisites_ready",
+        "candidate_enumeration_allowed",
+        "network_execution_allowed"
+      ],
+      "properties": {
+        "all_prerequisites_ready": {"type": "boolean"},
+        "candidate_enumeration_allowed": {"type": "boolean"},
+        "network_execution_allowed": {"type": "boolean"}
+      }
+    }
+  }
+}

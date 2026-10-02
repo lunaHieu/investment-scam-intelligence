@@ -1,0 +1,94 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_ACQUISITION_PREREQUISITE_INTAKE_V1",
+  "created_at": "2026-10-03",
+  "status": "FROZEN_PREREQUISITE_INTAKE_READY_EXTERNAL_INPUTS_MISSING",
+  "purpose": "Register the privacy-preserving intake schema, public example, and local blocker ledger for the two missing channel prerequisites without exposing an SEC contact identity or opening acquisition.",
+  "inputs": [
+    {
+      "role": "schema_review_pilot_registry",
+      "path": "registry/analyses/target_text_corpus_v1_schema_review_pilot_v1.json",
+      "sha256": "ada140aba416e4c9718964296f0c63cd36684c98653c7232d71b40107f765881"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "acquisition_prerequisite_verifier",
+      "path": "scripts/verify_target_text_corpus_v1_acquisition_prerequisites.py",
+      "sha256": "1c5f865c2ba090a267c6b1a9740ad5fc98d46610773ad45b49f315ee7e7d074c"
+    },
+    {
+      "role": "acquisition_prerequisite_tests",
+      "path": "tests/test_target_text_corpus_v1_acquisition_prerequisites.py",
+      "sha256": "9be317409e42521bb6ce583e99017617ca7346817d8b6c900b45f9f9e8c1a22d"
+    },
+    {
+      "role": "method_documentation",
+      "path": "docs/target-text-corpus-v1-acquisition-prerequisite-intake.md",
+      "sha256": "04d859b8ab4831813af63aa742bcd396740eb41fd5b24f21f6ff3c5d4bed7f7f"
+    }
+  ],
+  "outputs": [
+    {
+      "role": "prerequisite_ledger_schema",
+      "path": "schemas/target_text_acquisition_prerequisite_ledger.schema.json",
+      "sha256": "904ea77b7b60df52aadc3d279d663d1ec348b486d58a167a5e9ffa96d091b5a7"
+    },
+    {
+      "role": "public_example_ledger",
+      "path": "configs/target_text_corpus_v1_acquisition_prerequisites_v1.example.json",
+      "sha256": "18ac4ab8039b2bce5b58376a0da16430b62ee940ddac30d5bc229488ca3d2ea8"
+    },
+    {
+      "role": "local_prerequisite_ledger",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\governance\\target_text_corpus_v1\\acquisition_prerequisite_ledger_v1.json",
+      "sha256": "18ac4ab8039b2bce5b58376a0da16430b62ee940ddac30d5bc229488ca3d2ea8"
+    },
+    {
+      "role": "acquisition_prerequisite_intake_protocol",
+      "path": "configs/target_text_corpus_v1_acquisition_prerequisite_intake_v1.json",
+      "sha256": "e11af0357b0f3bb2b1e64b17a10edd04185c99db37bfdb13e56cbf2f526b1551"
+    }
+  ],
+  "findings": {
+    "required_prerequisite_count": 2,
+    "ready_prerequisite_count": 0,
+    "missing_prerequisite_count": 2,
+    "cftc_storage_directory_created": true,
+    "sec_private_storage_directory_created": true,
+    "local_governance_directory_created": true,
+    "contact_identity_present_in_public_repository": false,
+    "private_identity_file_present": false,
+    "candidate_records_created": 0
+  },
+  "decision": {
+    "intake_structure_ready": true,
+    "cftc_reference_artifact_ready": false,
+    "sec_truthful_contact_identity_ready": false,
+    "all_prerequisites_ready": false,
+    "candidate_enumeration_allowed": false,
+    "network_execution_allowed": false,
+    "train_another_model_now": false,
+    "next_gate": "Wait for the untouched CFTC reference artifact and private SEC contact configuration; then register a new versioned readiness ledger and independently verify both inputs before balanced enumeration."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "domain_access_allowed": false,
+    "candidate_records_enumerated": 0,
+    "new_records_acquired": 0,
+    "new_artifact_captures": 0,
+    "labels_created": 0,
+    "labels_changed": 0,
+    "model_fit_operations": 0,
+    "model_scoring_operations": 0,
+    "validation_or_test_openings": 0,
+    "training_allowed": false,
+    "deployment_allowed": false
+  },
+  "prohibited_claims": [
+    "Do not store an SEC contact email or identity in the public repository or registry.",
+    "Do not publish the private SEC identity file hash as a substitute for privacy.",
+    "Do not treat the existence of an intake directory or template as prerequisite readiness.",
+    "Do not overwrite this frozen missing-input ledger when readiness changes; create a new version.",
+    "Do not enumerate candidates, run network acquisition, label records, or train models while either prerequisite is missing."
+  ]
+}

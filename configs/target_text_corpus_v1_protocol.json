@@ -1,0 +1,230 @@
+{
+  "protocol_id": "ISI_TARGET_TEXT_CORPUS_V1",
+  "frozen_at": "2026-10-02T19:30:20+07:00",
+  "status": "FROZEN_BEFORE_NEW_TARGET_DATA_ACQUISITION",
+  "authorization_source": "Project owner instructed continuation after the completed text-task and source-role audit.",
+  "purpose": "Define a new case-level, evidence-backed corpus for investment-solicitation and investment-website risk research before acquiring new records or training another model.",
+  "basis": [
+    {
+      "role": "task_source_audit",
+      "path": "registry/analyses/text_task_source_audit_v1.json",
+      "sha256": "fed2123d524e9a90ba1b6440355d161d5d4a9afd1d50dfa5e3e12bb9c69dd371"
+    },
+    {
+      "role": "label_guideline",
+      "path": "registry/label_guideline.md",
+      "sha256": "df06f0c00d48f3c03a6aa626c1673a8f3dbe9145a00d990e0de2d8622fd90f5f"
+    },
+    {
+      "role": "case_schema",
+      "path": "schemas/case.schema.json",
+      "sha256": "4b4ff96ffa9f76dd89ab6fbc6bc87a8e91e80cb0c8719477803342190912adf8"
+    },
+    {
+      "role": "artifact_schema",
+      "path": "schemas/artifact.schema.json",
+      "sha256": "907dc0f6ed887e820cf855f553927b0932f935a92391c4a6a59e5fb91c6a6344"
+    },
+    {
+      "role": "evidence_schema",
+      "path": "schemas/evidence.schema.json",
+      "sha256": "c437fd1c97e476e674c64a92a9611a71ef82974e213431b95d8ad894b9b04659"
+    },
+    {
+      "role": "historical_external_policy",
+      "path": "configs/text_baseline_v2_external_eval_policy_v1.json",
+      "sha256": "67eec8ac78c9c83679b3df88ac4a3cd0981e19b0884b01aee68d9d0127e35777"
+    },
+    {
+      "role": "historical_intake_workflow",
+      "path": "docs/external-text-intake-workflow.md",
+      "sha256": "184f25ccb1dede808d399f158c6e3d72089f6b855d9b413074489d495cb017e6"
+    }
+  ],
+  "target_task": {
+    "research_question": "Does the observed text of an investment solicitation, message, post, or website artifact exhibit risk patterns associated with an evidence-backed confirmed case rather than an evidence-backed legitimate identity/content case?",
+    "prediction_unit": "ARTIFACT_WITH_CASE_LEVEL_GROUND_TRUTH",
+    "positive_target": {
+      "binary_label": 1,
+      "required_case_status": "CONFIRMED",
+      "semantics": "Observed investment-related artifact is directly linked to a case supported by reviewed evidence of an unauthorized, deceptive, impersonating, or fraudulent solicitation/operation.",
+      "not_equivalent_to": [
+        "legal conviction in every case",
+        "presence on any warning list without identity linkage",
+        "generic spam, phishing, bot, or fake-profile status"
+      ]
+    },
+    "negative_target": {
+      "binary_label": 0,
+      "required_case_status": "LEGITIMATE",
+      "semantics": "Observed artifact identity and content context are linked to an official or otherwise high-confidence legitimate entity/reference with no unresolved impersonation contradiction at review time.",
+      "not_equivalent_to": [
+        "absence from a warning list",
+        "permanent safety guarantee",
+        "registration alone without exact artifact identity matching"
+      ]
+    },
+    "uncertain_policy": "UNCERTAIN records are retained with provenance but excluded from binary fitting, model selection, thresholding, and headline evaluation.",
+    "allowed_artifact_types": [
+      "POST",
+      "MESSAGE",
+      "WEBSITE_SNAPSHOT"
+    ],
+    "prohibited_as_predictive_input": [
+      "WARNING_DOCUMENT",
+      "COMPLAINT",
+      "review rationale",
+      "ground-truth status",
+      "label confidence",
+      "source ID",
+      "evidence type",
+      "verification status"
+    ],
+    "claim_limit": "The output is a research risk score for the defined artifact task, not a legal finding, investment recommendation, or universal scam probability."
+  },
+  "eligibility_contract": {
+    "observed_artifact_required": true,
+    "minimum_non_whitespace_text_characters": 20,
+    "immutable_raw_capture_required": true,
+    "capture_sha256_required": true,
+    "exact_utf8_text_sha256_required": true,
+    "source_url_and_collection_time_required": true,
+    "content_observed_at_required_when_available": true,
+    "case_or_campaign_group_id_required": true,
+    "entity_or_domain_family_group_id_required": true,
+    "near_duplicate_group_id_required": true,
+    "language_required": true,
+    "required_label_confidence": "HIGH",
+    "required_review_status": "RECONCILED",
+    "minimum_reviewed_evidence_items": 1,
+    "confirmed_evidence_rule": "At least one reviewed regulator warning, enforcement/court record, or independently corroborated official source must link the exact entity/domain/artifact to the case.",
+    "legitimate_evidence_rule": "Official registry/reference and exact domain/entity identity must agree; unresolved clone, compromise, redirect, or impersonation evidence routes the record to UNCERTAIN.",
+    "warning_or_complaint_text_as_model_input_allowed": false
+  },
+  "review_contract": {
+    "primary_review_required_for_every_record": true,
+    "independent_second_review_required_for_every_binary_eligible_record": true,
+    "second_reviewer_must_not_receive_first_review_rationale": true,
+    "disagreement_routes_to": "RECONCILIATION_OR_UNCERTAIN",
+    "owner_acceptance_required_before_eligibility": true,
+    "ai_assistance_allowed": [
+      "provenance extraction",
+      "hashing and structural validation",
+      "evidence summarization",
+      "independent bounded review recommendations",
+      "duplicate and contradiction screening"
+    ],
+    "ai_prohibited": [
+      "silently creating final labels",
+      "overriding contradictory evidence",
+      "treating regulator-list absence as legitimacy",
+      "using model predictions as review evidence"
+    ]
+  },
+  "source_role_contract": {
+    "mendeley_v2": {
+      "role": "HISTORICAL_HETEROGENEOUS_BENCHMARK",
+      "rows_allowed_in_new_target_corpus": 0
+    },
+    "opened_external_cohorts": {
+      "role": "DIAGNOSTIC_ONLY",
+      "rows_allowed_in_training_or_model_selection": 0,
+      "registries": [
+        {
+          "path": "registry/pilots/external_text_reconciled_pilot_v1.json",
+          "sha256": "c6faa21193aa4ce55014a4bee60955037cb1c2a2aef145b73fe5e4f2bd6db8fd"
+        },
+        {
+          "path": "registry/pilots/external_text_matched_wayback_benchmark_v1.json",
+          "sha256": "5c44ddf4858978b61199127bdd9d301e53b2f18ef21777a578fed8d9ba701f40"
+        },
+        {
+          "path": "registry/pilots/external_text_wayback_language_benchmark_v2.json",
+          "sha256": "e966b7b278ec4e15f64daf5b70185697c57405152a08dbe17be391c30f0fa16b"
+        },
+        {
+          "path": "registry/pilots/external_text_wayback_holdout_benchmark_v3.json",
+          "sha256": "fa75acd2586c30f81872fee8f31c3afa1c42f3660af9c0831124bb606957eaae"
+        }
+      ]
+    },
+    "official_warning_and_registry_sources": "EVIDENCE_OR_CANDIDATE_DISCOVERY_ONLY",
+    "new_target_development_records": "Must be acquired after this freeze, must not duplicate opened cohorts, and must pass every evidence, review, identity, and grouping gate.",
+    "future_twitter_bot_or_fake_profile_data": "Separate account-or-behavior auxiliary task only; excluded from the primary artifact-content binary label."
+  },
+  "deduplication_and_exclusion_contract": {
+    "exclude_exact_capture_sha256_overlap_with_opened_cohorts": true,
+    "exclude_exact_text_sha256_overlap_with_opened_cohorts": true,
+    "exclude_case_campaign_entity_domain_family_overlap_across_partitions": true,
+    "exclude_normalized_near_duplicate_overlap_across_partitions": true,
+    "opened_cohort_case_ids_must_be_registered_in_exclusion_index": true,
+    "manual_review_required_for_probable_cross-domain_clones": true
+  },
+  "minimum_data_gates": {
+    "schema_and_review_pilot": {
+      "minimum_confirmed_groups": 20,
+      "minimum_legitimate_groups": 20,
+      "model_training_allowed": false,
+      "purpose": "Validate acquisition, provenance, review, exclusion, and grouping workflow only."
+    },
+    "development_corpus": {
+      "minimum_confirmed_groups": 120,
+      "minimum_legitimate_groups": 120,
+      "minimum_total_groups": 240,
+      "minimum_acquisition_channels_per_label": 2,
+      "maximum_fraction_from_one_acquisition_channel_per_label": 0.5,
+      "minimum_independent_second_review_coverage": 1.0,
+      "minimum_reconciled_high_confidence_coverage": 1.0,
+      "split_ratio_by_group": {
+        "train": 0.7,
+        "validation": 0.15,
+        "internal_test": 0.15
+      },
+      "minimum_groups_per_label_by_partition": {
+        "train": 84,
+        "validation": 18,
+        "internal_test": 18
+      }
+    },
+    "untouched_external_holdout": {
+      "minimum_confirmed_groups": 30,
+      "minimum_legitimate_groups": 30,
+      "minimum_total_groups": 60,
+      "must_use_separate_acquisition_wave": true,
+      "must_be_frozen_before_first_candidate_is_selected": true,
+      "model_scoring_allowed_only_after_internal_model_freeze": true
+    }
+  },
+  "split_and_model_gate": {
+    "split_unit": "TRANSITIVE_UNION_OF_CASE_CAMPAIGN_ENTITY_DOMAIN_FAMILY_AND_NEAR_DUPLICATE_GROUPS",
+    "split_seed_and_algorithm_must_be_frozen": true,
+    "all_partition_hashes_must_be_registered": true,
+    "first_model_stage": "GROUPED_OOF_ON_TARGET_CORPUS_TRAIN_ONLY",
+    "validation_open_condition": "Every predeclared development gate passes.",
+    "internal_test_open_condition": "One frozen candidate passes one validation confirmation without retuning.",
+    "external_holdout_open_condition": "The final internal candidate and threshold are frozen.",
+    "opened_external_cohort_reuse_for_selection_allowed": false,
+    "mendeley_validation_or_test_reuse_for_new_target_selection_allowed": false
+  },
+  "current_gate_status": {
+    "new_target_records_acquired_after_freeze": 0,
+    "schema_and_review_pilot_passed": false,
+    "development_corpus_ready": false,
+    "untouched_external_holdout_ready": false,
+    "model_training_allowed": false,
+    "next_action": "Build a provenance-only acquisition candidate inventory and an exclusion index for every opened external cohort; do not capture or label until both artifacts verify."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "domain_access_allowed": false,
+    "new_records_acquired": 0,
+    "labels_created": 0,
+    "labels_changed": 0,
+    "training_eligibility_changes": 0,
+    "model_fit_operations": 0,
+    "model_scoring_operations": 0,
+    "validation_or_test_openings": 0,
+    "training_allowed": false,
+    "deployment_allowed": false
+  }
+}

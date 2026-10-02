@@ -1,0 +1,135 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_PROTOCOL",
+  "created_at": "2026-10-02",
+  "status": "FROZEN_PROTOCOL_READY_NO_ACQUISITION_OR_TRAINING",
+  "source_id": "mendeley_investment_deceptive_2026",
+  "purpose": "Freeze the target task and the evidence, review, source-role, exclusion, data, split, and model-opening gates for a future case-level investment-solicitation text corpus before acquiring any new target records.",
+  "inputs": [
+    {
+      "role": "task_source_audit",
+      "path": "registry/analyses/text_task_source_audit_v1.json",
+      "sha256": "fed2123d524e9a90ba1b6440355d161d5d4a9afd1d50dfa5e3e12bb9c69dd371"
+    },
+    {
+      "role": "label_guideline",
+      "path": "registry/label_guideline.md",
+      "sha256": "df06f0c00d48f3c03a6aa626c1673a8f3dbe9145a00d990e0de2d8622fd90f5f"
+    },
+    {
+      "role": "case_schema",
+      "path": "schemas/case.schema.json",
+      "sha256": "4b4ff96ffa9f76dd89ab6fbc6bc87a8e91e80cb0c8719477803342190912adf8"
+    },
+    {
+      "role": "artifact_schema",
+      "path": "schemas/artifact.schema.json",
+      "sha256": "907dc0f6ed887e820cf855f553927b0932f935a92391c4a6a59e5fb91c6a6344"
+    },
+    {
+      "role": "evidence_schema",
+      "path": "schemas/evidence.schema.json",
+      "sha256": "c437fd1c97e476e674c64a92a9611a71ef82974e213431b95d8ad894b9b04659"
+    },
+    {
+      "role": "historical_external_policy",
+      "path": "configs/text_baseline_v2_external_eval_policy_v1.json",
+      "sha256": "67eec8ac78c9c83679b3df88ac4a3cd0981e19b0884b01aee68d9d0127e35777"
+    },
+    {
+      "role": "historical_intake_workflow",
+      "path": "docs/external-text-intake-workflow.md",
+      "sha256": "184f25ccb1dede808d399f158c6e3d72089f6b855d9b413074489d495cb017e6"
+    },
+    {
+      "role": "opened_external_pilot",
+      "path": "registry/pilots/external_text_reconciled_pilot_v1.json",
+      "sha256": "c6faa21193aa4ce55014a4bee60955037cb1c2a2aef145b73fe5e4f2bd6db8fd"
+    },
+    {
+      "role": "opened_matched_wayback_v1",
+      "path": "registry/pilots/external_text_matched_wayback_benchmark_v1.json",
+      "sha256": "5c44ddf4858978b61199127bdd9d301e53b2f18ef21777a578fed8d9ba701f40"
+    },
+    {
+      "role": "opened_wayback_language_v2",
+      "path": "registry/pilots/external_text_wayback_language_benchmark_v2.json",
+      "sha256": "e966b7b278ec4e15f64daf5b70185697c57405152a08dbe17be391c30f0fa16b"
+    },
+    {
+      "role": "opened_wayback_holdout_v3",
+      "path": "registry/pilots/external_text_wayback_holdout_benchmark_v3.json",
+      "sha256": "fa75acd2586c30f81872fee8f31c3afa1c42f3660af9c0831124bb606957eaae"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "protocol_documentation",
+      "path": "docs/target-text-corpus-v1-protocol.md",
+      "sha256": "294bddc9b37e12c31da97c1c2741c212306498a41ff8b1c5706aaf476ec60605"
+    },
+    {
+      "role": "protocol_verifier",
+      "path": "scripts/verify_target_text_corpus_v1_protocol.py",
+      "sha256": "1431e2d9cd81cbb34b77fc31c7f4e7cfdcab1621c1941c67d2475fd00f4264c9"
+    },
+    {
+      "role": "protocol_contract_tests",
+      "path": "tests/test_target_text_corpus_v1_protocol.py",
+      "sha256": "bf2fec8a706e213653023dd68feaf0e2f850c9327c3707b701add7eedb65d6be"
+    },
+    {
+      "role": "protocol_verifier_tests",
+      "path": "tests/test_verify_target_text_corpus_v1_protocol.py",
+      "sha256": "256c62d906e8ac74b6b3c531970267e1c61cdc2432933e99ae22f0ad3133b106"
+    }
+  ],
+  "outputs": [
+    {
+      "role": "target_corpus_protocol",
+      "path": "configs/target_text_corpus_v1_protocol.json",
+      "sha256": "7ec4468c4eac0241706114d9bfeb3c090208ef756f620841ac3be47074b8edc4"
+    }
+  ],
+  "decision": {
+    "target_prediction_unit": "ARTIFACT_WITH_CASE_LEVEL_GROUND_TRUTH",
+    "positive_status": "CONFIRMED",
+    "negative_status": "LEGITIMATE",
+    "uncertain_binary_eligibility": false,
+    "mendeley_v2_role": "HISTORICAL_HETEROGENEOUS_BENCHMARK",
+    "opened_external_cohort_role": "DIAGNOSTIC_ONLY",
+    "new_target_records_acquired": 0,
+    "train_another_model_now": false,
+    "next_gate": "Build and verify a provenance-only candidate-source inventory and an exclusion index for every opened external cohort before any capture or labeling."
+  },
+  "data_gates": {
+    "schema_review_pilot_groups_per_label": 20,
+    "development_groups_per_label": 120,
+    "development_total_groups": 240,
+    "minimum_development_acquisition_channels_per_label": 2,
+    "maximum_one_channel_fraction_per_label": 0.5,
+    "untouched_external_holdout_groups_per_label": 30,
+    "untouched_external_holdout_total_groups": 60,
+    "independent_second_review_coverage": 1.0,
+    "reconciled_high_confidence_coverage": 1.0
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "domain_access_allowed": false,
+    "new_records_acquired": 0,
+    "labels_created": 0,
+    "labels_changed": 0,
+    "training_eligibility_changes": 0,
+    "model_fit_operations": 0,
+    "model_scoring_operations": 0,
+    "validation_or_test_openings": 0,
+    "training_allowed": false,
+    "deployment_allowed": false
+  },
+  "prohibited_claims": [
+    "Do not treat generic phishing, spam, bot, or fake-profile labels as evidence-backed investment-scam ground truth.",
+    "Do not infer legitimacy from the absence of a regulator warning.",
+    "Do not use warning documents, complaints, review rationale, or provenance fields as predictive text.",
+    "Do not reuse any already-opened external cohort for training or model selection.",
+    "Do not acquire, label, train, score, or open a partition under this protocol-freeze step."
+  ]
+}

@@ -44,15 +44,16 @@ Các lệnh chỉ kiểm tra contract hiện có; chưa tải dữ liệu, crawl
 
 1. Data contracts, source registry, evidence rules và split policy đã có validator.
 2. Mendeley V2 đã có `group_split_v2` strict: 5.592 dòng benchmark bốn nguồn, 10.607 `fake_profile_post` ở auxiliary và 3 dòng nhãn mâu thuẫn ở quarantine; raw vẫn nguyên vẹn.
-3. Text Baseline V2 đã được chọn hoàn toàn trên validation rồi mới mở test: word TF-IDF + Logistic Regression, test Macro-F1 0,7062; error analysis xác nhận 208/246 lỗi đến từ `twitter_bot_detection`. External-evaluation gate hiện bị chặn vì chưa có mẫu text external đủ evidence.
-4. Financial Claims V1 đã trích xuất candidate signals trên train/validation, tạo review queue 120 và workbook pilot 20 record; test vẫn chưa được xử lý, training gate đang đóng.
+3. Text Baseline V2 đã được chọn hoàn toàn trên validation rồi mới mở test: word TF-IDF + Logistic Regression, test Macro-F1 0,7062; error analysis xác nhận 208/246 lỗi đến từ `twitter_bot_detection`. Baseline đã được score theo protocol trên nhiều external cohort đã reconcile nhưng vẫn không đủ điều kiện deployment.
+4. Financial Claims đã hoàn tất các vòng review V1–V4 và ablation trên `group_split_v2`; text-only vẫn được giữ vì feature claims không qua promotion gate.
 5. Metadata ablation trên Mendeley đã hoàn tất; metadata không được promote vì không cải thiện đồng thời internal test và leave-one-source-out, còn missingness nhận diện nguồn rất mạnh.
 6. Source-balance ablation đã hoàn tất; validation vẫn chọn text baseline không trọng số, nên không thay baseline.
 7. Text-representation ablation đã hoàn tất; `word + char_wb` tăng LOSO nhưng giảm internal test, đồng thời audit phát hiện source/template shortcut lớn, nên vẫn giữ word baseline.
-8. Crimson pinned raw đã được chuẩn hóa thành URL candidates, lexical feature set và phân tích clustering/outlier không nhãn, hoàn toàn offline.
-9. DFPI và SEC đang hoãn để tải thủ công hợp lệ; xem `docs/curated-evidence-pilot.md`.
+8. Crimson pinned raw đã được chuẩn hóa thành URL candidates, lexical feature set, phân tích clustering/outlier không nhãn và các pilot đối chiếu reference, hoàn toàn tách khỏi Gold/training labels.
+9. SEC IAPD và IOSCO đã có offline reference index; DFPI vẫn hoãn để lấy export hợp lệ. Image branch tiếp tục bị chặn vì chưa có image dataset có license, provenance và nhãn tương thích.
+10. Ba text challenger mới đã bị loại có kiểm soát: character V2, stop-word V3 và frozen E5 V4. E5 thất bại ngay trên OOF `train`, nên validation/test/external không được mở cho challenger này.
 
-Tiếp theo: giữ cấu hình Text Baseline V2 cố định. Error analysis đã hoàn tất và external-readiness gate đã được dựng; model chưa được score ngoài Mendeley vì có 0 mẫu text external đủ điều kiện. Cần ít nhất 10 `CONFIRMED` và 10 `LEGITIMATE` text artifacts đã reconcile trước khi báo pilot metrics. Financial Claims vẫn cần review queue 120 trước khi được dùng làm feature train; nguồn URL đối chứng, nguồn ảnh và các bộ dữ liệu bổ sung vẫn đang hoãn.
+Tiếp theo: giữ Text Baseline V2 làm reference nhưng không deploy. Trước khi train ứng viên mới, phải audit lại định nghĩa bài toán và vai trò từng nguồn—đặc biệt `twitter_bot_detection`—rồi đóng băng đúng một hypothesis mới. Mọi ứng viên tiếp theo phải bắt đầu bằng grouped OOF chỉ trên `train`; chỉ khi qua toàn bộ development gate mới được mở validation. Các external cohort đã score chỉ còn vai trò chẩn đoán, không được dùng để tune hoặc làm headline benchmark cho ứng viên mới.
 
 ### UBCKNN warning pilot
 
@@ -124,7 +125,7 @@ Error analysis V2 tái tạo đủ 838 dự đoán, ghi nhận 246 lỗi và t�
 .venv\Scripts\python.exe scripts\verify_mendeley_text_baseline_v2_error_analysis_registry.py
 ```
 
-External-evaluation readiness audit kiểm tra Crimson, UBCKNN, DFPI, SEC và IOSCO hoàn toàn offline. Hiện gate đóng do không có observed text artifact đã reconcile; không có model score hay external metric nào được tạo. Xem `docs/text-baseline-v2-external-evaluation-readiness.md`, policy tại `configs/text_baseline_v2_external_eval_policy_v1.json` và registry tại `registry/analyses/text_baseline_v2_external_readiness_v1.json`.
+External-evaluation readiness audit ban đầu từng đóng gate vì chưa có observed text artifact đã reconcile. Sau đó pipeline đã tạo pilot 21 record, matched Wayback V1, Wayback language V2 và untouched holdout V3 với review độc lập trước khi score baseline cố định. Các cohort đã mở này chỉ dùng cho báo cáo và chẩn đoán, không được dùng để tune ứng viên tiếp theo. Audit lịch sử nằm tại `docs/text-baseline-v2-external-evaluation-readiness.md`; kết quả mới hơn nằm trong các tài liệu `docs/text-baseline-v2-*wayback*.md` và registry tương ứng dưới `registry/analyses/`.
 
 ```powershell
 .venv\Scripts\python.exe scripts\verify_text_baseline_v2_external_readiness_registry.py

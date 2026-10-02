@@ -1,0 +1,101 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_CANDIDATE_ENUMERATION_TOOLING_V1",
+  "created_at": "2026-10-03",
+  "status": "FROZEN_OFFLINE_ENUMERATION_TOOLING_READY_PRODUCTION_RUN_BLOCKED",
+  "purpose": "Register and verify the deterministic, fail-closed, offline tooling for the future complete four-channel candidate enumeration without executing a production wave.",
+  "inputs": [
+    {
+      "role": "acquisition_prerequisite_intake_registry",
+      "path": "registry/analyses/target_text_corpus_v1_acquisition_prerequisite_intake_v1.json",
+      "sha256": "cbeeaab934c64eeb012c8ae709c1c58ff93788d1326dc29062841ce17acc4591"
+    },
+    {
+      "role": "schema_review_pilot_protocol",
+      "path": "configs/target_text_corpus_v1_schema_review_pilot_v1.json",
+      "sha256": "56400c9c314140f18af3c8a801597849866a2e384537ca5c88fb0fcafa7fb321"
+    },
+    {
+      "role": "current_prerequisite_ledger",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\governance\\target_text_corpus_v1\\acquisition_prerequisite_ledger_v1.json",
+      "sha256": "18ac4ab8039b2bce5b58376a0da16430b62ee940ddac30d5bc229488ca3d2ea8"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "candidate_enumeration_module",
+      "path": "src/isi/curation/target_text_candidate_enumeration.py",
+      "sha256": "cbab13c2fef2b4e927320ca5344da472e97b879c134de56529bda6d211279c98"
+    },
+    {
+      "role": "candidate_enumeration_cli",
+      "path": "scripts/enumerate_target_text_corpus_v1_candidates.py",
+      "sha256": "cb1fe9f8fd8909c35d36e5238afeca298016b449ba01875b56e8f4b1f07f8049"
+    },
+    {
+      "role": "candidate_enumeration_tooling_verifier",
+      "path": "scripts/verify_target_text_corpus_v1_candidate_enumeration_tooling.py",
+      "sha256": "896d428ede45dda79f75dfcf83eadbfca261a43f9bcbec656db945b8edae1e78"
+    },
+    {
+      "role": "candidate_enumeration_tests",
+      "path": "tests/test_target_text_candidate_enumeration.py",
+      "sha256": "59cadcf0e1f9cc2b5b64fe0bbb1b2704c140c48c0d9da533515d257a34f22066"
+    },
+    {
+      "role": "candidate_enumeration_tooling_verifier_tests",
+      "path": "tests/test_verify_target_text_candidate_enumeration_tooling.py",
+      "sha256": "c1beec931d84a936e8c40cf8a698597dbf8d0c299bde88e3d06c5cc6a72bc078"
+    },
+    {
+      "role": "method_documentation",
+      "path": "docs/target-text-corpus-v1-candidate-enumeration-tooling.md",
+      "sha256": "782630cf4616cd68e1ca0100e4f502c4282b41892b69d3d7b6aa409b750c2d51"
+    }
+  ],
+  "outputs": [],
+  "findings": {
+    "implementation_ready": true,
+    "production_enumeration_run": false,
+    "initial_candidate_target": 40,
+    "channel_count": 4,
+    "quota_per_channel": 10,
+    "synthetic_test_records_are_research_candidates": false,
+    "deterministic_selection_tested": true,
+    "shortfall_fails_without_reallocation": true,
+    "cross_channel_host_exclusion_tested": true,
+    "cross_stratum_entity_exclusion_tested": true,
+    "missing_input_ledger_refusal_tested": true,
+    "network_client_import_count": 0,
+    "candidate_records_created": 0
+  },
+  "decision": {
+    "offline_enumeration_tooling_ready": true,
+    "current_prerequisite_ledger_ready": false,
+    "production_enumeration_allowed": false,
+    "candidate_capture_allowed": false,
+    "binary_labeling_allowed": false,
+    "train_another_model_now": false,
+    "next_gate": "Supply and independently verify both external prerequisites, normalize all four reference inputs, then execute exactly one complete balanced provenance-enumeration wave."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "domain_access_allowed": false,
+    "candidate_records_enumerated": 0,
+    "new_records_acquired": 0,
+    "new_artifact_captures": 0,
+    "labels_created": 0,
+    "labels_changed": 0,
+    "model_fit_operations": 0,
+    "model_scoring_operations": 0,
+    "validation_or_test_openings": 0,
+    "training_allowed": false,
+    "deployment_allowed": false
+  },
+  "prohibited_claims": [
+    "Do not describe synthetic unit-test fixtures as acquired candidate records or research data.",
+    "Do not run the production CLI with the current missing-input prerequisite ledger.",
+    "Do not emit a partial queue or reallocate a deficient channel quota.",
+    "Do not use a candidate-source stratum as a binary label.",
+    "Do not use the enumeration tooling for network access, artifact capture, model scoring, or training."
+  ]
+}

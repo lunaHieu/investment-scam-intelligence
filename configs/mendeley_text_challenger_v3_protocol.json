@@ -1,0 +1,120 @@
+{
+  "protocol_id": "MENDELEY_TEXT_CHALLENGER_V3_STYLE_GUARD_PROTOCOL",
+  "frozen_at": "2026-10-02T10:23:47+07:00",
+  "status": "FROZEN_BEFORE_DEVELOPMENT_AND_VALIDATION_TEST_EXTERNAL_UNOPENED",
+  "authorization_source": "User instruction 'tiến hành bước kế tiếp' after the frozen Wayback language V2 error analysis was verified.",
+  "research_question": "Can a single standard English stop-word filtering step reduce direct-address and function-word style shortcuts without degrading cross-source label discrimination?",
+  "hypothesis_origin": {
+    "diagnostic_only_source": "ISI_TEXT_BASELINE_V2_WAYBACK_LANGUAGE_V2_ERROR_ANALYSIS",
+    "diagnostic_registry_path": "registry/analyses/text_baseline_v2_wayback_language_v2_error_analysis.json",
+    "diagnostic_registry_sha256": "160b1872cf1454a121690123b896cacfe29303c0de679c73ab838ca6e9fd9200",
+    "observations": [
+      "Generic direct-address and navigation terms including your, our and you repeatedly pushed legitimate pages toward label 1.",
+      "Function words including in, for and about repeatedly pushed some confirmed pages toward label 0.",
+      "The frozen external benchmark is used only to formulate this hypothesis and is prohibited from V3 scoring or selection."
+    ],
+    "interpretation_limit": "The observation motivates one standard representation change; it does not authorize a hand-tuned token list or reuse of the opened external benchmark."
+  },
+  "data_contract": {
+    "source_id": "mendeley_investment_deceptive_2026",
+    "source_version": "2",
+    "split_version": "group_split_v2",
+    "split_path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\mendeley_v2_group_split_v2.csv",
+    "split_sha256": "98f75387a4a598d85a6f721d10808979bda694dad8f85354d595679bdd96e734",
+    "baseline_registry_path": "registry/models/text_baseline_v2.json",
+    "baseline_registry_sha256": "0485439ddc34c56d05587c85cd0520f519a4feb9dd7887d16e46273bc7b1d7f5",
+    "development_partition": "train",
+    "confirmation_partition": "validation",
+    "internal_test_text_access_allowed": false,
+    "internal_test_label_access_allowed": false,
+    "auxiliary_or_quarantine_access_allowed": false,
+    "existing_external_benchmark_access_allowed": false
+  },
+  "development_design": {
+    "method": "deterministic four-fold grouped out-of-fold evaluation within the original train partition",
+    "fold_count": 4,
+    "fold_seed": "MENDELEY_TEXT_CHALLENGER_V3_20261002",
+    "assignment": "Within each source_dataset and source label stratum, sort complete split_group_id values by SHA-256(seed|group_id), then assign round-robin to folds. A group is never split.",
+    "candidate_count": 1,
+    "hyperparameter_search": false,
+    "threshold_search": false,
+    "confirmation_rule": "After all development out-of-fold predictions exist, fit both frozen representations on all train rows and score the existing validation partition once."
+  },
+  "fixed_classifier": {
+    "type": "LogisticRegression",
+    "C": 2.0,
+    "class_weight": null,
+    "solver": "liblinear",
+    "max_iter": 2000,
+    "random_state": 20260916,
+    "threshold": 0.5
+  },
+  "representations": {
+    "baseline": {
+      "id": "word_1_2",
+      "analyzer": "word",
+      "ngram_range": [1, 2],
+      "lowercase": true,
+      "strip_accents": "unicode",
+      "min_df": 2,
+      "max_df": 0.995,
+      "max_features": 100000,
+      "sublinear_tf": true,
+      "stop_words": null
+    },
+    "single_challenger": {
+      "id": "word_1_2_english_stopwords",
+      "all_other_vectorizer_and_classifier_settings": "identical to baseline",
+      "stop_words": "scikit-learn ENGLISH_STOP_WORDS frozen by the installed scikit-learn runtime",
+      "manual_token_additions": 0,
+      "manual_token_removals": 0
+    }
+  },
+  "selection_policy": {
+    "promotion_requires_every_gate": true,
+    "development_oof_gates": {
+      "source_mean_macro_f1_delta_minimum": 0.005,
+      "worst_source_macro_f1_delta_minimum": 0.0,
+      "pooled_macro_f1_delta_minimum": -0.005,
+      "maximum_single_source_macro_f1_decline": 0.01,
+      "source_predictability_macro_f1_delta_maximum": 0.0,
+      "within_source_label_shuffle_macro_f1_delta_maximum": 0.01
+    },
+    "validation_confirmation_gates": {
+      "source_mean_macro_f1_delta_minimum": 0.0,
+      "worst_source_macro_f1_delta_minimum": 0.0,
+      "pooled_macro_f1_delta_minimum": -0.005,
+      "maximum_single_source_macro_f1_decline": 0.01,
+      "source_predictability_macro_f1_delta_maximum": 0.0,
+      "paired_group_bootstrap_macro_f1_delta_ci_lower_minimum": -0.01
+    },
+    "if_any_gate_fails": "Retain ISI_TEXT_BASELINE_V2. Do not open internal test, do not create a challenger model artifact and do not score any existing external benchmark.",
+    "if_all_gates_pass": "Freeze the validation-only research candidate. Internal test remains closed; external evaluation requires a newly collected untouched benchmark and a separate owner gate."
+  },
+  "diagnostics": {
+    "source_dataset_allowed_as_predictive_feature": false,
+    "source_dataset_allowed_for_stratification_and_diagnostic_target": true,
+    "within_source_label_shuffle_required_on_development_oof": true,
+    "paired_bootstrap_unit": "split_group_id",
+    "paired_bootstrap_replicates": 10000,
+    "paired_bootstrap_seed": 20261002
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "raw_files_modified": false,
+    "split_file_modified": false,
+    "source_labels_changed": 0,
+    "candidate_count": 1,
+    "threshold_candidates": 1,
+    "existing_external_benchmark_scoring_operations": 0,
+    "internal_test_scoring_operations": 0,
+    "model_artifact_creation_allowed": false,
+    "deployment_allowed": false
+  },
+  "prohibited_interpretations": [
+    "Do not treat removal of a stop word as evidence that the word is unrelated to deception in every context.",
+    "Do not claim the candidate generalizes externally from internal development or validation results.",
+    "Do not rescore the opened Wayback language V2 benchmark with this candidate.",
+    "Do not describe the Mendeley label as regulator-verified investment fraud."
+  ]
+}

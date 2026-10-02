@@ -1,0 +1,214 @@
+{
+  "model_id": "ISI_TEXT_CHALLENGER_V3_STYLE_GUARD_ABLATION",
+  "created_at": "2026-10-02",
+  "status": "FROZEN_VALIDATION_CHALLENGER_REJECTED_TEST_EXTERNAL_UNOPENED",
+  "source_id": "mendeley_investment_deceptive_2026",
+  "purpose": "Test one predeclared English stop-word style guard with grouped development OOF and one validation confirmation while keeping internal test and all existing external benchmarks unopened.",
+  "label_semantics": "Mendeley V2 harmonized deceptive/suspicious source label; not verified investment-scam ground truth",
+  "hypothesis_provenance": {
+    "source": "Frozen Wayback language V2 error analysis",
+    "use_allowed": "Formulate one standard stop-word representation hypothesis only",
+    "use_prohibited": "The opened Wayback benchmark was not rescored, transformed or used for V3 selection",
+    "manual_stop_word_changes": 0
+  },
+  "data_contract": {
+    "split_version": "group_split_v2",
+    "split_path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\mendeley_v2_group_split_v2.csv",
+    "split_sha256": "98f75387a4a598d85a6f721d10808979bda694dad8f85354d595679bdd96e734",
+    "development_train_rows": 3916,
+    "development_group_count": 3783,
+    "development_fold_count": 4,
+    "validation_rows": 838,
+    "internal_test_rows_used": 0,
+    "existing_external_benchmark_rows_used": 0,
+    "auxiliary_rows_used": 0,
+    "quarantine_rows_used": 0
+  },
+  "inputs": [
+    {
+      "role": "frozen_protocol",
+      "path": "configs/mendeley_text_challenger_v3_protocol.json",
+      "sha256": "e8b08eb24e0ab9432f2760efe535ba4fcc9b33e6c7182f12565da0426fa9a27e"
+    },
+    {
+      "role": "baseline_registry",
+      "path": "registry/models/text_baseline_v2.json",
+      "sha256": "0485439ddc34c56d05587c85cd0520f519a4feb9dd7887d16e46273bc7b1d7f5"
+    },
+    {
+      "role": "hypothesis_diagnostic_registry",
+      "path": "registry/analyses/text_baseline_v2_wayback_language_v2_error_analysis.json",
+      "sha256": "160b1872cf1454a121690123b896cacfe29303c0de679c73ab838ca6e9fd9200"
+    },
+    {
+      "role": "group_split_dataset",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\mendeley_v2_group_split_v2.csv",
+      "sha256": "98f75387a4a598d85a6f721d10808979bda694dad8f85354d595679bdd96e734"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "development_and_validation_selector",
+      "path": "scripts/select_mendeley_text_challenger_v3.py",
+      "sha256": "52a065742275453a641ba26d00467e10bc3a3b3bfbce243cea017291be520e2f"
+    },
+    {
+      "role": "verifier",
+      "path": "scripts/verify_mendeley_text_challenger_v3.py",
+      "sha256": "58e137c8463429b26bae6c2c6cbfb9f0f80a6ebd0fd78190e10425ea67df093c"
+    },
+    {
+      "role": "unit_tests",
+      "path": "tests/test_mendeley_text_challenger_v3.py",
+      "sha256": "123b13e58a498234f7565e8311cb55ddc6d7c25926ca2bbc86cb7e051f1e6b5c"
+    },
+    {
+      "role": "method_documentation",
+      "path": "docs/mendeley-text-challenger-v3.md",
+      "sha256": "58baf9902bc80fd23db0cdc5602b8e4aa6947e47c813d40464799312a7f6b093"
+    }
+  ],
+  "representations": {
+    "baseline": "word_1_2",
+    "single_challenger": "word_1_2_english_stopwords",
+    "classifier": "LogisticRegression C=2.0, class_weight=null, liblinear, threshold=0.5",
+    "candidate_count": 1,
+    "hyperparameter_search": false,
+    "threshold_search": false,
+    "source_dataset_in_predictive_matrix": false
+  },
+  "development_oof_metrics": {
+    "baseline": {
+      "pooled_macro_f1": 0.708102,
+      "source_mean_macro_f1": 0.785928,
+      "worst_source_macro_f1": 0.493596,
+      "source_predictability_macro_f1": 0.917801,
+      "within_source_label_shuffle_macro_f1": 0.55892
+    },
+    "challenger": {
+      "pooled_macro_f1": 0.714952,
+      "source_mean_macro_f1": 0.793511,
+      "worst_source_macro_f1": 0.50089,
+      "source_predictability_macro_f1": 0.913441,
+      "within_source_label_shuffle_macro_f1": 0.573777
+    },
+    "challenger_minus_baseline": {
+      "pooled_macro_f1": 0.00685,
+      "source_mean_macro_f1": 0.007583,
+      "worst_source_macro_f1": 0.007294,
+      "source_predictability_macro_f1": -0.00436,
+      "within_source_label_shuffle_macro_f1": 0.014857,
+      "maximum_single_source_macro_f1_decline": 0.006606
+    }
+  },
+  "validation_confirmation_metrics": {
+    "baseline": {
+      "pooled_macro_f1": 0.700118,
+      "source_mean_macro_f1": 0.778049,
+      "worst_source_macro_f1": 0.480842,
+      "source_predictability_macro_f1": 0.907602
+    },
+    "challenger": {
+      "pooled_macro_f1": 0.677621,
+      "source_mean_macro_f1": 0.764394,
+      "worst_source_macro_f1": 0.435593,
+      "source_predictability_macro_f1": 0.913614
+    },
+    "challenger_minus_baseline": {
+      "pooled_macro_f1": -0.022497,
+      "source_mean_macro_f1": -0.013655,
+      "worst_source_macro_f1": -0.045249,
+      "source_predictability_macro_f1": 0.006012,
+      "maximum_single_source_macro_f1_decline": 0.045249,
+      "per_source_macro_f1": {
+        "cresci_stock_2018": -0.018154,
+        "phishing": -0.014531,
+        "spam_email": 0.023314,
+        "twitter_bot_detection": -0.045249
+      }
+    },
+    "paired_group_bootstrap": {
+      "validation_group_count": 808,
+      "replicates": 10000,
+      "seed": 20261002,
+      "macro_f1_delta": -0.022498,
+      "difference_percentile_95_ci": [-0.042531, -0.003272],
+      "probability_challenger_better": 0.012
+    }
+  },
+  "promotion_gates": {
+    "development_passed": [
+      "source_mean_macro_f1_delta_minimum",
+      "worst_source_macro_f1_delta_minimum",
+      "pooled_macro_f1_delta_minimum",
+      "maximum_single_source_macro_f1_decline",
+      "source_predictability_macro_f1_delta_maximum"
+    ],
+    "development_failed": [
+      "within_source_label_shuffle_macro_f1_delta_maximum"
+    ],
+    "validation_passed": [],
+    "validation_failed": [
+      "source_mean_macro_f1_delta_minimum",
+      "worst_source_macro_f1_delta_minimum",
+      "pooled_macro_f1_delta_minimum",
+      "maximum_single_source_macro_f1_decline",
+      "source_predictability_macro_f1_delta_maximum",
+      "paired_group_bootstrap_macro_f1_delta_ci_lower_minimum"
+    ],
+    "all_required": true,
+    "all_passed": false
+  },
+  "outputs": [
+    {
+      "role": "validation_selection",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\text_challenger_v3_validation\\text_challenger_v3_validation_selection.json",
+      "sha256": "433111fae95cba03c4906c413304eecac0ea20ba8f9198d30a10fa681cbd0f74"
+    },
+    {
+      "role": "development_oof_predictions",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\text_challenger_v3_validation\\text_challenger_v3_development_oof_predictions.jsonl",
+      "sha256": "5702f6e841704e2a8198b2a031a4b04869fdc528521a054379ed1e6e8add04b6",
+      "record_count": 3916
+    },
+    {
+      "role": "validation_predictions",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\text_challenger_v3_validation\\text_challenger_v3_validation_predictions.jsonl",
+      "sha256": "bdda670cb4422e3a651c6d3223ff551fee34d405acafc1664d84df7b50d7dce0",
+      "record_count": 838
+    }
+  ],
+  "decision": {
+    "selected_variant": "word_1_2",
+    "retain_primary_baseline": "ISI_TEXT_BASELINE_V2",
+    "challenger_passes_all_promotion_gates": false,
+    "open_internal_test": false,
+    "score_existing_external_benchmarks": false,
+    "challenger_model_artifact_created": false,
+    "promote_for_deployment": false,
+    "reason": "The challenger failed the development shuffled-label gate and all six validation confirmation gates. Validation pooled Macro-F1 fell by 0.022497, worst-source Macro-F1 fell by 0.045249, source predictability increased by 0.006012, and the paired group-bootstrap interval was entirely below zero.",
+    "next_action": "Do not test more stop-word variants on the same validation partition. Acquire a new untouched matched external benchmark before any materially different candidate is evaluated externally."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "raw_files_modified": false,
+    "split_file_modified": false,
+    "source_labels_changed": 0,
+    "model_fit_operations": 28,
+    "internal_test_rows_used": 0,
+    "existing_external_benchmark_rows_used": 0,
+    "auxiliary_rows_used": 0,
+    "quarantine_rows_used": 0,
+    "threshold_changes": 0,
+    "model_artifact_created": false,
+    "training_allowed": false,
+    "deployment_allowed": false
+  },
+  "prohibited_claims": [
+    "Do not describe the stop-word challenger as improved because development OOF increased.",
+    "Do not open internal test for this rejected challenger.",
+    "Do not score this rejected challenger on the opened Wayback benchmarks.",
+    "Do not hand-tune a stop-word list against validation or external errors.",
+    "Do not describe the Mendeley label as regulator-verified investment fraud."
+  ]
+}

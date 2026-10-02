@@ -1,0 +1,58 @@
+{
+  "protocol_id": "ISI_TEXT_MODEL_DIRECTION_V4_EVIDENCE_SYNTHESIS",
+  "created_at": "2026-10-02",
+  "status": "LOCKED_BEFORE_SYNTHESIS",
+  "purpose": "Synthesize the frozen internal, challenger, Wayback V2, and untouched-holdout V3 evidence into one next-model research direction without fitting, selecting, tuning, or re-scoring any model.",
+  "inputs": [
+    {
+      "role": "baseline_registry",
+      "path": "registry/models/text_baseline_v2.json",
+      "sha256": "0485439ddc34c56d05587c85cd0520f519a4feb9dd7887d16e46273bc7b1d7f5"
+    },
+    {
+      "role": "character_challenger_registry",
+      "path": "registry/models/mendeley_text_challenger_v2.json",
+      "sha256": "92d6643738973954cb1080d893cb3b3d1422d0aeb6b5625275cbe0641959e2c5"
+    },
+    {
+      "role": "stopword_challenger_registry",
+      "path": "registry/models/mendeley_text_challenger_v3.json",
+      "sha256": "f521411d4ad88980f876a11c706c9e5b3742e589e10b16447f7e72a9a142c90c"
+    },
+    {
+      "role": "wayback_v2_evaluation_registry",
+      "path": "registry/analyses/text_baseline_v2_wayback_language_v2.json",
+      "sha256": "450959332887504723066d9fa84dce2fb46b21b8591756a13f47b5416515ab3a"
+    },
+    {
+      "role": "wayback_v2_error_registry",
+      "path": "registry/analyses/text_baseline_v2_wayback_language_v2_error_analysis.json",
+      "sha256": "160b1872cf1454a121690123b896cacfe29303c0de679c73ab838ca6e9fd9200"
+    },
+    {
+      "role": "wayback_v3_evaluation_registry",
+      "path": "registry/analyses/text_baseline_v2_wayback_holdout_v3.json",
+      "sha256": "d67577cbc0af482aa8d2b8aa9eaafe034abe4e4e04dc90db98f2e5688788c5f4"
+    },
+    {
+      "role": "wayback_v3_error_registry",
+      "path": "registry/analyses/text_baseline_v2_wayback_holdout_v3_error_analysis.json",
+      "sha256": "885ed398c8a75947e903773e34ad016c8fc1d016e0485f56825891bfd67fa60c"
+    }
+  ],
+  "synthesis_questions": [
+    "Does the unchanged baseline retain signal across two matched-capture external cohorts?",
+    "Which failure modes recur across cohorts?",
+    "Which already-tested representation directions must be retired?",
+    "What single materially different hypothesis may be predeclared next without using opened external data for selection?"
+  ],
+  "decision_contract": {
+    "external_benchmarks_may_form_hypotheses": true,
+    "external_benchmarks_may_select_or_tune_models": false,
+    "training_allowed": false,
+    "model_scoring_allowed": false,
+    "threshold_change_allowed": false,
+    "relabeling_allowed": false,
+    "deployment_allowed": false
+  }
+}

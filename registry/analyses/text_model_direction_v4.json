@@ -1,0 +1,118 @@
+{
+  "analysis_id": "ISI_TEXT_MODEL_DIRECTION_V4_EVIDENCE_SYNTHESIS",
+  "created_at": "2026-10-02",
+  "status": "EVIDENCE_SYNTHESIS_COMPLETE_HYPOTHESIS_ONLY_NO_MODEL_SELECTION",
+  "purpose": "Consolidate frozen internal, challenger, Wayback V2, and untouched-holdout V3 evidence into one auditable research direction without training, model selection, external-data tuning, or deployment claims.",
+  "inputs": [
+    {
+      "role": "synthesis_protocol",
+      "path": "configs/text_model_direction_v4_protocol.json",
+      "sha256": "56454ea2456ccdba7640440e73fcb14bef83bdbd4f7fd5940d0037e0d8184900"
+    },
+    {
+      "role": "baseline_registry",
+      "path": "registry/models/text_baseline_v2.json",
+      "sha256": "0485439ddc34c56d05587c85cd0520f519a4feb9dd7887d16e46273bc7b1d7f5"
+    },
+    {
+      "role": "character_challenger_registry",
+      "path": "registry/models/mendeley_text_challenger_v2.json",
+      "sha256": "92d6643738973954cb1080d893cb3b3d1422d0aeb6b5625275cbe0641959e2c5"
+    },
+    {
+      "role": "stopword_challenger_registry",
+      "path": "registry/models/mendeley_text_challenger_v3.json",
+      "sha256": "f521411d4ad88980f876a11c706c9e5b3742e589e10b16447f7e72a9a142c90c"
+    },
+    {
+      "role": "wayback_v2_evaluation_registry",
+      "path": "registry/analyses/text_baseline_v2_wayback_language_v2.json",
+      "sha256": "450959332887504723066d9fa84dce2fb46b21b8591756a13f47b5416515ab3a"
+    },
+    {
+      "role": "wayback_v2_error_registry",
+      "path": "registry/analyses/text_baseline_v2_wayback_language_v2_error_analysis.json",
+      "sha256": "160b1872cf1454a121690123b896cacfe29303c0de679c73ab838ca6e9fd9200"
+    },
+    {
+      "role": "wayback_v3_evaluation_registry",
+      "path": "registry/analyses/text_baseline_v2_wayback_holdout_v3.json",
+      "sha256": "d67577cbc0af482aa8d2b8aa9eaafe034abe4e4e04dc90db98f2e5688788c5f4"
+    },
+    {
+      "role": "wayback_v3_error_registry",
+      "path": "registry/analyses/text_baseline_v2_wayback_holdout_v3_error_analysis.json",
+      "sha256": "885ed398c8a75947e903773e34ad016c8fc1d016e0485f56825891bfd67fa60c"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "synthesis_builder",
+      "path": "scripts/synthesize_text_model_direction_v4.py",
+      "sha256": "4419c1b8865950392d7fab779e100c320cf189ddbf91ec2bbd3e3d1e62920cab"
+    },
+    {
+      "role": "synthesis_verifier",
+      "path": "scripts/verify_text_model_direction_v4.py",
+      "sha256": "f179b74c3124a91c33b008db6eca7d366d86c464fb5a0a7f6b5b22b5c1d46d0c"
+    },
+    {
+      "role": "unit_tests",
+      "path": "tests/test_text_model_direction_v4.py",
+      "sha256": "80b1ff6daa5aa8a44eb2fa5b8accca0e2b0778228d0aa3ddcec25a343601fc79"
+    },
+    {
+      "role": "method_documentation",
+      "path": "docs/text-model-direction-v4-evidence-synthesis.md",
+      "sha256": "8c724292132e9e0914af5ff926a62375c5f247fdea3a222e18ff0aa626c48852"
+    }
+  ],
+  "outputs": [
+    {
+      "role": "evidence_synthesis",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\research_synthesis\\text_model_direction_v4\\evidence_synthesis_v4.json",
+      "sha256": "e6cfcb4e2d8ed854e32d532d7725fd66d619a7cd127ccc8fca50b4dca4418ee3"
+    }
+  ],
+  "findings": {
+    "internal_validation_macro_f1": 0.700118,
+    "internal_test_macro_f1": 0.706203,
+    "wayback_v2_macro_f1": 0.651868,
+    "wayback_v3_macro_f1": 0.732143,
+    "descriptive_cross_cohort_macro_f1": 0.687869,
+    "external_records": 68,
+    "external_errors": 21,
+    "false_positives": 14,
+    "false_negatives": 7,
+    "near_threshold_records": 28,
+    "nearest_spam_email_records": 50,
+    "nearest_spam_email_errors": 15,
+    "character_direction_retired": true,
+    "stopword_direction_retired": true
+  },
+  "decision": {
+    "bottleneck": "DATA_AND_SOURCE_ROBUSTNESS_BEFORE_MODEL_CAPACITY",
+    "retain_current_frozen_baseline": true,
+    "deploy_current_baseline": false,
+    "train_agentic_or_large_generative_model_now": false,
+    "next_hypothesis_family": "FROZEN_SEMANTIC_SENTENCE_EMBEDDINGS_PLUS_REGULARIZED_LINEAR_CLASSIFIER",
+    "exact_encoder_selected": false,
+    "reason": "The baseline retains signal across two comparable external cohorts, but recurrent source/style shortcuts and near-threshold fragility remain. Two lexical representation directions already failed promotion gates. A frozen semantic representation is a materially different, capacity-controlled hypothesis; it is not selected until a separate protocol pins the encoder and gates.",
+    "next_gate": "Perform a dependency and license audit, pin one exact frozen encoder revision and checksum, and freeze the V4 development protocol before any embedding computation or classifier fit."
+  },
+  "safety_contract": {
+    "model_fit_operations": 0,
+    "model_scoring_operations": 0,
+    "external_benchmark_transform_operations": 0,
+    "threshold_changes": 0,
+    "labels_changed": 0,
+    "training_allowed": false,
+    "deployment_allowed": false
+  },
+  "prohibited_claims": [
+    "Do not describe the descriptive 68-record aggregation as a new preregistered benchmark.",
+    "Do not use opened V1, V2, or V3 artifacts to select an encoder, classifier, threshold, or hyperparameter.",
+    "Do not claim a frozen semantic representation is superior before the predeclared experiment.",
+    "Do not interpret source-style correlations as fraud evidence."
+  ]
+}

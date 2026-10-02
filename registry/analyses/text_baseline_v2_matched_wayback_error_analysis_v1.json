@@ -1,0 +1,160 @@
+{
+  "analysis_id": "ISI_TEXT_BASELINE_V2_MATCHED_WAYBACK_ERROR_ANALYSIS_V1",
+  "created_at": "2026-09-30",
+  "status": "FROZEN_MATCHED_EXTERNAL_DIAGNOSTIC_COMPLETE_NO_TUNING",
+  "source_id": "mendeley_investment_deceptive_2026",
+  "model_id": "ISI_TEXT_BASELINE_V2",
+  "purpose": "Diagnose all 18 frozen matched-Wayback predictions and six errors without fitting, tuning, threshold selection, or relabeling.",
+  "scope": {
+    "matched_wayback_rows": 18,
+    "model_fit_or_refit": false,
+    "threshold_changed": false,
+    "vectorizer_changed": false,
+    "labels_changed": 0,
+    "fit_reference_for_similarity_only": [
+      "train",
+      "validation"
+    ],
+    "internal_test_rows_used": 0,
+    "auxiliary_rows_used": 0,
+    "quarantine_rows_used": 0
+  },
+  "inputs": [
+    {
+      "role": "matched_wayback_evaluation_registry",
+      "path": "registry/analyses/text_baseline_v2_matched_wayback_v1.json",
+      "sha256": "8ee0fa93f02aa44ad7617ae3d7bc88adafd71ea2bfbc3b6f9a9d83d6741936d8"
+    },
+    {
+      "role": "model_registry",
+      "path": "registry/models/text_baseline_v2.json",
+      "sha256": "0485439ddc34c56d05587c85cd0520f519a4feb9dd7887d16e46273bc7b1d7f5"
+    },
+    {
+      "role": "owner_acceptance",
+      "path": "configs/external_text_matched_wayback_owner_acceptance_v1.json",
+      "sha256": "fef12709e01c22bc171e15fa0ddc8730ed5812fcd97e18300eeb11b6431cae47"
+    },
+    {
+      "role": "model",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\text_baseline_v2\\text_baseline_v2_model.joblib",
+      "sha256": "c58444996e0ae67a9739c588e3d088f1f57eb1af7f9105e10a647303ce72fc71"
+    },
+    {
+      "role": "group_split_dataset",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\mendeley_v2_group_split_v2.csv",
+      "sha256": "98f75387a4a598d85a6f721d10808979bda694dad8f85354d595679bdd96e734"
+    },
+    {
+      "role": "matched_benchmark",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_matched_wayback_v1\\matched_wayback_external_benchmark_v1.json",
+      "sha256": "20ad79fc1a98188b5982c5df2163fca2b8ac7030e37b933a3b3978b3a2804ce4"
+    },
+    {
+      "role": "matched_wayback_results",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\text_baseline_v2\\matched_wayback_v1\\matched_wayback_results_v1.json",
+      "sha256": "0824a09fcf5c53b5ab81add54a6a9c4cbac4e6f64fe626a6d1c8e5a52ac32e02"
+    },
+    {
+      "role": "matched_wayback_predictions",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\text_baseline_v2\\matched_wayback_v1\\matched_wayback_predictions_v1.jsonl",
+      "sha256": "77d6bf890885a463f82100e99cc74c4b7cf3b52c55bc8c24571921c50fbc1cfa"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "error_analyzer",
+      "path": "scripts/analyze_text_baseline_v2_matched_wayback_errors.py",
+      "sha256": "908495d050de8b6e984f1a67883878fb73fe062046821f901c1f2264ae3970ce"
+    },
+    {
+      "role": "error_analysis_verifier",
+      "path": "scripts/verify_text_baseline_v2_matched_wayback_error_analysis.py",
+      "sha256": "876ffaea671f5060d30bb63b780f48460b9ece026de5862127ccfa8cf5fd892c"
+    },
+    {
+      "role": "unit_tests",
+      "path": "tests/test_text_baseline_v2_matched_wayback_error_analysis.py",
+      "sha256": "418d375c81e2cd7859a299bb8bb626e0edcdb9cfb652217501e3cd83bae5f95a"
+    },
+    {
+      "role": "method_documentation",
+      "path": "docs/text-baseline-v2-matched-wayback-error-analysis-v1.md",
+      "sha256": "fdf00c7aaf8141f67133852109db0a94f66484375c3f1486851d3a8436410483"
+    }
+  ],
+  "findings": {
+    "record_count": 18,
+    "correct_count": 12,
+    "error_count": 6,
+    "false_positive_count": 4,
+    "false_negative_count": 2,
+    "predicted_label_1_count": 11,
+    "errors_within_0_10_of_threshold": 3,
+    "false_positive_median_score_label_1": 0.632323,
+    "false_negative_median_score_label_1": 0.450581,
+    "false_positive_mean_vocabulary_coverage": 0.582433,
+    "false_negative_mean_vocabulary_coverage": 0.316102,
+    "false_negative_minimum_vocabulary_coverage": 0.070981,
+    "error_mean_nearest_fit_cosine_similarity": 0.154369,
+    "both_labels_share_wayback_capture_stratum": true,
+    "nearest_fit_spam_email_count_all_records": 14,
+    "nearest_fit_spam_email_count_errors": 4
+  },
+  "outputs": [
+    {
+      "role": "analysis_json",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\text_baseline_v2\\matched_wayback_error_analysis_v1\\matched_wayback_error_analysis_v1.json",
+      "sha256": "962fbd158ac986a73b1c30793c57f42ceaf7f2c0253fe347ecec062d21582888"
+    },
+    {
+      "role": "diagnostics_jsonl",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\text_baseline_v2\\matched_wayback_error_analysis_v1\\matched_wayback_diagnostics_v1.jsonl",
+      "sha256": "941ea1cc607869c9cffcd0ad9972407a13185fab26e294abe8a8938ad463ea00",
+      "record_count": 18
+    },
+    {
+      "role": "error_queue_jsonl",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\text_baseline_v2\\matched_wayback_error_analysis_v1\\matched_wayback_error_queue_v1.jsonl",
+      "sha256": "61055578ffd0503029f894f359f66ad4dae8a035b205c0628d11437703f9646f",
+      "record_count": 6
+    },
+    {
+      "role": "report_markdown",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\text_baseline_v2\\matched_wayback_error_analysis_v1\\matched_wayback_error_analysis_v1.md",
+      "sha256": "6fe8b475ad163304c64f6babb559aa40ed20aa5aa589e0838bba4f0c25f5c917"
+    }
+  ],
+  "decision": {
+    "model_configuration_remains_frozen": true,
+    "tune_from_this_benchmark": false,
+    "promote_for_deployment": false,
+    "primary_failure_modes": [
+      "Generic second-person and marketing language on legitimate financial websites activates label-1 features associated with phishing/spam source style.",
+      "One non-English confirmed page has only 0.070981 unique vocabulary coverage.",
+      "Trading vocabulary can activate label-0 coefficients and suppress confirmed-page scores.",
+      "Nearest-fit similarities are low and 14 of 18 nearest rows come from spam_email, indicating material domain shift and source dependence."
+    ],
+    "next_gate": "Predeclare any challenger from these hypotheses, develop it only with train/validation or nested validation, and evaluate on new untouched external data; never tune and re-score the opened Wayback V1 benchmark."
+  },
+  "safety_contract": {
+    "raw_files_modified": false,
+    "split_file_modified": false,
+    "model_file_modified": false,
+    "network_operations": 0,
+    "labels_created": 0,
+    "model_fit_operations": 0,
+    "threshold_changes": 0,
+    "vectorizer_changes": 0,
+    "training_allowed": false,
+    "domain_access_allowed": false,
+    "benchmark_used_for_model_selection": false,
+    "deployment_allowed": false
+  },
+  "prohibited_claims": [
+    "Do not interpret feature contributions or nearest-neighbor similarity as fraud evidence or causation.",
+    "Do not tune the model or threshold on these 18 cases and re-report the same benchmark as unbiased evaluation.",
+    "Do not describe score_label_1 as a calibrated probability of real-world investment fraud.",
+    "Do not claim capture matching eliminates evidence-source or case-selection effects."
+  ]
+}

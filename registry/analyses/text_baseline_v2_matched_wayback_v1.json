@@ -1,0 +1,118 @@
+{
+  "analysis_id": "ISI_TEXT_BASELINE_V2_MATCHED_WAYBACK_V1",
+  "created_at": "2026-09-30",
+  "status": "FROZEN_MODEL_MATCHED_EXTERNAL_DIAGNOSTIC_COMPLETE_NOT_FOR_DEPLOYMENT",
+  "source_id": "mendeley_investment_deceptive_2026",
+  "target_model_id": "ISI_TEXT_BASELINE_V2",
+  "purpose": "Measure unchanged Text Baseline V2 transfer behavior on a balanced 18-case external benchmark where both classes use Wayback archived-homepage capture and high-confidence independent blinded AI second-review agreement.",
+  "inputs": [
+    {
+      "role": "model_registry",
+      "path": "registry/models/text_baseline_v2.json",
+      "sha256": "0485439ddc34c56d05587c85cd0520f519a4feb9dd7887d16e46273bc7b1d7f5"
+    },
+    {
+      "role": "matched_benchmark_registry",
+      "path": "registry/pilots/external_text_matched_wayback_benchmark_v1.json",
+      "sha256": "5c44ddf4858978b61199127bdd9d301e53b2f18ef21777a578fed8d9ba701f40"
+    },
+    {
+      "role": "owner_acceptance",
+      "path": "configs/external_text_matched_wayback_owner_acceptance_v1.json",
+      "sha256": "fef12709e01c22bc171e15fa0ddc8730ed5812fcd97e18300eeb11b6431cae47"
+    },
+    {
+      "role": "matched_benchmark",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_matched_wayback_v1\\matched_wayback_external_benchmark_v1.json",
+      "sha256": "20ad79fc1a98188b5982c5df2163fca2b8ac7030e37b933a3b3978b3a2804ce4"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "evaluator",
+      "path": "scripts/evaluate_text_baseline_v2_matched_wayback.py",
+      "sha256": "aa61bd0d157b8e9dee332aa8b35f571327f95328a51dc5b4150023dff263d1af"
+    },
+    {
+      "role": "verifier",
+      "path": "scripts/verify_text_baseline_v2_matched_wayback.py",
+      "sha256": "face7406e748414728605c24e9df4fcc41bc84334423b8754fbe1a87962d3a50"
+    },
+    {
+      "role": "unit_tests",
+      "path": "tests/test_text_baseline_v2_matched_wayback.py",
+      "sha256": "08cfed91d9520b283c22793c55311ca9b3a3f96f08dd5b687742404f03d1b25d"
+    },
+    {
+      "role": "method_documentation",
+      "path": "docs/text-baseline-v2-matched-wayback-v1.md",
+      "sha256": "e54063d32e3e43284de5d9b82dbe9513803ef97ddfcc5c94fe909f1683843906"
+    }
+  ],
+  "outputs": [
+    {
+      "role": "results_json",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\text_baseline_v2\\matched_wayback_v1\\matched_wayback_results_v1.json",
+      "sha256": "0824a09fcf5c53b5ab81add54a6a9c4cbac4e6f64fe626a6d1c8e5a52ac32e02"
+    },
+    {
+      "role": "predictions_jsonl",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\text_baseline_v2\\matched_wayback_v1\\matched_wayback_predictions_v1.jsonl",
+      "sha256": "77d6bf890885a463f82100e99cc74c4b7cf3b52c55bc8c24571921c50fbc1cfa",
+      "record_count": 18
+    },
+    {
+      "role": "report_markdown",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\text_baseline_v2\\matched_wayback_v1\\matched_wayback_report_v1.md",
+      "sha256": "fa480e1828932ddd14700c0855c48b7ecbfb5cf9fcee5716487209bb4399cfb6"
+    }
+  ],
+  "evaluation_contract": {
+    "capture_stratum": "WAYBACK_ARCHIVED_HOMEPAGE_HTML",
+    "record_count": 18,
+    "confirmed_count": 9,
+    "legitimate_count": 9,
+    "threshold": 0.5,
+    "feature_input": "archived homepage visible text only",
+    "evidence_text_in_feature_matrix": false,
+    "independent_ai_second_review": true,
+    "independent_human_second_review": false
+  },
+  "metrics": {
+    "row_count": 18,
+    "accuracy": 0.666667,
+    "balanced_accuracy": 0.666667,
+    "macro_f1": 0.6625,
+    "roc_auc": 0.592593,
+    "average_precision": 0.600812,
+    "confusion_matrix": {
+      "tn": 5,
+      "fp": 4,
+      "fn": 2,
+      "tp": 7
+    },
+    "bootstrap_95_percent_macro_f1": [
+      0.415584,
+      0.875203
+    ]
+  },
+  "decision": {
+    "model_configuration_changed": false,
+    "threshold_changed": false,
+    "use_benchmark_for_tuning": false,
+    "promote_for_deployment": false,
+    "reason": "The capture-matched benchmark reduces one major confounder but frozen transfer performance remains weak: six of 18 errors, legitimate recall 0.555556, ROC-AUC 0.592593, and a wide bootstrap interval.",
+    "next_action": "Freeze this evaluation, perform diagnostic-only error analysis, and expand future external evidence across additional capture strata with both classes independently reviewed; do not tune on this opened benchmark."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "domain_access_allowed": false,
+    "labels_created": 0,
+    "model_scoring_operations": 18,
+    "model_fit_operations": 0,
+    "threshold_changes": 0,
+    "vectorizer_changes": 0,
+    "training_allowed": false,
+    "deployment_allowed": false
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "acceptance_id": "EXTERNAL_TEXT_MATCHED_WAYBACK_OWNER_ACCEPTANCE_V1",
+  "accepted_at": "2026-09-30T00:00:00+07:00",
+  "adopter_role": "PROJECT_OWNER",
+  "authorization_source": "User follow-up instruction 'làm bước tiếp đi' after receiving the completed matched Wayback benchmark report and its OWNER_ACCEPTANCE_REQUIRED_BEFORE_MODEL_SCORING gate.",
+  "accepted_for_frozen_model_scoring": true,
+  "accepted_for_training_or_tuning": false,
+  "independent_human_review_claimed": false,
+  "scope": {
+    "benchmark_id": "EXTERNAL_TEXT_MATCHED_WAYBACK_BENCHMARK_V1",
+    "benchmark_path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_matched_wayback_v1\\matched_wayback_external_benchmark_v1.json",
+    "benchmark_sha256": "20ad79fc1a98188b5982c5df2163fca2b8ac7030e37b933a3b3978b3a2804ce4",
+    "benchmark_registry_path": "registry/pilots/external_text_matched_wayback_benchmark_v1.json",
+    "benchmark_registry_sha256": "5c44ddf4858978b61199127bdd9d301e53b2f18ef21777a578fed8d9ba701f40",
+    "record_count": 18,
+    "confirmed_count": 9,
+    "legitimate_count": 9,
+    "capture_stratum": "WAYBACK_ARCHIVED_HOMEPAGE_HTML"
+  },
+  "scoring_contract": {
+    "model_id": "ISI_TEXT_BASELINE_V2",
+    "model_registry_path": "registry/models/text_baseline_v2.json",
+    "model_registry_sha256": "0485439ddc34c56d05587c85cd0520f519a4feb9dd7887d16e46273bc7b1d7f5",
+    "model_configuration_changes_allowed": false,
+    "threshold_changes_allowed": false,
+    "vectorizer_changes_allowed": false,
+    "model_fit_allowed": false,
+    "use_benchmark_for_tuning": false,
+    "deployment_allowed": false
+  }
+}

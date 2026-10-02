@@ -1,0 +1,158 @@
+{
+  "protocol_id": "ISI_TARGET_TEXT_CORPUS_V1_PREACQUISITION",
+  "frozen_at": "2026-10-02T20:15:00+07:00",
+  "status": "LOCKED_BEFORE_OFFLINE_METADATA_DERIVATION",
+  "purpose": "Build a provenance-only source inventory and a label-free exclusion index for every opened external cohort before any new target-corpus capture or labeling.",
+  "inputs": [
+    {
+      "role": "target_corpus_protocol",
+      "path": "configs/target_text_corpus_v1_protocol.json",
+      "sha256": "7ec4468c4eac0241706114d9bfeb3c090208ef756f620841ac3be47074b8edc4"
+    },
+    {
+      "role": "target_corpus_protocol_registry",
+      "path": "registry/analyses/target_text_corpus_v1_protocol.json",
+      "sha256": "53f563231cf6cbdaac83057cc684e2bc8b24badac7fa00c8f7dbf5f0041e2f52"
+    },
+    {
+      "role": "source_registry",
+      "path": "registry/sources.json",
+      "sha256": "37cb19e4b329b642a8a61f487e20d257b6f8e771a1f6bf60babb888d9d0b5609"
+    },
+    {
+      "role": "source_readiness",
+      "path": "registry/source_readiness.md",
+      "sha256": "05d062ebd77cd00605e643504fead3a35f6cda5a1b4135621a3e795cbbfeaa52"
+    }
+  ],
+  "opened_cohorts": [
+    {
+      "cohort_id": "EXTERNAL_TEXT_RECONCILED_PILOT_V1",
+      "registry_path": "registry/pilots/external_text_reconciled_pilot_v1.json",
+      "registry_sha256": "c6faa21193aa4ce55014a4bee60955037cb1c2a2aef145b73fe5e4f2bd6db8fd",
+      "artifact_container": "outputs",
+      "artifact_role": "reconciled_intake_json",
+      "expected_record_count": 21
+    },
+    {
+      "cohort_id": "EXTERNAL_TEXT_MATCHED_WAYBACK_BENCHMARK_V1",
+      "registry_path": "registry/pilots/external_text_matched_wayback_benchmark_v1.json",
+      "registry_sha256": "5c44ddf4858978b61199127bdd9d301e53b2f18ef21777a578fed8d9ba701f40",
+      "artifact_container": "outputs",
+      "artifact_role": "benchmark",
+      "expected_record_count": 18
+    },
+    {
+      "cohort_id": "EXTERNAL_TEXT_WAYBACK_LANGUAGE_BENCHMARK_V2",
+      "registry_path": "registry/pilots/external_text_wayback_language_benchmark_v2.json",
+      "registry_sha256": "e966b7b278ec4e15f64daf5b70185697c57405152a08dbe17be391c30f0fa16b",
+      "artifact_container": "artifacts",
+      "artifact_role": "benchmark",
+      "expected_record_count": 38
+    },
+    {
+      "cohort_id": "EXTERNAL_TEXT_WAYBACK_HOLDOUT_BENCHMARK_V3",
+      "registry_path": "registry/pilots/external_text_wayback_holdout_benchmark_v3.json",
+      "registry_sha256": "fa75acd2586c30f81872fee8f31c3afa1c42f3660af9c0831124bb606957eaae",
+      "artifact_container": "artifacts",
+      "artifact_role": "benchmark",
+      "expected_record_count": 30
+    }
+  ],
+  "candidate_channels": [
+    {
+      "channel_id": "CONFIRMED_REGULATOR_LINKED_WEBSITE",
+      "planned_target_status": "CONFIRMED",
+      "artifact_types": ["WEBSITE_SNAPSHOT"],
+      "registered_source_ids": ["iosco_i_scan", "fca_warning_list", "ubcknn_warnings"],
+      "source_role": "CANDIDATE_DISCOVERY_AND_CASE_EVIDENCE_ONLY",
+      "readiness": "READY_FOR_PROVENANCE_ENUMERATION_ONLY",
+      "requirements_before_capture": [
+        "exact entity or domain linkage",
+        "separate observed solicitation artifact",
+        "license or public-use check",
+        "opened-cohort exclusion pass"
+      ]
+    },
+    {
+      "channel_id": "CONFIRMED_CORROBORATED_CASE_SEED",
+      "planned_target_status": "CONFIRMED",
+      "artifact_types": ["WEBSITE_SNAPSHOT", "POST", "MESSAGE"],
+      "registered_source_ids": ["dfpi_crypto_scam_tracker", "crimson_www_2025"],
+      "source_role": "CASE_SEED_ONLY_REQUIRES_INDEPENDENT_OFFICIAL_CORROBORATION",
+      "readiness": "BLOCKED_PENDING_CORROBORATION_AND_CAPTURE_SOURCE_PROTOCOL",
+      "requirements_before_capture": [
+        "independent regulator, enforcement, court, or equivalent official corroboration",
+        "exact artifact identity linkage",
+        "capture-source registration and terms review",
+        "opened-cohort exclusion pass"
+      ]
+    },
+    {
+      "channel_id": "LEGITIMATE_REGISTER_LINKED_WEBSITE",
+      "planned_target_status": "LEGITIMATE",
+      "artifact_types": ["WEBSITE_SNAPSHOT"],
+      "registered_source_ids": ["sec_iapd"],
+      "source_role": "OFFICIAL_ENTITY_REFERENCE_ONLY",
+      "readiness": "READY_FOR_PROVENANCE_ENUMERATION_ONLY",
+      "requirements_before_capture": [
+        "exact registered entity and official-domain agreement",
+        "clone, compromise, redirect, and impersonation contradiction check",
+        "license or public-use check",
+        "opened-cohort exclusion pass"
+      ]
+    },
+    {
+      "channel_id": "LEGITIMATE_OFFICIAL_ACCOUNT_POST_OR_MESSAGE",
+      "planned_target_status": "LEGITIMATE",
+      "artifact_types": ["POST", "MESSAGE"],
+      "registered_source_ids": ["sec_iapd"],
+      "source_role": "ENTITY_REFERENCE_ONLY_PLATFORM_CAPTURE_SOURCE_NOT_REGISTERED",
+      "readiness": "BLOCKED_PENDING_PLATFORM_SOURCE_REGISTRATION_AND_TERMS_REVIEW",
+      "requirements_before_capture": [
+        "official account ownership linkage",
+        "platform source registration and terms review",
+        "immutable public capture policy",
+        "opened-cohort exclusion pass"
+      ]
+    }
+  ],
+  "non_candidate_sources": [
+    {
+      "source_id": "mendeley_investment_deceptive_2026",
+      "reason": "Historical heterogeneous benchmark only; zero rows may enter the new target corpus."
+    },
+    {
+      "source_id": "multi_agent_fraud_bench",
+      "reason": "Synthetic-only source; prohibited as case-level target ground truth."
+    }
+  ],
+  "output_paths": {
+    "candidate_source_inventory": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_preacquisition\\candidate_source_inventory_v1.json",
+    "opened_external_exclusion_index": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_preacquisition\\opened_external_exclusion_index_v1.json"
+  },
+  "required_quality_gates": {
+    "all_opened_cohorts_hash_verified": true,
+    "every_opened_record_has_capture_sha256": true,
+    "every_opened_record_has_text_sha256": true,
+    "every_opened_record_has_normalized_host_exclusion_key": true,
+    "every_available_case_and_group_identifier_preserved": true,
+    "missing_legacy_case_or_group_identifiers_reported": true,
+    "artifact_text_must_not_be_emitted": true,
+    "ground_truth_status_must_not_be_emitted_per_record": true,
+    "candidate_inventory_contains_no_acquired_records": true
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "domain_access_allowed": false,
+    "new_records_acquired": 0,
+    "new_artifact_captures": 0,
+    "labels_created": 0,
+    "labels_changed": 0,
+    "model_fit_operations": 0,
+    "model_scoring_operations": 0,
+    "validation_or_test_openings": 0,
+    "training_allowed": false,
+    "deployment_allowed": false
+  }
+}

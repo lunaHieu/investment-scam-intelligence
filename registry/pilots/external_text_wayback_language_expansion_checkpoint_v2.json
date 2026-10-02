@@ -1,0 +1,107 @@
+{
+  "pilot_id": "EXTERNAL_TEXT_WAYBACK_LANGUAGE_EXPANSION_CHECKPOINT_V2",
+  "created_at": "2026-09-30",
+  "status": "AVAILABILITY_PARTIAL_RATE_LIMIT_RETRY_REQUIRED",
+  "purpose": "Track an untouched balanced candidate cohort for same-capture language expansion without converting reference provenance into labels.",
+  "inputs": [
+    {
+      "role": "protocol",
+      "path": "configs/external_text_wayback_language_expansion_v2.json",
+      "sha256": "96db6f18286384c849291f9e3748aa66410d345de583e6612de417a3d3023e4a"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "queue_builder",
+      "path": "scripts/build_external_text_wayback_language_queue_v2.py",
+      "sha256": "aa54d09b553bccb868b5f53badaf3419fb56896f035bbd4982d0eb1cddb820e6"
+    },
+    {
+      "role": "availability_query",
+      "path": "scripts/query_wayback_language_expansion_v2.ps1",
+      "sha256": "b8bcc06fc660d0e77209d55997250b1b4f2cc83c6de20d80f284e6c36e8dac72"
+    },
+    {
+      "role": "rate_limit_retry",
+      "path": "scripts/retry_wayback_language_expansion_v2.ps1",
+      "sha256": "633f588a1f76a3a6ee57807d37f12088b3a204cdc760c5c232f2e998411ceb73"
+    },
+    {
+      "role": "capture",
+      "path": "scripts/capture_wayback_language_expansion_v2.ps1",
+      "sha256": "2c125f5ca9086892362e557b1e8182ecb9d856d1db4fcffffedd80204d52edce"
+    },
+    {
+      "role": "verifier",
+      "path": "scripts/verify_external_text_wayback_language_expansion_v2.py",
+      "sha256": "6d4c727656db99b1e825dee1373261de27f92ce9483727d812e4c3b11524d1cb"
+    },
+    {
+      "role": "unit_tests",
+      "path": "tests/test_external_text_wayback_language_expansion_v2.py",
+      "sha256": "770dcbb0f000538cab87d36a43c41b51eae76fdb4dc4d062eb06264158a3de05"
+    },
+    {
+      "role": "method_documentation",
+      "path": "docs/external-text-wayback-language-expansion-v2.md",
+      "sha256": "fd5a2f0e73823eb5efcf086a3598415a7c996c407cbfb8db6562869fd56a181e"
+    }
+  ],
+  "outputs": [
+    {
+      "role": "candidate_queue",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_matched_wayback_v2\\candidate_queue_v2.jsonl",
+      "sha256": "e2ceef1899f19b9f4cc41e268d4159f77391b8fff022969a4b2977f1dd122ed0",
+      "record_count": 120
+    },
+    {
+      "role": "candidate_queue_report",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_matched_wayback_v2\\candidate_queue_report_v2.json",
+      "sha256": "374d4ea38365a72da2081a35a54175452ed3ff7f6fbccb9f6c386db616f235ab"
+    },
+    {
+      "role": "partial_availability_report",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_matched_wayback_v2\\availability_report_v2.json",
+      "sha256": "87abb53c2a25bf1b2c21e19c69310f51c95b056eda864d92ad5fbae4ea43bc0b"
+    }
+  ],
+  "selection": {
+    "candidate_count": 120,
+    "confirmed_candidate_count": 60,
+    "legitimate_candidate_count": 60,
+    "unique_candidate_host_count": 120,
+    "unique_prior_queue_host_count": 200,
+    "prior_host_overlap_count": 0,
+    "labels_created": 0
+  },
+  "availability_checkpoint": {
+    "network_request_count": 120,
+    "available_snapshot_count": 6,
+    "available_by_reference_branch": {
+      "CONFIRMED_CANDIDATE": 6,
+      "LEGITIMATE_CANDIDATE": 0
+    },
+    "definitive_no_snapshot_count": 18,
+    "unresolved_error_count": 96,
+    "unresolved_error_type": "HTTP_429_TOO_MANY_REQUESTS",
+    "zero_legitimate_available_is_interpretable": false
+  },
+  "readiness": {
+    "availability_complete": false,
+    "capture_allowed": false,
+    "language_screening_allowed": false,
+    "first_review_allowed": false,
+    "independent_second_review_allowed": false,
+    "model_scoring_allowed": false,
+    "next_required_action": "RETRY_ONLY_THE_96_UNRESOLVED_AVAILABILITY_REQUESTS_AFTER_WAYBACK_RATE_LIMIT_RECOVERS"
+  },
+  "safety_contract": {
+    "candidate_live_domain_access_operations": 0,
+    "archived_page_download_operations": 0,
+    "labels_created": 0,
+    "model_scoring_operations": 0,
+    "model_fit_operations": 0,
+    "training_allowed": false,
+    "independent_human_review_claimed": false
+  }
+}

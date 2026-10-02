@@ -1,0 +1,72 @@
+{
+  "protocol_id": "EXTERNAL_TEXT_WAYBACK_CONFIRMED_TOPUP_V2",
+  "created_at": "2026-10-01",
+  "status": "LOCKED_BEFORE_TOPUP_ACQUISITION",
+  "parent_protocol": {
+    "path": "configs/external_text_wayback_language_expansion_v2.json",
+    "sha256": "96db6f18286384c849291f9e3748aa66410d345de583e6612de417a3d3023e4a"
+  },
+  "trigger": {
+    "corrected_language_screening_report": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_matched_wayback_v2\\language_screening_v2_1\\language_screening_report_v2_1.json",
+    "sha256": "b507a662a45a4b05d2008c5d941003c9c3867ec21f5d8c7ac76534c31e7e4b68",
+    "reviewable_english_confirmed_candidates": 9,
+    "reviewable_english_legitimate_candidates": 10,
+    "minimum_required_per_class_after_dual_review": 12,
+    "reason": "The first balanced capture has insufficient pre-review English capacity, so no language stratum can be opened yet."
+  },
+  "selection": {
+    "seed": "20261001-wayback-confirmed-topup-v2",
+    "requested_confirmed_candidates": 40,
+    "target_timestamp": "20261001",
+    "reference_branch_is_ground_truth": false,
+    "labels_created": 0
+  },
+  "prior_candidate_queues": [
+    {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_capture_queue_v1\\capture_candidates_v1.jsonl",
+      "sha256": "ae843f5723d66e7e996300424c5f11663fb513bbb94a52ad282de38d52fa1b29",
+      "record_count": 30
+    },
+    {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_capture_queue_v1\\iosco_confirmed_reserve_v1.jsonl",
+      "sha256": "7a1586b4ca78c6fb7c71d7bd3cbed5bbb1352ab7cd915ab15a92fafecd9f7ede",
+      "record_count": 40
+    },
+    {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_capture_queue_v1\\iosco_confirmed_reserve_v2.jsonl",
+      "sha256": "118194378269a8d1b532ed41882675990c6792f41c2fb39c5cecfbbe23d7fa80",
+      "record_count": 100
+    },
+    {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_capture_queue_v1\\sec_legitimate_reserve_v1.jsonl",
+      "sha256": "3a6f905be34330c8b541eee21c1c5d08ee6adb3a187b585a059eccafd315edd2",
+      "record_count": 30
+    },
+    {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_matched_wayback_v1\\candidate_queue_v1.jsonl",
+      "sha256": "1f153b60d659980e64de1a367b720e40ffd9b43381ff14e407f3fc16e9f5d372",
+      "record_count": 21
+    },
+    {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_matched_wayback_v1\\legitimate_supplement_queue_v1.jsonl",
+      "sha256": "6684a7a7a6d9df1dc5039f1bce1ed25ca1f69b41f19d8858d038b754a07d1eaa",
+      "record_count": 15
+    },
+    {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_matched_wayback_v2\\candidate_queue_v2.jsonl",
+      "sha256": "e2ceef1899f19b9f4cc41e268d4159f77391b8fff022969a4b2977f1dd122ed0",
+      "record_count": 120
+    }
+  ],
+  "capture_contract": {
+    "capture_stratum": "WAYBACK_ARCHIVED_HOMEPAGE_HTML",
+    "candidate_live_domain_access_allowed": false,
+    "allowed_network_hosts": ["archive.org", "web.archive.org"],
+    "automatic_external_redirect_following": false
+  },
+  "model_firewall": {
+    "training_allowed": false,
+    "tuning_allowed": false,
+    "model_scoring_allowed": false
+  }
+}

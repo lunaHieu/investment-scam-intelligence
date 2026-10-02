@@ -1,0 +1,469 @@
+{
+  "response_id": "EXTERNAL_TEXT_WAYBACK_LANGUAGE_INDEPENDENT_SECOND_REVIEW_RESPONSE_V2",
+  "packet_sha256": "1f6f2710232a312eb5c54852e2682707121e92d7527c70e7b905233e69f5ad18",
+  "reviewer": "OpenAI Codex independent blinded AI reviewer",
+  "review_type": "INDEPENDENT_BLINDED_AI_SECOND_REVIEW_NOT_HUMAN",
+  "reviewed_at": "2026-10-01",
+  "reviews": [
+    {
+      "blind_review_id": "WB2BR_006F40DDDB0B08CB",
+      "decision": "CONFIRMED",
+      "confidence": "HIGH",
+      "rationale": "The archived homepage presents the exact Fintechdefioptions identity on the exact domain named by the official regulator warning and actively solicits forex, crypto, CFD, and investment-plan customers. No different operator or benign repurpose is indicated.",
+      "evidence_checks": [
+        "The capture repeatedly names Fintechdefioptions and describes an online broker and cryptocurrency investment platform.",
+        "The captured domain exactly matches the warning record's observed domain, and the displayed identity matches the warning entity key.",
+        "The homepage contains registration, login, deposit, investment-plan, and profit-withdrawal calls to action consistent with the warned financial-service activity."
+      ],
+      "contradictions": []
+    },
+    {
+      "blind_review_id": "WB2BR_09746571E5650329",
+      "decision": "LEGITIMATE",
+      "confidence": "HIGH",
+      "rationale": "The capture is a coherent Creekside Partners fiduciary-advisory site on the exact domain linked by the registration reference, with matching branding, same-domain email, Petaluma address, telephone numbers, and financial-disclosure links. No impersonation contradiction is visible.",
+      "evidence_checks": [
+        "The homepage identifies Creekside Partners and describes fiduciary investment and financial-management services.",
+        "The domain exactly matches the registration record's observed domain and the displayed name matches the registered entity name key.",
+        "Same-domain contact email, physical address, telephone numbers, privacy policy, and financial disclosures support a continuous firm identity."
+      ],
+      "contradictions": []
+    },
+    {
+      "blind_review_id": "WB2BR_0B36A4E47816031D",
+      "decision": "LEGITIMATE",
+      "confidence": "HIGH",
+      "rationale": "The archived site consistently identifies Brook Capital as an independently owned wealth advisory firm and explicitly states that it is an SEC Registered Investment Advisor. The exact registered-record domain, firm branding, address, phone number, Form CRS, and disclaimers align without an impersonation signal.",
+      "evidence_checks": [
+        "Brook Capital branding and wealth-advisory services are prominent throughout the capture.",
+        "The captured domain exactly matches the registration record's observed domain and the identity matches the Brook Capital name key.",
+        "The capture supplies a Brookfield address, telephone number, SEC-registration statement, Form CRS, and disclaimer links."
+      ],
+      "contradictions": []
+    },
+    {
+      "blind_review_id": "WB2BR_0C488054EDC90ABC",
+      "decision": "LEGITIMATE",
+      "confidence": "HIGH",
+      "rationale": "The archived homepage identifies Manikay Partners and describes its opportunistic investment strategy on the exact domain associated with Manikay Partners LLC in the registration reference. The New York contact details and regulatory disclosure links reinforce the same identity, with no contrary operator shown.",
+      "evidence_checks": [
+        "The capture prominently names Manikay Partners and presents a consistent investment-management business.",
+        "The captured domain exactly matches the registration record's observed domain and the brand matches the registered name key.",
+        "New York address, telephone number, terms, privacy, Pillar 3, stewardship, and MiFID reporting links support the firm identity."
+      ],
+      "contradictions": []
+    },
+    {
+      "blind_review_id": "WB2BR_0DE642B5EF67B3F5",
+      "decision": "LEGITIMATE",
+      "confidence": "HIGH",
+      "rationale": "The capture consistently presents Ohana Advisors as a multi-family office and investment manager on the exact domain tied to Ohana Advisors Management LLC. Same-domain contact information, a physical office, client portal, Form ADV, and Form CRS support identity continuity and show no impersonation contradiction.",
+      "evidence_checks": [
+        "The homepage names Ohana Advisors and describes long-running family-office and investment-management services.",
+        "The captured domain exactly matches the registration record's observed domain and the brand aligns with the registered entity key.",
+        "Same-domain email, San Rafael address, telephone number, client login, Form ADV, and Form CRS are internally consistent."
+      ],
+      "contradictions": []
+    },
+    {
+      "blind_review_id": "WB2BR_0DF018CE3A1EEF12",
+      "decision": "CONFIRMED",
+      "confidence": "HIGH",
+      "rationale": "The archived site uses the exact Easy Edge identity on the exact warned domain and markets AI-assisted crypto, forex, stock, and CFD trading to Canadian users, including high-return claims and registration prompts. Nothing in the capture indicates a different operator or unrelated repurpose.",
+      "evidence_checks": [
+        "The homepage repeatedly labels itself Easy Edge and an official Canadian investing or trading platform.",
+        "The captured domain exactly matches the regulator warning's observed domain and the displayed name matches the warning entity key.",
+        "The capture promotes account registration, broker access, multiple speculative asset classes, and returns exceeding 200 percent."
+      ],
+      "contradictions": []
+    },
+    {
+      "blind_review_id": "WB2BR_2E71D1CE7515B8ED",
+      "decision": "CONFIRMED",
+      "confidence": "HIGH",
+      "rationale": "The archived homepage identifies Stan Trust Bank PLC on the exact domain in the official warning and solicits banking accounts, deposits, transfers, cards, and loans. Its same-domain email and claimed bank identity align with the warned entity, with no evidence of benign domain repurposing.",
+      "evidence_checks": [
+        "The capture repeatedly names Stan Trust Bank and presents online and business banking services.",
+        "The captured domain exactly matches the warning record's observed domain and the displayed identity matches the warning entity key.",
+        "Open-account calls, savings claims, cards, transfers, loans, and same-domain contact details show active financial solicitation."
+      ],
+      "contradictions": []
+    },
+    {
+      "blind_review_id": "WB2BR_41690BE3A52066A1",
+      "decision": "LEGITIMATE",
+      "confidence": "HIGH",
+      "rationale": "The capture is a detailed Trading Central corporate and product site on the exact registered-record domain, consistently describing brokerage research, analytics, integrations, and institutional services under the Trading Central brand. Extensive legal, privacy, security, and corporate navigation reveals no impersonation conflict.",
+      "evidence_checks": [
+        "Trading Central branding and its brokerage research and analytics products are consistent throughout the page.",
+        "The captured domain exactly matches the registration record's observed domain and the brand matches the registered name key.",
+        "The site includes corporate, security, legal, integration, product, and contact sections consistent with an established operating entity."
+      ],
+      "contradictions": []
+    },
+    {
+      "blind_review_id": "WB2BR_47B046D8D8A21E5D",
+      "decision": "LEGITIMATE",
+      "confidence": "HIGH",
+      "rationale": "The archived site identifies Searle & Co., Inc. as a Greenwich investment firm and explicitly states its SEC investment-adviser and FINRA broker-dealer status. The exact referenced domain, same-domain email, office address, phone, disclosure links, and corporate history align without an impersonation contradiction.",
+      "evidence_checks": [
+        "The capture prominently identifies Searle & Co. and describes brokerage and investment-advisory services.",
+        "The captured domain exactly matches the registration record's observed domain and the identity matches the Searle Co name key.",
+        "Greenwich address, telephone number, same-domain email, Form ADV, Form CRS, FINRA, and SIPC references are mutually consistent."
+      ],
+      "contradictions": []
+    },
+    {
+      "blind_review_id": "WB2BR_480D9A9ACCB7ABC2",
+      "decision": "LEGITIMATE",
+      "confidence": "HIGH",
+      "rationale": "The capture consistently presents Kiltearn Partners LLP as an institutional global-equity investment firm on the exact registered-record domain. The legal name in the footer, same-domain email, Edinburgh address, UK and US telephone contacts, legal notices, and client login provide strong identity alignment with no visible impersonation issue.",
+      "evidence_checks": [
+        "The homepage names Kiltearn Partners and describes a disciplined global-equity investment program.",
+        "The captured domain exactly matches the registration record's observed domain and the footer gives the Kiltearn Partners LLP legal name.",
+        "Same-domain email, Edinburgh address, telephone numbers, legal documents, and client login support operational continuity."
+      ],
+      "contradictions": []
+    },
+    {
+      "blind_review_id": "WB2BR_4B07E8E65E0601C8",
+      "decision": "LEGITIMATE",
+      "confidence": "HIGH",
+      "rationale": "The archived site repeatedly identifies Hahn Financial Group, Inc. and provides a consistent Sioux Falls office identity, multiple same-domain email addresses, telephone numbers, advisory resources, and a Client Relationship Summary. The exact referenced domain and firm name align with no contrary operator.",
+      "evidence_checks": [
+        "Hahn Financial Group, Inc. appears as the site and firm identity across the capture.",
+        "The captured domain exactly matches the registration record's observed domain and the displayed name matches the registered name key.",
+        "Physical address, multiple same-domain emails, phone numbers, Client Relationship Summary, and FINRA BrokerCheck link support the identity."
+      ],
+      "contradictions": []
+    },
+    {
+      "blind_review_id": "WB2BR_51AB4D8C8DAEDE1D",
+      "decision": "LEGITIMATE",
+      "confidence": "HIGH",
+      "rationale": "The archived site identifies Innovation Partners, LLC and presents a broad but coherent suite of investment-banking, advisory, insurance, retirement, and consulting services on the exact registration-linked domain. Corporate branding, legal disclaimers, and copyright attribution show no impersonation contradiction.",
+      "evidence_checks": [
+        "The capture opens with Innovation Partners, LLC and consistently presents its financial and consulting services.",
+        "The captured domain exactly matches the registration record's observed domain and the displayed legal name matches the registered entity key.",
+        "Advisor login, contact path, legal disclosures, market-data disclaimer, and corporate copyright attribution support a single operating identity."
+      ],
+      "contradictions": []
+    },
+    {
+      "blind_review_id": "WB2BR_5B689A732050084A",
+      "decision": "LEGITIMATE",
+      "confidence": "HIGH",
+      "rationale": "The capture explicitly identifies Sage Hill Capital as an SEC-registered investment adviser in Ann Arbor on the exact domain tied to the registration record. Its fiduciary description, team information, same-domain email, physical address, phone, and Form CRS align without an impersonation signal.",
+      "evidence_checks": [
+        "The homepage consistently uses the Sage Hill Capital identity and describes investment-advisory and portfolio-management services.",
+        "The captured domain exactly matches the registration record's observed domain and the displayed brand matches the registered entity key.",
+        "Ann Arbor address, telephone number, same-domain email, team biographies, and Form CRS support the firm's identity."
+      ],
+      "contradictions": []
+    },
+    {
+      "blind_review_id": "WB2BR_6703027BDA2B583A",
+      "decision": "LEGITIMATE",
+      "confidence": "HIGH",
+      "rationale": "The archived homepage presents SM Investors and identifies the legal operator as S. Muoio & Co. LLC, exactly matching the registration record's paired name keys on the exact observed domain. The New York office, telephone and fax numbers, fund materials, and investor-file area reveal no impersonation contradiction.",
+      "evidence_checks": [
+        "The site brand is SM Investors and the footer names S. Muoio & Co. LLC.",
+        "Both displayed identities correspond to the registration record's entity name keys and the captured domain exactly matches its observed domain.",
+        "New York address, contact numbers, funds, performance documents, and protected investor files support a coherent adviser identity."
+      ],
+      "contradictions": []
+    },
+    {
+      "blind_review_id": "WB2BR_6DABBF901EBE33D9",
+      "decision": "CONFIRMED",
+      "confidence": "HIGH",
+      "rationale": "The archived site uses the exact Noblepayz identity on the exact domain named in the regulator warning and offers online banking, transfers, credit cards, and loans. Its account sign-in and sign-up functions and same-brand contact information align with the warned financial-service identity, with no repurpose contradiction.",
+      "evidence_checks": [
+        "The homepage repeatedly identifies Noblepayz and markets digital banking services.",
+        "The captured domain exactly matches the warning record's observed domain and the displayed identity matches the warning entity key.",
+        "Online-banking login, account registration, money transfers, credit cards, loans, and a claimed office address show active financial solicitation."
+      ],
+      "contradictions": []
+    },
+    {
+      "blind_review_id": "WB2BR_71229301CDA3D2E0",
+      "decision": "CONFIRMED",
+      "confidence": "HIGH",
+      "rationale": "The archived homepage presents the exact Legion Credit Union identity on the exact warned domain and offers current accounts, savings, cards, loans, mortgages, and online banking. Same-domain support email, a claimed branch address, and telephone contact reinforce the warned identity; no unrelated use is visible.",
+      "evidence_checks": [
+        "The capture repeatedly names Legion Credit Union and provides a full retail-banking navigation structure.",
+        "The captured domain exactly matches the regulator warning's observed domain and the identity matches the warning entity key.",
+        "Sign-in, application, account, card, loan, mortgage, branch, email, and phone content demonstrates active banking solicitation."
+      ],
+      "contradictions": []
+    },
+    {
+      "blind_review_id": "WB2BR_7343A95021828922",
+      "decision": "LEGITIMATE",
+      "confidence": "HIGH",
+      "rationale": "The capture consistently identifies Global AutoTrading Inc. and describes autotrading stocks and options in clients' own brokerage accounts on the exact registration-linked domain. The Form CRS, investor-relations, disclosure, privacy, and business-continuity links support the registered identity and show no impersonation contradiction.",
+      "evidence_checks": [
+        "The homepage identifies Global AutoTrading and explains its autotrading service and broker integrations.",
+        "The captured domain exactly matches the registration record's observed domain and the footer gives the Global AutoTrading Inc. legal name.",
+        "Form CRS, investor relations, autotrading disclosure, privacy policy, and business continuity plan support a regulated-firm identity."
+      ],
+      "contradictions": []
+    },
+    {
+      "blind_review_id": "WB2BR_77EEEAA71634E780",
+      "decision": "CONFIRMED",
+      "confidence": "HIGH",
+      "rationale": "The archived site repeatedly uses the exact BlueQ identity on the exact domain in the official warning and solicits Canadian users for AI-assisted crypto, forex, CFD, and stock trading. Registration forms, account-access language, and the financial-risk content align with the warned service; no domain repurpose is indicated.",
+      "evidence_checks": [
+        "The capture identifies BlueQ as a Canadian multi-market trading and investing platform.",
+        "The captured domain exactly matches the warning record's observed domain and the displayed name matches the warning entity key.",
+        "Registration, trading tools, account login, leveraged-product risks, and investment performance material show the warned financial activity."
+      ],
+      "contradictions": []
+    },
+    {
+      "blind_review_id": "WB2BR_7E86AE78BCB2D095",
+      "decision": "CONFIRMED",
+      "confidence": "HIGH",
+      "rationale": "The archived homepage identifies Western Pacific Funds Investment Inc. and WPF Investment on the exact domain listed by the official warning, offering mortgage investments and lending in British Columbia. The two displayed names match the warning keys, and the same-domain email and address provide no indication of an unrelated repurpose.",
+      "evidence_checks": [
+        "The capture prominently displays both Western Pacific Funds Investment and WPF Investment Inc.",
+        "The captured domain exactly matches the regulator warning's observed domain and both displayed forms align with the warning entity keys.",
+        "Mortgage-investment, lending, investor, quote, same-domain email, phone, and Burnaby address content shows active financial solicitation."
+      ],
+      "contradictions": []
+    },
+    {
+      "blind_review_id": "WB2BR_84DBEB2F2870CDC5",
+      "decision": "CONFIRMED",
+      "confidence": "HIGH",
+      "rationale": "The archived homepage uses the exact Cryptoniex identity on the exact warned domain and offers crypto buying, selling, swaps, staking, rewards, wallet, and portfolio services. Account sign-up calls and financial-risk disclosures are consistent with the warned crypto platform, with no different operator or benign repurpose visible.",
+      "evidence_checks": [
+        "The capture repeatedly names Cryptoniex and presents a crypto wallet and trading platform.",
+        "The captured domain exactly matches the warning record's observed domain and the displayed identity matches the warning entity key.",
+        "Sign-up, asset purchase and sale, swaps, staking, rewards, support, and trading-risk language demonstrate the relevant financial service."
+      ],
+      "contradictions": []
+    },
+    {
+      "blind_review_id": "WB2BR_890BD74074C02B1A",
+      "decision": "LEGITIMATE",
+      "confidence": "HIGH",
+      "rationale": "The capture presents Novem Group as a financial-advisory firm serving Rochester and Jupiter on the exact domain tied to the registration reference. Extensive firm, personnel, service, disclosure, client-portal, and BrokerCheck content forms a coherent identity and provides no impersonation contradiction.",
+      "evidence_checks": [
+        "The homepage consistently identifies Novem Group and describes financial planning and investment-advisory services.",
+        "The captured domain exactly matches the registration record's observed domain and the brand matches the registered entity key.",
+        "Office telephone numbers, detailed personnel biographies, RIA disclosures, client portal, and BrokerCheck link support identity continuity."
+      ],
+      "contradictions": []
+    },
+    {
+      "blind_review_id": "WB2BR_8AF4ABE78E8FB92A",
+      "decision": "LEGITIMATE",
+      "confidence": "HIGH",
+      "rationale": "The archived site consistently presents Atlas Holdings and its affiliates on the exact domain associated with the registration record, while the footer also identifies an Atlas FRM regulated affiliate. The Atlas Holdings name matches a registration key, and corporate, portfolio, investor, legal, and contact material reveals no impersonation contradiction.",
+      "evidence_checks": [
+        "The capture identifies Atlas Holdings and describes its diversified manufacturing and distribution investment group.",
+        "The captured domain exactly matches the registration record's observed domain and Atlas Holdings matches a registered entity name key.",
+        "Investor portal, portfolio-company content, legal policies, careers, corporate history, and the Atlas FRM affiliate disclosure support the group identity."
+      ],
+      "contradictions": []
+    },
+    {
+      "blind_review_id": "WB2BR_8E4A3217C9A75370",
+      "decision": "LEGITIMATE",
+      "confidence": "HIGH",
+      "rationale": "The archived site identifies Wealth Care LLC as an independent fee-only fiduciary offering financial planning and investment management on the exact registered-record domain. Same-domain adviser emails, Florida and Texas contacts, firm brochure, privacy policy, and Form CRS align without an impersonation signal.",
+      "evidence_checks": [
+        "The capture consistently uses the Wealth Care LLC legal identity and describes fee-only advisory services.",
+        "The captured domain exactly matches the registration record's observed domain and the displayed name matches the registered entity key.",
+        "Named advisers, same-domain emails, telephone contacts, office location, firm brochure, privacy policy, and Form CRS support the identity."
+      ],
+      "contradictions": []
+    },
+    {
+      "blind_review_id": "WB2BR_91D53B47DBFA65F7",
+      "decision": "LEGITIMATE",
+      "confidence": "HIGH",
+      "rationale": "The capture consistently identifies Mangrove Partners as a value-oriented investment manager on the exact domain tied to Mangrove Partners IM LLC. Its strategy description, investor access, legal information, and privacy policy form a coherent firm site with no visible impersonation contradiction.",
+      "evidence_checks": [
+        "The homepage prominently names Mangrove Partners and explains its investment-management objective and strategy.",
+        "The captured domain exactly matches the registration record's observed domain and the brand aligns with the registered entity key.",
+        "Investor login, access request, legal information, privacy policy, and consistent branding support identity continuity."
+      ],
+      "contradictions": []
+    },
+    {
+      "blind_review_id": "WB2BR_9850C005D0768AF6",
+      "decision": "CONFIRMED",
+      "confidence": "HIGH",
+      "rationale": "The archived homepage uses the exact IBO International identity on the exact domain named in the official warning and offers global trading, account types, arbitrage, savings accounts, asset stewardship, and round-the-clock support. The captured activity and identity align directly with the warning, with no repurpose contradiction.",
+      "evidence_checks": [
+        "The capture repeatedly identifies IBO International as a global trading provider.",
+        "The captured domain exactly matches the warning record's observed domain and the displayed name matches the warning entity key.",
+        "Open-account prompts, trading products, savings accounts, capital-management claims, and continuous support show active financial solicitation."
+      ],
+      "contradictions": []
+    },
+    {
+      "blind_review_id": "WB2BR_9F2E9FACB045FD6F",
+      "decision": "LEGITIMATE",
+      "confidence": "HIGH",
+      "rationale": "The archived site presents Aisa International within the Aisa Group and explicitly attributes content to Aisa Financial Planning Ltd, matching both registration name keys on the exact observed domain. Its pension-transfer, investment, financial-planning, fee, team, privacy, and regulatory-boundary content shows no impersonation contradiction.",
+      "evidence_checks": [
+        "The capture consistently identifies Aisa International and Aisa Group while the footer names Aisa Financial Planning Ltd.",
+        "The captured domain exactly matches the registration record's observed domain and the displayed entities match its name keys.",
+        "Detailed UK pension, investment, financial-planning, fees, team, privacy, and jurisdictional disclaimers support an established advisory identity."
+      ],
+      "contradictions": []
+    },
+    {
+      "blind_review_id": "WB2BR_A3FAAA393D8EC00E",
+      "decision": "CONFIRMED",
+      "confidence": "HIGH",
+      "rationale": "Although the captured page is headed as a 404 page, its substantive content still identifies Winston Pierce on the exact warned domain and promotes trading, investment consultation, accounts, pricing, retirement accounts, and financial services. The page contains enough identity and service evidence to align with the warning, and no alternate operator is shown.",
+      "evidence_checks": [
+        "The capture names Winston Pierce and retains navigation and descriptive content for its trading and investment services despite the 404 heading.",
+        "The captured domain exactly matches the warning record's observed domain and the displayed identity matches the warning entity key.",
+        "Trading, account, pricing, retirement, consultation, contact, and legal-document language establishes the warned financial-service context."
+      ],
+      "contradictions": [
+        "The page displays a 404 heading, but the remaining captured content is sufficiently extensive and identity-specific to resolve the capture rather than reject it."
+      ]
+    },
+    {
+      "blind_review_id": "WB2BR_A4483B1FA9B2A935",
+      "decision": "LEGITIMATE",
+      "confidence": "HIGH",
+      "rationale": "The archived page identifies Orasis Capital as an investment adviser on the exact domain linked by the registration reference and provides Cayman Islands and United Kingdom office addresses, investor login and registration functions, and terms. No different identity or impersonation contradiction appears.",
+      "evidence_checks": [
+        "The capture repeatedly names Orasis Capital and describes it as an investment adviser with niche strategies.",
+        "The captured domain exactly matches the registration record's observed domain and the displayed name matches the registered entity key.",
+        "Cayman and UK addresses, login, registration request, contact link, and terms form a coherent adviser website identity."
+      ],
+      "contradictions": []
+    },
+    {
+      "blind_review_id": "WB2BR_A9BFD936484414E2",
+      "decision": "LEGITIMATE",
+      "confidence": "HIGH",
+      "rationale": "The archived site consistently identifies Feltl Advisors and explicitly describes the SEC-registered adviser and related Feltl and Company broker-dealer on the exact registration-linked domain. Firm history, private-client services, brochure, Form CRS, fee schedules, and regulatory disclosures show no impersonation contradiction.",
+      "evidence_checks": [
+        "The capture prominently names Feltl Advisors and describes its investment-advisory and private-client business.",
+        "The captured domain exactly matches the registration record's observed domain and the brand matches the Feltl Advisors entity key.",
+        "SEC-registration statement, adviser brochure, Form CRS, fee schedules, disclosures, and related broker-dealer explanation support the identity."
+      ],
+      "contradictions": []
+    },
+    {
+      "blind_review_id": "WB2BR_BD5FE96E6D54C926",
+      "decision": "CONFIRMED",
+      "confidence": "HIGH",
+      "rationale": "The archived site presents the exact Esperio identity on the exact domain in the regulator warning and offers forex, CFDs, crypto, equities, copy trading, accounts, payments, promotions, and affiliate programs. Same-domain support contact and detailed trading-risk language align with the warned service and show no repurpose.",
+      "evidence_checks": [
+        "The capture repeatedly labels itself Esperio and describes a broker offering extensive trading products and platforms.",
+        "The captured domain exactly matches the warning record's observed domain and the displayed name matches the warning entity key.",
+        "Registration, account types, payments, copy trading, promotions, affiliate arrangements, risk warnings, and same-domain email show active financial solicitation."
+      ],
+      "contradictions": []
+    },
+    {
+      "blind_review_id": "WB2BR_C117925B6332387E",
+      "decision": "CONFIRMED",
+      "confidence": "HIGH",
+      "rationale": "The archived homepage uses the exact TeslaAffilattegitu identity on the exact warned domain and solicits forex, cryptocurrency, CFD, and stock trading and copy-investment customers with extraordinary return claims. The account, bank-linking, affiliate, and contact content matches the warned identity without a repurpose contradiction.",
+      "evidence_checks": [
+        "The capture repeatedly names TeslaAffilattegitu and presents a cryptocurrency and forex investment platform.",
+        "The captured domain exactly matches the regulator warning's observed domain and the displayed identity matches the warning entity key.",
+        "Account opening, bank linking, copy investment, very high return-rate claims, regulation claims, and affiliate commissions demonstrate the relevant solicitation."
+      ],
+      "contradictions": []
+    },
+    {
+      "blind_review_id": "WB2BR_C5254A8A8EB19C23",
+      "decision": "CONFIRMED",
+      "confidence": "HIGH",
+      "rationale": "The archived site repeatedly identifies Prominent Hold Global on the exact domain named by the official warning and markets high-yield agriculture, manufacturing, crypto, and forex investment plans. Registration, login, plan returns, testimonials, and same-domain support details align directly with the warned identity, with no unrelated use indicated.",
+      "evidence_checks": [
+        "The capture consistently names Prominent Hold Global and describes a high-yield investment firm.",
+        "The captured domain exactly matches the warning record's observed domain and the displayed name matches the warning entity key.",
+        "Account registration, login, tiered investment plans, return claims, testimonials, and same-domain email demonstrate active investment solicitation."
+      ],
+      "contradictions": []
+    },
+    {
+      "blind_review_id": "WB2BR_C917D4614F512E16",
+      "decision": "CONFIRMED",
+      "confidence": "HIGH",
+      "rationale": "The archived homepage uses the exact Coinconcord identity and domain from the regulator warning and promotes crypto trading and mining investments that claim safe, lucrative, rapid, and continuing returns. Account registration, investment plans, and same-domain contact information directly align with the warned platform, with no repurpose contradiction.",
+      "evidence_checks": [
+        "The capture repeatedly brands the service as Coinconcord and a cryptocurrency trading and mining investment platform.",
+        "The captured domain exactly matches the warning record's observed domain and the displayed identity matches the warning entity key.",
+        "Sign-up, login, investment plans, daily-return claims, insurance claims, support, and same-domain email show active solicitation."
+      ],
+      "contradictions": []
+    },
+    {
+      "blind_review_id": "WB2BR_D1FCAD417F766DC7",
+      "decision": "CONFIRMED",
+      "confidence": "HIGH",
+      "rationale": "The archived site uses the exact Dominion Bitspire identity on the exact domain named in the official warning and targets Canadian users for AI-driven crypto, forex, CFD, and stock trading, including claims of multiplying investments by 200 percent or more. Registration and broker claims align with the warned identity without evidence of repurposing.",
+      "evidence_checks": [
+        "The capture repeatedly identifies Dominion Bitspire as an investment and trading platform for Canadians.",
+        "The captured domain exactly matches the regulator warning's observed domain and the displayed identity matches the warning entity key.",
+        "Registration, deposit-entry language, AI-trading claims, broker claims, multiple asset classes, and 200-percent growth claims demonstrate the warned activity."
+      ],
+      "contradictions": []
+    },
+    {
+      "blind_review_id": "WB2BR_D2A3C5B16CBAE01D",
+      "decision": "CONFIRMED",
+      "confidence": "HIGH",
+      "rationale": "The archived homepage identifies Capital-vaults on the exact capital-vaults.top domain listed in the official warning and offers forex, crypto, mining, AI trading, investment plans, deposits, and withdrawals. Both warning name variants align with the capture, and no unrelated operator or repurpose is visible.",
+      "evidence_checks": [
+        "The capture repeatedly names Capital-vaults and describes a global forex and cryptocurrency broker and investment platform.",
+        "The captured domain exactly matches the warning record's observed domain and its brand aligns with both warning entity-name keys.",
+        "Registration, login, mining, trading, investment plans, account managers, deposits, and profit withdrawals show active financial solicitation."
+      ],
+      "contradictions": []
+    },
+    {
+      "blind_review_id": "WB2BR_E2DA049A39D29C46",
+      "decision": "CONFIRMED",
+      "confidence": "HIGH",
+      "rationale": "The archived homepage uses the SkySton Swap identity on the exact warned domain and offers guaranteed-return investment packages across forex, cryptocurrency, real estate, pension funds, and other assets. Registration, login, plan yields, and same-domain support email align directly with the warned entity, with no repurpose contradiction.",
+      "evidence_checks": [
+        "The capture prominently identifies SkySton Swap and presents an asset-management and investment platform.",
+        "The captured domain exactly matches the warning record's observed domain and the displayed name matches the warning entity key apart from spacing and capitalization.",
+        "Guaranteed-result language, tiered return plans, registration, login, testimonials, affiliate program, and same-domain support email show active investment solicitation."
+      ],
+      "contradictions": []
+    },
+    {
+      "blind_review_id": "WB2BR_EDD2CE34C63D652F",
+      "decision": "CONFIRMED",
+      "confidence": "HIGH",
+      "rationale": "The archived site repeatedly identifies Kortex Invest on the exact domain in the regulator warning and solicits Canadian users for AI-assisted crypto, forex, CFD, and stock trading. Registration, demo-to-live funding flow, broker integration, performance metrics, and investment-program claims align with the warned service without an unrelated repurpose.",
+      "evidence_checks": [
+        "The capture consistently names Kortex Invest and presents an AI-powered multi-asset trading system.",
+        "The captured domain exactly matches the warning record's observed domain and the displayed identity matches the warning entity key.",
+        "Account registration, KYC, deposits, demo and live allocation, broker or exchange connection, trading plans, and performance claims show active financial solicitation."
+      ],
+      "contradictions": []
+    },
+    {
+      "blind_review_id": "WB2BR_F83E12BD5DE1F761",
+      "decision": "CONFIRMED",
+      "confidence": "HIGH",
+      "rationale": "The archived site uses the exact Instant Ai identity on the exact warned domain and targets Canadian users for AI-assisted crypto, forex, CFD, and stock trading through account registration and partner broker connections. Its marketing-only disclaimer does not create a different identity or domain use; the warned branded service is still the subject of the capture.",
+      "evidence_checks": [
+        "The capture repeatedly names Instant Ai and presents a Canadian multi-market investing and automated-trading environment.",
+        "The captured domain exactly matches the regulator warning's observed domain and the displayed identity matches the warning entity key.",
+        "Account creation, minimum-deposit language, automated execution, broker connectivity, performance claims, testimonials, and partner-advertiser disclosure demonstrate the relevant solicitation."
+      ],
+      "contradictions": [
+        "The footer says represented names are for marketing and illustration rather than specific legal entities, but this does not negate the exact branded-service and domain match to the warning."
+      ]
+    }
+  ]
+}

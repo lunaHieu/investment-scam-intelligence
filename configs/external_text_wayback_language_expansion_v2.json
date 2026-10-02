@@ -1,0 +1,91 @@
+{
+  "protocol_id": "EXTERNAL_TEXT_WAYBACK_LANGUAGE_EXPANSION_V2",
+  "created_at": "2026-09-30",
+  "status": "LOCKED_BEFORE_ACQUISITION",
+  "purpose": "Build a new, untouched external corpus using the same Wayback archived-homepage capture method for both reference branches, then form language strata only when both CONFIRMED and LEGITIMATE records survive independent review.",
+  "source_indices": {
+    "iosco_registry": "registry/analyses/iosco_warning_reference_index_v1.json",
+    "sec_registry": "registry/analyses/sec_iapd_reference_index_v1.json"
+  },
+  "selection": {
+    "seed": "20260930-wayback-language-v2",
+    "requested_per_reference_branch": 60,
+    "target_timestamp": "20260930",
+    "exclude_every_host_in_prior_candidate_queues": true,
+    "reference_branches_are_candidate_provenance_not_labels": true
+  },
+  "prior_candidate_queues": [
+    {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_capture_queue_v1\\capture_candidates_v1.jsonl",
+      "sha256": "ae843f5723d66e7e996300424c5f11663fb513bbb94a52ad282de38d52fa1b29",
+      "record_count": 30
+    },
+    {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_capture_queue_v1\\iosco_confirmed_reserve_v1.jsonl",
+      "sha256": "7a1586b4ca78c6fb7c71d7bd3cbed5bbb1352ab7cd915ab15a92fafecd9f7ede",
+      "record_count": 40
+    },
+    {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_capture_queue_v1\\iosco_confirmed_reserve_v2.jsonl",
+      "sha256": "118194378269a8d1b532ed41882675990c6792f41c2fb39c5cecfbbe23d7fa80",
+      "record_count": 100
+    },
+    {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_capture_queue_v1\\sec_legitimate_reserve_v1.jsonl",
+      "sha256": "3a6f905be34330c8b541eee21c1c5d08ee6adb3a187b585a059eccafd315edd2",
+      "record_count": 30
+    },
+    {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_matched_wayback_v1\\candidate_queue_v1.jsonl",
+      "sha256": "1f153b60d659980e64de1a367b720e40ffd9b43381ff14e407f3fc16e9f5d372",
+      "record_count": 21
+    },
+    {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_matched_wayback_v1\\legitimate_supplement_queue_v1.jsonl",
+      "sha256": "6684a7a7a6d9df1dc5039f1bce1ed25ca1f69b41f19d8858d038b754a07d1eaa",
+      "record_count": 15
+    }
+  ],
+  "capture_contract": {
+    "capture_stratum": "WAYBACK_ARCHIVED_HOMEPAGE_HTML",
+    "allowed_network_hosts": [
+      "archive.org",
+      "web.archive.org"
+    ],
+    "candidate_live_domain_access_allowed": false,
+    "automatic_external_redirect_following": false,
+    "raw_capture_mutation_allowed": false
+  },
+  "language_stratification": {
+    "performed_after_visible_text_extraction": true,
+    "automatic_language_is_screening_only": true,
+    "manual_confirmation_required": true,
+    "primary_stratum": "ENGLISH",
+    "exploratory_strata": [
+      "NON_ENGLISH",
+      "MIXED_OR_UNDETERMINED"
+    ],
+    "minimum_dual_review_agreements_per_class": {
+      "ENGLISH": 12,
+      "NON_ENGLISH": 6,
+      "MIXED_OR_UNDETERMINED": 6
+    },
+    "open_stratum_only_if_both_classes_meet_minimum": true,
+    "undersized_strata_action": "PRESERVE_AS_RESERVE_DO_NOT_SCORE"
+  },
+  "review_contract": {
+    "first_review_required": true,
+    "independent_blinded_second_review_required": true,
+    "blind_packet_must_exclude_reference_branch": true,
+    "blind_packet_must_exclude_first_review": true,
+    "blind_packet_must_exclude_model_outputs": true,
+    "high_confidence_agreement_required": true,
+    "independent_human_review_claimed": false
+  },
+  "model_firewall": {
+    "training_allowed": false,
+    "tuning_allowed": false,
+    "model_scoring_allowed_before_frozen_benchmark": false,
+    "warning_or_registry_text_as_model_input_allowed": false
+  }
+}

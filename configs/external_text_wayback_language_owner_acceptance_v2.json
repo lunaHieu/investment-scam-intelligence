@@ -1,0 +1,36 @@
+{
+  "acceptance_id": "EXTERNAL_TEXT_WAYBACK_LANGUAGE_OWNER_ACCEPTANCE_V2",
+  "accepted_at": "2026-10-02T00:00:00+07:00",
+  "adopter_role": "PROJECT_OWNER",
+  "authorization_source": "User instruction 'Tiến hành bước tiếp theo theo tài liệu' after receiving the frozen 19+19 English benchmark report and its OWNER_ACCEPTANCE_REQUIRED_BEFORE_MODEL_SCORING gate.",
+  "accepted_for_frozen_model_scoring": true,
+  "accepted_for_training_or_tuning": false,
+  "diagnostic_evaluation_only": true,
+  "independent_human_review_claimed": false,
+  "scope": {
+    "benchmark_id": "EXTERNAL_TEXT_WAYBACK_LANGUAGE_BENCHMARK_V2",
+    "benchmark_path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_matched_wayback_v2\\wayback_language_benchmark_v2.json",
+    "benchmark_sha256": "4567acf6f27f275838283e3f335f859823af785109043e68cdf92d8fd14b2835",
+    "benchmark_registry_path": "registry/pilots/external_text_wayback_language_benchmark_v2.json",
+    "benchmark_registry_sha256": "e966b7b278ec4e15f64daf5b70185697c57405152a08dbe17be391c30f0fa16b",
+    "record_count": 38,
+    "confirmed_count": 19,
+    "legitimate_count": 19,
+    "language_stratum": "ENGLISH",
+    "capture_stratum": "WAYBACK_ARCHIVED_HOMEPAGE_HTML"
+  },
+  "scoring_contract": {
+    "model_id": "ISI_TEXT_BASELINE_V2",
+    "model_registry_path": "registry/models/text_baseline_v2.json",
+    "model_registry_sha256": "0485439ddc34c56d05587c85cd0520f519a4feb9dd7887d16e46273bc7b1d7f5",
+    "allowed_model_input": "benchmark.records[].artifact.visible_text only",
+    "warning_or_registry_evidence_as_model_input_allowed": false,
+    "review_rationale_as_model_input_allowed": false,
+    "model_configuration_changes_allowed": false,
+    "threshold_changes_allowed": false,
+    "vectorizer_changes_allowed": false,
+    "model_fit_allowed": false,
+    "use_benchmark_for_tuning": false,
+    "deployment_allowed": false
+  }
+}

@@ -1,0 +1,136 @@
+{
+  "pilot_id": "EXTERNAL_TEXT_WAYBACK_LANGUAGE_EXPANSION_RETRY_001_V2",
+  "created_at": "2026-09-30",
+  "status": "AVAILABILITY_PARTIAL_INTERLEAVED_RETRY_QUEUED",
+  "purpose": "Preserve retry 001 exactly, record its branch-order limitation, and prepare a branch-interleaved retry without altering any semantic outcome.",
+  "inputs": [
+    {
+      "role": "protocol",
+      "path": "configs/external_text_wayback_language_expansion_v2.json",
+      "sha256": "96db6f18286384c849291f9e3748aa66410d345de583e6612de417a3d3023e4a"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "queue_builder",
+      "path": "scripts/build_external_text_wayback_language_queue_v2.py",
+      "sha256": "aa54d09b553bccb868b5f53badaf3419fb56896f035bbd4982d0eb1cddb820e6"
+    },
+    {
+      "role": "availability_query",
+      "path": "scripts/query_wayback_language_expansion_v2.ps1",
+      "sha256": "b8bcc06fc660d0e77209d55997250b1b4f2cc83c6de20d80f284e6c36e8dac72"
+    },
+    {
+      "role": "rate_limit_retry",
+      "path": "scripts/retry_wayback_language_expansion_v2.ps1",
+      "sha256": "633f588a1f76a3a6ee57807d37f12088b3a204cdc760c5c232f2e998411ceb73"
+    },
+    {
+      "role": "retry_interleaver",
+      "path": "scripts/interleave_wayback_retry_input_v2.py",
+      "sha256": "fa470b55cf530c853523707cf04dfaa450b19860e867519e246ca5743ead032e"
+    },
+    {
+      "role": "capture",
+      "path": "scripts/capture_wayback_language_expansion_v2.ps1",
+      "sha256": "2c125f5ca9086892362e557b1e8182ecb9d856d1db4fcffffedd80204d52edce"
+    },
+    {
+      "role": "language_screening_module",
+      "path": "src/isi/normalization/language_screening.py",
+      "sha256": "37f8c55c822514ea9f6e6363eb6f4e38292082f25bd8177714409dc72c3dd1c1"
+    },
+    {
+      "role": "language_profiler",
+      "path": "scripts/profile_wayback_language_expansion_v2.py",
+      "sha256": "c0c2cee8076fef40db5fd948da86162cef1d6c66e7a1105f7ae1cbebe5ca8423"
+    },
+    {
+      "role": "checkpoint_verifier",
+      "path": "scripts/verify_external_text_wayback_language_expansion_v2.py",
+      "sha256": "6d4c727656db99b1e825dee1373261de27f92ce9483727d812e4c3b11524d1cb"
+    },
+    {
+      "role": "language_screening_tests",
+      "path": "tests/test_language_screening.py",
+      "sha256": "bffba67b4394bce687db493f93f69f7ba69c807a9b9ec7dce57553b6af0880ba"
+    },
+    {
+      "role": "retry_interleave_tests",
+      "path": "tests/test_wayback_retry_interleave.py",
+      "sha256": "2981f4b7dc79943a39e6464f079ee535d1a3ebc45baf122596200c9fe12c1025"
+    }
+  ],
+  "outputs": [
+    {
+      "role": "candidate_queue",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_matched_wayback_v2\\candidate_queue_v2.jsonl",
+      "sha256": "e2ceef1899f19b9f4cc41e268d4159f77391b8fff022969a4b2977f1dd122ed0",
+      "record_count": 120
+    },
+    {
+      "role": "candidate_queue_report",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_matched_wayback_v2\\candidate_queue_report_v2.json",
+      "sha256": "374d4ea38365a72da2081a35a54175452ed3ff7f6fbccb9f6c386db616f235ab"
+    },
+    {
+      "role": "partial_availability_report",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_matched_wayback_v2\\availability_retry_001_v2.json",
+      "sha256": "4147dd793bf3b243bb1cf5a970d5cafe6a4ea46b6939f344a2610037e8165d43"
+    },
+    {
+      "role": "interleaved_retry_input",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_matched_wayback_v2\\availability_retry_001_interleaved_input_v2.json",
+      "sha256": "594534bbbf20f5dc13297895efea6600922d6e96f21728d7a73b74824f46b742",
+      "semantic_outcomes_changed": false
+    }
+  ],
+  "selection": {
+    "candidate_count": 120,
+    "confirmed_candidate_count": 60,
+    "legitimate_candidate_count": 60,
+    "unique_candidate_host_count": 120,
+    "unique_prior_queue_host_count": 200,
+    "prior_host_overlap_count": 0,
+    "labels_created": 0
+  },
+  "availability_checkpoint": {
+    "formal_reported_network_request_count": 216,
+    "note": "This count is the sum of the two immutable batch reports only; archive-only connectivity diagnostics and an interrupted pre-report attempt are not included.",
+    "available_snapshot_count": 13,
+    "available_by_reference_branch": {
+      "CONFIRMED_CANDIDATE": 13,
+      "LEGITIMATE_CANDIDATE": 0
+    },
+    "definitive_no_snapshot_count": 35,
+    "unresolved_error_count": 72,
+    "unresolved_by_reference_branch": {
+      "CONFIRMED_CANDIDATE": 12,
+      "LEGITIMATE_CANDIDATE": 60
+    },
+    "branch_order_bias_detected": true,
+    "branch_order_bias_mitigated_for_next_retry": true,
+    "zero_legitimate_available_is_interpretable": false
+  },
+  "readiness": {
+    "availability_complete": false,
+    "capture_allowed": false,
+    "language_screening_allowed": false,
+    "first_review_allowed": false,
+    "independent_second_review_allowed": false,
+    "model_scoring_allowed": false,
+    "next_required_action": "RUN_SLOW_RETRY_AGAINST_THE_INTERLEAVED_INPUT_AFTER_WAYBACK_RATE_LIMIT_RECOVERS"
+  },
+  "safety_contract": {
+    "candidate_live_domain_access_operations": 0,
+    "archived_page_download_operations": 0,
+    "labels_created": 0,
+    "model_scoring_operations": 0,
+    "model_fit_operations": 0,
+    "training_allowed": false,
+    "automatic_language_is_routing_only": true,
+    "manual_language_confirmation_required": true,
+    "independent_human_review_claimed": false
+  }
+}

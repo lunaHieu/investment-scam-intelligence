@@ -1,0 +1,114 @@
+{
+  "analysis_id": "ISI_TEXT_BASELINE_V2_WAYBACK_LANGUAGE_V2",
+  "created_at": "2026-10-02",
+  "status": "FROZEN_MODEL_WAYBACK_LANGUAGE_V2_DIAGNOSTIC_COMPLETE_NOT_FOR_DEPLOYMENT",
+  "purpose": "Score the unchanged frozen Text Baseline V2 exactly once on the owner-accepted balanced 19+19 English Wayback benchmark without fitting, tuning, threshold changes, evidence leakage, or deployment claims.",
+  "implementation": [
+    {
+      "role": "evaluator",
+      "path": "scripts/evaluate_text_baseline_v2_wayback_language_v2.py",
+      "sha256": "a6af48ecaf100f210a16c4a1dbb4733b0c352d334da42ad20861cfec5b4c3821"
+    },
+    {
+      "role": "verifier",
+      "path": "scripts/verify_text_baseline_v2_wayback_language_v2.py",
+      "sha256": "de569b2453f92b8f0a6c2b82447ed7dfc68094945d99984b28aa77959ba75147"
+    }
+  ],
+  "inputs": [
+    {
+      "role": "model_registry",
+      "path": "registry/models/text_baseline_v2.json",
+      "sha256": "0485439ddc34c56d05587c85cd0520f519a4feb9dd7887d16e46273bc7b1d7f5"
+    },
+    {
+      "role": "model",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\text_baseline_v2\\text_baseline_v2_model.joblib",
+      "sha256": "c58444996e0ae67a9739c588e3d088f1f57eb1af7f9105e10a647303ce72fc71"
+    },
+    {
+      "role": "benchmark_registry",
+      "path": "registry/pilots/external_text_wayback_language_benchmark_v2.json",
+      "sha256": "e966b7b278ec4e15f64daf5b70185697c57405152a08dbe17be391c30f0fa16b"
+    },
+    {
+      "role": "benchmark",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_matched_wayback_v2\\wayback_language_benchmark_v2.json",
+      "sha256": "4567acf6f27f275838283e3f335f859823af785109043e68cdf92d8fd14b2835"
+    },
+    {
+      "role": "owner_acceptance",
+      "path": "configs/external_text_wayback_language_owner_acceptance_v2.json",
+      "sha256": "8d6f18ac38303d0f1253e10021abd00632ba76c3fb522f7717dd3c0561516c54"
+    }
+  ],
+  "outputs": [
+    {
+      "role": "results_json",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_matched_wayback_v2\\text_baseline_v2_evaluation\\wayback_language_results_v2.json",
+      "sha256": "54c04bcdb5ee0a60030b1d42f41db182aa1148a8f267b07f14cf32c8de9eb9b1"
+    },
+    {
+      "role": "predictions_jsonl",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_matched_wayback_v2\\text_baseline_v2_evaluation\\wayback_language_predictions_v2.jsonl",
+      "sha256": "06f037b1986b753d874954ca6bae8a4a31027748fa79cf3d26378b1e8e31e156"
+    },
+    {
+      "role": "report_markdown",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_matched_wayback_v2\\text_baseline_v2_evaluation\\wayback_language_report_v2.md",
+      "sha256": "472a4d502d372d8986b3f29f77141dbccd5525059d831d78e4484582fe8b86ec"
+    }
+  ],
+  "data_contract": {
+    "benchmark_id": "EXTERNAL_TEXT_WAYBACK_LANGUAGE_BENCHMARK_V2",
+    "record_count": 38,
+    "confirmed_count": 19,
+    "legitimate_count": 19,
+    "language_stratum": "ENGLISH",
+    "capture_stratum": "WAYBACK_ARCHIVED_HOMEPAGE_HTML",
+    "model_input": "artifact.visible_text only",
+    "independent_ai_second_review": true,
+    "independent_human_second_review": false
+  },
+  "metrics": {
+    "threshold_label_1": 0.5,
+    "confusion_matrix": {
+      "tn": 10,
+      "fp": 9,
+      "fn": 4,
+      "tp": 15
+    },
+    "accuracy": 0.657895,
+    "balanced_accuracy": 0.657895,
+    "macro_f1": 0.651868,
+    "roc_auc": 0.739612,
+    "average_precision": 0.784833,
+    "correct_count": 25,
+    "error_count": 13
+  },
+  "interpretation": {
+    "score_label_1_is_real_world_scam_probability": false,
+    "same_language_and_capture_stratum_reduce_but_do_not_eliminate_source_confounding": true,
+    "benchmark_may_be_used_for_tuning": false,
+    "evaluation_supports_deployment_claim": false,
+    "diagnostic": "The frozen baseline retains ranking signal but has limited thresholded transfer, with more legitimate-to-label-1 errors than confirmed-to-label-0 errors."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "candidate_domain_access_operations": 0,
+    "source_text_modified": false,
+    "model_fit_operations": 0,
+    "threshold_changes": 0,
+    "vectorizer_changes": 0,
+    "warning_or_registry_evidence_used_as_model_input": false,
+    "review_rationale_used_as_model_input": false,
+    "benchmark_used_for_tuning": false,
+    "training_allowed": false,
+    "deployment_allowed": false
+  },
+  "decision": {
+    "retain_frozen_baseline": true,
+    "promote_for_deployment": false,
+    "next_action": "Perform diagnostic error analysis on the 13 errors and near-threshold cases without tuning on this external benchmark."
+  }
+}

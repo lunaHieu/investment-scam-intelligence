@@ -1,0 +1,125 @@
+{
+  "registry_id": "EXTERNAL_TEXT_WAYBACK_LANGUAGE_BENCHMARK_V2",
+  "created_at": "2026-10-01",
+  "status": "FROZEN_OWNER_ACCEPTANCE_REQUIRED_BEFORE_MODEL_SCORING",
+  "purpose": "Freeze a balanced English external benchmark in which both classes use Wayback archived-homepage HTML and require high-confidence agreement between AI primary review and an independent blinded AI second review.",
+  "artifacts": [
+    {
+      "role": "protocol_config",
+      "path": "configs/external_text_wayback_language_expansion_v2.json",
+      "sha256": "96db6f18286384c849291f9e3748aa66410d345de583e6612de417a3d3023e4a"
+    },
+    {
+      "role": "combined_candidate_queue",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_matched_wayback_v2\\combined_candidate_queue_v2_2.jsonl",
+      "sha256": "2fdf3d3c30291f48703675530afdd2e80aa1a442ac09aecd21fecf490ec836a1"
+    },
+    {
+      "role": "reviewability_screening",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_matched_wayback_v2\\reviewability_screening_v2_2\\candidate_screening_v2_2.jsonl",
+      "sha256": "548e56ff17fdaff1f22a28195bcdbd47dcf0aa9ffe8f218dbf5384820458913e"
+    },
+    {
+      "role": "primary_review_preparation_report",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_matched_wayback_v2\\primary_review_v2_1\\preparation_report_v2_1.json",
+      "sha256": "6eb249341d03f3f15cf90d10233ec1bed64c241c269933798e776bc2778c7c15"
+    },
+    {
+      "role": "primary_review_packet",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_matched_wayback_v2\\primary_review_v2_1\\primary_review_packet_v2_1.json",
+      "sha256": "3e0e4bd68905d1ba766176a002a8bd3584751bdfc35b4f1047b6f05dc353bb40"
+    },
+    {
+      "role": "primary_review_policy",
+      "path": "configs/external_text_wayback_language_primary_review_policy_v2.json",
+      "sha256": "f543be3c54b514092a95996087377ae92f1938fbcb8db68afa04b3857600c5a3"
+    },
+    {
+      "role": "primary_review",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_matched_wayback_v2\\primary_review_v2_1\\primary_review_v2.json",
+      "sha256": "42603e81938f0ebf904e663a885317732ecf285040786fe10817b32bbef63d7f"
+    },
+    {
+      "role": "blind_second_review_preparation_report",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_matched_wayback_v2\\second_review_v2\\preparation_report_v2.json",
+      "sha256": "3d79ffbe60700b95f859195130399d490a3a5a241f66188fd916170300f5dce9"
+    },
+    {
+      "role": "blind_second_review_packet",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_matched_wayback_v2\\second_review_v2\\blind_second_review_packet_v2.json",
+      "sha256": "1f6f2710232a312eb5c54852e2682707121e92d7527c70e7b905233e69f5ad18"
+    },
+    {
+      "role": "private_second_review_mapping",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_matched_wayback_v2\\second_review_v2\\blind_second_review_mapping_v2.jsonl",
+      "sha256": "9e6cb8d239e6241eac8e8fc6b6fad06cf38fe4e1533200e089d17c821e00a55b"
+    },
+    {
+      "role": "independent_second_review_response",
+      "path": "configs/external_text_wayback_language_independent_second_review_response_v2.json",
+      "sha256": "11ba67e5bed10c0ee03999726d4dd3ac3e4fa6ecff26aacbeed5ea95b65bc002"
+    },
+    {
+      "role": "independent_second_review",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_matched_wayback_v2\\second_review_v2\\independent_second_review_v2.json",
+      "sha256": "649a1b6b6ca96f35e97fa63cef17daec548b4221c31aabd11f702618ce13a6a6"
+    },
+    {
+      "role": "reconciliation_report",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_matched_wayback_v2\\reconciliation_report_v2.json",
+      "sha256": "fb4952e27ab92c994620c91d1e0b4cc015f1bc611027aff8a7034526b018be86"
+    },
+    {
+      "role": "benchmark",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_matched_wayback_v2\\wayback_language_benchmark_v2.json",
+      "sha256": "4567acf6f27f275838283e3f335f859823af785109043e68cdf92d8fd14b2835"
+    }
+  ],
+  "counts": {
+    "primary_reviewed": 54,
+    "primary_confirmed_high": 20,
+    "primary_legitimate_high": 31,
+    "primary_uncertain": 2,
+    "primary_reject_capture": 1,
+    "english_second_review_selected_per_class": 19,
+    "confirmed_high_agreements": 19,
+    "legitimate_high_agreements": 19,
+    "benchmark_records": 38
+  },
+  "exclusions": [
+    {
+      "candidate_id": "MATCHWB2_TOPUP2_CONF_016",
+      "decision": "REJECT_CAPTURE",
+      "reason": "Archived content is an uncustomized architecture-template sample and does not preserve the warned activity."
+    },
+    {
+      "candidate_id": "MATCHWB2_TOPUP2_CONF_038",
+      "decision": "UNCERTAIN",
+      "reason": "Observed crypto-news activity does not resolve the relationship to the unlicensed-service warning."
+    },
+    {
+      "candidate_id": "MATCHWB2_TOPUP2_CONF_040",
+      "decision": "UNCERTAIN",
+      "reason": "Observed self-custody wallet content does not resolve the relationship to the unlicensed-service warning."
+    }
+  ],
+  "gates": {
+    "english_minimum_per_class": 12,
+    "english_minimum_met": true,
+    "classes_balanced": true,
+    "owner_acceptance_complete": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "deployment_allowed": false
+  },
+  "review_disclosure": {
+    "primary_review": "AI primary evidence and language review, not human review",
+    "second_review": "Independent blinded AI second review in a separate agent context, not human review",
+    "independent_human_review_complete": false
+  },
+  "model_firewall": {
+    "allowed_model_input_if_owner_later_accepts_scoring": "benchmark.records[].artifact.visible_text only",
+    "warning_or_registry_evidence_as_model_input_allowed": false,
+    "review_rationale_as_model_input_allowed": false
+  }
+}

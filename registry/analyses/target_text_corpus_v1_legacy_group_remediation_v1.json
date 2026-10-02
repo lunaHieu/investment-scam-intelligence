@@ -1,0 +1,136 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_LEGACY_GROUP_REMEDIATION_V1",
+  "created_at": "2026-10-02",
+  "status": "FROZEN_INDEPENDENT_REVIEW_PASS_CAPTURE_BLOCKED",
+  "source_id": "mendeley_investment_deceptive_2026",
+  "purpose": "Register deterministic exclusion-only groups for 86 opened legacy benchmark records and an independent offline recomputation, without inventing formal case IDs or labels.",
+  "inputs": [
+    {
+      "role": "remediation_protocol",
+      "path": "configs/target_text_corpus_v1_legacy_group_remediation_v1.json",
+      "sha256": "9ec155f2564e394cbc5faaaa947629bcdebf9832f7135bfb7f879081205f682d"
+    },
+    {
+      "role": "preacquisition_registry",
+      "path": "registry/analyses/target_text_corpus_v1_preacquisition.json",
+      "sha256": "5a9c4e3535120f78f6f77fd09adde46a52ed1b3ab0b4e579eb3eadba4971f46c"
+    },
+    {
+      "role": "opened_external_exclusion_index",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_preacquisition\\opened_external_exclusion_index_v1.json",
+      "sha256": "df43d88dbb1120c6f8e9afa0a7893fab1f4e176838483bb3a8bf013b13bd0d07"
+    },
+    {
+      "role": "matched_wayback_v1_candidate_queue",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_matched_wayback_v1\\candidate_queue_v1.jsonl",
+      "sha256": "1f153b60d659980e64de1a367b720e40ffd9b43381ff14e407f3fc16e9f5d372"
+    },
+    {
+      "role": "matched_wayback_v1_supplement_queue",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_matched_wayback_v1\\legitimate_supplement_queue_v1.jsonl",
+      "sha256": "6684a7a7a6d9df1dc5039f1bce1ed25ca1f69b41f19d8858d038b754a07d1eaa"
+    },
+    {
+      "role": "wayback_language_v2_candidate_queue",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_matched_wayback_v2\\combined_candidate_queue_v2_2.jsonl",
+      "sha256": "2fdf3d3c30291f48703675530afdd2e80aa1a442ac09aecd21fecf490ec836a1"
+    },
+    {
+      "role": "wayback_holdout_v3_candidate_queue",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_wayback_holdout_v3\\candidate_queue_v3.jsonl",
+      "sha256": "be6385d634c0ddf1f2931271a16a71c714e8419794a174e7f28c4441c7cfe648"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "remediation_builder",
+      "path": "scripts/build_target_text_corpus_v1_legacy_group_remediation.py",
+      "sha256": "6a3c22a41c101af507021a3ed569b27a87b3099f41a9994e57a175ef0adf8167"
+    },
+    {
+      "role": "remediation_builder_tests",
+      "path": "tests/test_target_text_corpus_v1_legacy_group_remediation.py",
+      "sha256": "08b6bc9c6877cbe51c2d03a81858a6b3570d1f78622444a56b78577b33d55d22"
+    },
+    {
+      "role": "independent_verifier",
+      "path": "scripts/verify_target_text_corpus_v1_legacy_group_remediation.py",
+      "sha256": "e125a81f5ca77dd3d943fb1742d63302b215617db306ab9af9e05f0558bf9619"
+    },
+    {
+      "role": "independent_verifier_tests",
+      "path": "tests/test_verify_target_text_corpus_v1_legacy_group_remediation.py",
+      "sha256": "19ec8146bea69ac8585fe040e19bc4e8b85154c56ce8549204c20d99e7168008"
+    },
+    {
+      "role": "method_documentation",
+      "path": "docs/target-text-corpus-v1-legacy-group-remediation.md",
+      "sha256": "cc5d30948c95d74075b83095a79f6a4f1b4aa48774c8403ea7ccb66dbbb91507"
+    }
+  ],
+  "outputs": [
+    {
+      "role": "legacy_group_remediation_map",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_legacy_group_remediation_v1\\legacy_group_remediation_map_v1.json",
+      "sha256": "c4f69e43484a66aac74d0e50c30fe26a247b65e6abd31c2acac78af1fb1a9088"
+    },
+    {
+      "role": "independent_review",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_legacy_group_remediation_v1\\independent_review_v1.json",
+      "sha256": "9a0927f79975440c3a352432ae7d907f14d34d65f243994c879c67487b0dcd86"
+    }
+  ],
+  "findings": {
+    "opened_records_processed": 107,
+    "legacy_records_remediated": 86,
+    "exact_upstream_queue_joins": 86,
+    "components_across_opened_records": 94,
+    "legacy_components": 86,
+    "legacy_records_anchored_to_existing_case": 13,
+    "legacy_records_unanchored_exclusion_only": 73,
+    "formal_case_ids_created": 0,
+    "labels_created": 0,
+    "independent_recomputation_discrepancies": 0
+  },
+  "decision": {
+    "legacy_exclusion_group_assignment_complete": true,
+    "evidence_backed_case_linkage_complete": false,
+    "promote_upstream_source_case_ids_to_formal_case_ids": false,
+    "new_candidate_capture_allowed": false,
+    "new_labeling_allowed": false,
+    "train_another_model_now": false,
+    "next_gate": "Register and terms-review capture protocols for the two blocked acquisition channels while preserving manual cross-domain case review for every future candidate."
+  },
+  "review_contract": {
+    "independent_review_method": "Separate bucket-adjacency breadth-first-search recomputation; builder module not imported.",
+    "records_compared": 86,
+    "queue_joins_recomputed": 86,
+    "components_recomputed": 94,
+    "review_passed": true
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "domain_access_allowed": false,
+    "new_records_acquired": 0,
+    "new_artifact_captures": 0,
+    "formal_case_ids_created": 0,
+    "labels_created": 0,
+    "labels_changed": 0,
+    "model_fit_operations": 0,
+    "model_scoring_operations": 0,
+    "validation_or_test_openings": 0,
+    "training_allowed": false,
+    "deployment_allowed": false,
+    "existing_opened_records_processed_offline": 107,
+    "legacy_records_remediated": 86,
+    "artifact_text_emitted": 0,
+    "ground_truth_statuses_emitted": 0
+  },
+  "prohibited_claims": [
+    "Do not call a legacy exclusion group a real-world case, campaign, or registrable domain family.",
+    "Do not promote an upstream source_case_id to a formal evidence-backed case ID.",
+    "Do not infer a label from source-candidate IDs, queue branches, or technical group membership.",
+    "Do not claim cross-domain case or normalized near-duplicate coverage is complete.",
+    "Do not capture or label new candidates under this remediation step."
+  ]
+}

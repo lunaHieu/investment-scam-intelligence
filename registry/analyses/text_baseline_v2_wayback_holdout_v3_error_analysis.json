@@ -1,0 +1,167 @@
+{
+  "analysis_id": "ISI_TEXT_BASELINE_V2_WAYBACK_HOLDOUT_V3_ERROR_ANALYSIS",
+  "created_at": "2026-10-02",
+  "status": "FROZEN_WAYBACK_HOLDOUT_V3_DIAGNOSTIC_COMPLETE_NO_TUNING",
+  "source_id": "mendeley_investment_deceptive_2026",
+  "model_id": "ISI_TEXT_BASELINE_V2",
+  "purpose": "Perform one diagnostic pass over all 30 frozen Wayback holdout V3 predictions, eight errors, and eleven near-threshold cases without fitting, tuning, threshold selection, relabeling, re-scoring, or internal-test access.",
+  "scope": {
+    "external_rows": 30,
+    "model_fit_or_refit": false,
+    "threshold_changed": false,
+    "vectorizer_changed": false,
+    "labels_changed": 0,
+    "evaluation_rerun_after_inspection": false,
+    "fit_reference_for_similarity_only": ["train", "validation"],
+    "internal_test_rows_loaded_or_transformed": 0,
+    "auxiliary_rows_used": 0,
+    "quarantine_rows_used": 0
+  },
+  "inputs": [
+    {
+      "role": "evaluation_registry",
+      "path": "registry/analyses/text_baseline_v2_wayback_holdout_v3.json",
+      "sha256": "d67577cbc0af482aa8d2b8aa9eaafe034abe4e4e04dc90db98f2e5688788c5f4"
+    },
+    {
+      "role": "model_registry",
+      "path": "registry/models/text_baseline_v2.json",
+      "sha256": "0485439ddc34c56d05587c85cd0520f519a4feb9dd7887d16e46273bc7b1d7f5"
+    },
+    {
+      "role": "owner_acceptance",
+      "path": "configs/external_text_wayback_holdout_owner_acceptance_v3.json",
+      "sha256": "f1ebad09e0ffc4fecb12b223f2fe31aec71d18c03da0117c4d0e1ad624e8b471"
+    },
+    {
+      "role": "model",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\text_baseline_v2\\text_baseline_v2_model.joblib",
+      "sha256": "c58444996e0ae67a9739c588e3d088f1f57eb1af7f9105e10a647303ce72fc71"
+    },
+    {
+      "role": "group_split_dataset",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\mendeley_v2_group_split_v2.csv",
+      "sha256": "98f75387a4a598d85a6f721d10808979bda694dad8f85354d595679bdd96e734"
+    },
+    {
+      "role": "benchmark",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_wayback_holdout_v3\\wayback_holdout_benchmark_v3.json",
+      "sha256": "f234027f21f228fff39ea833a085eb46b9dddabb23004c1a2ad9751122c2df75"
+    },
+    {
+      "role": "results_json",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_wayback_holdout_v3\\text_baseline_v2_evaluation\\wayback_holdout_results_v3.json",
+      "sha256": "f076946be8b7ed6d128aa01c12041c400862e3ba97068cafc6fa51a13584451e"
+    },
+    {
+      "role": "predictions_jsonl",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_wayback_holdout_v3\\text_baseline_v2_evaluation\\wayback_holdout_predictions_v3.jsonl",
+      "sha256": "1e1ba2a24ef26e6690db0da9126be456cf0bea1e86aa9f5f149f15deac2451ef"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "error_analyzer",
+      "path": "scripts/analyze_text_baseline_v2_wayback_holdout_v3_errors.py",
+      "sha256": "482f938efd2e16f432eb87781f5876fa32c433409698fb84877490f41ce2b854"
+    },
+    {
+      "role": "error_analysis_verifier",
+      "path": "scripts/verify_text_baseline_v2_wayback_holdout_v3_error_analysis.py",
+      "sha256": "e0bc697cefc5bcaeb55ca76e50ee43b7e005769fd5384d6380d46ad4aecfd88c"
+    },
+    {
+      "role": "unit_tests",
+      "path": "tests/test_text_baseline_v2_wayback_holdout_v3_error_analysis.py",
+      "sha256": "e4aa82f2f58db4888d7bb29de10ed8572153b6383c1d9f76b68fec5880f3aeae"
+    },
+    {
+      "role": "method_documentation",
+      "path": "docs/text-baseline-v2-wayback-holdout-v3-error-analysis.md",
+      "sha256": "6fd57af96051499010c6b557616566d78cb55acd89d65214f6585e42fd37951a"
+    }
+  ],
+  "findings": {
+    "record_count": 30,
+    "correct_count": 22,
+    "error_count": 8,
+    "false_positive_count": 5,
+    "false_negative_count": 3,
+    "predicted_label_1_count": 17,
+    "errors_within_0_10_of_threshold": 5,
+    "records_within_0_10_of_threshold": 11,
+    "false_positive_median_score_label_1": 0.607711,
+    "false_negative_median_score_label_1": 0.437226,
+    "false_positive_mean_vocabulary_coverage": 0.558993,
+    "false_negative_mean_vocabulary_coverage": 0.521836,
+    "false_positive_mean_nearest_fit_similarity": 0.167565,
+    "false_negative_mean_nearest_fit_similarity": 0.150059,
+    "nearest_fit_spam_email_count_all_records": 19,
+    "nearest_fit_spam_email_count_errors": 6,
+    "brier_score_descriptive_only": 0.179321,
+    "expected_calibration_error_descriptive_only": 0.196744,
+    "both_labels_share_wayback_and_english_strata": true
+  },
+  "outputs": [
+    {
+      "role": "analysis_json",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_wayback_holdout_v3\\text_baseline_v2_error_analysis\\wayback_holdout_error_analysis_v3.json",
+      "sha256": "62768108ce98e42606a78e8b9aef3ac3fe38ad7210c4d148632fd162d68d71cd"
+    },
+    {
+      "role": "diagnostics_jsonl",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_wayback_holdout_v3\\text_baseline_v2_error_analysis\\wayback_holdout_diagnostics_v3.jsonl",
+      "sha256": "5853b956f148b879c61bcbdcdd3659d51677e5d9fc812aeda6e3e31682e5e845",
+      "record_count": 30
+    },
+    {
+      "role": "error_queue_jsonl",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_wayback_holdout_v3\\text_baseline_v2_error_analysis\\wayback_holdout_error_queue_v3.jsonl",
+      "sha256": "05cd0d61cda54e6fa253747716594048c1626d1edec0bde6afdd9061deafe261",
+      "record_count": 8
+    },
+    {
+      "role": "near_threshold_queue_jsonl",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_wayback_holdout_v3\\text_baseline_v2_error_analysis\\wayback_holdout_near_threshold_queue_v3.jsonl",
+      "sha256": "72fced3aa57cf6a59bc5efa1705d2aa44bbb6f589199e629d2cc10861c837bca",
+      "record_count": 11
+    },
+    {
+      "role": "report_markdown",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_wayback_holdout_v3\\text_baseline_v2_error_analysis\\wayback_holdout_error_analysis_v3.md",
+      "sha256": "367ce8a207909fc3b27995f42b5418b6f7d3ab1584ab90ecc978d91d9f408e07"
+    }
+  ],
+  "decision": {
+    "model_configuration_remains_frozen": true,
+    "tune_from_this_holdout": false,
+    "promote_for_deployment": false,
+    "primary_failure_modes": [
+      "Generic direct-address, security, and marketing language on legitimate financial websites activates label-1 features learned from phishing and spam styles.",
+      "Conventional trading and finance vocabulary can activate label-0 coefficients and suppress warned-page scores.",
+      "Nearest-fit similarities are low and 19 of 30 nearest rows come from spam_email, including six of eight errors, indicating residual source/style dependence.",
+      "Eleven of 30 records and five of eight errors are within 0.10 of the frozen threshold, so thresholded separation remains fragile even though the threshold must not be changed from V3."
+    ],
+    "next_gate": "If another challenger is justified, predeclare its hypothesis and select it only on eligible train/validation data, then evaluate it on a new untouched external cohort; never tune and re-score V3."
+  },
+  "safety_contract": {
+    "raw_files_modified": false,
+    "split_file_modified": false,
+    "model_file_modified": false,
+    "network_operations": 0,
+    "candidate_domain_access_operations": 0,
+    "labels_created": 0,
+    "model_fit_operations": 0,
+    "threshold_changes": 0,
+    "vectorizer_changes": 0,
+    "training_allowed": false,
+    "benchmark_used_for_model_selection": false,
+    "deployment_allowed": false
+  },
+  "prohibited_claims": [
+    "Do not interpret feature contributions or nearest-neighbor similarity as fraud evidence or causation.",
+    "Do not tune the model or threshold on these 30 cases and re-report V3 as unbiased evaluation.",
+    "Do not describe score_label_1 as a calibrated probability of real-world investment fraud.",
+    "Do not claim matching English and capture strata eliminates evidence-source or case-selection effects."
+  ]
+}

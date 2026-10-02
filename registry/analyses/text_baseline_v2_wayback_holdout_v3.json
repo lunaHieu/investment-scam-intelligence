@@ -1,0 +1,126 @@
+{
+  "analysis_id": "ISI_TEXT_BASELINE_V2_WAYBACK_HOLDOUT_V3",
+  "created_at": "2026-10-02",
+  "status": "FROZEN_MODEL_WAYBACK_HOLDOUT_V3_DIAGNOSTIC_COMPLETE_NOT_FOR_DEPLOYMENT",
+  "purpose": "Score the unchanged frozen Text Baseline V2 exactly once on the owner-accepted balanced 15+15 English Wayback holdout V3 without fitting, tuning, threshold changes, evidence leakage, or deployment claims.",
+  "implementation": [
+    {
+      "role": "evaluator",
+      "path": "scripts/evaluate_text_baseline_v2_wayback_holdout_v3.py",
+      "sha256": "8976bd38734404ebfab4cff66d53ca095178ffec703dd0dc3f616e4d7d43d1db"
+    },
+    {
+      "role": "verifier",
+      "path": "scripts/verify_text_baseline_v2_wayback_holdout_v3.py",
+      "sha256": "49c2614027dde4c2a0d4607aaef19ffd8a5750d4b3e0258bfe1b3820bb3d6c61"
+    }
+  ],
+  "inputs": [
+    {
+      "role": "model_registry",
+      "path": "registry/models/text_baseline_v2.json",
+      "sha256": "0485439ddc34c56d05587c85cd0520f519a4feb9dd7887d16e46273bc7b1d7f5"
+    },
+    {
+      "role": "model",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\mendeley_investment_deceptive_2026\\group_split_v2\\text_baseline_v2\\text_baseline_v2_model.joblib",
+      "sha256": "c58444996e0ae67a9739c588e3d088f1f57eb1af7f9105e10a647303ce72fc71"
+    },
+    {
+      "role": "benchmark_registry",
+      "path": "registry/pilots/external_text_wayback_holdout_benchmark_v3.json",
+      "sha256": "fa75acd2586c30f81872fee8f31c3afa1c42f3660af9c0831124bb606957eaae"
+    },
+    {
+      "role": "benchmark",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_wayback_holdout_v3\\wayback_holdout_benchmark_v3.json",
+      "sha256": "f234027f21f228fff39ea833a085eb46b9dddabb23004c1a2ad9751122c2df75"
+    },
+    {
+      "role": "owner_acceptance",
+      "path": "configs/external_text_wayback_holdout_owner_acceptance_v3.json",
+      "sha256": "f1ebad09e0ffc4fecb12b223f2fe31aec71d18c03da0117c4d0e1ad624e8b471"
+    }
+  ],
+  "outputs": [
+    {
+      "role": "results_json",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_wayback_holdout_v3\\text_baseline_v2_evaluation\\wayback_holdout_results_v3.json",
+      "sha256": "f076946be8b7ed6d128aa01c12041c400862e3ba97068cafc6fa51a13584451e"
+    },
+    {
+      "role": "predictions_jsonl",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_wayback_holdout_v3\\text_baseline_v2_evaluation\\wayback_holdout_predictions_v3.jsonl",
+      "sha256": "1e1ba2a24ef26e6690db0da9126be456cf0bea1e86aa9f5f149f15deac2451ef"
+    },
+    {
+      "role": "report_markdown",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_wayback_holdout_v3\\text_baseline_v2_evaluation\\wayback_holdout_report_v3.md",
+      "sha256": "ff3d6518feb7bae569ab60523af39381a630fde7638c2a33aded57bb0edc6b60"
+    }
+  ],
+  "data_contract": {
+    "benchmark_id": "EXTERNAL_TEXT_WAYBACK_HOLDOUT_BENCHMARK_V3",
+    "record_count": 30,
+    "confirmed_count": 15,
+    "legitimate_count": 15,
+    "language_stratum": "ENGLISH",
+    "capture_stratum": "WAYBACK_ARCHIVED_HOMEPAGE_HTML",
+    "model_input": "artifact.visible_text only",
+    "independent_ai_second_review": true,
+    "independent_human_second_review": false
+  },
+  "metrics": {
+    "threshold_label_1": 0.5,
+    "confusion_matrix": {
+      "tn": 10,
+      "fp": 5,
+      "fn": 3,
+      "tp": 12
+    },
+    "accuracy": 0.733333,
+    "balanced_accuracy": 0.733333,
+    "macro_f1": 0.732143,
+    "roc_auc": 0.848889,
+    "average_precision": 0.851282,
+    "correct_count": 22,
+    "error_count": 8,
+    "bootstrap_95_percent": {
+      "accuracy": {"lower": 0.566667, "upper": 0.866667},
+      "balanced_accuracy": {"lower": 0.563327, "upper": 0.875},
+      "macro_f1": {"lower": 0.554179, "upper": 0.866667}
+    }
+  },
+  "comparison_context": {
+    "opened_wayback_language_v2_macro_f1": 0.651868,
+    "holdout_v3_macro_f1": 0.732143,
+    "absolute_difference": 0.080275,
+    "paired_significance_claimed": false,
+    "interpretation": "V3 is a new independent cohort and the point estimate is higher, but the 30-record sample has wide uncertainty and must not be used to tune the frozen model."
+  },
+  "interpretation": {
+    "score_label_1_is_real_world_scam_probability": false,
+    "same_language_and_capture_stratum_reduce_but_do_not_eliminate_source_confounding": true,
+    "benchmark_may_be_used_for_tuning": false,
+    "evaluation_supports_deployment_claim": false,
+    "diagnostic": "The frozen baseline retains useful ranking signal on a new matched-capture English cohort, while thresholded transfer still produces five legitimate-to-label-1 errors and three confirmed-to-label-0 errors."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "candidate_domain_access_operations": 0,
+    "source_text_modified": false,
+    "model_fit_operations": 0,
+    "threshold_changes": 0,
+    "vectorizer_changes": 0,
+    "warning_or_registry_evidence_used_as_model_input": false,
+    "review_rationale_used_as_model_input": false,
+    "benchmark_used_for_tuning": false,
+    "training_allowed": false,
+    "deployment_allowed": false
+  },
+  "decision": {
+    "retain_frozen_baseline": true,
+    "promote_for_deployment": false,
+    "next_action": "Perform diagnostic error analysis on the eight errors and near-threshold records without tuning, relabeling, or re-scoring this opened holdout."
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "acceptance_id": "EXTERNAL_TEXT_WAYBACK_HOLDOUT_OWNER_ACCEPTANCE_V3",
+  "accepted_at": "2026-10-02T13:27:26+07:00",
+  "adopter_role": "PROJECT_OWNER",
+  "authorization_source": "User instruction 'làm bước kế tiếp' after receiving the frozen 15+15 English holdout V3 report and its OWNER_ACCEPTANCE_REQUIRED_BEFORE_MODEL_SCORING gate.",
+  "accepted_for_frozen_model_scoring": true,
+  "accepted_for_training_or_tuning": false,
+  "diagnostic_evaluation_only": true,
+  "independent_human_review_claimed": false,
+  "scope": {
+    "benchmark_id": "EXTERNAL_TEXT_WAYBACK_HOLDOUT_BENCHMARK_V3",
+    "benchmark_path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_wayback_holdout_v3\\wayback_holdout_benchmark_v3.json",
+    "benchmark_sha256": "f234027f21f228fff39ea833a085eb46b9dddabb23004c1a2ad9751122c2df75",
+    "benchmark_registry_path": "registry/pilots/external_text_wayback_holdout_benchmark_v3.json",
+    "benchmark_registry_sha256": "fa75acd2586c30f81872fee8f31c3afa1c42f3660af9c0831124bb606957eaae",
+    "record_count": 30,
+    "confirmed_count": 15,
+    "legitimate_count": 15,
+    "language_stratum": "ENGLISH",
+    "capture_stratum": "WAYBACK_ARCHIVED_HOMEPAGE_HTML"
+  },
+  "scoring_contract": {
+    "model_id": "ISI_TEXT_BASELINE_V2",
+    "model_registry_path": "registry/models/text_baseline_v2.json",
+    "model_registry_sha256": "0485439ddc34c56d05587c85cd0520f519a4feb9dd7887d16e46273bc7b1d7f5",
+    "model_artifact_sha256": "c58444996e0ae67a9739c588e3d088f1f57eb1af7f9105e10a647303ce72fc71",
+    "allowed_model_input": "benchmark.records[].artifact.visible_text only",
+    "warning_or_registry_evidence_as_model_input_allowed": false,
+    "review_rationale_as_model_input_allowed": false,
+    "model_configuration_changes_allowed": false,
+    "threshold_changes_allowed": false,
+    "vectorizer_changes_allowed": false,
+    "model_fit_allowed": false,
+    "use_benchmark_for_tuning": false,
+    "deployment_allowed": false
+  }
+}

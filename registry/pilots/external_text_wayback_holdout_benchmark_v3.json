@@ -1,0 +1,193 @@
+{
+  "registry_id": "EXTERNAL_TEXT_WAYBACK_HOLDOUT_BENCHMARK_V3",
+  "created_at": "2026-10-02",
+  "status": "FROZEN_OWNER_ACCEPTANCE_REQUIRED_BEFORE_MODEL_SCORING",
+  "purpose": "Freeze a completely new balanced English external holdout with matched Wayback archived-homepage capture conditions and high-confidence agreement between an AI primary review and an independent blinded AI second review.",
+  "artifacts": [
+    {
+      "role": "protocol_config",
+      "path": "configs/external_text_wayback_holdout_v3.json",
+      "sha256": "0dc47af16aeda43c0c64ef92edc834f92fd8da3c9d73d802394e9ef992270e65"
+    },
+    {
+      "role": "candidate_queue",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_wayback_holdout_v3\\candidate_queue_v3.jsonl",
+      "sha256": "be6385d634c0ddf1f2931271a16a71c714e8419794a174e7f28c4441c7cfe648"
+    },
+    {
+      "role": "candidate_queue_report",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_wayback_holdout_v3\\candidate_queue_report_v3.json",
+      "sha256": "6f24da62f52a6397777540cc94eb3e9a02301eeee675e6c4aa7fc26ab53fa284"
+    },
+    {
+      "role": "availability_report",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_wayback_holdout_v3\\availability_report_v3.json",
+      "sha256": "37a03c2d7091f30b3d81d321a157b1226250c8f2a076605b131bc3a9493c2754"
+    },
+    {
+      "role": "capture_plan",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_wayback_holdout_v3\\balanced_capture_plan_v3.json",
+      "sha256": "218d009d57534519dfe9e51d7a4aa4fe6a795596a77e8468999cb79f3ba359dd"
+    },
+    {
+      "role": "capture_report",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_wayback_holdout_v3\\balanced_capture_report_v3.json",
+      "sha256": "453a085cad34fa802d16b03d8f209804f1196d1e208d49db363dc877c2c9d13d"
+    },
+    {
+      "role": "capture_audit",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_wayback_holdout_v3\\capture_artifact_audit_v3.json",
+      "sha256": "7ba7f80e2bed6650c0b0fd8967b9f573fbd00e688371675a99ee827b5e0b5b10"
+    },
+    {
+      "role": "balanced_usable_capture_view",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_wayback_holdout_v3\\balanced_usable_capture_view_v3.json",
+      "sha256": "0fd6e29160d714b0c6ca38572bc3fe1186de191b2713800c838dd265fc282bb5"
+    },
+    {
+      "role": "offline_candidate_profiles",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_wayback_holdout_v3\\offline_screening_v3\\candidate_profiles_v3.jsonl",
+      "sha256": "21329f08cd9d143d0cf0d63516ffc9d97cb389d9318a8201f63f6423546e3b90"
+    },
+    {
+      "role": "offline_screening",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_wayback_holdout_v3\\offline_screening_v3\\candidate_screening_v3.jsonl",
+      "sha256": "929aa3dd1a2a4124bc3ba9e622931bbc630c09a6eb23038b002d860be8dc6126"
+    },
+    {
+      "role": "offline_screening_report",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_wayback_holdout_v3\\offline_screening_v3\\screening_report_v3.json",
+      "sha256": "df855d00500082038d539566bf642b33c49a594e095d26e2b2827212c5a75c4c"
+    },
+    {
+      "role": "primary_review_preparation_report",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_wayback_holdout_v3\\primary_review_v3\\preparation_report_v3.json",
+      "sha256": "2d92d836939b04b22afba51553223acc5e47008fa384c74dd13c37041937c9cd"
+    },
+    {
+      "role": "primary_review_packet",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_wayback_holdout_v3\\primary_review_v3\\primary_review_packet_v3.json",
+      "sha256": "36a7ac47fbeca11cb0fbca4571e576a4307c2c9ed87ab84bf3b88822d00b87c3"
+    },
+    {
+      "role": "primary_review_mapping",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_wayback_holdout_v3\\primary_review_v3\\primary_review_mapping_v3.jsonl",
+      "sha256": "e07aa49b6185a6dd564ba186c71f32fb0392976636b973c23c09c864dbe0cbd6"
+    },
+    {
+      "role": "primary_review_policy",
+      "path": "configs/external_text_wayback_holdout_primary_review_policy_v3.json",
+      "sha256": "5a67ddfd6a5601ab80a9c0e5f09ac312435c4aa7d8aad5ce562e2a20592354a2"
+    },
+    {
+      "role": "primary_review_response",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_wayback_holdout_v3\\primary_review_v3\\primary_review_response_v3.json",
+      "sha256": "69f46207c7c4fdbf5fda13170db42cdce6c5348c7a5d758073ccc4597461e2d6"
+    },
+    {
+      "role": "primary_review",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_wayback_holdout_v3\\primary_review_v3\\primary_review_record_v3.json",
+      "sha256": "bbfaab700f1f261fd0c4e0f66351e5805261b828a2ff2d424e61518aa7024ce3"
+    },
+    {
+      "role": "blind_second_review_preparation_report",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_wayback_holdout_v3\\second_review_v3\\preparation_report_v3.json",
+      "sha256": "b9152e7c071bad13e73a4201f1581aea2d9a334a7c473ab7ba2f66c865df90cc"
+    },
+    {
+      "role": "blind_second_review_packet",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_wayback_holdout_v3\\second_review_v3\\blind_second_review_packet_v3.json",
+      "sha256": "c1f1ffd6d1be600d59ffd596479f4698ff2a59f716e09d61c1eb73e73c74c3f1"
+    },
+    {
+      "role": "private_second_review_mapping",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_wayback_holdout_v3\\second_review_v3\\private_mapping_v3.jsonl",
+      "sha256": "f5ae61228ee3464f190a8b1c55e64fb7766f49b69865903ff52728f40a4d7969"
+    },
+    {
+      "role": "independent_second_review_response",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_wayback_holdout_v3\\second_review_v3\\independent_second_review_response_v3.json",
+      "sha256": "13747eafc57a59df1b570b3f095688dfe6bdb99c41acc04b07f0214c67e94989"
+    },
+    {
+      "role": "independent_second_review",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_wayback_holdout_v3\\second_review_v3\\independent_second_review_record_v3.json",
+      "sha256": "2dbc69a8b2d97edb38badf0a6b4cd0ac0af8ae436fe6db09de06678945d82bdc"
+    },
+    {
+      "role": "reconciliation_report",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_wayback_holdout_v3\\reconciliation_report_v3.json",
+      "sha256": "6c440dcdedbf913c980e962a1a32bd597712c953e66e9cea94f200118facb959"
+    },
+    {
+      "role": "benchmark",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_wayback_holdout_v3\\wayback_holdout_benchmark_v3.json",
+      "sha256": "f234027f21f228fff39ea833a085eb46b9dddabb23004c1a2ad9751122c2df75"
+    }
+  ],
+  "counts": {
+    "queued_candidates": 200,
+    "archive_available": 130,
+    "capture_plan_per_class": 37,
+    "captured": 70,
+    "hash_verified_readable": 69,
+    "balanced_usable_per_class": 32,
+    "screened_usable_captures": 64,
+    "primary_reviewed": 47,
+    "primary_confirmed_high": 17,
+    "primary_legitimate_high": 30,
+    "primary_english": 46,
+    "primary_non_english": 1,
+    "english_second_review_selected_per_class": 16,
+    "confirmed_high_agreements": 15,
+    "legitimate_high_agreements": 15,
+    "second_review_medium_exclusions": 2,
+    "benchmark_records": 30
+  },
+  "exclusions": [
+    {
+      "candidate_id": "MATCHWB3_CONF_025",
+      "decision": "CONFIRMED",
+      "second_review_confidence": "MEDIUM",
+      "reason": "Dominant warned identity and activity align, but alternate company names, a different-domain support email, and an unverified regulation claim reduce confidence."
+    },
+    {
+      "candidate_id": "MATCHWB3_LEGIT_047",
+      "decision": "LEGITIMATE",
+      "second_review_confidence": "MEDIUM",
+      "reason": "The registered DBA identity and host align, but an unrelated template contact block contaminates the capture."
+    }
+  ],
+  "reserves": {
+    "non_english": {
+      "count": 1,
+      "candidate_ids": ["MATCHWB3_CONF_081"],
+      "action": "PRESERVE_AS_RESERVE_DO_NOT_SCORE",
+      "reason": "The protocol requires at least six high-confidence agreements in each class before opening a non-English stratum."
+    },
+    "unselected_primary_english_legitimate": {
+      "count": 14,
+      "action": "PRESERVE_AS_RESERVE_DO_NOT_SCORE",
+      "reason": "Deterministic balancing selected only sixteen legitimate candidates for blinded second review because sixteen English confirmed candidates were eligible."
+    }
+  },
+  "gates": {
+    "english_minimum_per_class": 12,
+    "english_minimum_met": true,
+    "classes_balanced": true,
+    "owner_acceptance_complete": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "deployment_allowed": false
+  },
+  "review_disclosure": {
+    "primary_review": "AI primary evidence and language review, not human review",
+    "second_review": "Independent blinded AI second review in a separate agent context, not human review",
+    "independent_human_review_complete": false
+  },
+  "model_firewall": {
+    "allowed_model_input_if_owner_later_accepts_scoring": "benchmark.records[].artifact.visible_text only",
+    "warning_or_registry_evidence_as_model_input_allowed": false,
+    "review_rationale_as_model_input_allowed": false
+  }
+}

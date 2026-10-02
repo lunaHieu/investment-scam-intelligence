@@ -1,0 +1,103 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_SCHEMA_REVIEW_PILOT_V1",
+  "created_at": "2026-10-03",
+  "status": "FROZEN_SCHEMA_REVIEW_PILOT_PROTOCOL_COMPLETE_ENUMERATION_BLOCKED",
+  "purpose": "Register the frozen candidate schema, balanced 40-candidate initial-wave design, deterministic selection rule, review sequence, reserve policy, and closed execution gates for the Target Text Corpus V1 schema/review pilot.",
+  "inputs": [
+    {
+      "role": "target_corpus_protocol",
+      "path": "configs/target_text_corpus_v1_protocol.json",
+      "sha256": "7ec4468c4eac0241706114d9bfeb3c090208ef756f620841ac3be47074b8edc4"
+    },
+    {
+      "role": "channel_terms_registry",
+      "path": "registry/analyses/target_text_corpus_v1_channel_terms_v1.json",
+      "sha256": "f86b7830f9e2f0e0420095bddd37727a6ddca334da11f0c233dd7459d9748f9a"
+    },
+    {
+      "role": "opened_external_exclusion_index",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_preacquisition\\opened_external_exclusion_index_v1.json",
+      "sha256": "df43d88dbb1120c6f8e9afa0a7893fab1f4e176838483bb3a8bf013b13bd0d07"
+    },
+    {
+      "role": "legacy_group_remediation_map",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_legacy_group_remediation_v1\\legacy_group_remediation_map_v1.json",
+      "sha256": "c4f69e43484a66aac74d0e50c30fe26a247b65e6abd31c2acac78af1fb1a9088"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "schema_review_pilot_verifier",
+      "path": "scripts/verify_target_text_corpus_v1_schema_review_pilot.py",
+      "sha256": "154cd382df2fbf4f62dc7ef3ff12eb95c83db9b0f15ee76274f9026da0e99919"
+    },
+    {
+      "role": "schema_review_pilot_tests",
+      "path": "tests/test_target_text_corpus_v1_schema_review_pilot.py",
+      "sha256": "da26d5d4bec54f2ffe71fae108a72db2753dcf0a19aacdbe230594f709aab54b"
+    },
+    {
+      "role": "method_documentation",
+      "path": "docs/target-text-corpus-v1-schema-review-pilot.md",
+      "sha256": "8b3cff6189804adcaa9242fff2cb0cfc545eaf433e065e474d92f684616d4050"
+    }
+  ],
+  "outputs": [
+    {
+      "role": "target_text_candidate_schema",
+      "path": "schemas/target_text_candidate.schema.json",
+      "sha256": "96abb0d8cc07eda63a68669b3a0ac4adc577529e4e268dd02a49e1a548f0aaee"
+    },
+    {
+      "role": "schema_review_pilot_protocol",
+      "path": "configs/target_text_corpus_v1_schema_review_pilot_v1.json",
+      "sha256": "56400c9c314140f18af3c8a801597849866a2e384537ca5c88fb0fcafa7fb321"
+    }
+  ],
+  "findings": {
+    "initial_candidate_target": 40,
+    "candidate_target_per_planned_status": 20,
+    "registered_channel_count": 4,
+    "candidate_target_per_channel": 10,
+    "ready_channel_count": 2,
+    "blocked_channel_count": 2,
+    "pilot_eligible_group_target_per_ground_truth_status": 20,
+    "pilot_eligible_group_target_per_channel": 10,
+    "candidate_count_equals_eligible_group_count": false,
+    "reserve_batch_size_per_deficient_channel": 5,
+    "cross_channel_quota_reallocation_allowed": false,
+    "candidate_records_created": 0
+  },
+  "decision": {
+    "candidate_schema_freeze_passed": true,
+    "balanced_initial_wave_design_passed": true,
+    "all_channel_prerequisites_ready": false,
+    "candidate_enumeration_allowed": false,
+    "candidate_capture_allowed": false,
+    "binary_labeling_allowed": false,
+    "train_another_model_now": false,
+    "next_gate": "Record the missing CFTC manual/official reference artifact and truthful SEC User-Agent contact identity in a verified intake ledger; only then build the complete four-channel candidate wave."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "domain_access_allowed": false,
+    "candidate_records_enumerated": 0,
+    "new_records_acquired": 0,
+    "new_artifact_captures": 0,
+    "labels_created": 0,
+    "labels_changed": 0,
+    "model_fit_operations": 0,
+    "model_scoring_operations": 0,
+    "validation_or_test_openings": 0,
+    "training_allowed": false,
+    "deployment_allowed": false
+  },
+  "prohibited_claims": [
+    "Do not call the 40 planned candidate records 40 labels, cases, or eligible groups.",
+    "Do not compensate for a source-channel shortfall by reallocating its quota to another channel.",
+    "Do not rank, select, or review candidates using model predictions.",
+    "Do not release a partial two-channel wave while the other two channel inputs are blocked.",
+    "Do not access live candidate domains or treat source-list membership alone as ground truth.",
+    "Do not train a model when the schema/review pilot eventually passes."
+  ]
+}

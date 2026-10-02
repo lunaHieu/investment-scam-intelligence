@@ -1,0 +1,159 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ISI Target Text Candidate V1",
+  "description": "Provenance-only candidate record. It is not a case label, captured artifact, or training row.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "candidate_id",
+    "enumeration_wave_id",
+    "channel_id",
+    "channel_target_stratum",
+    "predicted_artifact_type",
+    "reference",
+    "candidate_identity",
+    "enumerated_at",
+    "queue_state",
+    "exclusion_screen",
+    "capture_plan",
+    "review_state",
+    "safety"
+  ],
+  "properties": {
+    "schema_version": {"const": "target_text_candidate_v1"},
+    "candidate_id": {"type": "string", "pattern": "^TTCV1_CAND_[A-Z0-9_-]+$"},
+    "enumeration_wave_id": {"type": "string", "pattern": "^TTCV1_ENUM_[A-Z0-9_-]+$"},
+    "channel_id": {
+      "enum": [
+        "CONFIRMED_REGULATOR_LINKED_WEBSITE",
+        "CONFIRMED_CFTC_RED_LINKED_WAYBACK_WEBSITE",
+        "LEGITIMATE_REGISTER_LINKED_WEBSITE",
+        "LEGITIMATE_SEC_EDGAR_LINKED_WAYBACK_WEBSITE"
+      ]
+    },
+    "channel_target_stratum": {"enum": ["CONFIRMED", "LEGITIMATE"]},
+    "predicted_artifact_type": {"const": "WEBSITE_SNAPSHOT"},
+    "reference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_id",
+        "source_record_id",
+        "source_url",
+        "reference_role",
+        "reference_observed_at",
+        "reference_sha256"
+      ],
+      "properties": {
+        "source_id": {"type": "string", "minLength": 1},
+        "source_record_id": {"type": "string", "minLength": 1},
+        "source_url": {"type": "string", "format": "uri", "pattern": "^https://"},
+        "reference_role": {
+          "enum": [
+            "CANDIDATE_DISCOVERY_AND_CASE_EVIDENCE_ONLY",
+            "OFFICIAL_ENTITY_REFERENCE_ONLY"
+          ]
+        },
+        "reference_observed_at": {"type": "string", "format": "date-time"},
+        "reference_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      }
+    },
+    "candidate_identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "entity_name_from_reference",
+        "candidate_url",
+        "normalized_host",
+        "normalized_host_sha256",
+        "identity_linkage_basis"
+      ],
+      "properties": {
+        "entity_name_from_reference": {"type": "string", "minLength": 1},
+        "candidate_url": {"type": "string", "format": "uri", "pattern": "^https?://"},
+        "normalized_host": {"type": "string", "minLength": 1},
+        "normalized_host_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "identity_linkage_basis": {"type": "string", "minLength": 1}
+      }
+    },
+    "enumerated_at": {"type": "string", "format": "date-time"},
+    "queue_state": {"const": "PROVENANCE_ENUMERATED_UNCAPTURED"},
+    "exclusion_screen": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "opened_normalized_host",
+        "opened_reference_identity",
+        "legacy_component",
+        "exact_capture",
+        "exact_text",
+        "case_campaign_entity_family",
+        "near_duplicate"
+      ],
+      "properties": {
+        "opened_normalized_host": {"const": "PASS"},
+        "opened_reference_identity": {"const": "PASS"},
+        "legacy_component": {"enum": ["PASS", "MANUAL_CLEARED"]},
+        "exact_capture": {"const": "PENDING_CAPTURE"},
+        "exact_text": {"const": "PENDING_CAPTURE"},
+        "case_campaign_entity_family": {"const": "PENDING_REVIEW"},
+        "near_duplicate": {"const": "PENDING_CAPTURE"}
+      }
+    },
+    "capture_plan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "capture_source",
+        "live_candidate_domain_access_allowed",
+        "automatic_external_redirect_following",
+        "raw_capture_overwrite_allowed"
+      ],
+      "properties": {
+        "capture_source": {"const": "WAYBACK_MACHINE"},
+        "live_candidate_domain_access_allowed": {"const": false},
+        "automatic_external_redirect_following": {"const": false},
+        "raw_capture_overwrite_allowed": {"const": false}
+      }
+    },
+    "review_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "artifact_capture",
+        "identity_resolution",
+        "ground_truth_status",
+        "label_confidence",
+        "review_status",
+        "primary_review",
+        "independent_second_review",
+        "owner_acceptance",
+        "training_eligible",
+        "label_created"
+      ],
+      "properties": {
+        "artifact_capture": {"const": "MISSING"},
+        "identity_resolution": {"const": "UNRESOLVED"},
+        "ground_truth_status": {"const": "UNCERTAIN"},
+        "label_confidence": {"const": "LOW"},
+        "review_status": {"const": "UNREVIEWED"},
+        "primary_review": {"const": "NOT_STARTED"},
+        "independent_second_review": {"const": "NOT_STARTED"},
+        "owner_acceptance": {"const": "NOT_REQUESTED"},
+        "training_eligible": {"const": "NO"},
+        "label_created": {"const": false}
+      }
+    },
+    "safety": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["live_domain_accessed", "wayback_queried", "model_scored"],
+      "properties": {
+        "live_domain_accessed": {"const": false},
+        "wayback_queried": {"const": false},
+        "model_scored": {"const": false}
+      }
+    }
+  }
+}

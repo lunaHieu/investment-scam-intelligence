@@ -1,0 +1,206 @@
+{
+  "protocol_id": "ISI_TARGET_TEXT_CORPUS_V1_SCHEMA_REVIEW_PILOT_V1",
+  "frozen_at": "2026-10-03T10:00:00+07:00",
+  "status": "FROZEN_ENUMERATION_PROTOCOL_INPUTS_BLOCKED_NO_CANDIDATES_CREATED",
+  "purpose": "Freeze the candidate schema, balanced initial enumeration quotas, deterministic selection, and review gates for a 20+20 eligible-group workflow pilot before any candidate is enumerated, captured, labeled, or modeled.",
+  "basis": [
+    {
+      "role": "target_corpus_protocol",
+      "path": "configs/target_text_corpus_v1_protocol.json",
+      "sha256": "7ec4468c4eac0241706114d9bfeb3c090208ef756f620841ac3be47074b8edc4"
+    },
+    {
+      "role": "channel_terms_registry",
+      "path": "registry/analyses/target_text_corpus_v1_channel_terms_v1.json",
+      "sha256": "f86b7830f9e2f0e0420095bddd37727a6ddca334da11f0c233dd7459d9748f9a"
+    },
+    {
+      "role": "channel_terms_protocol",
+      "path": "configs/target_text_corpus_v1_channel_terms_v1.json",
+      "sha256": "020bcb7afa5c81eb2bdfab9a3886268ef30d73e1704054c90f7f9c95ec76f266"
+    },
+    {
+      "role": "opened_external_exclusion_index",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_preacquisition\\opened_external_exclusion_index_v1.json",
+      "sha256": "df43d88dbb1120c6f8e9afa0a7893fab1f4e176838483bb3a8bf013b13bd0d07"
+    },
+    {
+      "role": "legacy_group_remediation_map",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_legacy_group_remediation_v1\\legacy_group_remediation_map_v1.json",
+      "sha256": "c4f69e43484a66aac74d0e50c30fe26a247b65e6abd31c2acac78af1fb1a9088"
+    }
+  ],
+  "candidate_schema": {
+    "path": "schemas/target_text_candidate.schema.json",
+    "record_stage": "PROVENANCE_ONLY_BEFORE_CAPTURE",
+    "candidate_is_a_label": false,
+    "candidate_is_a_case": false,
+    "candidate_is_a_training_row": false,
+    "artifact_text_allowed": false,
+    "warning_or_filing_text_allowed_as_predicted_artifact": false,
+    "required_initial_ground_truth_status": "UNCERTAIN",
+    "required_initial_label_confidence": "LOW",
+    "required_initial_review_status": "UNREVIEWED",
+    "required_initial_training_eligible": "NO"
+  },
+  "initial_enumeration_wave": {
+    "wave_id": "TTCV1_ENUM_PILOT_INITIAL_40",
+    "candidate_record_target": 40,
+    "quota_by_channel": {
+      "CONFIRMED_REGULATOR_LINKED_WEBSITE": 10,
+      "CONFIRMED_CFTC_RED_LINKED_WAYBACK_WEBSITE": 10,
+      "LEGITIMATE_REGISTER_LINKED_WEBSITE": 10,
+      "LEGITIMATE_SEC_EDGAR_LINKED_WAYBACK_WEBSITE": 10
+    },
+    "candidate_records_by_target_stratum": {
+      "CONFIRMED": 20,
+      "LEGITIMATE": 20
+    },
+    "channels_per_target_stratum": 2,
+    "maximum_candidate_fraction_from_one_channel_per_target_stratum": 0.5,
+    "quota_shortfall_policy": "FAIL_WAVE_DO_NOT_REALLOCATE_ACROSS_CHANNELS",
+    "candidate_shortfall_does_not_lower_pilot_acceptance_gate": true
+  },
+  "selection_contract": {
+    "selection_seed": "target-text-corpus-v1-schema-review-pilot-v1-20261003",
+    "ranking_key": "SHA256(selection_seed || channel_id || source_id || source_record_id || normalized_host)",
+    "ranking_order": "ASCENDING_HEX",
+    "one_candidate_per_normalized_host_within_wave": true,
+    "one_candidate_per_reference_record_within_wave": true,
+    "cross_channel_host_overlap_allowed": false,
+    "cross_stratum_entity_overlap_allowed": false,
+    "post_freeze_artifact_capture_required": true,
+    "candidate_reference_may_preexist_protocol_freeze": true,
+    "manual_cherry_picking_allowed": false,
+    "model_score_ranking_allowed": false
+  },
+  "enumeration_admission_gates": {
+    "exact_reference_record_identifier_required": true,
+    "exact_reference_url_required": true,
+    "reference_artifact_sha256_required": true,
+    "entity_name_from_reference_required": true,
+    "candidate_url_and_normalized_host_required": true,
+    "normalized_host_sha256_required": true,
+    "identity_linkage_basis_required": true,
+    "opened_normalized_host_exclusion_must_pass": true,
+    "opened_reference_identity_exclusion_must_pass": true,
+    "legacy_component_exclusion_must_pass_or_be_manually_cleared": true,
+    "candidate_live_domain_access_allowed": false,
+    "candidate_status_must_remain_uncertain": true,
+    "label_creation_allowed": false
+  },
+  "channel_prerequisites": {
+    "CONFIRMED_REGULATOR_LINKED_WEBSITE": {
+      "reference_inputs_ready": true,
+      "enumeration_allowed_after_protocol_verification": true
+    },
+    "CONFIRMED_CFTC_RED_LINKED_WAYBACK_WEBSITE": {
+      "reference_inputs_ready": false,
+      "required_input": "Manually acquired or explicit official-download CFTC RED reference artifact with path and SHA-256.",
+      "enumeration_allowed_after_protocol_verification": false
+    },
+    "LEGITIMATE_REGISTER_LINKED_WEBSITE": {
+      "reference_inputs_ready": true,
+      "enumeration_allowed_after_protocol_verification": true
+    },
+    "LEGITIMATE_SEC_EDGAR_LINKED_WAYBACK_WEBSITE": {
+      "reference_inputs_ready": false,
+      "required_input": "Truthful project contact identity for the SEC User-Agent plus a frozen documented API or bulk-download manifest.",
+      "enumeration_allowed_after_protocol_verification": false
+    }
+  },
+  "wave_release_rule": {
+    "partial_channel_enumeration_allowed": false,
+    "all_four_channel_inputs_required_before_initial_wave": true,
+    "reason": "Freezing one complete balanced wave prevents source availability from silently changing the planned class/channel composition."
+  },
+  "capture_and_review_sequence": [
+    "enumeration_schema_validation",
+    "independent_candidate_provenance_qa",
+    "frozen_queue_hash_registration",
+    "wayback_query_without_live_candidate_domain_access",
+    "immutable_raw_capture_and_sha256",
+    "exact_text_extraction_and_sha256",
+    "post_capture_exclusion_and_transitive_grouping",
+    "primary_case_and_artifact_review",
+    "blind_independent_second_review",
+    "reconciliation_or_route_to_uncertain",
+    "owner_acceptance",
+    "pilot_gate_verification"
+  ],
+  "review_contract": {
+    "primary_review_required": true,
+    "independent_second_review_required_for_every_binary_eligible_record": true,
+    "second_reviewer_receives_first_review_rationale": false,
+    "model_prediction_visible_to_reviewer": false,
+    "disagreement_route": "RECONCILIATION_OR_UNCERTAIN",
+    "unresolved_identity_or_clone_contradiction_route": "UNCERTAIN",
+    "owner_acceptance_required": true,
+    "warning_list_or_registry_membership_alone_sufficient_for_label": false
+  },
+  "pilot_acceptance_gate": {
+    "unit": "TRANSITIVE_GROUP",
+    "minimum_eligible_groups_by_ground_truth_status": {
+      "CONFIRMED": 20,
+      "LEGITIMATE": 20
+    },
+    "minimum_eligible_groups_by_channel": {
+      "CONFIRMED_REGULATOR_LINKED_WEBSITE": 10,
+      "CONFIRMED_CFTC_RED_LINKED_WAYBACK_WEBSITE": 10,
+      "LEGITIMATE_REGISTER_LINKED_WEBSITE": 10,
+      "LEGITIMATE_SEC_EDGAR_LINKED_WAYBACK_WEBSITE": 10
+    },
+    "eligible_group_requirements": [
+      "observed investment-related website artifact captured after protocol freeze",
+      "immutable raw capture and exact UTF-8 text hashes",
+      "minimum 20 non-whitespace text characters",
+      "case/campaign, entity/domain-family, and near-duplicate groups assigned",
+      "no opened-cohort overlap",
+      "HIGH label confidence",
+      "RECONCILED review status",
+      "blind independent second review",
+      "owner acceptance"
+    ],
+    "candidate_count_is_not_eligible_group_count": true,
+    "initial_40_candidates_guarantee_gate_pass": false,
+    "model_training_allowed_when_pilot_passes": false,
+    "pilot_purpose": "Validate acquisition, provenance, review, exclusion, and grouping workflow only."
+  },
+  "reserve_policy": {
+    "trigger": "Any channel produces fewer than 10 accepted independent groups after the initial wave is fully reviewed.",
+    "batch_size_per_deficient_channel": 5,
+    "new_reserve_wave_must_be_frozen_before_capture": true,
+    "failed_or_uncertain_candidates_may_not_be_replaced_in_place": true,
+    "same_deterministic_ranking_continues_after_previous_cutoff": true,
+    "cross_channel_quota_reallocation_allowed": false,
+    "stopping_rule": "Stop when every channel has 10 accepted independent groups or its eligible reference pool is exhausted; report exhaustion without relaxing the gate."
+  },
+  "planned_output_paths": {
+    "candidate_queue": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\candidate_queue_v1.jsonl",
+    "enumeration_report": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\enumeration_report_v1.json",
+    "independent_provenance_review": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\independent_provenance_review_v1.json"
+  },
+  "gate_status": {
+    "protocol_frozen": true,
+    "candidate_schema_frozen": true,
+    "all_channel_prerequisites_ready": false,
+    "candidate_enumeration_allowed": false,
+    "candidate_capture_allowed": false,
+    "binary_labeling_allowed": false,
+    "pilot_passed": false
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "domain_access_allowed": false,
+    "candidate_records_enumerated": 0,
+    "new_records_acquired": 0,
+    "new_artifact_captures": 0,
+    "labels_created": 0,
+    "labels_changed": 0,
+    "model_fit_operations": 0,
+    "model_scoring_operations": 0,
+    "validation_or_test_openings": 0,
+    "training_allowed": false,
+    "deployment_allowed": false
+  }
+}

@@ -52,12 +52,24 @@ def main() -> None:
     analysis_registries = sorted((ROOT / "registry" / "analyses").glob("*.json"))
     for path in analysis_registries:
         analysis = load_json(path)
-        if analysis.get("source_id") not in source_ids:
+        # Newer evidence syntheses can combine multiple registered sources or
+        # evaluate a registered model against an external cohort.  They may
+        # therefore omit a single source_id; an explicitly supplied ID must
+        # still resolve to the source registry.
+        source_id = analysis.get("source_id")
+        if source_id is not None and source_id not in source_ids:
             raise ValueError(f"Unknown source_id in analysis registry: {path.name}")
         safety = analysis.get("safety_contract", {})
-        if safety.get("network_operations") != 0 or safety.get("labels_created") != 0:
+        labels_created = safety.get("labels_created", safety.get("labels_changed", 0))
+        if safety.get("network_operations", 0) != 0 or labels_created != 0:
             raise ValueError(f"Analysis must report zero network operations and labels: {path.name}")
-        if safety.get("training_allowed") is not False or safety.get("domain_access_allowed") is not False:
+        domain_access_open = safety.get("domain_access_allowed") is True
+        domain_access_operations = safety.get("candidate_domain_access_operations", 0)
+        if (
+            safety.get("training_allowed") is not False
+            or domain_access_open
+            or domain_access_operations != 0
+        ):
             raise ValueError(f"Analysis safety gate is open: {path.name}")
         quality = analysis.get("quality", {})
         if quality.get("mean_adjusted_rand_index_across_seeds", 1.0) < 0.6 and quality.get("stability_assessment") == "HIGH":

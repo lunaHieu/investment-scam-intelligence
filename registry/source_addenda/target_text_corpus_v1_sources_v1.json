@@ -1,0 +1,84 @@
+{
+  "addendum_id": "ISI_TARGET_TEXT_CORPUS_V1_SOURCE_ADDENDUM_V1",
+  "created_at": "2026-10-03",
+  "status": "FROZEN_SOURCE_REGISTRATION_ADDENDUM_NO_ACQUISITION",
+  "purpose": "Register two official reference sources for the second CONFIRMED and LEGITIMATE acquisition channels without mutating the hash-pinned V1 source registry or acquiring records.",
+  "parent_source_registry": {
+    "path": "registry/sources.json",
+    "sha256": "37cb19e4b329b642a8a61f487e20d257b6f8e771a1f6bf60babb888d9d0b5609"
+  },
+  "sources": [
+    {
+      "source_id": "cftc_red_list",
+      "tier": "CORE_TARGET_CORPUS_REFERENCE",
+      "name": "CFTC Registration Deficient List",
+      "url": "https://www.cftc.gov/LearnAndProtect/Resources/Check/redlist.htm",
+      "source_type": "regulator_warning_registry",
+      "default_evidence_level": "SILVER",
+      "raw_label_semantics": "Foreign entity appears to act in a capacity requiring CFTC registration but is not registered; listing is not a CFTC or court finding that a violation occurred.",
+      "allowed_uses": [
+        "candidate_discovery",
+        "entity_and_domain_evidence_linking",
+        "confirmed_channel_reference"
+      ],
+      "prohibited_uses": [
+        "automatic confirmed label",
+        "legal violation claim",
+        "absence-as-legitimacy inference",
+        "warning text as model input"
+      ],
+      "case_level_target_eligible_without_additional_review": false,
+      "terms_review": {
+        "reviewed_at": "2026-10-03",
+        "official_policy_url": "https://www.cftc.gov/WebPolicy/index.htm",
+        "finding": "CFTC states that government information on its website is public domain and may be copied and distributed with appropriate acknowledgement; third-party contributed or licensed items may remain protected.",
+        "operational_decision": "Reference metadata may be retained for internal academic research with source acknowledgement. Initial acquisition is manual or through an explicit official download only; no generic scraper is authorized by this review.",
+        "redistribution_decision": "Do not redistribute third-party media or full page bundles without a separate item-level rights review."
+      }
+    },
+    {
+      "source_id": "sec_edgar_company_submissions",
+      "tier": "CORE_TARGET_CORPUS_REFERENCE",
+      "name": "SEC EDGAR Submissions and Filing Data",
+      "url": "https://www.sec.gov/search-filings/edgar-application-programming-interfaces",
+      "source_type": "official_filing_api_and_bulk_archive",
+      "default_evidence_level": "LEGIT_REFERENCE",
+      "raw_label_semantics": "Official public filing and submission metadata; filing or registration is not a content-safety label and does not guarantee legitimacy of every communication.",
+      "allowed_uses": [
+        "entity_identity_reference",
+        "issuer_and_filing_cross_check",
+        "official_domain_linkage_review",
+        "legitimate_channel_reference"
+      ],
+      "prohibited_uses": [
+        "automatic legitimate label",
+        "registration-as-safety inference",
+        "filing text as predicted artifact",
+        "filing metadata as predictive input"
+      ],
+      "case_level_target_eligible_without_additional_review": false,
+      "terms_review": {
+        "reviewed_at": "2026-10-03",
+        "official_policy_url": "https://www.sec.gov/about/privacy-information",
+        "finding": "SEC permits automated public-data access subject to its website Privacy and Security Policy, including a current aggregate limit of no more than 10 requests per second and classification of the automated client.",
+        "operational_decision": "Use only documented SEC APIs or bulk archives, identify the research client, cap at one request per second, cache immutable raw responses, and stop on throttling or policy changes.",
+        "execution_blocker": "A truthful project contact identity must be configured in the request User-Agent before any scripted SEC request."
+      }
+    }
+  ],
+  "registry_policy": {
+    "parent_registry_modified": false,
+    "reason_for_addendum": "The parent registry is hash-pinned by frozen historical analyses; mutating it would invalidate reproducibility.",
+    "source_registration_is_not_acquisition": true,
+    "source_registration_is_not_label_authorization": true,
+    "legal_opinion_claimed": false
+  },
+  "safety_contract": {
+    "network_operations_after_protocol_freeze": 0,
+    "new_records_acquired": 0,
+    "new_artifact_captures": 0,
+    "labels_created": 0,
+    "training_allowed": false,
+    "deployment_allowed": false
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "protocol_id": "ISI_TARGET_TEXT_CORPUS_V1_CHANNEL_TERMS_V1",
+  "frozen_at": "2026-10-03T09:00:00+07:00",
+  "status": "FROZEN_CHANNEL_PROTOCOLS_REGISTERED_ACQUISITION_NOT_STARTED",
+  "purpose": "Replace two blocked acquisition-channel designs with official-reference plus Wayback website channels whose terms, claim limits, and execution conditions are explicit before candidate enumeration.",
+  "basis": [
+    {
+      "role": "legacy_group_remediation_registry",
+      "path": "registry/analyses/target_text_corpus_v1_legacy_group_remediation_v1.json",
+      "sha256": "722559ba9dd5961c539adbf7e8b42a0e896c02271899f99d8b1a8c926bef0b06"
+    },
+    {
+      "role": "preacquisition_candidate_source_inventory",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_preacquisition\\candidate_source_inventory_v1.json",
+      "sha256": "1f94b50f802628c7f5e35f25b69a6c50643c865d6c303817f22afc22ec83901d"
+    },
+    {
+      "role": "source_addendum",
+      "path": "registry/source_addenda/target_text_corpus_v1_sources_v1.json",
+      "sha256": "7b0f7be13f38a0ab503414029e588e4f7c0be14f6e83d11a899153bee79a144c"
+    },
+    {
+      "role": "existing_wayback_capture_contract",
+      "path": "configs/external_text_wayback_holdout_v3.json",
+      "sha256": "0dc47af16aeda43c0c64ef92edc834f92fd8da3c9d73d802394e9ef992270e65"
+    }
+  ],
+  "channel_amendments": [
+    {
+      "replaces_channel_id": "CONFIRMED_CORROBORATED_CASE_SEED",
+      "channel_id": "CONFIRMED_CFTC_RED_LINKED_WAYBACK_WEBSITE",
+      "planned_target_status": "CONFIRMED",
+      "reference_source_id": "cftc_red_list",
+      "predicted_artifact_type": "WEBSITE_SNAPSHOT",
+      "reference_role": "CANDIDATE_DISCOVERY_AND_CASE_EVIDENCE_ONLY",
+      "artifact_acquisition": "WAYBACK_ARCHIVED_HOMEPAGE_HTML",
+      "reference_acquisition_mode": "MANUAL_OR_EXPLICIT_OFFICIAL_DOWNLOAD_ONLY",
+      "readiness": "PROTOCOL_REGISTERED_MANUAL_REFERENCE_ACQUISITION_REQUIRED",
+      "required_before_binary_eligibility": [
+        "exact listed entity or domain linkage",
+        "separate observed archived website artifact",
+        "primary and independent second review",
+        "owner acceptance",
+        "opened-cohort exclusion and manual cross-domain clone review"
+      ],
+      "claim_limit": "CFTC RED inclusion is a registration-deficiency warning, not a finding that fraud or a legal violation occurred."
+    },
+    {
+      "replaces_channel_id": "LEGITIMATE_OFFICIAL_ACCOUNT_POST_OR_MESSAGE",
+      "channel_id": "LEGITIMATE_SEC_EDGAR_LINKED_WAYBACK_WEBSITE",
+      "planned_target_status": "LEGITIMATE",
+      "reference_source_id": "sec_edgar_company_submissions",
+      "predicted_artifact_type": "WEBSITE_SNAPSHOT",
+      "reference_role": "OFFICIAL_ENTITY_AND_FILING_REFERENCE_ONLY",
+      "artifact_acquisition": "WAYBACK_ARCHIVED_INVESTOR_RELATIONS_OR_OFFICIAL_WEBSITE_HTML",
+      "reference_acquisition_mode": "DOCUMENTED_SEC_API_OR_BULK_ARCHIVE_ONLY",
+      "readiness": "PROTOCOL_REGISTERED_CONTACT_IDENTITY_REQUIRED_BEFORE_API_ACCESS",
+      "required_before_binary_eligibility": [
+        "exact filer identity and official-domain agreement",
+        "investment-related observed artifact",
+        "clone, compromise, redirect, and impersonation contradiction check",
+        "primary and independent second review",
+        "owner acceptance",
+        "opened-cohort exclusion and manual cross-domain clone review"
+      ],
+      "claim_limit": "An SEC filing or identifier establishes reference provenance only and does not guarantee that an entity, domain, or communication is safe or legitimate."
+    }
+  ],
+  "retained_channels": [
+    {
+      "channel_id": "CONFIRMED_REGULATOR_LINKED_WEBSITE",
+      "planned_target_status": "CONFIRMED",
+      "reference_source_ids": ["iosco_i_scan", "fca_warning_list", "ubcknn_warnings"],
+      "predicted_artifact_type": "WEBSITE_SNAPSHOT"
+    },
+    {
+      "channel_id": "LEGITIMATE_REGISTER_LINKED_WEBSITE",
+      "planned_target_status": "LEGITIMATE",
+      "reference_source_ids": ["sec_iapd"],
+      "predicted_artifact_type": "WEBSITE_SNAPSHOT"
+    }
+  ],
+  "balance_after_amendment": {
+    "protocol_registered_channels_by_target_status": {
+      "CONFIRMED": 2,
+      "LEGITIMATE": 2
+    },
+    "minimum_required_channels_per_target_status": 2,
+    "channel_protocol_registration_gate_passed": true,
+    "candidate_enumeration_gate_passed": false,
+    "candidate_capture_gate_passed": false,
+    "binary_labeling_gate_passed": false
+  },
+  "shared_wayback_capture_contract": {
+    "allowed_network_hosts": ["archive.org", "web.archive.org"],
+    "candidate_live_domain_access_allowed": false,
+    "automatic_external_redirect_following": false,
+    "raw_capture_overwrite_allowed": false,
+    "request_rate_per_second_maximum": 1,
+    "stop_on_http_429_or_policy_change": true,
+    "immutable_raw_capture_and_sha256_required": true,
+    "source_and_archive_terms_continue_to_apply": true,
+    "redistribution_allowed_by_this_protocol": false
+  },
+  "reference_access_contract": {
+    "cftc": {
+      "automated_scraping_authorized": false,
+      "manual_or_explicit_official_download_only": true,
+      "source_acknowledgement_required": true
+    },
+    "sec": {
+      "documented_api_or_bulk_archive_only": true,
+      "maximum_requests_per_second": 1,
+      "official_policy_maximum_requests_per_second": 10,
+      "truthful_user_agent_contact_identity_required": true,
+      "contact_identity_configured": false,
+      "network_execution_allowed": false
+    }
+  },
+  "next_gate": "Freeze a balanced 20+20 schema/review pilot candidate-enumeration protocol. Do not enumerate CFTC or SEC candidates until the manual CFTC acquisition path and SEC contact identity are supplied and recorded.",
+  "safety_contract": {
+    "network_operations_after_protocol_freeze": 0,
+    "domain_access_allowed": false,
+    "candidate_records_enumerated": 0,
+    "new_records_acquired": 0,
+    "new_artifact_captures": 0,
+    "labels_created": 0,
+    "labels_changed": 0,
+    "model_fit_operations": 0,
+    "model_scoring_operations": 0,
+    "validation_or_test_openings": 0,
+    "training_allowed": false,
+    "deployment_allowed": false
+  }
+}

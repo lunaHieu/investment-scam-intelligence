@@ -1,0 +1,97 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_CHANNEL_TERMS_V1",
+  "created_at": "2026-10-03",
+  "status": "FROZEN_CHANNEL_TERMS_REVIEW_COMPLETE_ACQUISITION_BLOCKED",
+  "purpose": "Register terms-reviewed official reference sources and replacement Wayback website channels for the second CONFIRMED and LEGITIMATE acquisition paths without enumerating or capturing candidates.",
+  "inputs": [
+    {
+      "role": "legacy_group_remediation_registry",
+      "path": "registry/analyses/target_text_corpus_v1_legacy_group_remediation_v1.json",
+      "sha256": "722559ba9dd5961c539adbf7e8b42a0e896c02271899f99d8b1a8c926bef0b06"
+    },
+    {
+      "role": "preacquisition_candidate_source_inventory",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_preacquisition\\candidate_source_inventory_v1.json",
+      "sha256": "1f94b50f802628c7f5e35f25b69a6c50643c865d6c303817f22afc22ec83901d"
+    },
+    {
+      "role": "existing_wayback_capture_contract",
+      "path": "configs/external_text_wayback_holdout_v3.json",
+      "sha256": "0dc47af16aeda43c0c64ef92edc834f92fd8da3c9d73d802394e9ef992270e65"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "channel_terms_verifier",
+      "path": "scripts/verify_target_text_corpus_v1_channel_terms.py",
+      "sha256": "7cc6bd144f28515682bb381ad45eceda141ab9a72c3a0a159d0b3e8e0cd2f41b"
+    },
+    {
+      "role": "channel_terms_tests",
+      "path": "tests/test_target_text_corpus_v1_channel_terms.py",
+      "sha256": "66dc51baa0edc6c1605b38138d1e6f8eee162e0e83792af65398dc2ed21a39a8"
+    },
+    {
+      "role": "method_documentation",
+      "path": "docs/target-text-corpus-v1-channel-terms-review.md",
+      "sha256": "c0ad8e2566228d344018821b2d1664d3e58f843134a368c297288506f6d5668a"
+    }
+  ],
+  "outputs": [
+    {
+      "role": "source_addendum",
+      "path": "registry/source_addenda/target_text_corpus_v1_sources_v1.json",
+      "sha256": "7b0f7be13f38a0ab503414029e588e4f7c0be14f6e83d11a899153bee79a144c"
+    },
+    {
+      "role": "channel_terms_protocol",
+      "path": "configs/target_text_corpus_v1_channel_terms_v1.json",
+      "sha256": "020bcb7afa5c81eb2bdfab9a3886268ef30d73e1704054c90f7f9c95ec76f266"
+    }
+  ],
+  "findings": {
+    "registered_addendum_sources": [
+      "cftc_red_list",
+      "sec_edgar_company_submissions"
+    ],
+    "replacement_channel_count": 2,
+    "registered_channels_per_target_status": 2,
+    "replacement_artifact_modality": "WEBSITE_SNAPSHOT",
+    "social_platform_capture_dependency_removed": true,
+    "cftc_generic_scraping_authorized": false,
+    "sec_documented_api_or_bulk_only": true,
+    "sec_project_request_cap_per_second": 1,
+    "sec_official_policy_request_cap_per_second": 10,
+    "sec_contact_identity_configured": false
+  },
+  "decision": {
+    "channel_protocol_registration_gate_passed": true,
+    "candidate_enumeration_allowed": false,
+    "candidate_capture_allowed": false,
+    "binary_labeling_allowed": false,
+    "train_another_model_now": false,
+    "next_gate": "Freeze a balanced 20+20 schema/review pilot candidate-enumeration protocol; actual CFTC enumeration requires a manual or official-download artifact and SEC enumeration requires a truthful User-Agent contact identity."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "domain_access_allowed": false,
+    "candidate_records_enumerated": 0,
+    "new_records_acquired": 0,
+    "new_artifact_captures": 0,
+    "labels_created": 0,
+    "labels_changed": 0,
+    "model_fit_operations": 0,
+    "model_scoring_operations": 0,
+    "validation_or_test_openings": 0,
+    "training_allowed": false,
+    "deployment_allowed": false
+  },
+  "prohibited_claims": [
+    "Do not treat CFTC RED inclusion as a fraud finding or legal violation finding.",
+    "Do not treat an SEC identifier, filing, or registration as a safety guarantee.",
+    "Do not use warning or filing text as the predicted artifact or as model input.",
+    "Do not access live candidate domains or follow external redirects under this protocol.",
+    "Do not start scripted SEC access without a truthful contact identity in the User-Agent.",
+    "Do not describe this operational source review as legal advice."
+  ]
+}

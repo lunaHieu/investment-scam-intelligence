@@ -1,0 +1,74 @@
+{
+  "protocol_id": "ISI_TARGET_TEXT_CORPUS_V1_WAYBACK_AVAILABILITY_RETRY_V2",
+  "frozen_at": "2026-10-03T09:30:00+07:00",
+  "status": "FROZEN_UNRESOLVED_ONLY_COOLDOWN_RETRY_AUTHORIZED_CAPTURE_BLOCKED",
+  "purpose": "Retry only the 31 unresolved Wayback availability rows from V1 after its fail-closed HTTP 429 stop, preserving all nine resolved results unchanged.",
+  "basis": [
+    {
+      "role": "availability_plan_registry_v1",
+      "path": "registry/analyses/target_text_corpus_v1_wayback_availability_plan_v1.json",
+      "sha256": "e867d43cee1880a4f76ebb8001d8345ca526db1a87ec5e0179539ca838245042"
+    },
+    {
+      "role": "availability_protocol_v1",
+      "path": "configs/target_text_corpus_v1_wayback_availability_v1.json",
+      "sha256": "279eca648984a255cfa4b0ef87f11c2e695122c590433cc187c943b1a72053bb"
+    },
+    {
+      "role": "partial_availability_report_v1",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\wayback_availability_report_v1.json",
+      "sha256": "f2ab98e574196cd7d8c69868494555facfb4b9f7e3631c4d9a1bcbef0fe61517"
+    }
+  ],
+  "prior_outcome_contract": {
+    "requested_candidate_count": 40,
+    "network_request_count": 10,
+    "resolved_result_count": 9,
+    "available_snapshot_count": 5,
+    "unavailable_snapshot_count": 4,
+    "unresolved_error_count": 31,
+    "stopped_on_http_429": true,
+    "resolved_results_must_remain_byte_equivalent": true,
+    "only_error_rows_may_be_retried": true
+  },
+  "retry_contract": {
+    "endpoint": "https://archive.org/wayback/available",
+    "allowed_network_hosts": ["archive.org", "web.archive.org"],
+    "target_timestamp": "20261003",
+    "maximum_retry_candidate_count": 31,
+    "request_rate_per_second_maximum": 0.1666666667,
+    "minimum_delay_seconds": 6.0,
+    "maximum_attempts_per_candidate": 1,
+    "timeout_seconds": 30,
+    "https_only": true,
+    "automatic_external_redirect_following": false,
+    "stop_on_http_429": true,
+    "errors_are_not_interpreted_as_no_snapshot": true,
+    "archived_page_download_allowed": false,
+    "live_candidate_domain_access_allowed": false,
+    "output_overwrite_allowed": false
+  },
+  "planned_output": {
+    "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\wayback_availability_report_v2.json",
+    "report_id": "ISI_TARGET_TEXT_CORPUS_V1_WAYBACK_AVAILABILITY_REPORT_V2"
+  },
+  "post_retry_gate": {
+    "all_40_candidates_must_have_a_resolved_result": true,
+    "unresolved_errors_must_equal_zero_before_capture_planning": true,
+    "capture_plan_must_be_frozen_and_hash_registered_before_download": true,
+    "candidate_capture_allowed": false,
+    "binary_labeling_allowed": false
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "historical_availability_network_operations_registered": 10,
+    "candidate_live_domain_access_operations": 0,
+    "archived_page_download_operations": 0,
+    "candidate_artifact_captures": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "validation_or_test_openings": 0,
+    "training_allowed": false,
+    "deployment_allowed": false
+  }
+}

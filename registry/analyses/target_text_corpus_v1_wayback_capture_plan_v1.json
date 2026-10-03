@@ -1,0 +1,115 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_WAYBACK_CAPTURE_PLAN_V1",
+  "created_at": "2026-10-03",
+  "status": "FROZEN_EXACT_29_CAPTURE_PLAN_QA_PASS_EXECUTION_AUTHORIZED",
+  "purpose": "Register the independently verified exact 29-snapshot Wayback raw-capture plan and its fail-closed archive-only executor before any archived HTML is downloaded.",
+  "inputs": [
+    {
+      "role": "availability_result_registry_v2",
+      "path": "registry/analyses/target_text_corpus_v1_wayback_availability_result_v2.json",
+      "sha256": "928dca721949f0a434856c3812c75b0d6b92ddcf0b033afdbd0009508edb93fe"
+    },
+    {
+      "role": "availability_report_v2",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\wayback_availability_report_v2.json",
+      "sha256": "0d063b9bade16d287bf696a15df0b5b34329d0311d100ff02b55b46a19f0711a"
+    },
+    {
+      "role": "independent_availability_qa_v2",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\wayback_availability_independent_qa_v2.json",
+      "sha256": "9368d22d93d59aa4e2b624952232c822e3ce973e7d31fb96b7d33fdb25b11319"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "capture_plan_builder",
+      "path": "scripts/build_target_text_corpus_v1_wayback_capture_plan.py",
+      "sha256": "4ae1906df301d18d082b658816ed4ac3d853f0532f4cc9ff3ddf75db782fb47d"
+    },
+    {
+      "role": "archive_capture_runner",
+      "path": "scripts/capture_target_text_corpus_v1_wayback_plan.py",
+      "sha256": "8856b4bd5b606a685cb45857d462c2f211c9b265ac9f28c859308d320d5b3f73"
+    },
+    {
+      "role": "capture_plan_and_runner_tests",
+      "path": "tests/test_target_text_corpus_v1_wayback_capture_plan.py",
+      "sha256": "6b4a00cadc035e6cfc84250675e8585c30a3d55e26049637d065b895eb6e9c93"
+    },
+    {
+      "role": "capture_plan_independent_verifier",
+      "path": "scripts/verify_target_text_corpus_v1_wayback_capture_plan_v1.py",
+      "sha256": "34e6e949b45b09a962a46dfafc0ae02ea7d8fd4b6f800dfcaa496c7c87859357"
+    },
+    {
+      "role": "capture_plan_independent_verifier_tests",
+      "path": "tests/test_verify_target_text_corpus_v1_wayback_capture_plan_v1.py",
+      "sha256": "0ff70e842074d3322c4df11586a5afeefa8d4063f964419f469bed47fa63c15d"
+    },
+    {
+      "role": "method_documentation",
+      "path": "docs/target-text-corpus-v1-wayback-capture-plan-v1.md",
+      "sha256": "e0750c4fe0a0b02d7369ba6d4864046fd43f94ab0d2af84057fed534c15eac30"
+    }
+  ],
+  "outputs": [
+    {
+      "role": "frozen_capture_plan_v1",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\wayback_capture_plan_v1.json",
+      "sha256": "83985dac55dac415fd41d0351fc07bfb4a5591169b9e22b8e416cd910486fb68"
+    },
+    {
+      "role": "independent_capture_plan_qa_v1",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\wayback_capture_plan_independent_qa_v1.json",
+      "sha256": "ba68d7bb4ec43523184900f48a2a9e679a9c0c57aa9f39f30b0194d9764fb8e9"
+    }
+  ],
+  "findings": {
+    "planned_capture_count": 29,
+    "planned_by_channel": {
+      "CONFIRMED_REGULATOR_LINKED_WEBSITE": 5,
+      "CONFIRMED_CFTC_RED_LINKED_WAYBACK_WEBSITE": 7,
+      "LEGITIMATE_REGISTER_LINKED_WEBSITE": 8,
+      "LEGITIMATE_SEC_EDGAR_LINKED_WAYBACK_WEBSITE": 9
+    },
+    "unavailable_candidates_not_planned": 11,
+    "all_and_only_available_candidates_planned": true,
+    "capture_targets_absent_before_execution": true,
+    "raw_replay_modifier_used": true,
+    "minimum_capture_delay_seconds": 6.0,
+    "candidate_live_domain_access_operations": 0,
+    "archived_page_download_operations": 0,
+    "labels_created": 0
+  },
+  "decision": {
+    "capture_plan_frozen": true,
+    "capture_plan_qa_passed": true,
+    "wayback_archived_page_capture_allowed": true,
+    "live_candidate_domain_access_allowed": false,
+    "binary_labeling_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Execute the exact hash-pinned 29-row Wayback raw-replay plan once, then independently audit every capture byte/hash and preserve all failures without replacement."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "historical_availability_network_operations_registered": 41,
+    "domain_access_allowed": false,
+    "candidate_domain_access_operations": 0,
+    "archived_page_download_operations": 0,
+    "candidate_artifact_captures": 0,
+    "labels_created": 0,
+    "labels_changed": 0,
+    "model_fit_operations": 0,
+    "model_scoring_operations": 0,
+    "validation_or_test_openings": 0,
+    "training_allowed": false,
+    "deployment_allowed": false
+  },
+  "prohibited_claims": [
+    "Do not replace unavailable candidates or failed captures in place.",
+    "Do not access live candidate domains or follow external redirects.",
+    "Do not overwrite an existing raw capture or capture report.",
+    "Do not infer a binary label from availability or captured content.",
+    "Do not extract text or begin review until raw captures pass an independent byte/hash audit."
+  ]
+}

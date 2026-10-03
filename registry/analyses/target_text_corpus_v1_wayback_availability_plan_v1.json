@@ -1,0 +1,89 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_WAYBACK_AVAILABILITY_PLAN_V1",
+  "created_at": "2026-10-03",
+  "status": "FROZEN_ARCHIVE_ONLY_AVAILABILITY_PLAN_READY_NOT_EXECUTED",
+  "purpose": "Freeze and independently verify the archive-only availability query for all 40 hash-pinned candidates before performing any network request or archived-page capture.",
+  "inputs": [
+    {
+      "role": "candidate_enumeration_registry",
+      "path": "registry/analyses/target_text_corpus_v1_candidate_enumeration_v1.json",
+      "sha256": "516f2714bd1bda38c65f32438986b133abb4cc67902c9f2dc54207affbfb0c57"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "wayback_availability_protocol",
+      "path": "configs/target_text_corpus_v1_wayback_availability_v1.json",
+      "sha256": "279eca648984a255cfa4b0ef87f11c2e695122c590433cc187c943b1a72053bb"
+    },
+    {
+      "role": "wayback_availability_query",
+      "path": "scripts/query_target_text_corpus_v1_wayback_availability.py",
+      "sha256": "cd8cb19cc40b5acc91a86d8e5d04fa98775a09a99c75b32eab90f4bc82ba3434"
+    },
+    {
+      "role": "wayback_availability_query_tests",
+      "path": "tests/test_query_target_text_corpus_v1_wayback_availability.py",
+      "sha256": "7aeb1acf053553a1bb35d8d20c19e0043f2215bd4ef938d2e22d413812bf02da"
+    },
+    {
+      "role": "wayback_availability_plan_verifier",
+      "path": "scripts/verify_target_text_corpus_v1_wayback_availability_plan.py",
+      "sha256": "8fead518cc34b39ae7c5d90fa258b817bf0e5ca444fb8719e578b44eb2a0d492"
+    },
+    {
+      "role": "wayback_availability_plan_verifier_tests",
+      "path": "tests/test_verify_target_text_corpus_v1_wayback_availability_plan.py",
+      "sha256": "8b35f2de87ad03cae38d13a708c0181a73220102e6eb105beaa5bcafa6262c93"
+    },
+    {
+      "role": "method_documentation",
+      "path": "docs/target-text-corpus-v1-wayback-availability-plan-v1.md",
+      "sha256": "b68e07bc4bf94841a4dd24947dad85643cf2ce323a1882eb331766ecaa274565"
+    }
+  ],
+  "outputs": [],
+  "findings": {
+    "candidate_count": 40,
+    "channel_count": 4,
+    "quota_per_channel": 10,
+    "queue_sha256": "32f19c38a0d77aa5707b1ff7f0adbfa44409426632ce9af51e70286c2c076a67",
+    "target_timestamp": "20261003",
+    "request_rate_per_second_maximum": 1,
+    "minimum_delay_seconds": 1.1,
+    "maximum_attempts_per_candidate": 1,
+    "allowed_archive_host_count": 2,
+    "candidate_live_domain_access_operations": 0,
+    "archived_page_download_operations": 0,
+    "availability_requests_executed": 0
+  },
+  "decision": {
+    "wayback_availability_query_allowed": true,
+    "candidate_capture_allowed": false,
+    "live_candidate_domain_access_allowed": false,
+    "binary_labeling_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Execute the one-attempt archive-only availability query for all 40 frozen candidates, preserve every unresolved error, and independently register the output before constructing a capture plan."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "domain_access_allowed": false,
+    "candidate_domain_access_operations": 0,
+    "archived_page_download_operations": 0,
+    "candidate_artifact_captures": 0,
+    "labels_created": 0,
+    "labels_changed": 0,
+    "model_fit_operations": 0,
+    "model_scoring_operations": 0,
+    "validation_or_test_openings": 0,
+    "training_allowed": false,
+    "deployment_allowed": false
+  },
+  "prohibited_claims": [
+    "Do not describe an availability response as an archived-page capture.",
+    "Do not treat an availability error as evidence that no snapshot exists.",
+    "Do not access a live candidate domain or follow an external redirect.",
+    "Do not download archived HTML before a separate capture plan is frozen and hash-registered.",
+    "Do not create or infer a binary label from snapshot availability."
+  ]
+}

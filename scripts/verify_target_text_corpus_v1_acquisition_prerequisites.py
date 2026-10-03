@@ -179,8 +179,9 @@ def validate_protocol(protocol_path: Path) -> dict[str, Any]:
         errors.append("Private SEC file path is not contained by the data root")
     if _is_under(private_path, root):
         errors.append("Private SEC file path is inside the public repository")
-    if private_path.exists():
-        errors.append("Private SEC identity unexpectedly exists in frozen missing-input state")
+    # This protocol is a frozen intake snapshot. A later, separately versioned
+    # readiness milestone may legitimately create the private file, so current
+    # filesystem existence must not retroactively invalidate the old snapshot.
 
     cftc = protocol.get("cftc_artifact_contract", {})
     if cftc.get("generic_scraping_authorized") is not False:

@@ -7,7 +7,7 @@
     {
       "role": "acquisition_prerequisite_intake_registry",
       "path": "registry/analyses/target_text_corpus_v1_acquisition_prerequisite_intake_v1.json",
-      "sha256": "cbeeaab934c64eeb012c8ae709c1c58ff93788d1326dc29062841ce17acc4591"
+      "sha256": "ba2aa635f69f2dc2dda0c284e6d9cb5ebf05fd39baea53a32760df8e227026c2"
     },
     {
       "role": "schema_review_pilot_protocol",

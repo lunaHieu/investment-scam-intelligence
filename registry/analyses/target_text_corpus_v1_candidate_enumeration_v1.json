@@ -1,0 +1,231 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_CANDIDATE_ENUMERATION_V1",
+  "created_at": "2026-10-03",
+  "status": "FROZEN_BALANCED_PROVENANCE_QUEUE_QA_PASS_CAPTURE_BLOCKED",
+  "purpose": "Register the authorized official-reference acquisition, disjoint four-channel normalization, deterministic 40-row production enumeration, and independent provenance QA without treating provenance as a label or opening candidate capture.",
+  "inputs": [
+    {
+      "role": "candidate_enumeration_tooling_registry",
+      "path": "registry/analyses/target_text_corpus_v1_candidate_enumeration_tooling_v1.json",
+      "sha256": "fc8e8a206177365007077ee23696d6e9b4c6b8f1a132920370e87ed71fdf05bf"
+    },
+    {
+      "role": "schema_review_pilot_protocol",
+      "path": "configs/target_text_corpus_v1_schema_review_pilot_v1.json",
+      "sha256": "56400c9c314140f18af3c8a801597849866a2e384537ca5c88fb0fcafa7fb321"
+    },
+    {
+      "role": "ready_prerequisite_ledger",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\governance\\target_text_corpus_v1\\acquisition_prerequisite_ledger_v2.json",
+      "sha256": "9ec482700a07bfc704533da5f5354ded84356d6d18566b5df33d028e58913f83"
+    },
+    {
+      "role": "reference_acquisition_inventory",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\governance\\target_text_corpus_v1\\reference_acquisition_inventory_v1.json",
+      "sha256": "694636b61c8b18e618ccc6568a0766379759362279ec6e42d9dea19deeaffc49"
+    },
+    {
+      "role": "opened_external_exclusion_index",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_preacquisition\\opened_external_exclusion_index_v1.json",
+      "sha256": "df43d88dbb1120c6f8e9afa0a7893fab1f4e176838483bb3a8bf013b13bd0d07"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "candidate_enumeration_module",
+      "path": "src/isi/curation/target_text_candidate_enumeration.py",
+      "sha256": "cbab13c2fef2b4e927320ca5344da472e97b879c134de56529bda6d211279c98"
+    },
+    {
+      "role": "candidate_enumeration_cli",
+      "path": "scripts/enumerate_target_text_corpus_v1_candidates.py",
+      "sha256": "cb1fe9f8fd8909c35d36e5238afeca298016b449ba01875b56e8f4b1f07f8049"
+    },
+    {
+      "role": "sec_edgar_iapd_crosswalk_builder",
+      "path": "scripts/build_sec_edgar_iapd_crosswalk.py",
+      "sha256": "3ab10b5978a15729c291797cf399f9666b8b466d85ff7ebe7a3b7dc86dd8c62b"
+    },
+    {
+      "role": "reference_acquisition_inventory_builder",
+      "path": "scripts/build_target_reference_acquisition_inventory.py",
+      "sha256": "c17a175d9111f62baa45ba35785779b29a11169f720353852bcdddbf9435bd82"
+    },
+    {
+      "role": "private_sec_identity_configurator",
+      "path": "scripts/configure_sec_edgar_identity_from_git.py",
+      "sha256": "70e9c3f402fb8d09b608809dfab2ac861aafab19dfd9497a1db97b3d94461499"
+    },
+    {
+      "role": "cftc_reference_normalizer",
+      "path": "scripts/normalize_cftc_red_reference_artifacts.py",
+      "sha256": "d36ee6c4feef6fb10e1ee655e6533c20eab3e8443ca5a1323f09737aac53a856"
+    },
+    {
+      "role": "existing_reference_indices_normalizer",
+      "path": "scripts/normalize_existing_target_reference_indices.py",
+      "sha256": "efc8162cd9a52f11d41cd4eb4a46dc143517c6bb7609de299164572c24b5dde0"
+    },
+    {
+      "role": "sec_edgar_shortlist_normalizer",
+      "path": "scripts/normalize_sec_edgar_shortlist.py",
+      "sha256": "b5700bc573c072ec5145732534cfc4f4266255a0aac7572339573273f1426b96"
+    },
+    {
+      "role": "reserved_host_pool_filter",
+      "path": "scripts/remove_reserved_hosts_from_reference_pool.py",
+      "sha256": "00dd85e5facdd6c104966b3122d9caa34ffb07840ae92e0807e75afec4cc26cd"
+    },
+    {
+      "role": "candidate_queue_independent_verifier",
+      "path": "scripts/verify_target_text_corpus_v1_candidate_queue.py",
+      "sha256": "439ad1e9cf59da4f6bf90fc72876648ccfa55b8f4d9ebe71e8b89311dcee1766"
+    },
+    {
+      "role": "frozen_milestone_verifier",
+      "path": "scripts/verify_target_text_corpus_v1_candidate_enumeration_v1.py",
+      "sha256": "ffd34092ac4ba14d374bff5121de144dcfc563b37b8f535d69cadd5072c06ccf"
+    },
+    {
+      "role": "sec_edgar_iapd_crosswalk_tests",
+      "path": "tests/test_build_sec_edgar_iapd_crosswalk.py",
+      "sha256": "47b212c15fe8a26629700100868f04de2da39b4937499dd384fb4dafe8d53269"
+    },
+    {
+      "role": "reference_acquisition_inventory_tests",
+      "path": "tests/test_build_target_reference_acquisition_inventory.py",
+      "sha256": "18cbc71edca52d355f48ea9d177aedcee8cd6f94aeb07ca396d9ebd5df2eeb5f"
+    },
+    {
+      "role": "private_sec_identity_configurator_tests",
+      "path": "tests/test_configure_sec_edgar_identity_from_git.py",
+      "sha256": "8619207f54f25b834ac720fcfa7b0f3bb31a2adcff8ac051ebc73fc1bb484fab"
+    },
+    {
+      "role": "cftc_reference_normalizer_tests",
+      "path": "tests/test_normalize_cftc_red_reference_artifacts.py",
+      "sha256": "5f4a353d51eeaed81d3a487e12070f03e45e98c192591a0fa148efe8b5a13b86"
+    },
+    {
+      "role": "existing_reference_indices_normalizer_tests",
+      "path": "tests/test_normalize_existing_target_reference_indices.py",
+      "sha256": "82716e9733f8cd408a85b1dab32853b0ea8e275742c035d4fee19789ecc6a966"
+    },
+    {
+      "role": "sec_edgar_shortlist_normalizer_tests",
+      "path": "tests/test_normalize_sec_edgar_shortlist.py",
+      "sha256": "53a0d6d8ecab8d59dfd95d18dcefa7b253a6ce60d0b823eee198ed08181ac964"
+    },
+    {
+      "role": "reserved_host_pool_filter_tests",
+      "path": "tests/test_remove_reserved_hosts_from_reference_pool.py",
+      "sha256": "3d4cf0b3acf98416ba29b94bc493088aa552ce99fcd27948dd55ce6b57587640"
+    },
+    {
+      "role": "candidate_queue_independent_verifier_tests",
+      "path": "tests/test_verify_target_text_corpus_v1_candidate_queue.py",
+      "sha256": "130abc2edddf54cc883f3d66b4e12659f8d6137dcd8fb339733acee5c34668b3"
+    },
+    {
+      "role": "frozen_milestone_verifier_tests",
+      "path": "tests/test_verify_target_text_corpus_v1_candidate_enumeration_v1.py",
+      "sha256": "d24dc60f36bc7a6896d2806c4bfe24346c4580ba2c7ac6dd50f01ce5d87b7f9b"
+    },
+    {
+      "role": "method_documentation",
+      "path": "docs/target-text-corpus-v1-candidate-enumeration-v1.md",
+      "sha256": "293070da89e4197d71cb74ec92137e27fb13cbc3af60f2b2f02ca0c330ee903c"
+    }
+  ],
+  "outputs": [
+    {
+      "role": "confirmed_regulator_disjoint_pool",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\confirmed_regulator_normalized_v2_disjoint.jsonl",
+      "sha256": "4b1209ce309362efca24a25f0d8ef452972d3593ff884aa91dfb0212d87306c0"
+    },
+    {
+      "role": "confirmed_cftc_pool",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\cftc_red_normalized_v1.jsonl",
+      "sha256": "241cac992cadcbb3a02bcc6b91be587d09ca1af3627028c1c9705c71aa53e9b4"
+    },
+    {
+      "role": "legitimate_iapd_disjoint_pool",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\legitimate_iapd_normalized_v2_disjoint.jsonl",
+      "sha256": "c75185e147b1a4b91497dad3d7f334bd755bc2deb0211b136066eef45f55b45a"
+    },
+    {
+      "role": "legitimate_edgar_pool",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\legitimate_edgar_normalized_v1.jsonl",
+      "sha256": "0b857bc9832fcc00f9f42438d68f9762f98dd7ca070100146caf309570a4e1f2"
+    },
+    {
+      "role": "sec_edgar_independent_provenance_review",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_independent_provenance_review_v1.json",
+      "sha256": "ef325843d06360599b4caefef865880feccf29027c6965d47e0efd4bde16d900"
+    },
+    {
+      "role": "candidate_queue",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\candidate_queue_v1.jsonl",
+      "sha256": "32f19c38a0d77aa5707b1ff7f0adbfa44409426632ce9af51e70286c2c076a67"
+    },
+    {
+      "role": "enumeration_report",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\enumeration_report_v1.json",
+      "sha256": "6e6208f0220bd0de9767330a5936ba5ff8538d554c79b1b12d37c0d93ee5eb90"
+    },
+    {
+      "role": "independent_provenance_qa",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\independent_provenance_qa_v1.json",
+      "sha256": "35d46ea02af21b33414e3749f0310f9310e72127959ceb10b8abec6633df90df"
+    }
+  ],
+  "findings": {
+    "authorized_official_reference_network_requests": 39,
+    "cftc_reference_requests": 17,
+    "sec_edgar_reference_requests": 22,
+    "candidate_domain_access_operations": 0,
+    "candidate_count": 40,
+    "channel_count": 4,
+    "quota_per_channel": 10,
+    "confirmed_regulator_eligible_rows": 12055,
+    "confirmed_cftc_eligible_hosts": 12,
+    "legitimate_iapd_eligible_rows": 3647,
+    "legitimate_edgar_eligible_rows": 20,
+    "opened_host_overlap_count": 0,
+    "cross_channel_host_overlap_count": 0,
+    "independent_provenance_qa_passed": true,
+    "deterministic_selection_independently_reproduced": true,
+    "source_channel_is_binary_label": false,
+    "labels_created": 0
+  },
+  "decision": {
+    "candidate_enumeration_complete": true,
+    "queue_hash_registered": true,
+    "candidate_capture_allowed": false,
+    "live_candidate_domain_access_allowed": false,
+    "binary_labeling_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Create and independently verify a Wayback-only availability and capture plan against the frozen 40-row queue before any candidate artifact is captured."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "historical_authorized_reference_network_operations_registered": 39,
+    "domain_access_allowed": false,
+    "candidate_domain_access_operations": 0,
+    "candidate_artifact_captures": 0,
+    "labels_created": 0,
+    "labels_changed": 0,
+    "model_fit_operations": 0,
+    "model_scoring_operations": 0,
+    "validation_or_test_openings": 0,
+    "training_allowed": false,
+    "deployment_allowed": false
+  },
+  "prohibited_claims": [
+    "Do not treat a source channel or target stratum as a binary ground-truth label.",
+    "Do not describe the 40-row queue as a labeled dataset or training corpus.",
+    "Do not access live candidate domains from this milestone.",
+    "Do not capture candidate artifacts until a separate Wayback-only capture gate is frozen and verified.",
+    "Do not disclose the private SEC contact identity, its file contents, or its file hash."
+  ]
+}

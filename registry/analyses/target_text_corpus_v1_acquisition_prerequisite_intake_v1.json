@@ -14,7 +14,7 @@
     {
       "role": "acquisition_prerequisite_verifier",
       "path": "scripts/verify_target_text_corpus_v1_acquisition_prerequisites.py",
-      "sha256": "1c5f865c2ba090a267c6b1a9740ad5fc98d46610773ad45b49f315ee7e7d074c"
+      "sha256": "6ebd60a030d74d95aab5287633b2921204424e80ef99bb2da962c2a0fbf243b5"
     },
     {
       "role": "acquisition_prerequisite_tests",

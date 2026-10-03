@@ -1,0 +1,102 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_WAYBACK_AVAILABILITY_RESULT_V2",
+  "created_at": "2026-10-03",
+  "status": "FROZEN_COMPLETE_40_RESOLVED_29_AVAILABLE_CAPTURE_PLAN_BLOCKED",
+  "purpose": "Register and independently verify the complete two-stage Wayback availability result for the frozen 40-row queue before constructing any archived-page capture plan.",
+  "inputs": [
+    {
+      "role": "availability_retry_registry_v2",
+      "path": "registry/analyses/target_text_corpus_v1_wayback_availability_retry_v2.json",
+      "sha256": "bce8adb90c7d900b65d595a5a5ed4dcc2834d2acebf892fe4e6994590ff04942"
+    },
+    {
+      "role": "frozen_candidate_queue",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\candidate_queue_v1.jsonl",
+      "sha256": "32f19c38a0d77aa5707b1ff7f0adbfa44409426632ce9af51e70286c2c076a67"
+    },
+    {
+      "role": "availability_report_v1",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\wayback_availability_report_v1.json",
+      "sha256": "f2ab98e574196cd7d8c69868494555facfb4b9f7e3631c4d9a1bcbef0fe61517"
+    },
+    {
+      "role": "availability_report_v2",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\wayback_availability_report_v2.json",
+      "sha256": "0d063b9bade16d287bf696a15df0b5b34329d0311d100ff02b55b46a19f0711a"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "availability_result_verifier_v2",
+      "path": "scripts/verify_target_text_corpus_v1_wayback_availability_result_v2.py",
+      "sha256": "7003d5ccc045f4b50e5dcbcca05291d931a91a0d74f81c583f33068f80bc26af"
+    },
+    {
+      "role": "availability_result_verifier_tests_v2",
+      "path": "tests/test_verify_target_text_corpus_v1_wayback_availability_result_v2.py",
+      "sha256": "a9ca7245184b679fc4c725852d325a6b10b31c8016443e40c20ab2db622262ea"
+    },
+    {
+      "role": "method_documentation",
+      "path": "docs/target-text-corpus-v1-wayback-availability-result-v2.md",
+      "sha256": "0f1d5fa956ac97b99dc6be9efe122483dd9337f7587748d08a62be5126ec2520"
+    }
+  ],
+  "outputs": [
+    {
+      "role": "independent_availability_qa_v2",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\wayback_availability_independent_qa_v2.json",
+      "sha256": "9368d22d93d59aa4e2b624952232c822e3ce973e7d31fb96b7d33fdb25b11319"
+    }
+  ],
+  "findings": {
+    "candidate_count": 40,
+    "availability_network_requests_v1": 10,
+    "availability_network_requests_v2": 31,
+    "cumulative_availability_network_requests": 41,
+    "resolved_v1_results_preserved": 9,
+    "available_snapshot_count": 29,
+    "unavailable_snapshot_count": 11,
+    "unresolved_error_count": 0,
+    "available_by_channel": {
+      "CONFIRMED_REGULATOR_LINKED_WEBSITE": 5,
+      "CONFIRMED_CFTC_RED_LINKED_WAYBACK_WEBSITE": 7,
+      "LEGITIMATE_REGISTER_LINKED_WEBSITE": 8,
+      "LEGITIMATE_SEC_EDGAR_LINKED_WAYBACK_WEBSITE": 9
+    },
+    "candidate_live_domain_access_operations": 0,
+    "archived_page_download_operations": 0,
+    "independent_availability_qa_passed": true
+  },
+  "decision": {
+    "availability_query_complete": true,
+    "capture_plan_construction_allowed": true,
+    "candidate_capture_allowed": false,
+    "live_candidate_domain_access_allowed": false,
+    "binary_labeling_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Construct and independently verify an immutable capture plan containing exactly the 29 available snapshot URLs; do not download archived HTML until that plan is hash-registered."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "historical_availability_network_operations_registered": 41,
+    "domain_access_allowed": false,
+    "candidate_domain_access_operations": 0,
+    "archived_page_download_operations": 0,
+    "candidate_artifact_captures": 0,
+    "labels_created": 0,
+    "labels_changed": 0,
+    "model_fit_operations": 0,
+    "model_scoring_operations": 0,
+    "validation_or_test_openings": 0,
+    "training_allowed": false,
+    "deployment_allowed": false
+  },
+  "prohibited_claims": [
+    "Do not interpret snapshot availability or unavailability as a class label.",
+    "Do not reallocate unavailable candidates across channels or alter the frozen queue.",
+    "Do not describe an availability response as captured website content.",
+    "Do not download archived HTML until a separate exact capture plan is frozen and registered.",
+    "Do not access live candidate domains."
+  ]
+}

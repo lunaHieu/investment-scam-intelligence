@@ -1,0 +1,73 @@
+{
+  "review_id": "ISI_TARGET_TEXT_CORPUS_V1_MANUAL_GROUP_REVIEW_V1",
+  "frozen_at": "2026-10-08T18:00:00+07:00",
+  "status": "FROZEN_BEFORE_MANUAL_GROUP_REVIEW",
+  "purpose": "Review cross-domain clone, shared-control, case/campaign, and entity-family relationships for 22 minimum-content artifacts without deciding binary ground truth.",
+  "inputs": {
+    "post_capture_result_registry": {
+      "path": "registry/analyses/target_text_corpus_v1_post_capture_grouping_result_v1.json",
+      "sha256": "c54ab81a48f9efbb137afa30487e396cf073105ca43a250a69e14e8ff94a527e"
+    },
+    "post_capture_analysis": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\post_capture_exclusion_grouping_v1.json",
+      "sha256": "6b77779a6d08d5d136c92365b3680cbfc342b159c9580149c3c8f61ee0f7ee77"
+    },
+    "candidate_queue": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\candidate_queue_v1.jsonl",
+      "sha256": "32f19c38a0d77aa5707b1ff7f0adbfa44409426632ce9af51e70286c2c076a67"
+    },
+    "exact_text_manifest": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\exact_text_manifest_v1.jsonl",
+      "sha256": "4eee87bb2aab4368743a4e4cdbe35b22c90c2108e96b83769cfa183bbee5401d"
+    }
+  },
+  "expected_review_population": 22,
+  "review_scope": {
+    "allowed_decisions": [
+      "KEEP_PROVISIONALLY_DISTINCT",
+      "MERGE_TECHNICAL_GROUPS",
+      "ROUTE_OPENED_COHORT_CLONE_REVIEW",
+      "UNRESOLVED_GROUP_RELATIONSHIP"
+    ],
+    "positive_linkage_indicators": [
+      "same exact source reference record",
+      "same normalized reference entity",
+      "same normalized host",
+      "shared distinctive contact email, phone, address, operator, or legal identity",
+      "distinctive copied page structure or long phrasing indicating a cross-domain clone",
+      "official evidence explicitly linking domains or entities to one case or campaign"
+    ],
+    "non_evidence": [
+      "same source stratum",
+      "generic investment vocabulary",
+      "both absent from automatic near-duplicate hits",
+      "model prediction or score",
+      "warning-list or registry membership by itself"
+    ],
+    "identity_or_content_anomalies_may_be_flagged_for_downstream_review": true,
+    "ground_truth_decision_allowed": false,
+    "candidate_source_stratum_may_be_treated_as_label": false
+  },
+  "outputs": {
+    "review_packet": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\manual_group_review_packet_v1.json",
+    "primary_review": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\manual_group_primary_review_v1.json",
+    "structural_qa": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\manual_group_primary_review_structural_qa_v1.json"
+  },
+  "gate_policy": {
+    "every_candidate_requires_explicit_decision_and_rationale": true,
+    "all_merges_require_named_positive_linkage_evidence": true,
+    "unresolved_relationship_routes_out_of_primary_label_review": true,
+    "primary_label_review_allowed_only_after_review_and_structural_qa_pass": true,
+    "independent_blind_second_label_review_still_required_later": true
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "domain_access_allowed": false,
+    "labels_created": 0,
+    "labels_changed": 0,
+    "model_fit_operations": 0,
+    "model_scoring_operations": 0,
+    "validation_or_test_openings": 0,
+    "training_allowed": false
+  }
+}

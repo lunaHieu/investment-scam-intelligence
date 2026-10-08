@@ -1,0 +1,119 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_MANUAL_GROUP_REVIEW_RESULT_V1",
+  "created_at": "2026-10-08",
+  "status": "FROZEN_MANUAL_GROUP_REVIEW_PASS_22_DISTINCT_14_FLAGGED",
+  "purpose": "Register the bounded offline manual relationship review, its preserved failed summary-count QA attempt, and the final passing structural verification without creating ground-truth labels.",
+  "inputs": [
+    {
+      "role": "manual_review_config",
+      "path": "configs/target_text_corpus_v1_manual_group_review_v1.json",
+      "sha256": "f45aca8a906360604fb027f9726a0045d7f5513a6d62a0ec30dc2a006ad5f215"
+    },
+    {
+      "role": "post_capture_result_registry",
+      "path": "registry/analyses/target_text_corpus_v1_post_capture_grouping_result_v1.json",
+      "sha256": "c54ab81a48f9efbb137afa30487e396cf073105ca43a250a69e14e8ff94a527e"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "packet_builder",
+      "path": "scripts/build_target_text_corpus_v1_manual_group_review_packet.py",
+      "sha256": "0f642952258e16c6f447af3467c0d877d185b586e7da5e45b7e0fdf1b1f91dce"
+    },
+    {
+      "role": "packet_tests",
+      "path": "tests/test_target_text_corpus_v1_manual_group_review_packet.py",
+      "sha256": "99c21d8c1e5a589b09910e17119cea13ee50be3acd98b201c93f9c9c12d1b49d"
+    },
+    {
+      "role": "structural_verifier",
+      "path": "scripts/verify_target_text_corpus_v1_manual_group_primary_review.py",
+      "sha256": "88e53452b376599cd9c5e7da03384815552ec6087ac6ea416b33be05233a6715"
+    },
+    {
+      "role": "structural_verifier_tests",
+      "path": "tests/test_verify_target_text_corpus_v1_manual_group_primary_review.py",
+      "sha256": "25a37597a9f18a331e39833b6310313dfc5c65cee6b51aa383bb4307d4a66404"
+    },
+    {
+      "role": "method_documentation",
+      "path": "docs/target-text-corpus-v1-manual-group-review-v1.md",
+      "sha256": "7f5f0b72555ecb789274f303ae06c2131e8a974b38380ac2ee5a293aed694649"
+    },
+    {
+      "role": "result_documentation",
+      "path": "docs/target-text-corpus-v1-manual-group-review-result-v1.md",
+      "sha256": "3170f0d280c1a19f7348016f9a4bc06b27a021ddfb6ed62a18cd689340325f9b"
+    },
+    {
+      "role": "registry_verifier",
+      "path": "scripts/verify_target_text_corpus_v1_manual_group_review_result_registry_v1.py",
+      "sha256": "b0a0a5f6e1b5442d9957567b3f724587d505ab0ca64c2393c77e91e8edfcd2bc"
+    },
+    {
+      "role": "registry_verifier_tests",
+      "path": "tests/test_verify_target_text_corpus_v1_manual_group_review_result_registry_v1.py",
+      "sha256": "47c2faf345b7f09050070c4c621f1321bdc10a3a2cdf6fdacc5929bfe0e5cb6f"
+    }
+  ],
+  "outputs": [
+    {
+      "role": "review_packet",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\manual_group_review_packet_v1.json",
+      "sha256": "5025923fd093ae989b2b7bd0fe989d30c6b3709e6143f814294e59686f00ce11"
+    },
+    {
+      "role": "primary_review",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\manual_group_primary_review_v1.json",
+      "sha256": "af02fcdaddab18ddc7ed94305bde68f053dc9d5b94d4d13716e019ee9dc14913"
+    },
+    {
+      "role": "failed_structural_qa_attempt_1",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\manual_group_primary_review_structural_qa_attempt1_fail.json",
+      "sha256": "223e635ffce20f1bf4c5d59589edf70bd53b3f40340224630f2e810ff7d4b861"
+    },
+    {
+      "role": "passing_structural_qa",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\manual_group_primary_review_structural_qa_v1.json",
+      "sha256": "b64ece10a8f488a772030249af12237843baaa0e713ea40aeba06eb29556f4e7"
+    }
+  ],
+  "findings": {
+    "reviewed_records": 22,
+    "keep_provisionally_distinct": 22,
+    "technical_merges": 0,
+    "opened_cohort_clone_routes": 0,
+    "unresolved_group_relationships": 0,
+    "records_with_downstream_flags": 14,
+    "failed_qa_attempts_preserved": 1,
+    "labels_created": 0
+  },
+  "decision": {
+    "manual_group_review_complete": true,
+    "primary_case_and_artifact_review_allowed": true,
+    "binary_labeling_completed": false,
+    "independent_blind_second_label_review_still_required": true,
+    "owner_acceptance_still_required": true,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Freeze and conduct primary case-and-artifact review for all 22 records using captured text plus official evidence, routing identity, relevance, repurpose, and contradiction problems to UNCERTAIN; do not expose model predictions."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "domain_access_allowed": false,
+    "labels_created": 0,
+    "labels_changed": 0,
+    "model_fit_operations": 0,
+    "model_scoring_operations": 0,
+    "validation_or_test_openings": 0,
+    "training_allowed": false,
+    "deployment_allowed": false
+  },
+  "prohibited_claims": [
+    "Provisionally distinct technical groups are not proof of distinct real-world control or cases.",
+    "Downstream flags are not binary labels.",
+    "Candidate source strata are not ground truth.",
+    "Primary review may begin, but binary eligibility still requires blind second review, reconciliation, and owner acceptance."
+  ]
+}

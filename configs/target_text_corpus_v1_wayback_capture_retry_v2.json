@@ -1,0 +1,69 @@
+{
+  "protocol_id": "ISI_TARGET_TEXT_CORPUS_V1_WAYBACK_CAPTURE_RETRY_V2",
+  "frozen_at": "2026-10-08T15:30:00+07:00",
+  "status": "FROZEN_COOLDOWN_RETRY_AUTHORIZED_CAPTURE_UNEXECUTED",
+  "purpose": "Retry only the 29 unresolved Wayback raw captures after the V1 executor stopped on its first HTTP 429 response and wrote zero raw files.",
+  "basis": [
+    {
+      "role": "capture_plan_registry_v1",
+      "path": "registry/analyses/target_text_corpus_v1_wayback_capture_plan_v1.json",
+      "sha256": "ba5b5a12fa91fd85ac39ff2870ef6f1619ae5380469714173186b536b780ef76"
+    },
+    {
+      "role": "frozen_capture_plan_v1",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\wayback_capture_plan_v1.json",
+      "sha256": "83985dac55dac415fd41d0351fc07bfb4a5591169b9e22b8e416cd910486fb68"
+    },
+    {
+      "role": "failed_capture_report_v1",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\wayback_capture_report_v1.json",
+      "sha256": "af3d1d56c22e053b7d5c0731dcb93b567f25bf5c68d5c2def7f0d5d49874ed80"
+    }
+  ],
+  "prior_outcome_contract": {
+    "planned_capture_count": 29,
+    "network_request_count": 1,
+    "captured_count": 0,
+    "failed_count": 1,
+    "not_attempted_count": 28,
+    "stopped_on_http_429": true,
+    "existing_raw_capture_count": 0,
+    "only_non_captured_rows_may_be_retried": true
+  },
+  "retry_contract": {
+    "allowed_network_host": "web.archive.org",
+    "raw_replay_modifier_required": true,
+    "minimum_cooldown_hours_after_v1": 24,
+    "minimum_delay_seconds": 10.0,
+    "maximum_attempts_per_candidate": 1,
+    "timeout_seconds": 45,
+    "https_only": true,
+    "automatic_external_redirect_following": false,
+    "stop_on_http_429": true,
+    "errors_are_preserved": true,
+    "live_candidate_domain_access_allowed": false,
+    "raw_capture_overwrite_allowed": false,
+    "report_overwrite_allowed": false
+  },
+  "planned_output": {
+    "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\wayback_capture_report_v2.json",
+    "report_id": "ISI_TARGET_TEXT_CORPUS_V1_WAYBACK_CAPTURE_REPORT_V2"
+  },
+  "post_retry_gate": {
+    "every_capture_hash_must_be_independently_verified": true,
+    "text_extraction_allowed_before_capture_audit": false,
+    "binary_labeling_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "historical_capture_network_operations_registered": 1,
+    "candidate_live_domain_access_operations": 0,
+    "candidate_artifact_captures": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "validation_or_test_openings": 0,
+    "training_allowed": false,
+    "deployment_allowed": false
+  }
+}

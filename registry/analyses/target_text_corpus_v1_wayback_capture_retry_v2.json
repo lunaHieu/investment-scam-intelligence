@@ -1,0 +1,95 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_WAYBACK_CAPTURE_RETRY_V2",
+  "created_at": "2026-10-08",
+  "status": "FROZEN_COOLDOWN_RETRY_QA_PASS_EXECUTION_AUTHORIZED",
+  "purpose": "Register the zero-capture HTTP 429 outcome and authorize one cooldown-gated, slower retry for exactly the 29 unresolved archived snapshots.",
+  "inputs": [
+    {
+      "role": "capture_plan_registry_v1",
+      "path": "registry/analyses/target_text_corpus_v1_wayback_capture_plan_v1.json",
+      "sha256": "ba5b5a12fa91fd85ac39ff2870ef6f1619ae5380469714173186b536b780ef76"
+    },
+    {
+      "role": "failed_capture_report_v1",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\wayback_capture_report_v1.json",
+      "sha256": "af3d1d56c22e053b7d5c0731dcb93b567f25bf5c68d5c2def7f0d5d49874ed80"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "capture_retry_protocol_v2",
+      "path": "configs/target_text_corpus_v1_wayback_capture_retry_v2.json",
+      "sha256": "e73e3de645642cf79a75260443f3e498c8e92625ac59e1608b02104d474bb196"
+    },
+    {
+      "role": "capture_retry_runner_v2",
+      "path": "scripts/retry_target_text_corpus_v1_wayback_capture.py",
+      "sha256": "8919eb33a448a510549ec90cbb717a7b883678ba979fad428d40d6510c6dc07b"
+    },
+    {
+      "role": "capture_retry_tests_v2",
+      "path": "tests/test_retry_target_text_corpus_v1_wayback_capture.py",
+      "sha256": "db4bf3cec93328ba1d822b3eecbbe9356f298626c3e9f40ddf5ac99152ced7b5"
+    },
+    {
+      "role": "capture_retry_verifier_v2",
+      "path": "scripts/verify_target_text_corpus_v1_wayback_capture_retry_v2.py",
+      "sha256": "fab461deefec3ade31155ef2705a10f11fa3611f9b5facb8cad62596e5fc767c"
+    },
+    {
+      "role": "capture_retry_verifier_tests_v2",
+      "path": "tests/test_verify_target_text_corpus_v1_wayback_capture_retry_v2.py",
+      "sha256": "c5c2e9a2448163beaee2a42f848a83b0a131890c1a9b8be99c18c138b7e2ff20"
+    },
+    {
+      "role": "method_documentation",
+      "path": "docs/target-text-corpus-v1-wayback-capture-retry-v2.md",
+      "sha256": "b8ef3811f7157852ec6cc75d343974eabd135c667f326dcd6acf4831a705a61c"
+    }
+  ],
+  "outputs": [],
+  "findings": {
+    "v1_capture_network_request_count": 1,
+    "v1_captured_count": 0,
+    "v1_failed_count": 1,
+    "v1_not_attempted_count": 28,
+    "v1_stopped_on_http_429": true,
+    "existing_raw_capture_count": 0,
+    "retry_candidate_count": 29,
+    "minimum_cooldown_hours": 24,
+    "cooldown_ready_on_2026_10_08": true,
+    "minimum_retry_delay_seconds": 10.0,
+    "maximum_retry_attempts_per_candidate": 1,
+    "candidate_live_domain_access_operations": 0,
+    "retry_requests_executed": 0
+  },
+  "decision": {
+    "capture_retry_allowed": true,
+    "text_extraction_allowed": false,
+    "live_candidate_domain_access_allowed": false,
+    "binary_labeling_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Execute the exact 29-row retry once at the frozen pacing, then independently audit every raw byte/hash before text extraction."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "historical_capture_network_operations_registered": 1,
+    "domain_access_allowed": false,
+    "candidate_domain_access_operations": 0,
+    "candidate_artifact_captures": 0,
+    "labels_created": 0,
+    "labels_changed": 0,
+    "model_fit_operations": 0,
+    "model_scoring_operations": 0,
+    "validation_or_test_openings": 0,
+    "training_allowed": false,
+    "deployment_allowed": false
+  },
+  "prohibited_claims": [
+    "Do not describe the V1 capture attempt as having produced a raw artifact.",
+    "Do not retry a successfully captured row or overwrite an existing target.",
+    "Do not continue after HTTP 429 or follow a redirect outside Wayback.",
+    "Do not extract text before an independent raw byte/hash audit passes.",
+    "Do not create or infer a binary label from capture success or failure."
+  ]
+}

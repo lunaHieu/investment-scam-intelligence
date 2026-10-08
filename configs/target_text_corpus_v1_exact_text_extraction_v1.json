@@ -1,0 +1,65 @@
+{
+  "extraction_id": "ISI_TARGET_TEXT_CORPUS_V1_EXACT_TEXT_EXTRACTION_V1",
+  "frozen_at": "2026-10-08T16:30:00+07:00",
+  "status": "FROZEN_BEFORE_OFFLINE_EXTRACTION",
+  "purpose": "Deterministically extract exact UTF-8 visible text from the 23 independently audited Wayback captures without creating labels or accessing the network.",
+  "inputs": {
+    "protocol": {
+      "path": "configs/target_text_corpus_v1_protocol.json",
+      "sha256": "7ec4468c4eac0241706114d9bfeb3c090208ef756f620841ac3be47074b8edc4"
+    },
+    "capture_result_registry": {
+      "path": "registry/analyses/target_text_corpus_v1_wayback_capture_result_v2.json",
+      "sha256": "5e0ca856a479f298e34d5c37fc8818a6f7beeaabd4f0e661bdc5f022d6340577"
+    },
+    "candidate_queue": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\candidate_queue_v1.jsonl",
+      "sha256": "32f19c38a0d77aa5707b1ff7f0adbfa44409426632ce9af51e70286c2c076a67"
+    },
+    "capture_report": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\wayback_capture_report_v2.json",
+      "sha256": "1daf72fd10468d72880327465559b460bfa150b2241b8441a8ed466b610b39d4"
+    },
+    "capture_independent_qa": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\wayback_capture_independent_qa_v2.json",
+      "sha256": "150921b7eccb9e3392490e5e50425c3b17c2e9c93cbffb981348e618241d8d42"
+    }
+  },
+  "expected_input": {
+    "captured_count": 23,
+    "failed_count_preserved": 6,
+    "captured_by_channel": {
+      "CONFIRMED_REGULATOR_LINKED_WEBSITE": 4,
+      "CONFIRMED_CFTC_RED_LINKED_WAYBACK_WEBSITE": 5,
+      "LEGITIMATE_REGISTER_LINKED_WEBSITE": 6,
+      "LEGITIMATE_SEC_EDGAR_LINKED_WAYBACK_WEBSITE": 8
+    }
+  },
+  "method": {
+    "transport_decoder": "src.isi.normalization.wayback_external_text.decode_archived_payload",
+    "visible_text_extractor": "src.isi.normalization.external_text.extract_visible_text",
+    "text_encoding": "UTF-8",
+    "text_file_final_newline_added": false,
+    "minimum_non_whitespace_text_characters": 20,
+    "below_minimum_policy": "PRESERVE_TEXT_AND_ROUTE_OUT_OF_REVIEWABLE_SET",
+    "raw_capture_modification_allowed": false,
+    "output_overwrite_allowed": false
+  },
+  "outputs": {
+    "text_root": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_schema_review_pilot\\exact_text_v1",
+    "manifest": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\exact_text_manifest_v1.jsonl",
+    "report": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\exact_text_extraction_report_v1.json",
+    "independent_qa": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\exact_text_extraction_independent_qa_v1.json"
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "live_domain_access_allowed": false,
+    "raw_files_modified": false,
+    "labels_created": 0,
+    "labels_changed": 0,
+    "model_fit_operations": 0,
+    "model_scoring_operations": 0,
+    "validation_or_test_openings": 0,
+    "training_allowed": false
+  }
+}

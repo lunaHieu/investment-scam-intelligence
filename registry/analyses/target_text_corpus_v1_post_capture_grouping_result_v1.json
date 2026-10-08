@@ -1,0 +1,105 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_POST_CAPTURE_GROUPING_RESULT_V1",
+  "created_at": "2026-10-08",
+  "status": "FROZEN_AUTOMATED_GATE_PASS_22_PROVISIONAL_GROUPS_MANUAL_REVIEW_REQUIRED",
+  "purpose": "Register independently verified opened-cohort overlap screening and provisional transitive exclusion grouping for the Target Text Corpus V1 pilot.",
+  "inputs": [
+    {
+      "role": "post_capture_config",
+      "path": "configs/target_text_corpus_v1_post_capture_grouping_v1.json",
+      "sha256": "56c84a3d1aeb9d16bf2b0a65c7599db23b928f70ea2c7eac3423fc395f4350e1"
+    },
+    {
+      "role": "exact_text_result_registry",
+      "path": "registry/analyses/target_text_corpus_v1_exact_text_result_v1.json",
+      "sha256": "b131e132f810033c76ee2e2e68043b671590bfaf649ec809e1064bdaac7332ce"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "builder",
+      "path": "scripts/build_target_text_corpus_v1_post_capture_grouping.py",
+      "sha256": "f4998df31fe8d336813c26dbc23815c90b9da40bb1cbe4a6119333fbdab7a479"
+    },
+    {
+      "role": "independent_verifier",
+      "path": "scripts/verify_target_text_corpus_v1_post_capture_grouping.py",
+      "sha256": "13b2fc285ec6f8d096472932dd87ff1c87f553ed6a8aa83903e6dcd80d03dc93"
+    },
+    {
+      "role": "implementation_tests",
+      "path": "tests/test_target_text_corpus_v1_post_capture_grouping.py",
+      "sha256": "c472773b05d131340d99ac65337d1dfd188b481810dae35a5c09cff3e0e86395"
+    },
+    {
+      "role": "method_documentation",
+      "path": "docs/target-text-corpus-v1-post-capture-grouping-v1.md",
+      "sha256": "c6b196c8351b3d62486eb0fda068761fdc646348e5bb7b776658c147465cbd27"
+    },
+    {
+      "role": "result_documentation",
+      "path": "docs/target-text-corpus-v1-post-capture-grouping-result-v1.md",
+      "sha256": "381144559744f92497abd434de7c7ca8d8664acd2eddb3059ed51236dfb1ff98"
+    },
+    {
+      "role": "registry_verifier",
+      "path": "scripts/verify_target_text_corpus_v1_post_capture_grouping_result_registry_v1.py",
+      "sha256": "af4dccd3e29f7e915b8eccd9059ae2c67f25b1648e0ee19a6526db2b5ee8839e"
+    },
+    {
+      "role": "registry_verifier_tests",
+      "path": "tests/test_verify_target_text_corpus_v1_post_capture_grouping_result_registry_v1.py",
+      "sha256": "887228aeb46d7a4e7aeed920c0778a28bdb59f1c10a60435493b02f383fe69db"
+    }
+  ],
+  "outputs": [
+    {
+      "role": "analysis_output",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\post_capture_exclusion_grouping_v1.json",
+      "sha256": "6b77779a6d08d5d136c92365b3680cbfc342b159c9580149c3c8f61ee0f7ee77"
+    },
+    {
+      "role": "independent_qa",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\post_capture_exclusion_grouping_independent_qa_v1.json",
+      "sha256": "d032766c57cf7f940db82e150fc8f2aac8a8715c7598c974cf6dd2d9277fabfe"
+    }
+  ],
+  "findings": {
+    "manifest_rows": 23,
+    "minimum_content_pass_rows": 22,
+    "opened_cohort_rows_compared": 107,
+    "opened_exact_or_host_overlap_count": 0,
+    "opened_near_duplicate_route_count": 0,
+    "candidate_internal_near_duplicate_pairs": 0,
+    "transitive_exclusion_groups": 22,
+    "cross_target_stratum_transitive_groups": 0,
+    "below_minimum_preserved_count": 1,
+    "independent_record_level_match_count": 23,
+    "labels_created": 0
+  },
+  "decision": {
+    "automated_post_capture_gate_passed": true,
+    "manual_cross_domain_case_clone_and_group_review_allowed": true,
+    "human_label_review_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Manually review the 22 artifacts for cross-domain clone, shared-control, case/campaign, and entity-family relationships using source evidence and captured text; freeze and independently check grouping decisions before primary label review."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "domain_access_allowed": false,
+    "labels_created": 0,
+    "labels_changed": 0,
+    "model_fit_operations": 0,
+    "model_scoring_operations": 0,
+    "validation_or_test_openings": 0,
+    "training_allowed": false,
+    "deployment_allowed": false
+  },
+  "prohibited_claims": [
+    "No detected normalized near-duplicate does not prove absence of semantic clones.",
+    "Provisional technical groups are not evidence-backed real-world case or entity findings.",
+    "Candidate source strata are not ground-truth labels.",
+    "Do not begin primary label review until manual cross-domain grouping review is frozen and verified."
+  ]
+}

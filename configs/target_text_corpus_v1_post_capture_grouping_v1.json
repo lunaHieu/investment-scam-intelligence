@@ -1,0 +1,86 @@
+{
+  "protocol_id": "ISI_TARGET_TEXT_CORPUS_V1_POST_CAPTURE_GROUPING_V1",
+  "frozen_at": "2026-10-08T17:15:00+07:00",
+  "status": "FROZEN_BEFORE_POST_CAPTURE_ANALYSIS",
+  "purpose": "Apply label-free opened-cohort exclusions, normalized near-duplicate detection, and deterministic technical grouping after exact-text extraction and before any human label review.",
+  "inputs": {
+    "exact_text_result_registry": {
+      "path": "registry/analyses/target_text_corpus_v1_exact_text_result_v1.json",
+      "sha256": "b131e132f810033c76ee2e2e68043b671590bfaf649ec809e1064bdaac7332ce"
+    },
+    "candidate_queue": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\candidate_queue_v1.jsonl",
+      "sha256": "32f19c38a0d77aa5707b1ff7f0adbfa44409426632ce9af51e70286c2c076a67"
+    },
+    "exact_text_manifest": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\exact_text_manifest_v1.jsonl",
+      "sha256": "4eee87bb2aab4368743a4e4cdbe35b22c90c2108e96b83769cfa183bbee5401d"
+    },
+    "opened_external_exclusion_index": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_preacquisition\\opened_external_exclusion_index_v1.json",
+      "sha256": "df43d88dbb1120c6f8e9afa0a7893fab1f4e176838483bb3a8bf013b13bd0d07"
+    },
+    "legacy_group_remediation_map": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_legacy_group_remediation_v1\\legacy_group_remediation_map_v1.json",
+      "sha256": "c4f69e43484a66aac74d0e50c30fe26a247b65e6abd31c2acac78af1fb1a9088"
+    }
+  },
+  "expected_input": {
+    "manifest_rows": 23,
+    "minimum_content_pass_rows": 22,
+    "opened_cohort_rows": 107,
+    "legacy_remediation_rows": 86
+  },
+  "normalization_and_near_duplicate_method": {
+    "unicode_normalization": "NFKC_CASEFOLD",
+    "url_replacement_token": "urltoken",
+    "email_replacement_token": "emailtoken",
+    "number_replacement_token": "numbertoken",
+    "token_pattern": "[a-z0-9]+",
+    "word_shingle_size": 5,
+    "jaccard_threshold": 0.8,
+    "containment_threshold": 0.95,
+    "minimum_shorter_shingles_for_containment_rule": 20,
+    "near_duplicate_edge_rule": "JACCARD_GTE_THRESHOLD_OR_CONTAINMENT_GTE_THRESHOLD_WITH_MINIMUM_SHORTER_SHINGLES",
+    "probable_opened_near_duplicate_policy": "ROUTE_TO_MANUAL_CROSS_DOMAIN_CLONE_REVIEW",
+    "candidate_internal_near_duplicate_policy": "GROUP_TRANSITIVELY_DO_NOT_LABEL"
+  },
+  "grouping_method": {
+    "case_campaign_key": "exact_source_id_plus_source_record_id",
+    "entity_host_family_edges": [
+      "exact_normalized_entity_name_without_terminal_legal_suffixes",
+      "exact_normalized_host_sha256"
+    ],
+    "near_duplicate_edges": [
+      "exact_text_sha256",
+      "frozen_normalized_near_duplicate_rule"
+    ],
+    "transitive_group_edges": [
+      "case_campaign_group",
+      "entity_host_family_group",
+      "near_duplicate_group"
+    ],
+    "component_algorithm": "DETERMINISTIC_TRANSITIVE_UNION_FIND",
+    "group_claim_limit": "All emitted groups are exclusion-control identifiers, not evidence-backed real-world case findings."
+  },
+  "outputs": {
+    "analysis": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\post_capture_exclusion_grouping_v1.json",
+    "independent_qa": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\post_capture_exclusion_grouping_independent_qa_v1.json"
+  },
+  "gate_policy": {
+    "human_label_review_allowed_after_automated_pass": false,
+    "manual_cross_domain_case_clone_and_group_review_required": true,
+    "model_scoring_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "domain_access_allowed": false,
+    "labels_created": 0,
+    "labels_changed": 0,
+    "model_fit_operations": 0,
+    "model_scoring_operations": 0,
+    "validation_or_test_openings": 0,
+    "training_allowed": false
+  }
+}

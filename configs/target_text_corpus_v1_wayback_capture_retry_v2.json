@@ -7,7 +7,7 @@
     {
       "role": "capture_plan_registry_v1",
       "path": "registry/analyses/target_text_corpus_v1_wayback_capture_plan_v1.json",
-      "sha256": "ba5b5a12fa91fd85ac39ff2870ef6f1619ae5380469714173186b536b780ef76"
+      "sha256": "a7cdf5fbcfed90fe546323d7e4268960182bbe795c563238b2da7694ae330898"
     },
     {
       "role": "frozen_capture_plan_v1",

@@ -39,7 +39,7 @@
     {
       "role": "capture_plan_independent_verifier",
       "path": "scripts/verify_target_text_corpus_v1_wayback_capture_plan_v1.py",
-      "sha256": "34e6e949b45b09a962a46dfafc0ae02ea7d8fd4b6f800dfcaa496c7c87859357"
+      "sha256": "a5eb60b03f12c7d08704acb6b67a1b4c286383022025928a1e65e4c2b17ec103"
     },
     {
       "role": "capture_plan_independent_verifier_tests",

@@ -1,0 +1,119 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_WAYBACK_CAPTURE_RESULT_V2",
+  "created_at": "2026-10-08",
+  "status": "FROZEN_23_RAW_CAPTURES_QA_PASS_6_FAILURES_PRESERVED",
+  "purpose": "Register the cooldown capture result and independent byte/hash audit, preserving six small-response failures without replacement or label inference.",
+  "inputs": [
+    {
+      "role": "capture_retry_registry_v2",
+      "path": "registry/analyses/target_text_corpus_v1_wayback_capture_retry_v2.json",
+      "sha256": "a174552047567a3c67fa79032007e8c30a810036da51325ffb163850480bbebc"
+    },
+    {
+      "role": "frozen_capture_plan_v1",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\wayback_capture_plan_v1.json",
+      "sha256": "83985dac55dac415fd41d0351fc07bfb4a5591169b9e22b8e416cd910486fb68"
+    },
+    {
+      "role": "capture_report_v1",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\wayback_capture_report_v1.json",
+      "sha256": "af3d1d56c22e053b7d5c0731dcb93b567f25bf5c68d5c2def7f0d5d49874ed80"
+    },
+    {
+      "role": "capture_report_v2",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\wayback_capture_report_v2.json",
+      "sha256": "1daf72fd10468d72880327465559b460bfa150b2241b8441a8ed466b610b39d4"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "capture_result_verifier_v2",
+      "path": "scripts/verify_target_text_corpus_v1_wayback_capture_result_v2.py",
+      "sha256": "8cf7c5a7465be0923b73ad2acc401bf1c6c6240c002d17039e5c40b733017d1e"
+    },
+    {
+      "role": "capture_result_verifier_tests_v2",
+      "path": "tests/test_verify_target_text_corpus_v1_wayback_capture_result_v2.py",
+      "sha256": "db6e213399671c89f5f7584a61aeb8926949dcebce7734bca66dbab81af8bd0a"
+    },
+    {
+      "role": "capture_result_registry_verifier_v2",
+      "path": "scripts/verify_target_text_corpus_v1_wayback_capture_result_registry_v2.py",
+      "sha256": "b08d9cffd67a6f65f62a199ae2c4a1fa939306d8d2a8db54e403eb02fd6da7c7"
+    },
+    {
+      "role": "capture_result_registry_verifier_tests_v2",
+      "path": "tests/test_verify_target_text_corpus_v1_wayback_capture_result_registry_v2.py",
+      "sha256": "8f168e254c2c7cd6baebcbf89f7bd74d2ccba295793dbfd6a028e5f81beebc76"
+    },
+    {
+      "role": "method_documentation",
+      "path": "docs/target-text-corpus-v1-wayback-capture-result-v2.md",
+      "sha256": "f2e254d6170f15182f5430506802f5baf5b894e0ec98b401aabb25e269da5cb5"
+    }
+  ],
+  "outputs": [
+    {
+      "role": "independent_capture_qa_v2",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\wayback_capture_independent_qa_v2.json",
+      "sha256": "150921b7eccb9e3392490e5e50425c3b17c2e9c93cbffb981348e618241d8d42"
+    }
+  ],
+  "findings": {
+    "planned_capture_count": 29,
+    "capture_network_requests_v1": 1,
+    "capture_network_requests_v2": 29,
+    "cumulative_capture_network_requests": 30,
+    "captured_count": 23,
+    "failed_small_response_count": 6,
+    "not_attempted_count": 0,
+    "stopped_on_http_429_v2": false,
+    "raw_capture_bytes": 1558271,
+    "captured_by_channel": {
+      "CONFIRMED_REGULATOR_LINKED_WEBSITE": 4,
+      "CONFIRMED_CFTC_RED_LINKED_WAYBACK_WEBSITE": 5,
+      "LEGITIMATE_REGISTER_LINKED_WEBSITE": 6,
+      "LEGITIMATE_SEC_EDGAR_LINKED_WAYBACK_WEBSITE": 8
+    },
+    "failed_by_channel": {
+      "CONFIRMED_REGULATOR_LINKED_WEBSITE": 1,
+      "CONFIRMED_CFTC_RED_LINKED_WAYBACK_WEBSITE": 2,
+      "LEGITIMATE_REGISTER_LINKED_WEBSITE": 2,
+      "LEGITIMATE_SEC_EDGAR_LINKED_WAYBACK_WEBSITE": 1
+    },
+    "raw_file_set_matches_report": true,
+    "raw_byte_and_hash_checks_passed": true,
+    "candidate_live_domain_access_operations": 0,
+    "labels_created": 0
+  },
+  "decision": {
+    "raw_capture_qa_passed": true,
+    "exact_text_extraction_allowed_for_captured_rows": true,
+    "failed_rows_may_be_silently_replaced": false,
+    "live_candidate_domain_access_allowed": false,
+    "binary_labeling_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Extract exact UTF-8 text only from the 23 audited captures, hash the text, enforce minimum content, and run post-capture exclusion plus transitive grouping before review."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "historical_capture_network_operations_registered": 30,
+    "domain_access_allowed": false,
+    "candidate_domain_access_operations": 0,
+    "new_artifact_captures": 0,
+    "labels_created": 0,
+    "labels_changed": 0,
+    "model_fit_operations": 0,
+    "model_scoring_operations": 0,
+    "validation_or_test_openings": 0,
+    "training_allowed": false,
+    "deployment_allowed": false
+  },
+  "prohibited_claims": [
+    "Do not treat a captured or failed acquisition as a binary class label.",
+    "Do not lower the raw-body threshold or manufacture files for six failed rows.",
+    "Do not replace a failed row in place; use the separately frozen reserve policy later.",
+    "Do not access live candidate domains.",
+    "Do not begin human label review until extraction, exclusion, and grouping gates pass."
+  ]
+}

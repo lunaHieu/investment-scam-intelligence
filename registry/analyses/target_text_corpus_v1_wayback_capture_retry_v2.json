@@ -7,7 +7,7 @@
     {
       "role": "capture_plan_registry_v1",
       "path": "registry/analyses/target_text_corpus_v1_wayback_capture_plan_v1.json",
-      "sha256": "ba5b5a12fa91fd85ac39ff2870ef6f1619ae5380469714173186b536b780ef76"
+      "sha256": "a7cdf5fbcfed90fe546323d7e4268960182bbe795c563238b2da7694ae330898"
     },
     {
       "role": "failed_capture_report_v1",
@@ -19,12 +19,12 @@
     {
       "role": "capture_retry_protocol_v2",
       "path": "configs/target_text_corpus_v1_wayback_capture_retry_v2.json",
-      "sha256": "e73e3de645642cf79a75260443f3e498c8e92625ac59e1608b02104d474bb196"
+      "sha256": "40323cf5c84b2e8d05771b958b60d8bf9107767ff81edd236a998db97cdee4cd"
     },
     {
       "role": "capture_retry_runner_v2",
       "path": "scripts/retry_target_text_corpus_v1_wayback_capture.py",
-      "sha256": "8919eb33a448a510549ec90cbb717a7b883678ba979fad428d40d6510c6dc07b"
+      "sha256": "f38a33d8b7c69a9b0e7aa563e84ae184d648e334888b51a8ba53353c205c2eb6"
     },
     {
       "role": "capture_retry_tests_v2",

@@ -88,15 +88,8 @@ def validate_protocol(protocol_path: Path, *, now: datetime | None = None) -> di
     prior_by_id = {str(row["candidate_id"]): row for row in prior.get("results", [])}
     if len(plan_by_id) != 29 or set(plan_by_id) != set(prior_by_id):
         errors.append("Plan/prior candidate membership changed")
-    existing = [
-        candidate_id
-        for candidate_id, row in plan_by_id.items()
-        if Path(str(row["capture_path"])).exists()
-    ]
-    if len(existing) != int(expected.get("existing_raw_capture_count", -1)):
-        errors.append("Existing raw capture count changed")
-    if any(candidate_id not in existing for candidate_id, row in prior_by_id.items() if row.get("outcome") == "CAPTURED"):
-        errors.append("Prior captured result lacks its immutable raw file")
+    # The gate is a historical snapshot. Current file existence can legitimately
+    # change after a later successful execution and must not invalidate it.
     retry = protocol.get("retry_contract", {})
     if float(retry.get("minimum_delay_seconds", 0)) < 10.0:
         errors.append("Retry delay is below ten seconds")
@@ -150,6 +143,17 @@ def execute(protocol_path: Path) -> dict[str, Any]:
     if output_path.exists():
         raise FileExistsError(f"Refusing to overwrite frozen output: {output_path}")
     prior_by_id = {str(row["candidate_id"]): row for row in prior["results"]}
+    # File-state checks belong immediately before execution, not in the
+    # historical protocol verifier. This preflight occurs before any request.
+    for row in plan["results"]:
+        candidate_id = str(row["candidate_id"])
+        prior_row = prior_by_id[candidate_id]
+        target = Path(str(row["capture_path"]))
+        if prior_row.get("outcome") == "CAPTURED":
+            if not target.is_file() or sha256_file(target) != prior_row.get("sha256"):
+                raise ValueError(f"Prior captured bytes missing or changed: {candidate_id}")
+        elif target.exists():
+            raise FileExistsError(f"Unresolved capture target already exists: {target}")
     request_counter = [0]
     results: list[dict[str, Any]] = []
     retried_ids: list[str] = []

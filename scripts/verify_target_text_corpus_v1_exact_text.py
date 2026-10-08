@@ -4,10 +4,15 @@ from __future__ import annotations
 
 import argparse
 import json
-import re
+import sys
 from collections import Counter
 from pathlib import Path
 from typing import Any
+
+
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
 from scripts.extract_target_text_corpus_v1_exact_text import (
     load_json,

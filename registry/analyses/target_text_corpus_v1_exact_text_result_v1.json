@@ -1,0 +1,124 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_EXACT_TEXT_RESULT_V1",
+  "created_at": "2026-10-08",
+  "status": "FROZEN_EXACT_TEXT_QA_PASS_22_REVIEWABLE_1_BELOW_MINIMUM",
+  "purpose": "Register deterministic offline extraction and independent byte-for-byte verification of the 23 audited Target Text Corpus V1 Wayback captures.",
+  "inputs": [
+    {
+      "role": "extraction_config",
+      "path": "configs/target_text_corpus_v1_exact_text_extraction_v1.json",
+      "sha256": "0a9c48de464515280d95f41c7850d2275f494336a6a672e69a9fd1ef85faad27"
+    },
+    {
+      "role": "capture_result_registry_v2",
+      "path": "registry/analyses/target_text_corpus_v1_wayback_capture_result_v2.json",
+      "sha256": "5e0ca856a479f298e34d5c37fc8818a6f7beeaabd4f0e661bdc5f022d6340577"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "extractor",
+      "path": "scripts/extract_target_text_corpus_v1_exact_text.py",
+      "sha256": "34504bf53cea51f988903c7ef34f36a084e3ee97801a7446c0aaa8d1609dee12"
+    },
+    {
+      "role": "independent_verifier",
+      "path": "scripts/verify_target_text_corpus_v1_exact_text.py",
+      "sha256": "43a07123fd8c95f9af1812d60532473485b52ab1a1e2d04fd3225806b60e0e77"
+    },
+    {
+      "role": "extraction_tests",
+      "path": "tests/test_target_text_corpus_v1_exact_text.py",
+      "sha256": "36badd25ea7161d224ee450d7186e489582b270370f202fc602566650b660d47"
+    },
+    {
+      "role": "method_documentation",
+      "path": "docs/target-text-corpus-v1-exact-text-extraction-v1.md",
+      "sha256": "5d93791058d6b3acbbb14000e80fa584d6d4e1988e2a2d7a1e31aecd03a67398"
+    },
+    {
+      "role": "result_documentation",
+      "path": "docs/target-text-corpus-v1-exact-text-result-v1.md",
+      "sha256": "602f173f77aba9f81e5ee241feb9e34cd911c367ae7f9763006d99392ff862ed"
+    },
+    {
+      "role": "registry_verifier",
+      "path": "scripts/verify_target_text_corpus_v1_exact_text_result_registry_v1.py",
+      "sha256": "26f8fa9b00c19abb5e82f8ea4fc3e2db149a6ef8f03f063a6b3fa10168f67252"
+    },
+    {
+      "role": "registry_verifier_tests",
+      "path": "tests/test_verify_target_text_corpus_v1_exact_text_result_registry_v1.py",
+      "sha256": "98a8b9a41d9844a574ded7920323427624cdbf6ed71dc7491fe2515b0e3fcaf5"
+    }
+  ],
+  "outputs": [
+    {
+      "role": "exact_text_manifest",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\exact_text_manifest_v1.jsonl",
+      "sha256": "4eee87bb2aab4368743a4e4cdbe35b22c90c2108e96b83769cfa183bbee5401d"
+    },
+    {
+      "role": "extraction_report",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\exact_text_extraction_report_v1.json",
+      "sha256": "d21ebf552b679e3ec3b4bc21f34f72c42fedd240b2ef0a96e58dfde840daa956"
+    },
+    {
+      "role": "independent_exact_text_qa",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\exact_text_extraction_independent_qa_v1.json",
+      "sha256": "0d8035c2af8a3b50ae07de91bb2d5d6fdd322f37b0e2f555c96d7a6292cc02a7"
+    }
+  ],
+  "findings": {
+    "captured_input_count": 23,
+    "extracted_count": 23,
+    "independent_byte_for_byte_match_count": 23,
+    "minimum_non_whitespace_text_characters": 20,
+    "minimum_content_passed_count": 22,
+    "below_minimum_preserved_count": 1,
+    "below_minimum_candidate_ids": [
+      "TTCV1_CAND_CONF_CFTC_008"
+    ],
+    "transport_decoding": {
+      "gzip": 6,
+      "identity": 17
+    },
+    "minimum_content_passed_by_channel": {
+      "CONFIRMED_CFTC_RED_LINKED_WAYBACK_WEBSITE": 4,
+      "CONFIRMED_REGULATOR_LINKED_WEBSITE": 4,
+      "LEGITIMATE_REGISTER_LINKED_WEBSITE": 6,
+      "LEGITIMATE_SEC_EDGAR_LINKED_WAYBACK_WEBSITE": 8
+    },
+    "raw_capture_modifications": 0,
+    "candidate_live_domain_access_operations": 0,
+    "labels_created": 0
+  },
+  "decision": {
+    "exact_text_qa_passed": true,
+    "post_capture_exclusion_and_grouping_allowed": true,
+    "below_minimum_candidate_reviewable": false,
+    "human_label_review_allowed": false,
+    "live_candidate_domain_access_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Apply opened-cohort exact capture/text/host exclusions and deterministic transitive case, entity/domain-family, and near-duplicate grouping to the 22 minimum-content artifacts; independently verify before review."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "domain_access_allowed": false,
+    "raw_files_modified": false,
+    "labels_created": 0,
+    "labels_changed": 0,
+    "model_fit_operations": 0,
+    "model_scoring_operations": 0,
+    "validation_or_test_openings": 0,
+    "training_allowed": false,
+    "deployment_allowed": false
+  },
+  "prohibited_claims": [
+    "Candidate source strata are not accepted binary labels.",
+    "A minimum-content pass does not establish identity, legitimacy, or fraud.",
+    "The preserved empty text artifact must not be repaired, replaced, or routed to human labeling in place.",
+    "Do not begin human label review until post-capture exclusion and transitive grouping pass independent verification."
+  ]
+}

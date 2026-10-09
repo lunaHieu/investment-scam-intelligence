@@ -1,0 +1,77 @@
+{
+  "review_id": "ISI_TARGET_TEXT_CORPUS_V1_BLIND_SECOND_REVIEW_V1",
+  "frozen_at": "2026-10-09T14:00:00+07:00",
+  "status": "FROZEN_BEFORE_BLIND_SECOND_REVIEW",
+  "purpose": "Conduct a separate full-population review from the same frozen artifact and official evidence while hiding all primary decisions, assessments, rationales, summaries, source strata, and candidate identifiers.",
+  "inputs": {
+    "primary_result_registry_gate": {
+      "path": "registry/analyses/target_text_corpus_v1_primary_case_artifact_review_result_v1.json",
+      "sha256": "7a73096638b44d6845f0ee4a538a5cafbd85f424c21791993fa51f02e337542e"
+    },
+    "unreviewed_primary_packet": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\primary_case_artifact_review_packet_v1.json",
+      "sha256": "79791c198f7392c74a4e71e531aa04b0646c2c83cfa90b994a7d2dc2bf46805b"
+    }
+  },
+  "expected_review_population": 22,
+  "blinding": {
+    "opaque_id_namespace": "ISI_TTCV1_SECOND_REVIEW_V1",
+    "omit_fields": [
+      "candidate_id",
+      "channel_id",
+      "channel_target_stratum",
+      "group_review",
+      "review_form",
+      "primary_recommendation",
+      "primary assessments",
+      "primary supporting facts",
+      "primary uncertainty reasons",
+      "primary rationale",
+      "primary summary"
+    ],
+    "reviewer_must_not_access_private_mapping": true,
+    "reviewer_must_not_access_primary_result": true,
+    "model_predictions_must_remain_hidden": true
+  },
+  "review_scope": {
+    "allowed_second_recommendations": [
+      "CONFIRMED",
+      "LEGITIMATE",
+      "UNCERTAIN"
+    ],
+    "required_assessments": [
+      "identity_linkage",
+      "task_relevance",
+      "capture_chronology",
+      "repurpose_or_parking",
+      "contradiction_screen"
+    ],
+    "confirmed_rule": "CONFIRMED requires an investment-related artifact, specific identity/domain linkage, official warning evidence, consistent chronology, and no unresolved repurpose, parking, or contradiction signal.",
+    "legitimate_rule": "LEGITIMATE requires an investment-related artifact, specific linkage to an active registration record, consistent chronology, and no unresolved clone, repurpose, parking, or contradiction signal; registration alone is insufficient.",
+    "uncertain_rule": "UNCERTAIN is mandatory for any unresolved identity, relevance, chronology, affiliation, repurpose, parking, or contradiction issue."
+  },
+  "outputs": {
+    "blind_packet": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\blind_second_review_packet_v1.json",
+    "private_mapping": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\blind_second_review_private_mapping_v1.json",
+    "second_review": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\blind_second_review_v1.json",
+    "structural_qa": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\blind_second_review_structural_qa_v1.json"
+  },
+  "gate_policy": {
+    "all_22_records_require_a_fresh_decision": true,
+    "second_review_is_not_ground_truth": true,
+    "comparison_with_primary_forbidden_until_second_review_is_frozen": true,
+    "reconciliation_required_after_second_review": true,
+    "owner_acceptance_required_after_reconciliation": true
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "live_domain_access_allowed": false,
+    "labels_created": 0,
+    "labels_changed": 0,
+    "model_fit_operations": 0,
+    "model_scoring_operations": 0,
+    "validation_or_test_openings": 0,
+    "training_allowed": false,
+    "deployment_allowed": false
+  }
+}

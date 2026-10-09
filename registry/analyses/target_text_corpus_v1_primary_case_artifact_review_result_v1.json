@@ -1,0 +1,121 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_PRIMARY_CASE_ARTIFACT_REVIEW_RESULT_V1",
+  "created_at": "2026-10-09",
+  "status": "FROZEN_PRIMARY_REVIEW_PASS_4_CONFIRMED_11_LEGITIMATE_7_UNCERTAIN",
+  "purpose": "Register the bounded primary case-and-artifact review and passing conservative structural QA without creating ground-truth labels or training eligibility.",
+  "inputs": [
+    {
+      "role": "primary_review_config",
+      "path": "configs/target_text_corpus_v1_primary_case_artifact_review_v1.json",
+      "sha256": "dd5e092c657aa1aaa5e2b665190759726d641c1f19929c82d84da7eb86349504"
+    },
+    {
+      "role": "manual_group_result_registry",
+      "path": "registry/analyses/target_text_corpus_v1_manual_group_review_result_v1.json",
+      "sha256": "5b06d4b2ecb342e71a7689863731ac72ee23437a4975411e37765a4e9e27c7c0"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "packet_builder",
+      "path": "scripts/build_target_text_corpus_v1_primary_case_artifact_review_packet.py",
+      "sha256": "9d2e3b1a8b2d528a990b1357aed5a7381bd1b5adc47b7d3142e04b991b7fa678"
+    },
+    {
+      "role": "review_recorder",
+      "path": "scripts/record_target_text_corpus_v1_primary_case_artifact_review.py",
+      "sha256": "77977ba0baacf844745e726cc997492b2d124a4b0ef6c8095581381add60aa96"
+    },
+    {
+      "role": "structural_verifier",
+      "path": "scripts/verify_target_text_corpus_v1_primary_case_artifact_review.py",
+      "sha256": "891573ab4634853e8ad29962c144de79ea91166ca7fba93efcaa1f67e873ece3"
+    },
+    {
+      "role": "registry_verifier",
+      "path": "scripts/verify_target_text_corpus_v1_primary_case_artifact_review_result_registry_v1.py",
+      "sha256": "03b6fcb3d4debe984fb13dc29124d7a03f049eeee1a4a011348b022f9c4d94c9"
+    },
+    {
+      "role": "packet_tests",
+      "path": "tests/test_target_text_corpus_v1_primary_case_artifact_review_packet.py",
+      "sha256": "0e608b9a707441a9ac59bf538a11e64c732f9e92cac07dc6088cca7e2b7d77a3"
+    },
+    {
+      "role": "review_recorder_tests",
+      "path": "tests/test_record_target_text_corpus_v1_primary_case_artifact_review.py",
+      "sha256": "b5299c254cc394429aa3a9544a97fddcd5532c52dc245f5f95e8c2cc736bba3f"
+    },
+    {
+      "role": "structural_verifier_tests",
+      "path": "tests/test_verify_target_text_corpus_v1_primary_case_artifact_review.py",
+      "sha256": "b4f766fcf250e2ba4dd3845d1f9ac233959a69cf25eedb93751a81a7b1180f1e"
+    },
+    {
+      "role": "registry_verifier_tests",
+      "path": "tests/test_verify_target_text_corpus_v1_primary_case_artifact_review_result_registry_v1.py",
+      "sha256": "a036b132f722beb1d9019b1da79c7d9109eb8700734a70511d7c2b820697cdc9"
+    },
+    {
+      "role": "method_documentation",
+      "path": "docs/target-text-corpus-v1-primary-case-artifact-review-v1.md",
+      "sha256": "482125dc85b99ac2c18e78433824f11d39d536fb25cb6b664df07329f5d7767b"
+    },
+    {
+      "role": "result_documentation",
+      "path": "docs/target-text-corpus-v1-primary-case-artifact-review-result-v1.md",
+      "sha256": "fb8bf1ed94c702b99f537f4c5690a385e924b99bd69a5406a847a5cc76e1edc9"
+    }
+  ],
+  "outputs": [
+    {
+      "role": "review_packet",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\primary_case_artifact_review_packet_v1.json",
+      "sha256": "79791c198f7392c74a4e71e531aa04b0646c2c83cfa90b994a7d2dc2bf46805b"
+    },
+    {
+      "role": "primary_review",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\primary_case_artifact_review_v1.json",
+      "sha256": "228dcf0bdf14649a8f5c7cdafd6f1709d2cd29fc561c3dcf56844fa22626ef27"
+    },
+    {
+      "role": "passing_structural_qa",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\primary_case_artifact_review_structural_qa_v1.json",
+      "sha256": "0b273632bdf450b1ee9515bd6025a5e9cb3ea2b2b397769da16234bc1311fb62"
+    }
+  ],
+  "findings": {
+    "reviewed_records": 22,
+    "primary_confirmed_recommendations": 4,
+    "primary_legitimate_recommendations": 11,
+    "primary_uncertain_recommendations": 7,
+    "labels_created": 0,
+    "training_eligible_records": 0
+  },
+  "decision": {
+    "primary_review_complete": true,
+    "blind_independent_second_review_allowed": true,
+    "ground_truth_labeling_completed": false,
+    "owner_acceptance_still_required": true,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Build a blind packet with primary decisions omitted, conduct a separate full-population second review, then reconcile disagreements without opening model, validation, or test artifacts."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "live_domain_access_allowed": false,
+    "labels_created": 0,
+    "labels_changed": 0,
+    "model_fit_operations": 0,
+    "model_scoring_operations": 0,
+    "validation_or_test_openings": 0,
+    "training_allowed": false,
+    "deployment_allowed": false
+  },
+  "prohibited_claims": [
+    "Primary recommendations are not ground-truth labels.",
+    "A structural QA pass does not validate factual judgments.",
+    "Source strata and registry membership are not sufficient by themselves.",
+    "Blind second review, reconciliation, and owner acceptance remain mandatory before label materialization."
+  ]
+}

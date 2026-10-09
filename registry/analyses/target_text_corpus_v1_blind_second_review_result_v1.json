@@ -1,0 +1,121 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_BLIND_SECOND_REVIEW_RESULT_V1",
+  "created_at": "2026-10-09",
+  "status": "FROZEN_BLIND_SECOND_REVIEW_PASS_4_CONFIRMED_9_LEGITIMATE_9_UNCERTAIN",
+  "purpose": "Register the independently executed blind second review and canonical passing structural QA before private-map comparison or reconciliation.",
+  "inputs": [
+    {
+      "role": "primary_review_result_gate",
+      "path": "registry/analyses/target_text_corpus_v1_primary_case_artifact_review_result_v1.json",
+      "sha256": "7a73096638b44d6845f0ee4a538a5cafbd85f424c21791993fa51f02e337542e"
+    },
+    {
+      "role": "blind_second_review_config",
+      "path": "configs/target_text_corpus_v1_blind_second_review_v1.json",
+      "sha256": "06af986b19f0dc496eba56688dd35f79c416ea6dd2c68df0c33b2190654e990e"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "blind_packet_builder",
+      "path": "scripts/build_target_text_corpus_v1_blind_second_review_packet.py",
+      "sha256": "aea1bd146a854a87a9dea4aa76ea6e1beee1dead1aa3d821c53a9b2f71f48917"
+    },
+    {
+      "role": "second_review_verifier",
+      "path": "scripts/verify_target_text_corpus_v1_blind_second_review.py",
+      "sha256": "41d7200043ed9686a4b398b6cf8888385a9489aa48d333e8c09377d4d10f6325"
+    },
+    {
+      "role": "registry_verifier",
+      "path": "scripts/verify_target_text_corpus_v1_blind_second_review_result_registry_v1.py",
+      "sha256": "b4923e45e628b6aef3239f7620ea002358246a70d239807789f0e01dfae4b6a1"
+    },
+    {
+      "role": "blind_packet_tests",
+      "path": "tests/test_target_text_corpus_v1_blind_second_review_packet.py",
+      "sha256": "9dfec37474feceedc34717c753c701f5308b6be3fed68b753c7de1bfa5209695"
+    },
+    {
+      "role": "second_review_verifier_tests",
+      "path": "tests/test_verify_target_text_corpus_v1_blind_second_review.py",
+      "sha256": "90571eda86b4882d7e475379e06b85b5f0d2bd9ccb9a85c01cbdc4db0a85f1e2"
+    },
+    {
+      "role": "registry_verifier_tests",
+      "path": "tests/test_verify_target_text_corpus_v1_blind_second_review_result_registry_v1.py",
+      "sha256": "c46ed3a0051c192868ee87fb53501743832caa58606624f8bdbb36bfd3bb1320"
+    },
+    {
+      "role": "method_documentation",
+      "path": "docs/target-text-corpus-v1-blind-second-review-v1.md",
+      "sha256": "cc85283347f8c64cf2d50953d1ac5fbf243af7609e280a983d5b613d1e445a17"
+    },
+    {
+      "role": "result_documentation",
+      "path": "docs/target-text-corpus-v1-blind-second-review-result-v1.md",
+      "sha256": "66cd83ca744f92a381fdaa2fcc8114042786d76381ca4753b9ec99389ca97b3e"
+    }
+  ],
+  "outputs": [
+    {
+      "role": "blind_packet",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\blind_second_review_packet_v1.json",
+      "sha256": "3d4148fbfbb5784c51c53164c9064c387e69253f293a4f4ff49108f782cded5d"
+    },
+    {
+      "role": "private_mapping",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\blind_second_review_private_mapping_v1.json",
+      "sha256": "4cdfa910d0fc403b4047d0a2cc3a42da8e778497c884703de3d646055167ff75"
+    },
+    {
+      "role": "blind_second_review",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\blind_second_review_v1.json",
+      "sha256": "a914360f6e3cf8305451d2572cda06fb736e16c8557f9ee283c8bd4a827ad54c"
+    },
+    {
+      "role": "noncanonical_path_qa_attempt",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\blind_second_review_structural_qa_attempt1_noncanonical.json",
+      "sha256": "a75cae1a1da8767d16a541169b237bfa4ee70ec5dc03360f8f4b688e3a48b0e4"
+    },
+    {
+      "role": "canonical_passing_structural_qa",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\blind_second_review_structural_qa_v1.json",
+      "sha256": "481355144c3e0307ec841149dd90fa337593c5ad5b05f9966141282a1a7691ec"
+    }
+  ],
+  "findings": {
+    "reviewed_records": 22,
+    "second_confirmed_recommendations": 4,
+    "second_legitimate_recommendations": 9,
+    "second_uncertain_recommendations": 9,
+    "labels_created": 0,
+    "training_eligible_records": 0
+  },
+  "decision": {
+    "blind_second_review_complete": true,
+    "reconciliation_allowed": true,
+    "ground_truth_labeling_completed": false,
+    "owner_acceptance_still_required": true,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Open the private ID map only after this result is frozen; compare both reviews, investigate every disagreement and duplicated registration identity, and keep unresolved cases UNCERTAIN."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "live_domain_access_allowed": false,
+    "labels_created": 0,
+    "labels_changed": 0,
+    "model_fit_operations": 0,
+    "model_scoring_operations": 0,
+    "validation_or_test_openings": 0,
+    "training_allowed": false,
+    "deployment_allowed": false
+  },
+  "prohibited_claims": [
+    "Second-review recommendations are not ground-truth labels.",
+    "Blinding and structural QA do not prove the factual decision is correct.",
+    "Agreement will still require reconciliation checks and owner acceptance.",
+    "The duplicated registration identity warning must not be silently ignored."
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "review_id": "ISI_TARGET_TEXT_CORPUS_V1_PRIMARY_CASE_ARTIFACT_REVIEW_V1",
+  "frozen_at": "2026-10-09T10:30:00+07:00",
+  "status": "FROZEN_BEFORE_PRIMARY_CASE_ARTIFACT_REVIEW",
+  "purpose": "Review 22 minimum-content target-text artifacts against frozen official evidence and record a conservative primary recommendation without creating a ground-truth label.",
+  "inputs": {
+    "manual_group_result_registry": {
+      "path": "registry/analyses/target_text_corpus_v1_manual_group_review_result_v1.json",
+      "sha256": "5b06d4b2ecb342e71a7689863731ac72ee23437a4975411e37765a4e9e27c7c0"
+    },
+    "manual_group_primary_review": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\manual_group_primary_review_v1.json",
+      "sha256": "af02fcdaddab18ddc7ed94305bde68f053dc9d5b94d4d13716e019ee9dc14913"
+    },
+    "candidate_queue": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\candidate_queue_v1.jsonl",
+      "sha256": "32f19c38a0d77aa5707b1ff7f0adbfa44409426632ce9af51e70286c2c076a67"
+    },
+    "exact_text_manifest": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\exact_text_manifest_v1.jsonl",
+      "sha256": "4eee87bb2aab4368743a4e4cdbe35b22c90c2108e96b83769cfa183bbee5401d"
+    },
+    "iosco_warning_reference": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_reference_indices_v1\\iosco_warning_reference_v1.jsonl",
+      "sha256": "578b2681f8d638d7b1a4d19882fc40b26965e397cef24f5a452f76cac229a5e2"
+    },
+    "sec_registration_reference": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_reference_indices_v1\\sec_registration_reference_v1.jsonl",
+      "sha256": "7004453a5e5e71747f4f8b2f65cb79ed9359c482fd7f3f2abedfa75540890807"
+    },
+    "cftc_red_reference": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\cftc_red_normalized_v1.jsonl",
+      "sha256": "241cac992cadcbb3a02bcc6b91be587d09ca1af3627028c1c9705c71aa53e9b4"
+    },
+    "sec_edgar_iapd_shortlist": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_shortlist_v1.jsonl",
+      "sha256": "632b337bdb3aedf8d1a2a526895e2f3dcf5b7ba49758287ca15d5f6598b8f300"
+    },
+    "sec_edgar_independent_provenance_review": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_independent_provenance_review_v1.json",
+      "sha256": "ef325843d06360599b4caefef865880feccf29027c6965d47e0efd4bde16d900"
+    }
+  },
+  "expected_review_population": 22,
+  "review_scope": {
+    "allowed_primary_recommendations": [
+      "CONFIRMED",
+      "LEGITIMATE",
+      "UNCERTAIN"
+    ],
+    "required_assessments": [
+      "identity_linkage",
+      "task_relevance",
+      "capture_chronology",
+      "repurpose_or_parking",
+      "contradiction_screen"
+    ],
+    "confirmed_rule": "CONFIRMED requires an investment-related captured artifact, exact or specifically corroborated artifact-to-entity/domain linkage, official warning or enforcement evidence, chronology consistent with that identity, and no unresolved repurpose, parking, or contradiction signal.",
+    "legitimate_rule": "LEGITIMATE requires an investment-related captured artifact, exact or specifically corroborated linkage to an active official registration record, chronology consistent with that identity, and no unresolved clone, repurpose, parking, or contradiction signal. Registration membership alone is insufficient.",
+    "uncertain_rule": "Route to UNCERTAIN whenever identity, task relevance, chronology, repurpose/parking, affiliation, or contradiction remains unresolved; do not repair missing evidence by inference from source stratum.",
+    "source_stratum_is_not_ground_truth": true,
+    "official_registry_membership_is_not_sufficient_alone": true,
+    "model_predictions_must_remain_hidden": true
+  },
+  "outputs": {
+    "review_packet": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\primary_case_artifact_review_packet_v1.json",
+    "primary_review": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\primary_case_artifact_review_v1.json",
+    "structural_qa": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\primary_case_artifact_review_structural_qa_v1.json"
+  },
+  "gate_policy": {
+    "every_candidate_requires_explicit_assessments_facts_and_rationale": true,
+    "primary_recommendations_are_not_ground_truth_labels": true,
+    "blind_independent_second_review_required": true,
+    "reconciliation_required_after_second_review": true,
+    "owner_acceptance_required_after_reconciliation": true,
+    "training_eligibility_remains_no": true
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "live_domain_access_allowed": false,
+    "labels_created": 0,
+    "labels_changed": 0,
+    "model_fit_operations": 0,
+    "model_scoring_operations": 0,
+    "validation_or_test_openings": 0,
+    "training_allowed": false,
+    "deployment_allowed": false
+  }
+}

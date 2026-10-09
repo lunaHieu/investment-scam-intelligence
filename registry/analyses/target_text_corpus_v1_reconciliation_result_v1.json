@@ -1,0 +1,39 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_RECONCILIATION_RESULT_V1",
+  "created_at": "2026-10-09",
+  "status": "FROZEN_RECONCILIATION_20_AGREEMENTS_2_RESOLVED",
+  "purpose": "Register primary/second-review reconciliation and the independent registration-key recomputation without creating labels.",
+  "inputs": [
+    {"role": "second_review_result_registry", "path": "registry/analyses/target_text_corpus_v1_blind_second_review_result_v1.json", "sha256": "988b3eb2315ca43527911963d8ac4ee924f179bbf29384d7eaff6ef57f002b7a"},
+    {"role": "reconciliation_config", "path": "configs/target_text_corpus_v1_reconciliation_v1.json", "sha256": "26d51641e8018810101ea2b1669326db2a3459f3d5766045f266f426e48074da"}
+  ],
+  "implementation": [
+    {"role": "reconciler", "path": "scripts/reconcile_target_text_corpus_v1_primary_second_reviews.py", "sha256": "70e72c92c055c058fde15c923295ce101be6ef5639148cab0602ff9ff9455e71"},
+    {"role": "tests", "path": "tests/test_reconcile_target_text_corpus_v1_primary_second_reviews.py", "sha256": "23cef2ff7d41de360927817a9d61fb4c2ff14476867be86f96dd68a0039973a6"},
+    {"role": "documentation", "path": "docs/target-text-corpus-v1-reconciliation-v1.md", "sha256": "5ca8cdb63473f7f49e4476473eefbd9429bedea709fd1e6155d4be42e303bb2c"}
+  ],
+  "outputs": [
+    {"role": "reconciliation", "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\primary_second_reconciliation_v1.json", "sha256": "245edc59af104fb56d62ca3f8d0ea8559e823e02cc668b257f8d91bbc346cc7c"}
+  ],
+  "findings": {
+    "reviewed_records": 22,
+    "agreements": 20,
+    "disagreements_resolved": 2,
+    "registration_records_audited": 14,
+    "duplicate_registration_composite_keys": 0,
+    "reconciled_confirmed_recommendations": 4,
+    "reconciled_legitimate_recommendations": 11,
+    "reconciled_uncertain_recommendations": 7,
+    "labels_created": 0,
+    "training_eligible_records": 0
+  },
+  "decision": {
+    "reconciliation_complete": true,
+    "owner_acceptance_required": true,
+    "ground_truth_labeling_completed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Prepare a hash-bound owner acceptance packet for the 22 reconciled recommendations; materialize only explicitly accepted decisive records and retain all UNCERTAIN records outside training."
+  },
+  "safety_contract": {"labels_created": 0, "labels_changed": 0, "model_fit_operations": 0, "model_scoring_operations": 0, "validation_or_test_openings": 0, "training_allowed": false}
+}

@@ -1,0 +1,37 @@
+{
+  "reconciliation_id": "ISI_TARGET_TEXT_CORPUS_V1_RECONCILIATION_V1",
+  "frozen_at": "2026-10-09T16:30:00+07:00",
+  "status": "FROZEN_BEFORE_RECONCILIATION",
+  "purpose": "Compare the frozen primary and blind second reviews, independently recompute evidence-key consistency, and resolve disagreements without creating labels.",
+  "inputs": {
+    "primary_result_registry": {"path": "registry/analyses/target_text_corpus_v1_primary_case_artifact_review_result_v1.json", "sha256": "7a73096638b44d6845f0ee4a538a5cafbd85f424c21791993fa51f02e337542e"},
+    "second_result_registry": {"path": "registry/analyses/target_text_corpus_v1_blind_second_review_result_v1.json", "sha256": "988b3eb2315ca43527911963d8ac4ee924f179bbf29384d7eaff6ef57f002b7a"},
+    "primary_review": {"path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\primary_case_artifact_review_v1.json", "sha256": "228dcf0bdf14649a8f5c7cdafd6f1709d2cd29fc561c3dcf56844fa22626ef27"},
+    "blind_second_review": {"path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\blind_second_review_v1.json", "sha256": "a914360f6e3cf8305451d2572cda06fb736e16c8557f9ee283c8bd4a827ad54c"},
+    "private_mapping": {"path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\blind_second_review_private_mapping_v1.json", "sha256": "4cdfa910d0fc403b4047d0a2cc3a42da8e778497c884703de3d646055167ff75"},
+    "blind_packet": {"path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\blind_second_review_packet_v1.json", "sha256": "3d4148fbfbb5784c51c53164c9064c387e69253f293a4f4ff49108f782cded5d"}
+  },
+  "expected_population": 22,
+  "expected_disagreements": ["TTCV1_CAND_LEGIT_EDGAR_003", "TTCV1_CAND_LEGIT_EDGAR_006"],
+  "disagreement_resolutions": {
+    "TTCV1_CAND_LEGIT_EDGAR_003": {
+      "reconciled_recommendation": "LEGITIMATE",
+      "disposition": "PRIMARY_SUPPORTED_SECOND_FACTUAL_ERROR",
+      "rationale": "The packet assigns SEI sec_number 801-24593 and source_record_id 105146; those keys are unique, so the second review's claimed collision with Commonwealth is factually false. Exact host, SEI identity, investment content, and APPROVED registration align."
+    },
+    "TTCV1_CAND_LEGIT_EDGAR_006": {
+      "reconciled_recommendation": "LEGITIMATE",
+      "disposition": "PRIMARY_SUPPORTED_SECOND_FACTUAL_ERROR",
+      "rationale": "The packet assigns Commonwealth/CIM sec_number 801-47108 and source_record_id 106292; those keys are unique, so the second review's claimed collision with SEI is factually false. Exact host, registered alias, investment content, and APPROVED registration align."
+    }
+  },
+  "outputs": {
+    "reconciliation": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\primary_second_reconciliation_v1.json"
+  },
+  "gate_policy": {
+    "agreement_does_not_create_label": true,
+    "disagreement_requires_explicit_evidence_based_resolution": true,
+    "owner_acceptance_required_before_label_materialization": true
+  },
+  "safety_contract": {"labels_created": 0, "labels_changed": 0, "model_fit_operations": 0, "model_scoring_operations": 0, "validation_or_test_openings": 0, "training_allowed": false}
+}

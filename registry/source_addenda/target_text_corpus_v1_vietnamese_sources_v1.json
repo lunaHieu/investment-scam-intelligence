@@ -1,0 +1,112 @@
+{
+  "addendum_id": "ISI_TARGET_TEXT_CORPUS_V1_VIETNAMESE_SOURCE_ADDENDUM_V1",
+  "created_at": "2026-10-14",
+  "status": "FROZEN_SOURCE_ROLES_REGISTERED_REFERENCE_ACQUISITION_BLOCKED",
+  "purpose": "Register conservative Vietnamese official-reference paths for both target statuses without treating regulator warnings or issuer listings as labels and without authorizing generic scraping.",
+  "parent_source_registry": {
+    "path": "registry/sources.json",
+    "sha256": "37cb19e4b329b642a8a61f487e20d257b6f8e771a1f6bf60babb888d9d0b5609"
+  },
+  "basis": {
+    "multilingual_supply_audit": {
+      "path": "registry/analyses/target_text_corpus_v1_multilingual_supply_audit_v1.json",
+      "sha256": "6f6db82ea922b7e35c626d5663820929db2d8114380ca6fb1cdfbe1fee42bd82"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "ssc_vietnam_investor_warnings",
+      "tier": "CORE_TARGET_CORPUS_REFERENCE_PROPOSED",
+      "name": "State Securities Commission of Vietnam investor warnings",
+      "official_url": "https://ssc.gov.vn/webcenter/portal/ubck/pages_r/m/nhadautu/khuyencaonhadautu",
+      "source_type": "regulator_warning_index_and_individual_warning_pages",
+      "planned_target_status": "CONFIRMED",
+      "reference_role": "CASE_SEED_IDENTITY_DOMAIN_AND_WARNING_EVIDENCE_ONLY",
+      "default_evidence_level": "SILVER",
+      "raw_semantics": "An official warning can identify a reported or warned entity, domain, impersonation, or conduct. It is not automatically the model target and does not prove every associated artifact belongs to one campaign.",
+      "allowed_uses": [
+        "manual_candidate_discovery",
+        "exact_entity_or_domain_evidence_linking",
+        "warning_date_and_official_url_provenance",
+        "vietnamese_confirmed_channel_reference"
+      ],
+      "prohibited_uses": [
+        "automatic confirmed label",
+        "warning prose as model input",
+        "absence from the warning index as legitimacy evidence",
+        "generic automated scraping under this review",
+        "redistribution of full page bundles"
+      ],
+      "case_level_target_eligible_without_additional_review": false,
+      "terms_and_access_review": {
+        "reviewed_at": "2026-10-14",
+        "official_page_reviewed": "https://ssc.gov.vn/webcenter/portal/ubck/pages_r/m/nhadautu/khuyencaonhadautu",
+        "finding": "The public official index exposes Vietnamese investor-warning titles, dates, and individual warning pages. This review did not identify an explicit bulk export or machine-reuse license on the reviewed official page.",
+        "operational_decision": "Use manual record-level review or a future explicit official export only. Preserve the official URL, observation time, minimal identity/domain facts, and local hash; do not automate enumeration under this addendum.",
+        "redistribution_decision": "Keep source captures internal and do not redistribute complete pages or attachments without a separate item-level rights review.",
+        "acquisition_ready": false,
+        "blocker": "No explicit bulk/download path or reuse permission has been registered."
+      }
+    },
+    {
+      "source_id": "hnx_vietnam_issuer_profiles",
+      "tier": "CORE_TARGET_CORPUS_REFERENCE_PROPOSED",
+      "name": "Hanoi Stock Exchange issuer and listed-security profiles",
+      "official_url": "https://www.hnx.vn/vi-vn/co-phieu-etfs/chung-khoan-ny-thong-tin.html",
+      "source_type": "official_exchange_issuer_identity_profiles",
+      "planned_target_status": "LEGITIMATE",
+      "reference_role": "ISSUER_IDENTITY_LISTING_STATUS_AND_OFFICIAL_DOMAIN_REFERENCE_ONLY",
+      "default_evidence_level": "LEGIT_REFERENCE",
+      "raw_semantics": "An HNX issuer profile can support entity, listing, and official-domain reconciliation. Listing or publication by HNX is not a safety guarantee and cannot establish that a website capture is authentic, uncompromised, or legitimate.",
+      "allowed_uses": [
+        "manual_issuer_identity_reference",
+        "manual_official_domain_reconciliation",
+        "listing_status_and_profile_provenance",
+        "vietnamese_legitimate_channel_reference"
+      ],
+      "prohibited_uses": [
+        "automatic legitimate label",
+        "listing as proof of content safety",
+        "generic automated scraping under this review",
+        "market data or issuer profile text as model input",
+        "redistribution of HNX page or data bundles"
+      ],
+      "case_level_target_eligible_without_additional_review": false,
+      "terms_and_access_review": {
+        "reviewed_at": "2026-10-14",
+        "official_profile_page": "https://www.hnx.vn/vi-vn/co-phieu-etfs/chung-khoan-ny-thong-tin.html",
+        "official_information_notice_page": "https://www.gov.hnx.vn/vi-vn/co-phieu-etfs/du-lieu-thi-truong-uc.html",
+        "finding": "HNX public pages expose issuer identity and website fields. The reviewed official notice states HNX copyright and instructs users to contact HNX when publishing information from the website.",
+        "operational_decision": "Use manual record-level review or an explicit official export/permission only. Retain only minimal derived identity facts internally with source URL, observation time, and hash; do not automate enumeration under this addendum.",
+        "redistribution_decision": "Do not republish HNX page/data bundles. Any external release requires a separate permission and rights review.",
+        "acquisition_ready": false,
+        "blocker": "No explicit machine-readable export permission or project-specific republication permission has been registered."
+      }
+    }
+  ],
+  "shared_artifact_contract": {
+    "future_predicted_artifact_type": "WAYBACK_ARCHIVED_WEBSITE_VISIBLE_TEXT",
+    "official_reference_text_is_model_input": false,
+    "candidate_live_domain_access_allowed": false,
+    "language_must_be_reviewed_from_observed_artifact_text": true,
+    "exact_text_sha256_required": true,
+    "primary_and_blind_second_review_required": true,
+    "clone_compromise_redirect_and_impersonation_checks_required": true,
+    "owner_acceptance_required": true
+  },
+  "registry_policy": {
+    "parent_registry_modified": false,
+    "source_registration_is_not_acquisition": true,
+    "source_registration_is_not_label_authorization": true,
+    "legal_opinion_claimed": false
+  },
+  "safety_contract": {
+    "candidate_domain_access_operations": 0,
+    "reference_records_acquired": 0,
+    "candidate_records_enumerated": 0,
+    "artifact_captures": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

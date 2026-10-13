@@ -1,0 +1,103 @@
+{
+  "protocol_id": "ISI_TARGET_TEXT_CORPUS_V1_VIETNAMESE_CHANNEL_TERMS_V1",
+  "frozen_at": "2026-10-14T00:45:00+07:00",
+  "status": "FROZEN_SOURCE_ROLES_TERMS_REVIEWED_ACQUISITION_AND_MATRIX_AMENDMENT_BLOCKED",
+  "purpose": "Define conservative Vietnamese reference-source roles, rights boundaries, and activation gates for both target statuses before any new reference acquisition or candidate enumeration.",
+  "basis": [
+    {"role": "multilingual_supply_audit_registry", "path": "registry/analyses/target_text_corpus_v1_multilingual_supply_audit_v1.json", "sha256": "6f6db82ea922b7e35c626d5663820929db2d8114380ca6fb1cdfbe1fee42bd82"},
+    {"role": "source_capacity_amendment_protocol_registry", "path": "registry/analyses/target_text_corpus_v1_source_capacity_amendment_protocol_v1.json", "sha256": "7c9e58699fba5ed67c4a10cae9d459682985211a31fd6afcead30b8a0056b1a7"},
+    {"role": "vietnamese_source_addendum", "path": "registry/source_addenda/target_text_corpus_v1_vietnamese_sources_v1.json", "sha256": "c262b643107d7a6aa158781334b8eb1d9047960e5598e662f730f7881a4a4bc3"}
+  ],
+  "channel_paths": [
+    {
+      "channel_id": "CONFIRMED_REGULATOR_LINKED_WEBSITE",
+      "target_status": "CONFIRMED",
+      "reference_source_id": "ssc_vietnam_investor_warnings",
+      "reference_role": "CASE_SEED_IDENTITY_DOMAIN_AND_WARNING_EVIDENCE_ONLY",
+      "planned_artifact": "WAYBACK_ARCHIVED_WEBSITE_VISIBLE_TEXT",
+      "reference_acquisition_mode": "MANUAL_RECORD_LEVEL_OR_EXPLICIT_OFFICIAL_EXPORT_ONLY",
+      "activation_status": "SOURCE_ROLE_REGISTERED_ACQUISITION_BLOCKED",
+      "required_before_candidate_enumeration": [
+        "manual export or explicit official download/reuse basis",
+        "immutable source artifact and SHA-256",
+        "minimal provenance schema and no-redistribution rule",
+        "Sampling Matrix V2 hash registration",
+        "opened-cohort and cross-channel exclusions"
+      ],
+      "required_before_binary_eligibility": [
+        "exact official warning to entity/domain linkage",
+        "separate archived candidate artifact with visible text hash",
+        "human-reviewed artifact language",
+        "case/campaign/entity/domain/near-duplicate grouping",
+        "primary and blind independent second review",
+        "reconciliation and owner acceptance"
+      ],
+      "claim_limit": "An SSC warning is evidence and a case seed, not an automatic CONFIRMED label or model feature."
+    },
+    {
+      "channel_id": "LEGITIMATE_REGISTER_LINKED_WEBSITE",
+      "target_status": "LEGITIMATE",
+      "reference_source_id": "hnx_vietnam_issuer_profiles",
+      "reference_role": "ISSUER_IDENTITY_LISTING_STATUS_AND_OFFICIAL_DOMAIN_REFERENCE_ONLY",
+      "planned_artifact": "WAYBACK_ARCHIVED_WEBSITE_VISIBLE_TEXT",
+      "reference_acquisition_mode": "MANUAL_RECORD_LEVEL_OR_EXPLICIT_OFFICIAL_EXPORT_PERMISSION_ONLY",
+      "activation_status": "SOURCE_ROLE_REGISTERED_ACQUISITION_BLOCKED",
+      "required_before_candidate_enumeration": [
+        "manual export or explicit HNX download/reuse permission",
+        "immutable source artifact and SHA-256",
+        "minimal provenance schema and no-redistribution rule",
+        "Sampling Matrix V2 hash registration",
+        "opened-cohort and cross-channel exclusions"
+      ],
+      "required_before_binary_eligibility": [
+        "exact issuer identity and official-domain agreement",
+        "separate archived candidate artifact with visible text hash",
+        "human-reviewed artifact language",
+        "clone, compromise, redirect, and impersonation contradiction checks",
+        "case/entity/domain/near-duplicate grouping",
+        "primary and blind independent second review",
+        "reconciliation and owner acceptance"
+      ],
+      "claim_limit": "An HNX issuer profile or listing supports identity only and is not an automatic LEGITIMATE label or safety guarantee."
+    }
+  ],
+  "rights_and_access_contract": {
+    "generic_automated_scraping_authorized": false,
+    "manual_record_level_review_allowed_after_release": false,
+    "explicit_official_export_or_permission_can_open_future_release": true,
+    "full_source_page_or_data_bundle_redistribution_allowed": false,
+    "minimal_derived_provenance_external_release_allowed_now": false,
+    "official_reference_text_as_model_input": false,
+    "candidate_live_domain_access_allowed": false,
+    "legal_opinion_claimed": false
+  },
+  "matrix_contract": {
+    "sampling_matrix_v1_silently_modified": false,
+    "sampling_matrix_v2_required_before_adoption": true,
+    "class_quota_change_allowed_by_this_protocol": false,
+    "channel_fraction_cap_change_allowed_by_this_protocol": false,
+    "language_quota_waiver_allowed": false,
+    "language_supply_claim_allowed_before_artifact_review": false
+  },
+  "decision": {
+    "source_role_registration_gate_passed": true,
+    "terms_review_recorded": true,
+    "reference_acquisition_gate_passed": false,
+    "sampling_matrix_amendment_gate_passed": false,
+    "candidate_enumeration_allowed": false,
+    "artifact_capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Obtain a manual/explicit official export or written reuse basis for each activated path, then freeze Sampling Matrix V2 and a hash-bound reference-acquisition release before enumerating candidates."
+  },
+  "safety_contract": {
+    "candidate_domain_access_operations": 0,
+    "reference_records_acquired": 0,
+    "candidate_records_enumerated": 0,
+    "artifact_captures": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_VIETNAMESE_CHANNEL_TERMS_V1",
+  "created_at": "2026-10-14",
+  "status": "FROZEN_INDEPENDENTLY_VERIFIED_SOURCE_ROLES_REGISTERED_ACQUISITION_BLOCKED",
+  "purpose": "Register conservative Vietnamese source roles for both target statuses while keeping reference acquisition, matrix amendment, candidate enumeration, and model gates closed.",
+  "inputs": [
+    {"role": "channel_terms_protocol", "path": "configs/target_text_corpus_v1_vietnamese_channel_terms_v1.json", "sha256": "84a53656b6d2bcd30395a874c05284faed99a11b60349f7c176c061e60a5ac63"},
+    {"role": "source_addendum", "path": "registry/source_addenda/target_text_corpus_v1_vietnamese_sources_v1.json", "sha256": "c262b643107d7a6aa158781334b8eb1d9047960e5598e662f730f7881a4a4bc3"}
+  ],
+  "implementation": [
+    {"role": "independent_verifier", "path": "scripts/verify_target_text_corpus_v1_vietnamese_channel_terms_v1.py", "sha256": "0b7cea50515d9ec967007df62764cab1e42cf9e6549ce73c4f457e2ce9625f84"},
+    {"role": "verifier_tests", "path": "tests/test_verify_target_text_corpus_v1_vietnamese_channel_terms_v1.py", "sha256": "33add21bd17e030b69969c56e2af9af958afffe553da43aa9b4714025975f216"},
+    {"role": "registry_tests", "path": "tests/test_target_text_corpus_v1_vietnamese_channel_terms_registry_v1.py", "sha256": "065491d1c02befebc89d0bf1fbedfced0246e258e0cd83c2d4855785d5e0fd20"},
+    {"role": "documentation", "path": "docs/target-text-corpus-v1-vietnamese-channel-terms-v1.md", "sha256": "79012275f3583455cf58da8c5ea6ebfaa43734ada1d36dd5325f9fcbc889570f"}
+  ],
+  "outputs": [
+    {"role": "independent_verification", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\vietnamese_channel_terms_v1\\independent_verification_v1.json", "sha256": "aef155388cd1c12a44efb15f6610ae1bad5864e5d8fb062f638940e1429291ca"}
+  ],
+  "findings": {
+    "source_count": 2,
+    "target_status_count": 2,
+    "confirmed_reference_source_id": "ssc_vietnam_investor_warnings",
+    "legitimate_reference_source_id": "hnx_vietnam_issuer_profiles",
+    "generic_automated_scraping_authorized": false,
+    "full_source_bundle_redistribution_allowed": false,
+    "reference_records_acquired": 0,
+    "independent_verification_status": "PASS_SOURCE_ROLES_REGISTERED_ACQUISITION_AND_MATRIX_BLOCKED"
+  },
+  "decision": {
+    "source_role_registration_gate_passed": true,
+    "terms_review_recorded": true,
+    "reference_acquisition_gate_passed": false,
+    "sampling_matrix_v2_required": true,
+    "sampling_matrix_amendment_gate_passed": false,
+    "candidate_enumeration_allowed": false,
+    "artifact_capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Obtain a manual/explicit official export or written reuse basis for each activated source, then freeze Sampling Matrix V2 and a hash-bound acquisition release."
+  },
+  "safety_contract": {
+    "candidate_domain_access_operations": 0,
+    "reference_records_acquired": 0,
+    "candidate_records_enumerated": 0,
+    "artifact_captures": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

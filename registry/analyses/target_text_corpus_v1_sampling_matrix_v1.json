@@ -1,0 +1,69 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_SAMPLING_MATRIX_RESULT_V1",
+  "created_at": "2026-10-12",
+  "status": "FROZEN_MATRIX_VERIFIED_ACQUISITION_BLOCKED",
+  "purpose": "Register the verified balanced Dataset V1-Core sampling matrix and its unresolved candidate-reservoir and multilingual-supply gates.",
+  "inputs": [
+    {
+      "role": "sampling_matrix",
+      "path": "configs/target_text_corpus_v1_sampling_matrix_v1.json",
+      "sha256": "19faaa4e2e0edfd87a403f6e39df96c763a7e0ae5890cebe6cc3adbb3c40176b"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "verifier",
+      "path": "scripts/verify_target_text_corpus_v1_sampling_matrix.py",
+      "sha256": "0e5381fbf81f030ed0373ce793511f28f982887e0b63313712cca2f880d544d9"
+    },
+    {
+      "role": "tests",
+      "path": "tests/test_verify_target_text_corpus_v1_sampling_matrix.py",
+      "sha256": "17033f982d803d1cac68a7b2118955c53d80d98e093881525528689b2ee11192"
+    },
+    {
+      "role": "documentation",
+      "path": "docs/target-text-corpus-v1-sampling-matrix-v1.md",
+      "sha256": "1d06bc9cae5e2fd074fcb242e7343aee1da1e1c54c82807fe83883e4317e22c1"
+    }
+  ],
+  "findings": {
+    "development_groups": 240,
+    "development_confirmed_groups": 120,
+    "development_legitimate_groups": 120,
+    "untouched_external_holdout_groups": 60,
+    "holdout_confirmed_groups": 30,
+    "holdout_legitimate_groups": 30,
+    "channels": 4,
+    "channels_per_label": 2,
+    "maximum_channel_fraction_per_label": 0.5,
+    "channels_capacity_ready": 2,
+    "channels_capacity_blocked": 2,
+    "blocked_channels": [
+      "CONFIRMED_CFTC_RED_LINKED_WAYBACK_WEBSITE",
+      "LEGITIMATE_SEC_EDGAR_LINKED_WAYBACK_WEBSITE"
+    ],
+    "pilot_or_mendeley_groups_counted_toward_fresh_quotas": 0,
+    "multilingual_supply_audited": false
+  },
+  "decision": {
+    "matrix_structurally_valid": true,
+    "matrix_hash_registered": true,
+    "candidate_acquisition_release_allowed": false,
+    "labeling_allowed": false,
+    "training_allowed": false,
+    "model_scoring_allowed": false,
+    "next_gate": "Replenish and hash-audit CFTC and SEC EDGAR candidate reservoirs and audit multilingual supply before freezing fresh candidate inventories."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "new_candidates_enumerated": 0,
+    "new_artifacts_captured": 0,
+    "labels_created": 0,
+    "training_eligibility_changes": 0,
+    "model_fit_operations": 0,
+    "model_scoring_operations": 0,
+    "validation_or_test_openings": 0,
+    "training_allowed": false
+  }
+}

@@ -1,0 +1,202 @@
+{
+  "matrix_id": "ISI_TARGET_TEXT_CORPUS_V1_SAMPLING_MATRIX_V1",
+  "frozen_at": "2026-10-12T22:00:00+07:00",
+  "status": "FROZEN_MATRIX_CAPACITY_AND_LANGUAGE_SUPPLY_GATES_BLOCK_ACQUISITION",
+  "purpose": "Freeze balanced group, channel, cohort, language, capture, review, and exclusion quotas for a fresh Dataset V1-Core without reusing any opened diagnostic record.",
+  "basis": [
+    {
+      "role": "target_corpus_protocol_registry",
+      "path": "registry/analyses/target_text_corpus_v1_protocol.json",
+      "sha256": "53f563231cf6cbdaac83057cc684e2bc8b24badac7fa00c8f7dbf5f0041e2f52"
+    },
+    {
+      "role": "channel_terms_registry",
+      "path": "registry/analyses/target_text_corpus_v1_channel_terms_v1.json",
+      "sha256": "f86b7830f9e2f0e0420095bddd37727a6ddca334da11f0c233dd7459d9748f9a"
+    },
+    {
+      "role": "candidate_enumeration_registry",
+      "path": "registry/analyses/target_text_corpus_v1_candidate_enumeration_v1.json",
+      "sha256": "516f2714bd1bda38c65f32438986b133abb4cc67902c9f2dc54207affbfb0c57"
+    },
+    {
+      "role": "pilot_owner_acceptance_registry",
+      "path": "registry/analyses/target_text_corpus_v1_owner_acceptance_result_v1.json",
+      "sha256": "a97f2f667d89ec089d3c3558409e2295d47bc8adfa53d5846748a641a3e6ccca"
+    },
+    {
+      "role": "preacquisition_registry",
+      "path": "registry/analyses/target_text_corpus_v1_preacquisition.json",
+      "sha256": "5a9c4e3535120f78f6f77fd09adde46a52ed1b3ab0b4e579eb3eadba4971f46c"
+    },
+    {
+      "role": "source_addendum",
+      "path": "registry/source_addenda/target_text_corpus_v1_sources_v1.json",
+      "sha256": "7b0f7be13f38a0ab503414029e588e4f7c0be14f6e83d11a899153bee79a144c"
+    }
+  ],
+  "unit_of_sampling": "TRANSITIVE_CASE_CAMPAIGN_ENTITY_DOMAIN_FAMILY_NEAR_DUPLICATE_GROUP",
+  "cohorts": {
+    "development": {
+      "purpose": "Grouped development corpus later partitioned 70/15/15 into train, validation, and internal test.",
+      "target_groups": {"CONFIRMED": 120, "LEGITIMATE": 120, "total": 240},
+      "partition_minimum_groups_per_label": {"train": 84, "validation": 18, "internal_test": 18},
+      "acquisition_wave": "DEVELOPMENT_FRESH_WAVES",
+      "model_access_before_freeze": false
+    },
+    "untouched_external_holdout": {
+      "purpose": "Separate fresh acquisition wave never used for fitting, representation selection, thresholding, or model selection.",
+      "target_groups": {"CONFIRMED": 30, "LEGITIMATE": 30, "total": 60},
+      "acquisition_wave": "EXTERNAL_HOLDOUT_FRESH_WAVE",
+      "must_be_frozen_before_first_target_model_candidate_selection": true,
+      "training_or_selection_use_allowed": false
+    }
+  },
+  "channel_quotas": [
+    {
+      "target_status": "CONFIRMED",
+      "channel_id": "CONFIRMED_REGULATOR_LINKED_WEBSITE",
+      "reference_source_ids": ["iosco_i_scan", "fca_warning_list", "ubcknn_warnings"],
+      "artifact_acquisition": "WAYBACK_ARCHIVED_WEBSITE_HTML",
+      "development_accepted_group_quota": 60,
+      "external_holdout_accepted_group_quota": 15,
+      "total_accepted_group_quota": 75,
+      "pilot_initial_candidates": 10,
+      "pilot_decisive_labels": 2,
+      "pilot_candidate_to_decisive_yield": 0.2,
+      "current_reference_pool_size": 12055,
+      "planning_candidate_reservoir_with_25_percent_buffer": 469,
+      "current_capacity_gate_passed": true
+    },
+    {
+      "target_status": "CONFIRMED",
+      "channel_id": "CONFIRMED_CFTC_RED_LINKED_WAYBACK_WEBSITE",
+      "reference_source_ids": ["cftc_red_list"],
+      "artifact_acquisition": "WAYBACK_ARCHIVED_WEBSITE_HTML",
+      "development_accepted_group_quota": 60,
+      "external_holdout_accepted_group_quota": 15,
+      "total_accepted_group_quota": 75,
+      "pilot_initial_candidates": 10,
+      "pilot_decisive_labels": 2,
+      "pilot_candidate_to_decisive_yield": 0.2,
+      "current_reference_pool_size": 12,
+      "planning_candidate_reservoir_with_25_percent_buffer": 469,
+      "current_capacity_gate_passed": false
+    },
+    {
+      "target_status": "LEGITIMATE",
+      "channel_id": "LEGITIMATE_REGISTER_LINKED_WEBSITE",
+      "reference_source_ids": ["sec_iapd"],
+      "artifact_acquisition": "WAYBACK_ARCHIVED_WEBSITE_HTML",
+      "development_accepted_group_quota": 60,
+      "external_holdout_accepted_group_quota": 15,
+      "total_accepted_group_quota": 75,
+      "pilot_initial_candidates": 10,
+      "pilot_decisive_labels": 4,
+      "pilot_candidate_to_decisive_yield": 0.4,
+      "current_reference_pool_size": 3647,
+      "planning_candidate_reservoir_with_25_percent_buffer": 235,
+      "current_capacity_gate_passed": true
+    },
+    {
+      "target_status": "LEGITIMATE",
+      "channel_id": "LEGITIMATE_SEC_EDGAR_LINKED_WAYBACK_WEBSITE",
+      "reference_source_ids": ["sec_edgar_company_submissions"],
+      "artifact_acquisition": "WAYBACK_ARCHIVED_WEBSITE_HTML",
+      "development_accepted_group_quota": 60,
+      "external_holdout_accepted_group_quota": 15,
+      "total_accepted_group_quota": 75,
+      "pilot_initial_candidates": 10,
+      "pilot_decisive_labels": 7,
+      "pilot_candidate_to_decisive_yield": 0.7,
+      "current_reference_pool_size": 20,
+      "planning_candidate_reservoir_with_25_percent_buffer": 134,
+      "current_capacity_gate_passed": false
+    }
+  ],
+  "balance_contract": {
+    "minimum_channels_per_label": 2,
+    "maximum_one_channel_fraction_per_label": 0.5,
+    "development_channel_fraction_per_label": 0.5,
+    "external_holdout_channel_fraction_per_label": 0.5,
+    "shortfall_borrowing_between_channels_allowed": false,
+    "shortfall_borrowing_between_labels_allowed": false,
+    "opened_pilot_records_count_toward_quotas": false,
+    "mendeley_records_count_toward_quotas": false
+  },
+  "language_coverage": {
+    "development_minimum_non_english_groups_per_label": 12,
+    "development_minimum_vietnamese_groups_per_label": 6,
+    "external_holdout_minimum_non_english_groups_per_label": 3,
+    "external_holdout_minimum_vietnamese_groups_per_label": 2,
+    "language_targets_replace_no_class_or_channel_quota": true,
+    "current_supply_audited": false,
+    "silent_waiver_allowed": false
+  },
+  "wave_policy": {
+    "development_candidate_batch_size_per_channel": 25,
+    "holdout_candidate_batch_size_per_channel": 10,
+    "reestimate_observed_yield_after_each_frozen_review_wave": true,
+    "stop_only_when_accepted_group_quota_and_all_quality_gates_pass": true,
+    "manual_cherry_picking_allowed": false,
+    "model_score_ranking_allowed": false,
+    "deterministic_selection_key": "SHA256(frozen_seed|cohort_namespace|channel_id|source_id|source_record_id|normalized_host)",
+    "holdout_candidates_must_use_distinct_cohort_namespace_and_fresh_wave": true
+  },
+  "quality_gates": {
+    "immutable_raw_capture_and_capture_sha256": true,
+    "exact_text_and_text_sha256": true,
+    "source_url_and_collection_time": true,
+    "case_campaign_entity_domain_and_near_duplicate_grouping": true,
+    "opened_cohort_exclusion": true,
+    "cross_partition_transitive_group_exclusion": true,
+    "high_confidence_required": true,
+    "primary_review_coverage": 1.0,
+    "independent_blind_second_review_coverage": 1.0,
+    "reconciliation_coverage": 1.0,
+    "owner_acceptance_coverage": 1.0,
+    "uncertain_excluded_from_binary_training": true
+  },
+  "feature_isolation": {
+    "allowed_model_text": "OBSERVED_ARTIFACT_VISIBLE_TEXT_ONLY",
+    "warning_or_registry_text_as_model_input": false,
+    "source_id_as_model_input": false,
+    "review_rationale_as_model_input": false,
+    "evidence_metadata_as_model_input": false,
+    "source_predictability_diagnostic_required_before_validation": true
+  },
+  "capacity_findings": {
+    "channels_passing_current_candidate_reservoir_gate": 2,
+    "channels_failing_current_candidate_reservoir_gate": 2,
+    "blocked_channels": [
+      "CONFIRMED_CFTC_RED_LINKED_WAYBACK_WEBSITE",
+      "LEGITIMATE_SEC_EDGAR_LINKED_WAYBACK_WEBSITE"
+    ],
+    "required_remediation": [
+      "Expand the CFTC reference acquisition under its existing manual or explicit official-download contract, or freeze a terms-reviewed second confirmed-channel amendment before substitution.",
+      "Expand the SEC EDGAR official-domain candidate pool through the documented API or bulk path, or freeze a terms-reviewed second legitimate-channel amendment before substitution.",
+      "Audit candidate language supply for every channel and register a Vietnamese legitimate-reference path before releasing waves that claim Vietnamese coverage."
+    ]
+  },
+  "decision": {
+    "matrix_structurally_valid": true,
+    "candidate_reservoir_capacity_gate_met": false,
+    "language_supply_gate_met": false,
+    "candidate_acquisition_release_allowed": false,
+    "labeling_allowed": false,
+    "training_allowed": false,
+    "model_scoring_allowed": false,
+    "next_gate": "Replenish and hash-audit the two secondary channel pools and audit multilingual supply; then freeze candidate inventories before any development or holdout capture."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "new_candidates_enumerated": 0,
+    "new_artifacts_captured": 0,
+    "labels_created": 0,
+    "training_eligibility_changes": 0,
+    "model_fit_operations": 0,
+    "model_scoring_operations": 0,
+    "validation_or_test_openings": 0,
+    "training_allowed": false
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_OWNER_ACCEPTANCE_RESULT_V1",
+  "created_at": "2026-10-12",
+  "status": "FROZEN_OWNER_ACCEPTED_15_LABELS_7_UNCERTAIN_TRAINING_CLOSED",
+  "purpose": "Register project-owner adoption of the reconciled pilot recommendations, materialize only decisive ground truth, and keep every pilot record outside training and model selection.",
+  "inputs": [
+    {
+      "role": "owner_acceptance",
+      "path": "configs/target_text_corpus_v1_owner_acceptance_v1.json",
+      "sha256": "0bfb207695de8da05e125bcd432b9edf481b74011da0d92505e1dde0cac4d4d3"
+    },
+    {
+      "role": "reconciliation_result_registry",
+      "path": "registry/analyses/target_text_corpus_v1_reconciliation_result_v1.json",
+      "sha256": "d22bef45e6922722742984688146009324a0ac8995840ea7c16806092b6bc7e5"
+    },
+    {
+      "role": "reconciliation_artifact",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\primary_second_reconciliation_v1.json",
+      "sha256": "245edc59af104fb56d62ca3f8d0ea8559e823e02cc668b257f8d91bbc346cc7c"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "materializer",
+      "path": "scripts/materialize_target_text_corpus_v1_owner_acceptance.py",
+      "sha256": "9b06af719b2e417bdc5eae536ac689b5a7dd8ef8285a3717cedb361efc249477"
+    },
+    {
+      "role": "tests",
+      "path": "tests/test_materialize_target_text_corpus_v1_owner_acceptance.py",
+      "sha256": "66b16c87063ca8286cc487eb0ff433436bce30b51942f29076157d48520551d4"
+    },
+    {
+      "role": "documentation",
+      "path": "docs/target-text-corpus-v1-owner-acceptance-v1.md",
+      "sha256": "fc101726821308058b50d116b083cccf4308a26466e017cc839e3ca179641528"
+    }
+  ],
+  "outputs": [
+    {
+      "role": "owner_accepted_ground_truth",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\owner_accepted_ground_truth_v1.json",
+      "sha256": "aac1756510950be79aab5fd3a5889a8fbded61d0b372a14cc6d3aef58d8aa8f5"
+    }
+  ],
+  "findings": {
+    "reviewed_records": 22,
+    "confirmed_ground_truth": 4,
+    "legitimate_ground_truth": 11,
+    "uncertain_retained": 7,
+    "decisive_labels_materialized": 15,
+    "training_eligible_records": 0,
+    "independent_human_evidence_rereview_claimed": false
+  },
+  "decision": {
+    "owner_acceptance_complete": true,
+    "diagnostic_only": true,
+    "development_corpus_gate_met": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Freeze the Dataset V1-Core sampling matrix and source quotas before acquiring a fresh development cohort."
+  },
+  "safety_contract": {
+    "raw_records_changed": 0,
+    "model_fit_operations": 0,
+    "model_scoring_operations": 0,
+    "validation_or_test_openings": 0,
+    "training_allowed": false
+  }
+}

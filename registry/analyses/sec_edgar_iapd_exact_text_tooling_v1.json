@@ -1,0 +1,81 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_IAPD_EXACT_TEXT_TOOLING_V1",
+  "created_at": "2026-10-14",
+  "status": "FROZEN_PREDECLARED_OFFLINE_EXTRACTION_TOOLING_COMPLETE_CAPTURE_REQUIRED",
+  "purpose": "Freeze deterministic exact-text extraction and independent byte regeneration before any real SEC/IAPD capture text is observed.",
+  "inputs": [
+    {
+      "role": "capture_execution_tooling_registry_v1",
+      "path": "registry/analyses/sec_edgar_iapd_wayback_capture_execution_tooling_v1.json",
+      "sha256": "15aa7f4faff1ed537fde1eaf645838923758dab19dced54246a8a5ba8bb33f86"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "exact_text_release_builder",
+      "path": "scripts/build_sec_edgar_iapd_exact_text_release_v1.py",
+      "sha256": "8e7d97f51bbe3e70f63fdd811bdae1bde33499fdc3c9a3448bb1ce0575f2aa7f"
+    },
+    {
+      "role": "exact_text_release_verifier",
+      "path": "scripts/verify_sec_edgar_iapd_exact_text_release_v1.py",
+      "sha256": "a62480914479ec4a3d203ee7a2c43148e448249e94e6c51f551257cda335209f"
+    },
+    {
+      "role": "offline_exact_text_extractor",
+      "path": "scripts/extract_sec_edgar_iapd_exact_text_v1.py",
+      "sha256": "f117617f92a04ae7d7bfa77675d888cc22a2807ed84d9407204abb1cdbc419a0"
+    },
+    {
+      "role": "exact_text_result_verifier",
+      "path": "scripts/verify_sec_edgar_iapd_exact_text_result_v1.py",
+      "sha256": "74f2dba7f36e0df535ae4ef76f81ca0fcb642a430f0ede3c3f5f5fd99e6d7269"
+    },
+    {
+      "role": "tooling_tests",
+      "path": "tests/test_sec_edgar_iapd_exact_text_v1.py",
+      "sha256": "50a5b2daa1b859dfe2f29fd95973500885f68b9fbc19c38113ab6030bd71769e"
+    },
+    {
+      "role": "registry_test",
+      "path": "tests/test_sec_edgar_iapd_exact_text_tooling_registry_v1.py",
+      "sha256": "411f7911dd194ded4fb5441cbbb08e35109040bbd944045f2f8710817053c554"
+    },
+    {
+      "role": "method_documentation",
+      "path": "docs/sec-edgar-iapd-exact-text-tooling-v1.md",
+      "sha256": "3c1e960f2d7320616fee91572bc98b5ca44233736eeb8c0eb7e973e4c956b55e"
+    }
+  ],
+  "outputs": [],
+  "findings": {
+    "complete_capture_qa_required": true,
+    "text_encoding": "UTF-8",
+    "text_file_final_newline_added": false,
+    "minimum_non_whitespace_text_characters": 20,
+    "below_minimum_policy": "PRESERVE_TEXT_AND_ROUTE_OUT_OF_REVIEWABLE_SET",
+    "raw_decoded_and_text_hashes_recorded": true,
+    "development_holdout_identity_preserved": true,
+    "independent_byte_regeneration_required": true,
+    "network_operations": 0
+  },
+  "decision": {
+    "tooling_ready_before_real_capture": true,
+    "real_extraction_allowed_now": false,
+    "release_may_be_created_only_after_complete_capture_qa": true,
+    "grouping_preparation_allowed_only_after_exact_text_qa": true,
+    "labeling_allowed": false,
+    "model_scoring_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false,
+    "next_gate": "After complete capture QA, create and verify a concrete exact-text release, extract offline, independently regenerate every text byte, then prepare grouping and opened-cohort exclusion checks."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "raw_files_modified": 0,
+    "text_outputs_created_at_tooling_freeze": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

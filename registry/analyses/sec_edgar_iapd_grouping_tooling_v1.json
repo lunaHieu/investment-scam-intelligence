@@ -1,0 +1,80 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_IAPD_GROUPING_TOOLING_V1",
+  "created_at": "2026-10-14",
+  "status": "FROZEN_PREDECLARED_DISJOINT_GROUPING_TOOLING_EXACT_TEXT_REQUIRED",
+  "purpose": "Freeze opened-cohort exclusion, transitive technical grouping and development/holdout collision routing before real extracted text is observed.",
+  "inputs": [
+    {
+      "role": "exact_text_tooling_registry_v1",
+      "path": "registry/analyses/sec_edgar_iapd_exact_text_tooling_v1.json",
+      "sha256": "e2b1045f4856ac4772d9ebf5d01069c46da45129c6c26e4fbbb987a6e7586a2d"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "grouping_release_builder",
+      "path": "scripts/build_sec_edgar_iapd_grouping_release_v1.py",
+      "sha256": "2dca0099a35d687ed6ea53101970135f7fb143ea2a55f1fecba815bfbfeb2dcc"
+    },
+    {
+      "role": "grouping_release_verifier",
+      "path": "scripts/verify_sec_edgar_iapd_grouping_release_v1.py",
+      "sha256": "3573e709deb7fdbf22eb0ef9f85dce609604e6dcdf801d4d8a29a4ce0c8541c3"
+    },
+    {
+      "role": "offline_grouping_analyzer",
+      "path": "scripts/analyze_sec_edgar_iapd_post_capture_grouping_v1.py",
+      "sha256": "792c8b6e12ac7cd3fec315b94afd5cee0eb791cbe37dad6876f4998cedbddc12"
+    },
+    {
+      "role": "grouping_result_verifier",
+      "path": "scripts/verify_sec_edgar_iapd_post_capture_grouping_v1.py",
+      "sha256": "e97d7c61be1cff6ceaa8b78e6619f53e5c9676ac7cc22f1f07098644da8eab8f"
+    },
+    {
+      "role": "tooling_tests",
+      "path": "tests/test_sec_edgar_iapd_post_capture_grouping_v1.py",
+      "sha256": "1069859d89aad0a30f4fc5c35ce98b7dc470ab641b17f8d22671552923eae2e2"
+    },
+    {
+      "role": "registry_test",
+      "path": "tests/test_sec_edgar_iapd_grouping_tooling_registry_v1.py",
+      "sha256": "c2d5acd8b7ac2e02041823c75277fbbfcc6638d32ac996df14c871b739c07db6"
+    },
+    {
+      "role": "method_documentation",
+      "path": "docs/sec-edgar-iapd-post-capture-grouping-tooling-v1.md",
+      "sha256": "81c9dbb534a24c6a5be5581e95431499e97494b724142809c65e78b4bf00bf47"
+    }
+  ],
+  "outputs": [],
+  "findings": {
+    "opened_exclusion_rows": 107,
+    "legacy_remediation_rows": 86,
+    "word_shingle_size": 5,
+    "jaccard_threshold": 0.8,
+    "containment_threshold": 0.95,
+    "minimum_shorter_shingles_for_containment_rule": 20,
+    "internal_group_edges": ["exact_normalized_host", "exact_text_sha256", "frozen_normalized_near_duplicate_rule"],
+    "holdout_collision_policy": "ROUTE_HOLDOUT_MEMBER_OUT_OF_INDEPENDENT_HOLDOUT",
+    "independent_full_recomputation_required": true,
+    "network_operations": 0
+  },
+  "decision": {
+    "tooling_ready_before_real_text": true,
+    "real_grouping_allowed_now": false,
+    "grouping_release_requires_exact_text_qa": true,
+    "manual_group_review_may_be_prepared_only_after_grouping_qa": true,
+    "primary_label_review_allowed": false,
+    "model_scoring_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false,
+    "next_gate": "After exact-text QA, materialize and verify the grouping release, run the offline analysis, independently reproduce it, then conduct bounded manual group/clone review before any primary label review."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

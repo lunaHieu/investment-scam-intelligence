@@ -1,0 +1,82 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_IAPD_WAYBACK_CAPTURE_PLAN_TOOLING_V1",
+  "created_at": "2026-10-14",
+  "status": "FROZEN_PREDECLARED_TOOLING_READY_V3_RESULT_REQUIRED",
+  "purpose": "Freeze the exact all-available snapshot-plan construction and independent verification rules before availability V3 is observed.",
+  "inputs": [
+    {
+      "role": "availability_retry_release_v3",
+      "path": "configs/sec_edgar_iapd_wayback_availability_retry_release_v3.json",
+      "sha256": "1c068beb4ecd3d4080ed97d78ddb28c2f4be2adfdb4162c3aa945c7351ede937"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "capture_plan_builder",
+      "path": "scripts/build_sec_edgar_iapd_wayback_capture_plan_v1.py",
+      "sha256": "7a3a767c81001ea8fc1fc7c0665a72afa18f4425e27d0ee9a7adfc3aa1a54e00"
+    },
+    {
+      "role": "independent_capture_plan_verifier",
+      "path": "scripts/verify_sec_edgar_iapd_wayback_capture_plan_v1.py",
+      "sha256": "fe9bd75fda0f2ad68b69791e409b1bf35d0c397a30c888e711118e236cbbf92b"
+    },
+    {
+      "role": "tooling_tests",
+      "path": "tests/test_sec_edgar_iapd_wayback_capture_plan_v1.py",
+      "sha256": "93d1ad5b2e11c3ef706a91d98011ded416b4ffceb22fef679dddcf12f55529fc"
+    },
+    {
+      "role": "registry_test",
+      "path": "tests/test_sec_edgar_iapd_wayback_capture_plan_tooling_registry_v1.py",
+      "sha256": "998142d0ccfe1d3169c5e3e6acde3f593618cf0cd2ba932f77326db03510cb66"
+    },
+    {
+      "role": "method_documentation",
+      "path": "docs/sec-edgar-iapd-wayback-capture-plan-tooling-v1.md",
+      "sha256": "ade394d1f7f4deabf354ddba35bf0fb57b33e39b4e5aab196f1a60d2f11a92b8"
+    }
+  ],
+  "outputs": [],
+  "planned_outputs": [
+    {
+      "role": "capture_plan_v1",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_capture_plan_v1\\capture_plan_v1.json"
+    },
+    {
+      "role": "independent_capture_plan_qa_v1",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_capture_plan_v1\\independent_qa_v1.json"
+    }
+  ],
+  "findings": {
+    "expected_availability_population": 115,
+    "required_availability_status": "COMPLETE",
+    "required_unresolved_error_count": 0,
+    "required_independent_qa_status": "PASS_COMPLETE_CAPTURE_PLAN_MAY_BE_PREPARED",
+    "selection_rule": "ALL_AND_ONLY_AVAILABLE_V3_ROWS_IN_ORIGINAL_ORDER",
+    "cohort_identity_preserved": true,
+    "model_score_used_for_selection": false,
+    "actual_capture_population_known_now": false,
+    "network_operations_at_tooling_freeze": 0
+  },
+  "decision": {
+    "tooling_ready_before_result": true,
+    "capture_plan_construction_allowed_now": false,
+    "capture_execution_release_preparation_allowed_after_plan_qa": true,
+    "archived_page_download_allowed": false,
+    "candidate_live_domain_access_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false,
+    "next_gate": "After V3 and its independent QA both pass completely, materialize and independently verify this exact all-available plan; then freeze a separate hash-bound capture execution release."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "candidate_domain_access_operations": 0,
+    "archived_page_downloads": 0,
+    "artifact_captures": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

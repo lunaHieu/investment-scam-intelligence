@@ -1,0 +1,59 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_IAPD_REVIEW_STACK_TOOLING_V1",
+  "created_at": "2026-10-14",
+  "status": "FROZEN_PREDECLARED_BOUNDED_BLIND_REVIEW_STACK_GROUPING_RESULT_REQUIRED",
+  "purpose": "Freeze label-free group review, evidence-bound primary review, blinded second review and conservative reconciliation before real captured evidence is available.",
+  "inputs": [
+    {
+      "role": "grouping_tooling_registry_v1",
+      "path": "registry/analyses/sec_edgar_iapd_grouping_tooling_v1.json",
+      "sha256": "4759508eb1d183ae4302492d30bdd1cb0beba8ceb7751613325a60d11b11cb45"
+    }
+  ],
+  "implementation": [
+    {"role": "manual_group_packet_builder", "path": "scripts/build_sec_edgar_iapd_manual_group_review_packet_v1.py", "sha256": "8361348292a846dca7f6360c507cae3d093bbc1bbb04b981d7d20e2eb6be844a"},
+    {"role": "manual_group_review_verifier", "path": "scripts/verify_sec_edgar_iapd_manual_group_review_v1.py", "sha256": "92eb38f379637f2d33f9df61ed2d3b6bbbe41a5e58c68b55df686f55340eee32"},
+    {"role": "primary_review_packet_builder", "path": "scripts/build_sec_edgar_iapd_primary_review_packet_v1.py", "sha256": "5da62c917687f09d4b30d6c459fb2349e66cda9762634eca400f435e53a1e053"},
+    {"role": "primary_review_verifier", "path": "scripts/verify_sec_edgar_iapd_primary_review_v1.py", "sha256": "676f1a4b4366edd10c2805c1eec101684cf4b0acaa35764d8e012d381d1fe302"},
+    {"role": "blind_second_review_packet_builder", "path": "scripts/build_sec_edgar_iapd_blind_second_review_packet_v1.py", "sha256": "8e80a12981d2eb7b10729e6920825aef1ba5097060d4d7754c85354f351476dd"},
+    {"role": "blind_second_review_verifier", "path": "scripts/verify_sec_edgar_iapd_blind_second_review_v1.py", "sha256": "1ad3b49c5375091feac8840ad94922d8911ceb81be64d57d6169199ef2c73752"},
+    {"role": "conservative_reconciler", "path": "scripts/reconcile_sec_edgar_iapd_reviews_v1.py", "sha256": "bf843b28b35e59038c2c9c65422347fcf50ed7138698e8718e2e45290de324fa"},
+    {"role": "reconciliation_verifier", "path": "scripts/verify_sec_edgar_iapd_reconciliation_v1.py", "sha256": "baf8741d4128fe0e648fd06b732bb88410599d4368a05eafda59070c3f539f26"},
+    {"role": "manual_group_tests", "path": "tests/test_sec_edgar_iapd_manual_group_review_v1.py", "sha256": "c86ecca1298bfa0d8a10542709b0fd989d8e75441473780b2dc51f7cad054302"},
+    {"role": "primary_review_tests", "path": "tests/test_sec_edgar_iapd_primary_review_v1.py", "sha256": "12b71d085f4a06671ef709629e74a0e9b058e7520712d8daa588bd0b07b110b8"},
+    {"role": "blind_second_review_tests", "path": "tests/test_sec_edgar_iapd_blind_second_review_v1.py", "sha256": "8032a8c3ef7d68ba1e179084041e695ae4821aaf285ad8b964038eff3479fd9d"},
+    {"role": "reconciliation_tests", "path": "tests/test_sec_edgar_iapd_reconciliation_v1.py", "sha256": "cdade1d26ce3bd65450ca60435b3f6156064fecec48a34d40f69c50507990343"},
+    {"role": "registry_test", "path": "tests/test_sec_edgar_iapd_review_stack_tooling_registry_v1.py", "sha256": "5bc16f80d6e845c4257f351acfc1f80f6d2ff20f5640370be7788267a9d67195"},
+    {"role": "method_documentation", "path": "docs/sec-edgar-iapd-review-stack-tooling-v1.md", "sha256": "a4479f059f1b91ffeb8949e0ff2d8105df1f1528c293b9d6dcd404a27933c1b4"}
+  ],
+  "outputs": [],
+  "findings": {
+    "manual_group_review_is_label_free": true,
+    "automated_exclusions_cannot_be_silently_reinstated": true,
+    "primary_source_membership_alone_insufficient": true,
+    "primary_affirmative_assessments_required": 5,
+    "blind_second_review_required": true,
+    "primary_decisions_omitted_from_blind_packet": true,
+    "any_disagreement_becomes_uncertain": true,
+    "owner_acceptance_required_after_reconciliation": true,
+    "labels_created_at_tooling_freeze": 0
+  },
+  "decision": {
+    "review_tooling_ready_before_real_evidence": true,
+    "real_review_allowed_now": false,
+    "manual_group_review_requires_grouping_qa": true,
+    "primary_review_requires_group_review_qa": true,
+    "blind_second_review_requires_primary_review_qa": true,
+    "reconciliation_requires_both_review_qas": true,
+    "future_owner_acceptance_required": true,
+    "materialization_allowed_now": false,
+    "training_allowed": false,
+    "next_gate": "After real grouping QA, execute the bounded group, primary and blind second reviews, reconcile conservatively, then present the frozen reconciliation for explicit owner acceptance before any label materialization."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "model_predictions_visible": false,
+    "labels_created": 0,
+    "training_allowed": false
+  }
+}

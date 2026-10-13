@@ -1,0 +1,51 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_MULTILINGUAL_SUPPLY_AUDIT_V1",
+  "created_at": "2026-10-14",
+  "status": "FROZEN_INDEPENDENTLY_VERIFIED_ZERO_VERIFIED_SUPPLY_GATE_CLOSED",
+  "purpose": "Register a fail-closed audit of verified artifact-language supply without inferring language from domains, countries, entities, or reference pages.",
+  "inputs": [
+    {"role": "audit_config", "path": "configs/target_text_corpus_v1_multilingual_supply_audit_v1.json", "sha256": "748678cbeb8501453afbd9b4fdbf7c6f95444bebff150bc9d7867e5d9d19692d"}
+  ],
+  "implementation": [
+    {"role": "auditor", "path": "scripts/audit_target_text_corpus_v1_multilingual_supply_v1.py", "sha256": "bf3b20df7bf61326f112a566927487d831c9543227cbe8faf41d5bcd620b104b"},
+    {"role": "independent_verifier", "path": "scripts/verify_target_text_corpus_v1_multilingual_supply_audit_v1.py", "sha256": "978ad60f4fd067cc347409a65dfba6129c454ece7896b943f2b6aea1431c091e"},
+    {"role": "auditor_tests", "path": "tests/test_audit_target_text_corpus_v1_multilingual_supply_v1.py", "sha256": "86acb90f508842de826d829dcf266763f014b5db6a8a47e53ee2c0aa7061d20f"},
+    {"role": "verifier_tests", "path": "tests/test_verify_target_text_corpus_v1_multilingual_supply_audit_v1.py", "sha256": "4d786588839fe889d54027a36a459f0f1ced52c3b7b0f654f5f6bba7bec1b55f"},
+    {"role": "registry_tests", "path": "tests/test_target_text_corpus_v1_multilingual_supply_audit_registry_v1.py", "sha256": "833a1fe055e30f98b0d281a1445e51265edbaf5d483b1af5080863af4aa0a15b"},
+    {"role": "documentation", "path": "docs/target-text-corpus-v1-multilingual-supply-audit-v1.md", "sha256": "7c6024db4d9db125be75aeb31a84ac50a22f5534ab6c8edb3e0ec2f9e9f27545"}
+  ],
+  "outputs": [
+    {"role": "audit_report", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\multilingual_supply_audit_v1\\report.json", "sha256": "53c1eaa3842a59391d25a19bfecbe76226b2942879fe02b4278993a04a9ede04"},
+    {"role": "independent_verification", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\multilingual_supply_audit_v1\\independent_verification_v1.json", "sha256": "ca77f59892dc70dfe893bf6c37ea7af37eac306865fd5a76fed27f3ecb665ddf"}
+  ],
+  "findings": {
+    "channel_count": 4,
+    "audited_rows": 16504,
+    "unknown_language_rows": 16504,
+    "verified_english_rows": 0,
+    "verified_vietnamese_rows": 0,
+    "verified_other_non_english_rows": 0,
+    "domain_or_country_language_inferences": 0,
+    "confirmed_minimum_vietnamese_groups_required": 8,
+    "legitimate_minimum_vietnamese_groups_required": 8,
+    "independent_verification_status": "PASS_ALL_ROWS_UNKNOWN_LANGUAGE_GATE_CLOSED"
+  },
+  "decision": {
+    "language_supply_audited": true,
+    "language_supply_gate_met": false,
+    "candidate_release_allowed": false,
+    "language_quota_waiver_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Register and terms-review a Vietnamese legitimate-reference path and a balanced confirmed-language path; only reviewed archived visible text may later satisfy language quotas."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "candidate_domain_access_operations": 0,
+    "artifact_captures": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

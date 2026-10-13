@@ -1,0 +1,76 @@
+{
+  "audit_id": "ISI_TARGET_TEXT_CORPUS_V1_MULTILINGUAL_SUPPLY_AUDIT_V1",
+  "created_at": "2026-10-14T00:35:00+07:00",
+  "status": "FROZEN_OFFLINE_LANGUAGE_EVIDENCE_AUDIT_NO_INFERENCE_FROM_DOMAIN_OR_COUNTRY",
+  "purpose": "Measure only verified visible-text language supply in the four frozen channels and fail closed when reference metadata has no reviewed artifact text.",
+  "basis": [
+    {"role": "sampling_matrix_registry", "path": "registry/analyses/target_text_corpus_v1_sampling_matrix_v1.json", "sha256": "ce83728095e142277eff3b1266dabaf912d49507747f9caf6fc676cae641a9ca"},
+    {"role": "source_capacity_registry", "path": "registry/analyses/target_text_corpus_v1_source_capacity_audit_v1.json", "sha256": "b330ffc01cc0bb00a02aa8afcaaa188254cf3ce95f6ea1bbc92c81260e309c28"},
+    {"role": "edgar_offline_review_registry", "path": "registry/analyses/sec_edgar_iapd_all_filer_offline_review_v1.json", "sha256": "f30ed3fa6fa659d4a358e0fe7356f2ae2301f147fc3b122be55d2b8137b6df2c"},
+    {"role": "wayback_availability_result_registry", "path": "registry/analyses/sec_edgar_iapd_wayback_availability_result_v2.json", "sha256": "6fd7e28c91e31c19faed3f031525dcd7d7b90398826ad867f5b2f5e209481f82"}
+  ],
+  "channel_inputs": [
+    {
+      "channel_id": "CONFIRMED_REGULATOR_LINKED_WEBSITE",
+      "target_status": "CONFIRMED",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\confirmed_regulator_normalized_v2_disjoint.jsonl",
+      "sha256": "4b1209ce309362efca24a25f0d8ef452972d3593ff884aa91dfb0212d87306c0",
+      "expected_metadata_rows": 12726,
+      "population_filter": null
+    },
+    {
+      "channel_id": "CONFIRMED_CFTC_RED_LINKED_WAYBACK_WEBSITE",
+      "target_status": "CONFIRMED",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\cftc_red_normalized_v1.jsonl",
+      "sha256": "241cac992cadcbb3a02bcc6b91be587d09ca1af3627028c1c9705c71aa53e9b4",
+      "expected_metadata_rows": 15,
+      "population_filter": null
+    },
+    {
+      "channel_id": "LEGITIMATE_REGISTER_LINKED_WEBSITE",
+      "target_status": "LEGITIMATE",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\legitimate_iapd_normalized_v2_disjoint.jsonl",
+      "sha256": "c75185e147b1a4b91497dad3d7f334bd755bc2deb0211b136066eef45f55b45a",
+      "expected_metadata_rows": 3648,
+      "population_filter": null
+    },
+    {
+      "channel_id": "LEGITIMATE_SEC_EDGAR_LINKED_WAYBACK_WEBSITE",
+      "target_status": "LEGITIMATE",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_offline_review_v1\\offline_review_records_v1.jsonl",
+      "sha256": "f9c6bd9beb216af98b8857f2c81e21ef9c1a1da1f7206a1a056fe95c192e59c3",
+      "expected_metadata_rows": 134,
+      "population_filter": {"field": "future_capture_planning_recommendation", "equals": "ADVANCE_TO_CAPTURE_PLANNING_REVIEW", "expected_rows": 115}
+    }
+  ],
+  "language_evidence_contract": {
+    "required_visible_text_field": "observed_artifact_visible_text",
+    "required_text_sha256_field": "observed_artifact_text_sha256",
+    "required_human_review_field": "human_reviewed_language",
+    "allowed_reviewed_languages": ["ENGLISH", "VIETNAMESE", "OTHER_NON_ENGLISH"],
+    "missing_required_evidence_routes_to": "UNKNOWN",
+    "domain_tld_inference_allowed": false,
+    "entity_country_inference_allowed": false,
+    "reference_page_language_as_artifact_language_allowed": false,
+    "automatic_detector_is_final_evidence": false
+  },
+  "quota_contract": {
+    "development_minimum_non_english_groups_per_label": 12,
+    "development_minimum_vietnamese_groups_per_label": 6,
+    "external_holdout_minimum_non_english_groups_per_label": 3,
+    "external_holdout_minimum_vietnamese_groups_per_label": 2
+  },
+  "planned_output": {
+    "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\multilingual_supply_audit_v1\\report.json",
+    "report_id": "ISI_TARGET_TEXT_CORPUS_V1_MULTILINGUAL_SUPPLY_AUDIT_REPORT_V1"
+  },
+  "decision": {
+    "offline_audit_allowed": true,
+    "network_access_allowed": false,
+    "candidate_enumeration_allowed": false,
+    "artifact_capture_allowed": false,
+    "language_quota_waiver_allowed": false,
+    "labeling_allowed": false,
+    "training_allowed": false
+  }
+}

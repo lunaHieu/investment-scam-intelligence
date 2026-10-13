@@ -1,0 +1,59 @@
+{
+  "protocol_id": "ISI_SEC_EDGAR_IAPD_ALL_FILER_CROSSWALK_MATERIALIZATION_V2",
+  "created_at": "2026-10-13T00:15:00+07:00",
+  "status": "FROZEN_HASHED_IDENTITY_REVIEW_POOL_MATERIALIZATION_APPROVED",
+  "purpose": "Materialize the universe-wide qualifying identity linkage set without exposing actionable candidate hosts or creating labels.",
+  "basis": [
+    {
+      "role": "capacity_audit_registry",
+      "path": "registry/analyses/sec_edgar_iapd_all_filer_capacity_audit_v1.json",
+      "sha256": "239da1ddc278646ef89f1743c9536265aa32398ca44748e475568c5a448f5faa"
+    },
+    {
+      "role": "all_filer_identity_index_registry",
+      "path": "registry/analyses/sec_edgar_all_filer_identity_index_v1.json",
+      "sha256": "a9a190e8d045a91e011d2af60714e7ec82418e96394e646c330b169a89580e65"
+    }
+  ],
+  "inputs": {
+    "edgar_identity_index": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_all_filer_identity_index_v1\\identity_index.jsonl",
+      "sha256": "7a7c35749ee15f31319914fcb21a4f9969b8456b26f6a3421f074c85ffec1738",
+      "record_count": 988519
+    },
+    "iapd_normalized": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\legitimate_iapd_normalized_v1.jsonl",
+      "sha256": "f9fe40cc13a0c19461aa8f31a7c083f0975eebe8b01622ee1140c7f9e71cc10a",
+      "record_count": 3668
+    },
+    "capacity_audit_result": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_capacity_audit_v1.json",
+      "sha256": "c35bda2cda333b9c0eca79a5821353ad8700e922531a2371b80884bfc6454bef"
+    }
+  },
+  "method": {
+    "tokenization_contract": "scripts.build_sec_edgar_iapd_crosswalk.tokens",
+    "name_token_jaccard_minimum": 0.8,
+    "runner_up_margin_minimum": 0.15,
+    "unique_cik_required": true,
+    "unique_normalized_host_required": true,
+    "expected_rows": 1129,
+    "expected_raw_set_fingerprint": "8f1dd1a471f72bbeb243ef36eecdbec025e6eb981198bc5c0bc34df94cd31fae",
+    "selection_seed": "sec-edgar-iapd-all-filer-crosswalk-v2-20261013",
+    "raw_host_or_candidate_url_output_allowed": false,
+    "normalized_host_sha256_output_required": true
+  },
+  "outputs": {
+    "pool": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_crosswalk_pool_v2.jsonl",
+    "report": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_crosswalk_report_v2.json"
+  },
+  "decision": {
+    "hashed_identity_review_pool_materialization_allowed": true,
+    "raw_host_release_allowed": false,
+    "candidate_enumeration_allowed": false,
+    "shortlist_materialization_allowed": false,
+    "artifact_capture_allowed": false,
+    "labeling_allowed": false,
+    "training_allowed": false
+  }
+}

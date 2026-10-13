@@ -1,0 +1,58 @@
+{
+  "release_id": "ISI_SEC_EDGAR_IAPD_ALL_FILER_SHORTLIST_RELEASE_V2",
+  "created_at": "2026-10-13T19:00:00+07:00",
+  "status": "FROZEN_BOUNDED_DISJOINT_SHORTLIST_ENUMERATION_APPROVED_CAPTURE_BLOCKED",
+  "purpose": "Release a deterministic 134-row EDGAR/IAPD review shortlist, split into disjoint development and external-holdout namespaces, after excluding every registered prior queue, old EDGAR pool, target pilot, and opened cohort host.",
+  "basis": [
+    {"role": "verified_crosswalk_v2", "path": "registry/analyses/sec_edgar_iapd_all_filer_crosswalk_v2.json", "sha256": "de8d6f88c82b2f0ab1671c988c09ec9c14c5417f8a99071a1bb357588526d80c"},
+    {"role": "sampling_matrix_v1", "path": "configs/target_text_corpus_v1_sampling_matrix_v1.json", "sha256": "19faaa4e2e0edfd87a403f6e39df96c763a7e0ae5890cebe6cc3adbb3c40176b"}
+  ],
+  "inputs": {
+    "hashed_crosswalk_pool": {"path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_crosswalk_pool_v2.jsonl", "sha256": "0c5b8d9c9d1599e51852fa73ff520c2be92b60c3906bfe71c958122672dc4438", "record_count": 1129},
+    "iapd_normalized": {"path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\legitimate_iapd_normalized_v1.jsonl", "sha256": "f9fe40cc13a0c19461aa8f31a7c083f0975eebe8b01622ee1140c7f9e71cc10a", "record_count": 3668},
+    "opened_exclusion_index": {"path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_preacquisition\\opened_external_exclusion_index_v1.json", "sha256": "df43d88dbb1120c6f8e9afa0a7893fab1f4e176838483bb3a8bf013b13bd0d07", "record_count": 107, "host_field": "normalized_host_sha256", "already_hashed": true}
+  },
+  "prior_host_sources": [
+    {"path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_capture_queue_v1\\capture_candidates_v1.jsonl", "sha256": "ae843f5723d66e7e996300424c5f11663fb513bbb94a52ad282de38d52fa1b29", "record_count": 30, "host_field": "candidate_host"},
+    {"path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_capture_queue_v1\\iosco_confirmed_reserve_v1.jsonl", "sha256": "7a1586b4ca78c6fb7c71d7bd3cbed5bbb1352ab7cd915ab15a92fafecd9f7ede", "record_count": 40, "host_field": "candidate_host"},
+    {"path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_capture_queue_v1\\iosco_confirmed_reserve_v2.jsonl", "sha256": "118194378269a8d1b532ed41882675990c6792f41c2fb39c5cecfbbe23d7fa80", "record_count": 100, "host_field": "candidate_host"},
+    {"path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_capture_queue_v1\\sec_legitimate_reserve_v1.jsonl", "sha256": "3a6f905be34330c8b541eee21c1c5d08ee6adb3a187b585a059eccafd315edd2", "record_count": 30, "host_field": "candidate_host"},
+    {"path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_matched_wayback_v1\\candidate_queue_v1.jsonl", "sha256": "1f153b60d659980e64de1a367b720e40ffd9b43381ff14e407f3fc16e9f5d372", "record_count": 21, "host_field": "candidate_host"},
+    {"path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_matched_wayback_v1\\legitimate_supplement_queue_v1.jsonl", "sha256": "6684a7a7a6d9df1dc5039f1bce1ed25ca1f69b41f19d8858d038b754a07d1eaa", "record_count": 15, "host_field": "candidate_host"},
+    {"path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_matched_wayback_v2\\combined_candidate_queue_v2_2.jsonl", "sha256": "2fdf3d3c30291f48703675530afdd2e80aa1a442ac09aecd21fecf490ec836a1", "record_count": 200, "host_field": "candidate_host"},
+    {"path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\external_text_wayback_holdout_v3\\candidate_queue_v3.jsonl", "sha256": "be6385d634c0ddf1f2931271a16a71c714e8419794a174e7f28c4441c7cfe648", "record_count": 200, "host_field": "candidate_host"},
+    {"path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\candidate_queue_v1.jsonl", "sha256": "32f19c38a0d77aa5707b1ff7f0adbfa44409426632ce9af51e70286c2c076a67", "record_count": 40, "host_field": "candidate_identity.normalized_host"},
+    {"path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_crosswalk_pool_v1.jsonl", "sha256": "695250fb6ca0dfbd51806e63eb586d49537c21daaaef6739b18c398e0e7f7a41", "record_count": 33, "host_field": "normalized_host"}
+  ],
+  "preflight": {
+    "unique_excluded_host_hashes": 660,
+    "crosswalk_rows_overlapping_exclusions": 53,
+    "eligible_crosswalk_rows": 1076
+  },
+  "selection": {
+    "channel_id": "LEGITIMATE_SEC_EDGAR_LINKED_WAYBACK_WEBSITE",
+    "total_shortlist_size": 134,
+    "development_size": 107,
+    "external_holdout_size": 27,
+    "development_namespace": "TARGET_TEXT_CORPUS_V1_EDGAR_DEVELOPMENT_WAVE_001",
+    "external_holdout_namespace": "TARGET_TEXT_CORPUS_V1_EDGAR_EXTERNAL_HOLDOUT_WAVE_001",
+    "seed": "target-text-corpus-v1-edgar-shortlist-v2-20261013",
+    "deterministic_key": "SHA256(seed|cohort_namespace|channel_id|cik|iapd_source_record_id|normalized_host_sha256)",
+    "select_development_first_then_holdout_from_remaining": true,
+    "manual_cherry_picking_allowed": false,
+    "model_score_ranking_allowed": false
+  },
+  "outputs": {
+    "shortlist": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_shortlist_v2.jsonl",
+    "report": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_shortlist_report_v2.json"
+  },
+  "decision": {
+    "bounded_shortlist_enumeration_allowed": true,
+    "raw_host_release_for_selected_rows_allowed": true,
+    "candidate_live_domain_access_allowed": false,
+    "wayback_query_allowed": false,
+    "artifact_capture_allowed": false,
+    "labeling_allowed": false,
+    "training_allowed": false
+  }
+}

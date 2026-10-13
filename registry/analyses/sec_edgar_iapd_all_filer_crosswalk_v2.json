@@ -1,0 +1,88 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_IAPD_ALL_FILER_CROSSWALK_V2",
+  "created_at": "2026-10-13",
+  "status": "FROZEN_INDEPENDENTLY_VERIFIED_HASHED_IDENTITY_REVIEW_POOL_ONLY",
+  "purpose": "Register the materialized and independently reproduced universe-wide EDGAR/IAPD hashed identity review pool.",
+  "inputs": [
+    {
+      "role": "materialization_protocol",
+      "path": "configs/sec_edgar_iapd_all_filer_crosswalk_materialization_v2.json",
+      "sha256": "e83cb7b6c1b5f4ade0a5e7a8e2d49fd9b2c10669255129d7e1a43258ed49ecf9"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "materializer",
+      "path": "scripts/materialize_sec_edgar_iapd_all_filer_crosswalk_v2.py",
+      "sha256": "c443e9cf7385eb8c6d93b6502b0e77b56271cccb3d6aa9af807b3af60ed7528b"
+    },
+    {
+      "role": "materializer_tests",
+      "path": "tests/test_materialize_sec_edgar_iapd_all_filer_crosswalk_v2.py",
+      "sha256": "3d86c3b47626516773cd0c30c02a7d4c3b122bcf2cdaa5a37e45172e0317d3c6"
+    },
+    {
+      "role": "independent_verifier",
+      "path": "scripts/verify_sec_edgar_iapd_all_filer_crosswalk_v2.py",
+      "sha256": "4bf8db37d8a7d7d5b0154197214cd42acde9c6e1aadac58da183ceafe3509ea2"
+    },
+    {
+      "role": "verifier_tests",
+      "path": "tests/test_verify_sec_edgar_iapd_all_filer_crosswalk_v2.py",
+      "sha256": "410cfed1d8218253cbb3eb9f1f4de83211783c0ffa63297428b5c4b31d183801"
+    },
+    {
+      "role": "documentation",
+      "path": "docs/sec-edgar-iapd-all-filer-crosswalk-materialization-v2.md",
+      "sha256": "0a81ae01c1b3461bfc847d41882556e46cfae97d1baf8cc95bdba2ae5203ce9c"
+    }
+  ],
+  "outputs": [
+    {
+      "role": "hashed_identity_review_pool",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_crosswalk_pool_v2.jsonl",
+      "sha256": "0c5b8d9c9d1599e51852fa73ff520c2be92b60c3906bfe71c958122672dc4438",
+      "record_count": 1129
+    },
+    {
+      "role": "materialization_report",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_crosswalk_report_v2.json",
+      "sha256": "f008eaff4e649d5f9ce5e04335382b73a08d2f997dd982e7955d10268ba04f65"
+    },
+    {
+      "role": "independent_verification",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_crosswalk_independent_verification_v2.json",
+      "sha256": "a7242744aa3c86f8fbb55abeaee61053ae7d236f696efb68cfe42c33d2987bcc"
+    }
+  ],
+  "findings": {
+    "record_count": 1129,
+    "unique_cik_count": 1129,
+    "unique_host_hash_count": 1129,
+    "name_token_jaccard_minimum": 0.8,
+    "runner_up_margin_minimum": 0.15,
+    "raw_set_fingerprint": "8f1dd1a471f72bbeb243ef36eecdbec025e6eb981198bc5c0bc34df94cd31fae",
+    "hashed_pool_fingerprint": "421924d69416bd5cf9f61007476da5c47fd5fa32ba6e97a69ddb32fe0879fe50",
+    "independently_recomputed_best_and_runner_up_rows": 1129,
+    "raw_hosts_or_candidate_urls_emitted": 0,
+    "labels_created": 0
+  },
+  "decision": {
+    "hashed_identity_review_pool_accepted": true,
+    "raw_host_shortlist_release_protocol_may_be_prepared": true,
+    "raw_host_release_allowed_now": false,
+    "candidate_enumeration_allowed": false,
+    "artifact_capture_allowed": false,
+    "labeling_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Freeze a bounded, deterministic, disjoint shortlist release that joins only selected record IDs back to IAPD hosts; keep capture and labels closed until shortlist provenance review passes."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "candidate_domain_access_operations": 0,
+    "candidate_records_enumerated": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

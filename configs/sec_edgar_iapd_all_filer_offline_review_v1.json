@@ -1,0 +1,68 @@
+{
+  "protocol_id": "ISI_SEC_EDGAR_IAPD_ALL_FILER_OFFLINE_REVIEW_V1",
+  "created_at": "2026-10-13T20:00:00+07:00",
+  "status": "FROZEN_SHORTLIST_ONLY_RAW_EVIDENCE_EXTRACTION_AND_OFFLINE_REVIEW_APPROVED",
+  "purpose": "Extract exactly the 134 selected SEC submission members from the immutable local ZIP and perform conservative offline provenance and name-identity review without network access, labels, capture, or model use.",
+  "basis": [
+    {
+      "role": "verified_bounded_shortlist",
+      "path": "registry/analyses/sec_edgar_iapd_all_filer_shortlist_v2.json",
+      "sha256": "676f6fcf31da40a125bf04138c840e63c2e76cfd8e55e2a4e20ab1a5610cc597"
+    },
+    {
+      "role": "verified_bulk_acquisition",
+      "path": "registry/analyses/sec_edgar_submissions_bulk_v1_acquisition_result.json",
+      "sha256": "e5fde38873263204bb003923e6e5591e736b6cb3d64859cd3caa7d3cac286dac"
+    },
+    {
+      "role": "storage_amendment",
+      "path": "configs/sec_edgar_submissions_bulk_v1_storage_amendment_v1.json",
+      "sha256": "e990dc6acf6a614f6a1d01786b7467bc34d5a3c26d9e18c19ce19c3552b14fe5"
+    }
+  ],
+  "inputs": {
+    "raw_archive": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\raw\\sec_edgar_bulk\\submissions_2026-10-12.zip",
+      "sha256": "39c288191b846ccc1e2fc79b5da95c3d53d26e29f9c9b3373be2aa6c1e569e3f"
+    },
+    "shortlist": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_shortlist_v2.jsonl",
+      "sha256": "be0f384922116c5696df10ffa593748686670d291af2c1aff943ece0328a3603",
+      "record_count": 134,
+      "development_count": 107,
+      "external_holdout_count": 27
+    },
+    "iapd_normalized": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\legitimate_iapd_normalized_v1.jsonl",
+      "sha256": "f9fe40cc13a0c19461aa8f31a7c083f0975eebe8b01622ee1140c7f9e71cc10a",
+      "record_count": 3668
+    }
+  },
+  "review_contract": {
+    "zip_member_template": "CIK{cik}.json",
+    "filename_json_shortlist_cik_exact_match_required": true,
+    "submission_name_shortlist_name_exact_match_required": true,
+    "iapd_record_host_and_url_exact_match_required": true,
+    "raw_member_bytes_preserved_exactly": true,
+    "name_review_method": "Ordered core-name equality after case, punctuation, leading-the, and legal-suffix normalization; otherwise full-token Jaccard >= 0.8 is compatible; remaining distinctive-token-qualified links are cautions.",
+    "compatible_full_token_jaccard_minimum": 0.8,
+    "caution_rows_may_advance_to_capture_planning": false,
+    "review_is_a_ground_truth_label": false
+  },
+  "outputs": {
+    "directory": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_offline_review_v1",
+    "evidence_subdirectory": "submission_records",
+    "review_records_filename": "offline_review_records_v1.jsonl",
+    "report_filename": "report.json"
+  },
+  "decision": {
+    "shortlist_only_evidence_extraction_allowed": true,
+    "offline_provenance_review_allowed": true,
+    "candidate_live_domain_access_allowed": false,
+    "wayback_query_allowed": false,
+    "artifact_capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false
+  }
+}

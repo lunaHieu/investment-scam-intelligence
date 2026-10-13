@@ -1,0 +1,100 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_IAPD_ALL_FILER_OFFLINE_REVIEW_V1",
+  "created_at": "2026-10-13",
+  "status": "FROZEN_INDEPENDENTLY_VERIFIED_OFFLINE_PROVENANCE_AND_IDENTITY_REVIEW_NO_LABELS",
+  "purpose": "Register byte-preserved extraction and conservative offline identity review of the 134-row bounded SEC EDGAR/IAPD shortlist.",
+  "inputs": [
+    {
+      "role": "offline_review_protocol",
+      "path": "configs/sec_edgar_iapd_all_filer_offline_review_v1.json",
+      "sha256": "7b768cbb6b91d090a06a52c37cc768bc6da3eabfaea75855ecb269250a227ba3"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "evidence_materializer_and_reviewer",
+      "path": "scripts/materialize_sec_edgar_iapd_offline_review_v1.py",
+      "sha256": "637ebef033ee96b345cec2e63b3ebdbb7570f24c7f7cdb216776b038ae93d7b3"
+    },
+    {
+      "role": "materializer_tests",
+      "path": "tests/test_materialize_sec_edgar_iapd_offline_review_v1.py",
+      "sha256": "02f2b0746294b0b79f93e151120552a8d356d216286cf58f5f4a181d83df3c1b"
+    },
+    {
+      "role": "independent_verifier",
+      "path": "scripts/verify_sec_edgar_iapd_offline_review_v1.py",
+      "sha256": "d0c0ff254207dcc413ae540a6d9393a4e5f3be7bc4a37a870238f86a1f86da3f"
+    },
+    {
+      "role": "verifier_tests",
+      "path": "tests/test_verify_sec_edgar_iapd_offline_review_v1.py",
+      "sha256": "9c5aa10b3a8864d0559bc798343684add9ff59360b5e60591fc59e7469eceeb5"
+    },
+    {
+      "role": "registry_tests",
+      "path": "tests/test_sec_edgar_iapd_all_filer_offline_review_registry_v1.py",
+      "sha256": "22edb590ef1081b1b64228f89ab83e1457335a5f165ad03a67a150a10c44a404"
+    },
+    {
+      "role": "documentation",
+      "path": "docs/sec-edgar-iapd-all-filer-offline-review-v1.md",
+      "sha256": "80a4631d59243bb8a06ab15534b0e48422926a69d2a7bf7ac6d3e4d21daea17d"
+    }
+  ],
+  "outputs": [
+    {
+      "role": "offline_review_records",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_offline_review_v1\\offline_review_records_v1.jsonl",
+      "sha256": "f9c6bd9beb216af98b8857f2c81e21ef9c1a1da1f7206a1a056fe95c192e59c3",
+      "record_count": 134
+    },
+    {
+      "role": "offline_review_report",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_offline_review_v1\\report.json",
+      "sha256": "a759756ab1e6302d7f40641323dee3620ae7c4de0c0645408dc06ec29c5bc950"
+    },
+    {
+      "role": "independent_verification",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_offline_review_v1\\independent_verification_v1.json",
+      "sha256": "8354adf831045bcd5dc82eb75bdd1907f6a143c6330ffd6ea97a76e017d6fa0d"
+    }
+  ],
+  "findings": {
+    "shortlist_rows": 134,
+    "development_rows": 107,
+    "external_holdout_rows": 27,
+    "exact_extracted_member_count": 134,
+    "evidence_total_uncompressed_bytes": 900720,
+    "evidence_set_fingerprint": "348754d33d1a64581bd89318993f4bbd8181a890e546362408e96c913bc11f42",
+    "exact_core_name_evidence_pass": 114,
+    "compatible_name_variant_evidence_pass": 1,
+    "ambiguous_related_name_caution": 19,
+    "advance_to_capture_planning_review": 115,
+    "hold_for_deeper_identity_review": 19,
+    "independent_verification_status": "PASS",
+    "ground_truth_labels_created": 0
+  },
+  "decision": {
+    "offline_provenance_review_accepted": true,
+    "capture_planning_population_limit": 115,
+    "caution_rows_must_remain_on_hold": true,
+    "advance_recommendation_is_capture_authorization": false,
+    "candidate_live_domain_access_allowed": false,
+    "wayback_query_allowed": false,
+    "artifact_capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Freeze a bounded Wayback availability-query plan for only the 115 evidence-pass rows while preserving development/holdout separation; keep the 19 caution rows excluded and keep all network execution closed until that plan verifies."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "candidate_domain_access_operations": 0,
+    "wayback_queries": 0,
+    "artifact_captures": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

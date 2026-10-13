@@ -1,0 +1,96 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_IAPD_ALL_FILER_SHORTLIST_V2",
+  "created_at": "2026-10-13",
+  "status": "FROZEN_INDEPENDENTLY_VERIFIED_BOUNDED_DISJOINT_REVIEW_SHORTLIST_CAPTURE_BLOCKED",
+  "purpose": "Register the bounded deterministic EDGAR/IAPD review shortlist after independent reproduction and disjointness verification.",
+  "inputs": [
+    {
+      "role": "shortlist_release_protocol",
+      "path": "configs/sec_edgar_iapd_all_filer_shortlist_release_v2.json",
+      "sha256": "ecb0a9768895ad8c155bd14c670ccbb55839e3c27803f9831ce287430b945025"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "shortlist_builder",
+      "path": "scripts/build_sec_edgar_iapd_all_filer_shortlist_v2.py",
+      "sha256": "f71b327eba98b57f25d7bd98ef827da34d901947b66a2fe971f9afe82204304a"
+    },
+    {
+      "role": "builder_tests",
+      "path": "tests/test_build_sec_edgar_iapd_all_filer_shortlist_v2.py",
+      "sha256": "831ac999fa5c0e9e787eed856c8ea1a796e531e52c860df34c433a7e05663fff"
+    },
+    {
+      "role": "independent_verifier",
+      "path": "scripts/verify_sec_edgar_iapd_all_filer_shortlist_v2.py",
+      "sha256": "bc0ac6500950bb470a16294547937f649834f89b40b9c887df0e4609a7e6b4da"
+    },
+    {
+      "role": "verifier_tests",
+      "path": "tests/test_verify_sec_edgar_iapd_all_filer_shortlist_v2.py",
+      "sha256": "a1790f21e679b26dd0f45feaafc78e244cd743a748d39bab981905f69bb7ce6a"
+    },
+    {
+      "role": "registry_tests",
+      "path": "tests/test_sec_edgar_iapd_all_filer_shortlist_registry_v2.py",
+      "sha256": "8045c98b58aea7677e2950ba39ab6691164b0a6a1cb7e6a4317d5de0b2c8e335"
+    },
+    {
+      "role": "documentation",
+      "path": "docs/sec-edgar-iapd-all-filer-shortlist-v2.md",
+      "sha256": "0a1400b4b2e8b2b7dda7090bf76a5706e628564a65bc9ed5924e5c41d0b91a91"
+    }
+  ],
+  "outputs": [
+    {
+      "role": "bounded_disjoint_review_shortlist",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_shortlist_v2.jsonl",
+      "sha256": "be0f384922116c5696df10ffa593748686670d291af2c1aff943ece0328a3603",
+      "record_count": 134
+    },
+    {
+      "role": "shortlist_build_report",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_shortlist_report_v2.json",
+      "sha256": "e15645f59008a30d832fdb0ca0ff5a9a7a96b1c66b721065739a231d71dfce4c"
+    },
+    {
+      "role": "independent_verification",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_shortlist_independent_verification_v2.json",
+      "sha256": "3feb840715022c51c55e2ea819b43fab6b9749012ce346166b01040076849f36"
+    }
+  ],
+  "findings": {
+    "hashed_crosswalk_pool_rows": 1129,
+    "unique_excluded_prior_host_hashes": 660,
+    "crosswalk_rows_excluded": 53,
+    "eligible_crosswalk_rows": 1076,
+    "shortlist_rows": 134,
+    "development_rows": 107,
+    "external_holdout_rows": 27,
+    "unique_shortlist_hosts": 134,
+    "prior_host_overlap_count": 0,
+    "cross_cohort_host_overlap_count": 0,
+    "deterministic_selection_exactly_reproduced": true,
+    "independent_verification_status": "PASS"
+  },
+  "decision": {
+    "bounded_shortlist_accepted": true,
+    "offline_provenance_review_may_begin": true,
+    "candidate_live_domain_access_allowed": false,
+    "wayback_query_allowed": false,
+    "artifact_capture_allowed": false,
+    "labeling_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Materialize only the 134 matching SEC submission records from the pinned local ZIP and perform offline identity/provenance review before any network capture decision."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "candidate_domain_access_operations": 0,
+    "wayback_queries": 0,
+    "artifact_captures": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

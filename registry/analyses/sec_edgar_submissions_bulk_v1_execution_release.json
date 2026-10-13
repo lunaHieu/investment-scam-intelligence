@@ -1,0 +1,46 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_SUBMISSIONS_BULK_V1_EXECUTION_RELEASE",
+  "created_at": "2026-10-12",
+  "status": "FROZEN_ONE_SHOT_NETWORK_EXECUTION_RELEASE_CONSUMED_FAILED_CLOSED",
+  "purpose": "Register the verified, hash-bound release for one official SEC EDGAR submissions.zip retrieval.",
+  "inputs": [
+    {
+      "role": "execution_release",
+      "path": "configs/sec_edgar_submissions_bulk_v1_execution_release.json",
+      "sha256": "6c7e8992523fa32d7af794caf4c5e86902e0716391536d33f3eb6aab2e3b0b64"
+    },
+    {
+      "role": "documentation",
+      "path": "docs/sec-edgar-submissions-bulk-v1-execution-release.md",
+      "sha256": "d5a5d0a19d931083395162291a45e94ec62c28cc5d0f9a7c576dc9155f00a8ca"
+    }
+  ],
+  "verification": {
+    "protocol_hash_verified": true,
+    "tooling_registry_hash_verified": true,
+    "private_identity_file_exists": true,
+    "private_identity_required_fields_valid": true,
+    "private_identity_contents_disclosed": false,
+    "private_identity_hash_disclosed": false,
+    "exact_url_bound": true,
+    "exact_outputs_bound": true,
+    "maximum_requests": 1,
+    "focused_offline_tests_passed": 5
+  },
+  "decision": {
+    "sec_bulk_network_execution_allowed_once": false,
+    "candidate_enumeration_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Use the separately tested extension-aware tooling and issue a new hash-bound retry release; never reuse this consumed release."
+  },
+  "safety_contract": {
+    "network_operations_completed": 1,
+    "official_data_downloads_completed": 0,
+    "candidate_records_enumerated": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

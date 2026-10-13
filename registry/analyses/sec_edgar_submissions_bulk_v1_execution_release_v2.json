@@ -1,0 +1,43 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_SUBMISSIONS_BULK_V1_EXECUTION_RELEASE_V2",
+  "created_at": "2026-10-12",
+  "status": "FROZEN_ONE_SHOT_RETRY_RELEASE_CONSUMED_SUCCESS",
+  "purpose": "Register the independently hash-bound retry after attempt V1 failed closed and left no artifact.",
+  "inputs": [
+    {
+      "role": "retry_execution_release",
+      "path": "configs/sec_edgar_submissions_bulk_v1_execution_release_v2.json",
+      "sha256": "a4c74763e5e4f9d6b4ef5313a33f67aba5b3167bcd2d1bc99ae679a2b27b384e"
+    },
+    {
+      "role": "documentation",
+      "path": "docs/sec-edgar-submissions-bulk-v1-execution-release-v2.md",
+      "sha256": "deee37ad60ca7e85cb1811cb1e437de88f1f3aedea02f78733efa2501e1494f1"
+    }
+  ],
+  "verification": {
+    "protocol_hash_verified": true,
+    "corrected_tooling_registry_hash_verified": true,
+    "prior_failed_attempt_hash_verified": true,
+    "private_identity_runtime_contract_valid": true,
+    "private_identity_contents_or_hash_disclosed": false,
+    "focused_offline_tests_passed": 5,
+    "maximum_requests": 1
+  },
+  "decision": {
+    "sec_bulk_retry_network_execution_allowed_once": false,
+    "candidate_enumeration_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Independently register the verified immutable raw archive, then design a JSON-only staged extraction and all-filer-to-IAPD crosswalk gate."
+  },
+  "safety_contract": {
+    "network_operations_completed": 1,
+    "official_data_downloads_completed": 1,
+    "candidate_records_enumerated": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

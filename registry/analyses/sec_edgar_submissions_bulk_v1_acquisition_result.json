@@ -1,0 +1,90 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_SUBMISSIONS_BULK_V1_ACQUISITION_RESULT",
+  "created_at": "2026-10-12",
+  "status": "FROZEN_VERIFIED_IMMUTABLE_RAW_REFERENCE_ONLY",
+  "purpose": "Register the official SEC submissions bulk archive after a separate full hash, ZIP-structure, privacy, gate, and CRC verification pass.",
+  "inputs": [
+    {
+      "role": "successful_retry_release",
+      "path": "configs/sec_edgar_submissions_bulk_v1_execution_release_v2.json",
+      "sha256": "a4c74763e5e4f9d6b4ef5313a33f67aba5b3167bcd2d1bc99ae679a2b27b384e"
+    },
+    {
+      "role": "prior_failed_closed_attempt",
+      "path": "registry/analyses/sec_edgar_submissions_bulk_v1_acquisition_attempt_v1.json",
+      "sha256": "9df0bce04f18872f6e362c93a875778aaac2d5138946794a7986516b8537af63"
+    },
+    {
+      "role": "public_acquisition_manifest",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\raw\\sec_edgar_bulk\\submissions_2026-10-12.manifest.json",
+      "sha256": "83ca3471968f91d5783aaa4e79e154d5157dc900ea21b4afdf55feda63dd800a"
+    },
+    {
+      "role": "immutable_raw_archive",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\raw\\sec_edgar_bulk\\submissions_2026-10-12.zip",
+      "sha256": "39c288191b846ccc1e2fc79b5da95c3d53d26e29f9c9b3373be2aa6c1e569e3f"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "acquisition_downloader_at_execution",
+      "path": "scripts/acquire_sec_edgar_submissions_bulk_v1.py",
+      "sha256": "9591fa226123199f64a11b2c643ac581b0927e59b9a1b48b7a29b105cddc66b0"
+    },
+    {
+      "role": "independent_verifier",
+      "path": "scripts/verify_sec_edgar_submissions_bulk_v1_acquisition.py",
+      "sha256": "6d39a9853bd0b012304c586f9c4cadf52c0c047526fa85b95bbc6d36de771cb5"
+    },
+    {
+      "role": "verifier_tests",
+      "path": "tests/test_verify_sec_edgar_submissions_bulk_v1_acquisition.py",
+      "sha256": "dc9beca84239cd23b3900b2cf26ccfd2efbeca01ebd4534aa7470e4d5263b9bf"
+    },
+    {
+      "role": "result_documentation",
+      "path": "docs/sec-edgar-submissions-bulk-v1-acquisition-result.md",
+      "sha256": "52e4bc5e885767764c25d58ba8ebd51c5dded808b9957ef410402f5b56e34487"
+    }
+  ],
+  "findings": {
+    "http_status": 200,
+    "archive_bytes": 1568623659,
+    "member_count": 993915,
+    "json_member_count": 993914,
+    "non_json_member_count": 1,
+    "file_extension_counts": {
+      ".json": 993914,
+      ".txt": 1
+    },
+    "uncompressed_bytes": 5754848183,
+    "compressed_bytes": 1405448899,
+    "independent_archive_sha256_match": true,
+    "independent_manifest_sha256_match": true,
+    "independent_full_crc_passed": true,
+    "private_identity_runtime_validated": true,
+    "private_identity_disclosed": false,
+    "private_identity_hash_disclosed": false,
+    "candidate_records_enumerated": 0,
+    "labels_created": 0,
+    "model_operations": 0
+  },
+  "decision": {
+    "raw_reference_accepted": true,
+    "automatic_legitimate_label_allowed": false,
+    "candidate_enumeration_allowed": false,
+    "extraction_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Freeze and test a non-overwriting JSON-only staged extraction plan, then rebuild the all-filer-to-IAPD identity crosswalk without lowering frozen thresholds."
+  },
+  "safety_contract": {
+    "network_operations_in_successful_attempt": 1,
+    "official_data_downloads_completed": 1,
+    "candidate_domain_access_operations": 0,
+    "candidate_records_enumerated": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_SOURCE_CAPACITY_AUDIT_RESULT_V1",
+  "created_at": "2026-10-12",
+  "status": "FROZEN_AUDIT_VERIFIED_SCALE_CHANNEL_AMENDMENT_REQUIRED",
+  "purpose": "Register the verified source-capacity audit showing that the current CFTC and EDGAR secondary channels cannot meet Dataset V1-Core planning reservoirs without new protocols or channel amendments.",
+  "inputs": [
+    {
+      "role": "source_capacity_audit",
+      "path": "configs/target_text_corpus_v1_source_capacity_audit_v1.json",
+      "sha256": "fc2f2a80a235f7c79e74e73acd695ba98987e9d37e4f7d0a572f63dd1f039e1b"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "verifier",
+      "path": "scripts/verify_target_text_corpus_v1_source_capacity_audit.py",
+      "sha256": "2c6b849aa35e95e3050dee89e8d3404d334dc740c548094dfb06b433de4f8f65"
+    },
+    {
+      "role": "tests",
+      "path": "tests/test_verify_target_text_corpus_v1_source_capacity_audit.py",
+      "sha256": "a45e635b30e0657dcfccf92bdea526d75639989717bff10666f31add82791e3f"
+    },
+    {
+      "role": "documentation",
+      "path": "docs/target-text-corpus-v1-source-capacity-audit-v1.md",
+      "sha256": "d3acaac0d035d77d89c532bf1b1f0e82caeeedd481d450c957bddb112e251777"
+    }
+  ],
+  "findings": {
+    "channels_audited": 4,
+    "channels_capacity_pass": 2,
+    "channels_capacity_fail": 2,
+    "cftc_unique_hosts": 12,
+    "cftc_planning_reservoir": 469,
+    "cftc_capacity_gap": 457,
+    "edgar_unambiguous_crosswalk_rows": 33,
+    "edgar_independently_approved_hosts": 20,
+    "edgar_planning_reservoir": 134,
+    "edgar_crosswalk_capacity_gap": 101,
+    "official_bulk_edgar_route_identified": true,
+    "documented_cftc_bulk_or_api_identified": false,
+    "dfpi_requires_independent_corroboration": true,
+    "vietnamese_registry_or_listing_is_automatic_legitimate_label": false
+  },
+  "decision": {
+    "source_or_channel_amendment_required": true,
+    "candidate_enumeration_allowed": false,
+    "capture_allowed": false,
+    "labeling_allowed": false,
+    "training_allowed": false,
+    "model_scoring_allowed": false,
+    "next_gate": "Freeze the SEC EDGAR bulk-universe protocol and terms/source-role reviews for DFPI and Vietnamese official issuer references."
+  },
+  "safety_contract": {
+    "web_research_operations_only": true,
+    "official_data_downloads": 0,
+    "candidate_domain_access_operations": 0,
+    "new_candidates_enumerated": 0,
+    "new_artifacts_captured": 0,
+    "labels_created": 0,
+    "model_fit_operations": 0,
+    "model_scoring_operations": 0,
+    "validation_or_test_openings": 0,
+    "training_allowed": false
+  }
+}

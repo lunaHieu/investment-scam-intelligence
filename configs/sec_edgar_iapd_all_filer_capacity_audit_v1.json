@@ -1,0 +1,47 @@
+{
+  "audit_id": "ISI_SEC_EDGAR_IAPD_ALL_FILER_CAPACITY_AUDIT_V1",
+  "created_at": "2026-10-12T22:12:00+07:00",
+  "status": "FROZEN_AGGREGATE_OFFLINE_AUDIT_APPROVED",
+  "basis": [
+    {
+      "role": "all_filer_identity_index_registry",
+      "path": "registry/analyses/sec_edgar_all_filer_identity_index_v1.json",
+      "sha256": "a9a190e8d045a91e011d2af60714e7ec82418e96394e646c330b169a89580e65"
+    }
+  ],
+  "inputs": {
+    "edgar_identity_index": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_all_filer_identity_index_v1\\identity_index.jsonl",
+      "sha256": "7a7c35749ee15f31319914fcb21a4f9969b8456b26f6a3421f074c85ffec1738",
+      "record_count": 988519
+    },
+    "iapd_normalized": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\legitimate_iapd_normalized_v1.jsonl",
+      "sha256": "f9fe40cc13a0c19461aa8f31a7c083f0975eebe8b01622ee1140c7f9e71cc10a",
+      "record_count": 3668
+    },
+    "existing_ticker_crosswalk_pool": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_crosswalk_pool_v1.jsonl",
+      "sha256": "695250fb6ca0dfbd51806e63eb586d49537c21daaaef6739b18c398e0e7f7a41",
+      "record_count": 33
+    }
+  },
+  "method": {
+    "tokenization_contract": "scripts.build_sec_edgar_iapd_crosswalk.tokens",
+    "name_token_jaccard_minimum": 0.8,
+    "runner_up_margin_minimum": 0.15,
+    "unique_cik_required": true,
+    "unique_normalized_host_required": true,
+    "planning_reservoir_required": 134,
+    "identity_rows_output_allowed": false,
+    "aggregate_counts_and_set_fingerprint_only": true
+  },
+  "output": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_capacity_audit_v1.json",
+  "decision": {
+    "capacity_audit_execution_allowed": true,
+    "candidate_enumeration_allowed": false,
+    "crosswalk_pool_materialization_allowed": false,
+    "labeling_allowed": false,
+    "training_allowed": false
+  }
+}

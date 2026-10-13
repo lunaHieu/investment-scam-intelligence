@@ -1,0 +1,70 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_IAPD_ALL_FILER_CAPACITY_AUDIT_V1",
+  "created_at": "2026-10-12",
+  "status": "FROZEN_PASS_CAPACITY_REFERENCE_ONLY",
+  "purpose": "Register the aggregate all-filer EDGAR/IAPD capacity result without materializing identity rows or candidates.",
+  "inputs": [
+    {
+      "role": "audit_config",
+      "path": "configs/sec_edgar_iapd_all_filer_capacity_audit_v1.json",
+      "sha256": "c0fa4ef6953fdc32faf87816cd3276c24daffb99db08b731eee76abf79fdc1aa"
+    },
+    {
+      "role": "aggregate_result",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_capacity_audit_v1.json",
+      "sha256": "c35bda2cda333b9c0eca79a5821353ad8700e922531a2371b80884bfc6454bef"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "capacity_auditor",
+      "path": "scripts/audit_sec_edgar_iapd_all_filer_capacity_v1.py",
+      "sha256": "d988129a79dfc8ac4577a71c1d1f10ca740695f12af53d380411e50377b77f67"
+    },
+    {
+      "role": "tests",
+      "path": "tests/test_audit_sec_edgar_iapd_all_filer_capacity_v1.py",
+      "sha256": "a8764f38512ef76946e59f91780c9d04d9c3b195cd09c7f1bb2a1132ccfea09d"
+    },
+    {
+      "role": "documentation",
+      "path": "docs/sec-edgar-iapd-all-filer-capacity-audit-v1.md",
+      "sha256": "b243cfa77d9a46081939318821c23e9733b204b86ee51c680f9946de13a3359f"
+    }
+  ],
+  "findings": {
+    "edgar_rows": 988519,
+    "iapd_rows": 3668,
+    "name_token_jaccard_minimum": 0.8,
+    "runner_up_margin_minimum": 0.15,
+    "threshold_qualified_before_uniqueness": 1143,
+    "unique_cik_and_host_rows": 1129,
+    "planning_reservoir_required": 134,
+    "surplus": 995,
+    "existing_pair_overlap": 5,
+    "net_new_rows_vs_existing_pairs": 1124,
+    "identity_rows_emitted": 0,
+    "qualified_set_sha256": "8f1dd1a471f72bbeb243ef36eecdbec025e6eb981198bc5c0bc34df94cd31fae"
+  },
+  "interpretation": {
+    "capacity_gate_passed": true,
+    "old_33_row_pool_automatically_grandfathered": false,
+    "reason": "The all-filer universe introduces additional name competitors; only five exact old CIK/host pairs remain in the new unique qualifying set, so every materialized linkage requires fresh universe-wide review."
+  },
+  "decision": {
+    "hash_bound_crosswalk_pool_materialization_protocol_may_be_prepared": true,
+    "crosswalk_pool_materialization_allowed_now": false,
+    "candidate_enumeration_allowed": false,
+    "labeling_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Freeze and test a deterministic all-filer crosswalk materialization protocol, independently reproduce its set fingerprint, then materialize a review pool without calling it ground truth."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "candidate_records_enumerated": 0,
+    "identity_rows_emitted": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "release_id": "ISI_SEC_EDGAR_SUBMISSIONS_BULK_V1_EXECUTION_RELEASE",
+  "created_at": "2026-10-12T21:43:45+07:00",
+  "status": "FROZEN_ONE_SHOT_NETWORK_EXECUTION_RELEASED",
+  "purpose": "Authorize exactly one retrieval of the official SEC EDGAR submissions.zip archive under the frozen source-capacity protocol without opening any downstream data or model gate.",
+  "authorization": {
+    "source": "owner_instruction_in_current_project_thread",
+    "instruction": "tiep; continue the next project step and report each step name and meaning",
+    "scope_interpretation": "The existing project-wide execution authorization permits the already planned, official, one-shot SEC bulk retrieval. This release does not expand source, candidate, labeling, evaluation, or model scope."
+  },
+  "basis": [
+    {
+      "role": "source_capacity_amendment_protocol",
+      "path": "configs/target_text_corpus_v1_source_capacity_amendment_protocol_v1.json",
+      "sha256": "6ae98618cbd7c67084c072d88bf9ad820e7cd5370ab52cc85f0feb46cb516aed"
+    },
+    {
+      "role": "sec_bulk_tooling_registry",
+      "path": "registry/analyses/sec_edgar_submissions_bulk_v1_tooling.json",
+      "sha256": "2e90d7b7eab32d4cc25c84386a1232382e1d7cc97ef32e9492c647b2e5878434"
+    }
+  ],
+  "execution_scope": {
+    "source_id": "sec_edgar_company_submissions",
+    "source_url": "https://www.sec.gov/Archives/edgar/daily-index/bulkdata/submissions.zip",
+    "maximum_requests": 1,
+    "raw_output": "D:\\nckh 2026-2027\\ISI_Data\\raw\\sec_edgar_bulk\\submissions_2026-10-12.zip",
+    "manifest_output": "D:\\nckh 2026-2027\\ISI_Data\\raw\\sec_edgar_bulk\\submissions_2026-10-12.manifest.json",
+    "overwrite_allowed": false,
+    "partial_download_atomic_promotion_required": true,
+    "full_zip_crc_validation_required": true
+  },
+  "private_identity_evidence": {
+    "file_exists_at_release": true,
+    "required_fields_validated_at_release": true,
+    "contents_disclosed": false,
+    "hash_disclosed": false,
+    "runtime_revalidation_required": true
+  },
+  "decision": {
+    "sec_bulk_network_execution_allowed": true,
+    "candidate_enumeration_allowed": false,
+    "capture_allowed": false,
+    "labeling_allowed": false,
+    "training_allowed": false,
+    "model_scoring_allowed": false,
+    "validation_or_test_opening_allowed": false
+  },
+  "completion_rule": "This release is consumed when both the immutable raw archive and its public manifest exist. Any retry after a successful download requires a new release and a different versioned output path.",
+  "safety_contract": {
+    "maximum_network_operations": 1,
+    "maximum_official_data_downloads": 1,
+    "candidate_domain_access_operations": 0,
+    "new_candidates_enumerated": 0,
+    "new_artifacts_captured": 0,
+    "labels_created": 0,
+    "model_fit_operations": 0,
+    "model_scoring_operations": 0,
+    "validation_or_test_openings": 0,
+    "training_allowed": false
+  }
+}

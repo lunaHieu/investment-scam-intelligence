@@ -1,0 +1,154 @@
+{
+  "audit_id": "ISI_TARGET_TEXT_CORPUS_V1_SOURCE_CAPACITY_AUDIT_V1",
+  "audited_at": "2026-10-12T23:00:00+07:00",
+  "status": "FROZEN_READINESS_AUDIT_SCALE_CHANNEL_AMENDMENT_REQUIRED",
+  "purpose": "Determine whether the four frozen sampling channels can supply Dataset V1-Core without weakening identity, evidence, source-use, or leakage controls.",
+  "basis": [
+    {
+      "role": "sampling_matrix_registry",
+      "path": "registry/analyses/target_text_corpus_v1_sampling_matrix_v1.json",
+      "sha256": "ce83728095e142277eff3b1266dabaf912d49507747f9caf6fc676cae641a9ca"
+    },
+    {
+      "role": "cftc_normalization_report",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\cftc_red_normalization_report_v1.json",
+      "sha256": "7ad0f27de72756e8519c2a8e3e82423abe6fcbfe4c9a8461f853faad578bdbf8"
+    },
+    {
+      "role": "sec_edgar_crosswalk_report",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_crosswalk_report_v1.json",
+      "sha256": "dfdd755aa97c756f4e9144f9a65ba6d87f86db0e08fa2bbfd842b87646b2c39d"
+    },
+    {
+      "role": "sec_edgar_normalization_report",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_normalization_report_v1.json",
+      "sha256": "06e484f85b90be7c55afed3816ad8170006c5e60a813a98fba079c8c729a2da7"
+    },
+    {
+      "role": "existing_channel_normalization_report",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\existing_channels_normalization_report_v1.json",
+      "sha256": "a63ffc2c7a4496d0eaa4df6e232302629bc3acd540536a6a146576b212eb3019"
+    },
+    {
+      "role": "private_safe_acquisition_prerequisite_ledger",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\governance\\target_text_corpus_v1\\acquisition_prerequisite_ledger_v2.json",
+      "sha256": "9ec482700a07bfc704533da5f5354ded84356d6d18566b5df33d028e58913f83"
+    }
+  ],
+  "official_source_observations": [
+    {
+      "source_id": "cftc_red_list",
+      "checked_at": "2026-10-12",
+      "official_url": "https://www.cftc.gov/LearnAndProtect/Resources/Check/redlist.htm?combine=&items_per_page=All&order=field_date_registration_def&sort=desc",
+      "observation": "The official site exposes an all-items list view and individual detail pages, but this audit identified no documented bulk file or public data API for the RED list.",
+      "operational_limit": "The frozen source contract allows manual or explicit official downloads and does not authorize generic automated detail-page scraping."
+    },
+    {
+      "source_id": "sec_edgar_company_submissions",
+      "checked_at": "2026-10-12",
+      "official_url": "https://www.sec.gov/search-filings/edgar-application-programming-interfaces",
+      "observation": "SEC documents the per-filer submissions API and the submissions.zip bulk archive containing filing history for all filers.",
+      "operational_limit": "A new versioned bulk-acquisition manifest must preserve the private User-Agent contract, caching, rate limits, immutable bytes, and independent identity review."
+    },
+    {
+      "source_id": "dfpi_crypto_scam_tracker",
+      "checked_at": "2026-10-12",
+      "official_url": "https://dfpi.ca.gov/consumers/crypto/crypto-scam-tracker/",
+      "observation": "The official tracker exposes complaint narratives and candidate websites, including individual case pages.",
+      "operational_limit": "DFPI states that tracker entries are based on consumer complaints and reported losses are not verified; records are candidate seeds only and require independent official corroboration."
+    },
+    {
+      "source_id": "vietnam_official_exchange_issuer_profiles",
+      "checked_at": "2026-10-12",
+      "official_urls": [
+        "https://www.hnx.vn/vi-vn/co-phieu-etfs/chung-khoan-ny-thong-tin.html",
+        "https://www.hsx.vn/vi/quan-ly-niem-yet/co-phieu/pgi/2512",
+        "https://ssc.gov.vn/webcenter/portal/ubck/pages_r/m/tintc-skin/hotngkinhdoanhck?docType=TinBai&mucHienThi=113&selectedPage=1"
+      ],
+      "observation": "Official HNX/HOSE issuer listings and profiles expose issuer identity, listing status, and in some cases an official website; SSC publishes licensing and securities-business notices.",
+      "operational_limit": "Listing, registration, or licensing is identity evidence only. It is not an automatic LEGITIMATE artifact label and does not prove a site was never cloned or compromised."
+    }
+  ],
+  "channel_findings": [
+    {
+      "channel_id": "CONFIRMED_REGULATOR_LINKED_WEBSITE",
+      "current_unique_reference_hosts": 12061,
+      "planning_candidate_reservoir": 469,
+      "capacity_status": "PASS_REFERENCE_CAPACITY_ONLY",
+      "remaining_gate": "Audit Vietnamese and other non-English supply and then select fresh disjoint candidates."
+    },
+    {
+      "channel_id": "CONFIRMED_CFTC_RED_LINKED_WAYBACK_WEBSITE",
+      "current_unique_reference_hosts": 12,
+      "planning_candidate_reservoir": 469,
+      "capacity_gap": 457,
+      "capacity_status": "FAIL_NOT_SCALABLE_UNDER_CURRENT_ACQUISITION_CONTRACT",
+      "remaining_gate": "Do not automate RED detail scraping; either obtain an explicit official bulk path or register and terms-review a separate corroborated confirmed channel."
+    },
+    {
+      "channel_id": "LEGITIMATE_REGISTER_LINKED_WEBSITE",
+      "current_unique_reference_hosts": 3668,
+      "planning_candidate_reservoir": 235,
+      "capacity_status": "PASS_REFERENCE_CAPACITY_ONLY",
+      "remaining_gate": "Audit language distribution and preserve clone, compromise, redirect, and impersonation checks."
+    },
+    {
+      "channel_id": "LEGITIMATE_SEC_EDGAR_LINKED_WAYBACK_WEBSITE",
+      "current_unambiguous_crosswalk_pool": 33,
+      "current_independently_approved_hosts": 20,
+      "planning_candidate_reservoir": 134,
+      "crosswalk_capacity_gap": 101,
+      "capacity_status": "FAIL_CURRENT_TICKER_CROSSWALK_CANNOT_MEET_SCALE_GATE",
+      "remaining_gate": "Use the official submissions.zip universe under a new frozen acquisition protocol and rerun the same strict identity review; do not lower the 0.8 match or 0.15 margin thresholds to inflate capacity."
+    }
+  ],
+  "remediation_plan": [
+    {
+      "priority": 1,
+      "action_id": "SEC_EDGAR_BULK_UNIVERSE_PROTOCOL",
+      "action": "Freeze an official submissions.zip acquisition and offline crosswalk protocol with immutable raw hashing and the existing private User-Agent protections.",
+      "network_execution_allowed_by_this_audit": false
+    },
+    {
+      "priority": 2,
+      "action_id": "VIETNAM_LEGITIMATE_REFERENCE_CHANNEL_REVIEW",
+      "action": "Register and terms-review an HNX/HOSE/SSC issuer-identity channel for Vietnamese legitimate candidates, followed by exact official-domain and archived-artifact review.",
+      "automatic_legitimate_labels_allowed": false
+    },
+    {
+      "priority": 3,
+      "action_id": "DFPI_CORROBORATED_CONFIRMED_CHANNEL_REVIEW",
+      "action": "Terms-review the DFPI tracker as a candidate-seed channel and require independent official corroboration before any CONFIRMED recommendation.",
+      "automatic_confirmed_labels_allowed": false
+    },
+    {
+      "priority": 4,
+      "action_id": "SAMPLING_MATRIX_V2_IF_CHANNEL_SET_CHANGES",
+      "action": "If DFPI or a Vietnamese exchange channel is adopted, freeze a new matrix version and recompute quotas before enumeration; do not silently substitute channels in V1.",
+      "silent_quota_or_channel_substitution_allowed": false
+    }
+  ],
+  "decision": {
+    "existing_four_channel_matrix_executable_at_scale": false,
+    "cftc_automatic_replenishment_allowed": false,
+    "sec_bulk_download_allowed_by_this_audit": false,
+    "source_or_channel_amendment_required": true,
+    "new_candidate_enumeration_allowed": false,
+    "new_capture_allowed": false,
+    "labeling_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Freeze and independently verify the SEC EDGAR bulk-universe protocol plus terms reviews for the DFPI and Vietnamese official-reference alternatives."
+  },
+  "safety_contract": {
+    "web_research_operations_only": true,
+    "official_data_downloads": 0,
+    "candidate_domain_access_operations": 0,
+    "new_candidates_enumerated": 0,
+    "new_artifacts_captured": 0,
+    "labels_created": 0,
+    "model_fit_operations": 0,
+    "model_scoring_operations": 0,
+    "validation_or_test_openings": 0,
+    "training_allowed": false
+  }
+}

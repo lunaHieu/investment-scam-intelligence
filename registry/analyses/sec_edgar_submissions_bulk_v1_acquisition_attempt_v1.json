@@ -1,0 +1,42 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_SUBMISSIONS_BULK_V1_ACQUISITION_ATTEMPT_V1",
+  "attempted_at": "2026-10-12T21:45:00+07:00",
+  "status": "FAILED_CLOSED_ON_OVERSTRICT_FILE_EXTENSION_CONTRACT",
+  "purpose": "Record the first released SEC bulk request and its fail-closed outcome without treating the response as acquired data.",
+  "release": {
+    "path": "configs/sec_edgar_submissions_bulk_v1_execution_release.json",
+    "sha256": "6c7e8992523fa32d7af794caf4c5e86902e0716391536d33f3eb6aab2e3b0b64"
+  },
+  "execution": {
+    "network_requests_completed": 1,
+    "http_response_opened": true,
+    "archive_validation_reached": true,
+    "failure": "Downloaded ZIP contained at least one regular member whose suffix was not .json; tooling V1 treated any such member as fatal.",
+    "private_identity_disclosed": false
+  },
+  "cleanup_verification": {
+    "checked_at": "2026-10-12T21:48:09+07:00",
+    "raw_output_exists": false,
+    "partial_output_exists": false,
+    "manifest_exists": false
+  },
+  "interpretation": {
+    "sec_documentation_describes_the_archive_as_json_structures": true,
+    "sec_documentation_does_not_assert_every_zip_member_has_json_suffix": true,
+    "non_json_suffix_alone_is_not_an_archive_safety_violation_before_extraction": true,
+    "safe_next_action": "Amend tooling to retain extension counts while continuing to reject traversal, duplicates, encryption, empty/no-JSON archives, and CRC failures; then issue a separately hash-bound retry release."
+  },
+  "decision": {
+    "attempt_v1_release_consumed": true,
+    "data_acquired": false,
+    "candidate_enumeration_allowed": false,
+    "labeling_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {
+    "candidate_records_enumerated": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

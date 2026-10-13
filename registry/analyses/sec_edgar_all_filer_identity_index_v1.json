@@ -1,0 +1,81 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_ALL_FILER_IDENTITY_INDEX_V1",
+  "created_at": "2026-10-12",
+  "status": "FROZEN_INDEPENDENTLY_VERIFIED_REFERENCE_ONLY",
+  "purpose": "Register the compact all-filer SEC identity index produced by streamed logical extraction from the immutable bulk archive.",
+  "inputs": [
+    {
+      "role": "storage_amendment",
+      "path": "configs/sec_edgar_submissions_bulk_v1_storage_amendment_v1.json",
+      "sha256": "e990dc6acf6a614f6a1d01786b7467bc34d5a3c26d9e18c19ce19c3552b14fe5"
+    },
+    {
+      "role": "immutable_raw_archive",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\raw\\sec_edgar_bulk\\submissions_2026-10-12.zip",
+      "sha256": "39c288191b846ccc1e2fc79b5da95c3d53d26e29f9c9b3373be2aa6c1e569e3f"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "streamed_index_builder",
+      "path": "scripts/build_sec_edgar_all_filer_identity_index_v1.py",
+      "sha256": "5a0d3044aa381392bdedaae9b4b4018a26bbf2fc1cefb0bffa39874df0bcb94e"
+    },
+    {
+      "role": "offline_tests",
+      "path": "tests/test_build_sec_edgar_all_filer_identity_index_v1.py",
+      "sha256": "b65a971a0b0de4d7c7a563a91f2744e3151d2c499b14b8ce3a17003a955c91b0"
+    },
+    {
+      "role": "documentation",
+      "path": "docs/sec-edgar-submissions-bulk-v1-storage-amendment.md",
+      "sha256": "5e79081fcead930aab39c6845dabb12e0da65a43e0b2707a769e235577d0aee4"
+    }
+  ],
+  "outputs": [
+    {
+      "role": "all_filer_identity_index",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_all_filer_identity_index_v1\\identity_index.jsonl",
+      "sha256": "7a7c35749ee15f31319914fcb21a4f9969b8456b26f6a3421f074c85ffec1738",
+      "record_count": 988519,
+      "unique_cik_count": 988519
+    },
+    {
+      "role": "build_report",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_all_filer_identity_index_v1\\report.json",
+      "sha256": "300a40d36b467a5d5fdc21a4cec943b5395fa64635dd2bea85cfd90658e190e9"
+    }
+  ],
+  "findings": {
+    "primary_submission_members_read": 988520,
+    "indexed_records": 988519,
+    "excluded_empty_name_records": 1,
+    "excluded_historical_submission_members": 5394,
+    "excluded_non_json_members": 1,
+    "independent_bad_schema_rows": 0,
+    "independent_bad_cik_rows": 0,
+    "independent_empty_name_rows": 0,
+    "independent_duplicate_cik_rows": 0,
+    "independent_hash_and_count_match": true,
+    "retained_fields": ["cik", "name"],
+    "retained_hosts_or_candidate_urls": 0
+  },
+  "decision": {
+    "identity_index_accepted": true,
+    "crosswalk_capacity_audit_allowed": true,
+    "candidate_enumeration_allowed": false,
+    "shortlist_materialization_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Run an offline all-filer-to-IAPD crosswalk capacity audit using the unchanged 0.8 name-match and 0.15 runner-up-margin thresholds."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "candidate_domain_access_operations": 0,
+    "new_candidates_enumerated": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

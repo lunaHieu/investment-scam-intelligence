@@ -1,0 +1,7 @@
+# SEC EDGAR submissions bulk V1 tooling
+
+The one-shot downloader and public manifest builder require a separate hash-bound execution release. The frozen source-capacity amendment protocol remains unchanged; the release can open only one SEC bulk request and cannot open candidate, label, validation/test, or model gates.
+
+The tool validates the private SEC User-Agent file at runtime and never prints, hashes into a public registry, or writes the contact identity to the manifest. It makes one request to the exact official `submissions.zip` URL, refuses overwrite, streams to a temporary partial file, fsyncs bytes, validates the ZIP central directory, rejects absolute paths, parent traversal, duplicate names, encrypted members, and CRC failures, then atomically promotes the archive and writes its SHA-256 manifest. File-extension counts are recorded without publishing member names; non-JSON members remain inert inside the immutable ZIP and can never enter later JSON-only extraction silently.
+
+The resulting archive remains reference data only. Acquiring it creates no candidate, artifact label, training eligibility, or model permission. The release record must pin both the protocol and tooling-registry hashes, verify the private identity without publishing its contents or hash, and bind the exact URL, raw output, manifest output, and one-request budget. DFPI, Vietnamese-source, candidate-enumeration, capture, labeling, validation/test, and model gates remain closed.

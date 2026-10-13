@@ -1,0 +1,119 @@
+{
+  "protocol_id": "ISI_TARGET_TEXT_CORPUS_V1_SOURCE_CAPACITY_AMENDMENT_PROTOCOL_V1",
+  "frozen_at": "2026-10-12T23:30:00+07:00",
+  "status": "FROZEN_SEC_BULK_ROUTE_READY_DFPI_AND_VIETNAM_CHANNELS_BLOCKED",
+  "purpose": "Freeze source-specific access, interpretation, privacy, and execution gates for remediating Dataset V1-Core channel-capacity and Vietnamese-language gaps.",
+  "basis": [
+    {
+      "role": "source_capacity_audit_registry",
+      "path": "registry/analyses/target_text_corpus_v1_source_capacity_audit_v1.json",
+      "sha256": "b330ffc01cc0bb00a02aa8afcaaa188254cf3ce95f6ea1bbc92c81260e309c28"
+    },
+    {
+      "role": "sampling_matrix_registry",
+      "path": "registry/analyses/target_text_corpus_v1_sampling_matrix_v1.json",
+      "sha256": "ce83728095e142277eff3b1266dabaf912d49507747f9caf6fc676cae641a9ca"
+    },
+    {
+      "role": "private_safe_acquisition_prerequisite_ledger",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\governance\\target_text_corpus_v1\\acquisition_prerequisite_ledger_v2.json",
+      "sha256": "9ec482700a07bfc704533da5f5354ded84356d6d18566b5df33d028e58913f83"
+    }
+  ],
+  "sec_edgar_bulk": {
+    "source_id": "sec_edgar_company_submissions",
+    "reviewed_at": "2026-10-12",
+    "official_documentation": "https://www.sec.gov/search-filings/edgar-application-programming-interfaces",
+    "official_bulk_url": "https://www.sec.gov/Archives/edgar/daily-index/bulkdata/submissions.zip",
+    "documentation_finding": "SEC documents submissions.zip as the nightly bulk archive containing public Submissions API filing history for all filers and identifies bulk archives as the efficient route for large amounts of API data.",
+    "access_status": "READY_FOR_ONE_SHOT_BULK_ACQUISITION_AFTER_RUNTIME_PRIVATE_IDENTITY_CHECK",
+    "request_contract": {
+      "official_hosts": ["www.sec.gov", "data.sec.gov"],
+      "truthful_private_user_agent_required": true,
+      "private_identity_contents_or_hash_publication_allowed": false,
+      "project_requests_per_second_maximum": 1,
+      "maximum_bulk_requests_in_run": 1,
+      "stop_on_http_429_or_policy_change": true,
+      "cache_and_immutable_raw_bytes_required": true,
+      "overwrite_existing_raw_allowed": false
+    },
+    "planned_raw_output": "D:\\nckh 2026-2027\\ISI_Data\\raw\\sec_edgar_bulk\\submissions_2026-10-12.zip",
+    "post_download_gates": [
+      "record HTTP status, content length, collection time, source URL, and SHA-256 in a new manifest",
+      "validate ZIP central directory and reject absolute or parent-traversal members before extraction",
+      "retain original ZIP immutable and extract to a versioned directory",
+      "build a new offline all-filer-to-IAPD crosswalk without reducing the frozen 0.8 name-match or 0.15 runner-up-margin thresholds",
+      "independently review identity and opened-cohort exclusions before any candidate enumeration"
+    ],
+    "automatic_ground_truth_allowed": false,
+    "candidate_enumeration_allowed_by_this_protocol": false
+  },
+  "dfpi_tracker": {
+    "source_id": "dfpi_crypto_scam_tracker",
+    "reviewed_at": "2026-10-12",
+    "official_tracker_url": "https://dfpi.ca.gov/consumers/crypto/crypto-scam-tracker/",
+    "official_conditions_url": "https://dfpi.ca.gov/conditions-of-use/",
+    "source_semantics": "Consumer-complaint descriptions of reported losses; DFPI states the reported losses have not been verified.",
+    "access_status": "CONDITIONAL_MANUAL_OR_EXPLICIT_OFFICIAL_EXPORT_ONLY",
+    "automated_table_or_case_page_scraping_allowed": false,
+    "candidate_seed_use_allowed_after_versioned_manual_manifest": true,
+    "independent_official_corroboration_required": true,
+    "complaint_narrative_as_model_input_allowed": false,
+    "automatic_confirmed_label_allowed": false,
+    "candidate_enumeration_allowed_by_this_protocol": false
+  },
+  "vietnam_official_issuer_references": {
+    "proposed_source_id": "vietnam_official_exchange_issuer_profiles",
+    "reviewed_at": "2026-10-12",
+    "official_reference_urls": [
+      "https://www.hnx.vn/vi-vn/co-phieu-etfs/chung-khoan-ny-thong-tin.html",
+      "https://www.hsx.vn/vi/quan-ly-niem-yet/co-phieu/pgi/2512",
+      "https://ssc.gov.vn/webcenter/portal/ubck/pages_r/m/tintc-skin/hotngkinhdoanhck?docType=TinBai&mucHienThi=113&selectedPage=1"
+    ],
+    "source_semantics": "Official issuer listing, profile, licensing, and securities-business reference metadata; not a safety or artifact-authenticity label.",
+    "access_status": "BLOCKED_PENDING_EXPLICIT_DOWNLOAD_OR_WRITTEN_REUSE_BASIS_AND_SOURCE_REGISTRATION",
+    "automated_collection_allowed": false,
+    "manual_internal_reference_capture_allowed_by_this_protocol": false,
+    "redistribution_allowed_by_this_protocol": false,
+    "automatic_legitimate_label_allowed": false,
+    "required_before_activation": [
+      "freeze source registry addendum and exact source roles",
+      "record explicit official download or written internal academic reuse basis",
+      "define immutable reference capture and no-redistribution rules",
+      "require exact issuer and official-domain agreement",
+      "require clone, compromise, redirect, and impersonation contradiction review",
+      "capture a separate observed investment-related artifact through the matched Wayback stratum"
+    ],
+    "candidate_enumeration_allowed_by_this_protocol": false
+  },
+  "matrix_change_control": {
+    "sampling_matrix_v1_mutation_allowed": false,
+    "new_channel_silent_substitution_allowed": false,
+    "sampling_matrix_v2_required_if_dfpi_or_vietnam_channel_is_adopted": true,
+    "opened_pilot_or_mendeley_quota_credit_allowed": false
+  },
+  "decision": {
+    "sec_bulk_plan_may_be_prepared": true,
+    "sec_bulk_network_execution_allowed_now": false,
+    "dfpi_network_execution_allowed": false,
+    "vietnam_reference_network_execution_allowed": false,
+    "candidate_enumeration_allowed": false,
+    "capture_allowed": false,
+    "labeling_allowed": false,
+    "training_allowed": false,
+    "model_scoring_allowed": false,
+    "next_gate": "Implement and independently verify a one-shot SEC submissions.zip downloader and manifest builder that checks the private identity at runtime without disclosing it."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "official_data_downloads": 0,
+    "candidate_domain_access_operations": 0,
+    "new_candidates_enumerated": 0,
+    "new_artifacts_captured": 0,
+    "labels_created": 0,
+    "model_fit_operations": 0,
+    "model_scoring_operations": 0,
+    "validation_or_test_openings": 0,
+    "training_allowed": false
+  }
+}

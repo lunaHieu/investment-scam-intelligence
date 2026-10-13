@@ -1,0 +1,62 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_SUBMISSIONS_BULK_V1_TOOLING",
+  "created_at": "2026-10-12",
+  "status": "FROZEN_TOOLING_VERIFIED_RELEASE_REQUIRED",
+  "purpose": "Register the offline-tested one-shot SEC submissions.zip downloader, hash-bound execution-release validator, and public immutable-manifest builder.",
+  "inputs": [
+    {
+      "role": "source_capacity_amendment_protocol_registry",
+      "path": "registry/analyses/target_text_corpus_v1_source_capacity_amendment_protocol_v1.json",
+      "sha256": "7c9e58699fba5ed67c4a10cae9d459682985211a31fd6afcead30b8a0056b1a7"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "one_shot_downloader_and_manifest_builder",
+      "path": "scripts/acquire_sec_edgar_submissions_bulk_v1.py",
+      "sha256": "9591fa226123199f64a11b2c643ac581b0927e59b9a1b48b7a29b105cddc66b0"
+    },
+    {
+      "role": "offline_tests",
+      "path": "tests/test_acquire_sec_edgar_submissions_bulk_v1.py",
+      "sha256": "16ced42a4c66d98f1abc26db3e0983957d4711640d07f56433e0821ba0177196"
+    },
+    {
+      "role": "documentation",
+      "path": "docs/sec-edgar-submissions-bulk-v1-tooling.md",
+      "sha256": "9b3885c2f175c1d9759109646985cd381c6c43ed065a5581fb7b84c6aa8f0443"
+    }
+  ],
+  "findings": {
+    "private_identity_runtime_validation_implemented": true,
+    "private_identity_public_manifest_disclosure": false,
+    "hash_bound_execution_release_required": true,
+    "release_cannot_open_candidate_label_validation_test_or_model_gates": true,
+    "single_request_budget_enforced": true,
+    "raw_overwrite_refused": true,
+    "partial_file_atomic_promotion": true,
+    "zip_absolute_or_parent_traversal_rejected": true,
+    "zip_duplicate_or_encrypted_member_rejected": true,
+    "zip_non_json_members_retained_inert_and_counted_without_publishing_names": true,
+    "zip_crc_validation_required_for_real_run": true,
+    "public_sha256_manifest_implemented": true,
+    "offline_tests_passed": 5
+  },
+  "decision": {
+    "tooling_ready": true,
+    "network_execution_allowed_only_with_release": true,
+    "candidate_enumeration_allowed": false,
+    "labeling_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Create and verify the hash-bound SEC bulk execution release, then run the downloader exactly once."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "official_data_downloads": 0,
+    "private_identity_disclosures": 0,
+    "candidate_records_enumerated": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

@@ -17,7 +17,7 @@
     {"role": "primary_review_verifier", "path": "scripts/verify_sec_edgar_iapd_primary_review_v1.py", "sha256": "676f1a4b4366edd10c2805c1eec101684cf4b0acaa35764d8e012d381d1fe302"},
     {"role": "blind_second_review_packet_builder", "path": "scripts/build_sec_edgar_iapd_blind_second_review_packet_v1.py", "sha256": "8e80a12981d2eb7b10729e6920825aef1ba5097060d4d7754c85354f351476dd"},
     {"role": "blind_second_review_verifier", "path": "scripts/verify_sec_edgar_iapd_blind_second_review_v1.py", "sha256": "1ad3b49c5375091feac8840ad94922d8911ceb81be64d57d6169199ef2c73752"},
-    {"role": "conservative_reconciler", "path": "scripts/reconcile_sec_edgar_iapd_reviews_v1.py", "sha256": "bf843b28b35e59038c2c9c65422347fcf50ed7138698e8718e2e45290de324fa"},
+    {"role": "conservative_reconciler", "path": "scripts/reconcile_sec_edgar_iapd_reviews_v1.py", "sha256": "2a56b6abb0fff2afc620511808ef830014852ce4b9de00de28b7fa9e9852ff14"},
     {"role": "reconciliation_verifier", "path": "scripts/verify_sec_edgar_iapd_reconciliation_v1.py", "sha256": "baf8741d4128fe0e648fd06b732bb88410599d4368a05eafda59070c3f539f26"},
     {"role": "manual_group_tests", "path": "tests/test_sec_edgar_iapd_manual_group_review_v1.py", "sha256": "c86ecca1298bfa0d8a10542709b0fd989d8e75441473780b2dc51f7cad054302"},
     {"role": "primary_review_tests", "path": "tests/test_sec_edgar_iapd_primary_review_v1.py", "sha256": "12b71d085f4a06671ef709629e74a0e9b058e7520712d8daa588bd0b07b110b8"},

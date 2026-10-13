@@ -24,10 +24,20 @@ def build(primary_path: Path, primary_qa_path: Path, second_path: Path, second_q
         raise ValueError("Primary review QA status or binding mismatch")
     if second_qa.get("status") != SECOND_QA or second_qa.get("inputs", {}).get("review_sha256") != sha256_file(second_path):
         raise ValueError("Blind second review QA status or binding mismatch")
+    primary_packet_ref = primary.get("input_packet", {})
+    primary_packet_path = Path(primary_packet_ref.get("path", ""))
+    if not primary_packet_path.is_file() or primary_packet_ref.get("sha256") != sha256_file(primary_packet_path):
+        raise ValueError("Primary review packet path or binding mismatch")
+    primary_packet = load_object(primary_packet_path)
+    cohort_by_id = {row["record_id"]: row.get("cohort") for row in primary_packet.get("records", [])}
     primary_by_id = {row["record_id"]: row for row in primary.get("records", [])}
     second_by_id = {row["record_id"]: row for row in second.get("records", [])}
     if set(primary_by_id) != set(second_by_id):
         raise ValueError("Primary/second review population mismatch")
+    if set(primary_by_id) != set(cohort_by_id):
+        raise ValueError("Primary review/packet population mismatch")
+    if any(cohort not in {"DEVELOPMENT", "EXTERNAL_HOLDOUT"} for cohort in cohort_by_id.values()):
+        raise ValueError("Primary review packet contains an invalid cohort")
     records = []
     for record_id in sorted(primary_by_id):
         left = primary_by_id[record_id]["primary_recommendation"]
@@ -36,6 +46,7 @@ def build(primary_path: Path, primary_qa_path: Path, second_path: Path, second_q
         recommendation = "LEGITIMATE" if left == right == "LEGITIMATE" else "UNCERTAIN"
         records.append({
             "record_id": record_id,
+            "cohort": cohort_by_id[record_id],
             "primary_recommendation": left,
             "blind_second_recommendation": right,
             "review_agreement": agreement,

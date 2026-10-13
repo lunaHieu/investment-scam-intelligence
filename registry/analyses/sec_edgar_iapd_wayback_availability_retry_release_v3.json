@@ -1,0 +1,83 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_IAPD_WAYBACK_AVAILABILITY_RETRY_RELEASE_V3",
+  "created_at": "2026-10-14",
+  "status": "FROZEN_INDEPENDENTLY_VERIFIED_24H_COOLDOWN_ACTIVE",
+  "purpose": "Register the exact unresolved-only V3 retry release while enforcing a full 24-hour cooldown after the second HTTP 429 stop.",
+  "inputs": [
+    {
+      "role": "retry_release",
+      "path": "configs/sec_edgar_iapd_wayback_availability_retry_release_v3.json",
+      "sha256": "1c068beb4ecd3d4080ed97d78ddb28c2f4be2adfdb4162c3aa945c7351ede937"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "retry_executor",
+      "path": "scripts/retry_sec_edgar_iapd_wayback_availability_v3.py",
+      "sha256": "a54effe89dfbebe59c622aaddd874f0c0d3160c3143cd4da163f27e9c3476839"
+    },
+    {
+      "role": "independent_release_verifier",
+      "path": "scripts/verify_sec_edgar_iapd_wayback_availability_retry_release_v3.py",
+      "sha256": "f75a5d4b288ef61b17929340709f3be3d977ea209ced4c9413665dc86d071563"
+    },
+    {
+      "role": "retry_executor_tests",
+      "path": "tests/test_retry_sec_edgar_iapd_wayback_availability_v3.py",
+      "sha256": "0ecde3aa5316a3f6cfca2306e8faa6459661aeadf2c41bcc1835d67ee9c952af"
+    },
+    {
+      "role": "release_verifier_tests",
+      "path": "tests/test_verify_sec_edgar_iapd_wayback_availability_retry_release_v3.py",
+      "sha256": "4e2c999e1320e2b79548f1aa1650fd88dd82022db75641e4b6d613b45802b2f6"
+    },
+    {
+      "role": "registry_tests",
+      "path": "tests/test_sec_edgar_iapd_wayback_availability_retry_release_registry_v3.py",
+      "sha256": "2e8005f15503c6547f31336c40ebfdde17b4f573067e23a661d7c876031fc76f"
+    },
+    {
+      "role": "documentation",
+      "path": "docs/sec-edgar-iapd-wayback-availability-retry-v3.md",
+      "sha256": "10b1d7d1bdb8e91e566b13d54f988a058ab667a70f004d0521de3dfbfe08ed0c"
+    }
+  ],
+  "outputs": [
+    {
+      "role": "independent_release_qa",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_availability_result_v1\\independent_retry_release_qa_v3.json",
+      "sha256": "c9c15690286f81a7c9fbcb3ca478d4e5f6d96f6606536c07af40787b8a1219fe"
+    }
+  ],
+  "findings": {
+    "total_plan_rows": 115,
+    "resolved_rows_preserved": 45,
+    "retry_rows": 70,
+    "minimum_cooldown_seconds": 86400,
+    "not_before": "2026-10-14T23:20:18.723121+07:00",
+    "minimum_delay_seconds": 30.0,
+    "network_requests_at_release_time": 0,
+    "independent_release_qa_passed": true
+  },
+  "decision": {
+    "release_frozen": true,
+    "network_execution_allowed_at_freeze_time": false,
+    "network_execution_allowed_after_not_before": true,
+    "candidate_live_domain_access_allowed": false,
+    "archived_page_download_allowed": false,
+    "artifact_capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false,
+    "next_gate": "At or after 2026-10-14T23:20:18.723121+07:00, execute this exact release once; independently verify the V3 result before constructing any snapshot-selection or capture plan."
+  },
+  "safety_contract": {
+    "network_operations_at_release_time": 0,
+    "candidate_domain_access_operations": 0,
+    "archived_page_downloads": 0,
+    "artifact_captures": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_IAPD_WAYBACK_AVAILABILITY_EXECUTION_RELEASE_V1",
+  "created_at": "2026-10-13",
+  "status": "FROZEN_VERIFIED_RATE_LIMITED_ARCHIVE_ONLY_EXECUTION_RELEASE_CAPTURE_BLOCKED",
+  "purpose": "Register the verified release that authorizes archive-only availability queries for exactly 115 frozen plan rows.",
+  "inputs": [
+    {
+      "role": "execution_release",
+      "path": "configs/sec_edgar_iapd_wayback_availability_execution_release_v1.json",
+      "sha256": "8b0bb1daf5adbc6db72ead9af15a4eb1ddb4e201706a2e865642f368086679b8"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "availability_executor",
+      "path": "scripts/execute_sec_edgar_iapd_wayback_availability_v1.py",
+      "sha256": "c5fe2394c5f28b4c3f74e32692127c89608e1bc4811883263b1afd4a1186f016"
+    },
+    {
+      "role": "executor_tests",
+      "path": "tests/test_execute_sec_edgar_iapd_wayback_availability_v1.py",
+      "sha256": "4650094de24dbd1a4eaeebc9f778895a02e535916cbdcfe4b6b8466d54aeec0d"
+    },
+    {
+      "role": "registry_tests",
+      "path": "tests/test_sec_edgar_iapd_wayback_availability_execution_release_registry_v1.py",
+      "sha256": "4c84f1046b8beb1c7827e6e2d87098f9ddd0379b0c6e7c99c2f2beb322976f82"
+    },
+    {
+      "role": "documentation",
+      "path": "docs/sec-edgar-iapd-wayback-availability-execution-release-v1.md",
+      "sha256": "4d4ba20b74592b066384b9959f213875f77cc1d2e3302856e6246a9b13390986"
+    }
+  ],
+  "outputs": [],
+  "findings": {
+    "plan_rows": 115,
+    "development_rows": 91,
+    "external_holdout_rows": 24,
+    "minimum_delay_seconds": 6.0,
+    "maximum_attempts_per_candidate": 1,
+    "allowed_network_hosts": ["archive.org", "web.archive.org"],
+    "pre_execution_validation_passed": true,
+    "network_requests_executed_at_release_time": 0
+  },
+  "decision": {
+    "wayback_availability_query_execution_allowed": true,
+    "candidate_live_domain_access_allowed": false,
+    "archived_page_download_allowed": false,
+    "artifact_capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Execute the release once, preserve every unavailable or unresolved result, then independently verify and register the result before any capture plan is prepared."
+  },
+  "safety_contract": {
+    "network_operations_at_release_time": 0,
+    "candidate_domain_access_operations": 0,
+    "archived_page_downloads": 0,
+    "artifact_captures": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

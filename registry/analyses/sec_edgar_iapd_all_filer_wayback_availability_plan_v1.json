@@ -1,0 +1,99 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_IAPD_ALL_FILER_WAYBACK_AVAILABILITY_PLAN_V1",
+  "created_at": "2026-10-13",
+  "status": "FROZEN_INDEPENDENTLY_VERIFIED_BOUNDED_DISJOINT_PLAN_NETWORK_CLOSED",
+  "purpose": "Register the no-network Wayback availability plan for the 115 SEC/IAPD rows that passed conservative offline identity review.",
+  "inputs": [
+    {
+      "role": "availability_plan_protocol",
+      "path": "configs/sec_edgar_iapd_all_filer_wayback_availability_plan_v1.json",
+      "sha256": "0a9895d67a159832757385ce56e2956293f567fd3d54a0bc7787498a07b072b6"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "plan_builder",
+      "path": "scripts/build_sec_edgar_iapd_wayback_availability_plan_v1.py",
+      "sha256": "cdbf4cba06235c5147a1b0712302a002867279524675429a6397dc98c5c4cb4f"
+    },
+    {
+      "role": "builder_tests",
+      "path": "tests/test_build_sec_edgar_iapd_wayback_availability_plan_v1.py",
+      "sha256": "52c9982015c95e8bed3e45d2f9c75304c07a22dc1287cd01b412cc94d5638fb9"
+    },
+    {
+      "role": "independent_verifier",
+      "path": "scripts/verify_sec_edgar_iapd_wayback_availability_plan_v1.py",
+      "sha256": "7ae9899f5faf1382876d82181a89b788365006dfa460f581823af45f98e48eae"
+    },
+    {
+      "role": "verifier_tests",
+      "path": "tests/test_verify_sec_edgar_iapd_wayback_availability_plan_v1.py",
+      "sha256": "0ef495aa6eb8e202a6faa2816a7d44917d0e3f2bcb294355e1e5f4296ea718d1"
+    },
+    {
+      "role": "registry_tests",
+      "path": "tests/test_sec_edgar_iapd_all_filer_wayback_availability_plan_registry_v1.py",
+      "sha256": "b5b8c24f1fbb7ca51a8539f4d6a2ee05802c9728253422895a2f2556bf0113ed"
+    },
+    {
+      "role": "documentation",
+      "path": "docs/sec-edgar-iapd-all-filer-wayback-availability-plan-v1.md",
+      "sha256": "553cd62239805df7bd14f83d6e3fb50b7d629ccc5a5edbd9933ac961bd85099d"
+    }
+  ],
+  "outputs": [
+    {
+      "role": "availability_plan",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_availability_plan_v1\\availability_plan_v1.jsonl",
+      "sha256": "28f747ecb489e15b00fb6a33fa51fb10b451057115eff8905e5dd98d27c0ea8f",
+      "record_count": 115
+    },
+    {
+      "role": "plan_report",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_availability_plan_v1\\report.json",
+      "sha256": "3f73c59a0d5bca8c04be43dcffc82e4bdf5635bdb340a97108bc711064a16792"
+    },
+    {
+      "role": "independent_verification",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_availability_plan_v1\\independent_verification_v1.json",
+      "sha256": "00cfbf97fc72979a01c9b1fefff7afc1e5d2bf57ec6df03c49d58f34ca2a116d"
+    }
+  ],
+  "findings": {
+    "plan_rows": 115,
+    "development_rows": 91,
+    "external_holdout_rows": 24,
+    "excluded_identity_caution_rows": 19,
+    "unique_candidate_hosts": 115,
+    "cross_cohort_host_overlap": 0,
+    "target_timestamp": "20261003",
+    "plan_fingerprint": "6f1b3a7c2e309806572505a9a9433d8030a0bf1d9e82b913aee1772361c18916",
+    "planned_request_urls_decode_exactly": true,
+    "independent_verification_status": "PASS",
+    "network_requests_executed": 0,
+    "labels_created": 0
+  },
+  "decision": {
+    "availability_plan_accepted": true,
+    "network_execution_release_may_be_prepared": true,
+    "wayback_availability_query_execution_allowed": false,
+    "candidate_live_domain_access_allowed": false,
+    "archived_page_download_allowed": false,
+    "artifact_capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Freeze and verify a separate rate-limited archive-only execution release before sending any of the 115 availability requests; execution results must preserve unresolved errors and development/holdout identities."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "candidate_domain_access_operations": 0,
+    "wayback_queries": 0,
+    "archived_page_downloads": 0,
+    "artifact_captures": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

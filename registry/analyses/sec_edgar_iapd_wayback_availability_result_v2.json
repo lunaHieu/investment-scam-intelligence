@@ -1,0 +1,57 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_IAPD_WAYBACK_AVAILABILITY_RESULT_V2",
+  "created_at": "2026-10-13",
+  "status": "FROZEN_INDEPENDENTLY_VERIFIED_PARTIAL_45_RESOLVED_70_UNRESOLVED_RATE_LIMITED",
+  "purpose": "Register both archive-only availability attempts, preserve resolved results, and block immediate retry and capture planning after repeated HTTP 429.",
+  "inputs": [
+    {"role": "initial_execution_release", "path": "configs/sec_edgar_iapd_wayback_availability_execution_release_v1.json", "sha256": "8b0bb1daf5adbc6db72ead9af15a4eb1ddb4e201706a2e865642f368086679b8"},
+    {"role": "retry_release_registry", "path": "registry/analyses/sec_edgar_iapd_wayback_availability_retry_release_v2.json", "sha256": "976b95961a995c2f21dcd9643bf23acb3d751444e89a7f267acc7804bf4347c3"}
+  ],
+  "implementation": [
+    {"role": "v1_result_verifier", "path": "scripts/verify_sec_edgar_iapd_wayback_availability_result_v1.py", "sha256": "de8db4d58f598ce7d2336df4637790dcdb75c886228dafc9419befd5d5d6f16b"},
+    {"role": "v1_verifier_tests", "path": "tests/test_verify_sec_edgar_iapd_wayback_availability_result_v1.py", "sha256": "33b7f6d98aaef901befdb414b23e6f94001a6c7186ab09aaec645d78f6e38a8a"},
+    {"role": "v2_result_verifier", "path": "scripts/verify_sec_edgar_iapd_wayback_availability_result_v2.py", "sha256": "444c99c0f6939bd3ecbad786f1623c07f438d084f5f0009df13d6dbfb4c50048"},
+    {"role": "v2_verifier_tests", "path": "tests/test_verify_sec_edgar_iapd_wayback_availability_result_v2.py", "sha256": "bdfc2711a81edf41af48ed035fa4f9405b8cb5672be702b30af2a7bec82ceb17"},
+    {"role": "registry_tests", "path": "tests/test_sec_edgar_iapd_wayback_availability_result_registry_v2.py", "sha256": "bfb68f89ce5b38184e56baed04042b520038fd1ac05cfdd0ef1b6ee8637395f9"},
+    {"role": "documentation", "path": "docs/sec-edgar-iapd-wayback-availability-result-v2.md", "sha256": "3a5bd308c5b75326736f1aa496548e3401e468d6e360541a83af5e303d07e1c3"}
+  ],
+  "outputs": [
+    {"role": "availability_report_v1", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_availability_result_v1\\availability_report_v1.json", "sha256": "2f1de23cbcfcce26b0b5f1e0772c92869ea539f35b82b86e42e7f08a2d13ef08"},
+    {"role": "independent_qa_v1", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_availability_result_v1\\independent_qa_v1.json", "sha256": "af5c509bf17756fa1b32ada3222a99a73bd82ffaaa4e7fca276550000f27152e"},
+    {"role": "availability_report_v2", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_availability_result_v1\\availability_report_v2.json", "sha256": "0944a4620443def7805b6d78e9530275bf8263fbb02874fdd4091c3211ea11e5"},
+    {"role": "independent_qa_v2", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_availability_result_v1\\independent_qa_v2.json", "sha256": "26fb0051cecfb72d21e971e9db091f08b858a6cd7504e98e6b34b5e421d5b7c5"}
+  ],
+  "findings": {
+    "planned_candidates": 115,
+    "cumulative_archive_availability_requests": 53,
+    "resolved_results": 45,
+    "available_snapshot_results": 26,
+    "unavailable_snapshot_results": 19,
+    "unresolved_results": 70,
+    "development_available": 26,
+    "development_unavailable": 19,
+    "development_unresolved": 46,
+    "external_holdout_unresolved": 24,
+    "http_429_stops": 2,
+    "resolved_v1_results_preserved_in_v2": true,
+    "independent_qa_v1_passed": true,
+    "independent_qa_v2_passed": true,
+    "candidate_live_domain_access_operations": 0,
+    "archived_page_downloads": 0,
+    "labels_created": 0
+  },
+  "decision": {
+    "availability_query_complete": false,
+    "immediate_further_retry_allowed": false,
+    "later_cooldown_retry_may_be_prepared": true,
+    "capture_plan_construction_allowed": false,
+    "candidate_live_domain_access_allowed": false,
+    "archived_page_download_allowed": false,
+    "artifact_capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false,
+    "next_gate": "After a materially longer cooldown window, prepare a new unresolved-only retry release for the same 70 rows; do not use the 45 resolved development-only results to construct a biased capture plan."
+  },
+  "safety_contract": {"historical_archive_availability_requests": 53, "candidate_domain_access_operations": 0, "archived_page_downloads": 0, "artifact_captures": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

@@ -1,0 +1,94 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_IAPD_WAYBACK_AVAILABILITY_RESULT_V3",
+  "created_at": "2026-10-15",
+  "status": "FROZEN_INDEPENDENTLY_VERIFIED_PARTIAL_84_RESOLVED_31_UNRESOLVED_CAPTURE_BLOCKED",
+  "purpose": "Register the cooldown-compliant unresolved-only V3 archive availability retry, preserve every resolved V2 result, and keep capture planning closed while 31 network errors remain.",
+  "inputs": [
+    {
+      "role": "v3_retry_release",
+      "path": "configs/sec_edgar_iapd_wayback_availability_retry_release_v3.json",
+      "sha256": "1c068beb4ecd3d4080ed97d78ddb28c2f4be2adfdb4162c3aa945c7351ede937"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "v3_retry_executor",
+      "path": "scripts/retry_sec_edgar_iapd_wayback_availability_v3.py",
+      "sha256": "a54effe89dfbebe59c622aaddd874f0c0d3160c3143cd4da163f27e9c3476839"
+    },
+    {
+      "role": "v3_result_verifier",
+      "path": "scripts/verify_sec_edgar_iapd_wayback_availability_result_v3.py",
+      "sha256": "49d517321798a7851555307d99230f878ccb997110ba98d530c5c2fdbd598e73"
+    },
+    {
+      "role": "registry_tests",
+      "path": "tests/test_sec_edgar_iapd_wayback_availability_result_registry_v3.py",
+      "sha256": "d077ec979b69092dbb3772e2d059a06b3b37514631f5793f9e350ff6f2a62842"
+    },
+    {
+      "role": "documentation",
+      "path": "docs/sec-edgar-iapd-wayback-availability-result-v3.md",
+      "sha256": "f1a33c146492dd243fe9c7a4c2c785d9b710da82309a5a3ab6aef38775663b64"
+    }
+  ],
+  "outputs": [
+    {
+      "role": "availability_report_v3",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_availability_result_v1\\availability_report_v3.json",
+      "sha256": "4bde984217645b7897ee20858f5872d30873704b40da8368dabbc40cedcaa7dd"
+    },
+    {
+      "role": "independent_qa_v3",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_availability_result_v1\\independent_qa_v3.json",
+      "sha256": "ce1e74420b36ba44a8e782618904fd0cc4c5aa8cf5dc37f2e43c698570a38021"
+    }
+  ],
+  "findings": {
+    "planned_candidates": 115,
+    "resolved_v2_results_reused": 45,
+    "v3_retry_candidates": 70,
+    "v3_network_requests": 70,
+    "cumulative_archive_availability_requests": 123,
+    "resolved_results": 84,
+    "available_snapshot_count": 42,
+    "unavailable_snapshot_count": 42,
+    "unresolved_error_count": 31,
+    "development_unresolved": 21,
+    "external_holdout_unresolved": 10,
+    "dns_resolution_errors": 15,
+    "connection_timeout_errors": 9,
+    "read_timeout_errors": 7,
+    "stopped_on_http_429": false,
+    "resolved_v2_results_preserved_in_v3": true,
+    "retried_only_prior_unresolved_rows": true,
+    "cooldown_gate_respected": true,
+    "independent_qa_status": "PASS_PARTIAL_ERRORS_PRESERVED_CAPTURE_PLAN_BLOCKED",
+    "candidate_live_domain_access_operations": 0,
+    "archived_page_downloads": 0,
+    "labels_created": 0
+  },
+  "decision": {
+    "v3_result_registered": true,
+    "availability_query_complete": false,
+    "capture_plan_construction_allowed": false,
+    "unresolved_only_v4_release_may_be_prepared": true,
+    "network_execution_allowed_now": false,
+    "candidate_live_domain_access_allowed": false,
+    "archived_page_download_allowed": false,
+    "artifact_capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Freeze an exact 31-row unresolved-only V4 retry release with not_before no earlier than 2026-10-16T00:48:55.969405+07:00. Do not construct the capture plan while any availability row remains unresolved."
+  },
+  "safety_contract": {
+    "historical_archive_availability_requests": 123,
+    "candidate_domain_access_operations": 0,
+    "archived_page_downloads": 0,
+    "artifact_captures": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

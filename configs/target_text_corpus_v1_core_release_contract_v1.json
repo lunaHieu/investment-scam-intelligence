@@ -1,0 +1,73 @@
+{
+  "contract_id": "ISI_TARGET_TEXT_CORPUS_V1_CORE_RELEASE_CONTRACT_V1",
+  "created_at": "2026-10-14",
+  "status": "FROZEN_PREDECLARED_VALIDATION_CONTRACT_NO_DATASET_RELEASED",
+  "purpose": "Validate a future balanced, grouped and owner-accepted Dataset V1-Core release without opening any model partition.",
+  "sampling_matrix": {
+    "path": "configs/target_text_corpus_v1_sampling_matrix_v1.json",
+    "sha256": "19faaa4e2e0edfd87a403f6e39df96c763a7e0ae5890cebe6cc3adbb3c40176b"
+  },
+  "expected_manifest": {
+    "release_id": "ISI_TARGET_TEXT_CORPUS_V1_CORE_RELEASE_V1",
+    "status": "PROPOSED_BALANCED_RELEASE_INDEPENDENT_QA_REQUIRED",
+    "channel_contribution_status": "PASS_CHANNEL_CONTRIBUTION_READY",
+    "development_release_eligibility": "NO_PENDING_GROUP_SPLIT_RELEASE",
+    "external_holdout_release_eligibility": "NO_EXTERNAL_HOLDOUT",
+    "external_holdout_model_scoring_eligibility": "NO_PENDING_FROZEN_EVALUATION_RELEASE"
+  },
+  "record_contract": {
+    "minimum_non_whitespace_text_characters": 20,
+    "allowed_cohorts": ["DEVELOPMENT", "EXTERNAL_HOLDOUT"],
+    "allowed_target_statuses": ["CONFIRMED", "LEGITIMATE"],
+    "required_group_fields": [
+      "transitive_group_id",
+      "case_campaign_group_id",
+      "entity_domain_family_group_id",
+      "near_duplicate_group_id"
+    ],
+    "required_sha256_fields": [
+      "observed_artifact_text_sha256",
+      "raw_capture_sha256",
+      "primary_review_sha256",
+      "blind_second_review_sha256",
+      "reconciliation_sha256",
+      "owner_acceptance_sha256",
+      "channel_contribution_qa_sha256"
+    ],
+    "required_true_fields": [
+      "fresh_cohort",
+      "human_reviewed_language",
+      "opened_cohort_exclusion_pass",
+      "cross_partition_exclusion_pass"
+    ],
+    "required_evidence_confidence": "HIGH",
+    "required_review_status": "RECONCILED_OWNER_ACCEPTED",
+    "forbidden_fields": [
+      "partition",
+      "model_score",
+      "model_prediction",
+      "validation_result",
+      "test_result"
+    ]
+  },
+  "language_contract": {
+    "english_codes": ["en"],
+    "vietnamese_codes": ["vi"],
+    "development_minimum_non_english_groups_per_label": 12,
+    "development_minimum_vietnamese_groups_per_label": 6,
+    "external_holdout_minimum_non_english_groups_per_label": 3,
+    "external_holdout_minimum_vietnamese_groups_per_label": 2
+  },
+  "archive_contract": {
+    "scheme": "https",
+    "allowed_hosts": ["web.archive.org"],
+    "raw_replay_modifier_required": true
+  },
+  "release_decision": {
+    "actual_release_allowed_now": false,
+    "development_partitioning_allowed_now": false,
+    "training_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "external_holdout_model_scoring_allowed": false
+  }
+}

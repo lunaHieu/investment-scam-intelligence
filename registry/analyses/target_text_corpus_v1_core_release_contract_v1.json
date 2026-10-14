@@ -1,0 +1,80 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_CORE_RELEASE_CONTRACT_V1",
+  "created_at": "2026-10-14",
+  "status": "FROZEN_PREDECLARED_BALANCED_RELEASE_VALIDATOR_REAL_CONTRIBUTIONS_REQUIRED",
+  "purpose": "Register the independently testable balance, provenance, language, disjointness and closed-model gates for a future Dataset V1-Core release.",
+  "inputs": [
+    {
+      "role": "sampling_matrix_result_v1",
+      "path": "registry/analyses/target_text_corpus_v1_sampling_matrix_v1.json",
+      "sha256": "ce83728095e142277eff3b1266dabaf912d49507747f9caf6fc676cae641a9ca"
+    },
+    {
+      "role": "sec_edgar_iapd_owner_acceptance_tooling_v1",
+      "path": "registry/analyses/sec_edgar_iapd_owner_acceptance_tooling_v1.json",
+      "sha256": "e5d429dfb9e9aade6a398bae2a371cfc76826d5705d2a9f1cb46715bc1c7707d"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "core_release_contract",
+      "path": "configs/target_text_corpus_v1_core_release_contract_v1.json",
+      "sha256": "827ad1e5785c37352a47542a5be614f6f0fde9db8bcd96618d43e4ba0f668dea"
+    },
+    {
+      "role": "independent_release_verifier",
+      "path": "scripts/verify_target_text_corpus_v1_core_release_v1.py",
+      "sha256": "3417a6893fb846f93de87426706f543cfe7f48f9da510e030bebc14abbf1c041"
+    },
+    {
+      "role": "verifier_tests",
+      "path": "tests/test_verify_target_text_corpus_v1_core_release_v1.py",
+      "sha256": "55f4c86a81b92e11b592662456620df323d15dad797766b3e942675aafe69fef"
+    },
+    {
+      "role": "registry_test",
+      "path": "tests/test_target_text_corpus_v1_core_release_contract_registry_v1.py",
+      "sha256": "a7eae2c09517ff7866b516e2548548988289f3f027a817c6c846ba6a1ef73743"
+    },
+    {
+      "role": "documentation",
+      "path": "docs/target-text-corpus-v1-core-release-contract-v1.md",
+      "sha256": "e3ea2a23dbdb34914634fda7ec5a44d11a932f506917d06bcf1f10b8617abaca"
+    }
+  ],
+  "outputs": [],
+  "findings": {
+    "required_total_groups": 300,
+    "required_development_groups": 240,
+    "required_external_holdout_groups": 60,
+    "required_target_statuses": 2,
+    "required_channels": 4,
+    "development_groups_per_channel": 60,
+    "external_holdout_groups_per_channel": 15,
+    "exact_text_and_raw_capture_collisions_forbidden": true,
+    "cross_cohort_group_overlap_forbidden": true,
+    "opened_cohort_overlap_forbidden": true,
+    "reviewed_language_quotas_enforced": true,
+    "raw_wayback_replay_required": true,
+    "primary_blind_reconciliation_owner_provenance_required": true,
+    "partition_assignment_forbidden_at_release_validation": true,
+    "real_records_validated": 0
+  },
+  "decision": {
+    "release_validation_contract_ready": true,
+    "actual_dataset_release_allowed_now": false,
+    "real_channel_contributions_required": true,
+    "development_group_split_plan_allowed_now": false,
+    "training_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "external_holdout_model_scoring_allowed": false,
+    "next_gate": "Complete and independently verify every channel contribution, then validate one exact 300-group manifest. A pass may prepare a deterministic development group-split plan but still cannot open training, validation, internal test, or external holdout."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "real_dataset_records_created": 0,
+    "model_operations": 0,
+    "training_operations": 0,
+    "validation_or_test_openings": 0
+  }
+}

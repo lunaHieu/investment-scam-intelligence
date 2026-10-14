@@ -1,0 +1,63 @@
+{
+  "contract_id": "ISI_TARGET_TEXT_CORPUS_V1_GROUP_SPLIT_CONTRACT_V1",
+  "created_at": "2026-10-14",
+  "status": "FROZEN_PREDECLARED_DETERMINISTIC_SPLIT_NO_REAL_ASSIGNMENTS",
+  "purpose": "Create exact stratified group assignments for a future validated V1-Core release without exposing text or the external holdout population.",
+  "core_release_contract": {
+    "path": "configs/target_text_corpus_v1_core_release_contract_v1.json",
+    "sha256": "827ad1e5785c37352a47542a5be614f6f0fde9db8bcd96618d43e4ba0f668dea"
+  },
+  "required_core_release_qa_status": "PASS_BALANCED_GROUPED_RELEASE_PARTITION_PLAN_REQUIRED",
+  "split_namespace": "ISI_TARGET_TEXT_CORPUS_V1_GROUP_SPLIT_V1",
+  "frozen_seed": "isi-v1-core-group-split-2026-10-14-5f1c9c93",
+  "unit_of_assignment": "TRANSITIVE_GROUP_REPRESENTATIVE",
+  "stratification_fields": ["target_status", "channel_id"],
+  "deterministic_key": "SHA256(frozen_seed|DEVELOPMENT|target_status|channel_id|record_id|transitive_group_id)",
+  "partition_quota_per_target_channel": {
+    "train": 42,
+    "validation": 9,
+    "internal_test": 9
+  },
+  "expected_totals": {
+    "train": 168,
+    "validation": 36,
+    "internal_test": 36,
+    "development": 240,
+    "external_holdout_sealed": 60
+  },
+  "assignment_output_fields": [
+    "record_id",
+    "target_status",
+    "channel_id",
+    "cohort",
+    "partition",
+    "transitive_group_id",
+    "selection_rank_within_stratum",
+    "deterministic_key_sha256",
+    "record_commitment_sha256"
+  ],
+  "forbidden_assignment_fields": [
+    "observed_artifact_visible_text",
+    "observed_artifact_text_sha256",
+    "raw_capture_sha256",
+    "source_url",
+    "language_code",
+    "model_score",
+    "model_prediction"
+  ],
+  "holdout_contract": {
+    "record_ids_exposed_in_split_plan": false,
+    "population_commitment_required": true,
+    "training_use_allowed": false,
+    "model_selection_use_allowed": false,
+    "scoring_allowed_now": false
+  },
+  "decision": {
+    "real_split_allowed_now": false,
+    "train_materialization_allowed_now": false,
+    "validation_opening_allowed": false,
+    "internal_test_opening_allowed": false,
+    "external_holdout_opening_allowed": false,
+    "training_allowed": false
+  }
+}

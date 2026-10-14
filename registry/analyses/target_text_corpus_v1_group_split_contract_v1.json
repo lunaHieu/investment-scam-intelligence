@@ -1,0 +1,78 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_GROUP_SPLIT_CONTRACT_V1",
+  "created_at": "2026-10-14",
+  "status": "FROZEN_PREDECLARED_DETERMINISTIC_SPLIT_REAL_CORE_RELEASE_REQUIRED",
+  "purpose": "Register the deterministic metadata-only development split and sealed external-holdout protocol before any real V1-Core release exists.",
+  "inputs": [
+    {
+      "role": "core_release_contract_registry_v1",
+      "path": "registry/analyses/target_text_corpus_v1_core_release_contract_v1.json",
+      "sha256": "7139860025431ec13dc1d0b979083cf84889e7bc2fe876bdfdba73be84868e03"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "group_split_contract",
+      "path": "configs/target_text_corpus_v1_group_split_contract_v1.json",
+      "sha256": "cd0c48278756cb59616dfa03c70d51f39126e586fade525e91f1ff2ab11207c1"
+    },
+    {
+      "role": "deterministic_split_builder",
+      "path": "scripts/build_target_text_corpus_v1_group_split_plan_v1.py",
+      "sha256": "f59453235233bca35fec1d34d674e97b1ea4c84bef57a33545f62a0025a2ceb7"
+    },
+    {
+      "role": "independent_split_verifier",
+      "path": "scripts/verify_target_text_corpus_v1_group_split_plan_v1.py",
+      "sha256": "94d7b0ead18bc496b0175bd5ceebffd623390c37b2c5e1fbbce5b011d44784ec"
+    },
+    {
+      "role": "split_tests",
+      "path": "tests/test_target_text_corpus_v1_group_split_plan_v1.py",
+      "sha256": "41b50d3e086e789bafb330c390163c09d17c25df4b86fd76998e012b6a433743"
+    },
+    {
+      "role": "registry_test",
+      "path": "tests/test_target_text_corpus_v1_group_split_contract_registry_v1.py",
+      "sha256": "08b04112b51628ac2d9be39dc67d4c3522702462f816133963d49e21494da664"
+    },
+    {
+      "role": "documentation",
+      "path": "docs/target-text-corpus-v1-group-split-contract-v1.md",
+      "sha256": "0c3688a1cce9b09e83ac72248c1fb911c519653dab504e4fd7fa05451c24a43b"
+    }
+  ],
+  "outputs": [],
+  "findings": {
+    "development_groups_required": 240,
+    "train_assignments": 168,
+    "validation_assignments": 36,
+    "internal_test_assignments": 36,
+    "per_target_channel_train_assignments": 42,
+    "per_target_channel_validation_assignments": 9,
+    "per_target_channel_internal_test_assignments": 9,
+    "external_holdout_records_sealed": 60,
+    "external_holdout_ids_exposed": false,
+    "split_independent_of_text_and_model_signals": true,
+    "independent_exact_reconstruction_required": true,
+    "real_assignments_created": 0
+  },
+  "decision": {
+    "split_tooling_ready_before_real_core_release": true,
+    "real_split_allowed_now": false,
+    "validated_real_core_release_required": true,
+    "train_materialization_allowed_now": false,
+    "training_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "external_holdout_opening_allowed": false,
+    "next_gate": "After a real balanced V1-Core release passes independent QA, build and independently reproduce the metadata-only split. Only then may a separate train-only materialization release be prepared."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "real_dataset_records_created": 0,
+    "real_partition_assignments_created": 0,
+    "model_operations": 0,
+    "training_operations": 0,
+    "validation_or_test_openings": 0
+  }
+}

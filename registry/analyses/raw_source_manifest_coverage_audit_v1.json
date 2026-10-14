@@ -1,0 +1,88 @@
+{
+  "analysis_id": "ISI_RAW_SOURCE_MANIFEST_COVERAGE_AUDIT_RESULT_V1",
+  "created_at": "2026-10-15",
+  "status": "FROZEN_REGISTERED_MANIFESTS_PASS_COMPLETE_RAW_COVERAGE_NOT_YET_CLAIMED",
+  "purpose": "Register the read-only integrity audit of every raw file covered by the checked-in source-manifest system while explicitly separating later raw artifacts that require cross-registry coverage verification.",
+  "inputs": [
+    {
+      "role": "source_manifest_schema",
+      "path": "schemas/source_manifest.schema.json",
+      "sha256": "7c8639ee5e63425532d4d32f3aa70f9120d67b455be19d1c7447b5f80a758ccf"
+    },
+    {
+      "role": "registered_raw_verifier",
+      "path": "scripts/verify_raw_data.py",
+      "sha256": "b3316a712bd368f7dd7468d20f0fb7e7fa385e58e93e85eea704746062365932"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "coverage_auditor",
+      "path": "scripts/audit_raw_source_manifest_coverage_v1.py",
+      "sha256": "ea491619b150d342e8a0af7cd1c4b714a4d017d875e433b859b9e7da363c7eaa"
+    },
+    {
+      "role": "coverage_auditor_tests",
+      "path": "tests/test_audit_raw_source_manifest_coverage_v1.py",
+      "sha256": "9e859ac00e7598fabea1f9f00918d26a864a2fa1f947216d34f83a686e1678c2"
+    },
+    {
+      "role": "registry_tests",
+      "path": "tests/test_raw_source_manifest_coverage_audit_registry_v1.py",
+      "sha256": "b3e053cfa3ba2702a7c985cb30898dd622b211d9e911b0e6e9bcbe861feb035e"
+    },
+    {
+      "role": "documentation",
+      "path": "docs/raw-source-manifest-coverage-audit-v1.md",
+      "sha256": "f94c62b24d42c12d729e471c7f02c96caf0ab724ce2ae7a587be9504d9e3e074"
+    }
+  ],
+  "outputs": [
+    {
+      "role": "raw_source_manifest_coverage_audit",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\project_state_audit_v1\\raw_source_manifest_coverage_audit_v1.json",
+      "sha256": "e8cf9b9c7fa05cc552ab707aa6890c1ef88617969bd47cda2d40f7c685d1c015"
+    }
+  ],
+  "findings": {
+    "supported_manifest_count": 37,
+    "supported_manifest_set_sha256": "a44543d98011164217323144328550a7636f6bc969555b6aaa186091017403ad",
+    "existing_registered_files": 37,
+    "missing_registered_files": 0,
+    "registered_hash_matches": 37,
+    "registered_hash_mismatches": 0,
+    "registered_html_structure_failures": 0,
+    "raw_inventory_file_count": 278,
+    "raw_inventory_byte_count": 1640058635,
+    "source_manifest_covered_files": 37,
+    "outside_source_manifest_scope_files": 241,
+    "registered_source_counts": {
+      "crimson_www_2025": 1,
+      "iosco_i_scan": 1,
+      "mendeley_investment_deceptive_2026": 1,
+      "official_warning_capture_2026_09_24": 12,
+      "sec_iapd": 1,
+      "sec_iapd_homepage_capture_2026_09_24": 11,
+      "wayback_confirmed_capture_2026_09_24": 10
+    }
+  },
+  "decision": {
+    "p2a_registered_source_manifest_audit_complete": true,
+    "registered_source_manifest_integrity_passed": true,
+    "complete_raw_provenance_coverage_claim_allowed": false,
+    "p2b_cross_registry_provenance_audit_required": true,
+    "training_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "next_gate": "Map and verify the 241 files outside the original source-manifest scope against their acquisition, capture, benchmark, and result registries; do not treat outside-scope files as failed or eligible by default."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "raw_file_modifications": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "validation_or_test_openings": 0,
+    "training_allowed": false
+  }
+}

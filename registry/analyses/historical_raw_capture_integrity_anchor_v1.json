@@ -1,0 +1,100 @@
+{
+  "analysis_id": "ISI_HISTORICAL_RAW_CAPTURE_INTEGRITY_ANCHOR_V1",
+  "created_at": "2026-10-15",
+  "status": "FROZEN_RETROSPECTIVE_INTEGRITY_ANCHOR_NO_PROMOTION",
+  "purpose": "Anchor the exact pre-existing capture reports needed to close the 87 raw provenance gaps identified by P2B and classified by P2C. This records present integrity and does not recreate, backdate, or relabel historical acquisition events.",
+  "inputs": [
+    {
+      "role": "unanchored_provenance_triage",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\project_state_audit_v1\\unanchored_raw_provenance_triage_v1.json",
+      "sha256": "6a22236beddb5abc8948380600e546432584b5083ab574006203f6448e40a7cb"
+    }
+  ],
+  "evidence_documents": [
+    {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_intake_v1\\confirmed_capture_pilot_v1\\wayback_capture_run_v1.json",
+      "sha256": "1278e1a4acd51a4fce66649369535bd0e96caeb807fb5abb7e6c324869e00c55"
+    },
+    {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_intake_v1\\confirmed_reserve_capture_v1\\wayback_capture_batch_011_020_v1.json",
+      "sha256": "c539152ff5b3570a312be37c0d901d6a6dd6159c0b066aad8fb47904d894d33b"
+    },
+    {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_intake_v1\\confirmed_reserve_capture_v1\\wayback_capture_merged_v1.json",
+      "sha256": "1e319148a012c233d6dadb93053ba25d56959ed1aeb89a5d55bb1743aa11741c"
+    },
+    {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_intake_v1\\confirmed_reserve_capture_v2\\wayback_capture_batch_001_010_v1.json",
+      "sha256": "a7cd34651bd7bcab64678f8b435976bc38584cfd923ed21c3ba8de0c3b4c6e86"
+    },
+    {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_intake_v1\\confirmed_reserve_capture_v2\\wayback_capture_batch_011_020_v1.json",
+      "sha256": "bc883c9b6f7909e459e4d93e87d815187ea7f9b5364c40ed2c32e5c4acf8cb1d"
+    },
+    {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_intake_v1\\confirmed_reserve_capture_v2\\wayback_capture_batch_021_030_v1.json",
+      "sha256": "b6d3b3ce5c89a0b00b176ac60a9ca6b859efb153a41c5b1e97b8a1dc7bbb2094"
+    },
+    {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_intake_v1\\confirmed_reserve_capture_v2\\wayback_capture_batch_031_040_v1.json",
+      "sha256": "4170a421dfca01f34920747ff7dabb855e989174ecfa680fe7b8f54f3212df0e"
+    },
+    {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_intake_v1\\confirmed_reserve_capture_v2\\wayback_capture_merged_001_030_v1.json",
+      "sha256": "098eccd0b0af99689a7317d98d7fe2cc4bb0068abcd0935586bc7cd06ba1ea38"
+    },
+    {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_matched_wayback_v2\\balanced_capture_report_v2.json",
+      "sha256": "35f9af8faead574662b24823ef658e9df8ecd6137f423eff6442202b88064ff3"
+    },
+    {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_matched_wayback_v2\\topup_balanced_capture_report_v2.json",
+      "sha256": "33dfd52e8e092a818bc46a82d103c6a3167922bc368d9500a8014fdc8f77fc05"
+    },
+    {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\external_text_matched_wayback_v2\\topup2_balanced_capture_report_v2.json",
+      "sha256": "5760a94c4d71e85c322396aee167f365d679c05764160a0609d4a58e42283aad"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "independent_anchor_verifier",
+      "path": "scripts/verify_historical_raw_capture_integrity_anchor_v1.py",
+      "sha256": "ae37c70a1a2764c198c0e3a90020b34b7041eebcae7aa899f53dadbe895f7954"
+    },
+    {
+      "role": "verifier_tests",
+      "path": "tests/test_verify_historical_raw_capture_integrity_anchor_v1.py",
+      "sha256": "478f1a0e2eb453b9c7721add9142fc23215b196adb739b88fb701eb827be26ae"
+    }
+  ],
+  "findings": {
+    "anchored_evidence_document_count": 11,
+    "covered_previously_unanchored_raw_files": 87,
+    "conflicting_raw_hash_claims": 0,
+    "usable_capture_views_used_as_evidence": 0,
+    "historical_capture_records_rewritten": 0
+  },
+  "decision": {
+    "retrospective_integrity_anchor_complete": true,
+    "files_promoted": 0,
+    "raw_provenance_coverage_may_be_recomputed": true,
+    "training_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "labeling_allowed": false,
+    "next_gate": "Recompute all 278 raw files from scratch using the Git-rooted transitive verifier and freeze a V2 result."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "raw_file_modifications": 0,
+    "capture_documents_modified": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "validation_or_test_openings": 0
+  },
+  "prohibited_claims": [
+    "This anchor does not prove a capture date beyond what the preserved historical document states.",
+    "This anchor does not create or change a class label.",
+    "This anchor does not by itself authorize training, validation, test, or benchmark scoring."
+  ]
+}

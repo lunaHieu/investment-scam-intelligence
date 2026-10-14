@@ -1,0 +1,231 @@
+{
+  "analysis_id": "ISI_PROJECT_STATE_GAP_LEDGER_V1",
+  "created_at": "2026-10-15",
+  "base_commit": "8bf257116680aec109994331b1dad1147376dbbb",
+  "status": "FROZEN_OFFLINE_PROJECT_STATE_AUDIT_PARALLEL_WORK_READY",
+  "purpose": "Freeze one hash-bound project-state snapshot that distinguishes completed evidence, pending reviews, timed gates, missing inputs, and permitted parallel work without changing data or opening model gates.",
+  "inputs": [
+    {
+      "role": "mendeley_text_challenger_v4_oof_error_analysis",
+      "path": "registry/analyses/mendeley_text_challenger_v4_oof_error_analysis.json",
+      "sha256": "11436de3f1ed0635920af31f27ab3586f0e641845f71ee397a1b292caf2aa779"
+    },
+    {
+      "role": "external_text_intake_gate_v1",
+      "path": "registry/analyses/external_text_intake_gate_v1.json",
+      "sha256": "2627f158a97f6490366e7a9ad1fc1b8416b4bf01900700554e53e28267607cbc"
+    },
+    {
+      "role": "external_text_ai_manual_adjudication_v1",
+      "path": "registry/analyses/external_text_ai_manual_adjudication_v1.json",
+      "sha256": "e8b4baf8fa141acf6441d8221482b3d6eaea3b5d0e6e9d778639dc4ef34e9979"
+    },
+    {
+      "role": "crimson_human_review_plan_v1",
+      "path": "registry/analyses/crimson_human_review_plan_v1.json",
+      "sha256": "e4cfd099c330a80efcee44710110ac8a4b59e626cf32a44754b66ebd48b07d1f"
+    },
+    {
+      "role": "crimson_human_review_decisions_v1",
+      "path": "registry/analyses/crimson_human_review_decisions_v1.json",
+      "sha256": "ae057f9bc20ee577f9bf54837384fc5e50fb6a8be01bcdd9ff29f7743976e1d1"
+    },
+    {
+      "role": "target_text_corpus_v1_core_release_contract_v1",
+      "path": "registry/analyses/target_text_corpus_v1_core_release_contract_v1.json",
+      "sha256": "7139860025431ec13dc1d0b979083cf84889e7bc2fe876bdfdba73be84868e03"
+    },
+    {
+      "role": "target_text_corpus_v1_group_split_contract_v1",
+      "path": "registry/analyses/target_text_corpus_v1_group_split_contract_v1.json",
+      "sha256": "5e33df00aa361415e640f175a2ae51c2487547665525ddde2901354fbbe27992"
+    },
+    {
+      "role": "target_text_corpus_v1_train_materialization_contract_v1",
+      "path": "registry/analyses/target_text_corpus_v1_train_materialization_contract_v1.json",
+      "sha256": "b57b5464e8c8bdad55dcff5cc0ef03264a18db223b3cef623a14e52dfa129866"
+    },
+    {
+      "role": "sec_edgar_iapd_wayback_availability_result_v3",
+      "path": "registry/analyses/sec_edgar_iapd_wayback_availability_result_v3.json",
+      "sha256": "93ce964eb7b21c84ce715db0f0446a7e846df2d35a4b75a1a5738790e8a93f8b"
+    },
+    {
+      "role": "sec_edgar_iapd_wayback_availability_retry_release_v4",
+      "path": "registry/analyses/sec_edgar_iapd_wayback_availability_retry_release_v4.json",
+      "sha256": "1ec545c91a0de786820ca2c7ca0993896fc57858790c20f13e1bc0da40623017"
+    },
+    {
+      "role": "mendeley_image_readiness_v1",
+      "path": "registry/analyses/mendeley_image_readiness_v1.json",
+      "sha256": "05c9c043c2865ffde5c873ed70335ae020bc00074ed64c088fd9a750390242ef"
+    },
+    {
+      "role": "target_text_corpus_v1_source_capacity_amendment_protocol_v1",
+      "path": "registry/analyses/target_text_corpus_v1_source_capacity_amendment_protocol_v1.json",
+      "sha256": "7c9e58699fba5ed67c4a10cae9d459682985211a31fd6afcead30b8a0056b1a7"
+    },
+    {
+      "role": "target_text_corpus_v1_vietnamese_channel_terms_v1",
+      "path": "registry/analyses/target_text_corpus_v1_vietnamese_channel_terms_v1.json",
+      "sha256": "2704c69378ceee00a7a5b39c456069ec1684a52d11facea4fef0b09e24d4c081"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "human_readable_ledger",
+      "path": "docs/project-state-gap-ledger-v1.md",
+      "sha256": "9f752d598d5210c3d3c27a5620ccabe880c7c7694e9e90d40c1ae5469a6eb7c2"
+    },
+    {
+      "role": "ledger_contract_tests",
+      "path": "tests/test_project_state_gap_ledger_v1.py",
+      "sha256": "3af423b184764b5b19526b2f7be252e11738f7304e90e192858cb1c4f883c3d1"
+    }
+  ],
+  "authority_statuses": {
+    "mendeley_text": "COMPLETE_TRAIN_ONLY_DIAGNOSTIC_NO_MODEL_CHANGE",
+    "external_text_intake": "TWENTY_ONE_DRAFTS_IN_REVIEW_BLOCKED_ZERO_ELIGIBLE_RECORDS",
+    "external_text_ai_review": "TWENTY_ONE_AI_REVIEWS_COMPLETE_HUMAN_CONFIRMATION_PENDING_ZERO_ELIGIBLE",
+    "crimson_review_plan": "PRIORITIZED_HUMAN_REVIEW_PLAN_READY_NOT_FOR_TRAINING",
+    "crimson_decisions": "ONE_FIRST_HUMAN_REVIEW_RECORDED_SECOND_REVIEW_REQUIRED_NOT_FOR_TRAINING",
+    "v1_core_release": "FROZEN_PREDECLARED_BALANCED_RELEASE_VALIDATOR_REAL_CONTRIBUTIONS_REQUIRED",
+    "v1_core_split": "FROZEN_PREDECLARED_DETERMINISTIC_SPLIT_REAL_CORE_RELEASE_REQUIRED",
+    "v1_core_train_materialization": "FROZEN_PREDECLARED_TRAIN_ONLY_MATERIALIZATION_REAL_SPLIT_REQUIRED",
+    "sec_iapd_wayback_v3": "FROZEN_INDEPENDENTLY_VERIFIED_PARTIAL_84_RESOLVED_31_UNRESOLVED_CAPTURE_BLOCKED",
+    "sec_iapd_wayback_v4": "FROZEN_INDEPENDENTLY_VERIFIED_24H_COOLDOWN_ACTIVE",
+    "image_branch": "FROZEN_BLOCKED_NO_IMAGE_ASSETS",
+    "source_capacity": "FROZEN_PROTOCOL_VERIFIED_SEC_PLAN_ONLY",
+    "vietnamese_channel": "FROZEN_INDEPENDENTLY_VERIFIED_SOURCE_ROLES_REGISTERED_ACQUISITION_BLOCKED"
+  },
+  "findings": {
+    "mendeley_text": {
+      "raw_records": 16202,
+      "train_rows": 3916,
+      "train_groups": 3783,
+      "baseline_oof_errors": 1091,
+      "e5_oof_errors": 1214,
+      "net_e5_regressions": 123,
+      "challenger_status": "REJECTED_AT_DEVELOPMENT_GATE",
+      "new_model_configuration_authorized": false
+    },
+    "external_text": {
+      "draft_records": 21,
+      "ai_reviews_complete": 21,
+      "confirmed_recommendations": 10,
+      "legitimate_recommendations": 11,
+      "human_confirmations": 0,
+      "eligible_records": 0
+    },
+    "crimson": {
+      "planned_records": 40,
+      "first_reviews_recorded": 1,
+      "first_reviews_remaining": 39,
+      "second_review_required_in_plan": 21,
+      "manual_live_source_gaps": 16,
+      "training_eligible_records": 0
+    },
+    "v1_core": {
+      "required_groups": 300,
+      "required_development_groups": 240,
+      "sealed_external_holdout_groups": 60,
+      "real_groups_validated": 0,
+      "real_split_assignments_created": 0,
+      "planned_train_records": 168,
+      "real_train_records_materialized": 0
+    },
+    "sec_iapd_wayback": {
+      "planned_candidates": 115,
+      "resolved_rows": 84,
+      "available_rows": 42,
+      "unavailable_rows": 42,
+      "unresolved_rows": 31,
+      "v4_not_before": "2026-10-16T00:48:55.969405+07:00",
+      "capture_plan_construction_allowed": false
+    },
+    "image_branch": {
+      "actual_image_assets": 0,
+      "image_training_allowed": false,
+      "supported_mendeley_modalities": ["text", "behavioral_metadata"]
+    },
+    "manual_source_gaps": {
+      "dfpi_role": "CONDITIONAL_MANUAL_CANDIDATE_SEED_ONLY",
+      "vietnamese_reference_records_acquired": 0,
+      "vietnamese_reuse_or_export_gate_passed": false,
+      "sampling_matrix_v2_required_if_channels_change": true
+    },
+    "vietnamese_channel": {
+      "registered_source_roles": 2,
+      "reference_records_acquired": 0,
+      "candidate_enumeration_allowed": false
+    }
+  },
+  "parallel_plan": [
+    {
+      "workstream_id": "P2_RAW_QA",
+      "priority": 1,
+      "status": "READY_OFFLINE",
+      "meaning": "Verify immutable raw files, manifests, checksums, schemas, row counts, label semantics, and provenance without modifying bytes."
+    },
+    {
+      "workstream_id": "P3_EXTERNAL_21",
+      "priority": 2,
+      "status": "READY_FOR_EXPLICIT_ADOPTION_GATE",
+      "meaning": "Record explicit decisions for the 21 reviewed artifacts, preserve UNCERTAIN where necessary, and reconcile separately."
+    },
+    {
+      "workstream_id": "P4_CRIMSON_REVIEW",
+      "priority": 3,
+      "status": "READY_BOUNDED_LOCAL_EVIDENCE_FIRST",
+      "meaning": "Complete locally supported primary and blind second reviews while isolating live-source gaps."
+    },
+    {
+      "workstream_id": "P5_V1_CORE_GAPS",
+      "priority": 4,
+      "status": "READY_OFFLINE_CAPACITY_ONLY",
+      "meaning": "Recompute real deficits by target status, channel, language, and cohort without creating a release."
+    },
+    {
+      "workstream_id": "P6_MANUAL_PACKETS",
+      "priority": 5,
+      "status": "READY_DOCUMENTATION_ONLY",
+      "meaning": "Prepare exact manual acquisition, storage, provenance, license, reuse, and hashing instructions without bypassing source controls."
+    },
+    {
+      "workstream_id": "P7_MODEL_DOSSIER",
+      "priority": 6,
+      "status": "READY_NO_COMPUTE",
+      "meaning": "Compare model families against frozen data properties without fitting, scoring, or opening held-out data."
+    },
+    {
+      "workstream_id": "P8_THESIS_DOCS",
+      "priority": 7,
+      "status": "READY_DOCUMENTATION_ONLY",
+      "meaning": "Maintain methods, evidence policy, split policy, limitations, and reproducibility documentation from frozen artifacts."
+    }
+  ],
+  "decision": {
+    "p1_project_state_audit_complete": true,
+    "next_parallel_workstream": "P2_RAW_QA",
+    "sec_iapd_v4_remains_independent_timed_branch": true,
+    "training_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "external_holdout_scoring_allowed": false,
+    "image_training_allowed": false,
+    "live_candidate_domain_access_allowed": false,
+    "capture_before_complete_availability_qa_allowed": false,
+    "automatic_label_conversion_allowed": false
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "raw_file_modifications": 0,
+    "labels_created": 0,
+    "labels_changed": 0,
+    "model_fit_operations": 0,
+    "model_scoring_operations": 0,
+    "validation_rows_opened": 0,
+    "test_rows_opened": 0,
+    "external_holdout_rows_opened": 0,
+    "training_allowed": false
+  }
+}

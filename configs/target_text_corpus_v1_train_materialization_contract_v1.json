@@ -1,0 +1,42 @@
+{
+  "contract_id": "ISI_TARGET_TEXT_CORPUS_V1_TRAIN_MATERIALIZATION_CONTRACT_V1",
+  "created_at": "2026-10-14",
+  "status": "FROZEN_PREDECLARED_TRAIN_ONLY_MATERIALIZATION_NO_REAL_DATA",
+  "purpose": "Materialize only the frozen train assignments while keeping validation, internal test, external holdout and all model operations closed.",
+  "group_split_contract": {
+    "path": "configs/target_text_corpus_v1_group_split_contract_v1.json",
+    "sha256": "cd0c48278756cb59616dfa03c70d51f39126e586fade525e91f1ff2ab11207c1"
+  },
+  "required_split_qa_status": "PASS_DETERMINISTIC_SPLIT_REPRODUCED_TRAIN_MATERIALIZATION_RELEASE_REQUIRED",
+  "release_id": "ISI_TARGET_TEXT_CORPUS_V1_TRAIN_MATERIALIZATION_RELEASE_V1",
+  "release_status": "FROZEN_TRAIN_ONLY_RELEASE_INDEPENDENT_QA_REQUIRED",
+  "release_qa_status": "PASS_TRAIN_ONLY_RELEASE_REPRODUCED_EXECUTION_MAY_PROCEED",
+  "dataset_id": "ISI_TARGET_TEXT_CORPUS_V1_TRAIN_ONLY_DATASET_V1",
+  "dataset_status": "MATERIALIZED_TRAIN_ONLY_DATASET_MODEL_PROTOCOL_REQUIRED",
+  "expected_train_records": 168,
+  "expected_records_per_label": {
+    "CONFIRMED": 84,
+    "LEGITIMATE": 84
+  },
+  "expected_records_per_channel": 42,
+  "label_mapping": {
+    "CONFIRMED": 1,
+    "LEGITIMATE": 0
+  },
+  "dataset_fields": ["record_id", "text_content", "label", "group_id"],
+  "forbidden_partitions": ["validation", "internal_test", "external_holdout"],
+  "output_contract": {
+    "dataset_suffix": ".jsonl",
+    "report_suffix": ".json",
+    "same_parent_directory_required": true,
+    "overwrite_allowed": false
+  },
+  "decision": {
+    "real_release_allowed_now": false,
+    "real_materialization_allowed_now": false,
+    "training_allowed": false,
+    "validation_opening_allowed": false,
+    "internal_test_opening_allowed": false,
+    "external_holdout_opening_allowed": false
+  }
+}

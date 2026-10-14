@@ -12,9 +12,14 @@
   ],
   "implementation": [
     {
+      "role": "pending_owner_acceptance_packet_builder",
+      "path": "scripts/build_sec_edgar_iapd_owner_acceptance_packet_v1.py",
+      "sha256": "7bd2de57a4a8db45925750ad370852691ad884add07fee33a168b782e3edd146"
+    },
+    {
       "role": "owner_acceptance_materializer",
       "path": "scripts/materialize_sec_edgar_iapd_owner_acceptance_v1.py",
-      "sha256": "a11fde518a7086303f2fe3259143d7143e5f05372c08fd9355da18f7e2e1b4d4"
+      "sha256": "86ce7c54225f76236bb8508011084c98d6eef26c9b29aa13d2b0507196c08154"
     },
     {
       "role": "owner_acceptance_verifier",
@@ -22,24 +27,30 @@
       "sha256": "a012e945f03a6204de367d1e615d3110a0a141263ea1c66dd4aa30c9242b1e26"
     },
     {
+      "role": "pending_packet_builder_tests",
+      "path": "tests/test_build_sec_edgar_iapd_owner_acceptance_packet_v1.py",
+      "sha256": "204df66427aa7aeb23371c19e32d4c7784df9aa1ee9eb30aa3179e40dc75874b"
+    },
+    {
       "role": "owner_acceptance_tests",
       "path": "tests/test_sec_edgar_iapd_owner_acceptance_v1.py",
-      "sha256": "fde605659648493099eb674a3009491a547a516ac42b662892090005350287b0"
+      "sha256": "8d5e6e82d3c1143a4cd88c18970ee7aa5991ecb8969114b040e52d35aa0f1e23"
     },
     {
       "role": "registry_test",
       "path": "tests/test_sec_edgar_iapd_owner_acceptance_tooling_registry_v1.py",
-      "sha256": "8c2f1b123376cc7b5221227aa62e40e90c70f2812f3bc2e502b03935f5105967"
+      "sha256": "5d411ad58c2b3ae5d65e8336b00ad186954d251c9e24be6aec6f607d4e8af110"
     },
     {
       "role": "method_documentation",
       "path": "docs/sec-edgar-iapd-owner-acceptance-tooling-v1.md",
-      "sha256": "4f3eec37e9fb86393cd7410f2b93166cf8f25c5979d1538b8bd0d33181ea304d"
+      "sha256": "c53fda3b553215c2a449eb4b566b4d051de2ad5951b558273bc1fe1b3debd17c"
     }
   ],
   "outputs": [],
   "findings": {
     "explicit_owner_attestation_required": true,
+    "pending_packet_contains_no_preacceptance": true,
     "acceptance_bound_to_frozen_reconciliation": true,
     "one_explicit_decision_per_reconciled_record": true,
     "uncertain_recommendation_cannot_be_accepted": true,

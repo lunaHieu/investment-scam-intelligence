@@ -23,6 +23,7 @@ class SecEdgarIapdOwnerAcceptanceToolingRegistryV1Tests(unittest.TestCase):
             path = ROOT / item["path"]
             self.assertEqual(sha256_file(path), item["sha256"], item["path"])
         self.assertTrue(registry["findings"]["explicit_owner_attestation_required"])
+        self.assertTrue(registry["findings"]["pending_packet_contains_no_preacceptance"])
         self.assertTrue(registry["findings"]["cohort_is_inherited_not_owner_supplied"])
         self.assertTrue(registry["findings"]["external_holdout_never_training_eligible"])
         self.assertFalse(registry["decision"]["real_owner_acceptance_allowed_now"])

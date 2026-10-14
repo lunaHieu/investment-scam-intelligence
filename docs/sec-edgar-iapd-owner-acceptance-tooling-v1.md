@@ -8,9 +8,13 @@ Predeclare explicit owner acceptance and safe label materialization.
 
 Reconciliation does not create ground-truth labels. After the real primary and
 blind reviews have been reconciled and independently verified, the project
-owner must inspect that frozen reconciliation and provide one explicit Boolean
-decision plus a substantive rationale for every record. The acceptance file is
-bound to the exact reconciliation SHA-256 and includes an owner attestation.
+owner receives a generated pending decision packet. It contains the reconciled
+recommendation and agreement state for each record but starts with null
+decisions, empty rationales, false attestations and a closed materialization
+gate. The owner must inspect the frozen reconciliation and then provide one
+explicit Boolean decision plus a substantive rationale for every record. The
+completed acceptance file is bound to the exact reconciliation and QA SHA-256
+values and includes an owner attestation.
 
 Only a record already reconciled as `LEGITIMATE` can be accepted. An
 `UNCERTAIN` record cannot be promoted through owner acceptance. The acceptance

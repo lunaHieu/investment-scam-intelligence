@@ -23,11 +23,15 @@ class SecEdgarIapdOwnerAcceptanceV1Tests(unittest.TestCase):
         reconciliation_qa_path.write_text(json.dumps(reconciliation_qa, indent=2) + "\n", encoding="utf-8")
         acceptance = {
             "acceptance_id": "ISI_SEC_EDGAR_IAPD_OWNER_ACCEPTANCE_V1",
+            "status": "OWNER_DECISIONS_COMPLETE",
             "reconciliation_sha256": sha256_file(reconciliation_path),
+            "reconciliation_qa_sha256": sha256_file(reconciliation_qa_path),
             "owner_attestation": {"reviewed_reconciliation": True, "explicit_acceptance": True},
             "records": [
                 {
                     "record_id": row["record_id"],
+                    "reconciled_recommendation": row["reconciled_recommendation"],
+                    "review_agreement": row["review_agreement"],
                     "accepted": row["reconciled_recommendation"] == "LEGITIMATE",
                     "rationale": "The reconciled evidence and both independent reviews were inspected; this explicit decision preserves every frozen safety gate.",
                 }

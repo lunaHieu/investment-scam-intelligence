@@ -24,8 +24,12 @@ def build(reconciliation_path: Path, reconciliation_qa_path: Path, acceptance_pa
         raise ValueError("Reconciliation QA did not require owner acceptance")
     if acceptance.get("acceptance_id") != "ISI_SEC_EDGAR_IAPD_OWNER_ACCEPTANCE_V1":
         raise ValueError("Unexpected owner acceptance identity")
+    if acceptance.get("status") != "OWNER_DECISIONS_COMPLETE":
+        raise ValueError("Owner acceptance decisions are not complete")
     if acceptance.get("reconciliation_sha256") != sha256_file(reconciliation_path):
         raise ValueError("Owner acceptance is not bound to the frozen reconciliation")
+    if acceptance.get("reconciliation_qa_sha256") != sha256_file(reconciliation_qa_path):
+        raise ValueError("Owner acceptance is not bound to the frozen reconciliation QA")
     if acceptance.get("owner_attestation", {}).get("reviewed_reconciliation") is not True or acceptance.get("owner_attestation", {}).get("explicit_acceptance") is not True:
         raise ValueError("Owner attestation is incomplete")
     reconciled = {row["record_id"]: row for row in reconciliation.get("records", [])}
@@ -40,6 +44,10 @@ def build(reconciliation_path: Path, reconciliation_qa_path: Path, acceptance_pa
         source = reconciled[record_id]
         if "cohort" in decision:
             raise ValueError(f"Owner acceptance must not redefine cohort: {record_id}")
+        if decision.get("reconciled_recommendation") != source.get("reconciled_recommendation"):
+            raise ValueError(f"Owner acceptance recommendation context mismatch: {record_id}")
+        if decision.get("review_agreement") is not source.get("review_agreement"):
+            raise ValueError(f"Owner acceptance agreement context mismatch: {record_id}")
         accepted = decision.get("accepted")
         if not isinstance(accepted, bool):
             raise ValueError(f"Acceptance decision is not boolean: {record_id}")

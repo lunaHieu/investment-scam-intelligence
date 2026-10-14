@@ -1,0 +1,58 @@
+{
+  "analysis_id": "ISI_UNANCHORED_RAW_PROVENANCE_TRIAGE_V1",
+  "created_at": "2026-10-15",
+  "status": "FROZEN_PASS_GAPS_CLASSIFIED_NO_PROMOTION",
+  "purpose": "Register the bounded offline triage of raw files without a Git-rooted provenance chain, without promoting or relabeling any file.",
+  "inputs": [
+    {
+      "role": "cross_registry_provenance_audit",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\project_state_audit_v1\\raw_cross_registry_provenance_audit_v1.json",
+      "sha256": "3cb325bd0a414cd348a8138c86e09528359b2cc1e097f8ee631619dae9b52f52"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "unanchored_evidence_triage",
+      "path": "scripts/triage_unanchored_raw_provenance_v1.py",
+      "sha256": "3e32c6868797c01a02faaac0ecc6322cdcdfb627021aa8934afe9d6d75130bbd"
+    },
+    {
+      "role": "triage_tests",
+      "path": "tests/test_triage_unanchored_raw_provenance_v1.py",
+      "sha256": "c8796c11254d3d5100ab06a71316f1e98bdbb4e4623104f1de92a88eb34c2121"
+    }
+  ],
+  "outputs": [
+    {
+      "role": "authoritative_unanchored_evidence_triage",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\project_state_audit_v1\\unanchored_raw_provenance_triage_v1.json",
+      "sha256": "6a22236beddb5abc8948380600e546432584b5083ab574006203f6448e40a7cb"
+    }
+  ],
+  "findings": {
+    "uncovered_file_count": 87,
+    "evidence_document_count": 42,
+    "matching_unanchored_hash_evidence_files": 87,
+    "conflicting_unanchored_hash_evidence_files": 0,
+    "no_local_hash_evidence_found_files": 0,
+    "parse_failure_count": 0,
+    "files_promoted": 0
+  },
+  "decision": {
+    "pre_existing_evidence_complete_for_uncovered_population": true,
+    "git_rooted_provenance_complete": false,
+    "retrospective_integrity_anchor_may_be_prepared": true,
+    "files_eligible_for_silent_promotion": false,
+    "training_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "labeling_allowed": false,
+    "next_gate": "Freeze and independently verify the exact 42-document retrospective integrity anchor, then recompute raw provenance coverage from scratch."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "raw_file_modifications": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "validation_or_test_openings": 0
+  }
+}

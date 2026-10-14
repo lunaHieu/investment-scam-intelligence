@@ -1,0 +1,67 @@
+{
+  "analysis_id": "ISI_RAW_CROSS_REGISTRY_PROVENANCE_AUDIT_V1",
+  "created_at": "2026-10-15",
+  "status": "FROZEN_PASS_PARTIAL_PROVENANCE_GAPS_PRESERVED",
+  "purpose": "Register the read-only offline audit that traces raw files through transitive SHA-256 claims rooted in committed JSON registries and configurations.",
+  "inputs": [
+    {
+      "role": "prior_source_manifest_coverage_registry",
+      "path": "registry/analyses/raw_source_manifest_coverage_audit_v1.json",
+      "sha256": "83e18c0fb16ed93a78372e18d0d237a473d872fc8ef9be9b1aa4ec7393557f78"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "cross_registry_auditor",
+      "path": "scripts/audit_raw_cross_registry_provenance_v1.py",
+      "sha256": "09a30555481aa9872a4189d8a4f5cf759f9cd6aadaffd7cd046141861da43c7f"
+    },
+    {
+      "role": "auditor_tests",
+      "path": "tests/test_audit_raw_cross_registry_provenance_v1.py",
+      "sha256": "1ea766ff4f56ff2ca5d09f3e4be92b4e6acea7e98a040040ef8f9db9b7adf4e3"
+    }
+  ],
+  "outputs": [
+    {
+      "role": "authoritative_cross_registry_audit",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\project_state_audit_v1\\raw_cross_registry_provenance_audit_v1.json",
+      "sha256": "3cb325bd0a414cd348a8138c86e09528359b2cc1e097f8ee631619dae9b52f52"
+    }
+  ],
+  "findings": {
+    "raw_file_count": 278,
+    "raw_byte_count": 1640058635,
+    "verified_hash_pinned_chain_files": 191,
+    "no_hash_pinned_chain_found_files": 87,
+    "existing_raw_hash_mismatch_files": 0,
+    "missing_raw_claim_count": 2,
+    "missing_raw_claim_unique_target_count": 1,
+    "root_json_count": 228,
+    "parsed_json_document_count": 261,
+    "parse_failure_count": 0,
+    "uncovered_external_text_captures": 57,
+    "uncovered_external_text_matched_wayback_v2": 30
+  },
+  "decision": {
+    "complete_raw_provenance_chain_established": false,
+    "existing_raw_hash_mismatch_detected": false,
+    "uncovered_files_eligible_for_silent_promotion": false,
+    "next_gate": "Run bounded offline provenance triage over the 87 uncovered historical capture files; register only pre-existing verifiable evidence and quarantine every unresolved file.",
+    "training_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "labeling_allowed": false
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "raw_file_modifications": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "validation_or_test_openings": 0
+  },
+  "prohibited_claims": [
+    "Do not call an uncovered file corrupt solely because no Git-rooted hash chain was found.",
+    "Do not manufacture or backdate provenance for historical files.",
+    "Do not promote an uncovered file into training, validation, test, or external benchmark data without its existing gate requirements."
+  ]
+}

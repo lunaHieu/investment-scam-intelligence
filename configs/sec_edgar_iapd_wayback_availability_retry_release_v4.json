@@ -1,0 +1,79 @@
+{
+  "release_id": "ISI_SEC_EDGAR_IAPD_WAYBACK_AVAILABILITY_RETRY_RELEASE_V4",
+  "created_at": "2026-10-15T00:54:45+07:00",
+  "status": "FROZEN_UNRESOLVED_ONLY_24H_COOLDOWN_RETRY_NOT_YET_EXECUTABLE_CAPTURE_BLOCKED",
+  "purpose": "Preserve all 84 resolved V3 results and authorize one retry of only the 31 unresolved rows after a full 24-hour cooldown, at the same conservative archive-only pace.",
+  "basis": [
+    {
+      "role": "verified_partial_result_registry_v3",
+      "path": "registry/analyses/sec_edgar_iapd_wayback_availability_result_v3.json",
+      "sha256": "93ce964eb7b21c84ce715db0f0446a7e846df2d35a4b75a1a5738790e8a93f8b"
+    }
+  ],
+  "inputs": {
+    "availability_plan": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_availability_plan_v1\\availability_plan_v1.jsonl",
+      "sha256": "28f747ecb489e15b00fb6a33fa51fb10b451057115eff8905e5dd98d27c0ea8f",
+      "record_count": 115
+    },
+    "partial_report_v3": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_availability_result_v1\\availability_report_v3.json",
+      "sha256": "4bde984217645b7897ee20858f5872d30873704b40da8368dabbc40cedcaa7dd"
+    },
+    "independent_qa_v3": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_availability_result_v1\\independent_qa_v3.json",
+      "sha256": "ce1e74420b36ba44a8e782618904fd0cc4c5aa8cf5dc37f2e43c698570a38021",
+      "required_status": "PASS_PARTIAL_ERRORS_PRESERVED_CAPTURE_PLAN_BLOCKED"
+    }
+  },
+  "prior_outcome_contract": {
+    "requested_candidate_count": 115,
+    "cumulative_network_request_count": 123,
+    "resolved_result_count": 84,
+    "available_snapshot_count": 42,
+    "unavailable_snapshot_count": 42,
+    "unresolved_error_count": 31,
+    "stopped_on_http_429": false,
+    "resolved_results_must_remain_byte_equivalent": true,
+    "only_error_rows_may_be_retried": true
+  },
+  "cooldown_contract": {
+    "prior_attempt_created_at": "2026-10-15T00:48:55.969405+07:00",
+    "minimum_cooldown_seconds": 86400,
+    "not_before": "2026-10-16T00:48:55.969405+07:00",
+    "executor_must_fail_closed_before_not_before": true
+  },
+  "retry_contract": {
+    "endpoint": "https://archive.org/wayback/available",
+    "allowed_network_hosts": ["archive.org", "web.archive.org"],
+    "target_timestamp": "20261003",
+    "maximum_retry_candidate_count": 31,
+    "minimum_delay_seconds": 30.0,
+    "request_rate_per_second_maximum": 0.0333333333,
+    "maximum_attempts_per_candidate": 1,
+    "timeout_seconds": 30,
+    "maximum_redirects": 3,
+    "maximum_response_bytes": 2097152,
+    "https_only": true,
+    "automatic_external_redirect_following": false,
+    "stop_on_http_429": true,
+    "errors_are_preserved": true,
+    "errors_are_not_interpreted_as_no_snapshot": true,
+    "output_overwrite_allowed": false
+  },
+  "planned_output": {
+    "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_availability_result_v1\\availability_report_v4.json",
+    "report_id": "ISI_SEC_EDGAR_IAPD_ALL_FILER_WAYBACK_AVAILABILITY_REPORT_V4"
+  },
+  "decision": {
+    "release_preparation_allowed": true,
+    "unresolved_only_retry_allowed_after_not_before": true,
+    "network_execution_allowed_now": false,
+    "candidate_live_domain_access_allowed": false,
+    "archived_page_download_allowed": false,
+    "artifact_capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false
+  }
+}

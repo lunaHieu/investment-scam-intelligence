@@ -1,0 +1,55 @@
+{
+  "analysis_id": "ISI_REPRODUCIBILITY_CURRENT_STATE_V2",
+  "created_at": "2026-10-15",
+  "status": "FROZEN_CURRENT_REPRODUCIBILITY_GUIDE_PARALLEL_WORK_REFRESHED",
+  "purpose": "Register the updated reproduction guide rooted in state ledger V3, the module-compatible external verifier V2, and the controlled manual-acquisition packet.",
+  "current_entrypoint": "registry/analyses/project_state_gap_ledger_v3.json",
+  "inputs": [
+    {"role": "project_state_v3", "path": "registry/analyses/project_state_gap_ledger_v3.json", "sha256": "c0262046342e9a4bd7aaab767f5fbc603ef794c1001d8aeab6c7d4166e61b235"},
+    {"role": "raw_provenance", "path": "registry/analyses/raw_cross_registry_provenance_audit_v2.json", "sha256": "84dd009d88630bf23f1b5cc96e88aed4e34c43b03453c44e84b288a7dcda6d6a"},
+    {"role": "external_pilot_verifier_v2", "path": "registry/analyses/external_text_reconciled_pilot_verifier_v2.json", "sha256": "f0fa08cbeb938de78575251ede56b1792ecba2415962af0a9ca9dea5d10e7bc7"},
+    {"role": "manual_acquisition_packet", "path": "registry/analyses/target_text_corpus_v1_manual_acquisition_packet_v1.json", "sha256": "775ce6c3aa8ac2eef9803736eed65c5b8925128b8f3db04e22f112f39cfb050f"},
+    {"role": "model_choice", "path": "registry/analyses/text_model_choice_dossier_v5.json", "sha256": "dc2c0490d70f92c86f74c49d791426458dea89743e6493869e92200d032a80df"},
+    {"role": "sec_iapd_timed_release", "path": "registry/analyses/sec_edgar_iapd_wayback_availability_retry_release_v4.json", "sha256": "1ec545c91a0de786820ca2c7ca0993896fc57858790c20f13e1bc0da40623017"}
+  ],
+  "implementation": [
+    {"role": "guide_contract_tests", "path": "tests/test_reproducibility_current_state_v2.py", "sha256": "264eacd6ac7eeaa991989e355728859f7978ec38bcbd5276124d2a3cfba7e864"}
+  ],
+  "output": {
+    "role": "reproducibility_guide_v2",
+    "path": "docs/reproducibility-current-state-v2.md",
+    "sha256": "a1943b71ba8dd370443022fe95d3ad0b8b386f1c5babf33aff8199659ea23fcb"
+  },
+  "coverage": {
+    "storage_and_trust_boundaries": true,
+    "evidence_flow": true,
+    "raw_state": true,
+    "external_21_review_limitations": true,
+    "crimson_human_review_gap": true,
+    "target_text_pilot_state": true,
+    "timed_sec_iapd_gate": true,
+    "manual_acquisition_packet": true,
+    "model_state": true,
+    "module_invocation_examples": true,
+    "authorized_next_actions": true,
+    "prohibited_actions": true
+  },
+  "decision": {
+    "guide_v2_is_authoritative_navigation_entry": true,
+    "guide_v1_preserved_as_historical_snapshot": true,
+    "module_compatible_external_verifier_documented": true,
+    "manual_packet_documented": true,
+    "conversation_history_is_authoritative_artifact": false,
+    "training_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "network_execution_allowed_now": false
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "raw_file_modifications": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "validation_or_test_openings": 0,
+    "training_allowed": false
+  }
+}

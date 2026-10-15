@@ -1,0 +1,61 @@
+{
+  "analysis_id": "EXTERNAL_TEXT_RECONCILED_PILOT_VERIFIER_V2",
+  "created_at": "2026-10-15",
+  "status": "PASS_MODULE_COMPATIBLE_RECOMPUTATION_TOOLING_DEBT_CLOSED",
+  "purpose": "Register a module-compatible offline verifier for the frozen 21-record external pilot without changing its historical registry, raw bytes, decisions, review provenance, or model permissions.",
+  "inputs": [
+    {
+      "role": "frozen_external_text_reconciled_pilot_v1",
+      "path": "registry/pilots/external_text_reconciled_pilot_v1.json",
+      "sha256": "c6faa21193aa4ce55014a4bee60955037cb1c2a2aef145b73fe5e4f2bd6db8fd"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "module_compatible_verifier_v2",
+      "path": "scripts/verify_external_text_reconciled_pilot_v2.py",
+      "sha256": "1274782f27b93555cc70adc9eff3ad2bd9ecd22ed7d95016818fbfbe64e6418f"
+    },
+    {
+      "role": "documentation",
+      "path": "docs/external-text-reconciled-pilot-verifier-v2.md",
+      "sha256": "03634dff04d406f2e7a79bda371b5aaa39e1f77dc79a5066f0c1f4e8563f3a2d"
+    },
+    {
+      "role": "tests",
+      "path": "tests/test_verify_external_text_reconciled_pilot_v2.py",
+      "sha256": "e5020b647076b1be312ff11f35d3e551de411b4daa27e92ffbf8640e743d9195"
+    }
+  ],
+  "recomputed_findings": {
+    "record_count": 21,
+    "confirmed_count": 10,
+    "legitimate_count": 11,
+    "eligible_for_frozen_external_diagnostic_reporting": 21,
+    "all_pinned_artifact_hashes_match": true,
+    "all_raw_capture_and_exact_text_checks_pass": true,
+    "independent_human_evidence_rereview": false,
+    "double_reviewed_gold_benchmark": false,
+    "historical_v1_verifier_modified": false
+  },
+  "decision": {
+    "module_compatible_verifier_ready": true,
+    "legacy_tooling_debt_closed": true,
+    "raw_files_modified": false,
+    "labels_changed": false,
+    "review_quality_upgraded": false,
+    "training_allowed": false,
+    "model_scoring_allowed": false,
+    "next_gate": "Use the V2 verifier for reproducibility checks; obtain an independent human evidence rereview before making any stronger Gold-benchmark claim."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "raw_file_modifications": 0,
+    "labels_created": 0,
+    "labels_changed": 0,
+    "model_fit_operations": 0,
+    "model_scoring_operations": 0,
+    "validation_or_test_openings": 0,
+    "training_allowed": false
+  }
+}

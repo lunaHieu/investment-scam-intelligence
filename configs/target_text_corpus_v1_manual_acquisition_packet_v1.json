@@ -1,0 +1,169 @@
+{
+  "packet_id": "ISI_TARGET_TEXT_CORPUS_V1_MANUAL_ACQUISITION_PACKET_V1",
+  "frozen_at": "2026-10-15T02:15:00+07:00",
+  "status": "FROZEN_INSTRUCTIONS_ONLY_NO_SOURCE_ACTIVATED",
+  "purpose": "Provide a bounded, hash-verifiable handoff for future user-supplied DFPI and Vietnamese official-reference artifacts without authorizing scraping, candidate enumeration, labels, or model use.",
+  "basis": [
+    {
+      "role": "source_capacity_amendment_protocol",
+      "path": "configs/target_text_corpus_v1_source_capacity_amendment_protocol_v1.json",
+      "sha256": "6ae98618cbd7c67084c072d88bf9ad820e7cd5370ab52cc85f0feb46cb516aed"
+    },
+    {
+      "role": "vietnamese_channel_terms",
+      "path": "configs/target_text_corpus_v1_vietnamese_channel_terms_v1.json",
+      "sha256": "84a53656b6d2bcd30395a874c05284faed99a11b60349f7c176c061e60a5ac63"
+    },
+    {
+      "role": "vietnamese_source_addendum",
+      "path": "registry/source_addenda/target_text_corpus_v1_vietnamese_sources_v1.json",
+      "sha256": "c262b643107d7a6aa158781334b8eb1d9047960e5598e662f730f7881a4a4bc3"
+    },
+    {
+      "role": "dfpi_curated_intake_template",
+      "path": "registry/pilots/dfpi_sec_curated_intake_template.json",
+      "sha256": "36addcded8b17987cedcd5c6c38a31c5a755ac37ae905db69478206381f09e5a"
+    },
+    {
+      "role": "source_registry",
+      "path": "registry/sources.json",
+      "sha256": "37cb19e4b329b642a8a61f487e20d257b6f8e771a1f6bf60babb888d9d0b5609"
+    }
+  ],
+  "storage_root": "D:\\nckh 2026-2027\\ISI_Data\\raw",
+  "submission_manifest": {
+    "schema_path": "schemas/target_text_manual_acquisition_submission_v1.schema.json",
+    "template_path": "registry/pilots/target_text_manual_acquisition_submission_template_v1.json",
+    "required_status": "PENDING_INDEPENDENT_INTAKE_QA",
+    "overwrite_existing_files_allowed": false,
+    "original_bytes_must_be_preserved": true,
+    "sha256_required": true,
+    "one_manifest_item_per_file": true
+  },
+  "source_instructions": [
+    {
+      "source_id": "dfpi_crypto_scam_tracker",
+      "official_urls": [
+        "https://dfpi.ca.gov/consumers/crypto/crypto-scam-tracker/",
+        "https://dfpi.ca.gov/conditions-of-use/"
+      ],
+      "allowed_hosts": ["dfpi.ca.gov"],
+      "destination_relative_directory": "dfpi_crypto_scam_tracker",
+      "activation_status": "USER_SUPPLIED_FIRST_PARTY_ARTIFACT_OR_EXPLICIT_OFFICIAL_EXPORT_ONLY",
+      "maximum_items_per_submission": 20,
+      "permitted_acquisition_modes": [
+        "USER_SAVED_FIRST_PARTY_ARTIFACT",
+        "EXPLICIT_OFFICIAL_EXPORT",
+        "WRITTEN_PERMISSION"
+      ],
+      "required_rights_basis_types": [
+        "FIRST_PARTY_PUBLIC_RECORD_INTERNAL_RESEARCH",
+        "EXPLICIT_OFFICIAL_EXPORT_TERMS",
+        "WRITTEN_PERMISSION"
+      ],
+      "instructions": [
+        "Use a normal browser session or a first-party download/export offered by DFPI; do not bypass access controls.",
+        "Save the original artifact unchanged and record one manifest item for each file.",
+        "Treat each complaint-derived record as a case seed with UNCERTAIN status until independent official corroboration and exact observed-artifact linkage are reviewed."
+      ],
+      "automatic_ground_truth_allowed": false,
+      "complaint_narrative_as_model_input_allowed": false,
+      "candidate_enumeration_opened": false
+    },
+    {
+      "source_id": "ssc_vietnam_investor_warnings",
+      "official_urls": [
+        "https://ssc.gov.vn/webcenter/portal/ubck/pages_r/m/nhadautu/khuyencaonhadautu"
+      ],
+      "allowed_hosts": ["ssc.gov.vn"],
+      "destination_relative_directory": "ssc_vietnam_investor_warnings",
+      "activation_status": "BLOCKED_PENDING_EXPLICIT_OFFICIAL_EXPORT_OR_WRITTEN_REUSE_BASIS",
+      "maximum_items_per_submission": 20,
+      "permitted_acquisition_modes": [
+        "EXPLICIT_OFFICIAL_EXPORT",
+        "WRITTEN_PERMISSION"
+      ],
+      "required_rights_basis_types": [
+        "EXPLICIT_OFFICIAL_EXPORT_TERMS",
+        "WRITTEN_PERMISSION"
+      ],
+      "instructions": [
+        "Do not acquire records until an explicit official export/download basis or written internal academic reuse permission has been retained.",
+        "After that prerequisite is independently verified, preserve only the authorized original artifact and minimal provenance; do not redistribute complete page bundles.",
+        "An SSC warning is evidence and a case seed, not an automatic CONFIRMED label or model feature."
+      ],
+      "automatic_ground_truth_allowed": false,
+      "official_warning_text_as_model_input_allowed": false,
+      "candidate_enumeration_opened": false
+    },
+    {
+      "source_id": "hnx_vietnam_issuer_profiles",
+      "official_urls": [
+        "https://www.hnx.vn/vi-vn/co-phieu-etfs/chung-khoan-ny-thong-tin.html"
+      ],
+      "allowed_hosts": ["www.hnx.vn", "hnx.vn", "www.gov.hnx.vn", "gov.hnx.vn"],
+      "destination_relative_directory": "hnx_vietnam_issuer_profiles",
+      "activation_status": "BLOCKED_PENDING_EXPLICIT_OFFICIAL_EXPORT_OR_WRITTEN_REUSE_BASIS",
+      "maximum_items_per_submission": 20,
+      "permitted_acquisition_modes": [
+        "EXPLICIT_OFFICIAL_EXPORT",
+        "WRITTEN_PERMISSION"
+      ],
+      "required_rights_basis_types": [
+        "EXPLICIT_OFFICIAL_EXPORT_TERMS",
+        "WRITTEN_PERMISSION"
+      ],
+      "instructions": [
+        "Do not acquire records until an explicit official export/download basis or written internal academic reuse permission has been retained.",
+        "After that prerequisite is independently verified, retain only authorized original artifacts and minimal issuer/domain provenance; do not republish HNX page or data bundles.",
+        "An HNX listing supports identity reconciliation only and is not an automatic LEGITIMATE label or safety guarantee."
+      ],
+      "automatic_ground_truth_allowed": false,
+      "official_profile_text_as_model_input_allowed": false,
+      "candidate_enumeration_opened": false
+    }
+  ],
+  "intake_acceptance_gate": {
+    "accepted_for_qa_only_when": [
+      "the source ID, official URL host, acquisition mode, and rights-basis type satisfy the source-specific contract",
+      "the immutable file exists under the exact source directory and its byte size and SHA-256 match the manifest",
+      "acquisition time, original filename, media type, rights note, and personal-data flag are present",
+      "written permission or export-terms evidence is locally retained when required",
+      "the manifest remains PENDING_INDEPENDENT_INTAKE_QA"
+    ],
+    "qa_acceptance_creates_candidate": false,
+    "qa_acceptance_creates_label": false,
+    "qa_acceptance_opens_sampling_matrix_v2": false,
+    "qa_acceptance_allows_model_input": false
+  },
+  "after_intake_sequence": [
+    "independently verify bytes, hashes, source identity, rights basis, and personal-data handling",
+    "register an immutable intake result without copying protected source content into Git",
+    "if a Vietnamese channel is adopted, freeze and verify Sampling Matrix V2 before candidate enumeration",
+    "create a separate hash-bound acquisition or enumeration release",
+    "later capture a distinct archived observed investment artifact; official reference prose is never the model input",
+    "perform grouping, primary review, blind second review, reconciliation, and owner acceptance"
+  ],
+  "decision": {
+    "instructions_and_template_ready": true,
+    "dfpi_automated_collection_allowed": false,
+    "vietnamese_reference_acquisition_allowed_now": false,
+    "candidate_enumeration_allowed": false,
+    "artifact_capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false,
+    "model_scoring_allowed": false,
+    "next_gate": "Receive a user-supplied DFPI first-party artifact or explicit official export, or retain and independently verify an explicit export/reuse basis before any SSC/HNX acquisition."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "source_files_acquired": 0,
+    "candidate_domain_access_operations": 0,
+    "candidate_records_enumerated": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "validation_or_test_openings": 0,
+    "training_allowed": false
+  }
+}

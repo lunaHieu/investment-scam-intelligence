@@ -1,0 +1,32 @@
+{
+  "template_id": "ISI_TARGET_TEXT_CORPUS_V1_MANUAL_ACQUISITION_SUBMISSION_TEMPLATE_V1",
+  "packet_id": "ISI_TARGET_TEXT_CORPUS_V1_MANUAL_ACQUISITION_PACKET_V1",
+  "status": "TEMPLATE_NOT_A_SUBMISSION",
+  "instructions": "Copy this file outside Git, replace every example value, remove template_id and instructions, set status to PENDING_INDEPENDENT_INTAKE_QA, and include one item per acquired file. Never place protected source content or permission documents in Git.",
+  "submission_id": "REPLACE_WITH_UNIQUE_SUBMISSION_ID",
+  "created_at": "YYYY-MM-DDTHH:MM:SS+07:00",
+  "prepared_by": "REPLACE_WITH_RESEARCHER_NAME",
+  "items": [
+    {
+      "item_id": "REPLACE_WITH_UNIQUE_ITEM_ID",
+      "source_id": "dfpi_crypto_scam_tracker",
+      "official_source_url": "https://dfpi.ca.gov/consumers/crypto/crypto-scam-tracker/",
+      "acquisition_mode": "USER_SAVED_FIRST_PARTY_ARTIFACT",
+      "acquired_at": "YYYY-MM-DDTHH:MM:SS+07:00",
+      "original_filename": "REPLACE_WITH_ORIGINAL_FILENAME",
+      "stored_relative_path": "dfpi_crypto_scam_tracker/YYYY-MM-DD/REPLACE_WITH_FILENAME",
+      "media_type": "REPLACE_WITH_MEDIA_TYPE",
+      "byte_size": 1,
+      "sha256": "replace_with_64_lowercase_hex_characters",
+      "rights_basis": {
+        "basis_type": "FIRST_PARTY_PUBLIC_RECORD_INTERNAL_RESEARCH",
+        "terms_or_permission_url": "https://dfpi.ca.gov/conditions-of-use/",
+        "local_evidence_relative_path": null,
+        "summary": "Replace with the exact internal research and access basis; this is not a legal conclusion."
+      },
+      "redistribution_permitted": false,
+      "contains_personal_data": true,
+      "notes": "Complaint-derived information remains UNCERTAIN and must not become an automatic label."
+    }
+  ]
+}

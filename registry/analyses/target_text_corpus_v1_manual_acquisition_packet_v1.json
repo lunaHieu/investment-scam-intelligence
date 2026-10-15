@@ -1,0 +1,71 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_MANUAL_ACQUISITION_PACKET_RESULT_V1",
+  "created_at": "2026-10-15",
+  "status": "FROZEN_PACKET_VERIFIED_INSTRUCTIONS_ONLY",
+  "purpose": "Register the bounded manual-acquisition handoff for future DFPI and Vietnamese official-reference artifacts while keeping every acquisition, candidate, label, and model gate closed.",
+  "inputs": [
+    {
+      "role": "manual_acquisition_packet",
+      "path": "configs/target_text_corpus_v1_manual_acquisition_packet_v1.json",
+      "sha256": "bc555ab3456d5e8bcbfe271e0357bed37f652fe7d10926e1eb39313e6ae78e31"
+    },
+    {
+      "role": "submission_schema",
+      "path": "schemas/target_text_manual_acquisition_submission_v1.schema.json",
+      "sha256": "fbc9b07bd8c84a8e3878edd6d57affbe595ce8b563cbd0fd6113d8a4bbf782b0"
+    },
+    {
+      "role": "submission_template",
+      "path": "registry/pilots/target_text_manual_acquisition_submission_template_v1.json",
+      "sha256": "292077ee15e9d9ccc2641bfbc9ad9fc45f6b66ef4acb459896d094a0c76635b9"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "packet_and_submission_verifier",
+      "path": "scripts/verify_target_text_corpus_v1_manual_acquisition_packet_v1.py",
+      "sha256": "0c01951b7b6e717f742da39b4aedb4f83a6a85d7a7d9aeaf919ba60f1dff898e"
+    },
+    {
+      "role": "documentation",
+      "path": "docs/target-text-corpus-v1-manual-acquisition-packet-v1.md",
+      "sha256": "22d09f23e7b1b6b3ef85fcdb97814c9dd86404ed22a342bd02f8e6af771ba49a"
+    },
+    {
+      "role": "tests",
+      "path": "tests/test_verify_target_text_corpus_v1_manual_acquisition_packet_v1.py",
+      "sha256": "3dec86b201f6828583937c104353b66b521ea05c0eff0a4d25e8b78a7415bf4b"
+    }
+  ],
+  "findings": {
+    "source_count": 3,
+    "dfpi_path": "USER_SUPPLIED_FIRST_PARTY_ARTIFACT_OR_EXPLICIT_OFFICIAL_EXPORT_ONLY",
+    "dfpi_item_limit_per_submission": 20,
+    "dfpi_complaint_default_status": "UNCERTAIN",
+    "ssc_path": "BLOCKED_PENDING_EXPLICIT_OFFICIAL_EXPORT_OR_WRITTEN_REUSE_BASIS",
+    "hnx_path": "BLOCKED_PENDING_EXPLICIT_OFFICIAL_EXPORT_OR_WRITTEN_REUSE_BASIS",
+    "exact_file_size_and_sha256_validation_implemented": true,
+    "protected_source_content_allowed_in_public_git": false,
+    "sampling_matrix_v2_required_before_vietnamese_channel_adoption": true
+  },
+  "decision": {
+    "instructions_and_template_ready": true,
+    "source_acquisition_executed": false,
+    "source_files_acquired": 0,
+    "candidate_enumeration_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false,
+    "next_gate": "User may later supply a lawful first-party DFPI artifact or explicit official export. SSC/HNX remain closed until an export/reuse basis is retained and independently verified."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "source_files_acquired": 0,
+    "candidate_domain_access_operations": 0,
+    "candidate_records_enumerated": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "validation_or_test_openings": 0,
+    "training_allowed": false
+  }
+}

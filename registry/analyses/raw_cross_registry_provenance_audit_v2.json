@@ -1,0 +1,65 @@
+{
+  "analysis_id": "ISI_RAW_CROSS_REGISTRY_PROVENANCE_AUDIT_V2",
+  "created_at": "2026-10-15",
+  "status": "FROZEN_PASS_COMPLETE_EXISTING_RAW_PROVENANCE",
+  "purpose": "Register the fresh full-corpus provenance recomputation performed after the historical capture integrity anchor became Git-rooted.",
+  "inputs": [
+    {
+      "role": "historical_capture_integrity_anchor",
+      "path": "registry/analyses/historical_raw_capture_integrity_anchor_v1.json",
+      "sha256": "e0db6e62a058e33ccf3e1e61ae016831e8b37808a781a94f7cc7ed6c2882c69d"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "base_transitive_provenance_auditor",
+      "path": "scripts/audit_raw_cross_registry_provenance_v1.py",
+      "sha256": "09a30555481aa9872a4189d8a4f5cf759f9cd6aadaffd7cd046141861da43c7f"
+    },
+    {
+      "role": "v2_completion_wrapper",
+      "path": "scripts/audit_raw_cross_registry_provenance_v2.py",
+      "sha256": "f21ce73ad01af557502c6d5fc896558d5d90e0bf3e0e9b470cf8911ab0febc14"
+    },
+    {
+      "role": "v2_tests",
+      "path": "tests/test_audit_raw_cross_registry_provenance_v2.py",
+      "sha256": "573f41f8c4f9b983258fa8c37867a22d2ab205115ef093aea3886d2a63609b95"
+    }
+  ],
+  "outputs": [
+    {
+      "role": "authoritative_complete_existing_raw_provenance_audit",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\project_state_audit_v1\\raw_cross_registry_provenance_audit_v2.json",
+      "sha256": "6470aa8b876343b55b4844c75925ac069cf2b6f7d671ad6c89f4c26b40fdc587"
+    }
+  ],
+  "findings": {
+    "raw_file_count": 278,
+    "raw_byte_count": 1640058635,
+    "verified_hash_pinned_chain_files": 278,
+    "no_hash_pinned_chain_found_files": 0,
+    "existing_raw_hash_mismatch_files": 0,
+    "mismatched_raw_claim_count": 0,
+    "missing_raw_claim_count": 3,
+    "missing_raw_claim_unique_target_count": 2,
+    "parse_failure_count": 0,
+    "files_promoted": 0
+  },
+  "decision": {
+    "complete_existing_raw_file_provenance_chain": true,
+    "historical_missing_claim_targets_resolved": false,
+    "current_raw_integrity_gate_complete": true,
+    "training_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "labeling_allowed": false,
+    "next_gate": "Update the project-state ledger and continue an independent data-readiness branch while preserving SEC/IAPD V4 cooldown and all model gates."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "raw_file_modifications": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "validation_or_test_openings": 0
+  }
+}

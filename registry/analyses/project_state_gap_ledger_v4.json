@@ -1,0 +1,96 @@
+{
+  "analysis_id": "ISI_PROJECT_STATE_GAP_LEDGER_V4",
+  "created_at": "2026-10-15",
+  "base_commit": "c0424e0202de43a8cb930fc8d8c8e5be3911ac9f",
+  "status": "FROZEN_PARALLEL_PREPARATION_COMPLETE_CURRENT_GATES_EXPLICIT",
+  "purpose": "Amend state ledger V3 with the registered reproducibility refresh, active-module preflight, and recomputed Crimson reviewer packets while preserving every prior snapshot.",
+  "inputs": [
+    {"role": "prior_state_v3", "path": "registry/analyses/project_state_gap_ledger_v3.json", "sha256": "c0262046342e9a4bd7aaab767f5fbc603ef794c1001d8aeab6c7d4166e61b235"},
+    {"role": "reproducibility_v2", "path": "registry/analyses/reproducibility_current_state_v2.json", "sha256": "0ab753a97e8331051632731083cdf4af55e783ba62150061c3a83b1b6fe1d7be"},
+    {"role": "active_module_preflight", "path": "registry/analyses/repository_module_preflight_v1.json", "sha256": "f307e7c1522fa9e50858c94a63d12012c9d3fedc70474b2b4a9176fa73c84eab"},
+    {"role": "crimson_review_packets", "path": "registry/analyses/crimson_human_review_packets_v2.json", "sha256": "4022a570984ed7567f36d56cd0aef20eab048a478a4d72e1e5459f44a67d58d5"},
+    {"role": "manual_acquisition_packet", "path": "registry/analyses/target_text_corpus_v1_manual_acquisition_packet_v1.json", "sha256": "775ce6c3aa8ac2eef9803736eed65c5b8925128b8f3db04e22f112f39cfb050f"},
+    {"role": "sec_iapd_v4_release", "path": "registry/analyses/sec_edgar_iapd_wayback_availability_retry_release_v4.json", "sha256": "1ec545c91a0de786820ca2c7ca0993896fc57858790c20f13e1bc0da40623017"}
+  ],
+  "implementation": [
+    {"role": "human_readable_ledger", "path": "docs/project-state-gap-ledger-v4.md", "sha256": "f35674831fb30fa52d0002691d683948710a43ef978a0aab88b118ed31600895"},
+    {"role": "ledger_contract_tests", "path": "tests/test_project_state_gap_ledger_v4.py", "sha256": "f1f80899a25b74fd87b004e354a38e135ad8ac5f1e0b172b3f8d24e3278d46da"}
+  ],
+  "state_amendments": {
+    "P4_CRIMSON": {
+      "ai_first_pass_records": 40,
+      "completed_first_reviews": 1,
+      "first_review_pending": 39,
+      "second_review_population": 21,
+      "blind_second_review_ready": 1,
+      "blind_second_review_waiting": 20,
+      "official_reference_followup_current": 15,
+      "official_reference_followup_in_original_plan": 16,
+      "correction_basis": "The recorded PILOT_CRIMSON_REF_018 first review has ALL_URLS_LIVE_CONFIRMED, so it is excluded from the current follow-up packet.",
+      "human_decisions_created_by_packet_stage": 0,
+      "labels_created_by_packet_stage": 0,
+      "training_eligible": 0
+    },
+    "P8_REPRODUCIBILITY": {
+      "status": "COMPLETE_GUIDE_V2",
+      "authoritative_guide": "registry/analyses/reproducibility_current_state_v2.json"
+    },
+    "P9_ACTIVE_MODULE_PREFLIGHT": {
+      "status": "PASS",
+      "active_modules_checked": 5,
+      "active_modules_passed": 5,
+      "active_modules_failed": 0,
+      "sec_iapd_v4_modules_importable": 3,
+      "network_operations": 0,
+      "main_functions_invoked": 0
+    }
+  },
+  "completed_parallel_work": [
+    "P2 raw provenance closure",
+    "P3 external 21 diagnostic adoption and module-compatible verifier",
+    "P4 reviewer task-packet preparation",
+    "P6 controlled manual-acquisition packet preparation",
+    "P7 documentary model-choice dossier",
+    "P8 reproducibility guide V2",
+    "P9 active-module offline preflight"
+  ],
+  "remaining_external_or_timed_gates": [
+    {
+      "gate": "SEC_IAPD_V4",
+      "status": "WAITING_NOT_BEFORE",
+      "not_before": "2026-10-16T00:48:55.969405+07:00",
+      "next_executor": "existing heartbeat automation"
+    },
+    {
+      "gate": "CRIMSON_HUMAN_REVIEW",
+      "status": "REVIEWER_ACTION_REQUIRED",
+      "ready_now": "one blind-second task plus 39 first-review tasks and 15 official-reference follow-ups"
+    },
+    {
+      "gate": "MANUAL_SOURCE_INPUTS",
+      "status": "LAWFUL_ARTIFACT_OR_PERMISSION_REQUIRED",
+      "ready_now": "DFPI submission intake only when user supplies a lawful first-party artifact; SSC/HNX remain blocked pending export/reuse basis"
+    }
+  ],
+  "decision": {
+    "offline_parallel_preparation_exhausted_at_current_authority": true,
+    "next_automatic_event": "SEC_IAPD_V4_HEARTBEAT_AT_OR_AFTER_NOT_BEFORE",
+    "network_execution_allowed_now": false,
+    "live_candidate_domain_access_allowed": false,
+    "additional_unreviewed_label_materialization_allowed": false,
+    "candidate_enumeration_allowed": false,
+    "capture_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false,
+    "model_scoring_allowed": false
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "raw_file_modifications": 0,
+    "human_decisions_created": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "validation_or_test_openings": 0,
+    "training_allowed": false
+  }
+}

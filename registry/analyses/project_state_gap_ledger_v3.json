@@ -1,0 +1,142 @@
+{
+  "analysis_id": "ISI_PROJECT_STATE_GAP_LEDGER_V3",
+  "created_at": "2026-10-15",
+  "base_commit": "4b4a3354b90e21fd4bbc83688db8cc1fc24552db",
+  "status": "FROZEN_CURRENT_STATE_PARALLEL_OFFLINE_WORK_COMPLETE_REMAINING_GATES_EXPLICIT",
+  "purpose": "Refresh the authoritative project state after the controlled manual-acquisition packet and module-compatible external-pilot verifier were completed, without opening acquisition, review, data, or model gates.",
+  "inputs": [
+    {"role": "prior_state", "path": "registry/analyses/project_state_gap_ledger_v2.json", "sha256": "8c4706305d55c38e1dd425d4d3dbe4a380397b368a8f31b910ac6cc419bcc0e4"},
+    {"role": "complete_raw_provenance", "path": "registry/analyses/raw_cross_registry_provenance_audit_v2.json", "sha256": "84dd009d88630bf23f1b5cc96e88aed4e34c43b03453c44e84b288a7dcda6d6a"},
+    {"role": "external_pilot_verifier_v2", "path": "registry/analyses/external_text_reconciled_pilot_verifier_v2.json", "sha256": "f0fa08cbeb938de78575251ede56b1792ecba2415962af0a9ca9dea5d10e7bc7"},
+    {"role": "crimson_review_plan", "path": "registry/analyses/crimson_human_review_plan_v1.json", "sha256": "e4cfd099c330a80efcee44710110ac8a4b59e626cf32a44754b66ebd48b07d1f"},
+    {"role": "crimson_review_decisions", "path": "registry/analyses/crimson_human_review_decisions_v1.json", "sha256": "ae057f9bc20ee577f9bf54837384fc5e50fb6a8be01bcdd9ff29f7743976e1d1"},
+    {"role": "target_text_owner_acceptance", "path": "registry/analyses/target_text_corpus_v1_owner_acceptance_result_v1.json", "sha256": "a97f2f667d89ec089d3c3558409e2295d47bc8adfa53d5846748a641a3e6ccca"},
+    {"role": "sec_iapd_v4_release", "path": "registry/analyses/sec_edgar_iapd_wayback_availability_retry_release_v4.json", "sha256": "1ec545c91a0de786820ca2c7ca0993896fc57858790c20f13e1bc0da40623017"},
+    {"role": "manual_acquisition_packet", "path": "registry/analyses/target_text_corpus_v1_manual_acquisition_packet_v1.json", "sha256": "775ce6c3aa8ac2eef9803736eed65c5b8925128b8f3db04e22f112f39cfb050f"},
+    {"role": "model_choice_dossier", "path": "registry/analyses/text_model_choice_dossier_v5.json", "sha256": "dc2c0490d70f92c86f74c49d791426458dea89743e6493869e92200d032a80df"},
+    {"role": "reproducibility_guide", "path": "registry/analyses/reproducibility_current_state_v1.json", "sha256": "4524e36d95b0c077275111c6d9e5df3b4645cad22f7f6c70734d449cd06dd64d"}
+  ],
+  "implementation": [
+    {"role": "human_readable_ledger", "path": "docs/project-state-gap-ledger-v3.md", "sha256": "fef256f72dce4cb62d428586200ab2d15e9a388b1d0cdc7f698e95e2edf5236e"},
+    {"role": "ledger_contract_tests", "path": "tests/test_project_state_gap_ledger_v3.py", "sha256": "081407ff883c762aa7f8b7bdbcabe15bed432f7116dc1c10b32fe3dc693145a2"}
+  ],
+  "current_state": {
+    "P2_RAW_QA": {
+      "status": "COMPLETE",
+      "files": 278,
+      "bytes": 1640058635,
+      "git_rooted_hash_chains": 278,
+      "hash_mismatches": 0
+    },
+    "P3_EXTERNAL_21": {
+      "status": "COMPLETE_DIAGNOSTIC_OWNER_ADOPTED_NOT_DOUBLE_REVIEWED_GOLD",
+      "records": 21,
+      "confirmed": 10,
+      "legitimate": 11,
+      "module_compatible_verifier": true,
+      "tooling_debt_closed": true,
+      "independent_human_evidence_rereview": false,
+      "training_eligible": 0
+    },
+    "P4_CRIMSON": {
+      "status": "BLOCKED_ON_HUMAN_REVIEW_AND_LIVE_SOURCE_GAPS",
+      "planned_records": 40,
+      "ai_first_pass_records": 40,
+      "human_first_reviews_complete": 1,
+      "human_first_reviews_remaining": 39,
+      "second_reviews_required": 21,
+      "live_source_gaps": 16,
+      "training_eligible": 0
+    },
+    "P5_CAPACITY": {
+      "status": "TIMED_V4_AND_EXTERNAL_SUPPLY_GATES",
+      "sec_iapd_planned": 115,
+      "sec_iapd_resolved": 84,
+      "sec_iapd_unresolved": 31,
+      "v4_not_before": "2026-10-16T00:48:55.969405+07:00",
+      "capture_plan_allowed": false,
+      "verified_vietnamese_supply": 0,
+      "minimum_vietnamese_confirmed_groups": 8,
+      "minimum_vietnamese_legitimate_groups": 8
+    },
+    "P6_MANUAL_ACQUISITION": {
+      "status": "PREPARATION_COMPLETE_WAITING_LAWFUL_USER_SUPPLIED_OR_PERMISSIONED_ARTIFACTS",
+      "packet_verified": true,
+      "submission_schema_and_template_ready": true,
+      "dfpi_path_documented": true,
+      "ssc_acquisition_open": false,
+      "hnx_acquisition_open": false,
+      "files_acquired_by_packet": 0
+    },
+    "P7_MODEL_CHOICE": {
+      "status": "COMPLETE_DOCUMENTARY_DECISION",
+      "current_reference": "WORD_TFIDF_1_2_LOGISTIC_REGRESSION",
+      "current_reference_deployable": false,
+      "new_model_configuration_authorized": false
+    },
+    "P8_REPRODUCIBILITY": {
+      "status": "COMPLETE_CURRENT_GUIDE",
+      "authoritative_guide_registered": true
+    },
+    "target_text_pilot": {
+      "reviewable_records": 22,
+      "confirmed": 4,
+      "legitimate": 11,
+      "uncertain": 7,
+      "training_eligible": 0,
+      "development_corpus_gate_met": false
+    },
+    "image_branch": {
+      "usable_assets": 0,
+      "training_allowed": false
+    }
+  },
+  "remaining_gate_schedule": [
+    {
+      "order": 1,
+      "gate": "SEC_IAPD_V4_AVAILABILITY_RETRY",
+      "earliest_action": "2026-10-16T00:48:55.969405+07:00",
+      "executor": "existing heartbeat automation",
+      "status": "WAITING_NOT_BEFORE",
+      "effect_if_complete": "May permit capture-plan preparation only if independent QA reports complete availability resolution."
+    },
+    {
+      "order": 2,
+      "gate": "CRIMSON_HUMAN_REVIEW",
+      "earliest_action": "WHEN_INDEPENDENT_HUMAN_REVIEWERS_ARE_AVAILABLE",
+      "executor": "human reviewers",
+      "status": "USER_COORDINATION_REQUIRED",
+      "effect_if_complete": "May complete evidence review; does not automatically create training eligibility."
+    },
+    {
+      "order": 3,
+      "gate": "MANUAL_SOURCE_ARTIFACTS_OR_RIGHTS_BASIS",
+      "earliest_action": "WHEN_LAWFUL_ARTIFACT_OR_PERMISSION_IS_AVAILABLE",
+      "executor": "project owner or authorized researcher",
+      "status": "EXTERNAL_INPUT_REQUIRED",
+      "effect_if_complete": "Permits independent intake QA only; SSC/HNX still require a separate activation release and Sampling Matrix V2."
+    }
+  ],
+  "decision": {
+    "parallel_offline_preparation_complete": true,
+    "next_automatic_project_event": "SEC_IAPD_V4_HEARTBEAT_AT_OR_AFTER_NOT_BEFORE",
+    "next_owner_action_optional": "Supply a lawful DFPI artifact or SSC/HNX export/reuse evidence using the P6 packet, or coordinate independent Crimson reviewers.",
+    "additional_unreviewed_label_materialization_allowed": false,
+    "live_candidate_domain_access_allowed": false,
+    "candidate_enumeration_allowed": false,
+    "capture_allowed": false,
+    "training_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "external_holdout_scoring_allowed": false
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "raw_file_modifications": 0,
+    "labels_created": 0,
+    "labels_changed": 0,
+    "model_fit_operations": 0,
+    "model_scoring_operations": 0,
+    "validation_or_test_openings": 0,
+    "training_allowed": false
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "analysis_id": "ISI_REPRODUCIBILITY_CURRENT_STATE_V1",
+  "created_at": "2026-10-15",
+  "status": "FROZEN_CURRENT_REPRODUCIBILITY_GUIDE",
+  "purpose": "Register the current end-to-end reproduction guide and its authoritative state inputs.",
+  "inputs": [
+    {"role": "project_state", "path": "registry/analyses/project_state_gap_ledger_v2.json", "sha256": "8c4706305d55c38e1dd425d4d3dbe4a380397b368a8f31b910ac6cc419bcc0e4"},
+    {"role": "raw_provenance", "path": "registry/analyses/raw_cross_registry_provenance_audit_v2.json", "sha256": "84dd009d88630bf23f1b5cc96e88aed4e34c43b03453c44e84b288a7dcda6d6a"},
+    {"role": "model_choice", "path": "registry/analyses/text_model_choice_dossier_v5.json", "sha256": "dc2c0490d70f92c86f74c49d791426458dea89743e6493869e92200d032a80df"},
+    {"role": "sec_iapd_timed_release", "path": "registry/analyses/sec_edgar_iapd_wayback_availability_retry_release_v4.json", "sha256": "1ec545c91a0de786820ca2c7ca0993896fc57858790c20f13e1bc0da40623017"}
+  ],
+  "output": {
+    "role": "reproducibility_guide",
+    "path": "docs/reproducibility-current-state-v1.md",
+    "sha256": "db3026eba49128982c013b4b8590d14b74a7c7f37418cf593659310775a80a54"
+  },
+  "coverage": {
+    "storage_and_trust_boundaries": true,
+    "data_and_evidence_flow": true,
+    "raw_state": true,
+    "review_state": true,
+    "model_state": true,
+    "timed_and_manual_gates": true,
+    "module_invocation_examples": true,
+    "supported_and_prohibited_claims": true
+  },
+  "decision": {
+    "guide_is_authoritative_navigation_entry": true,
+    "conversation_history_is_authoritative_artifact": false,
+    "training_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "network_execution_allowed": false
+  },
+  "safety_contract": {"network_operations": 0, "raw_file_modifications": 0, "labels_created": 0, "model_operations": 0, "validation_or_test_openings": 0}
+}

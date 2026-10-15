@@ -1,0 +1,51 @@
+{
+  "analysis_id": "ISI_PROJECT_STATE_GAP_LEDGER_V2",
+  "created_at": "2026-10-15",
+  "status": "FROZEN_CURRENT_STATE_P2_COMPLETE_P3_COMPLETE_CAPACITY_GATES_OPEN_ONLY_AS_DOCUMENTED",
+  "purpose": "Refresh the project state after full raw-provenance closure and reconcile the stale V1 ledger with already-completed external and Target Text Corpus review gates.",
+  "inputs": [
+    {"role": "complete_raw_provenance", "path": "registry/analyses/raw_cross_registry_provenance_audit_v2.json", "sha256": "84dd009d88630bf23f1b5cc96e88aed4e34c43b03453c44e84b288a7dcda6d6a"},
+    {"role": "external_21_reconciled_pilot", "path": "registry/pilots/external_text_reconciled_pilot_v1.json", "sha256": "c6faa21193aa4ce55014a4bee60955037cb1c2a2aef145b73fe5e4f2bd6db8fd"},
+    {"role": "crimson_review_plan", "path": "registry/analyses/crimson_human_review_plan_v1.json", "sha256": "e4cfd099c330a80efcee44710110ac8a4b59e626cf32a44754b66ebd48b07d1f"},
+    {"role": "crimson_review_decisions", "path": "registry/analyses/crimson_human_review_decisions_v1.json", "sha256": "ae057f9bc20ee577f9bf54837384fc5e50fb6a8be01bcdd9ff29f7743976e1d1"},
+    {"role": "target_text_owner_acceptance", "path": "registry/analyses/target_text_corpus_v1_owner_acceptance_result_v1.json", "sha256": "a97f2f667d89ec089d3c3558409e2295d47bc8adfa53d5846748a641a3e6ccca"},
+    {"role": "multilingual_supply_audit", "path": "registry/analyses/target_text_corpus_v1_multilingual_supply_audit_v1.json", "sha256": "6f6db82ea922b7e35c626d5663820929db2d8114380ca6fb1cdfbe1fee42bd82"},
+    {"role": "sec_iapd_v4_release", "path": "registry/analyses/sec_edgar_iapd_wayback_availability_retry_release_v4.json", "sha256": "1ec545c91a0de786820ca2c7ca0993896fc57858790c20f13e1bc0da40623017"},
+    {"role": "mendeley_e5_error_analysis", "path": "registry/analyses/mendeley_text_challenger_v4_oof_error_analysis.json", "sha256": "11436de3f1ed0635920af31f27ab3586f0e641845f71ee397a1b292caf2aa779"},
+    {"role": "mendeley_image_readiness", "path": "registry/analyses/mendeley_image_readiness_v1.json", "sha256": "05c9c043c2865ffde5c873ed70335ae020bc00074ed64c088fd9a750390242ef"}
+  ],
+  "state": {
+    "raw": {"file_count": 278, "byte_count": 1640058635, "git_rooted_hash_chain_count": 278, "existing_hash_mismatch_count": 0, "complete": true},
+    "external_21": {"record_count": 21, "confirmed": 10, "legitimate": 11, "owner_adopted": true, "independent_human_evidence_rereview": false, "diagnostic_reporting_eligible": 21},
+    "crimson": {"planned_records": 40, "ai_first_pass_records": 40, "human_first_reviews_complete": 1, "human_first_reviews_remaining": 39, "second_reviews_required": 21, "live_source_gaps": 16, "training_eligible": 0},
+    "target_text_pilot": {"reviewable_records": 22, "confirmed_ground_truth": 4, "legitimate_ground_truth": 11, "uncertain": 7, "decisive_labels_materialized": 15, "training_eligible": 0, "development_corpus_gate_met": false},
+    "sec_iapd": {"planned": 115, "resolved": 84, "unresolved": 31, "v4_not_before": "2026-10-16T00:48:55.969405+07:00", "capture_plan_allowed": false},
+    "vietnamese": {"verified_supply": 0, "minimum_confirmed_groups": 8, "minimum_legitimate_groups": 8, "supply_gate_met": false},
+    "mendeley_model": {"train_rows": 3916, "train_groups": 3783, "e5_status": "REJECTED_AT_DEVELOPMENT_GATE", "new_model_configuration_authorized": false},
+    "image": {"usable_assets": 0, "training_allowed": false}
+  },
+  "workstream_status": {
+    "P2_RAW_QA": "COMPLETE",
+    "P3_EXTERNAL_21": "COMPLETE_DIAGNOSTIC_OWNER_ADOPTED_NOT_DOUBLE_REVIEWED_GOLD",
+    "P4_CRIMSON": "BLOCKED_ON_HUMAN_REVIEW_AND_LIVE_SOURCE_GAPS",
+    "P5_CAPACITY": "IN_PROGRESS_SEC_V4_COOLDOWN_AND_VIETNAMESE_ZERO_SUPPLY",
+    "P6_MANUAL_ACQUISITION": "PREPARATION_ONLY_PENDING_EXTERNAL_ARTIFACTS",
+    "P7_MODEL_CHOICE_DOSSIER": "PERMITTED_DOCUMENTARY_ONLY",
+    "P8_REPRODUCIBILITY_DOCS": "PERMITTED"
+  },
+  "tooling_debt": [
+    {
+      "item": "scripts/verify_external_text_reconciled_pilot.py",
+      "state": "LEGACY_SCRIPT_PATH_IMPORT_NOT_MODULE_COMPATIBLE",
+      "impact": "The frozen data artifacts and unit tests remain valid; create a new verifier version rather than silently editing the historical pinned implementation."
+    }
+  ],
+  "decision": {
+    "next_independent_branch": "Prepare the documentary model-choice dossier and reproducibility updates while P4/P5 wait on human, external artifact, or timed gates.",
+    "training_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "external_holdout_scoring_allowed": false,
+    "live_candidate_domain_access_allowed": false
+  },
+  "safety_contract": {"network_operations": 0, "raw_file_modifications": 0, "labels_created": 0, "model_operations": 0, "validation_or_test_openings": 0}
+}

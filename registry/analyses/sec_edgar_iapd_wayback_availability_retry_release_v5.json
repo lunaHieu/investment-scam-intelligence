@@ -1,0 +1,83 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_IAPD_WAYBACK_AVAILABILITY_RETRY_RELEASE_V5",
+  "created_at": "2026-10-16",
+  "status": "FROZEN_INDEPENDENTLY_VERIFIED_24H_COOLDOWN_ACTIVE",
+  "purpose": "Register the exact 23-row unresolved-only V5 retry release, enforce a full 24-hour cooldown after the V4 report, and slow request pacing after the V4 HTTP 429.",
+  "inputs": [
+    {
+      "role": "retry_release",
+      "path": "configs/sec_edgar_iapd_wayback_availability_retry_release_v5.json",
+      "sha256": "942c4d196eb2b74c3aba9e8b6a53402926eb2bdccaa0cebef4744183715e3ff9"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "retry_executor",
+      "path": "scripts/retry_sec_edgar_iapd_wayback_availability_v5.py",
+      "sha256": "a3d75d5320164e31e2a64038add79ff452a2a34d5a1468a4ffe9964df9187712"
+    },
+    {
+      "role": "independent_release_verifier",
+      "path": "scripts/verify_sec_edgar_iapd_wayback_availability_retry_release_v5.py",
+      "sha256": "8fba94c1caddd6fd86998acceb36e28a01ddf3242eda7bd2dbf4b36ac8a625c4"
+    },
+    {
+      "role": "retry_executor_tests",
+      "path": "tests/test_retry_sec_edgar_iapd_wayback_availability_v5.py",
+      "sha256": "5e838696d118df0c227cf0a9940e4123d890c9bfaa257df97dccc82433421ddd"
+    },
+    {
+      "role": "release_verifier_tests",
+      "path": "tests/test_verify_sec_edgar_iapd_wayback_availability_retry_release_v5.py",
+      "sha256": "56f38aed9d92adcdc8b547edd996ea6d6e12dee7beac42d5716a6a7a254865c3"
+    },
+    {
+      "role": "registry_tests",
+      "path": "tests/test_sec_edgar_iapd_wayback_availability_retry_release_registry_v5.py",
+      "sha256": "8f7e7219903e52903435ad5bf27e5423167f11cf081cf58f8162363d3116e6ad"
+    },
+    {
+      "role": "documentation",
+      "path": "docs/sec-edgar-iapd-wayback-availability-retry-v5.md",
+      "sha256": "e09b8c4f36ffa805a229f699d8e8cff77852df15d815a49fca12e4636593715f"
+    }
+  ],
+  "outputs": [
+    {
+      "role": "independent_release_qa",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_availability_result_v1\\independent_retry_release_qa_v5.json",
+      "sha256": "a97de6903e931e775b14564ca23b0c2a2a62f817677446a5ca4a2ba23cd5c987"
+    }
+  ],
+  "findings": {
+    "total_plan_rows": 115,
+    "resolved_rows_preserved": 92,
+    "retry_rows": 23,
+    "minimum_cooldown_seconds": 86400,
+    "not_before": "2026-10-17T01:19:27.607186+07:00",
+    "minimum_delay_seconds": 60.0,
+    "network_requests_at_release_time": 0,
+    "independent_release_qa_passed": true
+  },
+  "decision": {
+    "release_frozen": true,
+    "network_execution_allowed_at_freeze_time": false,
+    "network_execution_allowed_after_not_before": true,
+    "candidate_live_domain_access_allowed": false,
+    "archived_page_download_allowed": false,
+    "artifact_capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false,
+    "next_gate": "At or after 2026-10-17T01:19:27.607186+07:00, execute this exact release once and independently verify the V5 result. Capture-plan preparation remains blocked unless every row is resolved."
+  },
+  "safety_contract": {
+    "network_operations_at_release_time": 0,
+    "candidate_domain_access_operations": 0,
+    "archived_page_downloads": 0,
+    "artifact_captures": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

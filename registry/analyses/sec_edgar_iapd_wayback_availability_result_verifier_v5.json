@@ -1,0 +1,66 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_IAPD_WAYBACK_AVAILABILITY_RESULT_VERIFIER_V5",
+  "created_at": "2026-10-16",
+  "status": "FROZEN_PREDECLARED_VERIFIER_READY_RESULT_NOT_YET_CREATED",
+  "purpose": "Register the independent V5 result acceptance rules before the cooldown-gated network execution produces a result.",
+  "inputs": [
+    {
+      "role": "retry_release_v5",
+      "path": "configs/sec_edgar_iapd_wayback_availability_retry_release_v5.json",
+      "sha256": "942c4d196eb2b74c3aba9e8b6a53402926eb2bdccaa0cebef4744183715e3ff9"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "result_verifier",
+      "path": "scripts/verify_sec_edgar_iapd_wayback_availability_result_v5.py",
+      "sha256": "1212a68533f5d688dc5d3058d9c895d67415d5efc2b26e7236efdd1e3653ac37"
+    },
+    {
+      "role": "verifier_tests",
+      "path": "tests/test_verify_sec_edgar_iapd_wayback_availability_result_v5.py",
+      "sha256": "c9d60f1335dd9dd33a5ff063dffe1e6e9e98f8a10ef81ff17aa2fb5f497d7dbf"
+    },
+    {
+      "role": "registry_tests",
+      "path": "tests/test_sec_edgar_iapd_wayback_availability_result_verifier_registry_v5.py",
+      "sha256": "bb8bec17638efdf9cc0e674cdd7358df0bece1c1cdf5b4b678d96b0ee7820bbe"
+    },
+    {
+      "role": "documentation",
+      "path": "docs/sec-edgar-iapd-wayback-availability-result-verifier-v5.md",
+      "sha256": "7175abb6e376b0d0ceb475d915108a4e3706daa77b55e9d23a0e7e90110a0840"
+    }
+  ],
+  "outputs": [],
+  "findings": {
+    "expected_plan_rows": 115,
+    "resolved_parent_rows_to_preserve": 92,
+    "retry_population_limit": 23,
+    "not_before_required": "2026-10-17T01:19:27.607186+07:00",
+    "complete_result_requires_unresolved_rows": 0,
+    "partial_result_can_open_capture_plan": false,
+    "network_operations_at_verifier_freeze": 0
+  },
+  "decision": {
+    "verifier_ready_before_result": true,
+    "network_execution_allowed_by_this_registry": false,
+    "result_verification_allowed_after_result_exists": true,
+    "capture_plan_construction_allowed_now": false,
+    "archived_page_download_allowed": false,
+    "artifact_capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false,
+    "next_gate": "After the scheduled V5 execution, run this exact verifier. Only PASS_COMPLETE_CAPTURE_PLAN_MAY_BE_PREPARED may release preparation of a separate snapshot-selection plan."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "candidate_domain_access_operations": 0,
+    "archived_page_downloads": 0,
+    "artifact_captures": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

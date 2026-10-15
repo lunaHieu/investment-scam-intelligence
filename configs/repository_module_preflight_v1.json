@@ -1,0 +1,62 @@
+{
+  "protocol_id": "ISI_REPOSITORY_MODULE_PREFLIGHT_V1",
+  "frozen_at": "2026-10-15T12:10:00+07:00",
+  "status": "FROZEN_ACTIVE_ENTRYPOINTS_OFFLINE_IMPORT_ONLY",
+  "purpose": "Preflight the currently active module entrypoints required by the next timed gate and current reproducibility guide without invoking main functions, network operations, data mutation, or model operations.",
+  "repository_root": "C:\\Users\\hieu\\Documents\\ChatGPT\\invesment scam intelligence",
+  "modules": [
+    {
+      "role": "sec_iapd_v4_retry_executor",
+      "module": "scripts.retry_sec_edgar_iapd_wayback_availability_v4",
+      "path": "scripts/retry_sec_edgar_iapd_wayback_availability_v4.py",
+      "sha256": "3e56edd8c1c940093e29adc62ae4364565ce2e97003448674aa3775b6e140f94"
+    },
+    {
+      "role": "sec_iapd_v4_release_verifier",
+      "module": "scripts.verify_sec_edgar_iapd_wayback_availability_retry_release_v4",
+      "path": "scripts/verify_sec_edgar_iapd_wayback_availability_retry_release_v4.py",
+      "sha256": "741aec4b2e65d6e5eb9d1c655813ffaf998c3d78f2e17abb42277715a55a07b7"
+    },
+    {
+      "role": "sec_iapd_v4_result_verifier",
+      "module": "scripts.verify_sec_edgar_iapd_wayback_availability_result_v4",
+      "path": "scripts/verify_sec_edgar_iapd_wayback_availability_result_v4.py",
+      "sha256": "1b6c62a195909042c42815c5c16cab36479fe9d0a115e8643fe65ae1bedbe7da"
+    },
+    {
+      "role": "external_21_verifier_v2",
+      "module": "scripts.verify_external_text_reconciled_pilot_v2",
+      "path": "scripts/verify_external_text_reconciled_pilot_v2.py",
+      "sha256": "1274782f27b93555cc70adc9eff3ad2bd9ecd22ed7d95016818fbfbe64e6418f"
+    },
+    {
+      "role": "manual_acquisition_packet_verifier",
+      "module": "scripts.verify_target_text_corpus_v1_manual_acquisition_packet_v1",
+      "path": "scripts/verify_target_text_corpus_v1_manual_acquisition_packet_v1.py",
+      "sha256": "0c01951b7b6e717f742da39b4aedb4f83a6a85d7a7d9aeaf919ba60f1dff898e"
+    }
+  ],
+  "execution_contract": {
+    "import_timeout_seconds_per_module": 30,
+    "subprocess_uses_current_python": true,
+    "invoke_main_allowed": false,
+    "network_allowed": false,
+    "write_bytecode_allowed": false,
+    "continue_after_import_failure": true,
+    "output_overwrite_allowed": false
+  },
+  "planned_output": {
+    "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\project_module_preflight_v1\\module_preflight_report_v1_release.json",
+    "report_id": "ISI_REPOSITORY_MODULE_PREFLIGHT_REPORT_V1"
+  },
+  "decision": {
+    "preflight_execution_allowed": true,
+    "sec_iapd_v4_network_execution_allowed": false,
+    "candidate_domain_access_allowed": false,
+    "data_mutation_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false,
+    "model_scoring_allowed": false
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "analysis_id": "ISI_REPOSITORY_MODULE_PREFLIGHT_RESULT_V1",
+  "created_at": "2026-10-15",
+  "status": "PASS_ALL_ACTIVE_MODULES_IMPORTABLE_OFFLINE",
+  "purpose": "Register the isolated offline import preflight for the five currently active repository entrypoints without invoking main functions or opening any network, data, or model gate.",
+  "inputs": [
+    {
+      "role": "module_preflight_protocol",
+      "path": "configs/repository_module_preflight_v1.json",
+      "sha256": "6eb1057e7e562c91afdadef1a279d0814977184f7e0c570c231a95e27d31b5bc"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "preflight_runner",
+      "path": "scripts/run_repository_module_preflight_v1.py",
+      "sha256": "e9b0613915693bf51f6366bcfdb23063b17e96d7cbbefa3721fb9025459c7211"
+    },
+    {
+      "role": "independent_report_verifier",
+      "path": "scripts/verify_repository_module_preflight_v1.py",
+      "sha256": "722c5289eb3b609e0711275fa723051a3c3de736eb14065af83108a53b50f60d"
+    },
+    {
+      "role": "documentation",
+      "path": "docs/repository-module-preflight-v1.md",
+      "sha256": "94035c85c6352d3e43704a2d4a9bab6fa5d23dcb00abfa8097fbdc21a4679310"
+    },
+    {
+      "role": "tests",
+      "path": "tests/test_repository_module_preflight_v1.py",
+      "sha256": "66a8c38f1a4a5b11ea399c125fc324a1a4099e5066955d6944c5d8394505adae"
+    }
+  ],
+  "outputs": [
+    {
+      "role": "authoritative_module_preflight_report",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\project_module_preflight_v1\\module_preflight_report_v1_release.json",
+      "sha256": "0f81c1672911dadf624c552908f7e128f112fb1b4f2af7e87169636e724c9e97"
+    }
+  ],
+  "excluded_artifacts": [
+    {
+      "role": "pre_freeze_dry_run_not_authoritative",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\project_module_preflight_v1\\module_preflight_report_v1.json",
+      "sha256": "e28e7908aab45f89a347ee9f4691b4997c95bbcaf0af93f682574c731c7e0c57",
+      "reason": "The dry-run created_at preceded the corrected protocol frozen_at. It was preserved without overwrite and is not used for any finding."
+    }
+  ],
+  "findings": {
+    "module_count": 5,
+    "passed_count": 5,
+    "failed_count": 0,
+    "sec_iapd_v4_modules_importable": 3,
+    "external_21_verifier_v2_importable": true,
+    "manual_acquisition_packet_verifier_importable": true,
+    "main_functions_invoked": 0,
+    "network_operations": 0,
+    "pre_freeze_dry_run_excluded": true
+  },
+  "decision": {
+    "active_module_preflight_passed": true,
+    "sec_iapd_v4_execution_authorized_early": false,
+    "network_execution_allowed": false,
+    "candidate_domain_access_allowed": false,
+    "data_mutation_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false,
+    "model_scoring_allowed": false,
+    "next_gate": "At the frozen V4 not_before, rerun the release and focused tests, then execute the already-frozen V4 release exactly once if its output is still absent."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "main_functions_invoked": 0,
+    "raw_file_modifications": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "validation_or_test_openings": 0,
+    "training_allowed": false
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "analysis_id": "ISI_TEXT_MODEL_CHOICE_DOSSIER_V5",
+  "created_at": "2026-10-15",
+  "status": "FROZEN_DOCUMENTARY_DECISION_RETAIN_LINEAR_REFERENCE_DEFER_MODEL_ESCALATION",
+  "purpose": "Update the model-family decision after the frozen E5 challenger failure and current data-readiness audit without fitting, scoring, tuning, or opening any partition.",
+  "inputs": [
+    {"role": "project_state_v2", "path": "registry/analyses/project_state_gap_ledger_v2.json", "sha256": "8c4706305d55c38e1dd425d4d3dbe4a380397b368a8f31b910ac6cc419bcc0e4"},
+    {"role": "prior_model_direction", "path": "registry/analyses/text_model_direction_v4.json", "sha256": "c80ce11d8e03147611f59206ac8e0e982107a413ff83c7cded0a51eb76b80a1d"},
+    {"role": "character_challenger", "path": "registry/models/mendeley_text_challenger_v2.json", "sha256": "92d6643738973954cb1080d893cb3b3d1422d0aeb6b5625275cbe0641959e2c5"},
+    {"role": "style_guard_challenger", "path": "registry/models/mendeley_text_challenger_v3.json", "sha256": "f521411d4ad88980f876a11c706c9e5b3742e589e10b16447f7e72a9a142c90c"},
+    {"role": "e5_challenger", "path": "registry/models/mendeley_text_challenger_v4.json", "sha256": "3ab3b824ef51cfe7f7dab82c4288d6bc2b3d2d5134b1694cfeb3e901f445b8c5"},
+    {"role": "e5_train_oof_error_analysis", "path": "registry/analyses/mendeley_text_challenger_v4_oof_error_analysis.json", "sha256": "11436de3f1ed0635920af31f27ab3586f0e641845f71ee397a1b292caf2aa779"},
+    {"role": "image_readiness", "path": "registry/analyses/mendeley_image_readiness_v1.json", "sha256": "05c9c043c2865ffde5c873ed70335ae020bc00074ed64c088fd9a750390242ef"},
+    {"role": "multilingual_supply", "path": "registry/analyses/target_text_corpus_v1_multilingual_supply_audit_v1.json", "sha256": "6f6db82ea922b7e35c626d5663820929db2d8114380ca6fb1cdfbe1fee42bd82"}
+  ],
+  "verified_evidence": {
+    "train_rows": 3916,
+    "train_groups": 3783,
+    "linear_reference_pooled_macro_f1": 0.721038,
+    "e5_challenger_pooled_macro_f1": 0.689907,
+    "e5_delta": -0.031131,
+    "e5_failed_gate_count": 6,
+    "e5_nearest_neighbor_same_source_rate": 0.945097,
+    "target_text_decisive_diagnostic_labels": 15,
+    "target_text_training_eligible_records": 0,
+    "verified_vietnamese_supply": 0,
+    "usable_image_assets": 0
+  },
+  "model_family_decisions": {
+    "word_tfidf_logistic": "RETAIN_INTERNAL_REFERENCE_NOT_DEPLOYMENT",
+    "character_sparse": "RETIRED_CURRENT_PARTITION",
+    "style_guard_sparse": "RETIRED_CURRENT_PARTITION",
+    "e5_frozen_embedding_linear": "REJECTED_DEVELOPMENT",
+    "fine_tuned_multilingual_encoder": "DEFER_UNTIL_FRESH_V1_CORE_READINESS_AND_PREDECLARED_PROTOCOL",
+    "large_generative_binary_classifier": "NOT_APPROPRIATE_CURRENT_DATA_MATURITY",
+    "ai_agent": "WORKFLOW_QA_AND_EVIDENCE_PACKET_ASSISTANT_ONLY",
+    "image_or_multimodal": "BLOCKED_NO_ASSETS"
+  },
+  "decision": {
+    "current_reference_model": "WORD_TFIDF_1_2_LOGISTIC_REGRESSION",
+    "current_reference_deployable": false,
+    "stronger_model_automatically_preferred": false,
+    "data_and_source_robustness_is_primary_bottleneck": true,
+    "new_model_configuration_authorized": false,
+    "validation_or_test_opening_allowed": false,
+    "external_holdout_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Complete fresh grouped V1-Core development supply and language/channel quotas, then freeze one new comparison protocol before any computation."
+  },
+  "safety_contract": {"model_fit_operations": 0, "model_scoring_operations": 0, "validation_or_test_openings": 0, "external_benchmark_openings": 0, "labels_created": 0}
+}

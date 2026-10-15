@@ -1,0 +1,98 @@
+{
+  "analysis_id": "ISI_CRIMSON_HUMAN_REVIEW_PACKETS_RESULT_V2",
+  "created_at": "2026-10-15",
+  "status": "PASS_TASK_PACKETS_READY_NO_DECISIONS_OR_LABELS_CREATED",
+  "purpose": "Register deterministic task-disjoint Crimson reviewer packets while preserving the distinction between AI suggestions, human first review, blind second review, and official-reference follow-up.",
+  "inputs": [
+    {
+      "role": "packet_release",
+      "path": "configs/crimson_human_review_packets_v2.json",
+      "sha256": "36312df46252ddc1ae3b0808010f3a7e4c91d5e3f6750e8784bfa12f1b82e0b5"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "packet_builder",
+      "path": "scripts/build_crimson_human_review_packets_v2.py",
+      "sha256": "1424351fbfc9684390f3d40dcc70a7177e98c4525bb2c56fcc65a9ed36c4665f"
+    },
+    {
+      "role": "independent_packet_verifier",
+      "path": "scripts/verify_crimson_human_review_packets_v2.py",
+      "sha256": "8e585a69154d9a144f794ed75c5825e82ef45f27acbeb6f4e30f481be96536a0"
+    },
+    {
+      "role": "documentation",
+      "path": "docs/crimson-human-review-packets-v2.md",
+      "sha256": "be0bafa1bdcc1945319d8c59b25309831f301e9279dde1458cf0a0d4c21cdda4"
+    },
+    {
+      "role": "tests",
+      "path": "tests/test_crimson_human_review_packets_v2.py",
+      "sha256": "1171ee991bc2ae4b5948774d91d2081987e203b0e4fcb265732148d5433a0595"
+    }
+  ],
+  "outputs": [
+    {
+      "role": "first_review_pending",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\crimson_human_review_packets_v2\\first_review_pending_v2.jsonl",
+      "sha256": "d8e4cc0dceec408f85c1de3be1d911b8f581c10353630cfe86691d3163f459cb",
+      "record_count": 39
+    },
+    {
+      "role": "blind_second_review_ready",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\crimson_human_review_packets_v2\\blind_second_review_ready_v2.jsonl",
+      "sha256": "698e4f36208ed30ab8b130cfb54b8e9cc236be2ddd5d82f397e68999a40b9384",
+      "record_count": 1
+    },
+    {
+      "role": "blind_second_review_waiting",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\crimson_human_review_packets_v2\\blind_second_review_waiting_v2.jsonl",
+      "sha256": "3cedd37dc011184d026009170373ab6159213504b5db7ec6a94cbe69be4405e1",
+      "record_count": 20
+    },
+    {
+      "role": "official_reference_followup",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\crimson_human_review_packets_v2\\official_reference_followup_v2.jsonl",
+      "sha256": "2995eba4f1985ee39975a5a33628adad68e48afa535e6ad38b85009c73e105a3",
+      "record_count": 15
+    },
+    {
+      "role": "packet_report",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\crimson_human_review_packets_v2\\packet_report_v2.json",
+      "sha256": "b45d3e7b139103b7ae6fd79d6e1336f2441fb515ff8f65e5010329a4845274d7"
+    }
+  ],
+  "findings": {
+    "pilot_population": 40,
+    "completed_first_review": 1,
+    "first_review_pending": 39,
+    "second_review_population": 21,
+    "blind_second_review_ready": 1,
+    "blind_second_review_waiting": 20,
+    "live_reference_followup": 15,
+    "prior_plan_live_reference_followup": 16,
+    "live_gap_delta_explanation": "PILOT_CRIMSON_REF_018 has a recorded first-review decision with ALL_URLS_LIVE_CONFIRMED and is therefore removed from the current official-reference follow-up task packet.",
+    "blind_second_packet_leaks_ai_or_first_review_decisions": false,
+    "task_ids_unique_across_outputs": true
+  },
+  "decision": {
+    "task_packets_ready": true,
+    "human_decisions_created": false,
+    "labels_created": false,
+    "automatic_review_allowed": false,
+    "network_execution_allowed": false,
+    "crimson_domain_access_allowed": false,
+    "training_allowed": false,
+    "model_operations_allowed": false,
+    "next_gate": "A human may complete the one ready blind-second task and the 39 pending first-review tasks using official-reference evidence only; waiting second-review tasks remain closed until their first review is recorded."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "human_decisions_created": 0,
+    "labels_created": 0,
+    "training_eligible_records": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

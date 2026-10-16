@@ -1,0 +1,50 @@
+{
+  "protocol_id": "ISI_REPOSITORY_MODULE_PREFLIGHT_V2",
+  "frozen_at": "2026-10-16T06:47:09.846552+07:00",
+  "status": "FROZEN_V5_ENTRYPOINTS_OFFLINE_IMPORT_ONLY",
+  "purpose": "Preflight exactly the three SEC/IAPD V5 entrypoints required by the current timed gate without invoking main functions, network operations, data mutation, or model operations.",
+  "repository_root": "C:\\Users\\hieu\\Documents\\ChatGPT\\invesment scam intelligence",
+  "modules": [
+    {
+      "role": "sec_iapd_v5_retry_executor",
+      "module": "scripts.retry_sec_edgar_iapd_wayback_availability_v5",
+      "path": "scripts/retry_sec_edgar_iapd_wayback_availability_v5.py",
+      "sha256": "a3d75d5320164e31e2a64038add79ff452a2a34d5a1468a4ffe9964df9187712"
+    },
+    {
+      "role": "sec_iapd_v5_release_verifier",
+      "module": "scripts.verify_sec_edgar_iapd_wayback_availability_retry_release_v5",
+      "path": "scripts/verify_sec_edgar_iapd_wayback_availability_retry_release_v5.py",
+      "sha256": "8fba94c1caddd6fd86998acceb36e28a01ddf3242eda7bd2dbf4b36ac8a625c4"
+    },
+    {
+      "role": "sec_iapd_v5_result_verifier",
+      "module": "scripts.verify_sec_edgar_iapd_wayback_availability_result_v5",
+      "path": "scripts/verify_sec_edgar_iapd_wayback_availability_result_v5.py",
+      "sha256": "1212a68533f5d688dc5d3058d9c895d67415d5efc2b26e7236efdd1e3653ac37"
+    }
+  ],
+  "execution_contract": {
+    "import_timeout_seconds_per_module": 30,
+    "subprocess_uses_current_python": true,
+    "invoke_main_allowed": false,
+    "network_allowed": false,
+    "write_bytecode_allowed": false,
+    "continue_after_import_failure": true,
+    "output_overwrite_allowed": false
+  },
+  "planned_output": {
+    "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\project_module_preflight_v2\\module_preflight_report_v2.json",
+    "report_id": "ISI_REPOSITORY_MODULE_PREFLIGHT_REPORT_V2"
+  },
+  "decision": {
+    "preflight_execution_allowed": true,
+    "sec_iapd_v5_network_execution_allowed": false,
+    "candidate_domain_access_allowed": false,
+    "data_mutation_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false,
+    "model_scoring_allowed": false
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "analysis_id": "ISI_REPOSITORY_MODULE_PREFLIGHT_RESULT_V2",
+  "created_at": "2026-10-16",
+  "status": "PASS_ALL_FROZEN_V5_MODULES_IMPORTABLE_OFFLINE",
+  "purpose": "Register the isolated offline import preflight for exactly the three frozen SEC/IAPD V5 entrypoints without invoking main functions or opening any network, data, label, validation/test, training, or scoring gate.",
+  "inputs": [
+    {
+      "role": "module_preflight_protocol_v2",
+      "path": "configs/repository_module_preflight_v2.json",
+      "sha256": "f94fff0f2f1502df689d368e6aa396cd57fecbb93674b8c5db69c19b432b305d"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "preflight_runner_v2",
+      "path": "scripts/run_repository_module_preflight_v2.py",
+      "sha256": "9f3b78161595b3f397288b771bb70bde84abf14554cc4ec631399cabdc697e65"
+    },
+    {
+      "role": "independent_report_verifier_v2",
+      "path": "scripts/verify_repository_module_preflight_v2.py",
+      "sha256": "d25fc94e850c346ddf2c41e7dfe5753e2695c3ea09c8d01a0a9d4634b1513416"
+    },
+    {
+      "role": "documentation",
+      "path": "docs/repository-module-preflight-v2.md",
+      "sha256": "e9ae028ff1f125b11e39a45947ecffbc6668ab06a29cf40869014ff76a8dcd04"
+    },
+    {
+      "role": "tests",
+      "path": "tests/test_repository_module_preflight_v2.py",
+      "sha256": "59c6e07c7bd817b64c38b23617f563a14562cf6074f64acf3a8589d0708974b9"
+    }
+  ],
+  "outputs": [
+    {
+      "role": "authoritative_v5_module_preflight_report",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\project_module_preflight_v2\\module_preflight_report_v2.json",
+      "sha256": "a06a91f3cc8285ffc9eef90a0d9d9cf00df0a676a019f5a53ac0681c4686bed2"
+    }
+  ],
+  "findings": {
+    "module_count": 3,
+    "passed_count": 3,
+    "failed_count": 0,
+    "v5_modules_importable": 3,
+    "main_functions_invoked": 0,
+    "network_operations": 0,
+    "stdout_bytes": 0,
+    "stderr_bytes": 0
+  },
+  "decision": {
+    "active_v5_module_preflight_passed": true,
+    "preflight_v1_preserved_as_historical_v4_snapshot": true,
+    "sec_iapd_v5_execution_authorized_early": false,
+    "network_execution_allowed": false,
+    "candidate_domain_access_allowed": false,
+    "data_mutation_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false,
+    "model_scoring_allowed": false,
+    "next_gate": "At or after 2026-10-17T01:19:27.607186+07:00, rerun the frozen V5 focused tests and release verifier before the existing heartbeat may execute V5 exactly once if no V5 report or partial exists."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "main_functions_invoked": 0,
+    "raw_file_modifications": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "validation_or_test_openings": 0,
+    "training_allowed": false
+  }
+}

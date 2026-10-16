@@ -14,6 +14,16 @@ def load_json(path: Path) -> object:
         return json.load(file)
 
 
+def analysis_training_gate_closed(analysis: dict[str, object]) -> bool:
+    safety = analysis.get("safety_contract", {})
+    if not isinstance(safety, dict):
+        return False
+    if "training_allowed" in safety:
+        return safety["training_allowed"] is False
+    decision = analysis.get("decision", {})
+    return isinstance(decision, dict) and decision.get("training_allowed") is False
+
+
 def main() -> None:
     registry = load_json(ROOT / "registry" / "sources.json")
     assert isinstance(registry, dict)
@@ -65,11 +75,11 @@ def main() -> None:
             raise ValueError(f"Analysis must report zero network operations and labels: {path.name}")
         domain_access_open = safety.get("domain_access_allowed") is True
         domain_access_operations = safety.get("candidate_domain_access_operations", 0)
-        if (
-            safety.get("training_allowed") is not False
-            or domain_access_open
-            or domain_access_operations != 0
-        ):
+        # Older frozen analysis registries placed the explicit training gate in
+        # ``decision`` rather than duplicating it in ``safety_contract``.  A
+        # missing safety field is acceptable only when that legacy decision is
+        # explicitly false; an explicit safety value always takes precedence.
+        if not analysis_training_gate_closed(analysis) or domain_access_open or domain_access_operations != 0:
             raise ValueError(f"Analysis safety gate is open: {path.name}")
         quality = analysis.get("quality", {})
         if quality.get("mean_adjusted_rand_index_across_seeds", 1.0) < 0.6 and quality.get("stability_assessment") == "HIGH":

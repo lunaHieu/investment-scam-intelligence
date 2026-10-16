@@ -1,0 +1,137 @@
+{
+  "analysis_id": "ISI_REPRODUCIBILITY_CURRENT_STATE_V3",
+  "created_at": "2026-10-16",
+  "status": "FROZEN_CURRENT_REPRODUCIBILITY_GUIDE_LEDGER_V5_TIMED_GATE",
+  "purpose": "Replace the stale V3/V4 navigation pointers in guide V2 with the current ledger V5, independently verified V4 outcome, frozen V5 retry, and unchanged closed downstream gates without mutating historical artifacts.",
+  "current_entrypoint": "registry/analyses/project_state_gap_ledger_v5.json",
+  "inputs": [
+    {
+      "role": "project_state_v5",
+      "path": "registry/analyses/project_state_gap_ledger_v5.json",
+      "sha256": "9147dba62827f950791d27b7ce35c964619109a60a21f8673fbd506396a3c5f0"
+    },
+    {
+      "role": "raw_provenance",
+      "path": "registry/analyses/raw_cross_registry_provenance_audit_v2.json",
+      "sha256": "84dd009d88630bf23f1b5cc96e88aed4e34c43b03453c44e84b288a7dcda6d6a"
+    },
+    {
+      "role": "external_pilot_verifier_v2",
+      "path": "registry/analyses/external_text_reconciled_pilot_verifier_v2.json",
+      "sha256": "f0fa08cbeb938de78575251ede56b1792ecba2415962af0a9ca9dea5d10e7bc7"
+    },
+    {
+      "role": "crimson_review_packets_v2",
+      "path": "registry/analyses/crimson_human_review_packets_v2.json",
+      "sha256": "4022a570984ed7567f36d56cd0aef20eab048a478a4d72e1e5459f44a67d58d5"
+    },
+    {
+      "role": "manual_acquisition_packet",
+      "path": "registry/analyses/target_text_corpus_v1_manual_acquisition_packet_v1.json",
+      "sha256": "775ce6c3aa8ac2eef9803736eed65c5b8925128b8f3db04e22f112f39cfb050f"
+    },
+    {
+      "role": "text_task_source_audit",
+      "path": "registry/analyses/text_task_source_audit_v1.json",
+      "sha256": "fed2123d524e9a90ba1b6440355d161d5d4a9afd1d50dfa5e3e12bb9c69dd371"
+    },
+    {
+      "role": "model_choice",
+      "path": "registry/analyses/text_model_choice_dossier_v5.json",
+      "sha256": "dc2c0490d70f92c86f74c49d791426458dea89743e6493869e92200d032a80df"
+    },
+    {
+      "role": "sec_iapd_timed_release_v5",
+      "path": "registry/analyses/sec_edgar_iapd_wayback_availability_retry_release_v5.json",
+      "sha256": "36fc2bf07fcbf6469d25fc71b55ca1b81cb281b05a5dac5883dcd7537f76efab"
+    },
+    {
+      "role": "sec_iapd_result_verifier_v5",
+      "path": "registry/analyses/sec_edgar_iapd_wayback_availability_result_verifier_v5.json",
+      "sha256": "402d717e25d19e7dd8200a98c786c8990f83c2df2bbec64bb0328ba574695825"
+    },
+    {
+      "role": "repository_module_preflight_v2",
+      "path": "registry/analyses/repository_module_preflight_v2.json",
+      "sha256": "1df08492fb3a05c7b6269d3556c61a5db580dd4d315919f385f1721c596a424b"
+    },
+    {
+      "role": "sec_iapd_capture_plan_tooling_v2",
+      "path": "registry/analyses/sec_edgar_iapd_wayback_capture_plan_tooling_v2.json",
+      "sha256": "a9f7b51c4e4f27690aca6ef0a19513bfd0b8f2568477f2d5b2a31e30823480a2"
+    },
+    {
+      "role": "sec_iapd_capture_execution_tooling_v2",
+      "path": "registry/analyses/sec_edgar_iapd_wayback_capture_execution_tooling_v2.json",
+      "sha256": "13da62902130cb977c51fd72cba03f37ff08e5f6b047e6b121edf60361bdb0c4"
+    },
+    {
+      "role": "sec_iapd_capture_retry_tooling_v1",
+      "path": "registry/analyses/sec_edgar_iapd_wayback_capture_retry_tooling_v1.json",
+      "sha256": "52d60b1d4d887b868cd1c0069e95f5f1ea1f247a931e1d536b0c3235a1f0da45"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "guide_contract_tests",
+      "path": "tests/test_reproducibility_current_state_v3.py",
+      "sha256": "9445955cfd08dfdd52f243965242fa5c61be9bc0186ea567a8e3e4900d654c94"
+    }
+  ],
+  "output": {
+    "role": "reproducibility_guide_v3",
+    "path": "docs/reproducibility-current-state-v3.md",
+    "sha256": "299c5ea6ff8d610e56e14f8172c0378644724a4367c822fe3773237c8299d072"
+  },
+  "current_sec_iapd_gate": {
+    "planned": 115,
+    "resolved": 92,
+    "available": 45,
+    "unavailable": 47,
+    "unresolved": 23,
+    "next_release": "V5",
+    "not_before": "2026-10-17T01:19:27.607186+07:00",
+    "minimum_delay_seconds": 60.0,
+    "capture_plan_allowed": false
+  },
+  "coverage": {
+    "storage_and_trust_boundaries": true,
+    "evidence_flow": true,
+    "raw_state": true,
+    "external_21_review_limitations": true,
+    "crimson_human_review_gap": true,
+    "target_text_pilot_state": true,
+    "sec_iapd_v4_outcome": true,
+    "sec_iapd_v5_timed_gate": true,
+    "sec_iapd_v5_module_preflight": true,
+    "post_v5_capture_tooling_prepared": true,
+    "manual_acquisition_packet": true,
+    "source_role_audit": true,
+    "model_state": true,
+    "module_invocation_examples": true,
+    "authorized_next_actions": true,
+    "prohibited_actions": true
+  },
+  "decision": {
+    "guide_v3_is_authoritative_navigation_entry": true,
+    "guide_v1_and_v2_preserved_as_historical_snapshots": true,
+    "module_compatible_external_verifier_documented": true,
+    "manual_packet_documented": true,
+    "network_execution_allowed_now": false,
+    "candidate_domain_access_allowed": false,
+    "capture_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false,
+    "model_scoring_allowed": false,
+    "next_gate": "At or after the frozen V5 not_before, execute only the exact unresolved-only retry and independently verify it; other progress requires real human review or lawful external artifacts."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "raw_file_modifications": 0,
+    "human_decisions_created": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "validation_or_test_openings": 0,
+    "training_allowed": false
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_IAPD_WAYBACK_CAPTURE_MISSING_ROW_RETRY_TOOLING_V1",
+  "created_at": "2026-10-16",
+  "status": "FROZEN_GENERIC_OFFLINE_RETRY_BUILDER_AND_INDEPENDENT_VERIFIER_NO_RELEASE_CREATED",
+  "purpose": "Predeclare generic offline tooling that can build and independently verify an exact missing/error-row archive capture retry only after a partial capture result has passed independent QA.",
+  "inputs": [
+    {
+      "role": "base_capture_execution_and_result_qa_tooling_v1",
+      "path": "registry/analyses/sec_edgar_iapd_wayback_capture_execution_tooling_v1.json",
+      "sha256": "15aa7f4faff1ed537fde1eaf645838923758dab19dced54246a8a5ba8bb33f86"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "missing_row_retry_release_builder",
+      "path": "scripts/build_sec_edgar_iapd_wayback_capture_retry_release_v1.py",
+      "sha256": "c0440cbb173ecbe6e24da5517f2b22032f1af92e739592c80d61734ae1657eff"
+    },
+    {
+      "role": "independent_missing_row_retry_release_verifier",
+      "path": "scripts/verify_sec_edgar_iapd_wayback_capture_retry_release_v1.py",
+      "sha256": "f7b0239c0d6011d6c9a22dacdc80dbeb24a2a66d1e34bee7826228ed5214bf7f"
+    },
+    {
+      "role": "tooling_tests",
+      "path": "tests/test_sec_edgar_iapd_wayback_capture_retry_release_v1.py",
+      "sha256": "2b40e9929fcb861b729e10d92572752c32b81b38da98aa2ba0ec06eeb10a664b"
+    },
+    {
+      "role": "registry_test",
+      "path": "tests/test_sec_edgar_iapd_wayback_capture_retry_tooling_registry_v1.py",
+      "sha256": "d04cbdbaf2852c4e155138bde7649999ce3c56bcaf76e2ab76b2a1c37a07f59f"
+    },
+    {
+      "role": "method_documentation",
+      "path": "docs/sec-edgar-iapd-wayback-capture-retry-tooling-v1.md",
+      "sha256": "37bb74b5d53693b4fbf15f9b162b87e16333fa7a31266e75e5f4a615f4b14f27"
+    }
+  ],
+  "outputs": [],
+  "findings": {
+    "partial_capture_independent_qa_required": true,
+    "actual_v1_partial_qa_hash_only_schema_supported": true,
+    "required_qa_input_hashes": [
+      "release_sha256",
+      "release_qa_sha256",
+      "report_sha256",
+      "plan_sha256"
+    ],
+    "explicit_source_paths_required": [
+      "source_release",
+      "source_release_qa",
+      "capture_report"
+    ],
+    "capture_plan_resolved_only_from_source_release": true,
+    "full_capture_result_qa_recomputed_and_required_equal": true,
+    "exact_missing_or_error_rows_only": true,
+    "accepted_prior_outcomes": [
+      "FAILED",
+      "NOT_ATTEMPTED_AFTER_HTTP_429_STOP"
+    ],
+    "completed_rows_excluded_from_retry": true,
+    "completed_bytes_and_hashes_preserved": true,
+    "source_order_preserved": true,
+    "minimum_cooldown_seconds": 86400.0,
+    "allowed_network_hosts": [
+      "web.archive.org"
+    ],
+    "minimum_delay_seconds": 30.0,
+    "maximum_attempts_per_snapshot": 1,
+    "raw_replay_modifier_required": true,
+    "stop_on_http_429": true,
+    "output_overwrite_allowed": false,
+    "network_operations_at_tooling_freeze": 0
+  },
+  "decision": {
+    "generic_retry_tooling_ready": true,
+    "concrete_retry_release_created": false,
+    "network_execution_allowed_now": false,
+    "capture_allowed_now": false,
+    "candidate_live_domain_access_allowed": false,
+    "text_extraction_allowed_now": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false,
+    "model_scoring_allowed": false,
+    "next_gate": "Only if a future SEC/IAPD archive capture receives PASS_PARTIAL_CAPTURE_RETRY_REQUIRED_TEXT_EXTRACTION_BLOCKED independent QA may a separate exact-row retry release be materialized, independently verified, registered, and held until its 24-hour not-before gate."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "candidate_domain_access_operations": 0,
+    "archived_page_downloads": 0,
+    "artifact_captures": 0,
+    "raw_files_modified": 0,
+    "concrete_releases_created": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "validation_or_test_openings": 0,
+    "training_allowed": false
+  }
+}

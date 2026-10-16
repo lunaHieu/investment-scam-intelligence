@@ -1,0 +1,94 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_IAPD_WAYBACK_CAPTURE_PLAN_TOOLING_V2",
+  "created_at": "2026-10-16",
+  "status": "FROZEN_GENERATION_AWARE_TOOLING_READY_COMPLETE_V3_V4_OR_V5_REQUIRED",
+  "purpose": "Remove the V3-only implementation lock while preserving the exact complete-result and all-and-only-available capture-plan gate for the active V5 chain.",
+  "inputs": [
+    {
+      "role": "availability_retry_release_v3",
+      "path": "configs/sec_edgar_iapd_wayback_availability_retry_release_v3.json",
+      "sha256": "1c068beb4ecd3d4080ed97d78ddb28c2f4be2adfdb4162c3aa945c7351ede937"
+    },
+    {
+      "role": "availability_retry_release_v4",
+      "path": "configs/sec_edgar_iapd_wayback_availability_retry_release_v4.json",
+      "sha256": "0a419cd24e2649d62f1199c90d8a9d40fd6ae11703f913f88c709adb9f7607d4"
+    },
+    {
+      "role": "availability_retry_release_v5",
+      "path": "configs/sec_edgar_iapd_wayback_availability_retry_release_v5.json",
+      "sha256": "942c4d196eb2b74c3aba9e8b6a53402926eb2bdccaa0cebef4744183715e3ff9"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "generation_aware_capture_plan_builder",
+      "path": "scripts/build_sec_edgar_iapd_wayback_capture_plan_v2.py",
+      "sha256": "cf1daa640758557b32288439693aedd75c2e19af7278e6e7336c0f7ff5517519"
+    },
+    {
+      "role": "generation_aware_independent_capture_plan_verifier",
+      "path": "scripts/verify_sec_edgar_iapd_wayback_capture_plan_v2.py",
+      "sha256": "f45a5d30c7acea71b798926530010600779af86a06061180e94c4567ce2c5b2d"
+    },
+    {
+      "role": "tooling_tests",
+      "path": "tests/test_sec_edgar_iapd_wayback_capture_plan_v2.py",
+      "sha256": "bb86629221ac7b7eaaf9e174f8991f5e6f5a3970fbbb0cb627e1d2b9936f5674"
+    },
+    {
+      "role": "registry_test",
+      "path": "tests/test_sec_edgar_iapd_wayback_capture_plan_tooling_registry_v2.py",
+      "sha256": "a5e686f39c6948f3bcfdde920065f4fbb91cf4372575a917dbaf3f44649d9ee5"
+    },
+    {
+      "role": "method_documentation",
+      "path": "docs/sec-edgar-iapd-wayback-capture-plan-tooling-v2.md",
+      "sha256": "548285e7595556ff341d09b768f30a0a15ad38d98d22e5fd52fcfa4e6528b560"
+    }
+  ],
+  "outputs": [],
+  "planned_outputs": [
+    {
+      "role": "capture_plan_v1",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_capture_plan_v1\\capture_plan_v1.json"
+    },
+    {
+      "role": "independent_capture_plan_qa_v2",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_capture_plan_v1\\independent_qa_v2.json"
+    }
+  ],
+  "findings": {
+    "supported_availability_generations": ["v3", "v4", "v5"],
+    "expected_availability_population": 115,
+    "required_availability_status": "COMPLETE",
+    "required_unresolved_error_count": 0,
+    "required_independent_qa_status": "PASS_COMPLETE_CAPTURE_PLAN_MAY_BE_PREPARED",
+    "generation_specific_result_hash_fields": {"v3": "v3_sha256", "v4": "v4_sha256", "v5": "v5_sha256"},
+    "selection_rule": "ALL_AND_ONLY_AVAILABLE_ROWS_IN_ORIGINAL_ORDER",
+    "cohort_identity_preserved": true,
+    "model_score_used_for_selection": false,
+    "actual_capture_population_known_now": false,
+    "network_operations_at_tooling_freeze": 0
+  },
+  "decision": {
+    "tooling_ready_before_v5_result": true,
+    "capture_plan_construction_allowed_now": false,
+    "capture_execution_release_preparation_allowed_after_plan_qa": true,
+    "archived_page_download_allowed": false,
+    "candidate_live_domain_access_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Only after V5 and its independent QA pass completely, materialize and independently verify the exact all-available plan; then freeze a separate hash-bound capture execution release."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "candidate_domain_access_operations": 0,
+    "archived_page_downloads": 0,
+    "artifact_captures": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

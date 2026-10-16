@@ -1,0 +1,159 @@
+{
+  "analysis_id": "ISI_DATA_SUFFICIENCY_AUDIT_V1",
+  "created_at": "2026-10-16",
+  "status": "FROZEN_CURRENT_STATE_NOT_ACQUISITION_COMPLETE",
+  "purpose": "Separate existing raw-file integrity, historical benchmark rows, reference metadata, diagnostic evidence, and fresh target-release records so that project data progress is reported with valid denominators.",
+  "inputs": [
+    {
+      "role": "authoritative_existing_raw_integrity_audit",
+      "path": "registry/analyses/raw_cross_registry_provenance_audit_v2.json",
+      "sha256": "84dd009d88630bf23f1b5cc96e88aed4e34c43b03453c44e84b288a7dcda6d6a"
+    },
+    {
+      "role": "historical_benchmark_split_contract",
+      "path": "registry/splits/mendeley_group_split_v2.json",
+      "sha256": "22fa918ff9eb0407a430d0c62d023bca645dcbfa1cab4af59c627c0c3d46f776"
+    },
+    {
+      "role": "crimson_unsupervised_inventory",
+      "path": "registry/analyses/crimson_domain_unsupervised_v1.json",
+      "sha256": "4b501cd425202988468067207c22f568bf26bc3c98edbe71cc55ef43b60943b2"
+    },
+    {
+      "role": "target_pilot_owner_acceptance",
+      "path": "registry/analyses/target_text_corpus_v1_owner_acceptance_result_v1.json",
+      "sha256": "a97f2f667d89ec089d3c3558409e2295d47bc8adfa53d5846748a641a3e6ccca"
+    },
+    {
+      "role": "current_project_state_ledger",
+      "path": "registry/analyses/project_state_gap_ledger_v5.json",
+      "sha256": "9147dba62827f950791d27b7ce35c964619109a60a21f8673fbd506396a3c5f0"
+    },
+    {
+      "role": "accepted_target_core_contract",
+      "path": "registry/analyses/target_text_corpus_v1_core_release_contract_v1.json",
+      "sha256": "7139860025431ec13dc1d0b979083cf84889e7bc2fe876bdfdba73be84868e03"
+    },
+    {
+      "role": "current_model_choice_dossier",
+      "path": "registry/analyses/text_model_choice_dossier_v5.json",
+      "sha256": "dc2c0490d70f92c86f74c49d791426458dea89743e6493869e92200d032a80df"
+    },
+    {
+      "role": "iosco_reference_metadata_index",
+      "path": "registry/analyses/iosco_warning_reference_index_v1.json",
+      "sha256": "b9e9426c49ee85f8a7a39e54a5dd408c0da29a1a190e7c245ad061818ba74a8a"
+    },
+    {
+      "role": "iapd_reference_metadata_index",
+      "path": "registry/analyses/sec_iapd_reference_index_v1.json",
+      "sha256": "8b8d5411b05460579ff655acf95057c46278a4c7f6962e49d87eecc9c36e1cbd"
+    },
+    {
+      "role": "sec_edgar_reference_metadata_index",
+      "path": "registry/analyses/sec_edgar_all_filer_identity_index_v1.json",
+      "sha256": "a9a190e8d045a91e011d2af60714e7ec82418e96394e646c330b169a89580e65"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "human_readable_audit",
+      "path": "docs/data-sufficiency-audit-v1.md",
+      "sha256": "78c18e67bcc5cd80e3ca68e5755cf329f8c96eb318fd822b9c3fee9815be145a"
+    },
+    {
+      "role": "frozen_audit_tests",
+      "path": "tests/test_data_sufficiency_audit_v1.py",
+      "sha256": "4b7a13062aae4e7846c2bd134b125c34bfdc925d70193eb9fedcb116b9b96bef"
+    }
+  ],
+  "findings": {
+    "raw_storage": {
+      "file_count": 278,
+      "verified_file_count": 278,
+      "byte_count": 1640058635,
+      "integrity_coverage_percent": 100.0,
+      "denominator": "files currently present in the audited raw store",
+      "is_total_planned_acquisition_denominator": false
+    },
+    "historical_benchmark": {
+      "source": "Mendeley V2",
+      "raw_rows": 16202,
+      "benchmark_eligible_rows": 5592,
+      "train_rows": 3916,
+      "validation_rows": 838,
+      "test_rows": 838,
+      "train_groups": 3783,
+      "auxiliary_rows": 10607,
+      "quarantine_rows": 3,
+      "currently_usable_for_authorized_internal_baseline_rows": 3916,
+      "validation_and_test_open_for_new_experiments": false
+    },
+    "reference_metadata": {
+      "sec_edgar_all_filer_entries": 988519,
+      "iosco_warning_entries": 47001,
+      "iapd_entries": 23927,
+      "count_as_captured_text_artifacts": false,
+      "count_as_evidence_backed_labels": false,
+      "count_as_training_rows": false
+    },
+    "fresh_target_corpus": {
+      "required_groups": 300,
+      "development_groups_required": 240,
+      "external_holdout_groups_required": 60,
+      "labels": 2,
+      "channels": 4,
+      "required_groups_per_channel": 75,
+      "validated_release_groups": 0,
+      "completion_percent": 0.0,
+      "target_text_pilot_reviewed_rows": 22,
+      "target_text_pilot_confirmed_rows": 4,
+      "target_text_pilot_legitimate_rows": 11,
+      "target_text_pilot_uncertain_rows": 7,
+      "diagnostic_decisive_target_text_pilot_rows": 15,
+      "external_diagnostic_pilot_rows": 21,
+      "crimson_unlabeled_domain_records": 43572,
+      "verified_vietnamese_supply_rows": 0,
+      "usable_image_assets": 0,
+      "training_eligible_rows": 0
+    },
+    "acquisition_pipeline": {
+      "sec_iapd_candidates": 115,
+      "sec_iapd_resolved": 92,
+      "sec_iapd_available": 45,
+      "sec_iapd_unavailable": 47,
+      "sec_iapd_unresolved": 23,
+      "sec_iapd_resolution_percent": 80.0,
+      "sec_iapd_training_ready_rows": 0,
+      "availability_is_capture": false,
+      "availability_is_label_evidence": false,
+      "capture_plan_open": false
+    },
+    "readiness": {
+      "historical_internal_text_baseline_supported": true,
+      "fresh_target_corpus_complete": false,
+      "fresh_target_corpus_training_ready": false,
+      "final_data_acquisition_complete": false
+    }
+  },
+  "decision": {
+    "existing_raw_integrity_complete": true,
+    "total_planned_raw_acquisition_complete": false,
+    "baseline_internal_training_data_exists": true,
+    "fresh_target_training_ready": false,
+    "candidate_or_reference_counts_are_training_rows": false,
+    "model_promotion_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Execute the frozen SEC/IAPD V5 availability release at or after its not_before time, then admit no fresh target record until capture, extraction, grouping, independent reviews, reconciliation, and release QA are complete."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "raw_file_modifications": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "validation_or_test_openings": 0,
+    "candidate_domain_access_operations": 0,
+    "training_allowed": false
+  }
+}

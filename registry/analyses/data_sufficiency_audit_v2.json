@@ -1,0 +1,137 @@
+{
+  "analysis_id": "ISI_DATA_SUFFICIENCY_AUDIT_V2",
+  "created_at": "2026-10-17",
+  "status": "FROZEN_POST_V5_AVAILABILITY_PROGRESS_NOT_ACQUISITION_COMPLETE",
+  "purpose": "Amend Data Sufficiency Audit V1 with the independently verified V5 availability result while preserving every raw, benchmark, reference, and fresh-release denominator.",
+  "inputs": [
+    {
+      "role": "prior_data_sufficiency_audit",
+      "path": "registry/analyses/data_sufficiency_audit_v1.json",
+      "sha256": "8cbed7a9c32840ecb97fe183d23c28119e86b258a822a66ff0b02abd9de64f7d"
+    },
+    {
+      "role": "sec_iapd_v5_result",
+      "path": "registry/analyses/sec_edgar_iapd_wayback_availability_result_v5.json",
+      "sha256": "123b9612225da8f339c468da5d31c44d788031611b6beb2c1e1434831834b122"
+    },
+    {
+      "role": "sec_iapd_v6_release",
+      "path": "registry/analyses/sec_edgar_iapd_wayback_availability_retry_release_v6.json",
+      "sha256": "68f2781469dcd0b6137dacf0016e59944883eed977d74dea0acff0f76724269b"
+    },
+    {
+      "role": "current_project_state_ledger",
+      "path": "registry/analyses/project_state_gap_ledger_v6.json",
+      "sha256": "f6aa57f43acc3747008a20be80017787e7f940416e04a9396a441acaee12d5a0"
+    },
+    {
+      "role": "accepted_target_core_contract",
+      "path": "registry/analyses/target_text_corpus_v1_core_release_contract_v1.json",
+      "sha256": "7139860025431ec13dc1d0b979083cf84889e7bc2fe876bdfdba73be84868e03"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "human_readable_audit",
+      "path": "docs/data-sufficiency-audit-v2.md",
+      "sha256": "b2459a9239be3a4c38ba798e82618ff3736f5419b6fee8d64982cdd41a206d9a"
+    },
+    {
+      "role": "frozen_audit_tests",
+      "path": "tests/test_data_sufficiency_audit_v2.py",
+      "sha256": "5fcee3bbc00bc23a33d5e753aefe754917f307aa4ea6e58b481ed656e7d5d4c2"
+    }
+  ],
+  "findings": {
+    "raw_storage": {
+      "file_count": 278,
+      "verified_file_count": 278,
+      "byte_count": 1640058635,
+      "integrity_coverage_percent": 100.0,
+      "denominator": "files currently present in the audited raw store",
+      "is_total_planned_acquisition_denominator": false
+    },
+    "historical_benchmark": {
+      "source": "Mendeley V2",
+      "raw_rows": 16202,
+      "benchmark_eligible_rows": 5592,
+      "train_rows": 3916,
+      "validation_rows": 838,
+      "test_rows": 838,
+      "train_groups": 3783,
+      "auxiliary_rows": 10607,
+      "quarantine_rows": 3,
+      "currently_usable_for_authorized_internal_baseline_rows": 3916,
+      "validation_and_test_open_for_new_experiments": false
+    },
+    "reference_metadata": {
+      "sec_edgar_all_filer_entries": 988519,
+      "iosco_warning_entries": 47001,
+      "iapd_entries": 23927,
+      "count_as_captured_text_artifacts": false,
+      "count_as_evidence_backed_labels": false,
+      "count_as_training_rows": false
+    },
+    "fresh_target_corpus": {
+      "required_groups": 300,
+      "development_groups_required": 240,
+      "external_holdout_groups_required": 60,
+      "labels": 2,
+      "channels": 4,
+      "required_groups_per_channel": 75,
+      "validated_release_groups": 0,
+      "completion_percent": 0.0,
+      "target_text_pilot_reviewed_rows": 22,
+      "target_text_pilot_confirmed_rows": 4,
+      "target_text_pilot_legitimate_rows": 11,
+      "target_text_pilot_uncertain_rows": 7,
+      "diagnostic_decisive_target_text_pilot_rows": 15,
+      "external_diagnostic_pilot_rows": 21,
+      "crimson_unlabeled_domain_records": 43572,
+      "verified_vietnamese_supply_rows": 0,
+      "usable_image_assets": 0,
+      "training_eligible_rows": 0
+    },
+    "acquisition_pipeline": {
+      "sec_iapd_candidates": 115,
+      "sec_iapd_resolved": 107,
+      "sec_iapd_available": 52,
+      "sec_iapd_unavailable": 55,
+      "sec_iapd_unresolved": 8,
+      "sec_iapd_external_holdout_unresolved": 4,
+      "sec_iapd_resolution_percent": 93.04,
+      "sec_iapd_captured_raw_artifacts": 0,
+      "sec_iapd_training_ready_rows": 0,
+      "availability_is_capture": false,
+      "availability_is_label_evidence": false,
+      "capture_plan_open": false,
+      "next_timed_gate": "SEC_IAPD_V6_AT_OR_AFTER_2026-10-18T08:47:59.207293+07:00"
+    },
+    "readiness": {
+      "historical_internal_text_baseline_supported": true,
+      "fresh_target_corpus_complete": false,
+      "fresh_target_corpus_training_ready": false,
+      "final_data_acquisition_complete": false
+    }
+  },
+  "decision": {
+    "existing_raw_integrity_complete": true,
+    "total_planned_raw_acquisition_complete": false,
+    "baseline_internal_training_data_exists": true,
+    "fresh_target_training_ready": false,
+    "candidate_or_reference_counts_are_training_rows": false,
+    "model_promotion_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Execute the frozen SEC/IAPD V6 availability release at or after its not_before time; admit no target record until capture, extraction, grouping, independent reviews, reconciliation, and release QA are complete."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "raw_file_modifications": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "validation_or_test_openings": 0,
+    "candidate_domain_access_operations": 0,
+    "training_allowed": false
+  }
+}

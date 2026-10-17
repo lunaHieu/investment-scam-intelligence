@@ -1,0 +1,93 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_IAPD_WAYBACK_CAPTURE_EXECUTION_TOOLING_V3",
+  "created_at": "2026-10-17",
+  "status": "FROZEN_PREDECLARED_V6_AWARE_24H_ARCHIVE_CAPTURE_RELEASE_TOOLING",
+  "purpose": "Bind a concrete archive-only capture release to capture-plan tooling V3 and a not-before at least 24 hours after the final availability report created_at.",
+  "inputs": [
+    {
+      "role": "capture_plan_tooling_registry_v3",
+      "path": "registry/analyses/sec_edgar_iapd_wayback_capture_plan_tooling_v3.json",
+      "sha256": "a89765f32e101ffb3d3c9cba47d329c93208f4c13599603bff33e38de51f4fb1"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "v3_cooldown_bound_capture_release_builder",
+      "path": "scripts/build_sec_edgar_iapd_wayback_capture_release_v3.py",
+      "sha256": "8dca6bd177a85247c2407b58232c15b39d18d3690a0af0eeb9471e0d2cb4a166"
+    },
+    {
+      "role": "independent_v3_capture_release_verifier",
+      "path": "scripts/verify_sec_edgar_iapd_wayback_capture_release_v3.py",
+      "sha256": "48294fee411a14f8964808917a21ee72fe803c48004ff03349e4e6b59cfa1fe2"
+    },
+    {
+      "role": "compatible_frozen_archive_capture_executor",
+      "path": "scripts/execute_sec_edgar_iapd_wayback_capture_v1.py",
+      "sha256": "b1cf5fcef97145788b39ada3dc20b2fb16e8ae4c1fd6a7038e64e67c8a0b2d27"
+    },
+    {
+      "role": "compatible_capture_result_byte_hash_verifier",
+      "path": "scripts/verify_sec_edgar_iapd_wayback_capture_result_v1.py",
+      "sha256": "b2ba0a0765955f76a7c0afa43d4c3fa5c25252defec299d1d51e0fbbeb9074a1"
+    },
+    {
+      "role": "synthetic_tooling_tests",
+      "path": "tests/test_sec_edgar_iapd_wayback_capture_release_v3.py",
+      "sha256": "dd6b45f9c476d187e3b08c03cdb69225aa2f8d00058a7e640dbacb227f4fa9dd"
+    },
+    {
+      "role": "registry_test",
+      "path": "tests/test_sec_edgar_iapd_wayback_capture_execution_tooling_registry_v3.py",
+      "sha256": "1844fa7bf1b4e9bf565869cc01bae1da5f294ba4245eb6a25f4578d073432cb2"
+    },
+    {
+      "role": "method_documentation",
+      "path": "docs/sec-edgar-iapd-wayback-capture-execution-tooling-v3.md",
+      "sha256": "a7efaff70d88794e55fb94ec40e005524ba504a74d64998db0c3bc34a626abaa"
+    }
+  ],
+  "outputs": [],
+  "findings": {
+    "minimum_availability_to_capture_cooldown_seconds": 86400,
+    "cooldown_anchor": "capture_plan_v3.availability_result.created_at",
+    "availability_generation_and_hash_bound": true,
+    "capture_plan_v3_qa_identity_and_hash_bound": true,
+    "allowed_network_hosts": ["web.archive.org"],
+    "minimum_delay_seconds": 30.0,
+    "maximum_attempts_per_snapshot": 1,
+    "maximum_redirects": 3,
+    "maximum_response_bytes": 26214400,
+    "raw_replay_modifier_required": true,
+    "stop_on_http_429": true,
+    "failed_rows_are_not_replaced": true,
+    "output_overwrite_allowed": false,
+    "raw_byte_hash_verification_required": true,
+    "complete_capture_required_before_text_extraction": true,
+    "frozen_v1_executor_compatibility_verified_offline": true,
+    "network_operations_at_tooling_freeze": 0
+  },
+  "decision": {
+    "execution_tooling_ready_before_concrete_plan": true,
+    "network_execution_allowed_now": false,
+    "capture_release_may_be_created_only_after_plan_v3_qa": true,
+    "capture_release_not_before_must_be_at_least_24h_after_final_availability": true,
+    "text_extraction_allowed_now": false,
+    "partial_capture_can_open_text_extraction": false,
+    "candidate_live_domain_access_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false,
+    "next_gate": "After a complete V6-derived plan passes capture-plan V3 QA, create and verify one concrete V3 release with not_before at least 24 hours after final availability created_at."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "candidate_domain_access_operations": 0,
+    "archived_page_downloads": 0,
+    "artifact_captures": 0,
+    "raw_files_modified": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

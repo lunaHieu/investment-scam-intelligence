@@ -1,0 +1,87 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_IAPD_WAYBACK_AVAILABILITY_V6_1_EXECUTION_HARDENING",
+  "created_at": "2026-10-17",
+  "status": "FROZEN_OFFLINE_EXECUTION_HARDENING_NO_NETWORK",
+  "purpose": "Amend only the execution mechanism for the frozen V6 release with an exclusive pre-request reservation, atomic per-attempt checkpoints, and no automatic partial resume.",
+  "inputs": [
+    {
+      "role": "frozen_v6_release",
+      "path": "configs/sec_edgar_iapd_wayback_availability_retry_release_v6.json",
+      "sha256": "bdfea012bbbbb9f337f394849ff329995cfd4b7218fc7fa513a70d4543e778e7"
+    },
+    {
+      "role": "frozen_v6_release_registry",
+      "path": "registry/analyses/sec_edgar_iapd_wayback_availability_retry_release_v6.json",
+      "sha256": "68f2781469dcd0b6137dacf0016e59944883eed977d74dea0acff0f76724269b"
+    },
+    {
+      "role": "retained_v6_result_verifier",
+      "path": "scripts/verify_sec_edgar_iapd_wayback_availability_result_v6.py",
+      "sha256": "9c893255d66180673669c177ecdc671beae7d32bd5472a68534402320edd116f"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "authoritative_v6_1_executor",
+      "path": "scripts/retry_sec_edgar_iapd_wayback_availability_v6_1.py",
+      "sha256": "54d492e016933f9566144d5c6ef189baf911806fa7a054c3a938877e7ed043d5"
+    },
+    {
+      "role": "mocked_offline_executor_tests",
+      "path": "tests/test_retry_sec_edgar_iapd_wayback_availability_v6_1.py",
+      "sha256": "905d768476f489a78d9be3bf36cd5d22e1da25290f2c26c4f9f4d84f7ee47b75"
+    },
+    {
+      "role": "hardening_registry_tests",
+      "path": "tests/test_sec_edgar_iapd_wayback_availability_v6_1_hardening_registry.py",
+      "sha256": "fecd79ef77dc0bb5b0136893784c3f11ba7ea064ee317408956f300c8963b4cf"
+    },
+    {
+      "role": "execution_hardening_documentation",
+      "path": "docs/sec-edgar-iapd-wayback-availability-v6-1-execution-hardening.md",
+      "sha256": "49fb6f283e03cc1a59e1989fba27bb440549108e8be744a5e7ccc802e9eb92a0"
+    }
+  ],
+  "findings": {
+    "resolved_v5_rows_preserved": 107,
+    "unresolved_v6_retry_rows": 8,
+    "minimum_cooldown_seconds": 86400,
+    "minimum_delay_seconds": 60.0,
+    "reservation_created_before_first_request": true,
+    "checkpoint_after_each_attempt": true,
+    "partial_auto_resume_allowed": false,
+    "final_or_partial_overwrite_allowed": false,
+    "stop_on_http_429": true,
+    "mocked_offline_scenarios": [
+      "pre_gate_fail",
+      "crash_after_first_request",
+      "no_overwrite",
+      "http_429_stop",
+      "happy_path"
+    ]
+  },
+  "decision": {
+    "authoritative_execution_module": "scripts.retry_sec_edgar_iapd_wayback_availability_v6_1",
+    "legacy_v6_executor_superseded_for_execution_only": true,
+    "frozen_v6_config_retained": true,
+    "v6_result_verifier_retained": true,
+    "network_execution_performed": false,
+    "real_v6_output_created": false,
+    "capture_plan_construction_allowed_now": false,
+    "candidate_live_domain_access_allowed": false,
+    "archived_page_download_allowed": false,
+    "artifact_capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "candidate_domain_access_operations": 0,
+    "archived_page_downloads": 0,
+    "artifact_captures": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

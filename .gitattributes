@@ -3,6 +3,7 @@
 # Keep every repository text artifact byte-stable across operating systems.
 .gitattributes text eol=lf
 .gitignore text eol=lf
+.gitkeep text eol=lf
 *.py text eol=lf
 *.json text eol=lf
 *.jsonl text eol=lf

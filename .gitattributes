@@ -1,0 +1,30 @@
+* text=auto
+
+# Keep every repository text artifact byte-stable across operating systems.
+.gitattributes text eol=lf
+.gitignore text eol=lf
+*.py text eol=lf
+*.json text eol=lf
+*.jsonl text eol=lf
+*.md text eol=lf
+*.toml text eol=lf
+*.txt text eol=lf
+*.mjs text eol=lf
+*.js text eol=lf
+*.ps1 text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+
+# Never apply newline conversion to binary research artifacts.
+*.bin -text
+*.gif -text
+*.jpeg -text
+*.jpg -text
+*.parquet -text
+*.pdf -text
+*.pkl -text
+*.png -text
+*.pt -text
+*.safetensors -text
+*.xlsx -text
+*.zip -text

@@ -16,6 +16,10 @@
 *.yaml text eol=lf
 *.yml text eol=lf
 
+# This legacy manifest was historically frozen and referenced by the hash of
+# its Windows working-tree bytes. Preserve those exact bytes across clones.
+registry/manifests/mendeley_investment_deceptive_2026__v2__2026-09-07.json -text !eol
+
 # Never apply newline conversion to binary research artifacts.
 *.bin -text
 *.gif -text

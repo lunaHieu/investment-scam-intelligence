@@ -1,0 +1,157 @@
+{
+  "analysis_id": "ISI_REPRODUCIBILITY_CURRENT_STATE_V4",
+  "created_at": "2026-10-17",
+  "status": "FROZEN_CURRENT_REPRODUCIBILITY_GUIDE_LEDGER_V6_V6_1_EXECUTOR_CAPTURE_V3",
+  "purpose": "Replace the consumed V5 navigation with ledger V6, Data Sufficiency V2, the crash-safe authoritative V6.1 executor, and V6-aware Capture Tooling V3 without mutating historical guides.",
+  "current_entrypoint": "registry/analyses/project_state_gap_ledger_v6.json",
+  "inputs": [
+    {
+      "role": "project_state_v6",
+      "path": "registry/analyses/project_state_gap_ledger_v6.json",
+      "sha256": "f6aa57f43acc3747008a20be80017787e7f940416e04a9396a441acaee12d5a0"
+    },
+    {
+      "role": "data_sufficiency_v2",
+      "path": "registry/analyses/data_sufficiency_audit_v2.json",
+      "sha256": "dd6ddce5d0f8ff9325c3f59ade8d7d599563e0df13fbc6eabec43d59c410cc84"
+    },
+    {
+      "role": "raw_provenance",
+      "path": "registry/analyses/raw_cross_registry_provenance_audit_v2.json",
+      "sha256": "84dd009d88630bf23f1b5cc96e88aed4e34c43b03453c44e84b288a7dcda6d6a"
+    },
+    {
+      "role": "sec_iapd_v5_result",
+      "path": "registry/analyses/sec_edgar_iapd_wayback_availability_result_v5.json",
+      "sha256": "123b9612225da8f339c468da5d31c44d788031611b6beb2c1e1434831834b122"
+    },
+    {
+      "role": "sec_iapd_v6_release",
+      "path": "registry/analyses/sec_edgar_iapd_wayback_availability_retry_release_v6.json",
+      "sha256": "68f2781469dcd0b6137dacf0016e59944883eed977d74dea0acff0f76724269b"
+    },
+    {
+      "role": "sec_iapd_v6_result_verifier",
+      "path": "registry/analyses/sec_edgar_iapd_wayback_availability_result_verifier_v6.json",
+      "sha256": "0817664b3c326dc2a0b64f0b76d74372284634276b3ce8a2942a2ff52a346952"
+    },
+    {
+      "role": "sec_iapd_v6_1_execution_hardening",
+      "path": "registry/analyses/sec_edgar_iapd_wayback_availability_v6_1_execution_hardening.json",
+      "sha256": "9f93bc6c9955216ef279885345dfbca841e487e259af696b16d0c11db0432f56"
+    },
+    {
+      "role": "sec_iapd_capture_plan_tooling_v3",
+      "path": "registry/analyses/sec_edgar_iapd_wayback_capture_plan_tooling_v3.json",
+      "sha256": "a89765f32e101ffb3d3c9cba47d329c93208f4c13599603bff33e38de51f4fb1"
+    },
+    {
+      "role": "sec_iapd_capture_execution_tooling_v3",
+      "path": "registry/analyses/sec_edgar_iapd_wayback_capture_execution_tooling_v3.json",
+      "sha256": "d31df97ccee2d96b29444f0841edc72a7b177c0a20fbf763e4541a704d747067"
+    },
+    {
+      "role": "sec_iapd_capture_retry_tooling_v1",
+      "path": "registry/analyses/sec_edgar_iapd_wayback_capture_retry_tooling_v1.json",
+      "sha256": "52d60b1d4d887b868cd1c0069e95f5f1ea1f247a931e1d536b0c3235a1f0da45"
+    },
+    {
+      "role": "crimson_review_packets_v2",
+      "path": "registry/analyses/crimson_human_review_packets_v2.json",
+      "sha256": "4022a570984ed7567f36d56cd0aef20eab048a478a4d72e1e5459f44a67d58d5"
+    },
+    {
+      "role": "manual_acquisition_packet",
+      "path": "registry/analyses/target_text_corpus_v1_manual_acquisition_packet_v1.json",
+      "sha256": "775ce6c3aa8ac2eef9803736eed65c5b8925128b8f3db04e22f112f39cfb050f"
+    },
+    {
+      "role": "model_choice",
+      "path": "registry/analyses/text_model_choice_dossier_v5.json",
+      "sha256": "dc2c0490d70f92c86f74c49d791426458dea89743e6493869e92200d032a80df"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "guide_contract_tests",
+      "path": "tests/test_reproducibility_current_state_v4.py",
+      "sha256": "f5ebdbbcefe9daa8d1ad2823a67078d3661b7535c1c5a90b4fec24679cd89f54"
+    },
+    {
+      "role": "readme_current_guide_pointer",
+      "path": "README.md",
+      "sha256": "8de575af9474027737b80ab4cbd68b69f1d851fec5e34873cef7ddd19e9d13ba"
+    }
+  ],
+  "output": {
+    "role": "reproducibility_guide_v4",
+    "path": "docs/reproducibility-current-state-v4.md",
+    "sha256": "ff626ef8e1bb921d06bce08bd8af634a59e384d68baa1e3cb705979db40fdc17"
+  },
+  "current_sec_iapd_gate": {
+    "planned": 115,
+    "resolved": 107,
+    "available": 52,
+    "unavailable": 55,
+    "unresolved": 8,
+    "external_holdout_unresolved": 4,
+    "next_release": "V6",
+    "not_before": "2026-10-18T08:47:59.207293+07:00",
+    "minimum_delay_seconds": 60.0,
+    "authoritative_executor": "scripts.retry_sec_edgar_iapd_wayback_availability_v6_1",
+    "partial_auto_resume_allowed": false,
+    "capture_plan_allowed": false
+  },
+  "data_sufficiency": {
+    "verified_existing_raw_files": 278,
+    "verified_existing_raw_bytes": 1640058635,
+    "historical_train_rows": 3916,
+    "fresh_validated_groups": 0,
+    "fresh_required_groups": 300,
+    "reference_or_availability_counts_are_training_rows": false
+  },
+  "post_availability_tooling": {
+    "capture_plan_version": "v3",
+    "capture_release_version": "v3",
+    "supports_availability_v6": true,
+    "minimum_capture_cooldown_seconds": 86400,
+    "capture_plan_requires_complete_independent_qa": true
+  },
+  "coverage": {
+    "storage_and_trust_boundaries": true,
+    "evidence_flow": true,
+    "data_sufficiency_denominators": true,
+    "sec_iapd_v5_outcome": true,
+    "sec_iapd_v6_timed_gate": true,
+    "v6_1_crash_safe_executor": true,
+    "v6_aware_capture_tooling_v3": true,
+    "external_and_crimson_limits": true,
+    "manual_acquisition_limits": true,
+    "model_state": true,
+    "module_invocation_examples": true,
+    "authorized_next_actions": true,
+    "prohibited_actions": true
+  },
+  "decision": {
+    "guide_v4_is_authoritative_navigation_entry": true,
+    "guide_v1_through_v3_preserved_as_historical_snapshots": true,
+    "legacy_v6_executor_may_be_used": false,
+    "capture_tooling_v2_may_be_used_for_v6_result": false,
+    "network_execution_allowed_now": false,
+    "candidate_domain_access_allowed": false,
+    "capture_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false,
+    "model_scoring_allowed": false,
+    "next_gate": "At or after the frozen V6 not_before, execute only the crash-safe V6.1 module once if no final or partial exists; complete QA may prepare Capture Tooling V3 artifacts, while a partial result keeps capture closed."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "raw_file_modifications": 0,
+    "human_decisions_created": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "validation_or_test_openings": 0,
+    "training_allowed": false
+  }
+}

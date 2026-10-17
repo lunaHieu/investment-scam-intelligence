@@ -53,7 +53,7 @@ Các lệnh chỉ kiểm tra contract hiện có; chưa tải dữ liệu, crawl
 9. SEC IAPD và IOSCO đã có offline reference index; DFPI vẫn hoãn để lấy export hợp lệ. Image branch tiếp tục bị chặn vì chưa có image dataset có license, provenance và nhãn tương thích.
 10. Ba text challenger mới đã bị loại có kiểm soát: character V2, stop-word V3 và frozen E5 V4. E5 thất bại ngay trên OOF `train`, nên validation/test/external không được mở cho challenger này.
 
-Source-role audit đã hoàn tất và xác nhận Mendeley V2 chỉ là historical heterogeneous benchmark, không phải ground truth investment-scam đã xác minh. Tiếp theo: giữ Text Baseline V2 làm reference nhưng không deploy; hoàn thiện fresh grouped V1-Core supply và quota ngôn ngữ/channel trước khi đóng băng bất kỳ model hypothesis mới nào. Validation/test, external scoring và model training vẫn đóng. Trạng thái vận hành hiện hành nằm tại [`docs/reproducibility-current-state-v3.md`](docs/reproducibility-current-state-v3.md); các guide V1/V2 được giữ như snapshot lịch sử.
+Source-role audit đã hoàn tất và xác nhận Mendeley V2 chỉ là historical heterogeneous benchmark, không phải ground truth investment-scam đã xác minh. Tiếp theo: giữ Text Baseline V2 làm reference nhưng không deploy; hoàn thiện fresh grouped V1-Core supply và quota ngôn ngữ/channel trước khi đóng băng bất kỳ model hypothesis mới nào. Validation/test, external scoring và model training vẫn đóng. Trạng thái vận hành hiện hành nằm tại [`docs/reproducibility-current-state-v4.md`](docs/reproducibility-current-state-v4.md); các guide V1–V3 được giữ như snapshot lịch sử.
 
 ### UBCKNN warning pilot
 

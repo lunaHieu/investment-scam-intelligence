@@ -1,0 +1,133 @@
+{
+  "analysis_id": "ISI_PROJECT_STATE_GAP_LEDGER_V6",
+  "created_at": "2026-10-17",
+  "base_commit": "43fc5e307e698484b0fff21f4c1e876812390768",
+  "status": "FROZEN_V5_RESULT_REGISTERED_V6_TIMED_GATE_ACTIVE",
+  "purpose": "Amend ledger V5 with the independently verified partial SEC/IAPD V5 result, the exact frozen V6 retry, and the current data-sufficiency denominator without opening any downstream gate.",
+  "inputs": [
+    {
+      "role": "prior_state_v5",
+      "path": "registry/analyses/project_state_gap_ledger_v5.json",
+      "sha256": "9147dba62827f950791d27b7ce35c964619109a60a21f8673fbd506396a3c5f0"
+    },
+    {
+      "role": "sec_iapd_v5_result",
+      "path": "registry/analyses/sec_edgar_iapd_wayback_availability_result_v5.json",
+      "sha256": "123b9612225da8f339c468da5d31c44d788031611b6beb2c1e1434831834b122"
+    },
+    {
+      "role": "sec_iapd_v6_release",
+      "path": "registry/analyses/sec_edgar_iapd_wayback_availability_retry_release_v6.json",
+      "sha256": "68f2781469dcd0b6137dacf0016e59944883eed977d74dea0acff0f76724269b"
+    },
+    {
+      "role": "sec_iapd_v6_result_verifier",
+      "path": "registry/analyses/sec_edgar_iapd_wayback_availability_result_verifier_v6.json",
+      "sha256": "0817664b3c326dc2a0b64f0b76d74372284634276b3ce8a2942a2ff52a346952"
+    },
+    {
+      "role": "data_sufficiency_audit_v1",
+      "path": "registry/analyses/data_sufficiency_audit_v1.json",
+      "sha256": "8cbed7a9c32840ecb97fe183d23c28119e86b258a822a66ff0b02abd9de64f7d"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "human_readable_ledger",
+      "path": "docs/project-state-gap-ledger-v6.md",
+      "sha256": "895336deed87e96d6b7b601834ad5d7f613dbd2f8a56be6e681b35ca18c25d9d"
+    },
+    {
+      "role": "ledger_contract_tests",
+      "path": "tests/test_project_state_gap_ledger_v6.py",
+      "sha256": "70dc100ffc02ebf9c501f4e9d5377a348934959bed104d1af9c8beeb2d287ed8"
+    }
+  ],
+  "state_amendments": {
+    "P1_SEC_IAPD": {
+      "planned": 115,
+      "resolved": 107,
+      "available": 52,
+      "unavailable": 55,
+      "unresolved": 8,
+      "external_holdout_unresolved": 4,
+      "cumulative_network_requests_through_v5": 156,
+      "v5_stopped_on_http_429": false,
+      "v5_result_status": "PASS_PARTIAL_ERRORS_PRESERVED_CAPTURE_PLAN_BLOCKED",
+      "v6_retry_rows": 8,
+      "v6_not_before": "2026-10-18T08:47:59.207293+07:00",
+      "v6_minimum_delay_seconds": 60.0,
+      "v6_maximum_attempts_per_candidate": 1,
+      "capture_plan_allowed": false
+    },
+    "P2_DATA_SUFFICIENCY": {
+      "existing_raw_files_verified": 278,
+      "historical_baseline_train_rows": 3916,
+      "fresh_v1_core_validated_groups": 0,
+      "fresh_v1_core_required_groups": 300,
+      "reference_or_candidate_counts_are_training_rows": false
+    },
+    "P4_CRIMSON": {
+      "first_review_pending": 39,
+      "blind_second_review_ready": 1,
+      "blind_second_review_waiting": 20,
+      "official_reference_followup_current": 15,
+      "status": "REVIEWER_OR_EXTERNAL_EVIDENCE_REQUIRED"
+    },
+    "P6_MANUAL_ACQUISITION": {
+      "dfpi": "PENDING_USER_SUPPLIED_LAWFUL_FIRST_PARTY_ARTIFACT",
+      "ssc_hnx": "BLOCKED_PENDING_EXPORT_OR_REUSE_BASIS"
+    }
+  },
+  "completed_parallel_work": [
+    "P2 existing-raw provenance closure",
+    "P3 external 21 diagnostic adoption and module-compatible verifier",
+    "P4 reviewer task-packet preparation",
+    "P6 controlled manual-acquisition packet preparation",
+    "P7 documentary model-choice dossier",
+    "P8 reproducibility guide V3",
+    "P9 active V5-module offline preflight",
+    "Current data-sufficiency audit V1",
+    "SEC/IAPD V5 execution, independent QA, and immutable registration",
+    "SEC/IAPD V6 unresolved-only release and predeclared result verifier"
+  ],
+  "remaining_external_or_timed_gates": [
+    {
+      "gate": "SEC_IAPD_V6",
+      "status": "WAITING_NOT_BEFORE",
+      "not_before": "2026-10-18T08:47:59.207293+07:00",
+      "next_executor": "heartbeat run-wayback-retry-v3 at 08:55 Asia/Saigon"
+    },
+    {
+      "gate": "CRIMSON_HUMAN_REVIEW",
+      "status": "REVIEWER_OR_EXTERNAL_EVIDENCE_REQUIRED",
+      "ready_now": "one blind-second task plus 39 first-review tasks and 15 official-reference follow-ups, subject to the frozen evidence contract"
+    },
+    {
+      "gate": "MANUAL_SOURCE_INPUTS",
+      "status": "LAWFUL_ARTIFACT_OR_PERMISSION_REQUIRED",
+      "ready_now": "DFPI intake only when a lawful first-party artifact is supplied; SSC/HNX remain blocked pending export/reuse basis"
+    }
+  ],
+  "decision": {
+    "offline_parallel_preparation_exhausted_at_current_authority": true,
+    "next_automatic_event": "SEC_IAPD_V6_HEARTBEAT_AT_OR_AFTER_NOT_BEFORE",
+    "network_execution_allowed_now": false,
+    "live_candidate_domain_access_allowed": false,
+    "additional_unreviewed_label_materialization_allowed": false,
+    "candidate_enumeration_allowed": false,
+    "capture_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false,
+    "model_scoring_allowed": false
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "raw_file_modifications": 0,
+    "human_decisions_created": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "validation_or_test_openings": 0,
+    "training_allowed": false
+  }
+}

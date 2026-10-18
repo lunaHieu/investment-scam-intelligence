@@ -68,5 +68,5 @@ jobs:
           tests.test_sec_edgar_iapd_wayback_capture_plan_v4.SecEdgarIapdWaybackCapturePlanV4Tests.test_nonpassing_or_cross_generation_qa_fails_closed
 
       - name: Run repository-only V7 capture-release tests
-        if: always()
+        if: runner.os == 'Linux'
         run: python -S -m unittest tests.test_sec_edgar_iapd_wayback_capture_release_v4

@@ -2,7 +2,23 @@
 name = "investment-scam-intelligence"
 version = "0.1.0"
 description = "Evidence-aware data and modeling pipeline for Investment Scam Intelligence V1"
-requires-python = ">=3.11"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+baseline = [
+  "joblib==1.6.0",
+  "numpy==2.2.6",
+  "scikit-learn==1.7.2",
+  "scipy==1.15.3",
+]
+embedding = [
+  "numpy==2.2.6",
+  "scikit-learn==1.7.2",
+  "tokenizers==0.22.1",
+  "torch==2.9.1",
+  "transformers==4.57.6",
+]
 
 [tool.unittest]
 start-directory = "tests"

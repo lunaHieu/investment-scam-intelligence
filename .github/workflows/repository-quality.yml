@@ -47,7 +47,7 @@ jobs:
         if: always()
         shell: pwsh
         run: |
-          $output = python -S -m unittest tests.test_sec_edgar_iapd_wayback_capture_plan_v4.SecEdgarIapdWaybackCapturePlanV4Tests.test_complete_v7_recomputes_115_and_preserves_exact_available_order 2>&1 | Out-String
+          $output = python -S -m unittest tests.test_repository_capture_plan_portability_v1 2>&1 | Out-String
           Write-Output $output
           if ($LASTEXITCODE -ne 0) {
             $details = $output.Replace('%', '%25').Replace("`r", '%0D').Replace("`n", '%0A')

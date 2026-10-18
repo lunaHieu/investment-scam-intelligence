@@ -43,8 +43,8 @@ jobs:
           tests.test_external_text_normalization
           tests.test_crimson_url_features
 
-      - name: Run repository-only V7 capture-tooling tests
-        run: >-
-          python -S -m unittest
-          tests.test_sec_edgar_iapd_wayback_capture_plan_v4
-          tests.test_sec_edgar_iapd_wayback_capture_release_v4
+      - name: Run repository-only V7 capture-plan tests
+        run: python -S -m unittest tests.test_sec_edgar_iapd_wayback_capture_plan_v4
+
+      - name: Run repository-only V7 capture-release tests
+        run: python -S -m unittest tests.test_sec_edgar_iapd_wayback_capture_release_v4

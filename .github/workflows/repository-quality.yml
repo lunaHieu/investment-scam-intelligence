@@ -32,3 +32,13 @@ jobs:
 
       - name: Verify cross-platform checkout and current-state pointer
         run: python -m unittest tests.test_repository_checkout_quality_v1
+
+      - name: Run repository-only safety tests without site packages
+        run: >-
+          python -S -m unittest
+          tests.test_python_dependency_contract_v1
+          tests.test_execute_sec_edgar_iapd_wayback_availability_v1
+          tests.test_sec_edgar_iapd_wayback_capture_plan_v4
+          tests.test_sec_edgar_iapd_wayback_capture_release_v4
+          tests.test_external_text_normalization
+          tests.test_crimson_url_features

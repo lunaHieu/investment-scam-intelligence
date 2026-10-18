@@ -1,0 +1,71 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_IAPD_WAYBACK_CAPTURE_PLAN_TOOLING_V4",
+  "created_at": "2026-10-18",
+  "status": "FROZEN_PREDECLARED_V7_ONLY_FULL_RECOMPUTATION_CAPTURE_PLAN_TOOLING",
+  "purpose": "Predeclare a separate V7-only capture-plan builder and independent verifier that recompute all 115 availability rows before selecting all and only available snapshots.",
+  "inputs": [],
+  "implementation": [
+    {
+      "role": "v7_only_capture_plan_builder",
+      "path": "scripts/build_sec_edgar_iapd_wayback_capture_plan_v4.py",
+      "sha256": "7c1c19a0a683d45ff087f7dc33181c45f9f9a0c7657a28e5892069935366fbcb"
+    },
+    {
+      "role": "independent_capture_plan_verifier",
+      "path": "scripts/verify_sec_edgar_iapd_wayback_capture_plan_v4.py",
+      "sha256": "2becb474c769a9a076100acec765e4f0574f81100fffb773ee1987e5fcfc89b0"
+    },
+    {
+      "role": "synthetic_tooling_tests",
+      "path": "tests/test_sec_edgar_iapd_wayback_capture_plan_v4.py",
+      "sha256": "7ef12eeadc4a00a885e4332d308261cfb86009ab5ba6b1c00b7c15f0b9da9f2c"
+    },
+    {
+      "role": "registry_test",
+      "path": "tests/test_sec_edgar_iapd_wayback_capture_plan_tooling_registry_v4.py",
+      "sha256": "6494dd2c1f6e8ce3db9d3197e1981eefaba2d0c322afc7da834498e77e28111d"
+    },
+    {
+      "role": "method_documentation",
+      "path": "docs/sec-edgar-iapd-wayback-capture-plan-tooling-v4.md",
+      "sha256": "8f8037b186713aa2e27854ec845ff5165ef148146e8a27ee50ad1a77194ad6e9"
+    }
+  ],
+  "outputs": [],
+  "findings": {
+    "supported_availability_generations": ["v7"],
+    "expected_availability_population": 115,
+    "required_availability_status": "COMPLETE",
+    "required_unresolved_error_count": 0,
+    "required_independent_qa_status": "PASS_COMPLETE_CAPTURE_PLAN_MAY_BE_PREPARED",
+    "generation_specific_result_hash_field": "v7_sha256",
+    "generation_specific_qa_identity_required": true,
+    "prior_generation_fallback_allowed": false,
+    "full_population_recomputed": true,
+    "availability_source_plan_hash_verified": true,
+    "partial_result_claiming_complete_is_rejected": true,
+    "selection_rule": "ALL_AND_ONLY_AVAILABLE_ROWS_IN_ORIGINAL_ORDER",
+    "cohort_identity_preserved": true,
+    "network_operations_at_tooling_freeze": 0
+  },
+  "decision": {
+    "tooling_ready_before_v7_final_result": true,
+    "capture_plan_construction_allowed_now": false,
+    "capture_execution_release_preparation_allowed_after_plan_qa": true,
+    "archived_page_download_allowed": false,
+    "candidate_live_domain_access_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Only a complete independently verified V7 result with all 115 rows resolved may materialize the exact V4 capture plan and its independent QA."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "candidate_domain_access_operations": 0,
+    "archived_page_downloads": 0,
+    "artifact_captures": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

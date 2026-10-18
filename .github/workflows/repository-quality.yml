@@ -45,9 +45,15 @@ jobs:
 
       - name: Verify V7 capture-plan complete-population invariant
         if: always()
-        run: >-
-          python -S -m unittest
-          tests.test_sec_edgar_iapd_wayback_capture_plan_v4.SecEdgarIapdWaybackCapturePlanV4Tests.test_complete_v7_recomputes_115_and_preserves_exact_available_order
+        shell: pwsh
+        run: |
+          $output = python -S -m unittest tests.test_sec_edgar_iapd_wayback_capture_plan_v4.SecEdgarIapdWaybackCapturePlanV4Tests.test_complete_v7_recomputes_115_and_preserves_exact_available_order 2>&1 | Out-String
+          Write-Output $output
+          if ($LASTEXITCODE -ne 0) {
+            $details = $output.Replace('%', '%25').Replace("`r", '%0D').Replace("`n", '%0A')
+            Write-Output "::error title=Capture-plan happy-path test failed::$details"
+            exit 1
+          }
 
       - name: Verify V7 capture-plan unresolved-row fail-closed invariant
         if: always()

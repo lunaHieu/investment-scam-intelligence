@@ -1,0 +1,72 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_IAPD_WAYBACK_AVAILABILITY_RESULT_VERIFIER_V7",
+  "created_at": "2026-10-18",
+  "status": "FROZEN_PREDECLARED_OFFLINE_VERIFIER_READY_RESULT_NOT_YET_CREATED",
+  "purpose": "Register V7 result acceptance rules before any V7 network execution, including logical-attempt and bounded-redirect request accounting.",
+  "inputs": [
+    {
+      "role": "retry_release_v7",
+      "path": "configs/sec_edgar_iapd_wayback_availability_retry_release_v7.json",
+      "sha256": "1d89b09f49f702deece699824dfe8c71f6549f1679ff62a3ce670c84223b9edf"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "result_verifier",
+      "path": "scripts/verify_sec_edgar_iapd_wayback_availability_result_v7.py",
+      "sha256": "191c3c42591e138e2e5b4d833645863f9ab4dad208cfbcbae2eac948a4ce93e8"
+    },
+    {
+      "role": "verifier_tests",
+      "path": "tests/test_verify_sec_edgar_iapd_wayback_availability_result_v7.py",
+      "sha256": "54b18dc0528e0dd3dbf36d29364ac4027771757431f6e8259bf83236ed57fea1"
+    },
+    {
+      "role": "registry_tests",
+      "path": "tests/test_sec_edgar_iapd_wayback_availability_result_verifier_registry_v7.py",
+      "sha256": "acdaad8dd81f10f45f3e393bf5c7a5ac2eec7c64edf551c97893e62077de5b85"
+    },
+    {
+      "role": "documentation",
+      "path": "docs/sec-edgar-iapd-wayback-availability-result-verifier-v7.md",
+      "sha256": "17aab4e05f2720d916ff27b9b81ccd152035294295280fbd67b1ffec1aa6a85d"
+    }
+  ],
+  "outputs": [],
+  "findings": {
+    "expected_plan_rows": 115,
+    "resolved_parent_rows_to_preserve": 107,
+    "retry_population_limit": 8,
+    "logical_attempt_limit": 8,
+    "maximum_redirects": 3,
+    "http_request_upper_bound_per_logical_attempt": 4,
+    "not_before_required": "2026-10-19T09:45:26.642053+07:00",
+    "complete_result_requires_unresolved_rows": 0,
+    "partial_result_can_open_capture_plan": false,
+    "network_operations_at_verifier_freeze": 0
+  },
+  "decision": {
+    "verifier_ready_before_result": true,
+    "network_execution_allowed_by_this_registry": false,
+    "result_verification_allowed_after_result_exists": true,
+    "capture_plan_construction_allowed_now": false,
+    "capture_tooling_v3_supports_v7": false,
+    "v7_aware_capture_tooling_required_after_complete_pass": true,
+    "candidate_live_domain_access_allowed": false,
+    "archived_page_download_allowed": false,
+    "artifact_capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false,
+    "next_gate": "After V7 execution, run this exact verifier. A complete pass may only authorize preparation of separately frozen V7-aware capture tooling; it cannot authorize Capture Tooling V3 or capture execution."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "candidate_domain_access_operations": 0,
+    "archived_page_downloads": 0,
+    "artifact_captures": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

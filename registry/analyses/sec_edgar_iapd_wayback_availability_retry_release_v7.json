@@ -1,0 +1,103 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_IAPD_WAYBACK_AVAILABILITY_RETRY_RELEASE_V7",
+  "created_at": "2026-10-18",
+  "status": "FROZEN_OFFLINE_24H_COOLDOWN_ACTIVE_CRASH_SAFE_EXECUTOR_READY",
+  "purpose": "Register the exact eight-row V7 unresolved-only retry bound to the completed verified V6 result, with crash-safe execution and every downstream gate closed.",
+  "inputs": [
+    {
+      "role": "completed_verified_result_registry_v6",
+      "path": "registry/analyses/sec_edgar_iapd_wayback_availability_result_v6.json",
+      "sha256": "c29e4201da9589e7eef63e223f73f750bb91675b214fe70c99c90891fd8b28d1"
+    },
+    {
+      "role": "retry_release_v7",
+      "path": "configs/sec_edgar_iapd_wayback_availability_retry_release_v7.json",
+      "sha256": "1d89b09f49f702deece699824dfe8c71f6549f1679ff62a3ce670c84223b9edf"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "authoritative_crash_safe_executor",
+      "path": "scripts/retry_sec_edgar_iapd_wayback_availability_v7.py",
+      "sha256": "b7ead65db863cb0350da90ac4b300217d9106833f28efcc0bc483b1fd3e0f9b1"
+    },
+    {
+      "role": "independent_release_verifier",
+      "path": "scripts/verify_sec_edgar_iapd_wayback_availability_retry_release_v7.py",
+      "sha256": "a260b5f742adaca0965119802e813a11f4288342222aae26291a5a05af48df8e"
+    },
+    {
+      "role": "executor_tests",
+      "path": "tests/test_retry_sec_edgar_iapd_wayback_availability_v7.py",
+      "sha256": "55b9229f12e931a46de40de5d8b8fd47d9dbee3b25e2bcd3fe58b8e91f69fad9"
+    },
+    {
+      "role": "release_verifier_tests",
+      "path": "tests/test_verify_sec_edgar_iapd_wayback_availability_retry_release_v7.py",
+      "sha256": "3323f177afac18e9199d0c2337c046123eae6dabc22e1553f0f4bcb578561d2c"
+    },
+    {
+      "role": "registry_tests",
+      "path": "tests/test_sec_edgar_iapd_wayback_availability_retry_release_registry_v7.py",
+      "sha256": "5825c0d103f87c9f1c5735e6e074a23291f0ee5f8155af3bd254f7ffb4e452eb"
+    },
+    {
+      "role": "documentation",
+      "path": "docs/sec-edgar-iapd-wayback-availability-retry-v7.md",
+      "sha256": "59ad84a54ae8674285bd9c0d96e3380c0d0c4bb74ca21166c31500fee3eeddf5"
+    }
+  ],
+  "outputs": [
+    {
+      "role": "immutable_independent_release_qa_v7",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_availability_result_v1\\independent_retry_release_qa_v7.json",
+      "sha256": "901d777a5a845e7b2799b32520a1613be318f8818f16d321df98b83eb8d0adf4"
+    }
+  ],
+  "findings": {
+    "total_plan_rows": 115,
+    "resolved_rows_preserved": 107,
+    "retry_rows": 8,
+    "unresolved_cohort_counts": {
+      "DEVELOPMENT": 4,
+      "EXTERNAL_HOLDOUT": 4
+    },
+    "minimum_cooldown_seconds": 86400,
+    "not_before": "2026-10-19T09:45:26.642053+07:00",
+    "minimum_delay_seconds": 60.0,
+    "maximum_attempts_per_candidate": 1,
+    "maximum_redirects": 3,
+    "crash_safe_executor": true,
+    "pre_request_reservation": true,
+    "checkpoint_after_each_logical_attempt": true,
+    "partial_auto_resume_allowed": false,
+    "network_requests_at_release_time": 0,
+    "independent_release_qa_status": "PASS_FROZEN_NOT_BEFORE_24H_UNRESOLVED_ONLY_CRASH_SAFE_PACING_PRESERVED",
+    "independent_release_qa_sha256": "901d777a5a845e7b2799b32520a1613be318f8818f16d321df98b83eb8d0adf4"
+  },
+  "decision": {
+    "release_frozen": true,
+    "authoritative_execution_module": "scripts.retry_sec_edgar_iapd_wayback_availability_v7",
+    "network_execution_allowed_at_freeze_time": false,
+    "network_execution_allowed_after_not_before": true,
+    "capture_plan_construction_allowed_now": false,
+    "capture_tooling_v3_supports_v7": false,
+    "v7_complete_would_require_separately_frozen_v7_aware_capture_tooling": true,
+    "candidate_live_domain_access_allowed": false,
+    "archived_page_download_allowed": false,
+    "artifact_capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false,
+    "next_gate": "At or after 2026-10-19T09:45:26.642053+07:00, the exact release may execute once only if neither final nor partial V7 output exists. Any partial journal requires manual reconciliation."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "candidate_domain_access_operations": 0,
+    "archived_page_downloads": 0,
+    "artifact_captures": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

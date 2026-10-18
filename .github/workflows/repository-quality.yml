@@ -43,8 +43,24 @@ jobs:
           tests.test_external_text_normalization
           tests.test_crimson_url_features
 
-      - name: Run repository-only V7 capture-plan tests
-        run: python -S -m unittest tests.test_sec_edgar_iapd_wayback_capture_plan_v4
+      - name: Verify V7 capture-plan complete-population invariant
+        if: always()
+        run: >-
+          python -S -m unittest
+          tests.test_sec_edgar_iapd_wayback_capture_plan_v4.SecEdgarIapdWaybackCapturePlanV4Tests.test_complete_v7_recomputes_115_and_preserves_exact_available_order
+
+      - name: Verify V7 capture-plan unresolved-row fail-closed invariant
+        if: always()
+        run: >-
+          python -S -m unittest
+          tests.test_sec_edgar_iapd_wayback_capture_plan_v4.SecEdgarIapdWaybackCapturePlanV4Tests.test_partial_v7_fails_closed_even_if_claimed_complete
+
+      - name: Verify V7 capture-plan cross-generation fail-closed invariant
+        if: always()
+        run: >-
+          python -S -m unittest
+          tests.test_sec_edgar_iapd_wayback_capture_plan_v4.SecEdgarIapdWaybackCapturePlanV4Tests.test_nonpassing_or_cross_generation_qa_fails_closed
 
       - name: Run repository-only V7 capture-release tests
+        if: always()
         run: python -S -m unittest tests.test_sec_edgar_iapd_wayback_capture_release_v4

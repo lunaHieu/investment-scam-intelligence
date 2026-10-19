@@ -1,0 +1,142 @@
+{
+  "analysis_id": "ISI_PROJECT_STATE_GAP_LEDGER_V8",
+  "created_at": "2026-10-19",
+  "base_commit": "81b3e2c737ea1d44281f3709b9c64aced8184738",
+  "status": "FROZEN_V7_PARTIAL_REGISTERED_V8_TIMED_GATE_ACTIVE_CAPTURE_CLOSED",
+  "purpose": "Replace ledger V7 with the verified V7 partial result and exact crash-safe V8 retry while preserving every downstream data and model gate.",
+  "inputs": [
+    {
+      "role": "prior_state_v7",
+      "path": "registry/analyses/project_state_gap_ledger_v7.json",
+      "sha256": "e3e73400b6a3b081454ca6bb8af2c3ffa6dedbaceb573a9f3b57abb8e14e64d5"
+    },
+    {
+      "role": "sec_iapd_v7_result",
+      "path": "registry/analyses/sec_edgar_iapd_wayback_availability_result_v7.json",
+      "sha256": "9da89dc2dfefbc136d54cffd4d775ae63aedc936d1afcb04858b8c5c78ceb699"
+    },
+    {
+      "role": "sec_iapd_v8_release",
+      "path": "registry/analyses/sec_edgar_iapd_wayback_availability_retry_release_v8.json",
+      "sha256": "283f4c074d83af19cf09ebe1f58b91ceabc02d4b8bc6c79abc901a737db8f32d"
+    },
+    {
+      "role": "sec_iapd_v8_result_verifier",
+      "path": "registry/analyses/sec_edgar_iapd_wayback_availability_result_verifier_v8.json",
+      "sha256": "66a27587f19af97bade433074f1ae95863edfc6d930e093d1b40bc43e1fe7af1"
+    },
+    {
+      "role": "sec_iapd_capture_plan_tooling_v4_historical_v7_only",
+      "path": "registry/analyses/sec_edgar_iapd_wayback_capture_plan_tooling_v4.json",
+      "sha256": "a89550c7eea0b0d7d881361d814273d889b0d7993b0a14dd93f64d464b6ff141"
+    },
+    {
+      "role": "sec_iapd_capture_execution_tooling_v4_historical_v7_only",
+      "path": "registry/analyses/sec_edgar_iapd_wayback_capture_execution_tooling_v4.json",
+      "sha256": "285aa38c27817265ff5f1c0682c7ffe106aec6c96cf66d292815d42638380e82"
+    },
+    {
+      "role": "data_sufficiency_v2",
+      "path": "registry/analyses/data_sufficiency_audit_v2.json",
+      "sha256": "dd6ddce5d0f8ff9325c3f59ade8d7d599563e0df13fbc6eabec43d59c410cc84"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "human_readable_ledger",
+      "path": "docs/project-state-gap-ledger-v8.md",
+      "sha256": "4f59ed982f96caa7f3e5d2053e4facc94ad0797266c42acabe70db17b4c6b3f2"
+    },
+    {
+      "role": "ledger_contract_tests",
+      "path": "tests/test_project_state_gap_ledger_v8.py",
+      "sha256": "e958c3189cdf6820be70df61d59d86cea1001543af80d59d6819ba40ef14c871"
+    }
+  ],
+  "state_amendments": {
+    "P1_SEC_IAPD": {
+      "planned": 115,
+      "resolved": 113,
+      "available": 58,
+      "unavailable": 55,
+      "unresolved": 2,
+      "external_holdout_unresolved": 2,
+      "cumulative_network_requests_through_v7": 164,
+      "v7_stopped_on_http_429": true,
+      "v7_result_status": "PASS_PARTIAL_ERRORS_PRESERVED_CAPTURE_PLAN_BLOCKED",
+      "v8_retry_rows": 2,
+      "v8_not_before": "2026-10-20T14:06:35.423170+07:00",
+      "v8_minimum_delay_seconds": 60.0,
+      "v8_maximum_attempts_per_candidate": 1,
+      "v8_authoritative_executor": "scripts.retry_sec_edgar_iapd_wayback_availability_v8",
+      "capture_tooling_for_complete_v8": "NOT_YET_FROZEN",
+      "capture_plan_allowed": false
+    },
+    "P2_DATA_SUFFICIENCY": {
+      "existing_raw_files_verified": 278,
+      "historical_baseline_train_rows": 3916,
+      "fresh_v1_core_validated_groups": 0,
+      "fresh_v1_core_required_groups": 300,
+      "reference_or_candidate_counts_are_training_rows": false
+    },
+    "P4_CRIMSON": {
+      "first_review_pending": 39,
+      "blind_second_review_ready": 1,
+      "blind_second_review_waiting": 20,
+      "official_reference_followup_current": 15,
+      "status": "HUMAN_REVIEWER_OR_EXTERNAL_EVIDENCE_REQUIRED"
+    },
+    "P6_MANUAL_ACQUISITION": {
+      "dfpi": "PENDING_USER_SUPPLIED_LAWFUL_FIRST_PARTY_ARTIFACT",
+      "ssc_hnx": "BLOCKED_PENDING_EXPORT_OR_REUSE_BASIS",
+      "verified_vietnamese_supply": 0,
+      "usable_image_assets": 0
+    }
+  },
+  "completed_parallel_work": [
+    "V7 one-shot crash-safe execution resolved six additional rows and stopped on HTTP 429",
+    "V7 immutable independent result QA and registration",
+    "Exact two-row V8 release and crash-safe executor",
+    "Predeclared V8 result verifier",
+    "Current raw provenance, data-sufficiency, Crimson packet, and manual-acquisition preparation"
+  ],
+  "remaining_external_or_timed_gates": [
+    {
+      "gate": "SEC_IAPD_V8",
+      "status": "WAITING_NOT_BEFORE",
+      "not_before": "2026-10-20T14:06:35.423170+07:00",
+      "next_executor": "scripts.retry_sec_edgar_iapd_wayback_availability_v8"
+    },
+    {
+      "gate": "CRIMSON_HUMAN_REVIEW",
+      "status": "HUMAN_REVIEWER_OR_EXTERNAL_EVIDENCE_REQUIRED",
+      "ready_now": "one blind-second task plus 39 first-review tasks and 15 official-reference follow-ups, subject to the frozen evidence contract"
+    },
+    {
+      "gate": "MANUAL_SOURCE_INPUTS",
+      "status": "LAWFUL_ARTIFACT_OR_PERMISSION_REQUIRED",
+      "ready_now": "DFPI intake only after a lawful first-party artifact; SSC/HNX require retained export or reuse basis"
+    }
+  ],
+  "decision": {
+    "offline_parallel_preparation_exhausted_at_current_authority": true,
+    "next_automatic_event": "SEC_IAPD_V8_HEARTBEAT_AT_OR_AFTER_NOT_BEFORE",
+    "network_execution_allowed_now": false,
+    "live_candidate_domain_access_allowed": false,
+    "additional_unreviewed_label_materialization_allowed": false,
+    "candidate_enumeration_allowed": false,
+    "capture_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false,
+    "model_scoring_allowed": false
+  },
+  "safety_contract": {
+    "network_operations_after_v7_result": 0,
+    "raw_file_modifications": 0,
+    "human_decisions_created": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "validation_or_test_openings": 0,
+    "training_allowed": false
+  }
+}

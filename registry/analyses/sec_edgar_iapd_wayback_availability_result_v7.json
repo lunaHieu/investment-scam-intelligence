@@ -1,0 +1,89 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_IAPD_WAYBACK_AVAILABILITY_RESULT_V7",
+  "created_at": "2026-10-19",
+  "status": "INDEPENDENTLY_VERIFIED_PARTIAL_ERRORS_PRESERVED_CAPTURE_BLOCKED",
+  "purpose": "Register the completed V7 availability execution, its immutable output, and independent QA before any unresolved-only V8 release is frozen.",
+  "inputs": [
+    {
+      "role": "retry_release_v7",
+      "path": "configs/sec_edgar_iapd_wayback_availability_retry_release_v7.json",
+      "sha256": "1d89b09f49f702deece699824dfe8c71f6549f1679ff62a3ce670c84223b9edf"
+    },
+    {
+      "role": "availability_plan_v1",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_availability_plan_v1\\availability_plan_v1.jsonl",
+      "sha256": "28f747ecb489e15b00fb6a33fa51fb10b451057115eff8905e5dd98d27c0ea8f"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "authoritative_crash_safe_executor_v7",
+      "path": "scripts/retry_sec_edgar_iapd_wayback_availability_v7.py",
+      "sha256": "b7ead65db863cb0350da90ac4b300217d9106833f28efcc0bc483b1fd3e0f9b1"
+    },
+    {
+      "role": "independent_result_verifier",
+      "path": "scripts/verify_sec_edgar_iapd_wayback_availability_result_v7.py",
+      "sha256": "191c3c42591e138e2e5b4d833645863f9ab4dad208cfbcbae2eac948a4ce93e8"
+    },
+    {
+      "role": "registry_tests",
+      "path": "tests/test_sec_edgar_iapd_wayback_availability_result_registry_v7.py",
+      "sha256": "585f190991f034f652872bcfa34a2f619281869de877ca95235c55d38152bee7"
+    },
+    {
+      "role": "documentation",
+      "path": "docs/sec-edgar-iapd-wayback-availability-result-v7.md",
+      "sha256": "d5421ce22e7ac3b44fd01419a93c7f2e05f7fc0047286bacad028401b5cf7068"
+    }
+  ],
+  "outputs": [
+    {
+      "role": "availability_report_v7",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_availability_result_v1\\availability_report_v7.json",
+      "sha256": "fec42268eb2f645d697408bb1601430685349e6b1ade3c2e08575a6e3b56879f"
+    },
+    {
+      "role": "independent_qa_v7",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_availability_result_v1\\independent_qa_v7.json",
+      "sha256": "f0be76207fafd16261870929da5665a0c697175ad183ed96e6490df3ba2caebf"
+    }
+  ],
+  "findings": {
+    "total_plan_rows": 115,
+    "resolved_results": 113,
+    "available_results": 58,
+    "unavailable_results": 55,
+    "unresolved_results": 2,
+    "external_holdout_unresolved": 2,
+    "network_requests_v7": 7,
+    "cumulative_network_requests": 164,
+    "stopped_on_http_429": true,
+    "independent_qa_status": "PASS_PARTIAL_ERRORS_PRESERVED_CAPTURE_PLAN_BLOCKED",
+    "capture_plan_construction_ready": false
+  },
+  "decision": {
+    "v7_result_registered": true,
+    "resolved_v7_rows_must_be_preserved": true,
+    "v8_unresolved_only_release_may_be_prepared": true,
+    "capture_plan_construction_allowed_now": false,
+    "capture_tooling_v4_supports_v8": false,
+    "v8_complete_would_require_separately_frozen_v8_aware_capture_tooling": true,
+    "candidate_live_domain_access_allowed": false,
+    "archived_page_download_allowed": false,
+    "artifact_capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Prepare an exact two-row unresolved-only V8 release with not_before at least 24 hours after the V7 report created_at. Capture remains closed regardless of V8 outcome until V8-aware capture tooling is separately frozen and independently verified."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "candidate_domain_access_operations": 0,
+    "archived_page_downloads": 0,
+    "artifact_captures": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

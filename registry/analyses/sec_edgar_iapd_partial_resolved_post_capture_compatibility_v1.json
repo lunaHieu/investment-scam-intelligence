@@ -1,0 +1,43 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_IAPD_PARTIAL_RESOLVED_POST_CAPTURE_COMPATIBILITY_V1",
+  "created_at": "2026-10-20",
+  "status": "PASS_58_ROW_V5_CAPTURE_EXACT_TEXT_AND_GROUPING_RELEASE_COMPATIBLE",
+  "purpose": "Prove offline that the existing capture-result verifier, exact-text V1 pipeline, and grouping-release V1 gate accept the exact 58-row V5 partial-resolved cohort without weakening downstream safety gates.",
+  "inputs": [
+    {"role": "partial_resolved_capture_plan_release_v5", "path": "registry/analyses/sec_edgar_iapd_wayback_capture_plan_release_v5.json", "sha256": "80ffb5f1d8faa174ba95e6d90934f5ab754fe65b858722b83e7331f45e2b6347"},
+    {"role": "exact_text_tooling_v1", "path": "registry/analyses/sec_edgar_iapd_exact_text_tooling_v1.json", "sha256": "e2b1045f4856ac4772d9ebf5d01069c46da45129c6c26e4fbbb987a6e7586a2d"},
+    {"role": "grouping_tooling_v1", "path": "registry/analyses/sec_edgar_iapd_grouping_tooling_v1.json", "sha256": "4759508eb1d183ae4302492d30bdd1cb0beba8ceb7751613325a60d11b11cb45"}
+  ],
+  "implementation": [
+    {"role": "synthetic_58_row_compatibility_test", "path": "tests/test_sec_edgar_iapd_partial_resolved_post_capture_compatibility_v1.py", "sha256": "c9b79c0d24c1eb3b74d60065917742a2d3dff79dc99707a85107b8814037489f"},
+    {"role": "registry_contract_test", "path": "tests/test_sec_edgar_iapd_partial_resolved_post_capture_compatibility_registry_v1.py", "sha256": "ef47a263e9d34ad53ce80f597b3c2d7bc93e776a96540eaf985227814bb2fdd3"},
+    {"role": "documentation", "path": "docs/sec-edgar-iapd-partial-resolved-post-capture-compatibility-v1.md", "sha256": "90261c7fa38007ad1d1507e920a203773d5b542e31286f6e012106a104378471"}
+  ],
+  "outputs": [],
+  "findings": {
+    "compatible_capture_rows": 58,
+    "compatible_by_cohort": {"DEVELOPMENT": 46, "EXTERNAL_HOLDOUT": 12},
+    "capture_result_raw_byte_hash_qa_passed": true,
+    "exact_text_release_gate_passed": true,
+    "exact_text_extracted_and_regenerated_count": 58,
+    "grouping_release_manifest_count": 58,
+    "population_size_hard_code_detected": false,
+    "network_operations": 0,
+    "labels_created": 0
+  },
+  "decision": {
+    "existing_capture_result_verifier_compatible": true,
+    "existing_exact_text_v1_compatible": true,
+    "existing_grouping_release_v1_compatible": true,
+    "new_post_capture_tooling_version_required": false,
+    "real_extraction_allowed_now": false,
+    "real_extraction_requires_complete_58_row_capture_qa": true,
+    "grouping_requires_exact_text_byte_regeneration_qa": true,
+    "human_label_review_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "After the real 58-row capture report passes complete independent raw-byte/hash QA, materialize and independently verify a concrete exact-text V1 release; only its byte-regeneration QA may open concrete grouping-release preparation."
+  },
+  "safety_contract": {"network_operations": 0, "real_raw_files_modified": 0, "real_text_outputs_created": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

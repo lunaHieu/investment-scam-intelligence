@@ -1,0 +1,41 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_IAPD_WAYBACK_CAPTURE_PLAN_TOOLING_V5",
+  "created_at": "2026-10-20",
+  "status": "FROZEN_V8_PARTIAL_RESOLVED_FULL_RECOMPUTATION_CAPTURE_PLAN_TOOLING",
+  "purpose": "Amend the capture gate so all resolved available V8 snapshots may proceed while the exact unresolved rows remain quarantined and unlabeled.",
+  "inputs": [],
+  "implementation": [
+    {"role": "v8_partial_resolved_capture_plan_builder", "path": "scripts/build_sec_edgar_iapd_wayback_capture_plan_v5.py", "sha256": "5f01de1e6c7cc3fd22b8993284b504474b5d2ee150ae6758c0d2386507611ee1"},
+    {"role": "independent_capture_plan_verifier", "path": "scripts/verify_sec_edgar_iapd_wayback_capture_plan_v5.py", "sha256": "bd5124bd029005e1de18709f50c624ac2205a5cad1155ce620c9d969f9411831"},
+    {"role": "synthetic_tooling_tests", "path": "tests/test_sec_edgar_iapd_wayback_capture_plan_v5.py", "sha256": "2b89332653d2595e7c1d409b7fcb6273f33dfafb7b4ae2d709e26e8cad2cd57c"},
+    {"role": "registry_test", "path": "tests/test_sec_edgar_iapd_wayback_capture_plan_tooling_registry_v5.py", "sha256": "434d22aa0a377197fd6629ca5ed3625b0c6f9d7d153db8f5fbcc640e4d97e8b6"},
+    {"role": "protocol_amendment", "path": "docs/sec-edgar-iapd-wayback-partial-resolved-capture-amendment-v1.md", "sha256": "4fc6087a2b086ec31d9bf5addd75fb06ab24bd8aa12f65eba0e07ade0e5dc703"}
+  ],
+  "outputs": [],
+  "findings": {
+    "supported_availability_generations": ["v8"],
+    "expected_availability_population": 115,
+    "required_availability_status": "INCOMPLETE_ERRORS_PRESERVED",
+    "required_unresolved_error_count": 2,
+    "required_independent_qa_status": "PASS_PARTIAL_ERRORS_PRESERVED_CAPTURE_PLAN_BLOCKED",
+    "generation_specific_result_hash_field": "v8_sha256",
+    "full_population_recomputed": true,
+    "selection_rule": "ALL_RESOLVED_AVAILABLE_ROWS_IN_ORIGINAL_ORDER",
+    "unresolved_rows_quarantined_in_original_order": true,
+    "cohort_identity_preserved": true,
+    "availability_bias_disclosure_required": true,
+    "network_operations_at_tooling_freeze": 0
+  },
+  "decision": {
+    "protocol_amendment_frozen": true,
+    "capture_plan_construction_allowed_now": false,
+    "capture_execution_release_preparation_allowed_after_plan_qa": true,
+    "archived_page_download_allowed": false,
+    "candidate_live_domain_access_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Materialize and independently verify the exact V8-derived 58-row archive-available subset plan."
+  },
+  "safety_contract": {"network_operations": 0, "candidate_domain_access_operations": 0, "archived_page_downloads": 0, "artifact_captures": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

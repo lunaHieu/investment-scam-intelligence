@@ -1,0 +1,47 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_IAPD_V5_REVIEW_EVIDENCE_COVERAGE_V1",
+  "created_at": "2026-10-20",
+  "status": "PASS_ALL_58_ROWS_HAVE_CONSISTENT_LOCAL_REVIEW_EVIDENCE_CHAIN",
+  "purpose": "Prove before capture that every row in the frozen V5 cohort can later bind to the local availability, offline identity-review, and normalized IAPD evidence required by the review stack, without treating that evidence as a label.",
+  "inputs": [
+    {"role": "capture_plan_v5", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_capture_plan_v1\\capture_plan_v5.json", "sha256": "4426a0f7724121798ae34c35cc50bc80fa6e036f9acb8b0602f5527a69f9d3f7"},
+    {"role": "availability_plan_v1", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_availability_plan_v1\\availability_plan_v1.jsonl", "sha256": "28f747ecb489e15b00fb6a33fa51fb10b451057115eff8905e5dd98d27c0ea8f"},
+    {"role": "offline_review_v1", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_offline_review_v1\\offline_review_records_v1.jsonl", "sha256": "f9c6bd9beb216af98b8857f2c81e21ef9c1a1da1f7206a1a056fe95c192e59c3"},
+    {"role": "normalized_iapd_v1", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\legitimate_iapd_normalized_v1.jsonl", "sha256": "f9fe40cc13a0c19461aa8f31a7c083f0975eebe8b01622ee1140c7f9e71cc10a"},
+    {"role": "partial_resolved_post_capture_compatibility_v1", "path": "registry/analyses/sec_edgar_iapd_partial_resolved_post_capture_compatibility_v1.json", "sha256": "e8c1245259ce7164680a4c234a5faff89281c14c2d2ef1cb606672a210491f14"},
+    {"role": "review_stack_tooling_v1", "path": "registry/analyses/sec_edgar_iapd_review_stack_tooling_v1.json", "sha256": "4c627b0aa75c009d469de94247ea3684fdcf38c04db3c9d7083650db8023814f"}
+  ],
+  "implementation": [
+    {"role": "coverage_and_contract_test", "path": "tests/test_sec_edgar_iapd_v5_review_evidence_coverage_v1.py", "sha256": "4eec7ca5d5d029694c6d32ef5ff28b86775d32f6ac793ba4b19f1fe617e6fca4"},
+    {"role": "documentation", "path": "docs/sec-edgar-iapd-v5-review-evidence-coverage-v1.md", "sha256": "89a37b500d1427e3a033dd2bc6a8427fe83aed681254a7e6018e5a76959d3e28"}
+  ],
+  "outputs": [],
+  "findings": {
+    "capture_plan_rows": 58,
+    "cohort_counts": {"DEVELOPMENT": 46, "EXTERNAL_HOLDOUT": 12},
+    "availability_plan_links_present": 58,
+    "offline_review_links_present": 58,
+    "normalized_iapd_links_present": 58,
+    "cohort_mismatches": 0,
+    "normalized_host_mismatches": 0,
+    "identity_review_status_counts": {"OFFLINE_EXACT_CORE_NAME_EVIDENCE_PASS": 57, "OFFLINE_COMPATIBLE_NAME_VARIANT_EVIDENCE_PASS": 1},
+    "network_operations": 0,
+    "labels_created": 0
+  },
+  "decision": {
+    "future_primary_packet_evidence_coverage_complete": true,
+    "existing_review_stack_v1_population_compatible": true,
+    "real_review_allowed_now": false,
+    "real_group_review_requires_grouping_qa": true,
+    "primary_review_requires_artifact_evidence_and_group_review_qa": true,
+    "blind_second_review_required": true,
+    "reconciliation_and_owner_acceptance_required": true,
+    "identity_evidence_is_ground_truth": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "After complete capture, exact-text and grouping QA, create the bounded manual group-review packet; only verified group decisions may open evidence-based primary review."
+  },
+  "safety_contract": {"network_operations": 0, "raw_file_modifications": 0, "review_decisions_created": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

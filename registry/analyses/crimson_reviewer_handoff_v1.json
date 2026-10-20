@@ -10,7 +10,7 @@
     {"role": "recorded_decisions", "path": "registry/analyses/crimson_human_review_decisions_v1.json", "sha256": "ae057f9bc20ee577f9bf54837384fc5e50fb6a8be01bcdd9ff29f7743976e1d1"}
   ],
   "implementation": [
-    {"role": "reviewer_handoff", "path": "docs/crimson-reviewer-handoff-v1.md", "sha256": "35c1cfc82dbfa1773ba60a4f02fc76ffd86e7717e74feb0e08bbf3572f3d73df"},
+    {"role": "reviewer_handoff", "path": "docs/crimson-reviewer-handoff-v1.md", "sha256": "0c1f49f4abc4a6a0af5019fbddfd2c7c6e656a55110df36a47877b4e23a28351"},
     {"role": "handoff_contract_tests", "path": "tests/test_crimson_reviewer_handoff_v1.py", "sha256": "e07512b0bb3b49ea8578e5f105781fd37067197479e3b669ea0948981a01acec"}
   ],
   "task_counts": {

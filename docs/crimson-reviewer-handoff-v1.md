@@ -1,6 +1,6 @@
 # Crimson Reviewer Handoff V1
 
-Date: 2026-10-20  
+Date: 2026-10-20
 Status: reviewer instructions only; no decision or label is created
 
 ## What this handoff is for

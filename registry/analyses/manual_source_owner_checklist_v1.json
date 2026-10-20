@@ -1,0 +1,57 @@
+{
+  "analysis_id": "ISI_MANUAL_SOURCE_OWNER_CHECKLIST_V1",
+  "created_at": "2026-10-20",
+  "base_commit": "a0805b3",
+  "status": "PASS_OWNER_CHECKLIST_READY_NO_SOURCE_ACTIVATED",
+  "purpose": "Turn the blocked DFPI, SSC and HNX acquisition branch into a concise owner handoff while preserving the existing rights, intake, labeling and model gates.",
+  "inputs": [
+    {"role": "manual_acquisition_packet_result", "path": "registry/analyses/target_text_corpus_v1_manual_acquisition_packet_v1.json", "sha256": "775ce6c3aa8ac2eef9803736eed65c5b8925128b8f3db04e22f112f39cfb050f"},
+    {"role": "submission_schema", "path": "schemas/target_text_manual_acquisition_submission_v1.schema.json", "sha256": "fbc9b07bd8c84a8e3878edd6d57affbe595ce8b563cbd0fd6113d8a4bbf782b0"},
+    {"role": "submission_template", "path": "registry/pilots/target_text_manual_acquisition_submission_template_v1.json", "sha256": "292077ee15e9d9ccc2641bfbc9ad9fc45f6b66ef4acb459896d094a0c76635b9"}
+  ],
+  "implementation": [
+    {"role": "owner_checklist", "path": "docs/manual-source-owner-checklist-v1.md", "sha256": "8eb5c8ef3f546ab2f2b6d6e85351f48f5f065a8435cd9310d88243d582b8f157"},
+    {"role": "checklist_contract_tests", "path": "tests/test_manual_source_owner_checklist_v1.py", "sha256": "f89d6cea590aa552c99b49ac25cf5474d75ec560e0a3a4b4d84c1aecb6ee0afa"}
+  ],
+  "source_states": {
+    "dfpi_crypto_scam_tracker": "USER_SUPPLIED_FIRST_PARTY_ARTIFACT_OR_EXPLICIT_OFFICIAL_EXPORT_ONLY",
+    "ssc_vietnam_investor_warnings": "BLOCKED_PENDING_EXPLICIT_OFFICIAL_EXPORT_OR_WRITTEN_REUSE_BASIS",
+    "hnx_vietnam_issuer_profiles": "BLOCKED_PENDING_EXPLICIT_OFFICIAL_EXPORT_OR_WRITTEN_REUSE_BASIS"
+  },
+  "owner_handoff": {
+    "raw_root": "D:\\nckh 2026-2027\\ISI_Data\\raw",
+    "submission_path": "D:\\nckh 2026-2027\\ISI_Data\\governance\\target_text_corpus_v1\\manual_submission_v1.json",
+    "maximum_dfpi_items_per_submission": 20,
+    "original_bytes_required": true,
+    "one_manifest_item_per_file": true,
+    "sha256_required": true,
+    "permission_documents_in_public_git": false,
+    "protected_source_content_in_public_git": false
+  },
+  "after_handoff_sequence": [
+    "INDEPENDENT_BYTES_HASH_SOURCE_RIGHTS_AND_PERSONAL_DATA_QA",
+    "IMMUTABLE_INTAKE_REGISTRATION_WITHOUT_PROTECTED_CONTENT_IN_GIT",
+    "FREEZE_SAMPLING_MATRIX_V2_BEFORE_SSC_OR_HNX_ENUMERATION",
+    "FREEZE_SEPARATE_HASH_BOUND_ACQUISITION_RELEASE",
+    "CAPTURE_DISTINCT_OBSERVED_INVESTMENT_ARTIFACT",
+    "GROUP_REVIEW_RECONCILE_AND_REQUIRE_OWNER_ACCEPTANCE"
+  ],
+  "decision": {
+    "owner_checklist_ready": true,
+    "source_acquisition_executed": false,
+    "candidate_enumeration_allowed": false,
+    "labels_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Receive a lawful DFPI artifact or retain and independently verify an explicit SSC/HNX export or written reuse basis."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "source_files_acquired": 0,
+    "candidate_domain_access_operations": 0,
+    "candidate_records_enumerated": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

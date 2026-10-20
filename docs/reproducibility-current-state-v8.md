@@ -35,7 +35,8 @@ exists.
   --output <temporary-verification-output>
 
 .venv\Scripts\python.exe -m scripts.execute_sec_edgar_iapd_wayback_capture_v1 `
-  --release configs\sec_edgar_iapd_wayback_capture_release_v5.json
+  --release configs\sec_edgar_iapd_wayback_capture_release_v5.json `
+  --release-qa "D:\nckh 2026-2027\ISI_Data\derived\target_text_corpus_v1_reference_inputs\sec_edgar_iapd_all_filer_wayback_capture_plan_v1\independent_release_qa_v5.json"
 ```
 
 The executor may use only `web.archive.org` raw replay, waits at least 30

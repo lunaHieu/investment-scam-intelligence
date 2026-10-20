@@ -1,0 +1,74 @@
+{
+  "analysis_id": "ISI_PROJECT_EXECUTION_SEQUENCE_V1",
+  "created_at": "2026-10-20",
+  "base_commit": "e553945a930c743b3d2fbfdce74cc296d591530d",
+  "status": "FROZEN_ORDERED_EXECUTION_SEQUENCE",
+  "purpose": "Define one authoritative order for the remaining gated project work while separating timed automation, AI-assisted preparation, truthful independent review, lawful manual acquisition, and owner acceptance.",
+  "inputs": [
+    {"role": "project_state_v10", "path": "registry/analyses/project_state_gap_ledger_v10.json", "sha256": "15b35bd96de2c8f109f8927dd261ef93abf5cc61db5cc70d42ef1c9a15fb5f5b"},
+    {"role": "reproducibility_state_v8", "path": "registry/analyses/reproducibility_current_state_v8.json", "sha256": "be77ba3fb01c550c35c6d7dcc4ee87766d1720fcd399b5414e08fbdc560bf7f5"},
+    {"role": "post_capture_compatibility", "path": "registry/analyses/sec_edgar_iapd_partial_resolved_post_capture_compatibility_v1.json", "sha256": "e8c1245259ce7164680a4c234a5faff89281c14c2d2ef1cb606672a210491f14"},
+    {"role": "review_evidence_coverage", "path": "registry/analyses/sec_edgar_iapd_v5_review_evidence_coverage_v1.json", "sha256": "111f1796b8b8107beeeb5dc14c28e415973029a3be8742a9769991082681ffb0"},
+    {"role": "crimson_review_state", "path": "registry/analyses/crimson_human_review_packets_v2.json", "sha256": "4022a570984ed7567f36d56cd0aef20eab048a478a4d72e1e5459f44a67d58d5"},
+    {"role": "manual_acquisition_state", "path": "registry/analyses/target_text_corpus_v1_manual_acquisition_packet_v1.json", "sha256": "775ce6c3aa8ac2eef9803736eed65c5b8925128b8f3db04e22f112f39cfb050f"},
+    {"role": "data_sufficiency_state", "path": "registry/analyses/data_sufficiency_audit_v2.json", "sha256": "dd6ddce5d0f8ff9325c3f59ade8d7d599563e0df13fbc6eabec43d59c410cc84"},
+    {"role": "model_choice_state", "path": "registry/analyses/text_model_choice_dossier_v5.json", "sha256": "dc2c0490d70f92c86f74c49d791426458dea89743e6493869e92200d032a80df"}
+  ],
+  "implementation": [
+    {"role": "human_readable_sequence", "path": "docs/project-execution-sequence-v1.md", "sha256": "0abd74aa08a139d42ac10ba715adab974f3bfa890532ede698c620213f805dec"},
+    {"role": "sequence_contract_tests", "path": "tests/test_project_execution_sequence_v1.py", "sha256": "9f83040a6300524d3b60b1eba8b546c58ba5e5841164867deeae6e78c4908aaa"}
+  ],
+  "current_counts": {
+    "historical_train_rows": 3916,
+    "fresh_v1_core_validated_groups": 0,
+    "fresh_v1_core_required_groups": 300,
+    "sec_iapd_planned_rows": 115,
+    "sec_iapd_resolved_rows": 113,
+    "sec_iapd_capture_rows": 58,
+    "sec_iapd_capture_by_cohort": {"DEVELOPMENT": 46, "EXTERNAL_HOLDOUT": 12},
+    "sec_iapd_quarantined_unresolved_rows": 2,
+    "verified_existing_raw_files_before_capture": 278,
+    "verified_vietnamese_supply": 0,
+    "usable_image_assets": 0
+  },
+  "ordered_main_phases": [
+    {"order": 1, "phase": "V9_AVAILABILITY_AND_V5_CAPTURE", "entry_gate": "2026-10-21T14:19:54.213531+07:00", "exit_gate": "immutable availability and capture reports exist without an unresolved partial journal"},
+    {"order": 2, "phase": "CAPTURE_BYTE_HASH_QA", "entry_gate": "capture execution completed", "exit_gate": "independent membership, order, size, and SHA-256 verification passes"},
+    {"order": 3, "phase": "EXACT_TEXT_AND_REGENERATION_QA", "entry_gate": "complete capture QA", "exit_gate": "offline exact-text output is independently regenerated and below-minimum rows are routed out"},
+    {"order": 4, "phase": "OPENED_EXCLUSION_AND_DISJOINT_GROUPING", "entry_gate": "exact-text QA", "exit_gate": "opened overlaps are excluded and transitive cohort-disjoint grouping is independently reproduced"},
+    {"order": 5, "phase": "MANUAL_GROUP_CLONE_REVIEW", "entry_gate": "grouping QA", "exit_gate": "bounded structural review is complete without creating a binary label"},
+    {"order": 6, "phase": "EVIDENCE_BASED_PRIMARY_REVIEW", "entry_gate": "group/clone review", "exit_gate": "primary recommendations cite artifact-level evidence and preserve uncertainty"},
+    {"order": 7, "phase": "BLIND_INDEPENDENT_SECOND_REVIEW", "entry_gate": "blind packets prepared", "exit_gate": "truthfully independent second decisions exist without access to primary outcomes"},
+    {"order": 8, "phase": "CONSERVATIVE_RECONCILIATION", "entry_gate": "primary and blind reviews complete", "exit_gate": "disagreements and insufficient evidence are routed to UNCERTAIN"},
+    {"order": 9, "phase": "OWNER_ACCEPTANCE_AND_CORPUS_ADMISSION", "entry_gate": "reconciled recommendations", "exit_gate": "owner decisions and admission QA are recorded"},
+    {"order": 10, "phase": "DEVELOPMENT_SPLIT_AND_MODEL_CANDIDATE_FREEZE", "entry_gate": "required admitted group coverage", "exit_gate": "development-only candidates and split contracts are frozen before validation and one-time test"}
+  ],
+  "parallel_workstreams": [
+    {"workstream": "P1_SEC_IAPD_AUTOMATION", "status": "WAITING_TIMED_GATE", "may_proceed_now": false},
+    {"workstream": "P2_CRIMSON_REVIEW_HANDOFF", "status": "PACKET_PREPARATION_ALLOWED", "may_proceed_now": true},
+    {"workstream": "P3_MANUAL_SOURCE_ACQUISITION", "status": "CHECKLIST_PREPARATION_ALLOWED_ARTIFACTS_REQUIRE_USER_OR_PERMISSION", "may_proceed_now": true},
+    {"workstream": "P4_RESEARCH_DOCUMENTATION", "status": "ALLOWED", "may_proceed_now": true}
+  ],
+  "immediate_order": [
+    "KEEP_SEC_IAPD_TIMED_AUTOMATION_ACTIVE",
+    "PREPARE_CRIMSON_REVIEWER_HANDOFF_WITHOUT_DECISIONS",
+    "PREPARE_DFPI_SSC_HNX_USER_ACQUISITION_CHECKLIST",
+    "UPDATE_RESEARCH_METHODOLOGY_AND_PROGRESS_NARRATIVE",
+    "RESUME_MAIN_SEQUENCE_AT_CAPTURE_QA_AFTER_GATE"
+  ],
+  "decision": {
+    "research_documentation_allowed_now": true,
+    "crimson_handoff_preparation_allowed_now": true,
+    "crimson_human_decisions_may_be_fabricated": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false,
+    "model_scoring_allowed": false
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "raw_file_modifications": 0,
+    "human_decisions_created": 0,
+    "labels_created": 0,
+    "model_operations": 0
+  }
+}

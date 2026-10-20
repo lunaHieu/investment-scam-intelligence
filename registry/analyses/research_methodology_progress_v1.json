@@ -1,0 +1,70 @@
+{
+  "analysis_id": "ISI_RESEARCH_METHODOLOGY_PROGRESS_V1",
+  "created_at": "2026-10-20",
+  "base_commit": "e146618",
+  "status": "FROZEN_VERIFIED_METHODOLOGY_AND_PROGRESS_NARRATIVE",
+  "purpose": "Explain the end-to-end research method and report progress without conflating raw files, reference candidates, reviewable artifacts, admitted groups, or model rows.",
+  "inputs": [
+    {"role": "execution_sequence", "path": "registry/analyses/project_execution_sequence_v1.json", "sha256": "f1381a555fd3aa070fc9cd7f7945d4659f8ef755e42dca56561b199e43fd1df8"},
+    {"role": "data_sufficiency", "path": "registry/analyses/data_sufficiency_audit_v2.json", "sha256": "dd6ddce5d0f8ff9325c3f59ade8d7d599563e0df13fbc6eabec43d59c410cc84"},
+    {"role": "sec_iapd_review_evidence", "path": "registry/analyses/sec_edgar_iapd_v5_review_evidence_coverage_v1.json", "sha256": "111f1796b8b8107beeeb5dc14c28e415973029a3be8742a9769991082681ffb0"},
+    {"role": "crimson_handoff", "path": "registry/analyses/crimson_reviewer_handoff_v1.json", "sha256": "1f48f207bfa8af2a6abe8ec56cc867c2faccc5a7b81b7dff50e72c7e3eb36f58"},
+    {"role": "manual_source_checklist", "path": "registry/analyses/manual_source_owner_checklist_v1.json", "sha256": "a3162d679a6a911d1ed2442e36dd05cc6ee2ec54a15187f504ea339c3d934ef6"},
+    {"role": "model_choice", "path": "registry/analyses/text_model_choice_dossier_v5.json", "sha256": "dc2c0490d70f92c86f74c49d791426458dea89743e6493869e92200d032a80df"}
+  ],
+  "implementation": [
+    {"role": "research_narrative", "path": "docs/research-methodology-progress-v1.md", "sha256": "9a07ac6ecd0dcbcbf17cebe66548d592862f3d347e2bf4b75dcb1134b153e898"},
+    {"role": "narrative_contract_tests", "path": "tests/test_research_methodology_progress_v1.py", "sha256": "419c6d5f860a124a4f53a0c548477437c41b12f86b74a6283557ff3c7e71b7a2"}
+  ],
+  "data_layers": [
+    "RAW_ARTIFACT",
+    "REFERENCE_OR_CANDIDATE",
+    "REVIEWABLE_ARTIFACT",
+    "ADMITTED_LABELED_GROUP",
+    "MODEL_SPLIT"
+  ],
+  "progress_vector": {
+    "verified_existing_raw_files": 278,
+    "historical_train_rows": 3916,
+    "fresh_admitted_groups": 0,
+    "fresh_required_groups": 300,
+    "sec_iapd_availability_resolved": 113,
+    "sec_iapd_availability_planned": 115,
+    "sec_iapd_capture_plan_rows": 58,
+    "sec_iapd_capture_plan_development": 46,
+    "sec_iapd_capture_plan_external_holdout": 12,
+    "crimson_first_review_complete": 1,
+    "crimson_first_review_pending": 39,
+    "crimson_blind_second_ready": 1,
+    "crimson_blind_second_waiting": 20,
+    "manual_source_artifacts_intaked": 0,
+    "verified_vietnamese_supply": 0,
+    "usable_image_assets": 0
+  },
+  "model_evidence": {
+    "development_rows": 3916,
+    "word_tfidf_linear_oof_macro_f1": 0.721038,
+    "e5_small_v2_oof_macro_f1": 0.689907,
+    "e5_passed_development_gates": 0,
+    "source_style_geometry_unresolved": true
+  },
+  "decision": {
+    "single_overall_percentage_valid": false,
+    "sec_iapd_discovery_completion_percent": 98.26,
+    "fresh_core_admission_completion_percent": 0.0,
+    "larger_model_is_current_primary_bottleneck": false,
+    "evidence_and_label_quality_is_current_primary_bottleneck": true,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false,
+    "model_promotion_allowed": false
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "raw_file_modifications": 0,
+    "human_decisions_created": 0,
+    "labels_created": 0,
+    "validation_or_test_openings": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_IAPD_WAYBACK_AVAILABILITY_RETRY_RELEASE_V9",
+  "created_at": "2026-10-20",
+  "status": "FROZEN_OFFLINE_24H_COOLDOWN_ACTIVE_CRASH_SAFE_EXECUTOR_READY",
+  "purpose": "Register the exact two-row V9 unresolved-only retry bound to the completed verified V8 result, with crash-safe execution and every downstream gate closed.",
+  "inputs": [
+    {"role": "completed_verified_result_registry_v8", "path": "registry/analyses/sec_edgar_iapd_wayback_availability_result_v8.json", "sha256": "e0a97f752dd94c0afed066bd080fbcc1504764b74e2cad012c06deb55b6b0fe5"},
+    {"role": "retry_release_v9", "path": "configs/sec_edgar_iapd_wayback_availability_retry_release_v9.json", "sha256": "9d71f4cf87f01edc15f5d106216890914b67ce2f8bca0b7aa2b35a704f7b9ade"}
+  ],
+  "implementation": [
+    {"role": "authoritative_crash_safe_executor", "path": "scripts/retry_sec_edgar_iapd_wayback_availability_v9.py", "sha256": "d88fd0bf96b72eac2cdbf4305902339ebd0fec43bfb57264dbaa23067e6faf53"},
+    {"role": "independent_release_verifier", "path": "scripts/verify_sec_edgar_iapd_wayback_availability_retry_release_v9.py", "sha256": "c9548c26e82a5a5537169006edde84caa9de88a7c14b7f9b4ca79fddac5c2337"},
+    {"role": "executor_tests", "path": "tests/test_retry_sec_edgar_iapd_wayback_availability_v9.py", "sha256": "646f656f7704e391dde0121805d5a212c977149a4a01a2a081e089824c03d286"},
+    {"role": "release_verifier_tests", "path": "tests/test_verify_sec_edgar_iapd_wayback_availability_retry_release_v9.py", "sha256": "ec1d73f24123581ddd63cab6885ca3ec6be1860ab5bfcef5a07b002d2135f8aa"},
+    {"role": "registry_tests", "path": "tests/test_sec_edgar_iapd_wayback_availability_retry_release_registry_v9.py", "sha256": "627ce3845dbe9c5bfc79e4843cc2f8e4b04844b64e4ec7e7f71c21ecd00165ea"},
+    {"role": "documentation", "path": "docs/sec-edgar-iapd-wayback-availability-retry-v9.md", "sha256": "992784c2bd7789b3452e6e5efed8d34ee599f97f859bbac1026e84001e4f3141"}
+  ],
+  "outputs": [{"role": "immutable_independent_release_qa_v9", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_availability_result_v1\\independent_retry_release_qa_v9.json", "sha256": "6746b158c9c98c3db9253b2af04acb764e38779e644b351d3f0fb19c70552c6c"}],
+  "findings": {
+    "total_plan_rows": 115, "resolved_rows_preserved": 113, "retry_rows": 2,
+    "unresolved_cohort_counts": {"DEVELOPMENT": 0, "EXTERNAL_HOLDOUT": 2},
+    "minimum_cooldown_seconds": 86400, "not_before": "2026-10-21T14:19:54.213531+07:00",
+    "minimum_delay_seconds": 60.0, "maximum_attempts_per_candidate": 1, "maximum_redirects": 3,
+    "crash_safe_executor": true, "pre_request_reservation": true, "checkpoint_after_each_logical_attempt": true,
+    "partial_auto_resume_allowed": false, "network_requests_at_release_time": 0,
+    "independent_release_qa_status": "PASS_FROZEN_NOT_BEFORE_24H_UNRESOLVED_ONLY_CRASH_SAFE_PACING_PRESERVED",
+    "independent_release_qa_sha256": "6746b158c9c98c3db9253b2af04acb764e38779e644b351d3f0fb19c70552c6c"
+  },
+  "decision": {
+    "release_frozen": true, "authoritative_execution_module": "scripts.retry_sec_edgar_iapd_wayback_availability_v9",
+    "network_execution_allowed_at_freeze_time": false, "network_execution_allowed_after_not_before": true,
+    "capture_plan_construction_allowed_now": false, "capture_tooling_v4_supports_v9": false,
+    "v9_complete_would_require_separately_frozen_v9_aware_capture_tooling": true,
+    "candidate_live_domain_access_allowed": false, "archived_page_download_allowed": false,
+    "artifact_capture_allowed": false, "labeling_allowed": false, "validation_or_test_opening_allowed": false,
+    "training_allowed": false,
+    "next_gate": "At or after 2026-10-21T14:19:54.213531+07:00, execute once only if neither final nor partial V9 output exists."
+  },
+  "safety_contract": {"network_operations": 0, "candidate_domain_access_operations": 0, "archived_page_downloads": 0, "artifact_captures": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

@@ -1,0 +1,17 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_IAPD_WAYBACK_AVAILABILITY_RESULT_VERIFIER_V9",
+  "created_at": "2026-10-20",
+  "status": "FROZEN_PREDECLARED_OFFLINE_VERIFIER_READY_RESULT_NOT_YET_CREATED",
+  "purpose": "Register V9 result acceptance rules before any V9 network execution, including logical-attempt and bounded-redirect request accounting.",
+  "inputs": [{"role": "retry_release_v9", "path": "configs/sec_edgar_iapd_wayback_availability_retry_release_v9.json", "sha256": "9d71f4cf87f01edc15f5d106216890914b67ce2f8bca0b7aa2b35a704f7b9ade"}],
+  "implementation": [
+    {"role": "result_verifier", "path": "scripts/verify_sec_edgar_iapd_wayback_availability_result_v9.py", "sha256": "ddcc4bde9a1af9a93c12bfd3c2dcefd9000c065452614172a90f88b11af9c014"},
+    {"role": "verifier_tests", "path": "tests/test_verify_sec_edgar_iapd_wayback_availability_result_v9.py", "sha256": "2e5e958b7f099814bcef07becd2530c15e431a27c4873092c07a7604c7d12d32"},
+    {"role": "registry_tests", "path": "tests/test_sec_edgar_iapd_wayback_availability_result_verifier_registry_v9.py", "sha256": "7e1e872587348f77cb8abca7b2c57b61cf10c47e6c9be8ce6ae7cfde539ba4a6"},
+    {"role": "documentation", "path": "docs/sec-edgar-iapd-wayback-availability-result-verifier-v9.md", "sha256": "09bac73e271531259effaebb0557a402673f05a3719440b786bf84268c101d36"}
+  ],
+  "outputs": [],
+  "findings": {"expected_plan_rows": 115, "resolved_parent_rows_to_preserve": 113, "retry_population_limit": 2, "logical_attempt_limit": 2, "maximum_redirects": 3, "http_request_upper_bound_per_logical_attempt": 4, "not_before_required": "2026-10-21T14:19:54.213531+07:00", "complete_result_requires_unresolved_rows": 0, "partial_result_can_open_capture_plan": false, "network_operations_at_verifier_freeze": 0},
+  "decision": {"verifier_ready_before_result": true, "network_execution_allowed_by_this_registry": false, "result_verification_allowed_after_result_exists": true, "capture_plan_construction_allowed_now": false, "capture_tooling_v4_supports_v9": false, "v9_aware_capture_tooling_required_after_complete_pass": true, "candidate_live_domain_access_allowed": false, "archived_page_download_allowed": false, "artifact_capture_allowed": false, "labeling_allowed": false, "validation_or_test_opening_allowed": false, "training_allowed": false, "next_gate": "After V9 execution, run this verifier; only a complete pass may authorize preparation of V9-aware capture tooling."},
+  "safety_contract": {"network_operations": 0, "candidate_domain_access_operations": 0, "archived_page_downloads": 0, "artifact_captures": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

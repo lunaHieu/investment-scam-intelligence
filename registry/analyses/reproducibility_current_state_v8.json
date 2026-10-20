@@ -1,0 +1,51 @@
+{
+  "analysis_id": "ISI_REPRODUCIBILITY_CURRENT_STATE_V8",
+  "created_at": "2026-10-20",
+  "status": "FROZEN_CURRENT_GUIDE_LEDGER_V10_PARTIAL_RESOLVED_CAPTURE_V5_WAITING_GATE",
+  "purpose": "Replace V7 navigation with ledger V10, the exact 58-row V5 capture release, and separate two-row V9 supplemental retry without mutating historical guides.",
+  "current_entrypoint": "registry/analyses/project_state_gap_ledger_v10.json",
+  "inputs": [
+    {"role": "project_state_v10", "path": "registry/analyses/project_state_gap_ledger_v10.json", "sha256": "15b35bd96de2c8f109f8927dd261ef93abf5cc61db5cc70d42ef1c9a15fb5f5b"},
+    {"role": "prior_reproducibility_state_v7", "path": "registry/analyses/reproducibility_current_state_v7.json", "sha256": "ab81db18ec9662d12d45192a785b53414b613c425d33eec8591e573b9b2494d2"},
+    {"role": "sec_iapd_capture_plan_release_v5", "path": "registry/analyses/sec_edgar_iapd_wayback_capture_plan_release_v5.json", "sha256": "80ffb5f1d8faa174ba95e6d90934f5ab754fe65b858722b83e7331f45e2b6347"},
+    {"role": "data_sufficiency_v2", "path": "registry/analyses/data_sufficiency_audit_v2.json", "sha256": "dd6ddce5d0f8ff9325c3f59ade8d7d599563e0df13fbc6eabec43d59c410cc84"},
+    {"role": "raw_provenance", "path": "registry/analyses/raw_cross_registry_provenance_audit_v2.json", "sha256": "84dd009d88630bf23f1b5cc96e88aed4e34c43b03453c44e84b288a7dcda6d6a"},
+    {"role": "crimson_review_packets_v2", "path": "registry/analyses/crimson_human_review_packets_v2.json", "sha256": "4022a570984ed7567f36d56cd0aef20eab048a478a4d72e1e5459f44a67d58d5"},
+    {"role": "manual_acquisition_packet", "path": "registry/analyses/target_text_corpus_v1_manual_acquisition_packet_v1.json", "sha256": "775ce6c3aa8ac2eef9803736eed65c5b8925128b8f3db04e22f112f39cfb050f"},
+    {"role": "model_choice", "path": "registry/analyses/text_model_choice_dossier_v5.json", "sha256": "dc2c0490d70f92c86f74c49d791426458dea89743e6493869e92200d032a80df"}
+  ],
+  "implementation": [
+    {"role": "guide_contract_tests", "path": "tests/test_reproducibility_current_state_v8.py", "sha256": "59a205cc3c219ce1a129c65a3a36d7f9a708f3cb653b82427a3879573f3d49e4"}
+  ],
+  "output": {"role": "reproducibility_guide_v8", "path": "docs/reproducibility-current-state-v8.md", "sha256": "ce38f12f55babff1a8b6a62282e89bf389ca2571cbd553fab93381babcfd8b60"},
+  "current_sec_iapd_gate": {
+    "planned": 115,
+    "resolved": 113,
+    "available": 58,
+    "unavailable": 55,
+    "unresolved": 2,
+    "external_holdout_unresolved": 2,
+    "v9_retry_rows": 2,
+    "capture_plan_rows": 58,
+    "capture_plan_by_cohort": {"DEVELOPMENT": 46, "EXTERNAL_HOLDOUT": 12},
+    "capture_release_version": "V5",
+    "capture_not_before": "2026-10-21T14:19:54.213531+07:00",
+    "capture_allowed_now": false,
+    "partial_auto_resume_allowed": false
+  },
+  "data_sufficiency": {"verified_existing_raw_files_before_capture": 278, "verified_existing_raw_bytes_before_capture": 1640058635, "historical_train_rows": 3916, "fresh_validated_groups": 0, "fresh_required_groups": 300, "reference_or_availability_counts_are_training_rows": false},
+  "coverage": {"storage_and_trust_boundaries": true, "evidence_flow": true, "partial_resolved_amendment": true, "unresolved_quarantine": true, "holdout_selection_limit": true, "capture_release_hashes": true, "capture_cooldown": true, "v9_supplemental_retry": true, "post_capture_byte_hash_gate": true, "external_and_crimson_limits": true, "manual_acquisition_limits": true, "model_state": true, "module_invocation_examples": true, "prohibited_actions": true},
+  "decision": {
+    "guide_v8_is_authoritative_navigation_entry": true,
+    "guide_v1_through_v7_preserved_as_historical_snapshots": true,
+    "candidate_domain_access_allowed": false,
+    "capture_allowed_now": false,
+    "capture_allowed_at_or_after_not_before": true,
+    "text_extraction_allowed_before_complete_capture_qa": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false,
+    "model_scoring_allowed": false,
+    "next_gate": "At or after the shared 2026-10-21 gate, execute the separately frozen V9 availability retry and V5 58-row archive capture under their independent contracts."
+  },
+  "safety_contract": {"network_operations": 0, "raw_file_modifications": 0, "human_decisions_created": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

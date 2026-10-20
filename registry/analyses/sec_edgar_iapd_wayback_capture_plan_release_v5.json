@@ -1,0 +1,49 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_IAPD_WAYBACK_CAPTURE_PLAN_RELEASE_V5",
+  "created_at": "2026-10-20",
+  "status": "FROZEN_PARTIAL_RESOLVED_58_ROW_CAPTURE_RELEASE_WAITING_NOT_BEFORE",
+  "purpose": "Register the exact V8 partial-resolved 58-row capture plan, independent plan QA, concrete archive-only release, and independent release QA while quarantining both unresolved rows.",
+  "inputs": [
+    {"role": "availability_result_v8", "path": "registry/analyses/sec_edgar_iapd_wayback_availability_result_v8.json", "sha256": "e0a97f752dd94c0afed066bd080fbcc1504764b74e2cad012c06deb55b6b0fe5"},
+    {"role": "availability_retry_release_v9", "path": "registry/analyses/sec_edgar_iapd_wayback_availability_retry_release_v9.json", "sha256": "3fd1d50932ccf6e81b7160a4ac23b3ade7a21b2d993ed96b56b26e81347a8644"},
+    {"role": "capture_plan_tooling_v5", "path": "registry/analyses/sec_edgar_iapd_wayback_capture_plan_tooling_v5.json", "sha256": "8aca7b11e26a4f9ab4c6f65a7051d52a84748573f9d968f419355fdd581b43e1"},
+    {"role": "capture_execution_tooling_v5", "path": "registry/analyses/sec_edgar_iapd_wayback_capture_execution_tooling_v5.json", "sha256": "9685dc6debaa133b5ad33840d8c3e33e500c878cc70e6b69159de74b70197efe"}
+  ],
+  "implementation": [
+    {"role": "registry_contract_tests", "path": "tests/test_sec_edgar_iapd_wayback_capture_plan_release_registry_v5.py", "sha256": "9b2f6b3241e1ba493e729cbc32ae1db57c6d87d678604f9b66023853b77d2025"},
+    {"role": "documentation", "path": "docs/sec-edgar-iapd-wayback-capture-plan-release-v5.md", "sha256": "3c64eedc9779452b1bd741b9d210202b8a49d504b2a46bb920a4a356155ee474"}
+  ],
+  "outputs": [
+    {"role": "capture_plan_v5", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_capture_plan_v1\\capture_plan_v5.json", "sha256": "4426a0f7724121798ae34c35cc50bc80fa6e036f9acb8b0602f5527a69f9d3f7"},
+    {"role": "independent_plan_qa_v5", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_capture_plan_v1\\independent_qa_v5.json", "sha256": "c94bee8dfd6c6d79ef1016ad2fd5350e85cae662044bf3960600cbf6b10fa688"},
+    {"role": "capture_release_v5", "path": "configs/sec_edgar_iapd_wayback_capture_release_v5.json", "sha256": "332f2c8ab6e0d256be107e100491cdf8aa02a20405a085d4304fa1fdd87b5c5d"},
+    {"role": "independent_release_qa_v5", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_capture_plan_v1\\independent_release_qa_v5.json", "sha256": "a8d1f1540ee06ae75a9e85b5cf06ffedd34c3ec8857fbb5cbc80952a408d0187"}
+  ],
+  "findings": {
+    "source_candidate_count": 115,
+    "resolved_availability_count": 113,
+    "planned_capture_count": 58,
+    "planned_by_cohort": {"DEVELOPMENT": 46, "EXTERNAL_HOLDOUT": 12},
+    "quarantined_unresolved_count": 2,
+    "quarantined_plan_ids": ["SEC_IAPD_20261007_HOLDOUT_011", "SEC_IAPD_20261007_HOLDOUT_018"],
+    "plan_qa_status": "PASS_EXACT_AVAILABLE_SNAPSHOT_PLAN_REGISTER_BEFORE_EXECUTION",
+    "release_qa_status": "PASS_ARCHIVE_ONLY_CAPTURE_RELEASE",
+    "not_before": "2026-10-21T14:19:54.213531+07:00",
+    "minimum_delay_seconds": 30.0,
+    "maximum_attempts_per_snapshot": 1
+  },
+  "decision": {
+    "partial_resolved_protocol_amendment_active": true,
+    "capture_allowed_now": false,
+    "capture_allowed_at_or_after_not_before": true,
+    "v9_supplemental_retry_remains_active": true,
+    "holdout_subset_representative": false,
+    "candidate_live_domain_access_allowed": false,
+    "text_extraction_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false,
+    "next_gate": "At or after the frozen not_before, execute the exact archive-only 58-row release once if no final or partial capture report exists."
+  },
+  "safety_contract": {"network_operations": 0, "archived_page_downloads": 0, "candidate_domain_access_operations": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

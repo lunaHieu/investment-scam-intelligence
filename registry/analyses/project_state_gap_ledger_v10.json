@@ -1,0 +1,63 @@
+{
+  "analysis_id": "ISI_PROJECT_STATE_GAP_LEDGER_V10",
+  "created_at": "2026-10-20",
+  "base_commit": "7447e694a11d8f74d42313d82c2e0d76dde04b94",
+  "status": "FROZEN_V8_PARTIAL_58_ROW_CAPTURE_RELEASE_TIMED_GATE_ACTIVE",
+  "purpose": "Replace ledger V9 with the explicit partial-resolved 58-row capture amendment while preserving the two-row V9 supplemental retry and every downstream safety gate.",
+  "inputs": [
+    {"role": "prior_state_v9", "path": "registry/analyses/project_state_gap_ledger_v9.json", "sha256": "e37c8ec22e3b789522baad1a084bf954bb2fe0a213dcb74dd1e0ad3ec1f16261"},
+    {"role": "sec_iapd_v8_result", "path": "registry/analyses/sec_edgar_iapd_wayback_availability_result_v8.json", "sha256": "e0a97f752dd94c0afed066bd080fbcc1504764b74e2cad012c06deb55b6b0fe5"},
+    {"role": "sec_iapd_v9_retry_release", "path": "registry/analyses/sec_edgar_iapd_wayback_availability_retry_release_v9.json", "sha256": "3fd1d50932ccf6e81b7160a4ac23b3ade7a21b2d993ed96b56b26e81347a8644"},
+    {"role": "sec_iapd_partial_resolved_capture_release_v5", "path": "registry/analyses/sec_edgar_iapd_wayback_capture_plan_release_v5.json", "sha256": "80ffb5f1d8faa174ba95e6d90934f5ab754fe65b858722b83e7331f45e2b6347"},
+    {"role": "data_sufficiency_v2", "path": "registry/analyses/data_sufficiency_audit_v2.json", "sha256": "dd6ddce5d0f8ff9325c3f59ade8d7d599563e0df13fbc6eabec43d59c410cc84"}
+  ],
+  "implementation": [
+    {"role": "human_readable_ledger", "path": "docs/project-state-gap-ledger-v10.md", "sha256": "35dd2fcc8cdf32fb7cde3f826c3055f921cadaebd7fa3786f8b138a2eeb273ec"},
+    {"role": "ledger_contract_tests", "path": "tests/test_project_state_gap_ledger_v10.py", "sha256": "2d6f7dd18a7438d7540d0ae79ee396bd8f847ffab8f84fdd4616181e2f417419"}
+  ],
+  "state_amendments": {
+    "P1_SEC_IAPD": {
+      "planned": 115,
+      "resolved": 113,
+      "available": 58,
+      "unavailable": 55,
+      "unresolved": 2,
+      "external_holdout_unresolved": 2,
+      "cumulative_network_requests_through_v8": 166,
+      "v8_stopped_on_http_429": true,
+      "v9_retry_rows": 2,
+      "v9_not_before": "2026-10-21T14:19:54.213531+07:00",
+      "capture_plan_rows": 58,
+      "capture_plan_by_cohort": {"DEVELOPMENT": 46, "EXTERNAL_HOLDOUT": 12},
+      "quarantined_unresolved": 2,
+      "capture_release_version": "V5",
+      "capture_release_qa_passed": true,
+      "capture_not_before": "2026-10-21T14:19:54.213531+07:00",
+      "capture_minimum_delay_seconds": 30.0,
+      "capture_maximum_attempts_per_snapshot": 1,
+      "holdout_subset_representative": false
+    },
+    "P2_DATA_SUFFICIENCY": {"existing_raw_files_verified_before_capture": 278, "historical_baseline_train_rows": 3916, "fresh_v1_core_validated_groups": 0, "fresh_v1_core_required_groups": 300, "reference_or_candidate_counts_are_training_rows": false},
+    "P4_CRIMSON": {"status": "HUMAN_REVIEWER_OR_EXTERNAL_EVIDENCE_REQUIRED"},
+    "P6_MANUAL_ACQUISITION": {"dfpi": "PENDING_USER_SUPPLIED_LAWFUL_FIRST_PARTY_ARTIFACT", "ssc_hnx": "BLOCKED_PENDING_EXPORT_OR_REUSE_BASIS", "verified_vietnamese_supply": 0, "usable_image_assets": 0}
+  },
+  "remaining_external_or_timed_gates": [
+    {"gate": "SEC_IAPD_V9", "status": "WAITING_NOT_BEFORE", "not_before": "2026-10-21T14:19:54.213531+07:00", "scope": "two quarantined unresolved availability rows only"},
+    {"gate": "SEC_IAPD_CAPTURE_V5", "status": "WAITING_NOT_BEFORE", "not_before": "2026-10-21T14:19:54.213531+07:00", "scope": "exact 58-row archive-only plan"},
+    {"gate": "CRIMSON_HUMAN_REVIEW", "status": "HUMAN_REVIEWER_OR_EXTERNAL_EVIDENCE_REQUIRED"},
+    {"gate": "MANUAL_SOURCE_INPUTS", "status": "LAWFUL_ARTIFACT_OR_PERMISSION_REQUIRED"}
+  ],
+  "decision": {
+    "partial_resolved_capture_amendment_active": true,
+    "network_execution_allowed_now": false,
+    "capture_allowed_now": false,
+    "capture_allowed_at_or_after_not_before": true,
+    "live_candidate_domain_access_allowed": false,
+    "additional_unreviewed_label_materialization_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false,
+    "model_scoring_allowed": false,
+    "next_gate": "At or after 2026-10-21T14:19:54.213531+07:00, independently preflight and execute the exact V9 retry and V5 archive-only capture under separate no-overwrite contracts."
+  },
+  "safety_contract": {"network_operations_after_v8_result": 0, "raw_file_modifications": 0, "human_decisions_created": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

@@ -1,0 +1,60 @@
+{
+  "analysis_id": "ISI_CRIMSON_REVIEWER_HANDOFF_V1",
+  "created_at": "2026-10-20",
+  "base_commit": "3b42f75",
+  "status": "PASS_REVIEWER_HANDOFF_READY_NO_DECISIONS_CREATED",
+  "purpose": "Provide a concise, immutable reviewer-facing route through the verified Crimson V2 packets without confusing AI preparation with human confirmation.",
+  "inputs": [
+    {"role": "packet_release", "path": "configs/crimson_human_review_packets_v2.json", "sha256": "36312df46252ddc1ae3b0808010f3a7e4c91d5e3f6750e8784bfa12f1b82e0b5"},
+    {"role": "packet_result", "path": "registry/analyses/crimson_human_review_packets_v2.json", "sha256": "4022a570984ed7567f36d56cd0aef20eab048a478a4d72e1e5459f44a67d58d5"},
+    {"role": "recorded_decisions", "path": "registry/analyses/crimson_human_review_decisions_v1.json", "sha256": "ae057f9bc20ee577f9bf54837384fc5e50fb6a8be01bcdd9ff29f7743976e1d1"}
+  ],
+  "implementation": [
+    {"role": "reviewer_handoff", "path": "docs/crimson-reviewer-handoff-v1.md", "sha256": "35c1cfc82dbfa1773ba60a4f02fc76ffd86e7717e74feb0e08bbf3572f3d73df"},
+    {"role": "handoff_contract_tests", "path": "tests/test_crimson_reviewer_handoff_v1.py", "sha256": "e07512b0bb3b49ea8578e5f105781fd37067197479e3b669ea0948981a01acec"}
+  ],
+  "task_counts": {
+    "pilot_population": 40,
+    "first_review_complete": 1,
+    "first_review_pending": 39,
+    "blind_second_population": 21,
+    "blind_second_ready": 1,
+    "blind_second_waiting": 20,
+    "official_reference_followup": 15
+  },
+  "packet_root": "D:\\nckh 2026-2027\\ISI_Data\\derived\\crimson_human_review_packets_v2",
+  "safe_order": [
+    "ASSIGN_ONE_READY_BLIND_SECOND_TASK_TO_TRUTHFULLY_INDEPENDENT_REVIEWER",
+    "COMPLETE_FIRST_REVIEW_TASKS_BY_PRIORITY_AND_REVIEW_ORDER",
+    "OPEN_ONLY_LISTED_OFFICIAL_REFERENCE_URLS_WHEN_FOLLOWUP_IS_REQUIRED",
+    "RECORD_ALL_REQUIRED_FIELDS_WITH_UNCERTAINTY_PRESERVED",
+    "REGENERATE_AND_VERIFY_PACKETS_AFTER_FORMALLY_RECORDED_FIRST_REVIEWS"
+  ],
+  "review_boundary": {
+    "official_reference_urls_only": true,
+    "blind_second_must_be_independent": true,
+    "crimson_host_access_allowed": false,
+    "ai_may_organize_evidence": true,
+    "ai_may_validate_required_fields": true,
+    "ai_may_impersonate_human_reviewer": false,
+    "labels_created": false,
+    "training_eligible": false
+  },
+  "decision": {
+    "handoff_ready": true,
+    "human_review_complete": false,
+    "reconciliation_allowed_now": false,
+    "corpus_admission_allowed_now": false,
+    "training_allowed": false,
+    "next_gate": "A truthful primary reviewer may complete the 39 pending first-review tasks, while a different independent reviewer may complete the one ready blind-second task."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "packet_modifications": 0,
+    "human_decisions_created": 0,
+    "labels_created": 0,
+    "training_eligible_records": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

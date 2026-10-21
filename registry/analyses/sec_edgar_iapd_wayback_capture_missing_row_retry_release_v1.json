@@ -1,0 +1,43 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_IAPD_WAYBACK_CAPTURE_MISSING_ROW_RETRY_RELEASE_V1",
+  "created_at": "2026-10-22",
+  "status": "PASS_FROZEN_ONE_ROW_ARCHIVE_RETRY_WAITING_NOT_BEFORE",
+  "purpose": "Register the independently verified exact one-row retry release for the sole failed capture while preserving all 57 completed captures and keeping network execution behind a 24-hour cooldown.",
+  "inputs": [
+    {"role": "capture_result_registry", "path": "registry/analyses/sec_edgar_iapd_wayback_capture_result_v1.json", "sha256": "78fa220dc18693ab00a263dc2287bc08e79a97d6af8180b1a0ddca0311f6a92d"},
+    {"role": "capture_retry_tooling_registry", "path": "registry/analyses/sec_edgar_iapd_wayback_capture_retry_tooling_v1.json", "sha256": "52d60b1d4d887b868cd1c0069e95f5f1ea1f247a931e1d536b0c3235a1f0da45"}
+  ],
+  "implementation": [
+    {"role": "registry_contract_test", "path": "tests/test_sec_edgar_iapd_wayback_capture_missing_row_retry_registry_v1.py", "sha256": "c7d996aa9c935173cbec1b1c972e1f56dbfa1159a4df6a945be3ce14bdcbdb80"}
+  ],
+  "outputs": [
+    {"role": "missing_row_retry_release", "path": "configs/sec_edgar_iapd_wayback_capture_missing_row_retry_release_v1.json", "sha256": "2c6c81d273784037164daa337f199772ec8c272928dde04258ed7b963b0c6660"},
+    {"role": "independent_release_qa", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_capture_retry_result_v1\\independent_release_qa_v1.json", "sha256": "59543a25bb7b65a5b35d481125f19be9aa3e825766e5f36f2cdca63fdc9e844c"}
+  ],
+  "result": {
+    "source_population_count": 58,
+    "completed_capture_count": 57,
+    "retry_capture_count": 1,
+    "ordered_retry_ids": ["TTCV1_EDGAR_AVAIL_DEV_037"],
+    "retry_candidate_host": "lionpoint.com",
+    "prior_error": "ValueError: Archived HTML capture is unexpectedly small: 42 bytes",
+    "not_before": "2026-10-22T23:08:09.711801+07:00",
+    "minimum_cooldown_seconds": 86400.0,
+    "minimum_request_delay_seconds": 30.0,
+    "maximum_attempts_per_snapshot": 1,
+    "archive_host_only": true,
+    "completed_bytes_and_hashes_preserved": true
+  },
+  "decision": {
+    "release_prepared_and_verified": true,
+    "network_execution_allowed_now": false,
+    "network_execution_allowed_at_or_after_not_before": true,
+    "candidate_live_domain_access_allowed": false,
+    "text_extraction_allowed_by_retry_release": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {"network_operations": 0, "captures": 0, "raw_files_modified": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

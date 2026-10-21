@@ -1,0 +1,56 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_IAPD_WAYBACK_AVAILABILITY_RESULT_V9",
+  "created_at": "2026-10-21",
+  "status": "INDEPENDENTLY_VERIFIED_PARTIAL_HTTP_429_ERRORS_PRESERVED_CAPTURE_V5_DEFERRED",
+  "purpose": "Register the immutable V9 availability result and independent QA while preserving the unchanged 58-row V5 capture release and deferring capture after rate limiting.",
+  "inputs": [
+    {"role": "retry_release_v9", "path": "configs/sec_edgar_iapd_wayback_availability_retry_release_v9.json", "sha256": "9d71f4cf87f01edc15f5d106216890914b67ce2f8bca0b7aa2b35a704f7b9ade"},
+    {"role": "availability_plan_v1", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_availability_plan_v1\\availability_plan_v1.jsonl", "sha256": "28f747ecb489e15b00fb6a33fa51fb10b451057115eff8905e5dd98d27c0ea8f"}
+  ],
+  "implementation": [
+    {"role": "authoritative_crash_safe_executor_v9", "path": "scripts/retry_sec_edgar_iapd_wayback_availability_v9.py", "sha256": "d88fd0bf96b72eac2cdbf4305902339ebd0fec43bfb57264dbaa23067e6faf53"},
+    {"role": "independent_result_verifier", "path": "scripts/verify_sec_edgar_iapd_wayback_availability_result_v9.py", "sha256": "ddcc4bde9a1af9a93c12bfd3c2dcefd9000c065452614172a90f88b11af9c014"},
+    {"role": "registry_tests", "path": "tests/test_sec_edgar_iapd_wayback_availability_result_registry_v9.py", "sha256": "8ee8cc7fd4d08d6dc242bb93565a95f5e6d7202ce372283a92cbcf58765fc0f0"},
+    {"role": "documentation", "path": "docs/sec-edgar-iapd-wayback-availability-result-v9.md", "sha256": "3e19d2d5e713257a9d107173dd032ffbd28a67c969b039b8e799185c1db25109"}
+  ],
+  "outputs": [
+    {"role": "availability_report_v9", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_availability_result_v1\\availability_report_v9.json", "sha256": "42d03f5cae7051c51c999fc87f185020544b3117a0c044f07d5833c1b4d36740"},
+    {"role": "independent_qa_v9", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_availability_result_v1\\independent_qa_v9.json", "sha256": "0a179370dde39df25e25154d306fdcdca70c5db5a54b59f0e7eddf00481f37cc"}
+  ],
+  "findings": {
+    "total_plan_rows": 115,
+    "resolved_results": 113,
+    "available_results": 58,
+    "unavailable_results": 55,
+    "unresolved_results": 2,
+    "external_holdout_unresolved": 2,
+    "logical_retry_attempts_v9": 1,
+    "network_requests_v9": 1,
+    "cumulative_network_requests": 167,
+    "stopped_on_http_429": true,
+    "independent_qa_status": "PASS_PARTIAL_ERRORS_PRESERVED_CAPTURE_PLAN_BLOCKED",
+    "capture_plan_construction_ready": false
+  },
+  "decision": {
+    "v9_result_registered": true,
+    "resolved_v9_rows_must_be_preserved": true,
+    "v10_unresolved_only_release_may_be_prepared": true,
+    "capture_release_v5_preserved": true,
+    "capture_execution_allowed_in_same_run": false,
+    "capture_plan_enlargement_allowed": false,
+    "candidate_live_domain_access_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Freeze an exact two-row V10 retry no earlier than 2026-10-22T18:18:58.983066+07:00 and conservatively defer the unchanged V5 capture to that later run."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "candidate_domain_access_operations": 0,
+    "archived_page_downloads": 0,
+    "artifact_captures": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

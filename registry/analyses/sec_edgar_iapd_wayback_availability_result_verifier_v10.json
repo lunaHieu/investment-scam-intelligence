@@ -1,0 +1,48 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_IAPD_WAYBACK_AVAILABILITY_RESULT_VERIFIER_V10",
+  "created_at": "2026-10-21",
+  "status": "FROZEN_PREDECLARED_OFFLINE_VERIFIER_READY_RESULT_NOT_YET_CREATED",
+  "purpose": "Register V10 result acceptance rules before any V10 network execution while preserving the independent V5 capture release.",
+  "inputs": [
+    {"role": "retry_release_v10", "path": "configs/sec_edgar_iapd_wayback_availability_retry_release_v10.json", "sha256": "4da5fbf24e921de38fd8defaf59367ce57fcd79e87b30971187d5920caedcebf"}
+  ],
+  "implementation": [
+    {"role": "result_verifier", "path": "scripts/verify_sec_edgar_iapd_wayback_availability_result_v10.py", "sha256": "7778b9407d7b6a8fe2af3577a5c98d6f07b029b6626558db0eaeda8fee114711"},
+    {"role": "verifier_tests", "path": "tests/test_verify_sec_edgar_iapd_wayback_availability_result_v10.py", "sha256": "882785c4ba485714e8e1b0b683f71980842b6a14bc813b7c15d394a295deec18"},
+    {"role": "registry_tests", "path": "tests/test_sec_edgar_iapd_wayback_availability_result_verifier_registry_v10.py", "sha256": "1fb76e15ac2d9d2110eae333b71daacd7431ea20045d3eea37f88400a1119704"},
+    {"role": "documentation", "path": "docs/sec-edgar-iapd-wayback-availability-result-verifier-v10.md", "sha256": "08cf5f70071b3932c583854860ac5155ba2dd5a400a661dce45f11fb14c306f5"}
+  ],
+  "outputs": [],
+  "findings": {
+    "expected_plan_rows": 115,
+    "resolved_parent_rows_to_preserve": 113,
+    "retry_population_limit": 2,
+    "logical_attempt_limit": 2,
+    "maximum_redirects": 3,
+    "http_request_upper_bound_per_logical_attempt": 4,
+    "not_before_required": "2026-10-22T18:18:58.983066+07:00",
+    "complete_result_requires_unresolved_rows": 0,
+    "network_operations_at_verifier_freeze": 0
+  },
+  "decision": {
+    "verifier_ready_before_result": true,
+    "network_execution_allowed_by_this_registry": false,
+    "result_verification_allowed_after_result_exists": true,
+    "capture_release_v5_preserved": true,
+    "v10_result_may_mutate_capture_v5": false,
+    "supplemental_capture_amendment_requires_separate_release": true,
+    "candidate_live_domain_access_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "candidate_domain_access_operations": 0,
+    "archived_page_downloads": 0,
+    "artifact_captures": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

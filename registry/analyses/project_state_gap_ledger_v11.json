@@ -1,0 +1,79 @@
+{
+  "analysis_id": "ISI_PROJECT_STATE_GAP_LEDGER_V11",
+  "created_at": "2026-10-21",
+  "base_commit": "94b8f06d59123c43050910ca5a0544048d4cb81e",
+  "status": "FROZEN_V9_HTTP_429_V10_COOLDOWN_CAPTURE_V5_PRESERVED_DEFERRED",
+  "purpose": "Replace ledger V10 with the independently verified V9 rate-limit outcome, exact V10 cooldown release, and unchanged deferred 58-row Capture V5 contract.",
+  "inputs": [
+    {"role": "prior_state_v10", "path": "registry/analyses/project_state_gap_ledger_v10.json", "sha256": "15b35bd96de2c8f109f8927dd261ef93abf5cc61db5cc70d42ef1c9a15fb5f5b"},
+    {"role": "sec_iapd_v9_result", "path": "registry/analyses/sec_edgar_iapd_wayback_availability_result_v9.json", "sha256": "7b45452f161e19ed8fa910000dfe1c4c9c017049622dd59512e8afeca1ca9f27"},
+    {"role": "sec_iapd_v10_retry_release", "path": "registry/analyses/sec_edgar_iapd_wayback_availability_retry_release_v10.json", "sha256": "f0266cac850e9760dce3b11169a764ca879477e6fef745bb5e9aef9132932d88"},
+    {"role": "sec_iapd_capture_release_v5", "path": "registry/analyses/sec_edgar_iapd_wayback_capture_plan_release_v5.json", "sha256": "80ffb5f1d8faa174ba95e6d90934f5ab754fe65b858722b83e7331f45e2b6347"},
+    {"role": "data_sufficiency_v2", "path": "registry/analyses/data_sufficiency_audit_v2.json", "sha256": "dd6ddce5d0f8ff9325c3f59ade8d7d599563e0df13fbc6eabec43d59c410cc84"}
+  ],
+  "implementation": [
+    {"role": "human_readable_ledger", "path": "docs/project-state-gap-ledger-v11.md", "sha256": "7b97aa9d7851ac8dd1189378cc8395979e1b90c3815a583c0e6bdcb32b07c90d"},
+    {"role": "ledger_contract_tests", "path": "tests/test_project_state_gap_ledger_v11.py", "sha256": "61358e8e16a1bc059b17b8ff7981390f809816121ddc2395c78506c28dc10b40"}
+  ],
+  "state_amendments": {
+    "P1_SEC_IAPD": {
+      "planned": 115,
+      "resolved": 113,
+      "available": 58,
+      "unavailable": 55,
+      "unresolved": 2,
+      "external_holdout_unresolved": 2,
+      "cumulative_network_requests_through_v9": 167,
+      "v9_network_requests": 1,
+      "v9_stopped_on_http_429": true,
+      "v10_retry_rows": 2,
+      "v10_not_before": "2026-10-22T18:18:58.983066+07:00",
+      "capture_plan_rows": 58,
+      "capture_plan_by_cohort": {"DEVELOPMENT": 46, "EXTERNAL_HOLDOUT": 12},
+      "capture_release_v5_preserved": true,
+      "capture_executed": false,
+      "capture_deferred_after_v9_rate_limit": true,
+      "holdout_subset_representative": false
+    },
+    "P2_DATA_SUFFICIENCY": {
+      "existing_raw_files_verified_before_capture": 278,
+      "historical_baseline_train_rows": 3916,
+      "fresh_v1_core_validated_groups": 0,
+      "fresh_v1_core_required_groups": 300,
+      "reference_or_candidate_counts_are_training_rows": false
+    },
+    "P4_CRIMSON": {"status": "HUMAN_REVIEWER_OR_EXTERNAL_EVIDENCE_REQUIRED"},
+    "P6_MANUAL_ACQUISITION": {
+      "dfpi": "PENDING_USER_SUPPLIED_LAWFUL_FIRST_PARTY_ARTIFACT",
+      "ssc_hnx": "BLOCKED_PENDING_EXPORT_OR_REUSE_BASIS",
+      "verified_vietnamese_supply": 0,
+      "usable_image_assets": 0
+    }
+  },
+  "remaining_external_or_timed_gates": [
+    {"gate": "SEC_IAPD_V10", "status": "WAITING_NOT_BEFORE", "not_before": "2026-10-22T18:18:58.983066+07:00", "scope": "two quarantined unresolved availability rows only"},
+    {"gate": "SEC_IAPD_CAPTURE_V5", "status": "DEFERRED_AFTER_HTTP_429_RELEASE_PRESERVED", "scope": "exact unchanged 58-row archive-only plan"},
+    {"gate": "CRIMSON_HUMAN_REVIEW", "status": "HUMAN_REVIEWER_OR_EXTERNAL_EVIDENCE_REQUIRED"},
+    {"gate": "MANUAL_SOURCE_INPUTS", "status": "LAWFUL_ARTIFACT_OR_PERMISSION_REQUIRED"}
+  ],
+  "decision": {
+    "v9_result_registered": true,
+    "v10_retry_release_frozen": true,
+    "capture_release_v5_preserved": true,
+    "network_execution_allowed_now": false,
+    "capture_allowed_in_v9_run": false,
+    "candidate_live_domain_access_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false,
+    "model_scoring_allowed": false,
+    "next_gate": "At or after 2026-10-22T18:18:58.983066+07:00, execute V10 once; if it avoids HTTP 429, execute the unchanged 58-row Capture V5 release."
+  },
+  "safety_contract": {
+    "network_operations_after_v9_result": 0,
+    "raw_file_modifications": 0,
+    "human_decisions_created": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

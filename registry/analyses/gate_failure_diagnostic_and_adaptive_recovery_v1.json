@@ -1,0 +1,71 @@
+{
+  "analysis_id": "ISI_GATE_FAILURE_DIAGNOSTIC_AND_ADAPTIVE_RECOVERY_V1",
+  "created_at": "2026-10-21",
+  "base_commit": "787f797d00ed34a80a4e98abad02e9477305b62e",
+  "status": "ACTIVE_OPERATIONAL_POLICY",
+  "purpose": "Require root-cause investigation, proportional impact analysis and the least restrictive compliant recovery path for every material gate failure.",
+  "implementation": [
+    {
+      "role": "human_readable_policy",
+      "path": "docs/gate-failure-diagnostic-and-adaptive-recovery-v1.md",
+      "sha256": "7af91353608961964e8e1f315ba354cd882834519b8f24fd0afdb33407f2a9a8"
+    },
+    {
+      "role": "policy_contract_tests",
+      "path": "tests/test_gate_failure_diagnostic_and_adaptive_recovery_v1.py",
+      "sha256": "5a34a0f63dd14a56b401958dd3fd961a78cc59435235a5b6b0965ffc7f3a3652"
+    }
+  ],
+  "required_failure_report_fields": [
+    "observed_symptom_and_local_evidence",
+    "confirmed_facts_vs_hypotheses",
+    "root_cause_and_alternatives",
+    "affected_scope_and_dependencies",
+    "data_and_artifact_integrity_impact",
+    "prohibited_actions",
+    "ranked_recovery_options",
+    "independent_work_that_remains_open",
+    "next_decision_time_and_reopen_evidence"
+  ],
+  "non_relaxable_invariants": {
+    "no_overwrite": true,
+    "hash_and_identity_preservation": true,
+    "no_live_candidate_domain_access": true,
+    "no_label_from_availability": true,
+    "validation_and_test_remain_closed": true,
+    "independent_review_not_bypassed": true
+  },
+  "adaptive_recovery_contract": {
+    "smallest_dependent_scope_only": true,
+    "unaffected_work_remains_open": true,
+    "resolved_rows_are_not_retried": true,
+    "versioned_amendment_required": true,
+    "frozen_release_edited_in_place": false,
+    "repeated_retry_requires_new_diagnostic_justification": true,
+    "stop_and_wait_requires_no_safer_immediate_path": true
+  },
+  "current_v9_application": {
+    "confirmed_symptom": "Wayback availability endpoint returned HTTP 429 on the first V9 network request",
+    "root_cause_status": "NOT_PROVEN_FROM_RESPONSE",
+    "plausible_causes": [
+      "shared_public_ip_quota",
+      "endpoint_or_service_wide_load_control",
+      "broader_historical_request_quota"
+    ],
+    "affected_scope": "Wayback network execution only",
+    "unaffected_scope": [
+      "113 immutable resolved availability rows",
+      "58-row independently verified capture population",
+      "offline QA and documentation",
+      "independent non-Wayback project branches"
+    ],
+    "prospective_improvement": "After the binding V10 release, evaluate tiered backoff and independent availability/capture scheduling through a separately frozen amendment."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "raw_file_modifications": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

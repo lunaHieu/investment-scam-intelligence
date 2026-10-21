@@ -1,0 +1,78 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_IAPD_WAYBACK_CAPTURE_EXECUTION_AMENDMENT_V1",
+  "created_at": "2026-10-21",
+  "base_commit": "8380168819265a035a21f586c6efd77d7086d1cf",
+  "status": "FROZEN_VERIFIED_DECOUPLED_CRASH_SAFE_CAPTURE_AUTHORIZATION",
+  "purpose": "Register the independently verified amendment that keeps the exact V5 capture population while separating capture execution from the two-row V10 availability retry.",
+  "inputs": [
+    {
+      "role": "v9_incident_analysis",
+      "path": "registry/analyses/sec_edgar_iapd_v9_rate_limit_incident_analysis_v1.json",
+      "sha256": "ec9821012e86d77b0411a32c8365c7b052b0096d9730ee74b8e07a5249166e1d"
+    },
+    {
+      "role": "capture_execution_amendment",
+      "path": "configs/sec_edgar_iapd_wayback_capture_execution_amendment_v1.json",
+      "sha256": "0266cdbbf79ec013c7249113f4d1d68cbebd215b3fa7d407eed73774a2c9740c"
+    },
+    {
+      "role": "independent_amendment_qa",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_capture_plan_v1\\independent_execution_amendment_qa_v1.json",
+      "sha256": "bd17a93068dfd796bf9664b620ce0b7848d1a0262e430b8c632ebd74849ea098"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "crash_safe_capture_executor",
+      "path": "scripts/execute_sec_edgar_iapd_wayback_capture_v2.py",
+      "sha256": "8e067b0c3da52b58cdd10c3b919e4ef6cb11993a240b3f13c5a98802a09ad86d"
+    },
+    {
+      "role": "independent_amendment_verifier",
+      "path": "scripts/verify_sec_edgar_iapd_wayback_capture_execution_amendment_v1.py",
+      "sha256": "635a05c5ae43eb7d35700e251f8c03f6e5f5521e72b2dda02ba318a8dae7086c"
+    },
+    {
+      "role": "synthetic_crash_rate_limit_and_compatibility_tests",
+      "path": "tests/test_sec_edgar_iapd_wayback_capture_execution_amendment_v1.py",
+      "sha256": "6ce2e0f17483657c34db986405d3e4508e51ac1cfcba3d62e9fbb04251581d07"
+    },
+    {
+      "role": "registry_contract_test",
+      "path": "tests/test_sec_edgar_iapd_wayback_capture_execution_amendment_registry_v1.py",
+      "sha256": "763ea139cd7c2f831fba7146119a38522ec23a7e5debf20863ddea2fa33d1653"
+    }
+  ],
+  "findings": {
+    "capture_plan_rows": 58,
+    "capture_plan_by_cohort": {
+      "DEVELOPMENT": 46,
+      "EXTERNAL_HOLDOUT": 12
+    },
+    "availability_v10_is_capture_prerequisite": false,
+    "same_process_after_availability_429_allowed": false,
+    "original_v5_not_before_preserved": true,
+    "reservation_before_first_request": true,
+    "checkpoint_after_each_row": true,
+    "automatic_partial_resume_allowed": false,
+    "http_error_diagnostic_headers_allowlisted": true,
+    "existing_capture_result_verifier_compatible": true
+  },
+  "decision": {
+    "capture_execution_allowed_now": true,
+    "availability_v10_remains_binding_for_quarantined_rows": true,
+    "candidate_live_domain_access_allowed": false,
+    "text_extraction_allowed_before_complete_capture_qa": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "raw_file_modifications": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}
+

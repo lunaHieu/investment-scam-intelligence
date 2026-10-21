@@ -1,0 +1,65 @@
+{
+  "amendment_id": "ISI_SEC_EDGAR_IAPD_WAYBACK_CAPTURE_EXECUTION_AMENDMENT_V1",
+  "created_at": "2026-10-21T22:30:00+07:00",
+  "status": "FROZEN_DECOUPLED_CRASH_SAFE_CAPTURE_AUTHORIZATION",
+  "purpose": "Keep the exact V5 capture population and network contract while decoupling it from the two-row V10 availability retry and requiring crash-safe per-row journaling plus bounded HTTP diagnostics.",
+  "basis": [
+    {
+      "role": "v9_rate_limit_incident_analysis",
+      "path": "registry/analyses/sec_edgar_iapd_v9_rate_limit_incident_analysis_v1.json",
+      "sha256": "ec9821012e86d77b0411a32c8365c7b052b0096d9730ee74b8e07a5249166e1d"
+    },
+    {
+      "role": "adaptive_gate_failure_policy",
+      "path": "registry/analyses/gate_failure_diagnostic_and_adaptive_recovery_v1.json",
+      "sha256": "17c49d1b634d934ad3debd028c0db7d6fc5fa6950b1a58fa05e3adf6db207efa"
+    }
+  ],
+  "inputs": {
+    "capture_release_v5": {
+      "path": "C:\\Users\\hieu\\Documents\\ChatGPT\\invesment scam intelligence\\configs\\sec_edgar_iapd_wayback_capture_release_v5.json",
+      "sha256": "332f2c8ab6e0d256be107e100491cdf8aa02a20405a085d4304fa1fdd87b5c5d"
+    },
+    "independent_release_qa_v5": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_capture_plan_v1\\independent_release_qa_v5.json",
+      "sha256": "a8d1f1540ee06ae75a9e85b5cf06ffedd34c3ec8857fbb5cbc80952a408d0187",
+      "required_status": "PASS_ARCHIVE_ONLY_CAPTURE_RELEASE"
+    }
+  },
+  "execution_binding": {
+    "capture_plan_rows": 58,
+    "capture_plan_by_cohort": {
+      "DEVELOPMENT": 46,
+      "EXTERNAL_HOLDOUT": 12
+    },
+    "capture_plan_sha256": "4426a0f7724121798ae34c35cc50bc80fa6e036f9acb8b0602f5527a69f9d3f7",
+    "authorized_executor_module": "scripts.execute_sec_edgar_iapd_wayback_capture_v2",
+    "availability_v10_is_capture_prerequisite": false,
+    "availability_requests_in_capture_process": 0,
+    "same_process_after_availability_429_allowed": false,
+    "original_v5_not_before_remains_binding": true,
+    "reservation_before_first_request_required": true,
+    "checkpoint_after_each_row_required": true,
+    "automatic_partial_resume_allowed": false,
+    "allowlisted_http_diagnostic_headers": [
+      "Retry-After",
+      "Date",
+      "Server",
+      "Content-Type",
+      "X-Archive-Wayback-Runtime-Error"
+    ]
+  },
+  "independent_qa_output": {
+    "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_capture_plan_v1\\independent_execution_amendment_qa_v1.json",
+    "verification_id": "ISI_SEC_EDGAR_IAPD_WAYBACK_CAPTURE_EXECUTION_AMENDMENT_INDEPENDENT_QA_V1",
+    "required_status": "PASS_DECOUPLED_CRASH_SAFE_CAPTURE_AMENDMENT"
+  },
+  "decision": {
+    "archive_only_capture_allowed_under_v5_not_before": true,
+    "candidate_live_domain_access_allowed": false,
+    "text_extraction_allowed_before_complete_capture_qa": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false
+  }
+}

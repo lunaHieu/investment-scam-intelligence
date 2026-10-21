@@ -1,0 +1,100 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_IAPD_V9_RATE_LIMIT_INCIDENT_ANALYSIS_V1",
+  "created_at": "2026-10-21",
+  "base_commit": "8380168819265a035a21f586c6efd77d7086d1cf",
+  "status": "PASS_ROOT_CAUSE_NOT_PROVEN_SCOPE_BOUNDED_ADAPTIVE_RECOVERY_ALLOWED",
+  "purpose": "Diagnose the V9 HTTP 429 from immutable local evidence, bound its impact, and define a compliant recovery that does not unnecessarily couple the verified 58-row capture population to two quarantined availability rows.",
+  "inputs": [
+    {
+      "role": "v9_immutable_availability_report",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_availability_result_v1\\availability_report_v9.json",
+      "sha256": "42d03f5cae7051c51c999fc87f185020544b3117a0c044f07d5833c1b4d36740"
+    },
+    {
+      "role": "adaptive_gate_failure_policy",
+      "path": "registry/analyses/gate_failure_diagnostic_and_adaptive_recovery_v1.json",
+      "sha256": "17c49d1b634d934ad3debd028c0db7d6fc5fa6950b1a58fa05e3adf6db207efa"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "human_readable_incident_analysis",
+      "path": "docs/sec-edgar-iapd-v9-rate-limit-incident-analysis-v1.md",
+      "sha256": "7647884ceb196c0a18620c3561cb1c287550defb6d7bd9d4945ba4b39e0eb6b1"
+    }
+  ],
+  "confirmed_facts": {
+    "v9_network_requests": 1,
+    "v9_http_429_on_first_request": true,
+    "resolved_rows_preserved": 113,
+    "available_rows_preserved": 58,
+    "unavailable_rows_preserved": 55,
+    "unresolved_rows": 2,
+    "unresolved_rows_quarantined": true,
+    "response_headers_preserved_by_v9": false,
+    "live_candidate_domain_access_operations": 0,
+    "archive_capture_operations_v9": 0
+  },
+  "historical_evidence": [
+    {"generation": "v1", "requests": 51, "stopped_on_http_429": true},
+    {"generation": "v2", "requests": 2, "stopped_on_http_429": true},
+    {"generation": "v3", "requests": 70, "stopped_on_http_429": false},
+    {"generation": "v4", "requests": 10, "stopped_on_http_429": true},
+    {"generation": "v5", "requests": 23, "stopped_on_http_429": false},
+    {"generation": "v6", "requests": 1, "stopped_on_http_429": true},
+    {"generation": "v7", "requests": 7, "stopped_on_http_429": true},
+    {"generation": "v8", "requests": 2, "stopped_on_http_429": true},
+    {"generation": "v9", "requests": 1, "stopped_on_http_429": true}
+  ],
+  "root_cause_assessment": {
+    "confirmed_root_cause": null,
+    "confirmed_symptom": "HTTP 429 from the Wayback availability endpoint",
+    "plausible_causes": [
+      "shared_public_ip_quota",
+      "endpoint_or_service_wide_load_control",
+      "broader_historical_request_quota"
+    ],
+    "unsupported_claims": [
+      "candidate_has_no_archive_snapshot",
+      "the_executor_sent requests too quickly within V9",
+      "a 24-hour cooldown guarantees recovery"
+    ]
+  },
+  "impact_boundary": {
+    "affected": [
+      "two-row availability retry",
+      "confidence in immediate Wayback service availability"
+    ],
+    "unaffected": [
+      "113 immutable resolved availability rows",
+      "58-row V5 capture population",
+      "cohort identities and order",
+      "offline QA and documentation"
+    ]
+  },
+  "recovery_decision": {
+    "v10_remains_binding_for_two_unresolved_rows": true,
+    "v10_is_prerequisite_for_v5_capture": false,
+    "capture_must_run_in_separate_process": true,
+    "crash_safe_journal_required_before_capture": true,
+    "per_row_checkpoint_required": true,
+    "allowlisted_http_diagnostic_headers_required": true,
+    "stop_on_http_429": true,
+    "partial_journal_auto_resume_allowed": false
+  },
+  "decision": {
+    "versioned_capture_execution_amendment_may_be_prepared": true,
+    "network_execution_authorized_by_this_analysis_alone": false,
+    "candidate_live_domain_access_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "raw_file_modifications": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

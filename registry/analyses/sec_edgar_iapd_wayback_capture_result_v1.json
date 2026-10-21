@@ -1,0 +1,85 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_IAPD_WAYBACK_CAPTURE_RESULT_V1",
+  "created_at": "2026-10-21",
+  "base_commit": "e4f8019ec89dbcd3e13b0505fa113c1ad19c4fe9",
+  "status": "PASS_PARTIAL_57_CAPTURED_ONE_QUARANTINED_NO_RATE_LIMIT",
+  "purpose": "Register the independently verified result of the decoupled 58-row Wayback capture and bound the one-row short-body failure without blocking valid independent artifacts.",
+  "inputs": [
+    {
+      "role": "capture_execution_amendment_registry",
+      "path": "registry/analyses/sec_edgar_iapd_wayback_capture_execution_amendment_v1.json",
+      "sha256": "9a6303ae5b7281623b2c27d4b577d5ea4b067c2b8ed24e0e41f325bafff484c5"
+    },
+    {
+      "role": "capture_report",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_capture_result_v1\\capture_report_v1.json",
+      "sha256": "7bfd5be74caabfbe9eae8467356b8f13ff6622a821e8fc2dc16d41c883889928"
+    },
+    {
+      "role": "independent_capture_qa",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_capture_result_v1\\independent_capture_qa_v1.json",
+      "sha256": "8ab786544652fecbc182e7ae24a6acaa4785e24d20582516ee775b6aa6205909"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "human_readable_result",
+      "path": "docs/sec-edgar-iapd-wayback-capture-result-v1.md",
+      "sha256": "52d06f22f9bf97e57975b93f9d8000558ed2a32b71f9590de4d50f53daf14af6"
+    },
+    {
+      "role": "result_registry_contract_test",
+      "path": "tests/test_sec_edgar_iapd_wayback_capture_result_registry_v1.py",
+      "sha256": "4ddf5092a3dec84bd0a875e3a25a817be04a64a962868374146725d4f1331d2b"
+    }
+  ],
+  "result": {
+    "planned_capture_count": 58,
+    "network_request_count": 58,
+    "captured_count": 57,
+    "captured_by_cohort": {
+      "DEVELOPMENT": 45,
+      "EXTERNAL_HOLDOUT": 12
+    },
+    "failed_count": 1,
+    "not_attempted_count": 0,
+    "stopped_on_http_429": false,
+    "captured_total_bytes": 5473286,
+    "captured_minimum_bytes": 1181,
+    "captured_maximum_bytes": 601636,
+    "raw_byte_hashes_independently_verified": true,
+    "orphan_partial_raw_files": 0
+  },
+  "quarantined_failure": {
+    "availability_plan_id": "TTCV1_EDGAR_AVAIL_DEV_037",
+    "cohort": "DEVELOPMENT",
+    "candidate_host": "lionpoint.com",
+    "observed_error": "ValueError: Archived HTML capture is unexpectedly small: 42 bytes",
+    "confirmed_cause": "returned body was below the frozen 1024-byte capture minimum",
+    "underlying_wayback_cause": null,
+    "raw_target_written": false,
+    "label_inferred": false
+  },
+  "recovery": {
+    "exact_missing_row_retry_may_be_prepared": true,
+    "captured_subset_admission_amendment_may_be_prepared": true,
+    "existing_complete_58_exact_text_release_open": false,
+    "failed_row_remains_quarantined": true,
+    "availability_v10_unchanged": true
+  },
+  "decision": {
+    "capture_result_registered": true,
+    "text_extraction_allowed_by_this_registry_alone": false,
+    "candidate_live_domain_access_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "raw_file_modifications": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

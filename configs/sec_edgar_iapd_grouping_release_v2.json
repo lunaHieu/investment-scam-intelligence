@@ -1,0 +1,65 @@
+{
+  "release_id": "ISI_SEC_EDGAR_IAPD_POST_CAPTURE_GROUPING_RELEASE_V2",
+  "created_at": "2026-10-21T23:46:19.4038718+07:00",
+  "status": "FROZEN_OFFLINE_CAPTURED_SUBSET_EXCLUSION_GROUPING_RELEASE",
+  "inputs": {
+    "exact_text_manifest": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_exact_text_result_v2\\manifest_v2.jsonl",
+      "sha256": "cc7d9b19705d3e6523761e8d60001dacd3e2b9fa65cbcf19a690b4cfe7494022",
+      "record_count": 57,
+      "minimum_content_passed_count": 56
+    },
+    "exact_text_result_qa": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_exact_text_result_v2\\independent_result_qa_v2.json",
+      "sha256": "ffe998aaf7e807c42e6ed4ed428f8bbc10563dce2eceff66d3c2965ab9f2eebd",
+      "required_status": "PASS_CAPTURED_SUBSET_EXACT_TEXT_BYTES_REGENERATED_GROUPING_MAY_BE_PREPARED"
+    },
+    "opened_external_exclusion_index": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_preacquisition\\opened_external_exclusion_index_v1.json",
+      "sha256": "df43d88dbb1120c6f8e9afa0a7893fab1f4e176838483bb3a8bf013b13bd0d07",
+      "record_count": 107
+    },
+    "legacy_group_remediation_map": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_legacy_group_remediation_v1\\legacy_group_remediation_map_v1.json",
+      "sha256": "c4f69e43484a66aac74d0e50c30fe26a247b65e6abd31c2acac78af1fb1a9088",
+      "record_count": 86
+    }
+  },
+  "population_contract": {
+    "source_capture_plan_rows": 58,
+    "captured_subset_rows": 57,
+    "minimum_content_pass_rows": 56,
+    "below_minimum_rows": 1,
+    "capture_quarantined_rows": 1,
+    "ordered_capture_quarantine_ids": [
+      "TTCV1_EDGAR_AVAIL_DEV_037"
+    ],
+    "below_minimum_policy": "PRESERVE_AND_ROUTE_OUT_OF_REVIEWABLE_SET"
+  },
+  "method": {
+    "unicode_normalization": "NFKC_CASEFOLD",
+    "word_shingle_size": 5,
+    "jaccard_threshold": 0.8,
+    "containment_threshold": 0.95,
+    "minimum_shorter_shingles_for_containment_rule": 20,
+    "internal_edges": [
+      "exact_normalized_host",
+      "exact_text_sha256",
+      "frozen_normalized_near_duplicate_rule"
+    ],
+    "component_algorithm": "DETERMINISTIC_TRANSITIVE_UNION_FIND",
+    "holdout_collision_policy": "ROUTE_HOLDOUT_MEMBER_OUT_OF_INDEPENDENT_HOLDOUT",
+    "group_claim_limit": "Exclusion-control identifiers only; not real-world case findings."
+  },
+  "output": {
+    "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_post_capture_grouping_result_v2\\post_capture_exclusion_grouping_v2.json"
+  },
+  "decision": {
+    "offline_grouping_allowed_after_release_qa": true,
+    "network_access_allowed": false,
+    "human_label_review_allowed": false,
+    "model_scoring_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false
+  }
+}

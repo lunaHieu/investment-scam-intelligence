@@ -1,0 +1,62 @@
+{
+  "release_id": "ISI_SEC_EDGAR_IAPD_CAPTURED_SUBSET_ADMISSION_RELEASE_V1",
+  "created_at": "2026-10-21T23:40:00+07:00",
+  "status": "FROZEN_57_CAPTURED_ONE_QUARANTINED_OFFLINE_ADMISSION_RELEASE",
+  "purpose": "Admit exactly the 57 independently byte-verified captured rows to offline exact-text preparation while preserving the failed 58th row as an explicit quarantine.",
+  "basis": [
+    {
+      "role": "capture_result_registry",
+      "path": "registry/analyses/sec_edgar_iapd_wayback_capture_result_v1.json",
+      "sha256": "78fa220dc18693ab00a263dc2287bc08e79a97d6af8180b1a0ddca0311f6a92d"
+    }
+  ],
+  "inputs": {
+    "source_capture_release": {
+      "path": "C:\\Users\\hieu\\Documents\\ChatGPT\\invesment scam intelligence\\configs\\sec_edgar_iapd_wayback_capture_release_v5.json",
+      "sha256": "332f2c8ab6e0d256be107e100491cdf8aa02a20405a085d4304fa1fdd87b5c5d"
+    },
+    "source_capture_release_qa": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_capture_plan_v1\\independent_release_qa_v5.json",
+      "sha256": "a8d1f1540ee06ae75a9e85b5cf06ffedd34c3ec8857fbb5cbc80952a408d0187"
+    },
+    "source_capture_report": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_capture_result_v1\\capture_report_v1.json",
+      "sha256": "7bfd5be74caabfbe9eae8467356b8f13ff6622a821e8fc2dc16d41c883889928"
+    },
+    "independent_capture_qa": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_capture_result_v1\\independent_capture_qa_v1.json",
+      "sha256": "8ab786544652fecbc182e7ae24a6acaa4785e24d20582516ee775b6aa6205909",
+      "required_status": "PASS_PARTIAL_CAPTURE_RETRY_REQUIRED_TEXT_EXTRACTION_BLOCKED"
+    }
+  },
+  "population_contract": {
+    "source_rows": 58,
+    "admitted_captured_rows": 57,
+    "admitted_by_cohort": {
+      "DEVELOPMENT": 45,
+      "EXTERNAL_HOLDOUT": 12
+    },
+    "quarantined_rows": 1,
+    "ordered_quarantined_availability_plan_ids": [
+      "TTCV1_EDGAR_AVAIL_DEV_037"
+    ],
+    "all_admitted_raw_bytes_must_reverify": true,
+    "source_order_must_be_preserved": true,
+    "quarantined_row_may_not_be_imputed_or_replaced": true
+  },
+  "outputs": {
+    "captured_subset_view": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_capture_result_v1\\captured_subset_view_v1.json",
+    "independent_qa": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_capture_result_v1\\independent_captured_subset_qa_v1.json"
+  },
+  "decision": {
+    "offline_subset_materialization_allowed": true,
+    "exact_text_release_may_be_prepared_only_after_subset_qa": true,
+    "failed_row_remains_quarantined": true,
+    "network_access_allowed": false,
+    "candidate_live_domain_access_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false
+  }
+}
+

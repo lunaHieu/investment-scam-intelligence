@@ -1,0 +1,48 @@
+{
+  "release_id": "ISI_SEC_EDGAR_IAPD_EXACT_TEXT_EXTRACTION_RELEASE_V2",
+  "created_at": "2026-10-21T23:42:52.2261611+07:00",
+  "status": "FROZEN_OFFLINE_CAPTURED_SUBSET_EXACT_TEXT_RELEASE",
+  "inputs": {
+    "captured_subset_view": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_capture_result_v1\\captured_subset_view_v1.json",
+      "sha256": "ef139557cac7857946a69085e5e185b51ab8c2873e3b0896aa379ea635d9a39c",
+      "captured_count": 57
+    },
+    "captured_subset_qa": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_capture_result_v1\\independent_captured_subset_qa_v1.json",
+      "sha256": "c84b0df99f053faaaef5e5f2b34fb6c65ebad4c7deacfb0e14baeb3d642c2334",
+      "required_status": "PASS_57_CAPTURED_SUBSET_EXACT_TEXT_RELEASE_MAY_BE_PREPARED"
+    }
+  },
+  "population_contract": {
+    "captured_rows": 57,
+    "source_population_rows": 58,
+    "quarantined_rows": 1,
+    "ordered_quarantined_availability_plan_ids": [
+      "TTCV1_EDGAR_AVAIL_DEV_037"
+    ]
+  },
+  "method": {
+    "transport_decoder": "src.isi.normalization.wayback_external_text.decode_archived_payload",
+    "visible_text_extractor": "src.isi.normalization.external_text.extract_visible_text",
+    "text_encoding": "UTF-8",
+    "text_file_final_newline_added": false,
+    "minimum_non_whitespace_text_characters": 20,
+    "below_minimum_policy": "PRESERVE_TEXT_AND_ROUTE_OUT_OF_REVIEWABLE_SET",
+    "raw_capture_modification_allowed": false,
+    "output_overwrite_allowed": false
+  },
+  "outputs": {
+    "text_root": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_exact_text_result_v2\\texts",
+    "manifest": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_exact_text_result_v2\\manifest_v2.jsonl",
+    "report": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_exact_text_result_v2\\extraction_report_v2.json"
+  },
+  "decision": {
+    "offline_exact_text_extraction_allowed_after_release_qa": true,
+    "network_access_allowed": false,
+    "human_label_review_allowed": false,
+    "model_scoring_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false
+  }
+}

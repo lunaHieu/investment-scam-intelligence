@@ -1,0 +1,73 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_IAPD_CAPTURED_SUBSET_POST_CAPTURE_V2",
+  "created_at": "2026-10-21",
+  "status": "PASS_56_GROUP_APPROVED_PRIMARY_ARTIFACT_REVIEW_MAY_BE_PREPARED",
+  "purpose": "Register the hash-bound 57-row captured-subset admission, exact-text reproduction, grouping and owner-authorized manual group/clone review without disguising the one-row capture quarantine or creating labels.",
+  "inputs": [
+    {"role": "capture_result_registry", "path": "registry/analyses/sec_edgar_iapd_wayback_capture_result_v1.json", "sha256": "78fa220dc18693ab00a263dc2287bc08e79a97d6af8180b1a0ddca0311f6a92d"},
+    {"role": "captured_subset_release", "path": "configs/sec_edgar_iapd_captured_subset_admission_release_v1.json", "sha256": "f756dfdd2673165bece00e6f355ecdb79afd909176a9b6bdd2a88b32ed495cb2"},
+    {"role": "exact_text_release_v2", "path": "configs/sec_edgar_iapd_exact_text_release_v2.json", "sha256": "b5a4936b1c577e3a6f5698938ff0397819bde7380bec9cd9796de8b2d561fbee"},
+    {"role": "grouping_release_v2", "path": "configs/sec_edgar_iapd_grouping_release_v2.json", "sha256": "7fca86519a2af946cf5f939d5561a4d3131e04ce3e390a7073a9254e896b0928"}
+  ],
+  "implementation": [
+    {"role": "captured_subset_builder", "path": "scripts/build_sec_edgar_iapd_captured_subset_v1.py", "sha256": "5fe381a3fd6682ab5f91ed70bdb383756b8cab4c086c9ad8563c140bcceb7a0a"},
+    {"role": "captured_subset_verifier", "path": "scripts/verify_sec_edgar_iapd_captured_subset_v1.py", "sha256": "33d6f6819386d33c2182ef1878e87b2d82f2e117c78cd2610b35e234579ee1d0"},
+    {"role": "exact_text_release_builder_v2", "path": "scripts/build_sec_edgar_iapd_exact_text_release_v2.py", "sha256": "eefd41ab50d02bf40872c83d92828000cf2bcfdf0c3a3e39a0f5f46b2658ed48"},
+    {"role": "exact_text_release_verifier_v2", "path": "scripts/verify_sec_edgar_iapd_exact_text_release_v2.py", "sha256": "efb74afaea8716b8069ea5a18aa65f1a66d178f83d7196f4ebbd6633b360d776"},
+    {"role": "exact_text_extractor_v2", "path": "scripts/extract_sec_edgar_iapd_exact_text_v2.py", "sha256": "0a4b0245cc34c67104eee42a3b99ccdb5fb4d73b9c859bc5f3afec45473f2621"},
+    {"role": "exact_text_result_verifier_v2", "path": "scripts/verify_sec_edgar_iapd_exact_text_result_v2.py", "sha256": "a5cae2f57e0e77fa928f217169f2fef6a367d56f8e2d9d111d016d10f2bca014"},
+    {"role": "grouping_release_builder_v2", "path": "scripts/build_sec_edgar_iapd_grouping_release_v2.py", "sha256": "d346d1b3676477c7e541761b6eb4a9bec92d1ac7be8065e06a0220e99c9c9c62"},
+    {"role": "grouping_release_verifier_v2", "path": "scripts/verify_sec_edgar_iapd_grouping_release_v2.py", "sha256": "1d561d6ecbba64cd26d50b6caa3d6713f9af906626a747f90b27bfd9d546507d"},
+    {"role": "offline_grouping_analyzer_v2", "path": "scripts/analyze_sec_edgar_iapd_post_capture_grouping_v2.py", "sha256": "5e2fad1cb493f5256f02b0ea8b6e20e0254fc8197d0675a387982ab3d58c01ae"},
+    {"role": "grouping_result_verifier_v2", "path": "scripts/verify_sec_edgar_iapd_post_capture_grouping_v2.py", "sha256": "122ca502c95fc95131c9369dd485cd33ae56e4a6f5ad73a7158f6a36bc7a2e45"},
+    {"role": "manual_group_packet_builder_v2", "path": "scripts/build_sec_edgar_iapd_manual_group_review_packet_v2.py", "sha256": "29487e5d217caae5aa4e1d23b92af73b4d7a892fee5cf4f8f925ff1ae663e9e4"},
+    {"role": "manual_group_review_materializer_v2", "path": "scripts/materialize_sec_edgar_iapd_manual_group_review_v2.py", "sha256": "00ad6d9e21bb8c0b48d220e3ac4dc4132a58868d178868694d78cef96738c452"},
+    {"role": "manual_group_review_verifier_v2", "path": "scripts/verify_sec_edgar_iapd_manual_group_review_v2.py", "sha256": "06917cf1bfa4fac08d876c20ae44de4a7fc951678e5d8943d5fbc627aafede7d"},
+    {"role": "exact_text_tests_v2", "path": "tests/test_sec_edgar_iapd_exact_text_v2.py", "sha256": "5031f0ffcd0ac862217a5c763d6b26b64b2239c5e044c81b351b8cd725f3a23d"},
+    {"role": "grouping_tests_v2", "path": "tests/test_sec_edgar_iapd_post_capture_grouping_v2.py", "sha256": "3553bbee816ae513172247a1a435bc709ba24597d45eca51be2d0c9e811290e7"},
+    {"role": "manual_group_tests_v2", "path": "tests/test_sec_edgar_iapd_manual_group_review_v2.py", "sha256": "fabf390e9220db469cc6a00d056acc51da72ea5de8d38cde8f1df46875c3130f"},
+    {"role": "registry_contract_test", "path": "tests/test_sec_edgar_iapd_captured_subset_post_capture_registry_v2.py", "sha256": "42f70a5c5d3d1283c0f788bdde2939b4a6a32afa171dc1eb63896658b60c68a7"},
+    {"role": "human_readable_documentation", "path": "docs/sec-edgar-iapd-captured-subset-post-capture-v2.md", "sha256": "f3bb19d882703b8ad9f97d3835459610a700c3f7dd481b5dbf97c8223d5637c0"}
+  ],
+  "outputs": [
+    {"role": "captured_subset_view", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_capture_result_v1\\captured_subset_view_v1.json", "sha256": "ef139557cac7857946a69085e5e185b51ab8c2873e3b0896aa379ea635d9a39c"},
+    {"role": "captured_subset_independent_qa", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_capture_result_v1\\independent_captured_subset_qa_v1.json", "sha256": "c84b0df99f053faaaef5e5f2b34fb6c65ebad4c7deacfb0e14baeb3d642c2334"},
+    {"role": "exact_text_manifest_v2", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_exact_text_result_v2\\manifest_v2.jsonl", "sha256": "cc7d9b19705d3e6523761e8d60001dacd3e2b9fa65cbcf19a690b4cfe7494022"},
+    {"role": "exact_text_report_v2", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_exact_text_result_v2\\extraction_report_v2.json", "sha256": "2638f8ca8f123b540cba4d0f1f62429c9db4d9f35219e9e6b6c414c56f786849"},
+    {"role": "exact_text_release_qa_v2", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_exact_text_result_v2\\independent_release_qa_v2.json", "sha256": "469889db5f1cc13ce2ce92f733b4da841f3fe4202db56ec52f04cc605c2592a2"},
+    {"role": "exact_text_result_qa_v2", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_exact_text_result_v2\\independent_result_qa_v2.json", "sha256": "ffe998aaf7e807c42e6ed4ed428f8bbc10563dce2eceff66d3c2965ab9f2eebd"},
+    {"role": "grouping_release_qa_v2", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_post_capture_grouping_result_v2\\independent_release_qa_v2.json", "sha256": "e97cc20abf7ce3851f650db5f040ba376241979da92f56080ea8150d75dbaa2d"},
+    {"role": "grouping_analysis_v2", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_post_capture_grouping_result_v2\\post_capture_exclusion_grouping_v2.json", "sha256": "15d17dddf0315018cd781b19cad209ee9e3fd40c733bae86893a33d09acc7180"},
+    {"role": "grouping_result_qa_v2", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_post_capture_grouping_result_v2\\independent_result_qa_v2.json", "sha256": "102b8eaa87ca14a97959fa4a1cb41b5b4fbb7c761cc8bed4e38d5c255976bf2f"},
+    {"role": "manual_group_packet_v2", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_post_capture_grouping_result_v2\\manual_group_review_packet_v2.json", "sha256": "3e4adca99ca53b566ff747503c8361c608b8228cc2b9bb4eed277cfefe457fdb"},
+    {"role": "manual_group_review_v2", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_post_capture_grouping_result_v2\\manual_group_review_v2.json", "sha256": "dabd63e14c80fbb9041d3d10ad8113b16e9b8b2af59692bb36b9a59500df7607"},
+    {"role": "manual_group_review_qa_v2", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_post_capture_grouping_result_v2\\manual_group_review_independent_qa_v2.json", "sha256": "878739ab3ca523b81b14912df4f87ec36d4ea05a8077cac5fc2b2853ee887998"}
+  ],
+  "result": {
+    "source_capture_plan_rows": 58,
+    "captured_subset_rows": 57,
+    "capture_quarantined_rows": 1,
+    "exact_text_byte_reproduced_rows": 57,
+    "reviewable_rows": 56,
+    "below_minimum_rows": 1,
+    "opened_external_rows_compared": 107,
+    "internal_group_edges": 0,
+    "cross_cohort_groups": 0,
+    "manual_group_reviewed_rows": 56,
+    "manual_group_decision_counts": {"KEEP_PROVISIONALLY_DISTINCT": 56},
+    "primary_review_flag_counts": {"SPARSE_CAPTURE_TEXT_LT_500_CHARACTERS": 7, "DECLARED_CANONICAL_HOST_DIFFERS_FROM_CANDIDATE_HOST": 1, "TEMPLATE_OR_PLACEHOLDER_CONTENT_INDICATORS": 1},
+    "labels_created": 0
+  },
+  "decision": {
+    "captured_subset_progression_is_complete_capture_claim": false,
+    "failed_capture_row_remains_quarantined": true,
+    "below_minimum_row_remains_out_of_reviewable_population": true,
+    "primary_artifact_review_may_be_prepared": true,
+    "owner_acceptance_completed": false,
+    "candidate_live_domain_access_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {"network_operations": 0, "candidate_domain_access_operations": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

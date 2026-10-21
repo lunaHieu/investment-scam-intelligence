@@ -1,0 +1,63 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_IAPD_REVIEW_RECONCILIATION_V2",
+  "created_at": "2026-10-22",
+  "status": "PASS_RECONCILED_42_LEGITIMATE_14_UNCERTAIN_OWNER_ACCEPTANCE_REQUIRED",
+  "purpose": "Register the bounded 56-row primary review, independently blinded second review, conservative reconciliation and still-closed owner-acceptance gate for the verified captured subset.",
+  "inputs": [
+    {"role": "captured_subset_post_capture_registry", "path": "registry/analyses/sec_edgar_iapd_captured_subset_post_capture_v2.json", "sha256": "c3b5d0d17fa96b008fbe1b419bc24ca79e1b1fbe2bc3562aef6c0aebfa2b4891"},
+    {"role": "manual_group_review_qa_v2", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_post_capture_grouping_result_v2\\manual_group_review_independent_qa_v2.json", "sha256": "878739ab3ca523b81b14912df4f87ec36d4ea05a8077cac5fc2b2853ee887998"}
+  ],
+  "implementation": [
+    {"role": "primary_packet_builder_v2", "path": "scripts/build_sec_edgar_iapd_primary_review_packet_v2.py", "sha256": "69e06e1594e43a7ff28b1438730e9e7c9d3860f95703bdc5a8efdcb76ed74b55"},
+    {"role": "primary_review_materializer_v2", "path": "scripts/materialize_sec_edgar_iapd_primary_review_v2.py", "sha256": "982f53d32d8b863c8c4a610c32886fb21b53530acc30e0696a157182a177c6f5"},
+    {"role": "primary_review_verifier_v2", "path": "scripts/verify_sec_edgar_iapd_primary_review_v2.py", "sha256": "6b7688d368dd98dd52ddd2511ed414564a777f3aee94fa6b8fadd37f0d951a11"},
+    {"role": "blind_packet_builder_v2", "path": "scripts/build_sec_edgar_iapd_blind_second_review_packet_v2.py", "sha256": "b6f3e5a9523ed6cae64767f87de477dc1094023634a78d2e080ecf3cc10fd6a0"},
+    {"role": "independent_blind_review_materializer_v2", "path": "scripts/materialize_sec_edgar_iapd_blind_second_review_v2.py", "sha256": "bade8b453f55ffd2252cc0a83c89bbf0f243a34fd53a960531aec4648a3f22b4"},
+    {"role": "blind_review_verifier_v2", "path": "scripts/verify_sec_edgar_iapd_blind_second_review_v2.py", "sha256": "29c76565a3b840f06123294a92561a2c61817baa030212d2262d03d355818056"},
+    {"role": "reconciliation_builder_v2", "path": "scripts/reconcile_sec_edgar_iapd_reviews_v2.py", "sha256": "7e4927b77b38a4d1ff3d7890719ca8f6894b1e2e57567330ddaa940c21ea7f81"},
+    {"role": "reconciliation_verifier_v2", "path": "scripts/verify_sec_edgar_iapd_reconciliation_v2.py", "sha256": "6d311f81113d23db5727ed4445bc82e96d0ce6d8a053fe77489d1977c769ddde"},
+    {"role": "primary_review_tests_v2", "path": "tests/test_sec_edgar_iapd_primary_review_v2.py", "sha256": "1df5afd4a45c3aec3565e6cb579799dc4f794d95e26a99ec9ddbbe1db41560da"},
+    {"role": "review_reconciliation_tests_v2", "path": "tests/test_sec_edgar_iapd_review_reconciliation_v2.py", "sha256": "aa7fdc81b8ebf9f78b37e5b627a0773ae6f165838588b3715b26fe49ef446834"},
+    {"role": "registry_contract_test", "path": "tests/test_sec_edgar_iapd_review_reconciliation_registry_v2.py", "sha256": "5775447d106f378550b43b52502e614a5f028ef9c6d5d38346047757adf2c7a9"},
+    {"role": "human_readable_documentation", "path": "docs/sec-edgar-iapd-review-reconciliation-v2.md", "sha256": "c3d126a110c965f1016c583b568e283ef94af1b60370fb865f36870abb579bd4"}
+  ],
+  "outputs": [
+    {"role": "primary_review_packet_v2", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_post_capture_grouping_result_v2\\primary_review_packet_v2.json", "sha256": "97835bbace25b49d405ceae59cded0e072f2d29a92f57a43c825f903b38a76d2"},
+    {"role": "primary_review_v2", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_post_capture_grouping_result_v2\\primary_review_v2.json", "sha256": "adba4c3e64de873ca1bacfa22d6dd793df43f867bc9e2198e186769458353413"},
+    {"role": "primary_review_qa_v2", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_post_capture_grouping_result_v2\\primary_review_independent_qa_v2.json", "sha256": "5dce50b489ac1d4aec167e9edbacb7a9ecb43f0d28bf27494b9fa3339ec366e0"},
+    {"role": "blind_second_review_packet_v2", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_post_capture_grouping_result_v2\\blind_second_review_packet_v2.json", "sha256": "b56f5f674e31eb8559cb36cdac1a661dc210fba8350fdc61f87a5ac35fd6af51"},
+    {"role": "blind_second_review_v2", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_post_capture_grouping_result_v2\\blind_second_review_v2.json", "sha256": "a164689c5e72166fee731e8d2898e91c23b03aa9d0c90cd9ad2859b79d7b3f3a"},
+    {"role": "blind_second_review_qa_attempt1_fail", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_post_capture_grouping_result_v2\\blind_second_review_independent_qa_v2.json", "sha256": "93f7ce2df1630d96610ae16ab44bdb835232bd6b6323dc5d5b305430caad81fe"},
+    {"role": "blind_second_review_qa_attempt2_pass", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_post_capture_grouping_result_v2\\blind_second_review_independent_qa_v2_attempt2.json", "sha256": "4f620c79169d366d4616eeb9c3749c75cdb03a06ba3dcc583c4991de72d4b33a"},
+    {"role": "reconciliation_v2", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_post_capture_grouping_result_v2\\reconciliation_v2.json", "sha256": "91f4d405e3ac69ac9649f57b64e5005b86fdae143eef670cc4037cad0bc27fdd"},
+    {"role": "reconciliation_qa_v2", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_post_capture_grouping_result_v2\\reconciliation_independent_qa_v2.json", "sha256": "b3004ec5a363070158b7f9ea6057feace167b95a45422373ee72bea2d9f84612"}
+  ],
+  "result": {
+    "source_capture_plan_rows": 58,
+    "captured_subset_rows": 57,
+    "reviewed_rows": 56,
+    "below_minimum_rows": 1,
+    "capture_quarantined_rows": 1,
+    "primary_recommendation_counts": {"LEGITIMATE": 47, "UNCERTAIN": 9},
+    "blind_second_recommendation_counts": {"LEGITIMATE": 44, "UNCERTAIN": 12},
+    "reconciled_recommendation_counts": {"LEGITIMATE": 42, "UNCERTAIN": 14},
+    "review_disagreements": 7,
+    "owner_acceptance_pending": 56,
+    "labels_created": 0,
+    "training_eligible_records": 0
+  },
+  "decision": {
+    "primary_review_complete": true,
+    "blind_second_review_complete": true,
+    "reconciliation_complete": true,
+    "owner_acceptance_required": true,
+    "label_materialization_allowed_now": false,
+    "failed_capture_row_remains_quarantined": true,
+    "below_minimum_row_remains_excluded": true,
+    "external_holdout_training_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {"network_operations": 0, "candidate_domain_access_operations": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

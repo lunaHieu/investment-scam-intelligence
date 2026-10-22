@@ -1,0 +1,65 @@
+{
+  "analysis_id": "ISI_REPRODUCIBILITY_CURRENT_STATE_V15",
+  "created_at": "2026-10-23",
+  "status": "CURRENT_A3_CAPACITY_MATRIX_A1_A2_UNCHANGED",
+  "purpose": "Replace V14 navigation with the independently recomputed A3 V1-Core capacity matrix while preserving the separately verified A1 release and A2 tooling states.",
+  "inputs": [
+    {"role": "prior_reproducibility_state_v14", "path": "registry/analyses/reproducibility_current_state_v14.json", "sha256": "d9754a85e88af1d4ad392ab5a3600782be501a2e1967fa836420014ef6d72307"},
+    {"role": "current_ledger_v17", "path": "registry/analyses/project_state_gap_ledger_v17.json", "sha256": "c32b336a0e627215b70e0b339f2992498532f96893d5718d55a3f3c24c7ea50e"},
+    {"role": "a3_capacity_matrix_v4", "path": "registry/analyses/target_text_corpus_v1_capacity_gap_v4.json", "sha256": "87629387de99be6b6726c5ba1ada29cad6e2fc97c9ce79d7da815ba2b43e6097"}
+  ],
+  "implementation": [
+    {"role": "human_readable_current_state", "path": "docs/reproducibility-current-state-v15.md", "sha256": "3301918767c73bace1a597e39952cad0fe36c9b7d33c83aad791517e724ab1df"},
+    {"role": "current_state_contract_tests", "path": "tests/test_reproducibility_current_state_v15.py", "sha256": "b4710df3279818ac90dac148348e2a1f030b2266b1941e3926b2a8d57d675ed1"}
+  ],
+  "current_state": {
+    "availability_resolved": 113,
+    "availability_total": 115,
+    "captured": 57,
+    "capture_planned": 58,
+    "review_completed": 56,
+    "owner_accepted_legitimate": 42,
+    "uncertain_retained": 14,
+    "historical_train_rows": 3916,
+    "integrity_verified_raw_files": 278,
+    "crimson_unlabeled_domains": 43572,
+    "usable_image_assets": 0,
+    "fresh_v1_core_admitted_groups": 0,
+    "fresh_v1_core_required_groups": 300,
+    "v1_core_conditional_owner_accepted_supply": 42,
+    "v1_core_conditional_residual_gap": 258,
+    "audited_non_english_credit": 0,
+    "audited_vietnamese_credit": 0,
+    "minimum_non_english_gap": 30,
+    "minimum_vietnamese_gap": 16,
+    "a1_cdx_release_qa_pass": true,
+    "a1_cdx_network_executed": false,
+    "a2_v11_tooling_qa_pass": true,
+    "a2_v11_concrete_release_created": false,
+    "a2_v11_network_executed": false,
+    "training_eligible_records": 0
+  },
+  "decision": {
+    "current_navigation_ledger": "registry/analyses/project_state_gap_ledger_v17.json",
+    "current_capacity_matrix": "registry/analyses/target_text_corpus_v1_capacity_gap_v4.json",
+    "a3_complete": true,
+    "a1_a2_archive_sequence_changed": false,
+    "candidate_or_reference_counts_are_training_rows": false,
+    "candidate_live_domain_access_allowed": false,
+    "capture_authorized_by_a3": false,
+    "original_review_population_may_be_mutated": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Prepare the offline admission-field repair contract for 42 accepted records and separately governed ready-channel waves; execute A1 only after its frozen timed gate."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "candidate_domain_access_operations": 0,
+    "archived_page_downloads": 0,
+    "captures": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

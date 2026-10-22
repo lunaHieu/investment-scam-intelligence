@@ -1,0 +1,148 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_CAPACITY_GAP_V4",
+  "created_at": "2026-10-23",
+  "status": "PASS_OFFLINE_CURRENT_CAPACITY_MATRIX_0_ADMITTED_42_CONDITIONAL",
+  "purpose": "Complete A3 by separating contractual admission, owner-accepted conditional supply, non-admissible asset layers, language credit, and residual acquisition priorities for the frozen V1-Core target.",
+  "inputs": [
+    {"role": "sampling_matrix_v1", "path": "configs/target_text_corpus_v1_sampling_matrix_v1.json", "sha256": "19faaa4e2e0edfd87a403f6e39df96c763a7e0ae5890cebe6cc3adbb3c40176b"},
+    {"role": "prior_capacity_gap_v3", "path": "registry/analyses/target_text_corpus_v1_capacity_gap_v3.json", "sha256": "3e386e7ff6a32616d3c2fde71b947075e2c80c790a52cc20eb91af78d8af759c"},
+    {"role": "owner_accepted_admission_audit_v1", "path": "registry/analyses/target_text_corpus_v1_owner_accepted_admission_audit_v1.json", "sha256": "f5a14d4b469057f78bef08cdabdc71f88efe76d7647377a78134136225eabae5"},
+    {"role": "data_sufficiency_audit_v2", "path": "registry/analyses/data_sufficiency_audit_v2.json", "sha256": "dd6ddce5d0f8ff9325c3f59ade8d7d599563e0df13fbc6eabec43d59c410cc84"},
+    {"role": "image_readiness_v1", "path": "registry/analyses/mendeley_image_readiness_v1.json", "sha256": "05c9c043c2865ffde5c873ed70335ae020bc00074ed64c088fd9a750390242ef"},
+    {"role": "crimson_domain_analysis_v1", "path": "registry/analyses/crimson_domain_unsupervised_v1.json", "sha256": "4b501cd425202988468067207c22f568bf26bc3c98edbe71cc55ef43b60943b2"},
+    {"role": "acquisition_wave_plan_v2", "path": "configs/target_text_corpus_v1_acquisition_wave_plan_v2.json", "sha256": "870690f4dfda79ec308b78e50ec02e955a32e1f5172b933f1aa40ba213ae1c78"}
+  ],
+  "implementation": [
+    {"role": "human_readable_capacity_matrix", "path": "docs/target-text-corpus-v1-capacity-gap-v4.md", "sha256": "50ab29a5bfc25acab4881285c60f643d455c4ab077f71561c46cebe43b833226"},
+    {"role": "independent_recomputation_tests", "path": "tests/test_target_text_corpus_v1_capacity_gap_v4.py", "sha256": "dda15826c2bf1ded7822f81a9bc67160115ac584bd285b56a630c98aaffd3548"}
+  ],
+  "denominator_contract": {
+    "unit": "TRANSITIVE_CASE_CAMPAIGN_ENTITY_DOMAIN_FAMILY_NEAR_DUPLICATE_GROUP",
+    "accepted_modality": "OBSERVED_VISIBLE_TEXT_FROM_ARCHIVED_WEBSITE_HTML",
+    "required_groups": 300,
+    "development_groups": 240,
+    "external_holdout_groups": 60,
+    "required_channels": 4,
+    "groups_per_channel": 75,
+    "historical_rows_count_toward_target": false,
+    "raw_files_count_toward_target": false,
+    "reference_metadata_count_toward_target": false,
+    "domain_inventory_count_toward_target": false,
+    "image_assets_count_toward_text_target": false
+  },
+  "capacity_matrix": {
+    "by_channel": {
+      "CONFIRMED_REGULATOR_LINKED_WEBSITE": {
+        "DEVELOPMENT": {"target": 60, "admitted": 0, "conditional_supply": 0, "strict_gap": 60, "conditional_gap": 60},
+        "EXTERNAL_HOLDOUT": {"target": 15, "admitted": 0, "conditional_supply": 0, "strict_gap": 15, "conditional_gap": 15}
+      },
+      "CONFIRMED_CFTC_RED_LINKED_WAYBACK_WEBSITE": {
+        "DEVELOPMENT": {"target": 60, "admitted": 0, "conditional_supply": 0, "strict_gap": 60, "conditional_gap": 60},
+        "EXTERNAL_HOLDOUT": {"target": 15, "admitted": 0, "conditional_supply": 0, "strict_gap": 15, "conditional_gap": 15}
+      },
+      "LEGITIMATE_REGISTER_LINKED_WEBSITE": {
+        "DEVELOPMENT": {"target": 60, "admitted": 0, "conditional_supply": 0, "strict_gap": 60, "conditional_gap": 60},
+        "EXTERNAL_HOLDOUT": {"target": 15, "admitted": 0, "conditional_supply": 0, "strict_gap": 15, "conditional_gap": 15}
+      },
+      "LEGITIMATE_SEC_EDGAR_LINKED_WAYBACK_WEBSITE": {
+        "DEVELOPMENT": {"target": 60, "admitted": 0, "conditional_supply": 33, "strict_gap": 60, "conditional_gap": 27},
+        "EXTERNAL_HOLDOUT": {"target": 15, "admitted": 0, "conditional_supply": 9, "strict_gap": 15, "conditional_gap": 6}
+      }
+    },
+    "by_label_and_cohort": {
+      "DEVELOPMENT": {
+        "CONFIRMED": {"target": 120, "admitted": 0, "conditional_supply": 0, "strict_gap": 120, "conditional_gap": 120},
+        "LEGITIMATE": {"target": 120, "admitted": 0, "conditional_supply": 33, "strict_gap": 120, "conditional_gap": 87},
+        "total": {"target": 240, "admitted": 0, "conditional_supply": 33, "strict_gap": 240, "conditional_gap": 207}
+      },
+      "EXTERNAL_HOLDOUT": {
+        "CONFIRMED": {"target": 30, "admitted": 0, "conditional_supply": 0, "strict_gap": 30, "conditional_gap": 30},
+        "LEGITIMATE": {"target": 30, "admitted": 0, "conditional_supply": 9, "strict_gap": 30, "conditional_gap": 21},
+        "total": {"target": 60, "admitted": 0, "conditional_supply": 9, "strict_gap": 60, "conditional_gap": 51}
+      }
+    },
+    "totals": {"required": 300, "admitted": 0, "conditional_supply": 42, "strict_gap": 300, "conditional_gap": 258, "conditional_completion_fraction": 0.14}
+  },
+  "conditional_supply_readiness": {
+    "owner_accepted_records": 42,
+    "development_records": 33,
+    "external_holdout_records": 9,
+    "accepted_target_status": "LEGITIMATE",
+    "accepted_channel": "LEGITIMATE_SEC_EDGAR_LINKED_WAYBACK_WEBSITE",
+    "fully_v1_core_compliant_now": 0,
+    "blocking_field_counts": {
+      "channel_contribution_qa_sha256": 42,
+      "human_reviewed_language": 42,
+      "fresh_cohort_assertion": 42,
+      "full_release_cross_partition_exclusion": 42,
+      "transitive_group_id": 42,
+      "case_campaign_group_id": 42,
+      "entity_domain_family_group_id": 42,
+      "near_duplicate_group_id": 42,
+      "final_release_eligibility": 42
+    },
+    "labels_preserved": true,
+    "partial_release_allowed": false
+  },
+  "language_overlay": {
+    "required_non_english_groups": 30,
+    "required_vietnamese_groups": 16,
+    "development": {
+      "CONFIRMED": {"non_english_required": 12, "vietnamese_required": 6, "audited_credit": 0},
+      "LEGITIMATE": {"non_english_required": 12, "vietnamese_required": 6, "audited_credit": 0}
+    },
+    "external_holdout": {
+      "CONFIRMED": {"non_english_required": 3, "vietnamese_required": 2, "audited_credit": 0},
+      "LEGITIMATE": {"non_english_required": 3, "vietnamese_required": 2, "audited_credit": 0}
+    },
+    "audited_language_credit": 0,
+    "non_english_gap": 30,
+    "vietnamese_gap": 16,
+    "english_gap": null,
+    "english_gap_reason": "English is residual after per-label non-English minima and has no independent minimum quota.",
+    "language_inference_from_source_host_country_or_text_heuristic_allowed": false
+  },
+  "non_admissible_asset_layers": {
+    "historical_baseline_train_rows": {"count": 3916, "v1_core_credit": 0, "role": "AUTHORIZED_INTERNAL_HISTORICAL_BASELINE_ONLY"},
+    "integrity_verified_raw_files": {"count": 278, "v1_core_credit": 0, "role": "CURRENT_RAW_STORAGE_INTEGRITY_DENOMINATOR"},
+    "crimson_unlabeled_domains": {"count": 43572, "v1_core_credit": 0, "role": "UNLABELED_DISCOVERY_METADATA_ONLY"},
+    "usable_image_assets": {"count": 0, "v1_core_credit": 0, "role": "SEPARATE_MULTIMODAL_BRANCH_BLOCKED"}
+  },
+  "priority_plan": {
+    "deficit_severity_order": [
+      {"rank": 1, "channels": ["CONFIRMED_REGULATOR_LINKED_WEBSITE", "CONFIRMED_CFTC_RED_LINKED_WAYBACK_WEBSITE", "LEGITIMATE_REGISTER_LINKED_WEBSITE"], "conditional_gap_each": 75},
+      {"rank": 2, "channels": ["LEGITIMATE_SEC_EDGAR_LINKED_WAYBACK_WEBSITE"], "conditional_gap": 33}
+    ],
+    "operational_order": [
+      "Repair but do not partially release the 42 owner-accepted SEC EDGAR records.",
+      "Prepare separately verified waves for the enumerable regulator-linked CONFIRMED and IAPD-linked LEGITIMATE channels.",
+      "Acquire 33 fresh disjoint SEC EDGAR-linked groups.",
+      "Keep the CFTC RED 75-group deficit closed until lawful source capacity is documented.",
+      "Apply human-reviewed non-English and Vietnamese quotas across every wave."
+    ],
+    "frozen_wave_plan_changed": false,
+    "shortfall_borrowing_allowed": false
+  },
+  "decision": {
+    "a3_complete": true,
+    "strict_v1_core_completion_fraction": 0.0,
+    "conditional_planning_fraction": 0.14,
+    "v1_core_release_ready": false,
+    "domain_inventory_is_training_data": false,
+    "image_branch_blocks_text_v1_core": false,
+    "candidate_enumeration_allowed_by_this_analysis": false,
+    "network_execution_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Use the already frozen acquisition-wave plan and separate releases; first prepare the admission-field repair protocol for the 42 accepted records and ready-channel enumeration releases without opening any model partition."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "candidate_domain_access_operations": 0,
+    "new_candidates_enumerated": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

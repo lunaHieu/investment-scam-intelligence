@@ -1,0 +1,71 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_CAPACITY_GAP_V3",
+  "created_at": "2026-10-22",
+  "status": "PASS_OFFLINE_GAP_RECOMPUTED_42_CANDIDATES_0_ADMITTED",
+  "purpose": "Recompute the frozen V1-Core quota gap after SEC/IAPD owner acceptance without treating partial candidate supply as an admitted dataset release.",
+  "inputs": [
+    {"role": "sampling_matrix_v1", "path": "configs/target_text_corpus_v1_sampling_matrix_v1.json", "sha256": "19faaa4e2e0edfd87a403f6e39df96c763a7e0ae5890cebe6cc3adbb3c40176b"},
+    {"role": "owner_accepted_records_v2", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_post_capture_grouping_result_v2\\owner_accepted_records_v2.json", "sha256": "3b66a9198944be005e460b050119a17c58f3efc4ef8c3bed825c0d1e63ded153"},
+    {"role": "owner_acceptance_registry_v2", "path": "registry/analyses/sec_edgar_iapd_owner_acceptance_result_v2.json", "sha256": "ea8a4a3b681a51d3a0051508505b6b1ff68330384af982fcb2fba501ff7d98ef"}
+  ],
+  "implementation": [
+    {"role": "human_readable_gap_report", "path": "docs/target-text-corpus-v1-capacity-gap-v3.md", "sha256": "6b91db85f4f8c524fee233af6e62e7e45d4398254410c75c9de5aee68cba1baf"},
+    {"role": "independent_recomputation_test", "path": "tests/test_target_text_corpus_v1_capacity_gap_v3.py", "sha256": "c6acd0ca023965457cfd8209d8bb118729cfb839d7f8dd1544480272b3ddd707"}
+  ],
+  "observed_owner_accepted_candidate_supply": {
+    "CONFIRMED_REGULATOR_LINKED_WEBSITE": {"DEVELOPMENT": 0, "EXTERNAL_HOLDOUT": 0},
+    "CONFIRMED_CFTC_RED_LINKED_WAYBACK_WEBSITE": {"DEVELOPMENT": 0, "EXTERNAL_HOLDOUT": 0},
+    "LEGITIMATE_REGISTER_LINKED_WEBSITE": {"DEVELOPMENT": 0, "EXTERNAL_HOLDOUT": 0},
+    "LEGITIMATE_SEC_EDGAR_LINKED_WAYBACK_WEBSITE": {"DEVELOPMENT": 33, "EXTERNAL_HOLDOUT": 9},
+    "total": 42
+  },
+  "contractual_release_progress": {
+    "admitted_groups": 0,
+    "required_groups": 300,
+    "completion_fraction": 0.0,
+    "reason": "A complete balanced 300-group manifest and channel-contribution QA have not passed; candidate labels cannot be partially admitted."
+  },
+  "conditional_planning_gap_if_all_accepted_candidates_pass_release": {
+    "by_channel": {
+      "CONFIRMED_REGULATOR_LINKED_WEBSITE": {"development_remaining": 60, "external_holdout_remaining": 15},
+      "CONFIRMED_CFTC_RED_LINKED_WAYBACK_WEBSITE": {"development_remaining": 60, "external_holdout_remaining": 15},
+      "LEGITIMATE_REGISTER_LINKED_WEBSITE": {"development_remaining": 60, "external_holdout_remaining": 15},
+      "LEGITIMATE_SEC_EDGAR_LINKED_WAYBACK_WEBSITE": {"development_remaining": 27, "external_holdout_remaining": 6}
+    },
+    "development_remaining": 207,
+    "external_holdout_remaining": 51,
+    "total_remaining": 258,
+    "conditional_completion_fraction": 0.14
+  },
+  "language_gap": {
+    "audited_v1_core_language_credit": 0,
+    "development_non_english_remaining": 24,
+    "development_vietnamese_remaining": 12,
+    "external_holdout_non_english_remaining": 6,
+    "external_holdout_vietnamese_remaining": 4,
+    "language_inference_from_source_or_text_allowed": false
+  },
+  "decision": {
+    "gap_recomputed": true,
+    "priority_channels": [
+      "CONFIRMED_REGULATOR_LINKED_WEBSITE",
+      "CONFIRMED_CFTC_RED_LINKED_WAYBACK_WEBSITE",
+      "LEGITIMATE_REGISTER_LINKED_WEBSITE"
+    ],
+    "edgar_development_candidate_gap": 27,
+    "edgar_holdout_candidate_gap": 6,
+    "v1_core_release_ready": false,
+    "candidate_acquisition_release_allowed_by_this_analysis": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Prepare source-specific, terms-compliant acquisition waves for the three empty channels and the residual EDGAR quota, with a separately audited Vietnamese-language plan."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "candidate_domain_access_operations": 0,
+    "new_candidates_enumerated": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

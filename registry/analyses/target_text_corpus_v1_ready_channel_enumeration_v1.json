@@ -1,0 +1,48 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_READY_CHANNEL_ENUMERATION_V1",
+  "created_at": "2026-10-23",
+  "status": "PASS_B1_TWO_READY_CHANNELS_CAPACITY_QUEUE_NOT_CREATED",
+  "purpose": "Register B1's frozen two-channel enumeration release and verified post-exclusion capacity without materializing a candidate queue.",
+  "inputs": [
+    {"role": "capacity_matrix_v4", "path": "registry/analyses/target_text_corpus_v1_capacity_gap_v4.json", "sha256": "87629387de99be6b6726c5ba1ada29cad6e2fc97c9ce79d7da815ba2b43e6097"},
+    {"role": "a4_admission_repair", "path": "registry/analyses/target_text_corpus_v1_owner_accepted_admission_repair_v1.json", "sha256": "a4db3f15bb7d70ff575568dc589bd9961dfbc5f70998ad2e1f64087c71475bbe"}
+  ],
+  "implementation": [
+    {"role": "enumeration_release", "path": "configs/target_text_corpus_v1_ready_channel_enumeration_release_v1.json", "sha256": "0d4d892f1c984b7e9ffadef402cc653ef4eae06589937c0b0ff83ebbf6163fa8"},
+    {"role": "release_verifier", "path": "scripts/verify_target_text_corpus_v1_ready_channel_enumeration_release_v1.py", "sha256": "9e9bca0bf799a1d9b432a8bbab28c49d3392f89b693b25b60f3178fc6a436b93"},
+    {"role": "release_tests", "path": "tests/test_target_text_corpus_v1_ready_channel_enumeration_release_v1.py", "sha256": "2993d89cc629ebb2bc2b0f6c24d1df34d5d2fb07165e706b652be985bb172255"},
+    {"role": "registry_test", "path": "tests/test_target_text_corpus_v1_ready_channel_enumeration_registry_v1.py", "sha256": "efcdb8ac9e9dfe2896447e7b4465952ddf6108063d9c778fba20244c3e36e8fa"},
+    {"role": "documentation", "path": "docs/target-text-corpus-v1-ready-channel-enumeration-release-v1.md", "sha256": "44f666c950255961065c5756cdd890733037fd1080f42204681de260a66df112"}
+  ],
+  "outputs": [
+    {"role": "capacity_preflight", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_enumeration_release_v1\\preflight_v1.json", "sha256": "24492f7bf62560bcf914f532766eb233bc9d06c14e45cdf364a2f069b8b5bdff"}
+  ],
+  "result": {
+    "ready_channels": 2,
+    "confirmed_regulator_eligible_after_exclusions": 12045,
+    "legitimate_iapd_eligible_after_exclusions": 3522,
+    "required_per_channel": 35,
+    "planned_development_per_channel": 25,
+    "planned_external_holdout_per_channel": 10,
+    "planned_candidates": 70,
+    "prior_hosts_excluded_from_reuse": 155,
+    "opened_host_hashes_screened": 94,
+    "cross_channel_host_collisions": 0,
+    "cross_stratum_entity_collisions_excluded": 1,
+    "candidates_selected": 0
+  },
+  "decision": {
+    "b1_complete": true,
+    "b2_queue_materialization_allowed": true,
+    "candidate_queue_created": false,
+    "network_access_allowed": false,
+    "candidate_domain_access_allowed": false,
+    "capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "B2: build and independently reproduce the exact 70-row queue using the frozen cohort namespaces and selection key; do not query Wayback or capture artifacts."
+  },
+  "safety_contract": {"network_operations": 0, "candidate_domain_access_operations": 0, "candidates_selected": 0, "captures": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

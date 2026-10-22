@@ -1,0 +1,55 @@
+{
+  "release_id": "ISI_TARGET_TEXT_CORPUS_V1_READY_CHANNEL_ENUMERATION_RELEASE_V1",
+  "created_at": "2026-10-23",
+  "status": "FROZEN_OFFLINE_TWO_CHANNEL_ENUMERATION_PREFLIGHT_NO_QUEUE_CREATED",
+  "purpose": "Begin workstream B with a deterministic, disjoint enumeration release for the two source-capacity-ready channels without selecting candidates, accessing candidate domains, or creating labels.",
+  "basis": [
+    {"role": "acquisition_wave_plan_v2", "path": "configs/target_text_corpus_v1_acquisition_wave_plan_v2.json", "sha256": "870690f4dfda79ec308b78e50ec02e955a32e1f5172b933f1aa40ba213ae1c78"},
+    {"role": "capacity_matrix_v4", "path": "registry/analyses/target_text_corpus_v1_capacity_gap_v4.json", "sha256": "87629387de99be6b6726c5ba1ada29cad6e2fc97c9ce79d7da815ba2b43e6097"},
+    {"role": "a4_admission_repair", "path": "registry/analyses/target_text_corpus_v1_owner_accepted_admission_repair_v1.json", "sha256": "a4db3f15bb7d70ff575568dc589bd9961dfbc5f70998ad2e1f64087c71475bbe"}
+  ],
+  "channels": [
+    {"channel_id": "CONFIRMED_REGULATOR_LINKED_WEBSITE", "target_status": "CONFIRMED", "pool_path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\confirmed_regulator_normalized_v2_disjoint.jsonl", "pool_sha256": "4b1209ce309362efca24a25f0d8ef452972d3593ff884aa91dfb0212d87306c0", "expected_pool_rows": 12726},
+    {"channel_id": "LEGITIMATE_REGISTER_LINKED_WEBSITE", "target_status": "LEGITIMATE", "pool_path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\legitimate_iapd_normalized_v2_disjoint.jsonl", "pool_sha256": "c75185e147b1a4b91497dad3d7f334bd755bc2deb0211b136066eef45f55b45a", "expected_pool_rows": 3648}
+  ],
+  "exclusion_inputs": [
+    {"role": "opened_external_exclusion_index", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_preacquisition\\opened_external_exclusion_index_v1.json", "sha256": "df43d88dbb1120c6f8e9afa0a7893fab1f4e176838483bb3a8bf013b13bd0d07"},
+    {"role": "prior_four_channel_pilot_queue", "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\target_text_corpus_v1_schema_review_pilot\\candidate_queue_v1.jsonl", "sha256": "32f19c38a0d77aa5707b1ff7f0adbfa44409426632ce9af51e70286c2c076a67"},
+    {"role": "prior_sec_iapd_availability_population", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_availability_plan_v1\\availability_plan_v1.jsonl", "sha256": "28f747ecb489e15b00fb6a33fa51fb10b451057115eff8905e5dd98d27c0ea8f"}
+  ],
+  "wave_contract": {
+    "development_candidates_per_channel": 25,
+    "external_holdout_candidates_per_channel": 10,
+    "total_candidates_per_channel": 35,
+    "total_planned_candidates": 70,
+    "development_namespace": "ISI_V1_CORE_DEVELOPMENT_READY_CHANNEL_WAVE_B1_V1",
+    "external_holdout_namespace": "ISI_V1_CORE_EXTERNAL_HOLDOUT_READY_CHANNEL_WAVE_B1_V1",
+    "selection_seed": "ISI_TARGET_TEXT_CORPUS_V1_READY_CHANNEL_B1_20261023",
+    "deterministic_key": "SHA256(selection_seed|cohort_namespace|channel_id|source_id|source_record_id|normalized_host)",
+    "development_selected_before_holdout_exclusion": true,
+    "namespace_reuse_allowed": false,
+    "cross_cohort_host_overlap_allowed": false,
+    "cross_channel_host_overlap_allowed": false,
+    "cross_stratum_normalized_entity_overlap_allowed": false,
+    "prior_opened_or_enumerated_host_reuse_allowed": false,
+    "manual_cherry_picking_allowed": false,
+    "model_score_ranking_allowed": false
+  },
+  "planned_output": {
+    "preflight_path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_enumeration_release_v1\\preflight_v1.json",
+    "candidate_queue_path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_enumeration_release_v1\\candidate_queue_v1.jsonl",
+    "candidate_queue_created_by_b1": false
+  },
+  "decision": {
+    "offline_capacity_preflight_allowed": true,
+    "candidate_queue_materialization_allowed_after_preflight": true,
+    "network_access_allowed": false,
+    "candidate_domain_access_allowed": false,
+    "wayback_query_allowed": false,
+    "artifact_capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false
+  }
+}

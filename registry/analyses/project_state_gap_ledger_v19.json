@@ -1,0 +1,41 @@
+{
+  "analysis_id": "ISI_PROJECT_STATE_GAP_LEDGER_V19",
+  "created_at": "2026-10-23",
+  "base_commit": "ded777a8d3f3a30b441ba03ce3d7b314f1f38409",
+  "status": "FROZEN_B1_READY_CHANNEL_CAPACITY_B2_QUEUE_MAY_BE_BUILT",
+  "purpose": "Replace ledger V18 with the verified B1 two-channel enumeration preflight while preserving A1-A4 and all closed capture/model gates.",
+  "inputs": [
+    {"role": "prior_state_v18", "path": "registry/analyses/project_state_gap_ledger_v18.json", "sha256": "8c5d9c041d816cbbf63ed577c7352f4f2f3434bb6174158a227ad9d7073bf30d"},
+    {"role": "b1_ready_channel_enumeration", "path": "registry/analyses/target_text_corpus_v1_ready_channel_enumeration_v1.json", "sha256": "268d2b78dafa6990562ee20304f51013fe5f0b29f6909a3dfb40db980785afe4"}
+  ],
+  "implementation": [
+    {"role": "human_readable_ledger", "path": "docs/project-state-gap-ledger-v19.md", "sha256": "c5f977378efc96bb621897fb407a42a982e00bf9f5a1e136cc00fe83a11c7e26"},
+    {"role": "ledger_contract_tests", "path": "tests/test_project_state_gap_ledger_v19.py", "sha256": "446992e785a2517e565369137c90a2fe2d3213eb86450c219286ea131e73a435"}
+  ],
+  "state_amendments": {
+    "P1_SEC_IAPD": {"availability_resolved": 113, "availability_total": 115, "a1_cdx_network_executed": false, "a2_v11_concrete_release_created": false},
+    "P2_A4_ADMISSION_REPAIR": {"conditional_records": 42, "fields_credited_now": 0, "v1_core_admitted_records": 0},
+    "P2_B1_READY_CHANNEL_ENUMERATION": {
+      "ready_channels": 2,
+      "confirmed_regulator_eligible_after_exclusions": 12045,
+      "legitimate_iapd_eligible_after_exclusions": 3522,
+      "planned_development_per_channel": 25,
+      "planned_external_holdout_per_channel": 10,
+      "planned_candidates": 70,
+      "candidates_selected": 0,
+      "b2_queue_materialization_allowed": true
+    }
+  },
+  "decision": {
+    "b1_complete": true,
+    "b2_allowed": true,
+    "network_execution_performed": false,
+    "capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "B2: materialize and independently reproduce the exact 70-row provenance queue offline."
+  },
+  "safety_contract": {"network_operations": 0, "candidate_domain_access_operations": 0, "candidates_selected": 0, "captures": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

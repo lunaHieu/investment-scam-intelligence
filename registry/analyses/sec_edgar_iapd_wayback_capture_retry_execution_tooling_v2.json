@@ -1,0 +1,53 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_IAPD_WAYBACK_CAPTURE_RETRY_EXECUTION_TOOLING_V2",
+  "created_at": "2026-10-22",
+  "status": "PASS_POLICY_COMPLIANT_DIAGNOSTIC_ONE_ROW_RETRY_EXECUTOR_READY_COOLDOWN_PRESERVED",
+  "purpose": "Supersede V1 execution tooling for the pending one-row retry with current Internet Archive bot identification and rate-limit diagnostics while leaving the frozen release and historical tooling immutable.",
+  "inputs": [
+    {"role": "prior_execution_tooling_v1", "path": "registry/analyses/sec_edgar_iapd_wayback_capture_retry_execution_tooling_v1.json", "sha256": "b633258d5123e7ccb7ee154c442945f7257a46507710b2f79ee4c72bc2f52e95"},
+    {"role": "availability_result_v10", "path": "registry/analyses/sec_edgar_iapd_wayback_availability_result_v10.json", "sha256": "df49745dcde32b7f086c11d708ad32d3ec6e3a5cc9a1b263e9fe022718b202bd"}
+  ],
+  "implementation": [
+    {"role": "policy_compliant_retry_executor", "path": "scripts/execute_sec_edgar_iapd_wayback_capture_retry_v2.py", "sha256": "95a5339e2769701b47f491d676872c2aaea431d870f870be8cc4c233b3672bbb"},
+    {"role": "execution_tests", "path": "tests/test_sec_edgar_iapd_wayback_capture_retry_execution_v2.py", "sha256": "b0d6ed4287bc3994589c6e71ef564bfb54bf9e795c64837698e1a5d79ded7cfc"},
+    {"role": "registry_contract_test", "path": "tests/test_sec_edgar_iapd_wayback_capture_retry_execution_registry_v2.py", "sha256": "6ab49ad06aaa558262f5cbaf60bcfbfb0da5a3afd8e831441593f64f4669e0e5"},
+    {"role": "root_cause_documentation", "path": "docs/archive-rate-limit-root-cause-v1.md", "sha256": "e6549e5e1cd5757f9e6214f41f43f80cec03ef6285f4e55c3d268809c3c6d768"}
+  ],
+  "outputs": [],
+  "findings": {
+    "archive_endpoint_and_query_encoding_valid": true,
+    "dns_currently_resolves_archive_hosts": true,
+    "configured_http_proxy_present": false,
+    "v7_v10_repeated_http_429": true,
+    "v8_transient_dns_failure_also_observed": true,
+    "exact_server_limit_not_reconstructable_from_v7_v10": true,
+    "reason_exact_limit_not_reconstructable": "Historical availability executors did not retain Retry-After or other HTTP 429 response headers.",
+    "historical_user_agent_met_current_ai_agent_policy": false,
+    "descriptive_user_agent_has_tool_version_and_model": true,
+    "retry_after_header_preserved": true,
+    "automatic_retry_inside_one_run": false,
+    "maximum_attempts": 1,
+    "network_operations_at_tooling_freeze": 0
+  },
+  "decision": {
+    "v2_executor_is_authoritative_for_pending_capture_retry": true,
+    "v1_historical_tooling_mutated": false,
+    "frozen_one_row_release_mutated": false,
+    "original_not_before_weakened": false,
+    "operational_archive_cooldown_until": "2026-10-23T18:32:45.434853+07:00",
+    "network_execution_allowed_now": false,
+    "future_availability_retry_may_reuse_v10_executor": false,
+    "future_availability_retry_requires_policy_compliant_versioned_tooling": true,
+    "candidate_live_domain_access_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "candidate_domain_access_operations": 0,
+    "raw_files_modified": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

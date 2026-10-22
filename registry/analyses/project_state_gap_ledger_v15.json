@@ -1,0 +1,107 @@
+{
+  "analysis_id": "ISI_PROJECT_STATE_GAP_LEDGER_V15",
+  "created_at": "2026-10-22",
+  "base_commit": "a3ec4ca75c233e5d93cbd5157acd6421d0728485",
+  "status": "FROZEN_CDX_RELEASE_PREPARED_NETWORK_GATE_CLOSED",
+  "purpose": "Replace ledger V14 with the independently verified alternate-snapshot CDX preparation while preserving every completed availability, capture, review, owner-acceptance, and model gate.",
+  "inputs": [
+    {
+      "role": "prior_state_v14",
+      "path": "registry/analyses/project_state_gap_ledger_v14.json",
+      "sha256": "ca8c712e4e7aabb1cedea640068d7885778fdba841c222335d523ae478f31c61"
+    },
+    {
+      "role": "alternate_snapshot_cdx_release_v1",
+      "path": "registry/analyses/sec_edgar_iapd_wayback_alternate_snapshot_cdx_release_v1.json",
+      "sha256": "acbe8c526325f95a71c61e339879c131910e3dfce12e40906a7c9fd7d1d34f40"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "human_readable_ledger",
+      "path": "docs/project-state-gap-ledger-v15.md",
+      "sha256": "536782bd3f50051362db3a933266c319a00d89bc862fc49039e39bd6dd05a6bd"
+    },
+    {
+      "role": "ledger_contract_tests",
+      "path": "tests/test_project_state_gap_ledger_v15.py",
+      "sha256": "663fe80ccd33a961b2b0053f7168df90d27c32ab34e67d9894606ee15a60172e"
+    }
+  ],
+  "state_amendments": {
+    "P1_SEC_IAPD": {
+      "availability_planned": 115,
+      "availability_resolved": 113,
+      "availability_available": 58,
+      "availability_unavailable": 55,
+      "availability_unresolved": 2,
+      "capture_planned": 58,
+      "captured": 57,
+      "capture_failed_quarantined": 1,
+      "reviewable": 56,
+      "owner_accepted_labels": 42,
+      "uncertain_retained": 14,
+      "accepted_by_cohort": {
+        "DEVELOPMENT": 33,
+        "EXTERNAL_HOLDOUT": 9
+      },
+      "cdx_target_rows": 1,
+      "cdx_target_id": "TTCV1_EDGAR_AVAIL_DEV_037",
+      "cdx_failed_timestamp_excluded": "20260210193325",
+      "cdx_release_qa_pass": true,
+      "cdx_network_executed": false,
+      "cdx_not_before": "2026-10-23T23:35:43.595958+07:00",
+      "training_eligible_records": 0,
+      "model_scoring_eligible_records": 0
+    },
+    "P2_DATA_SUFFICIENCY": {
+      "historical_baseline_train_rows": 3916,
+      "owner_accepted_development_legitimate_candidates": 33,
+      "owner_accepted_development_confirmed_candidates": 0,
+      "fresh_v1_core_admitted_groups": 0,
+      "fresh_v1_core_required_groups": 300
+    }
+  },
+  "remaining_external_or_timed_gates": [
+    {
+      "gate": "SEC_IAPD_CDX_ENUMERATION_V1",
+      "status": "FROZEN_RELEASE_QA_PASS_WAIT_NOT_BEFORE",
+      "scope": "one quarantined development row; metadata only; one request"
+    },
+    {
+      "gate": "SEC_IAPD_AVAILABILITY_V11",
+      "status": "NEW_POLICY_COMPLIANT_RELEASE_AND_TOOLING_REQUIRED",
+      "scope": "two quarantined external-holdout availability rows only"
+    },
+    {
+      "gate": "V1_CORE_CAPACITY",
+      "status": "INSUFFICIENT_BALANCED_SUPPLY"
+    },
+    {
+      "gate": "CRIMSON_HUMAN_REVIEW",
+      "status": "HUMAN_REVIEWER_OR_EXTERNAL_EVIDENCE_REQUIRED"
+    },
+    {
+      "gate": "MANUAL_SOURCE_INPUTS",
+      "status": "LAWFUL_ARTIFACT_OR_PERMISSION_REQUIRED"
+    }
+  ],
+  "decision": {
+    "cdx_offline_preparation_complete": true,
+    "cdx_execution_allowed_before_not_before": false,
+    "same_failed_snapshot_retry_allowed": false,
+    "alternate_capture_authorized": false,
+    "completed_capture_review_acceptance_immutable": true,
+    "candidate_live_domain_access_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "At or after the frozen CDX not_before, rerun all offline checks and execute the one-request metadata enumeration exactly once if no final or partial output exists."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

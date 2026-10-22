@@ -1,0 +1,76 @@
+{
+  "analysis_id": "ISI_REPRODUCIBILITY_CURRENT_STATE_V13",
+  "created_at": "2026-10-22",
+  "status": "CURRENT_CDX_RELEASE_FROZEN_NETWORK_NOT_EXECUTED",
+  "purpose": "Replace V12 navigation with the independently verified alternate-snapshot CDX release while preserving the immutable completed SEC/IAPD state and all closed model gates.",
+  "inputs": [
+    {
+      "role": "prior_reproducibility_state_v12",
+      "path": "registry/analyses/reproducibility_current_state_v12.json",
+      "sha256": "6328ab13f1ec56fc7df29ee1469f8c0a16338b92dd91cd049786aab311cf696f"
+    },
+    {
+      "role": "current_ledger_v15",
+      "path": "registry/analyses/project_state_gap_ledger_v15.json",
+      "sha256": "5c0768b0767fe80d2e5d1bdf50d4eab26039efb42bdf2331d036e39a492bf641"
+    },
+    {
+      "role": "alternate_snapshot_cdx_release_v1",
+      "path": "registry/analyses/sec_edgar_iapd_wayback_alternate_snapshot_cdx_release_v1.json",
+      "sha256": "acbe8c526325f95a71c61e339879c131910e3dfce12e40906a7c9fd7d1d34f40"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "human_readable_current_state",
+      "path": "docs/reproducibility-current-state-v13.md",
+      "sha256": "10b5764612420227d4a480c5f03832c4c164dbe17f1994cef34dcdf2e829c760"
+    },
+    {
+      "role": "current_state_contract_tests",
+      "path": "tests/test_reproducibility_current_state_v13.py",
+      "sha256": "3271de7ef1bd3034c5435ddab3766dc3fc11c92dc2227d0bba5d450e5a51b254"
+    }
+  ],
+  "current_state": {
+    "availability_resolved": 113,
+    "availability_total": 115,
+    "captured": 57,
+    "capture_planned": 58,
+    "review_completed": 56,
+    "owner_accepted_legitimate": 42,
+    "uncertain_retained": 14,
+    "historical_train_rows": 3916,
+    "fresh_v1_core_admitted_groups": 0,
+    "fresh_v1_core_required_groups": 300,
+    "cdx_release_target_rows": 1,
+    "cdx_release_target_id": "TTCV1_EDGAR_AVAIL_DEV_037",
+    "cdx_failed_timestamp_excluded": "20260210193325",
+    "cdx_release_qa_pass": true,
+    "cdx_network_executed": false,
+    "cdx_not_before": "2026-10-23T23:35:43.595958+07:00",
+    "training_eligible_records": 0
+  },
+  "decision": {
+    "current_navigation_ledger": "registry/analyses/project_state_gap_ledger_v15.json",
+    "cdx_release_may_be_verified_offline": true,
+    "cdx_network_execution_allowed_before_not_before": false,
+    "same_failed_snapshot_retry_allowed": false,
+    "capture_authorized": false,
+    "supplemental_capture_release_required_after_selection": true,
+    "original_review_population_may_be_mutated": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Execute only the frozen one-request CDX metadata release at or after its not_before after clean-repository and full offline preflight checks."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "candidate_domain_access_operations": 0,
+    "archived_page_downloads": 0,
+    "captures": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

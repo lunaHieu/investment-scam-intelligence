@@ -1,0 +1,108 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_IAPD_WAYBACK_ALTERNATE_SNAPSHOT_CDX_RELEASE_V1",
+  "created_at": "2026-10-22",
+  "status": "FROZEN_OFFLINE_PREPARED_INDEPENDENT_QA_PASS",
+  "purpose": "Register the one-row archive-metadata-only alternate-snapshot CDX release, its exact failed-timestamp exclusion, deterministic selection rule, and still-closed capture/model gates.",
+  "inputs": [
+    {
+      "role": "capture_retry_result_v1",
+      "path": "registry/analyses/sec_edgar_iapd_wayback_capture_retry_result_v1.json",
+      "sha256": "e51d071322d0b56f96ccb9224980c468917e8b06d7ff0b4d82802240f5b24d21"
+    },
+    {
+      "role": "frozen_cdx_release_v1",
+      "path": "configs/sec_edgar_iapd_wayback_alternate_snapshot_cdx_release_v1.json",
+      "sha256": "f06cc1933572173f111aa7adf97eda6c8aa9a461e4a6c0fc1c0fa6dc9a90f971"
+    },
+    {
+      "role": "independent_release_qa_v1",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_alternate_snapshot_cdx_v1\\independent_release_qa_v1.json",
+      "sha256": "0515b8828e534c5660fb3bee55b22d8880cc83fc7d3193d8f2b94e736359d8f2",
+      "absolute": true
+    }
+  ],
+  "implementation": [
+    {
+      "role": "cdx_executor_v1",
+      "path": "scripts/execute_sec_edgar_iapd_wayback_alternate_snapshot_cdx_v1.py",
+      "sha256": "9a878003b2582d68306246971f768203f99fb776c050ce5ace3b678b242d7c28"
+    },
+    {
+      "role": "release_verifier_v1",
+      "path": "scripts/verify_sec_edgar_iapd_wayback_alternate_snapshot_cdx_release_v1.py",
+      "sha256": "ea1ce745e2d17508a3b009f3f77d75960be3e6e376a69e1a436dc6f9ac7a9b90"
+    },
+    {
+      "role": "result_verifier_v1",
+      "path": "scripts/verify_sec_edgar_iapd_wayback_alternate_snapshot_cdx_result_v1.py",
+      "sha256": "49ba92ee2639d7fe547dbb788f60a32fe6686da4e1e7244d174e5f20d987c686"
+    },
+    {
+      "role": "execution_tests_v1",
+      "path": "tests/test_sec_edgar_iapd_wayback_alternate_snapshot_cdx_execution_v1.py",
+      "sha256": "e3acd0a2470cb9301d6ab3a36543ae161fa3cbf0575cdaa04f498936c595f9f8"
+    },
+    {
+      "role": "release_tests_v1",
+      "path": "tests/test_sec_edgar_iapd_wayback_alternate_snapshot_cdx_release_v1.py",
+      "sha256": "b5a7b04fe9c6857fe26a3e7d6cb30b5047ce3022d4e5238172d62b865b40d138"
+    },
+    {
+      "role": "result_tests_v1",
+      "path": "tests/test_verify_sec_edgar_iapd_wayback_alternate_snapshot_cdx_result_v1.py",
+      "sha256": "0c894b18896dbfcbeca99c3b95dadf7b7ebb64fb3b891bf1f2e6683a55392bea"
+    },
+    {
+      "role": "registry_contract_test",
+      "path": "tests/test_sec_edgar_iapd_wayback_alternate_snapshot_cdx_registry_v1.py",
+      "sha256": "23e96b97cd571837b081499fa5084e644f681f3385642ac666f0ea8e3dbf2f67"
+    },
+    {
+      "role": "documentation",
+      "path": "docs/sec-edgar-iapd-wayback-alternate-snapshot-cdx-release-v1.md",
+      "sha256": "bb5be212af2911a96f98954f83cfb06f6a3390fc1f6d97695dc4dc3b4d4e0140"
+    }
+  ],
+  "result": {
+    "target_rows": 1,
+    "target_availability_plan_id": "TTCV1_EDGAR_AVAIL_DEV_037",
+    "target_cohort": "DEVELOPMENT",
+    "excluded_snapshot_timestamps": [
+      "20260210193325"
+    ],
+    "failed_response_bytes": 42,
+    "failed_response_sha256": "1c98e3ca60f14fecc235ee47c09ec2fd61f4b3a696251174c4723024279d95e3",
+    "endpoint": "https://web.archive.org/cdx/search/cdx",
+    "maximum_logical_requests": 1,
+    "minimum_delay_seconds": 60.0,
+    "not_before": "2026-10-23T23:35:43.595958+07:00",
+    "selection_rule": "MIN_ABSOLUTE_TIME_DISTANCE_THEN_EARLIER_TIMESTAMP_THEN_ORIGINAL_THEN_DIGEST",
+    "independent_release_qa_status": "PASS_FROZEN_ONE_ROW_ARCHIVE_METADATA_ONLY_CDX_RELEASE"
+  },
+  "decision": {
+    "offline_preparation_complete": true,
+    "network_executed": false,
+    "network_execution_allowed_before_not_before": false,
+    "same_failed_timestamp_allowed": false,
+    "candidate_live_domain_access_allowed": false,
+    "archived_page_download_allowed": false,
+    "capture_authorized": false,
+    "selected_candidate_requires_separate_capture_release": true,
+    "original_review_population_may_be_mutated": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "At or after the frozen not_before, re-run offline verification and execute the one-request CDX enumeration exactly once only if neither final nor partial output exists."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "candidate_domain_access_operations": 0,
+    "archived_page_downloads": 0,
+    "captures": 0,
+    "raw_files_written": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_IAPD_WAYBACK_CAPTURE_RETRY_EXECUTION_TOOLING_V1",
+  "created_at": "2026-10-22",
+  "status": "PASS_CRASH_SAFE_ONE_ROW_RETRY_EXECUTOR_READY_WAITING_NOT_BEFORE",
+  "purpose": "Register the dedicated crash-safe executor and independent result verifier for the frozen one-row SEC/IAPD archive capture retry without making a network request.",
+  "inputs": [
+    {"role": "one_row_retry_release_registry", "path": "registry/analyses/sec_edgar_iapd_wayback_capture_missing_row_retry_release_v1.json", "sha256": "6114db1613297da1d9fbf68feb7385939bca1a5127fa4326f37c04fe8470cc5f"}
+  ],
+  "implementation": [
+    {"role": "retry_executor", "path": "scripts/execute_sec_edgar_iapd_wayback_capture_retry_v1.py", "sha256": "d797bfc4d6f023e127b093de89941cb478956d4962d75f320d27ec7f75d53f64"},
+    {"role": "retry_result_verifier", "path": "scripts/verify_sec_edgar_iapd_wayback_capture_retry_result_v1.py", "sha256": "1eed9ac73a5bc3cb974b9f716d81015cf9c173acb498cf96862d880002074ab7"},
+    {"role": "execution_tests", "path": "tests/test_sec_edgar_iapd_wayback_capture_retry_execution_v1.py", "sha256": "4bb12051a1d88ddf79aa2f78c1addbfde8041ca06959fcb4200404eaaa36536d"},
+    {"role": "registry_contract_test", "path": "tests/test_sec_edgar_iapd_wayback_capture_retry_execution_registry_v1.py", "sha256": "9ba446c27f0470c60c4d0f7c823ba659a4a42b1519a768d5b6881d482657b159"},
+    {"role": "human_readable_documentation", "path": "docs/sec-edgar-iapd-wayback-capture-retry-execution-v1.md", "sha256": "bfacd2a6383c041e4544bd7b3ff6068ff35f668ecf11ea1180be1ad0273afedc"}
+  ],
+  "outputs": [],
+  "findings": {
+    "exact_retry_population": 1,
+    "retry_id": "TTCV1_EDGAR_AVAIL_DEV_037",
+    "completed_57_byte_hashes_preflighted": true,
+    "partial_reserved_before_network": true,
+    "partial_auto_resume_allowed": false,
+    "archive_host_only": true,
+    "minimum_request_delay_seconds": 30.0,
+    "maximum_attempts": 1,
+    "stop_on_http_429": true,
+    "below_minimum_response_diagnostics_preserved": true,
+    "failed_response_written_as_valid_raw": false,
+    "output_overwrite_allowed": false,
+    "network_operations_at_tooling_freeze": 0
+  },
+  "decision": {
+    "tooling_ready": true,
+    "network_execution_allowed_now": false,
+    "network_execution_allowed_at_or_after": "2026-10-22T23:08:09.711801+07:00",
+    "original_review_population_may_be_mutated": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "At or after the frozen not-before, verify release and QA again, require absent final/partial outputs, execute exactly once, then independently verify the result."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "candidate_domain_access_operations": 0,
+    "raw_files_modified": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

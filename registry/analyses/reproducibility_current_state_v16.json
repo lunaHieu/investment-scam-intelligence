@@ -1,0 +1,49 @@
+{
+  "analysis_id": "ISI_REPRODUCIBILITY_CURRENT_STATE_V16",
+  "created_at": "2026-10-23",
+  "status": "CURRENT_A4_REPAIR_PROTOCOL_A1_A2_UNCHANGED",
+  "purpose": "Replace V15 navigation with the verified A4 exact-population admission-repair protocol while preserving all archive and model gates.",
+  "inputs": [
+    {"role": "prior_reproducibility_state_v15", "path": "registry/analyses/reproducibility_current_state_v15.json", "sha256": "f134ac3ffb10db276ab41be7db82bfb5fafef5df567f912584fa86a5a164a261"},
+    {"role": "current_ledger_v18", "path": "registry/analyses/project_state_gap_ledger_v18.json", "sha256": "8c5d9c041d816cbbf63ed577c7352f4f2f3434bb6174158a227ad9d7073bf30d"},
+    {"role": "a4_admission_repair_v1", "path": "registry/analyses/target_text_corpus_v1_owner_accepted_admission_repair_v1.json", "sha256": "a4db3f15bb7d70ff575568dc589bd9961dfbc5f70998ad2e1f64087c71475bbe"}
+  ],
+  "implementation": [
+    {"role": "human_readable_current_state", "path": "docs/reproducibility-current-state-v16.md", "sha256": "8a0e614c0601fd00abcddba0a36461bcd0cd194f7c7210625687405063e8fcb5"},
+    {"role": "current_state_contract_tests", "path": "tests/test_reproducibility_current_state_v16.py", "sha256": "c3b0c5ecd53eb7f1db51a1b64d4a54136651792825ee5cf1d8c8ebdb9e541ce9"}
+  ],
+  "current_state": {
+    "availability_resolved": 113,
+    "availability_total": 115,
+    "captured": 57,
+    "capture_planned": 58,
+    "review_completed": 56,
+    "owner_accepted_legitimate": 42,
+    "uncertain_retained": 14,
+    "fresh_v1_core_admitted_groups": 0,
+    "fresh_v1_core_required_groups": 300,
+    "v1_core_conditional_owner_accepted_supply": 42,
+    "v1_core_conditional_residual_gap": 258,
+    "owner_accepted_repair_population": 42,
+    "admission_blockers_classified": 9,
+    "admission_fields_credited_now": 0,
+    "a1_cdx_network_executed": false,
+    "a2_v11_concrete_release_created": false,
+    "a2_v11_network_executed": false,
+    "training_eligible_records": 0
+  },
+  "decision": {
+    "current_navigation_ledger": "registry/analyses/project_state_gap_ledger_v18.json",
+    "current_admission_repair_registry": "registry/analyses/target_text_corpus_v1_owner_accepted_admission_repair_v1.json",
+    "a4_complete": true,
+    "a1_a2_archive_sequence_changed": false,
+    "a5_offline_packets_may_be_prepared": true,
+    "partial_repaired_manifest_allowed": false,
+    "candidate_live_domain_access_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Prepare separate A5 language-review and fresh-cohort assertion packets for the exact 42-record population."
+  },
+  "safety_contract": {"network_operations": 0, "candidate_domain_access_operations": 0, "captures": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

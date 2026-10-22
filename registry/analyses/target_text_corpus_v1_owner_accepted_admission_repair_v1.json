@@ -1,0 +1,50 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_OWNER_ACCEPTED_ADMISSION_REPAIR_V1",
+  "created_at": "2026-10-23",
+  "status": "PASS_A4_PROTOCOL_AND_READINESS_QA_ZERO_RECORDS_ADMITTED",
+  "purpose": "Register A4's exact-population repair protocol, readiness recomputation, and independent QA without creating a repaired partial contribution.",
+  "inputs": [
+    {"role": "capacity_matrix_v4", "path": "registry/analyses/target_text_corpus_v1_capacity_gap_v4.json", "sha256": "87629387de99be6b6726c5ba1ada29cad6e2fc97c9ce79d7da815ba2b43e6097"},
+    {"role": "owner_accepted_admission_audit_v1", "path": "registry/analyses/target_text_corpus_v1_owner_accepted_admission_audit_v1.json", "sha256": "f5a14d4b469057f78bef08cdabdc71f88efe76d7647377a78134136225eabae5"}
+  ],
+  "implementation": [
+    {"role": "repair_protocol", "path": "configs/target_text_corpus_v1_owner_accepted_admission_repair_protocol_v1.json", "sha256": "65763152db0a35abf56f4034df4f774c7a7c04a673bee4fe20e21ee3747f5ae0"},
+    {"role": "readiness_analyzer", "path": "scripts/analyze_target_text_corpus_v1_owner_accepted_admission_repair_v1.py", "sha256": "4ebc8d92c067365439e16c5b604cd2e36735c229de67cbce84676be884d35dc4"},
+    {"role": "result_verifier", "path": "scripts/verify_target_text_corpus_v1_owner_accepted_admission_repair_v1.py", "sha256": "e5ccb0ad727c9dae0aa20cb300bc03e60952aa3af2c403a91dc8728def99c08c"},
+    {"role": "tooling_tests", "path": "tests/test_target_text_corpus_v1_owner_accepted_admission_repair_v1.py", "sha256": "fea0911e911df7b3951a47d0d3fc624b3957e6a76b8406035ea51f134a88f891"},
+    {"role": "registry_test", "path": "tests/test_target_text_corpus_v1_owner_accepted_admission_repair_registry_v1.py", "sha256": "edaf63bfec4ccf3f71b32a0d07887d117f8f67c232972a3f1fbc59ad64e3632e"},
+    {"role": "documentation", "path": "docs/target-text-corpus-v1-owner-accepted-admission-repair-v1.md", "sha256": "65adde0291ad3550719a0d58ef5b335e119cf61acd0b80a98d69750ad6912601"}
+  ],
+  "outputs": [
+    {"role": "readiness_report", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\owner_accepted_admission_repair_v1\\readiness_report_v1.json", "sha256": "0e1d319014249c35f9265ab5ab0c95a144e0e688de96d54ae7896f7658e6aaed"},
+    {"role": "independent_readiness_qa", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\owner_accepted_admission_repair_v1\\independent_qa_v1.json", "sha256": "a137f8b372a83c176be5f1fccf09dcba61926f3aed784d7e32fb5de31237886c"}
+  ],
+  "result": {
+    "records_audited": 42,
+    "development_records": 33,
+    "external_holdout_records": 9,
+    "blockers_classified": 9,
+    "human_review_now_blockers": 1,
+    "offline_assertion_packet_now_blockers": 1,
+    "full_channel_or_population_blockers": 7,
+    "fields_credited_now": 0,
+    "repaired_records_materialized": 0,
+    "channel_contributions_created": 0,
+    "v1_core_admitted_records": 0,
+    "readiness_qa_status": "PASS_READINESS_REPORT_FULLY_RECOMPUTED"
+  },
+  "decision": {
+    "a4_complete": true,
+    "language_review_packet_may_be_prepared": true,
+    "fresh_cohort_assertion_packet_may_be_prepared": true,
+    "repaired_manifest_created": false,
+    "partial_channel_contribution_allowed": false,
+    "network_access_allowed": false,
+    "candidate_domain_access_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "A5: create and independently verify separate language-review and fresh-cohort assertion packets for the exact 42-record identity, without materializing release-wide fields."
+  },
+  "safety_contract": {"network_operations": 0, "candidate_domain_access_operations": 0, "labels_changed": 0, "model_operations": 0, "training_allowed": false}
+}

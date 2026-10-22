@@ -1,0 +1,74 @@
+{
+  "analysis_id": "ISI_PROJECT_STATE_GAP_LEDGER_V18",
+  "created_at": "2026-10-23",
+  "base_commit": "3bc773a66370453cc49a64496b33bfef6a645ad5",
+  "status": "FROZEN_A4_REPAIR_PROTOCOL_A1_A2_GATES_UNCHANGED",
+  "purpose": "Replace ledger V17 with the verified A4 admission-repair dependency protocol while preserving A1, A2, A3 and every closed model gate.",
+  "inputs": [
+    {"role": "prior_state_v17", "path": "registry/analyses/project_state_gap_ledger_v17.json", "sha256": "c32b336a0e627215b70e0b339f2992498532f96893d5718d55a3f3c24c7ea50e"},
+    {"role": "a4_admission_repair_v1", "path": "registry/analyses/target_text_corpus_v1_owner_accepted_admission_repair_v1.json", "sha256": "a4db3f15bb7d70ff575568dc589bd9961dfbc5f70998ad2e1f64087c71475bbe"}
+  ],
+  "implementation": [
+    {"role": "human_readable_ledger", "path": "docs/project-state-gap-ledger-v18.md", "sha256": "1f5842151e86ae15c07a5a4b6a1e0ec47cbbd887bff305177240ecd8c0275f1d"},
+    {"role": "ledger_contract_tests", "path": "tests/test_project_state_gap_ledger_v18.py", "sha256": "d211f77e82c0fc6ea8c15dd4398bd4a2ed23fe0db2821a2773091d96c33e2065"}
+  ],
+  "state_amendments": {
+    "P1_SEC_IAPD": {
+      "availability_planned": 115,
+      "availability_resolved": 113,
+      "availability_unresolved": 2,
+      "capture_planned": 58,
+      "captured": 57,
+      "reviewable": 56,
+      "owner_accepted_labels": 42,
+      "uncertain_retained": 14,
+      "a1_cdx_concrete_release_frozen": true,
+      "a1_cdx_network_executed": false,
+      "a1_cdx_not_before": "2026-10-23T23:35:43.595958+07:00",
+      "a2_v11_tooling_frozen": true,
+      "a2_v11_concrete_release_created": false,
+      "a2_v11_network_executed": false,
+      "training_eligible_records": 0
+    },
+    "P2_A3_CAPACITY": {
+      "required_groups": 300,
+      "admitted_groups": 0,
+      "conditional_owner_accepted_supply": 42,
+      "conditional_residual_gap": 258,
+      "minimum_non_english_gap": 30,
+      "minimum_vietnamese_gap": 16
+    },
+    "P2_A4_ADMISSION_REPAIR": {
+      "records_audited": 42,
+      "blockers_classified": 9,
+      "human_review_now_blockers": 1,
+      "offline_assertion_now_blockers": 1,
+      "full_channel_or_population_blockers": 7,
+      "fields_credited_now": 0,
+      "repaired_manifest_created": false,
+      "channel_contribution_created": false,
+      "v1_core_admitted_records": 0
+    }
+  },
+  "remaining_external_or_timed_gates": [
+    {"gate": "A1_CDX_ENUMERATION_V1", "status": "CONCRETE_RELEASE_QA_PASS_WAIT_NOT_BEFORE"},
+    {"gate": "A2_AVAILABILITY_V11", "status": "TOOLING_QA_PASS_WAIT_A1_RESULT_THEN_CONCRETE_RELEASE"},
+    {"gate": "A5_LANGUAGE_REVIEW_PACKET", "status": "MAY_BE_PREPARED_OFFLINE_FOR_EXACT_42"},
+    {"gate": "A5_FRESH_COHORT_ASSERTION_PACKET", "status": "MAY_BE_PREPARED_OFFLINE_FOR_EXACT_42"},
+    {"gate": "V1_CORE_RELEASE_WIDE_FIELDS", "status": "SEVEN_BLOCKERS_WAIT_COMPLETE_CHANNEL_OR_300_GROUP_POPULATION"},
+    {"gate": "CFTC_SOURCE_CAPACITY", "status": "BLOCKED_PENDING_DOCUMENTED_LAWFUL_ROUTE"}
+  ],
+  "decision": {
+    "a4_complete": true,
+    "a1_a2_archive_state_changed": false,
+    "network_execution_performed": false,
+    "labels_changed": false,
+    "partial_repaired_manifest_allowed": false,
+    "candidate_live_domain_access_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Prepare A5's two exact-population offline packets and independent verifiers while preserving all seven release-wide blockers."
+  },
+  "safety_contract": {"network_operations": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

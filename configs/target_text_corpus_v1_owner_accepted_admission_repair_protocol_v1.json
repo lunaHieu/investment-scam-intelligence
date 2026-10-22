@@ -1,0 +1,82 @@
+{
+  "protocol_id": "ISI_TARGET_TEXT_CORPUS_V1_OWNER_ACCEPTED_ADMISSION_REPAIR_PROTOCOL_V1",
+  "created_at": "2026-10-23",
+  "status": "FROZEN_OFFLINE_READINESS_PROTOCOL_NO_REPAIRED_MANIFEST_RELEASED",
+  "purpose": "Classify and verify how the nine admission blockers for the exact 42 owner-accepted SEC EDGAR candidates may be resolved without prematurely materializing a partial V1-Core contribution.",
+  "inputs": [
+    {"role": "v1_core_release_contract", "path": "configs/target_text_corpus_v1_core_release_contract_v1.json", "sha256": "827ad1e5785c37352a47542a5be614f6f0fde9db8bcd96618d43e4ba0f668dea"},
+    {"role": "sampling_matrix", "path": "configs/target_text_corpus_v1_sampling_matrix_v1.json", "sha256": "19faaa4e2e0edfd87a403f6e39df96c763a7e0ae5890cebe6cc3adbb3c40176b"},
+    {"role": "owner_accepted_admission_audit", "path": "registry/analyses/target_text_corpus_v1_owner_accepted_admission_audit_v1.json", "sha256": "f5a14d4b469057f78bef08cdabdc71f88efe76d7647377a78134136225eabae5"},
+    {"role": "capacity_matrix_v4", "path": "registry/analyses/target_text_corpus_v1_capacity_gap_v4.json", "sha256": "87629387de99be6b6726c5ba1ada29cad6e2fc97c9ce79d7da815ba2b43e6097"},
+    {"role": "owner_accepted_records", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_post_capture_grouping_result_v2\\owner_accepted_records_v2.json", "sha256": "3b66a9198944be005e460b050119a17c58f3efc4ef8c3bed825c0d1e63ded153"},
+    {"role": "exact_text_manifest", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_exact_text_result_v2\\manifest_v2.jsonl", "sha256": "cc7d9b19705d3e6523761e8d60001dacd3e2b9fa65cbcf19a690b4cfe7494022"},
+    {"role": "post_capture_grouping", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_post_capture_grouping_result_v2\\post_capture_exclusion_grouping_v2.json", "sha256": "15d17dddf0315018cd781b19cad209ee9e3fd40c733bae86893a33d09acc7180"},
+    {"role": "manual_group_review", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_post_capture_grouping_result_v2\\manual_group_review_v2.json", "sha256": "dabd63e14c80fbb9041d3d10ad8113b16e9b8b2af59692bb36b9a59500df7607"}
+  ],
+  "population_contract": {
+    "ordered_record_ids_sha256": "b34e792785fe932c5dfd48792e104933cc87616c2908d4a02e14c5092ec22566",
+    "record_count": 42,
+    "development_count": 33,
+    "external_holdout_count": 9,
+    "target_status": "LEGITIMATE",
+    "channel_id": "LEGITIMATE_SEC_EDGAR_LINKED_WAYBACK_WEBSITE",
+    "population_expansion_allowed": false,
+    "population_reordering_allowed": false,
+    "uncertain_record_inclusion_allowed": false
+  },
+  "blocker_contract": {
+    "audit_blockers": [
+      "channel_contribution_qa_sha256",
+      "human_reviewed_language",
+      "fresh_cohort_assertion",
+      "full_release_cross_partition_exclusion",
+      "transitive_group_id",
+      "case_campaign_group_id",
+      "entity_domain_family_group_id",
+      "near_duplicate_group_id",
+      "final_release_eligibility"
+    ],
+    "human_review_now": [
+      {"audit_blocker": "human_reviewed_language", "target_fields": ["language_code", "human_reviewed_language"], "rule": "A human reviewer must inspect only the immutable extracted visible text; automatic language detection may be a hint but is never final evidence."}
+    ],
+    "offline_evidence_packet_now_but_no_admission_credit": [
+      {"audit_blocker": "fresh_cohort_assertion", "target_fields": ["fresh_cohort"], "rule": "Prepare a hash-bound assertion from the frozen fresh acquisition namespace and opened-cohort exclusion evidence; do not set the field in a release record before independent QA."}
+    ],
+    "full_channel_or_population_only": [
+      {"audit_blocker": "channel_contribution_qa_sha256", "target_fields": ["channel_contribution_qa_sha256"], "dependency": "Exact 60 development plus 15 external-holdout SEC EDGAR channel contribution"},
+      {"audit_blocker": "full_release_cross_partition_exclusion", "target_fields": ["cross_partition_exclusion_pass"], "dependency": "Complete 300-group manifest and cross-channel transitive exclusion recomputation"},
+      {"audit_blocker": "transitive_group_id", "target_fields": ["transitive_group_id"], "dependency": "Complete release-wide transitive grouping"},
+      {"audit_blocker": "case_campaign_group_id", "target_fields": ["case_campaign_group_id"], "dependency": "Complete release-wide bounded human case/campaign grouping"},
+      {"audit_blocker": "entity_domain_family_group_id", "target_fields": ["entity_domain_family_group_id"], "dependency": "Complete release-wide bounded human entity/domain-family grouping"},
+      {"audit_blocker": "near_duplicate_group_id", "target_fields": ["near_duplicate_group_id"], "dependency": "Complete release-wide deterministic near-duplicate grouping"},
+      {"audit_blocker": "final_release_eligibility", "target_fields": ["release_eligibility", "model_scoring_eligibility"], "dependency": "All channel contributions and the exact balanced V1-Core release pass independent QA"}
+    ]
+  },
+  "evidence_reuse_contract": {
+    "owner_accepted_label_may_be_changed": false,
+    "uncertain_may_be_converted": false,
+    "technical_group_may_be_renamed_as_semantic_group": false,
+    "provisional_distinct_decision_proves_global_uniqueness": false,
+    "source_identity_proves_legitimacy": false,
+    "automatic_language_detector_is_final_evidence": false,
+    "existing_hashes_may_be_recomputed_and_silently_replaced": false
+  },
+  "planned_output": {
+    "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\owner_accepted_admission_repair_v1\\readiness_report_v1.json",
+    "report_id": "ISI_TARGET_TEXT_CORPUS_V1_OWNER_ACCEPTED_ADMISSION_REPAIR_READINESS_V1",
+    "contains_repaired_release_records": false
+  },
+  "decision": {
+    "offline_readiness_audit_allowed": true,
+    "language_review_packet_may_be_prepared_after_protocol_qa": true,
+    "fresh_cohort_assertion_packet_may_be_prepared_after_protocol_qa": true,
+    "repaired_candidate_manifest_allowed": false,
+    "partial_channel_contribution_allowed": false,
+    "network_access_allowed": false,
+    "candidate_domain_access_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false
+  }
+}

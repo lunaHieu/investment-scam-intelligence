@@ -1,0 +1,75 @@
+{
+  "analysis_id": "ISI_PROJECT_STATE_GAP_LEDGER_V13",
+  "created_at": "2026-10-22",
+  "base_commit": "792fb05a940d122ad175f2368b600d39114402d4",
+  "status": "FROZEN_V10_HTTP_429_PRESERVED_CAPTURE_RETRY_CONSERVATIVELY_DEFERRED",
+  "purpose": "Replace ledger V12 with the independently verified V10 rate-limit result while preserving all completed capture, review, owner-acceptance, and data-capacity work.",
+  "inputs": [
+    {"role": "prior_state_v12", "path": "registry/analyses/project_state_gap_ledger_v12.json", "sha256": "78f18bf0ec4bfa41afad19e139ea43f09010914362591d6d37d217d89c2d548f"},
+    {"role": "availability_result_v10", "path": "registry/analyses/sec_edgar_iapd_wayback_availability_result_v10.json", "sha256": "df49745dcde32b7f086c11d708ad32d3ec6e3a5cc9a1b263e9fe022718b202bd"},
+    {"role": "owner_acceptance_result_v2", "path": "registry/analyses/sec_edgar_iapd_owner_acceptance_result_v2.json", "sha256": "ea8a4a3b681a51d3a0051508505b6b1ff68330384af982fcb2fba501ff7d98ef"},
+    {"role": "missing_capture_retry_v1", "path": "registry/analyses/sec_edgar_iapd_wayback_capture_missing_row_retry_release_v1.json", "sha256": "6114db1613297da1d9fbf68feb7385939bca1a5127fa4326f37c04fe8470cc5f"}
+  ],
+  "implementation": [
+    {"role": "human_readable_ledger", "path": "docs/project-state-gap-ledger-v13.md", "sha256": "af72518dc2a53dfed4545d20e3a05984e425a15f8dbd15f4bd2846c610ad0c49"},
+    {"role": "ledger_contract_tests", "path": "tests/test_project_state_gap_ledger_v13.py", "sha256": "b2fba54182dc9bb79ddc09d1143e1e96a4108a930c91f1b6645c1fa56000f404"}
+  ],
+  "state_amendments": {
+    "P1_SEC_IAPD": {
+      "availability_planned": 115,
+      "availability_resolved": 113,
+      "availability_available": 58,
+      "availability_unavailable": 55,
+      "availability_unresolved": 2,
+      "v10_logical_retry_attempts": 1,
+      "v10_network_requests": 1,
+      "v10_stopped_on_http_429": true,
+      "v10_must_never_be_rerun": true,
+      "capture_planned": 58,
+      "captured": 57,
+      "capture_failed_quarantined": 1,
+      "reviewable": 56,
+      "owner_accepted_labels": 42,
+      "uncertain_retained": 14,
+      "accepted_by_cohort": {"DEVELOPMENT": 33, "EXTERNAL_HOLDOUT": 9},
+      "training_eligible_records": 0,
+      "model_scoring_eligible_records": 0,
+      "capture_retry_release_not_before": "2026-10-22T23:08:09.711801+07:00",
+      "operational_archive_cooldown_until": "2026-10-23T18:32:45.434853+07:00",
+      "holdout_subset_representative": false
+    },
+    "P2_DATA_SUFFICIENCY": {
+      "historical_baseline_train_rows": 3916,
+      "owner_accepted_development_legitimate_candidates": 33,
+      "owner_accepted_development_confirmed_candidates": 0,
+      "fresh_v1_core_admitted_groups": 0,
+      "fresh_v1_core_required_groups": 300,
+      "partial_candidate_supply_is_training_release": false
+    }
+  },
+  "remaining_external_or_timed_gates": [
+    {"gate": "SEC_IAPD_AVAILABILITY_NEXT_RELEASE", "status": "NEW_FROZEN_RELEASE_REQUIRED_AFTER_HTTP_429", "not_before": "2026-10-23T18:32:45.434853+07:00", "scope": "the same two quarantined external-holdout availability rows only"},
+    {"gate": "SEC_IAPD_CAPTURE_MISSING_ROW_RETRY_V1", "status": "RELEASE_PRESERVED_OPERATIONALLY_DEFERRED_AFTER_HTTP_429", "release_not_before": "2026-10-22T23:08:09.711801+07:00", "operational_defer_until": "2026-10-23T18:32:45.434853+07:00", "scope": "one quarantined failed capture only"},
+    {"gate": "V1_CORE_CAPACITY", "status": "INSUFFICIENT_BALANCED_SUPPLY", "scope": "300 disjoint balanced groups with channel and language constraints"},
+    {"gate": "CRIMSON_HUMAN_REVIEW", "status": "HUMAN_REVIEWER_OR_EXTERNAL_EVIDENCE_REQUIRED"},
+    {"gate": "MANUAL_SOURCE_INPUTS", "status": "LAWFUL_ARTIFACT_OR_PERMISSION_REQUIRED"}
+  ],
+  "decision": {
+    "v10_result_registered": true,
+    "completed_capture_review_acceptance_immutable": true,
+    "capture_retry_allowed_in_v10_run": false,
+    "capture_retry_release_preserved": true,
+    "future_availability_retry_requires_new_release": true,
+    "v1_core_release_ready": false,
+    "candidate_live_domain_access_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "After the conservative archive cooldown, verify repository state and the unchanged one-row capture retry release before any network action; separately freeze any future availability retry."
+  },
+  "safety_contract": {
+    "raw_file_modifications": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

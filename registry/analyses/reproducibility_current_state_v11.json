@@ -1,0 +1,60 @@
+{
+  "analysis_id": "ISI_REPRODUCIBILITY_CURRENT_STATE_V11",
+  "created_at": "2026-10-22",
+  "status": "FROZEN_CURRENT_GUIDE_LEDGER_V13_V10_HTTP_429_PRESERVED",
+  "purpose": "Replace V10 navigation with the immutable V10 rate-limit result and conservative archive cooldown while preserving all completed SEC/IAPD artifacts.",
+  "current_entrypoint": "registry/analyses/project_state_gap_ledger_v13.json",
+  "inputs": [
+    {"role": "project_state_v13", "path": "registry/analyses/project_state_gap_ledger_v13.json", "sha256": "ba5df8c304af7dd7fbdc1ac3bfa8987417da06ce5d824f068dea4c54895dc030"},
+    {"role": "prior_reproducibility_state_v10", "path": "registry/analyses/reproducibility_current_state_v10.json", "sha256": "8aecd6e75bd5587181f55adf193d7bfe2d1760a7f6de508e182dbe1843a18c51"},
+    {"role": "availability_result_v10", "path": "registry/analyses/sec_edgar_iapd_wayback_availability_result_v10.json", "sha256": "df49745dcde32b7f086c11d708ad32d3ec6e3a5cc9a1b263e9fe022718b202bd"},
+    {"role": "owner_acceptance_result_v2", "path": "registry/analyses/sec_edgar_iapd_owner_acceptance_result_v2.json", "sha256": "ea8a4a3b681a51d3a0051508505b6b1ff68330384af982fcb2fba501ff7d98ef"},
+    {"role": "missing_capture_retry_v1", "path": "registry/analyses/sec_edgar_iapd_wayback_capture_missing_row_retry_release_v1.json", "sha256": "6114db1613297da1d9fbf68feb7385939bca1a5127fa4326f37c04fe8470cc5f"}
+  ],
+  "implementation": [
+    {"role": "guide_contract_tests", "path": "tests/test_reproducibility_current_state_v11.py", "sha256": "703cb1ff1db8577c0f0fdef198867ca36ea356ae9e9adbbb579a5bb5793195c0"}
+  ],
+  "output": {"role": "reproducibility_guide_v11", "path": "docs/reproducibility-current-state-v11.md", "sha256": "9fc99ddf644a77d105d0aba746d69d0374b5ad2bcc486f0579541eba6557b4f5"},
+  "current_sec_iapd_state": {
+    "availability_planned": 115,
+    "availability_resolved": 113,
+    "availability_unresolved": 2,
+    "v10_stopped_on_http_429": true,
+    "v10_must_never_be_rerun": true,
+    "capture_planned": 58,
+    "captured": 57,
+    "capture_quarantined": 1,
+    "reviewable": 56,
+    "owner_accepted_labels": 42,
+    "uncertain_retained": 14,
+    "accepted_by_cohort": {"DEVELOPMENT": 33, "EXTERNAL_HOLDOUT": 9},
+    "training_eligible_records": 0,
+    "capture_retry_release_not_before": "2026-10-22T23:08:09.711801+07:00",
+    "operational_archive_cooldown_until": "2026-10-23T18:32:45.434853+07:00",
+    "partial_auto_resume_allowed": false
+  },
+  "data_sufficiency": {
+    "historical_train_rows": 3916,
+    "accepted_development_legitimate_candidates": 33,
+    "fresh_v1_core_admitted_groups": 0,
+    "fresh_v1_core_required_groups": 300,
+    "partial_candidate_supply_is_training_rows": false
+  },
+  "decision": {
+    "guide_v11_is_authoritative_navigation_entry": true,
+    "guide_v1_through_v10_preserved_as_historical_snapshots": true,
+    "capture_retry_deferred_after_v10_rate_limit": true,
+    "future_availability_retry_requires_new_release": true,
+    "candidate_domain_access_allowed": false,
+    "network_execution_allowed_now": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false,
+    "model_scoring_allowed": false,
+    "next_gate": "Wait until the conservative archive cooldown, then revalidate the unchanged one-row capture retry release before any network operation."
+  },
+  "safety_contract": {
+    "raw_file_modifications": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

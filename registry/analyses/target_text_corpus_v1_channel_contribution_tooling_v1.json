@@ -1,0 +1,43 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_CHANNEL_CONTRIBUTION_TOOLING_V1",
+  "created_at": "2026-10-22",
+  "status": "FROZEN_COMPLETE_ONLY_CHANNEL_BUILDER_AND_INDEPENDENT_VERIFIER",
+  "purpose": "Predeclare quota-exact channel contribution construction and independent reproduction before any real V1-Core channel is complete.",
+  "inputs": [
+    {"role": "v1_core_release_contract", "path": "registry/analyses/target_text_corpus_v1_core_release_contract_v1.json", "sha256": "7139860025431ec13dc1d0b979083cf84889e7bc2fe876bdfdba73be84868e03"},
+    {"role": "owner_accepted_admission_audit", "path": "registry/analyses/target_text_corpus_v1_owner_accepted_admission_audit_v1.json", "sha256": "f5a14d4b469057f78bef08cdabdc71f88efe76d7647377a78134136225eabae5"}
+  ],
+  "implementation": [
+    {"role": "channel_contribution_builder", "path": "scripts/build_target_text_corpus_v1_channel_contribution_v1.py", "sha256": "b7b1e3a11ff3fb557ad06eff12c3d343fcc60ee95ae8312fa551734543ec981f"},
+    {"role": "independent_contribution_verifier", "path": "scripts/verify_target_text_corpus_v1_channel_contribution_v1.py", "sha256": "eb10dc3e4e78e0f54ee8de3713c2db538825e4bf2d1a04ab4e92ce69415f6103"},
+    {"role": "tooling_tests", "path": "tests/test_target_text_corpus_v1_channel_contribution_v1.py", "sha256": "b1acc6a6e16797aa84f622a2d897942f1d5ed856c5fc9840bd20112990a91fb6"},
+    {"role": "registry_contract_test", "path": "tests/test_target_text_corpus_v1_channel_contribution_tooling_registry_v1.py", "sha256": "edb3b4bc894c9e1a75e97079fd27b8c5c01a295848cea09d1967acd03c7d9567"},
+    {"role": "method_documentation", "path": "docs/target-text-corpus-v1-channel-contribution-tooling-v1.md", "sha256": "bc5c959376867a299051f62fcc3bcf56d668ad2657884a791214f5c30cc07457"}
+  ],
+  "outputs": [],
+  "findings": {
+    "required_development_groups_per_channel": 60,
+    "required_external_holdout_groups_per_channel": 15,
+    "required_groups_per_channel": 75,
+    "partial_contributions_rejected": true,
+    "all_four_group_identifiers_required": true,
+    "human_reviewed_language_required": true,
+    "language_minimums_enforced": true,
+    "raw_archive_provenance_required": true,
+    "model_fields_forbidden": true,
+    "independent_full_recomputation_required": true,
+    "real_edgar_candidate_count": 42,
+    "real_edgar_quota_shortfall": 33
+  },
+  "decision": {
+    "tooling_ready": true,
+    "real_contribution_created": false,
+    "partial_edgar_contribution_allowed": false,
+    "candidate_acquisition_allowed_by_this_tooling": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Prepare frozen, source-specific acquisition waves for the remaining 27 EDGAR development and 6 EDGAR holdout groups plus the three empty channels; then complete review and admission fields before using this builder."
+  },
+  "safety_contract": {"network_operations": 0, "candidate_domain_access_operations": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

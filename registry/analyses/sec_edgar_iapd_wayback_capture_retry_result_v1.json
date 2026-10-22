@@ -1,0 +1,56 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_IAPD_WAYBACK_CAPTURE_RETRY_RESULT_V1",
+  "created_at": "2026-10-22",
+  "status": "INDEPENDENTLY_VERIFIED_REPEAT_42_BYTE_FAILURE_QUARANTINE_REMAINS",
+  "purpose": "Register the immutable one-row capture retry result, preserve the failed V1 QA diagnostic, and make the corrected V2 post-execution QA authoritative.",
+  "inputs": [
+    {"role": "frozen_retry_release", "path": "configs/sec_edgar_iapd_wayback_capture_missing_row_retry_release_v1.json", "sha256": "2c6c81d273784037164daa337f199772ec8c272928dde04258ed7b963b0c6660"},
+    {"role": "policy_compliant_execution_tooling_v2", "path": "registry/analyses/sec_edgar_iapd_wayback_capture_retry_execution_tooling_v2.json", "sha256": "7f2558437acfafea4fb2e09e95e5e011d6ac84d82427253192e962062b05ffff"}
+  ],
+  "implementation": [
+    {"role": "post_execution_verifier_v2", "path": "scripts/verify_sec_edgar_iapd_wayback_capture_retry_result_v2.py", "sha256": "5b42711ef4936857019bb0e9be39c0beecdb23e2b3993ae689e390fb81ae2a24"},
+    {"role": "verifier_v2_tests", "path": "tests/test_verify_sec_edgar_iapd_wayback_capture_retry_result_v2.py", "sha256": "ba3c6190e88e5b4c535efb404a8ced1ccb13943882c25f5994908ebf198b9f89"},
+    {"role": "registry_contract_test", "path": "tests/test_sec_edgar_iapd_wayback_capture_retry_result_registry_v1.py", "sha256": "58820bb3651067f2ff1b2abf46f3f6c85ccfeec3192804c64a22d8f308f8abc4"},
+    {"role": "documentation", "path": "docs/sec-edgar-iapd-wayback-capture-retry-result-v1.md", "sha256": "454b9a2c8dacdc2b441ce662d7bddc1e71456c6e941659f22d043f8c25c53b71"}
+  ],
+  "outputs": [
+    {"role": "capture_retry_report_v1", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_capture_retry_result_v1\\capture_retry_report_v1.json", "sha256": "cfcced8925d35e7685e7fe74c1945690d203fa836e4bf2391a247200bc404d99"},
+    {"role": "failed_v1_qa_preserved_non_authoritative", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_capture_retry_result_v1\\independent_capture_retry_qa_v1.json", "sha256": "4d43eae1d20f6284cff421bd39a4c651529fb76726c168fb92b11d876f966872", "authoritative": false},
+    {"role": "independent_capture_retry_qa_v2", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_capture_retry_result_v1\\independent_capture_retry_qa_v2.json", "sha256": "01b12d338f5e9d56a18e3c86c44bfc2d1169027e786d65d8de4f4ddf3ab96a01", "authoritative": true}
+  ],
+  "result": {
+    "retry_rows": 1,
+    "retry_id": "TTCV1_EDGAR_AVAIL_DEV_037",
+    "network_requests": 1,
+    "captured_count": 0,
+    "failed_count": 1,
+    "stopped_on_http_429": false,
+    "http_status": 200,
+    "content_type": "text/html; charset=UTF-8",
+    "response_bytes": 42,
+    "response_sha256": "1c98e3ca60f14fecc235ee47c09ec2fd61f4b3a696251174c4723024279d95e3",
+    "repeat_below_minimum_failure": true,
+    "raw_capture_written": false,
+    "completed_57_capture_ledger_preserved": true,
+    "authoritative_qa_status": "PASS_RETRY_FAILURE_PRESERVED_QUARANTINE_REMAINS"
+  },
+  "decision": {
+    "owner_operational_cooldown_override_recorded": true,
+    "frozen_release_original_not_before_was_respected": true,
+    "quarantine_remains": true,
+    "supplemental_pipeline_may_be_prepared": false,
+    "another_same_snapshot_retry_allowed": false,
+    "separate_alternate_snapshot_cdx_protocol_may_be_prepared_offline": true,
+    "original_review_population_may_be_mutated": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {
+    "candidate_live_domain_access_operations": 0,
+    "raw_files_written": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_IAPD_WAYBACK_CAPTURE_RETRY_EXECUTION_TOOLING_V2_1",
+  "created_at": "2026-10-22",
+  "status": "PASS_POLICY_COMPLIANT_V2_POST_EXECUTION_TEST_COMPATIBILITY",
+  "purpose": "Preserve the executed V2 tooling registry and runtime unchanged while making its tests state-aware after the immutable final retry report exists.",
+  "inputs": [
+    {"role": "historical_execution_tooling_v2", "path": "registry/analyses/sec_edgar_iapd_wayback_capture_retry_execution_tooling_v2.json", "sha256": "7f2558437acfafea4fb2e09e95e5e011d6ac84d82427253192e962062b05ffff"}
+  ],
+  "implementation": [
+    {"role": "policy_compliant_retry_executor_unchanged", "path": "scripts/execute_sec_edgar_iapd_wayback_capture_retry_v2.py", "sha256": "95a5339e2769701b47f491d676872c2aaea431d870f870be8cc4c233b3672bbb"},
+    {"role": "state_aware_execution_tests", "path": "tests/test_sec_edgar_iapd_wayback_capture_retry_execution_v2.py", "sha256": "b965dd83b541c88f67fc327b56343d4c5cc870f4fb451207594689429279c514"},
+    {"role": "v2_1_registry_contract_test", "path": "tests/test_sec_edgar_iapd_wayback_capture_retry_execution_registry_v2.py", "sha256": "cbda0741337629886486eff5bb4c4eba5c237f6f8ae84fae0059174258038a3e"},
+    {"role": "root_cause_documentation_unchanged", "path": "docs/archive-rate-limit-root-cause-v1.md", "sha256": "e6549e5e1cd5757f9e6214f41f43f80cec03ef6285f4e55c3d268809c3c6d768"}
+  ],
+  "outputs": [],
+  "findings": {
+    "descriptive_user_agent_has_tool_version_and_model": true,
+    "retry_after_header_preserved": true,
+    "final_output_state_supported_by_tests": true,
+    "historical_runtime_files_changed": false,
+    "network_operations_at_tooling_freeze": 0
+  },
+  "decision": {
+    "historical_v2_registry_preserved": true,
+    "v2_runtime_may_be_reexecuted": false,
+    "authoritative_result_qa": "independent_capture_retry_qa_v2.json",
+    "training_allowed": false
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "raw_files_modified": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

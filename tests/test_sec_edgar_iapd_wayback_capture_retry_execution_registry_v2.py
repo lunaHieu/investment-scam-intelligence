@@ -5,11 +5,11 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-REGISTRY = ROOT / "registry" / "analyses" / "sec_edgar_iapd_wayback_capture_retry_execution_tooling_v2.json"
+REGISTRY = ROOT / "registry" / "analyses" / "sec_edgar_iapd_wayback_capture_retry_execution_tooling_v2_1.json"
 
 
 class SecEdgarIapdWaybackCaptureRetryExecutionRegistryV2Tests(unittest.TestCase):
-    def test_registry_pins_policy_compliant_executor_without_network(self) -> None:
+    def test_registry_pins_v2_post_execution_compatibility(self) -> None:
         data = json.loads(REGISTRY.read_text(encoding="utf-8"))
         for item in data["inputs"] + data["implementation"]:
             path = ROOT / item["path"]
@@ -19,9 +19,10 @@ class SecEdgarIapdWaybackCaptureRetryExecutionRegistryV2Tests(unittest.TestCase)
         findings = data["findings"]
         self.assertTrue(findings["descriptive_user_agent_has_tool_version_and_model"])
         self.assertTrue(findings["retry_after_header_preserved"])
+        self.assertTrue(findings["final_output_state_supported_by_tests"])
         self.assertEqual(findings["network_operations_at_tooling_freeze"], 0)
-        self.assertFalse(data["decision"]["v1_historical_tooling_mutated"])
-        self.assertFalse(data["decision"]["network_execution_allowed_now"])
+        self.assertTrue(data["decision"]["historical_v2_registry_preserved"])
+        self.assertFalse(data["decision"]["v2_runtime_may_be_reexecuted"])
 
 
 if __name__ == "__main__":

@@ -86,7 +86,12 @@ class SecEdgarIapdWaybackCaptureRetryExecutionV2Tests(unittest.TestCase):
     def test_real_release_still_fails_closed_before_original_gate(self) -> None:
         from datetime import datetime
 
-        with self.assertRaisesRegex(PermissionError, "not-before gate is closed"):
+        import json
+
+        release = json.loads(RELEASE.read_text(encoding="utf-8"))
+        output = Path(release["planned_output"]["path"])
+        expected = "independent recomputation failed" if output.exists() else "not-before gate is closed"
+        with self.assertRaisesRegex(PermissionError, expected):
             execute(RELEASE, RELEASE_QA, datetime.fromisoformat("2026-10-22T23:00:00+07:00"))
 
 

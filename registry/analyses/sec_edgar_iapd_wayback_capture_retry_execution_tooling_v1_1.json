@@ -1,0 +1,38 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_IAPD_WAYBACK_CAPTURE_RETRY_EXECUTION_TOOLING_V1_1",
+  "created_at": "2026-10-22",
+  "status": "PASS_HISTORICAL_V1_POST_EXECUTION_TEST_COMPATIBILITY",
+  "purpose": "Preserve the V1 runtime and historical registry unchanged while making its tests state-aware after the immutable final retry report exists.",
+  "inputs": [
+    {"role": "historical_execution_tooling_v1", "path": "registry/analyses/sec_edgar_iapd_wayback_capture_retry_execution_tooling_v1.json", "sha256": "b633258d5123e7ccb7ee154c442945f7257a46507710b2f79ee4c72bc2f52e95"}
+  ],
+  "implementation": [
+    {"role": "historical_retry_executor_unchanged", "path": "scripts/execute_sec_edgar_iapd_wayback_capture_retry_v1.py", "sha256": "d797bfc4d6f023e127b093de89941cb478956d4962d75f320d27ec7f75d53f64"},
+    {"role": "historical_result_verifier_unchanged", "path": "scripts/verify_sec_edgar_iapd_wayback_capture_retry_result_v1.py", "sha256": "1eed9ac73a5bc3cb974b9f716d81015cf9c173acb498cf96862d880002074ab7"},
+    {"role": "state_aware_execution_tests", "path": "tests/test_sec_edgar_iapd_wayback_capture_retry_execution_v1.py", "sha256": "3844160ebda57b52f67eb8a31734306c5f903ee717f5ef863e390561a41862ff"},
+    {"role": "v1_1_registry_contract_test", "path": "tests/test_sec_edgar_iapd_wayback_capture_retry_execution_registry_v1.py", "sha256": "8bdff3d991b8af876eec852549c40152ec367c0bd2aa75e430f13e7d57bd6afd"},
+    {"role": "historical_documentation_unchanged", "path": "docs/sec-edgar-iapd-wayback-capture-retry-execution-v1.md", "sha256": "bfacd2a6383c041e4544bd7b3ff6068ff35f668ecf11ea1180be1ad0273afedc"}
+  ],
+  "outputs": [],
+  "findings": {
+    "partial_reserved_before_network": true,
+    "below_minimum_response_diagnostics_preserved": true,
+    "completed_57_byte_hashes_preflighted": true,
+    "historical_runtime_files_changed": false,
+    "final_output_state_supported_by_tests": true,
+    "v1_post_execution_verifier_limitation_preserved_and_documented": true
+  },
+  "decision": {
+    "historical_v1_registry_preserved": true,
+    "v1_runtime_may_be_reexecuted": false,
+    "v1_result_qa_is_authoritative": false,
+    "v2_result_qa_is_authoritative": true,
+    "training_allowed": false
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "raw_files_modified": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

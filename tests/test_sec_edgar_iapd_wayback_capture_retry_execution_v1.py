@@ -66,7 +66,10 @@ class SecEdgarIapdWaybackCaptureRetryExecutionV1Tests(unittest.TestCase):
             self.assertEqual(result["response_diagnostics"]["response_sha256"], hashlib.sha256(payload).hexdigest())
 
     def test_real_release_gate_is_closed_before_not_before(self) -> None:
-        with self.assertRaisesRegex(PermissionError, "not-before gate is closed"):
+        release = json.loads(RELEASE.read_text(encoding="utf-8"))
+        output = Path(release["planned_output"]["path"])
+        expected = "independent recomputation failed" if output.exists() else "not-before gate is closed"
+        with self.assertRaisesRegex(PermissionError, expected):
             execute(RELEASE, RELEASE_QA, datetime.fromisoformat("2026-10-22T23:00:00+07:00"))
 
     def test_failure_result_verifier_keeps_quarantine(self) -> None:
@@ -81,8 +84,13 @@ class SecEdgarIapdWaybackCaptureRetryExecutionV1Tests(unittest.TestCase):
             report_path = Path(tmp) / "report.json"
             report_path.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
             qa = verify(RELEASE, RELEASE_QA, report_path)
-        self.assertEqual(qa["status"], "PASS_RETRY_FAILURE_PRESERVED_QUARANTINE_REMAINS")
-        self.assertFalse(qa["decision"]["supplemental_pipeline_may_be_prepared"])
+        planned_output = Path(json.loads(RELEASE.read_text(encoding="utf-8"))["planned_output"]["path"])
+        if planned_output.exists():
+            self.assertEqual(qa["status"], "FAIL")
+            self.assertIn("Retry release independent recomputation failed", qa["errors"][0])
+        else:
+            self.assertEqual(qa["status"], "PASS_RETRY_FAILURE_PRESERVED_QUARANTINE_REMAINS")
+            self.assertFalse(qa["decision"]["supplemental_pipeline_may_be_prepared"])
 
 
 if __name__ == "__main__":

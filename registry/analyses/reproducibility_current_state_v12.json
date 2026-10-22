@@ -1,0 +1,55 @@
+{
+  "analysis_id": "ISI_REPRODUCIBILITY_CURRENT_STATE_V12",
+  "created_at": "2026-10-22",
+  "status": "FROZEN_CURRENT_GUIDE_LEDGER_V14_CAPTURE_RETRY_QUARANTINED",
+  "purpose": "Replace V11 navigation with the verified one-row retry outcome and close repeated use of the same failed replay timestamp.",
+  "current_entrypoint": "registry/analyses/project_state_gap_ledger_v14.json",
+  "inputs": [
+    {"role": "project_state_v14", "path": "registry/analyses/project_state_gap_ledger_v14.json", "sha256": "ca8c712e4e7aabb1cedea640068d7885778fdba841c222335d523ae478f31c61"},
+    {"role": "prior_reproducibility_state_v11", "path": "registry/analyses/reproducibility_current_state_v11.json", "sha256": "0992c34b272e41f3c7246a90b078b319f52eddb907c5bcb6fe235689358033f4"},
+    {"role": "capture_retry_result_v1", "path": "registry/analyses/sec_edgar_iapd_wayback_capture_retry_result_v1.json", "sha256": "e51d071322d0b56f96ccb9224980c468917e8b06d7ff0b4d82802240f5b24d21"}
+  ],
+  "implementation": [
+    {"role": "guide_contract_tests", "path": "tests/test_reproducibility_current_state_v12.py", "sha256": "c6542f5971946416ca205c0c7dc944121e9e170769134603ab9771112b969a6f"}
+  ],
+  "output": {"role": "reproducibility_guide_v12", "path": "docs/reproducibility-current-state-v12.md", "sha256": "025a609ca571a6276dd4f5fe9222f4e46846783a8c27aecee1bc20fb2bf54315"},
+  "current_sec_iapd_state": {
+    "availability_planned": 115,
+    "availability_resolved": 113,
+    "availability_unresolved": 2,
+    "capture_planned": 58,
+    "captured": 57,
+    "capture_quarantined": true,
+    "capture_retry_executed": true,
+    "capture_retry_http_status": 200,
+    "capture_retry_response_bytes": 42,
+    "capture_retry_repeat_failure": true,
+    "reviewable": 56,
+    "owner_accepted_labels": 42,
+    "uncertain_retained": 14,
+    "training_eligible_records": 0
+  },
+  "data_sufficiency": {
+    "historical_train_rows": 3916,
+    "accepted_development_legitimate_candidates": 33,
+    "fresh_v1_core_admitted_groups": 0,
+    "fresh_v1_core_required_groups": 300,
+    "partial_candidate_supply_is_training_rows": false
+  },
+  "decision": {
+    "guide_v12_is_authoritative_navigation_entry": true,
+    "guide_v1_through_v11_preserved_as_historical_snapshots": true,
+    "same_snapshot_retry_allowed": false,
+    "alternate_snapshot_protocol_may_be_prepared_offline": true,
+    "future_availability_retry_requires_new_release_and_tooling": true,
+    "candidate_domain_access_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false,
+    "model_scoring_allowed": false,
+    "next_gate": "Prepare separate CDX alternate-snapshot and V11 availability protocols; do not repeat the failed replay URL or mutate the frozen review snapshot."
+  },
+  "safety_contract": {
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

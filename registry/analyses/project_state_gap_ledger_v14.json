@@ -1,0 +1,75 @@
+{
+  "analysis_id": "ISI_PROJECT_STATE_GAP_LEDGER_V14",
+  "created_at": "2026-10-22",
+  "base_commit": "674b9bbf312af717b7f6a8ce0178f98eadce73f5",
+  "status": "FROZEN_CAPTURE_RETRY_COMPLETE_REPEAT_FAILURE_QUARANTINE_REMAINS",
+  "purpose": "Replace ledger V13 with the verified one-row retry outcome while preserving all completed capture, review, owner-acceptance, and availability artifacts.",
+  "inputs": [
+    {"role": "prior_state_v13", "path": "registry/analyses/project_state_gap_ledger_v13.json", "sha256": "ba5df8c304af7dd7fbdc1ac3bfa8987417da06ce5d824f068dea4c54895dc030"},
+    {"role": "capture_retry_result_v1", "path": "registry/analyses/sec_edgar_iapd_wayback_capture_retry_result_v1.json", "sha256": "e51d071322d0b56f96ccb9224980c468917e8b06d7ff0b4d82802240f5b24d21"},
+    {"role": "owner_acceptance_result_v2", "path": "registry/analyses/sec_edgar_iapd_owner_acceptance_result_v2.json", "sha256": "ea8a4a3b681a51d3a0051508505b6b1ff68330384af982fcb2fba501ff7d98ef"}
+  ],
+  "implementation": [
+    {"role": "human_readable_ledger", "path": "docs/project-state-gap-ledger-v14.md", "sha256": "5c273e487ed739c2dd9ab7e9fc54ea21af3acb146286902fc6f54c0aa17ca162"},
+    {"role": "ledger_contract_tests", "path": "tests/test_project_state_gap_ledger_v14.py", "sha256": "27408af9aac6e48e06c049fe1658616408824d5d52de78f0f3a1b82677121aa1"}
+  ],
+  "state_amendments": {
+    "P1_SEC_IAPD": {
+      "availability_planned": 115,
+      "availability_resolved": 113,
+      "availability_available": 58,
+      "availability_unavailable": 55,
+      "availability_unresolved": 2,
+      "v10_must_never_be_rerun": true,
+      "capture_planned": 58,
+      "captured": 57,
+      "capture_failed_quarantined": 1,
+      "capture_retry_executed": true,
+      "capture_retry_network_requests": 1,
+      "capture_retry_http_status": 200,
+      "capture_retry_response_bytes": 42,
+      "capture_retry_repeat_failure": true,
+      "capture_retry_stopped_on_http_429": false,
+      "reviewable": 56,
+      "owner_accepted_labels": 42,
+      "uncertain_retained": 14,
+      "accepted_by_cohort": {"DEVELOPMENT": 33, "EXTERNAL_HOLDOUT": 9},
+      "training_eligible_records": 0,
+      "model_scoring_eligible_records": 0,
+      "holdout_subset_representative": false
+    },
+    "P2_DATA_SUFFICIENCY": {
+      "historical_baseline_train_rows": 3916,
+      "owner_accepted_development_legitimate_candidates": 33,
+      "owner_accepted_development_confirmed_candidates": 0,
+      "fresh_v1_core_admitted_groups": 0,
+      "fresh_v1_core_required_groups": 300,
+      "partial_candidate_supply_is_training_release": false
+    }
+  },
+  "remaining_external_or_timed_gates": [
+    {"gate": "SEC_IAPD_CAPTURE_ALTERNATE_SNAPSHOT", "status": "SEPARATE_CDX_PROTOCOL_REQUIRED", "scope": "one quarantined development row; same replay timestamp closed"},
+    {"gate": "SEC_IAPD_AVAILABILITY_V11", "status": "NEW_POLICY_COMPLIANT_RELEASE_AND_TOOLING_REQUIRED", "scope": "two quarantined external-holdout availability rows only"},
+    {"gate": "V1_CORE_CAPACITY", "status": "INSUFFICIENT_BALANCED_SUPPLY", "scope": "300 disjoint balanced groups with channel and language constraints"},
+    {"gate": "CRIMSON_HUMAN_REVIEW", "status": "HUMAN_REVIEWER_OR_EXTERNAL_EVIDENCE_REQUIRED"},
+    {"gate": "MANUAL_SOURCE_INPUTS", "status": "LAWFUL_ARTIFACT_OR_PERMISSION_REQUIRED"}
+  ],
+  "decision": {
+    "capture_retry_complete": true,
+    "capture_retry_quarantine_remains": true,
+    "same_snapshot_retry_allowed": false,
+    "alternate_snapshot_protocol_may_be_prepared_offline": true,
+    "completed_capture_review_acceptance_immutable": true,
+    "future_availability_retry_requires_new_release": true,
+    "v1_core_release_ready": false,
+    "candidate_live_domain_access_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Prepare a hash-bound CDX alternate-snapshot protocol for the one quarantined row and separately prepare policy-compliant V11 availability tooling; do not repeat the same replay URL."
+  },
+  "safety_contract": {
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

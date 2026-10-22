@@ -1,0 +1,58 @@
+{
+  "analysis_id": "ISI_REPRODUCIBILITY_CURRENT_STATE_V10",
+  "created_at": "2026-10-22",
+  "status": "FROZEN_CURRENT_GUIDE_LEDGER_V12_OWNER_ACCEPTED_TIMED_RETRIES_ISOLATED",
+  "purpose": "Replace V9 navigation with the completed captured-subset review and owner acceptance while preserving independent V10 availability and one-row capture retry gates.",
+  "current_entrypoint": "registry/analyses/project_state_gap_ledger_v12.json",
+  "inputs": [
+    {"role": "project_state_v12", "path": "registry/analyses/project_state_gap_ledger_v12.json", "sha256": "78f18bf0ec4bfa41afad19e139ea43f09010914362591d6d37d217d89c2d548f"},
+    {"role": "prior_reproducibility_state_v9", "path": "registry/analyses/reproducibility_current_state_v9.json", "sha256": "712e65f513f98c6b17c39f2e1c9b5ec981857ad47a79fe5bff6ce0bc497e3f7d"},
+    {"role": "owner_acceptance_result_v2", "path": "registry/analyses/sec_edgar_iapd_owner_acceptance_result_v2.json", "sha256": "ea8a4a3b681a51d3a0051508505b6b1ff68330384af982fcb2fba501ff7d98ef"},
+    {"role": "availability_retry_v10", "path": "registry/analyses/sec_edgar_iapd_wayback_availability_retry_release_v10.json", "sha256": "f0266cac850e9760dce3b11169a764ca879477e6fef745bb5e9aef9132932d88"},
+    {"role": "missing_capture_retry_v1", "path": "registry/analyses/sec_edgar_iapd_wayback_capture_missing_row_retry_release_v1.json", "sha256": "6114db1613297da1d9fbf68feb7385939bca1a5127fa4326f37c04fe8470cc5f"}
+  ],
+  "implementation": [
+    {"role": "guide_contract_tests", "path": "tests/test_reproducibility_current_state_v10.py", "sha256": "e6b975fe56075ab9264233bb0ed4a821d5599cf123183b4debc75e1e60c8b336"}
+  ],
+  "output": {"role": "reproducibility_guide_v10", "path": "docs/reproducibility-current-state-v10.md", "sha256": "906f4e6152ae11a49c3a796ae854fdf50cd7943dfefb6fe64aa863df072a2d9d"},
+  "current_sec_iapd_state": {
+    "availability_planned": 115,
+    "availability_resolved": 113,
+    "availability_unresolved": 2,
+    "capture_planned": 58,
+    "captured": 57,
+    "capture_quarantined": 1,
+    "reviewable": 56,
+    "owner_accepted_labels": 42,
+    "uncertain_retained": 14,
+    "accepted_by_cohort": {"DEVELOPMENT": 33, "EXTERNAL_HOLDOUT": 9},
+    "training_eligible_records": 0,
+    "v10_not_before": "2026-10-22T18:18:58.983066+07:00",
+    "capture_retry_not_before": "2026-10-22T23:08:09.711801+07:00",
+    "partial_auto_resume_allowed": false
+  },
+  "data_sufficiency": {
+    "historical_train_rows": 3916,
+    "accepted_development_legitimate_candidates": 33,
+    "fresh_v1_core_admitted_groups": 0,
+    "fresh_v1_core_required_groups": 300,
+    "partial_candidate_supply_is_training_rows": false
+  },
+  "decision": {
+    "guide_v10_is_authoritative_navigation_entry": true,
+    "guide_v1_through_v9_preserved_as_historical_snapshots": true,
+    "capacity_gap_update_allowed_now": true,
+    "candidate_domain_access_allowed": false,
+    "network_execution_allowed_now": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false,
+    "model_scoring_allowed": false,
+    "next_gate": "Run the offline V1-Core capacity-gap update; leave V10 availability and the one-row capture retry to their independent not-before gates."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "raw_file_modifications": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

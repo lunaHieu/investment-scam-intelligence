@@ -1,0 +1,55 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_IAPD_OWNER_ACCEPTANCE_RESULT_V2",
+  "created_at": "2026-10-22",
+  "status": "PASS_OWNER_ACCEPTED_42_LEGITIMATE_14_UNCERTAIN_TRAINING_CLOSED",
+  "purpose": "Register the project owner's hash-bound acceptance of the frozen 56-row reconciliation, materialize only the 42 agreed LEGITIMATE labels, retain 14 UNCERTAIN records without labels, and keep dataset, scoring and training gates closed.",
+  "inputs": [
+    {"role": "review_reconciliation_v2", "path": "registry/analyses/sec_edgar_iapd_review_reconciliation_v2.json", "sha256": "a49bfdc8107d5b032661353f7d26acf4709ec031a2de04c943a3567500e3f719"},
+    {"role": "predeclared_owner_acceptance_tooling_v1", "path": "registry/analyses/sec_edgar_iapd_owner_acceptance_tooling_v1.json", "sha256": "e5d429dfb9e9aade6a398bae2a371cfc76826d5705d2a9f1cb46715bc1c7707d"},
+    {"role": "owner_authorization_v2", "path": "configs/sec_edgar_iapd_owner_acceptance_authorization_v2.json", "sha256": "fac8493f4cade81f4f437e5e40bfe97e809d827ae6456385fb062ad5f22bbf45"}
+  ],
+  "implementation": [
+    {"role": "pending_packet_builder_v2", "path": "scripts/build_sec_edgar_iapd_owner_acceptance_packet_v2.py", "sha256": "b267f6fa81fa9a10ee979936607e1915c4b3933b47378e44af5b7317a2806ac4"},
+    {"role": "owner_decision_recorder_v2", "path": "scripts/record_sec_edgar_iapd_owner_acceptance_v2.py", "sha256": "5bb16a5cd445c02c5bd6edc2355b67fac4d84601c9651c4277cf58a36170f3f7"},
+    {"role": "owner_acceptance_materializer_v2", "path": "scripts/materialize_sec_edgar_iapd_owner_acceptance_v2.py", "sha256": "0adf79276d58a3f3f5c3cfa922e2860f7b767699e0db99454b09f388fcb919f5"},
+    {"role": "owner_acceptance_verifier_v2", "path": "scripts/verify_sec_edgar_iapd_owner_acceptance_v2.py", "sha256": "506c292a1968ff5788a4e0599921f16085b434d91eaa38834aeb73d7b40760e6"},
+    {"role": "owner_acceptance_tests_v2", "path": "tests/test_sec_edgar_iapd_owner_acceptance_v2.py", "sha256": "b37a3599aed6586b52aab916f5caa3a845418687ad0e2fa993e66a530b20bbaa"},
+    {"role": "registry_contract_test", "path": "tests/test_sec_edgar_iapd_owner_acceptance_registry_v2.py", "sha256": "4cf68bbc8fe711810c4d78b33dc1bd71693e9be2d5be54705e995e96e6d3f640"},
+    {"role": "human_readable_documentation", "path": "docs/sec-edgar-iapd-owner-acceptance-v2.md", "sha256": "99030f079578773fc1e33efbaf3f67f401c060bcc2ef16be70d350791de0be9b"}
+  ],
+  "outputs": [
+    {"role": "pending_owner_acceptance_packet_v2", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_post_capture_grouping_result_v2\\owner_acceptance_packet_v2.json", "sha256": "5bc1fa54bf6ff242f94b0db260bbf59ba802e6c9dc7400c671e6bb4d42a1b7e9"},
+    {"role": "completed_owner_acceptance_v2", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_post_capture_grouping_result_v2\\owner_acceptance_v2.json", "sha256": "d93d476fc14e65d4b1fbad76a25fcf7a876814c16034b21b1eb9fb521f7a9b83"},
+    {"role": "owner_accepted_records_v2", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_post_capture_grouping_result_v2\\owner_accepted_records_v2.json", "sha256": "3b66a9198944be005e460b050119a17c58f3efc4ef8c3bed825c0d1e63ded153"},
+    {"role": "owner_acceptance_independent_qa_v2", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_post_capture_grouping_result_v2\\owner_acceptance_independent_qa_v2.json", "sha256": "8f3af30f2029f53fb643f80a40c6fb6b89f32b869aaed8574539d1342fe9216c"}
+  ],
+  "result": {
+    "reconciled_records": 56,
+    "accepted_labels": 42,
+    "uncertain_retained": 14,
+    "accepted_by_cohort": {"DEVELOPMENT": 33, "EXTERNAL_HOLDOUT": 9},
+    "uncertain_by_cohort": {"DEVELOPMENT": 11, "EXTERNAL_HOLDOUT": 3},
+    "capture_quarantined_rows_outside_scope": 1,
+    "below_minimum_rows_outside_scope": 1,
+    "training_eligible_records": 0,
+    "model_scoring_eligible_records": 0
+  },
+  "decision": {
+    "owner_acceptance_complete": true,
+    "materialization_qa_passed": true,
+    "capacity_gap_update_may_be_prepared": true,
+    "v1_core_release_ready": false,
+    "external_holdout_training_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Recompute the V1-Core capacity deficit using 33 accepted DEVELOPMENT LEGITIMATE candidates while retaining the exact 300-group balance, channel, language and disjointness contract; do not release or train on this partial cohort."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "candidate_domain_access_operations": 0,
+    "model_operations": 0,
+    "validation_or_test_openings": 0,
+    "training_allowed": false
+  }
+}

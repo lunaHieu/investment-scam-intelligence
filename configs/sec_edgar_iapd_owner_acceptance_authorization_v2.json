@@ -1,0 +1,29 @@
+{
+  "authorization_id": "ISI_SEC_EDGAR_IAPD_OWNER_AUTHORIZATION_V2",
+  "accepted_at": "2026-10-22T15:36:14.7748285+07:00",
+  "adopter_role": "PROJECT_OWNER",
+  "authorization_source": "User instruction 'tiến hành đi' after receiving the completed reconciliation report: 42 LEGITIMATE recommendations, 14 UNCERTAIN records, seven reviewer disagreements, and the explicit owner-acceptance gate.",
+  "status": "FROZEN_OWNER_AUTHORIZATION",
+  "reconciliation_sha256": "91f4d405e3ac69ac9649f57b64e5005b86fdae143eef670cc4037cad0bc27fdd",
+  "reconciliation_qa_sha256": "b3004ec5a363070158b7f9ea6057feace167b95a45422373ee72bea2d9f84612",
+  "scope": {
+    "expected_records": 56,
+    "expected_recommendations": {
+      "LEGITIMATE": 42,
+      "UNCERTAIN": 14
+    }
+  },
+  "owner_attestation": {
+    "reviewed_reconciliation_snapshot": true,
+    "explicit_acceptance": true,
+    "independent_evidence_rereview_claimed": false
+  },
+  "decision_policy": {
+    "accept_all_reconciled_legitimate": true,
+    "retain_all_uncertain_without_label": true,
+    "external_holdout_training_allowed": false,
+    "training_allowed_now": false,
+    "model_scoring_allowed_now": false,
+    "validation_or_test_opening_allowed": false
+  }
+}

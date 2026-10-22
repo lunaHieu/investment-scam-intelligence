@@ -1,0 +1,89 @@
+{
+  "analysis_id": "ISI_PROJECT_STATE_GAP_LEDGER_V12",
+  "created_at": "2026-10-22",
+  "base_commit": "ce5fd9fdbff826587acde9d65ee072c3017e118f",
+  "status": "FROZEN_CAPTURED_SUBSET_OWNER_ACCEPTED_TIMED_RETRIES_ISOLATED",
+  "purpose": "Replace ledger V11 with the verified 57-row capture, 56-row review stack, 42-label owner acceptance, 14 retained uncertainties, and still-isolated V10 and missing-capture retry gates.",
+  "inputs": [
+    {"role": "prior_state_v11", "path": "registry/analyses/project_state_gap_ledger_v11.json", "sha256": "d6d89148ba3f8e46d2f8960a4d3fc1ccd2ba69765c9c7c94401e4046b706ac06"},
+    {"role": "capture_result_v1", "path": "registry/analyses/sec_edgar_iapd_wayback_capture_result_v1.json", "sha256": "78fa220dc18693ab00a263dc2287bc08e79a97d6af8180b1a0ddca0311f6a92d"},
+    {"role": "captured_subset_post_capture_v2", "path": "registry/analyses/sec_edgar_iapd_captured_subset_post_capture_v2.json", "sha256": "c3b5d0d17fa96b008fbe1b419bc24ca79e1b1fbe2bc3562aef6c0aebfa2b4891"},
+    {"role": "review_reconciliation_v2", "path": "registry/analyses/sec_edgar_iapd_review_reconciliation_v2.json", "sha256": "a49bfdc8107d5b032661353f7d26acf4709ec031a2de04c943a3567500e3f719"},
+    {"role": "owner_acceptance_result_v2", "path": "registry/analyses/sec_edgar_iapd_owner_acceptance_result_v2.json", "sha256": "ea8a4a3b681a51d3a0051508505b6b1ff68330384af982fcb2fba501ff7d98ef"},
+    {"role": "missing_capture_retry_v1", "path": "registry/analyses/sec_edgar_iapd_wayback_capture_missing_row_retry_release_v1.json", "sha256": "6114db1613297da1d9fbf68feb7385939bca1a5127fa4326f37c04fe8470cc5f"},
+    {"role": "availability_retry_v10", "path": "registry/analyses/sec_edgar_iapd_wayback_availability_retry_release_v10.json", "sha256": "f0266cac850e9760dce3b11169a764ca879477e6fef745bb5e9aef9132932d88"}
+  ],
+  "implementation": [
+    {"role": "human_readable_ledger", "path": "docs/project-state-gap-ledger-v12.md", "sha256": "19540628190c9415c43032ebaf4766c15631d00762d38c33dc771fa2109b3363"},
+    {"role": "ledger_contract_tests", "path": "tests/test_project_state_gap_ledger_v12.py", "sha256": "0f1b4b12e3f1de35b66b15c64b9fc2fc7fb57ab149fa9f375bef241c6454757e"}
+  ],
+  "state_amendments": {
+    "P1_SEC_IAPD": {
+      "availability_planned": 115,
+      "availability_resolved": 113,
+      "availability_available": 58,
+      "availability_unavailable": 55,
+      "availability_unresolved": 2,
+      "v10_retry_rows": 2,
+      "v10_not_before": "2026-10-22T18:18:58.983066+07:00",
+      "capture_planned": 58,
+      "captured": 57,
+      "captured_by_cohort": {"DEVELOPMENT": 45, "EXTERNAL_HOLDOUT": 12},
+      "capture_failed_quarantined": 1,
+      "capture_retry_not_before": "2026-10-22T23:08:09.711801+07:00",
+      "exact_text_reproduced": 57,
+      "below_minimum_excluded": 1,
+      "reviewable": 56,
+      "owner_accepted_labels": 42,
+      "uncertain_retained": 14,
+      "accepted_by_cohort": {"DEVELOPMENT": 33, "EXTERNAL_HOLDOUT": 9},
+      "uncertain_by_cohort": {"DEVELOPMENT": 11, "EXTERNAL_HOLDOUT": 3},
+      "training_eligible_records": 0,
+      "model_scoring_eligible_records": 0,
+      "holdout_subset_representative": false
+    },
+    "P2_DATA_SUFFICIENCY": {
+      "historical_baseline_train_rows": 3916,
+      "owner_accepted_development_legitimate_candidates": 33,
+      "owner_accepted_development_confirmed_candidates": 0,
+      "fresh_v1_core_admitted_groups": 0,
+      "fresh_v1_core_required_groups": 300,
+      "development_legitimate_required": 120,
+      "development_confirmed_required": 120,
+      "external_holdout_legitimate_required": 30,
+      "external_holdout_confirmed_required": 30,
+      "partial_candidate_supply_is_training_release": false
+    },
+    "P4_CRIMSON": {"status": "HUMAN_REVIEWER_OR_EXTERNAL_EVIDENCE_REQUIRED"},
+    "P6_MANUAL_ACQUISITION": {
+      "dfpi": "PENDING_USER_SUPPLIED_LAWFUL_FIRST_PARTY_ARTIFACT",
+      "ssc_hnx": "BLOCKED_PENDING_EXPORT_OR_REUSE_BASIS",
+      "verified_vietnamese_supply": 0,
+      "usable_image_assets": 0
+    }
+  },
+  "remaining_external_or_timed_gates": [
+    {"gate": "SEC_IAPD_V10", "status": "WAITING_NOT_BEFORE", "not_before": "2026-10-22T18:18:58.983066+07:00", "scope": "two quarantined unresolved availability rows only"},
+    {"gate": "SEC_IAPD_CAPTURE_MISSING_ROW_RETRY_V1", "status": "WAITING_NOT_BEFORE", "not_before": "2026-10-22T23:08:09.711801+07:00", "scope": "one quarantined failed capture only"},
+    {"gate": "V1_CORE_CAPACITY", "status": "INSUFFICIENT_BALANCED_SUPPLY", "scope": "300 disjoint balanced groups with channel and language constraints"},
+    {"gate": "CRIMSON_HUMAN_REVIEW", "status": "HUMAN_REVIEWER_OR_EXTERNAL_EVIDENCE_REQUIRED"},
+    {"gate": "MANUAL_SOURCE_INPUTS", "status": "LAWFUL_ARTIFACT_OR_PERMISSION_REQUIRED"}
+  ],
+  "decision": {
+    "owner_acceptance_complete": true,
+    "capacity_gap_update_allowed_now": true,
+    "v1_core_release_ready": false,
+    "network_execution_allowed_now": false,
+    "candidate_live_domain_access_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Run an offline hash-bound V1-Core capacity-gap update using the 33 accepted development LEGITIMATE candidates while timed retries remain independently scheduled."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "raw_file_modifications": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

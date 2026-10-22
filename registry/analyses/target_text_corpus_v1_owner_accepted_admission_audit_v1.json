@@ -1,0 +1,51 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_OWNER_ACCEPTED_ADMISSION_AUDIT_V1",
+  "created_at": "2026-10-22",
+  "status": "PASS_42_LABELS_PRESERVED_0_FULLY_ADMISSIBLE_BLOCKERS_IDENTIFIED",
+  "purpose": "Audit the 42 SEC/IAPD owner-accepted labels against every frozen V1-Core record field without changing labels or silently crediting derivable fields.",
+  "inputs": [
+    {"role": "v1_core_contract", "path": "configs/target_text_corpus_v1_core_release_contract_v1.json", "sha256": "827ad1e5785c37352a47542a5be614f6f0fde9db8bcd96618d43e4ba0f668dea"},
+    {"role": "owner_accepted_records", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_post_capture_grouping_result_v2\\owner_accepted_records_v2.json", "sha256": "3b66a9198944be005e460b050119a17c58f3efc4ef8c3bed825c0d1e63ded153"},
+    {"role": "post_capture_grouping", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_post_capture_grouping_result_v2\\post_capture_exclusion_grouping_v2.json", "sha256": "15d17dddf0315018cd781b19cad209ee9e3fd40c733bae86893a33d09acc7180"}
+  ],
+  "implementation": [
+    {"role": "human_readable_audit", "path": "docs/target-text-corpus-v1-owner-accepted-admission-audit-v1.md", "sha256": "d5701536aa9200f7a3506c8f827f366b9dc020283335c31abbc8e2b579a162df"},
+    {"role": "audit_contract_test", "path": "tests/test_target_text_corpus_v1_owner_accepted_admission_audit_v1.py", "sha256": "c1f9239637086b4f3aa0290c4cf7d8bdaaacf5d04eb8936f373a7c11c689b9d7"}
+  ],
+  "result": {
+    "audited_records": 42,
+    "owner_accepted_labels_preserved": 42,
+    "fully_v1_core_compliant_now": 0,
+    "verified_or_mechanically_recoverable": {
+      "target_status_and_cohort": 42,
+      "raw_capture_and_text_hashes": 42,
+      "visible_text": 42,
+      "opened_cohort_exclusion": 42,
+      "high_evidence_confidence": 42,
+      "review_reconciliation_acceptance_provenance": 42,
+      "archive_replay_url": 42
+    },
+    "blocking_field_counts": {
+      "channel_contribution_qa_sha256": 42,
+      "human_reviewed_language": 42,
+      "fresh_cohort_assertion": 42,
+      "full_release_cross_partition_exclusion": 42,
+      "transitive_group_id": 42,
+      "case_campaign_group_id": 42,
+      "entity_domain_family_group_id": 42,
+      "near_duplicate_group_id": 42,
+      "final_release_eligibility": 42
+    }
+  },
+  "decision": {
+    "labels_remain_valid": true,
+    "channel_contribution_builder_may_be_predeclared": true,
+    "partial_channel_release_allowed": false,
+    "group_split_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Predeclare EDGAR channel-contribution assembly and verification, then complete missing channel and language supply before materializing any 300-group release."
+  },
+  "safety_contract": {"network_operations": 0, "candidate_domain_access_operations": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

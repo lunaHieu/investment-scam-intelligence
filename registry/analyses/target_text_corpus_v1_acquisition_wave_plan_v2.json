@@ -1,0 +1,39 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_ACQUISITION_WAVE_PLAN_V2",
+  "created_at": "2026-10-22",
+  "status": "PASS_OFFLINE_WAVE_PLAN_VERIFIED_SOURCE_GATES_CLOSED",
+  "purpose": "Register the independently verified residual four-channel acquisition plan without authorizing enumeration, network access, capture, labels, or model use.",
+  "inputs": [
+    {"role": "wave_plan", "path": "configs/target_text_corpus_v1_acquisition_wave_plan_v2.json", "sha256": "870690f4dfda79ec308b78e50ec02e955a32e1f5172b933f1aa40ba213ae1c78"}
+  ],
+  "implementation": [
+    {"role": "independent_verifier", "path": "scripts/verify_target_text_corpus_v1_acquisition_wave_plan_v2.py", "sha256": "5d69565abf2b0d4492133b41548e7d7aaf80d934bd2eef2d7a6df05247259716"},
+    {"role": "verifier_tests", "path": "tests/test_target_text_corpus_v1_acquisition_wave_plan_v2.py", "sha256": "0fcfadc0a14b82b4cae788fcab95cd92700feae6bfb20e41d6e2ef5e0773939d"},
+    {"role": "registry_contract_test", "path": "tests/test_target_text_corpus_v1_acquisition_wave_plan_registry_v2.py", "sha256": "d19859b851db00d30c46852bac022c5661cb053af17771e1d1046cf6c9c09a22"},
+    {"role": "human_readable_documentation", "path": "docs/target-text-corpus-v1-acquisition-wave-plan-v2.md", "sha256": "dcb4492574e5c57279a9c0f453dd52c460a21f17cd01ccbfaadd7e795fbb2af0"}
+  ],
+  "outputs": [
+    {"role": "independent_plan_qa", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\acquisition_wave_plan_v2\\independent_qa_v2.json", "sha256": "ac4757f553feda8f04833232a3afa6139acab9f14bc8ee2e145d6f85fc06131f"}
+  ],
+  "result": {
+    "channel_count": 4,
+    "development_residual_target": 207,
+    "external_holdout_residual_target": 51,
+    "conditional_owner_accepted_supply": 42,
+    "development_holdout_namespaces_disjoint": true,
+    "cftc_channel_blocked": true,
+    "language_credit": 0
+  },
+  "decision": {
+    "plan_verified": true,
+    "ready_channel_enumeration_release_may_be_prepared": true,
+    "candidate_enumeration_allowed_now": false,
+    "network_allowed_now": false,
+    "capture_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Build separately hash-bound enumeration releases for the regulator, IAPD and residual EDGAR channels; keep CFTC closed pending a documented capacity route."
+  },
+  "safety_contract": {"network_operations": 0, "candidate_domain_access_operations": 0, "new_candidates_enumerated": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

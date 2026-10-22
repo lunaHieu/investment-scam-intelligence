@@ -1,0 +1,50 @@
+{
+  "plan_id": "ISI_TARGET_TEXT_CORPUS_V1_ACQUISITION_WAVE_PLAN_V2",
+  "created_at": "2026-10-22",
+  "status": "FROZEN_OFFLINE_PLAN_SOURCE_GATES_REMAIN_CLOSED",
+  "purpose": "Freeze source-specific residual acquisition targets after owner acceptance without authorizing enumeration, network access, capture, labeling, or model use.",
+  "inputs": [
+    {"role": "sampling_matrix", "path": "configs/target_text_corpus_v1_sampling_matrix_v1.json", "sha256": "19faaa4e2e0edfd87a403f6e39df96c763a7e0ae5890cebe6cc3adbb3c40176b"},
+    {"role": "source_capacity_protocol", "path": "configs/target_text_corpus_v1_source_capacity_amendment_protocol_v1.json", "sha256": "6ae98618cbd7c67084c072d88bf9ad820e7cd5370ab52cc85f0feb46cb516aed"},
+    {"role": "capacity_gap_v3", "path": "registry/analyses/target_text_corpus_v1_capacity_gap_v3.json", "sha256": "3e386e7ff6a32616d3c2fde71b947075e2c80c790a52cc20eb91af78d8af759c"},
+    {"role": "admission_audit_v1", "path": "registry/analyses/target_text_corpus_v1_owner_accepted_admission_audit_v1.json", "sha256": "f5a14d4b469057f78bef08cdabdc71f88efe76d7647377a78134136225eabae5"}
+  ],
+  "selection_contract": {
+    "deterministic_key": "SHA256(frozen_seed|cohort_namespace|channel_id|source_id|source_record_id|normalized_host)",
+    "development_namespace": "ISI_V1_CORE_DEVELOPMENT_WAVE_V2",
+    "external_holdout_namespace": "ISI_V1_CORE_EXTERNAL_HOLDOUT_WAVE_V2",
+    "namespace_reuse_allowed": false,
+    "opened_or_owner_accepted_host_reuse_allowed": false,
+    "cross_channel_host_overlap_allowed": false,
+    "manual_cherry_picking_allowed": false,
+    "model_ranking_allowed": false
+  },
+  "waves": [
+    {"channel_id": "CONFIRMED_REGULATOR_LINKED_WEBSITE", "development_accepted_target": 60, "external_holdout_accepted_target": 15, "current_owner_accepted_supply": 0, "source_capacity_status": "REFERENCE_POOL_CAPACITY_PASS_ENUMERATION_RELEASE_REQUIRED", "network_release_allowed_now": false},
+    {"channel_id": "CONFIRMED_CFTC_RED_LINKED_WAYBACK_WEBSITE", "development_accepted_target": 60, "external_holdout_accepted_target": 15, "current_owner_accepted_supply": 0, "source_capacity_status": "BLOCKED_NO_DOCUMENTED_BULK_OR_API_CAPACITY", "network_release_allowed_now": false},
+    {"channel_id": "LEGITIMATE_REGISTER_LINKED_WEBSITE", "development_accepted_target": 60, "external_holdout_accepted_target": 15, "current_owner_accepted_supply": 0, "source_capacity_status": "REFERENCE_POOL_CAPACITY_PASS_ENUMERATION_RELEASE_REQUIRED", "network_release_allowed_now": false},
+    {"channel_id": "LEGITIMATE_SEC_EDGAR_LINKED_WAYBACK_WEBSITE", "development_accepted_target": 27, "external_holdout_accepted_target": 6, "current_owner_accepted_supply": 42, "source_capacity_status": "OFFICIAL_BULK_ROUTE_AVAILABLE_NEW_DISJOINT_INVENTORY_REQUIRED", "network_release_allowed_now": false}
+  ],
+  "language_overlay": {
+    "audited_language_credit_now": 0,
+    "development_non_english_required": 24,
+    "development_vietnamese_required": 12,
+    "external_holdout_non_english_required": 6,
+    "external_holdout_vietnamese_required": 4,
+    "human_review_required": true,
+    "source_domain_or_country_inference_allowed": false,
+    "quota_waiver_allowed": false
+  },
+  "decision": {
+    "plan_frozen": true,
+    "candidate_enumeration_allowed": false,
+    "network_execution_allowed": false,
+    "capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Create separate verified enumeration releases only for channels whose source-capacity and terms gates pass; keep CFTC blocked until a documented lawful capacity route exists."
+  },
+  "safety_contract": {"network_operations": 0, "new_candidates_enumerated": 0, "candidate_domain_access_operations": 0, "captures": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

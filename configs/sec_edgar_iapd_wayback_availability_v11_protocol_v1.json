@@ -1,0 +1,169 @@
+{
+  "protocol_id": "ISI_SEC_EDGAR_IAPD_WAYBACK_AVAILABILITY_V11_PROTOCOL_V1",
+  "created_at": "2026-10-23T00:10:31.644782+07:00",
+  "status": "FROZEN_OFFLINE_TOOLING_ONLY_CONCRETE_RELEASE_REQUIRED",
+  "purpose": "Freeze new policy-compliant tooling and the exact two unresolved external-holdout identities for V11 without reusing the V10 executor or authorizing a network request before the later CDX branch establishes the latest archive-request clock.",
+  "basis": [
+    {
+      "role": "availability_result_registry_v10",
+      "path": "registry/analyses/sec_edgar_iapd_wayback_availability_result_v10.json",
+      "sha256": "df49745dcde32b7f086c11d708ad32d3ec6e3a5cc9a1b263e9fe022718b202bd"
+    },
+    {
+      "role": "capture_retry_result_registry_v1",
+      "path": "registry/analyses/sec_edgar_iapd_wayback_capture_retry_result_v1.json",
+      "sha256": "e51d071322d0b56f96ccb9224980c468917e8b06d7ff0b4d82802240f5b24d21"
+    },
+    {
+      "role": "protocol_verifier_v1",
+      "path": "scripts/verify_sec_edgar_iapd_wayback_availability_v11_protocol_v1.py",
+      "sha256": "8c5c15f0dd7658a97f9c5f3c48175ee7a7cc01d979c7611bf60141408ac58287"
+    },
+    {
+      "role": "future_release_verifier_v11",
+      "path": "scripts/verify_sec_edgar_iapd_wayback_availability_release_v11.py",
+      "sha256": "7d6981778784979c7f4770d16ab26041bdc8a3f540dcfaf360a75c9e57cbab36"
+    },
+    {
+      "role": "new_executor_v11",
+      "path": "scripts/retry_sec_edgar_iapd_wayback_availability_v11.py",
+      "sha256": "a96349cffbadea7fc94cd42f107fbfa035b0746708ee57d3f831b394e8f380ea"
+    },
+    {
+      "role": "future_result_verifier_v11",
+      "path": "scripts/verify_sec_edgar_iapd_wayback_availability_result_v11.py",
+      "sha256": "8d1ffd91eb56cf1613fe4dda94cf2aaad60280935b731eb06a7919eb01b342c1"
+    },
+    {
+      "role": "protocol_tests_v1",
+      "path": "tests/test_sec_edgar_iapd_wayback_availability_v11_protocol_v1.py",
+      "sha256": "ccfe6a85113354b2b44af5f0bc928b4f6067d99dc68251af2837ddf5a45c9056"
+    },
+    {
+      "role": "execution_tests_v11",
+      "path": "tests/test_retry_sec_edgar_iapd_wayback_availability_v11.py",
+      "sha256": "77cf33b45c0849a2b068b2224e9edb1e5a6af5002617ca6d837e202ee00f4fee"
+    },
+    {
+      "role": "result_verifier_tests_v11",
+      "path": "tests/test_verify_sec_edgar_iapd_wayback_availability_result_v11.py",
+      "sha256": "d2c5b9aa71b9aa2731aadff09a399cf152eb0f9d8b387af773b47c3413de5155"
+    }
+  ],
+  "inputs": {
+    "availability_plan": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_availability_plan_v1\\availability_plan_v1.jsonl",
+      "sha256": "28f747ecb489e15b00fb6a33fa51fb10b451057115eff8905e5dd98d27c0ea8f",
+      "record_count": 115,
+      "absolute": true
+    },
+    "availability_report_v10": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_availability_result_v1\\availability_report_v10.json",
+      "sha256": "8ac621db03b63889bb2fdf0dc59574fca591c2d291ad140a32bf07f00142e436",
+      "absolute": true
+    },
+    "independent_qa_v10": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_availability_result_v1\\independent_qa_v10.json",
+      "sha256": "e19d48c36045478b09040a733139df70ab1cb569328202c261f99fc8b195cc67",
+      "absolute": true
+    },
+    "latest_known_archive_request_report_at_protocol_freeze": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_capture_retry_result_v1\\capture_retry_report_v1.json",
+      "sha256": "cfcced8925d35e7685e7fe74c1945690d203fa836e4bf2391a247200bc404d99",
+      "created_at": "2026-10-22T23:35:43.595958+07:00",
+      "absolute": true
+    }
+  },
+  "parent_outcome_contract": {
+    "total_rows": 115,
+    "resolved_rows": 113,
+    "available_rows": 58,
+    "unavailable_rows": 55,
+    "unresolved_rows": 2,
+    "external_holdout_unresolved_rows": 2,
+    "cumulative_network_requests": 168,
+    "resolved_rows_must_remain_byte_equivalent": true
+  },
+  "ordered_retry_rows": [
+    {
+      "availability_plan_id": "TTCV1_EDGAR_AVAIL_HOLDOUT_011",
+      "shortlist_id": "TTCV1_EDGAR_HOLDOUT_012",
+      "cohort": "EXTERNAL_HOLDOUT",
+      "candidate_host": "murphyllc.com",
+      "candidate_url": "https://murphyllc.com/",
+      "query_timestamp": "20261003"
+    },
+    {
+      "availability_plan_id": "TTCV1_EDGAR_AVAIL_HOLDOUT_018",
+      "shortlist_id": "TTCV1_EDGAR_HOLDOUT_021",
+      "cohort": "EXTERNAL_HOLDOUT",
+      "candidate_host": "wealthmanage.net",
+      "candidate_url": "https://wealthmanage.net/",
+      "query_timestamp": "20261003"
+    }
+  ],
+  "network_contract": {
+    "endpoint": "https://archive.org/wayback/available",
+    "allowed_network_hosts": [
+      "archive.org",
+      "web.archive.org"
+    ],
+    "descriptive_user_agent": "ISI-Research/2.0 (gpt-5; https://github.com/lunaHieu/investment-scam-intelligence)",
+    "minimum_delay_seconds": 60.0,
+    "request_rate_per_second_maximum": 0.0166666667,
+    "maximum_retry_rows": 2,
+    "maximum_logical_attempts_per_row": 1,
+    "timeout_seconds": 30,
+    "maximum_redirects": 3,
+    "maximum_response_bytes": 2097152,
+    "required_content_type_prefix": "application/json",
+    "https_only": true,
+    "automatic_external_redirect_following": false,
+    "stop_on_http_429": true,
+    "errors_are_preserved": true,
+    "errors_are_not_interpreted_as_no_snapshot": true,
+    "partial_journal_reserved_before_network": true,
+    "partial_journal_auto_resume_allowed": false,
+    "output_overwrite_allowed": false,
+    "preserved_response_headers": [
+      "Retry-After",
+      "Date",
+      "Server",
+      "Content-Type",
+      "X-Archive-Wayback-Runtime-Error"
+    ]
+  },
+  "future_release_contract": {
+    "concrete_release_required": true,
+    "minimum_cooldown_seconds_after_latest_archive_request": 86400,
+    "absolute_not_before_floor": "2026-10-23T23:35:43.595958+07:00",
+    "must_bind_latest_actual_archive_request": true,
+    "cdx_result_if_executed_must_precede_release_freeze": true,
+    "independent_release_qa_required": true,
+    "planned_output_path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_availability_result_v1\\availability_report_v11.json",
+    "planned_report_id": "ISI_SEC_EDGAR_IAPD_ALL_FILER_WAYBACK_AVAILABILITY_REPORT_V11"
+  },
+  "decision": {
+    "tooling_may_be_prepared_offline": true,
+    "network_execution_allowed_by_protocol": false,
+    "concrete_release_may_be_frozen_only_after_latest_archive_request_is_known": true,
+    "v10_executor_may_be_reused": false,
+    "candidate_live_domain_access_allowed": false,
+    "archived_page_download_allowed": false,
+    "capture_plan_mutation_allowed": false,
+    "newly_available_rows_require_separate_supplemental_capture_plan": true,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "candidate_live_domain_access_operations": 0,
+    "archived_page_downloads": 0,
+    "captures": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

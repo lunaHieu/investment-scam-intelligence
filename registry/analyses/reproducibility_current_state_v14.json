@@ -1,0 +1,76 @@
+{
+  "analysis_id": "ISI_REPRODUCIBILITY_CURRENT_STATE_V14",
+  "created_at": "2026-10-23",
+  "status": "CURRENT_A1_RELEASE_A2_TOOLING_NO_NETWORK_EXECUTION",
+  "purpose": "Replace V13 navigation with the separately verified A1 concrete CDX release and A2 V11 offline tooling protocol while preserving all closed data and model gates.",
+  "inputs": [
+    {
+      "role": "prior_reproducibility_state_v13",
+      "path": "registry/analyses/reproducibility_current_state_v13.json",
+      "sha256": "40664946ea5b2bb841c7260c8953b63a175f5c9bd263925bf1dcb991d44c7bd8"
+    },
+    {
+      "role": "current_ledger_v16",
+      "path": "registry/analyses/project_state_gap_ledger_v16.json",
+      "sha256": "a8b660a4c7fd78b93960e7aa34d65ade6d665b7ea2298461f82db343834b7ac3"
+    },
+    {
+      "role": "a2_availability_v11_protocol_v1",
+      "path": "registry/analyses/sec_edgar_iapd_wayback_availability_v11_protocol_v1.json",
+      "sha256": "882ef79572381f6653502c1928b1564521c7120b59869c339c5230d4e237b600"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "human_readable_current_state",
+      "path": "docs/reproducibility-current-state-v14.md",
+      "sha256": "5ca0e519100974250318a1c2433578f4883e974867127df18cf4e0253e1144e9"
+    },
+    {
+      "role": "current_state_contract_tests",
+      "path": "tests/test_reproducibility_current_state_v14.py",
+      "sha256": "9a35a3bd0ce4c5a182a89da27cef1df94ed2a1e7adb581105b7587989ccd23cc"
+    }
+  ],
+  "current_state": {
+    "availability_resolved": 113,
+    "availability_total": 115,
+    "captured": 57,
+    "capture_planned": 58,
+    "review_completed": 56,
+    "owner_accepted_legitimate": 42,
+    "uncertain_retained": 14,
+    "historical_train_rows": 3916,
+    "fresh_v1_core_admitted_groups": 0,
+    "fresh_v1_core_required_groups": 300,
+    "a1_cdx_release_qa_pass": true,
+    "a1_cdx_network_executed": false,
+    "a2_v11_tooling_qa_pass": true,
+    "a2_v11_concrete_release_created": false,
+    "a2_v11_network_executed": false,
+    "training_eligible_records": 0
+  },
+  "decision": {
+    "current_navigation_ledger": "registry/analyses/project_state_gap_ledger_v16.json",
+    "a1_must_execute_before_a2_concrete_release": true,
+    "a2_release_must_bind_latest_actual_archive_request": true,
+    "a1_a2_same_run_network_execution_allowed": false,
+    "candidate_live_domain_access_allowed": false,
+    "archived_page_download_allowed_in_availability_workflow": false,
+    "capture_authorized": false,
+    "original_review_population_may_be_mutated": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Run A1 at its frozen gate, independently verify its result, then freeze V11 against that report with a fresh 24-hour not_before."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "candidate_domain_access_operations": 0,
+    "archived_page_downloads": 0,
+    "captures": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

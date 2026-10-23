@@ -1,0 +1,91 @@
+{
+  "analysis_id": "ISI_PROJECT_STATE_GAP_LEDGER_V26",
+  "created_at": "2026-10-23",
+  "base_commit": "ea9122c",
+  "status": "CURRENT_C2_AND_C3_PREFLIGHTS_COMPLETE_EXTERNAL_AND_HUMAN_INPUTS_PENDING",
+  "purpose": "Replace V25 with the independently verified C2 four-source external intake preflight while retaining C3 preparation and every A/B, rights, admission and model gate.",
+  "inputs": [
+    {
+      "role": "prior_state_v25",
+      "path": "registry/analyses/project_state_gap_ledger_v25.json",
+      "sha256": "d939f06dd24b7c8ffdfba75ac2d57bf091f83ba5cb1c6efb20000586decaf8e4"
+    },
+    {
+      "role": "c2_preflight_registry",
+      "path": "registry/analyses/target_text_corpus_v1_c2_external_artifact_intake_preflight_v1.json",
+      "sha256": "11874b4f034bfdcf443dd8ba605a55ebb3df35ccbc26e12a3b3bb99567fc0d98"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "human_readable_ledger",
+      "path": "docs/project-state-gap-ledger-v26.md",
+      "sha256": "f3673e3c17c38cf980eb4c5c9fe7fd53bb34218903bda08d4148c6340da4e558"
+    },
+    {
+      "role": "ledger_contract_tests",
+      "path": "tests/test_project_state_gap_ledger_v26.py",
+      "sha256": "c824ead0e419cadd6cbbaf74500cdd39277d4bc301c18583d0eeb4f8f138f7d6"
+    }
+  ],
+  "state_amendments": {
+    "P1_SEC_IAPD": {
+      "availability_resolved": 113,
+      "availability_total": 115,
+      "a1_cdx_network_executed": false,
+      "a2_v11_concrete_release_created": false
+    },
+    "P2_A5_AND_B4": {
+      "owner_accepted_records": 42,
+      "fresh_cohort_assertions_verified": 42,
+      "v1_core_admitted_records": 0,
+      "ready_channel_release_records": 70,
+      "ready_channel_availability_results": 0
+    },
+    "P3_C2_EXTERNAL_ARTIFACT_INTAKE_PREFLIGHT": {
+      "source_contracts": 4,
+      "source_artifact_qa_channels": 2,
+      "rights_record_only_channels": 2,
+      "completed_submissions": 0,
+      "source_files_acquired": 0,
+      "rights_records_acquired": 0,
+      "candidate_records_enumerated": 0
+    },
+    "P3_C3_LANGUAGE_RESPONSE_PREFLIGHT": {
+      "template_records": 42,
+      "human_decisions_materialized": 0,
+      "completed_response_files": 0,
+      "language_supply_credit": 0
+    }
+  },
+  "decision": {
+    "c1_complete": true,
+    "c2_preflight_complete": true,
+    "c2_intake_complete": false,
+    "c2_requires_real_external_artifact_or_rights_record": true,
+    "c3_preflight_complete": true,
+    "c3_human_response_complete": false,
+    "c3_requires_truthful_human_language_response": true,
+    "c4_requires_capacity_terms_and_rights_pass": true,
+    "network_execution_allowed_now": false,
+    "candidate_domain_access_allowed": false,
+    "candidate_enumeration_allowed": false,
+    "capture_allowed": false,
+    "partial_channel_contribution_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Continue A1/A2/B5 under their independent timing. C2 and C3 tooling are complete; their executions now wait only for a genuine external artifact/rights record and a truthful exact-42 human response respectively."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "human_decisions_fabricated": 0,
+    "source_files_acquired": 0,
+    "rights_records_acquired": 0,
+    "candidate_records_enumerated": 0,
+    "labels_changed": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

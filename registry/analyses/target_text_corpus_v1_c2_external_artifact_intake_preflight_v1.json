@@ -1,0 +1,95 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_C2_EXTERNAL_ARTIFACT_INTAKE_PREFLIGHT_V1",
+  "created_at": "2026-10-23",
+  "status": "C2_PREFLIGHT_COMPLETE_EXTERNAL_ARTIFACT_OR_RIGHTS_INPUT_PENDING",
+  "purpose": "Register the independently verified four-source C2 intake tooling while preserving external-input, rights, enumeration, label and model gates.",
+  "inputs": [
+    {
+      "role": "c2_intake_protocol",
+      "path": "configs/target_text_corpus_v1_c2_external_artifact_intake_protocol_v1.json",
+      "sha256": "2ba248243c0a3d3cb7e8b8432940e6c50093780c9a0e0bbb8f901b996fa619e5"
+    },
+    {
+      "role": "submission_schema",
+      "path": "schemas/target_text_c2_external_artifact_intake_submission_v1.schema.json",
+      "sha256": "b8975141c9ead98613a92f87b72a9f194b3fbccc1c0553b37aa498cb6d724f84"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "template_preparer",
+      "path": "scripts/prepare_target_text_corpus_v1_c2_external_artifact_intake_v1.py",
+      "sha256": "0f446562ee03b1352f35f9aaf54fe56ab8621ce4a3d40154ac520e9378ebc9d1"
+    },
+    {
+      "role": "tooling_and_submission_verifier",
+      "path": "scripts/verify_target_text_corpus_v1_c2_external_artifact_intake_v1.py",
+      "sha256": "2884294e6b16731186abc2291558ff1f390b01fb92da10b57b7f182921852723"
+    },
+    {
+      "role": "tooling_tests",
+      "path": "tests/test_target_text_corpus_v1_c2_external_artifact_intake_v1.py",
+      "sha256": "48d0e01b2ffb49b60a4eb26e193caa5369d22ef043279f461aa7f9494745ccb9"
+    },
+    {
+      "role": "registry_tests",
+      "path": "tests/test_target_text_corpus_v1_c2_external_artifact_intake_registry_v1.py",
+      "sha256": "f5df0a3bd9264974a1bfcf0554d2c35ac6f7ebe776d1423a5277da9714841a08"
+    },
+    {
+      "role": "documentation",
+      "path": "docs/target-text-corpus-v1-c2-external-artifact-intake-preflight-v1.md",
+      "sha256": "d68e4dc881f09091b98087725424a88b9696fa6174415493246b72202d4d9c10"
+    }
+  ],
+  "outputs": [
+    {
+      "role": "submission_template",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\governance\\target_text_corpus_v1\\external_artifact_intake_v1\\submission_template_v1.json",
+      "sha256": "8a5dca17fe372ec260f82eb1af633864339b240ed1d3a96bc29722a5a0bcb6fc"
+    },
+    {
+      "role": "preparation_report",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\external_artifact_intake_preflight_v1\\preparation_report_v1.json",
+      "sha256": "6b4c69c3a37e0bf4abe17301aa0180464689970a02fec0c846034f23d801a710"
+    },
+    {
+      "role": "independent_tooling_qa",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\external_artifact_intake_preflight_v1\\independent_tooling_qa_v1.json",
+      "sha256": "53001f7899a2bdfb18f18a5900cbd11b63d2b8e070c17e60420387c2e3c4fa2f"
+    }
+  ],
+  "result": {
+    "source_contracts": 4,
+    "source_artifact_qa_channels": 2,
+    "rights_record_only_channels": 2,
+    "source_files_acquired": 0,
+    "rights_records_acquired": 0,
+    "completed_submissions": 0,
+    "candidate_records_enumerated": 0,
+    "labels_created": 0
+  },
+  "decision": {
+    "c2_preflight_complete": true,
+    "c2_intake_complete": false,
+    "genuine_external_artifact_or_rights_record_required": true,
+    "new_readiness_ledger_required_after_submission_qa": true,
+    "ssc_hnx_source_artifacts_allowed_now": false,
+    "candidate_enumeration_allowed": false,
+    "network_access_allowed": false,
+    "candidate_domain_access_allowed": false,
+    "labels_may_be_inferred_from_source_membership": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "source_files_acquired": 0,
+    "rights_records_acquired": 0,
+    "candidate_records_enumerated": 0,
+    "labels_changed": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "protocol_id": "ISI_TARGET_TEXT_CORPUS_V1_C2_EXTERNAL_ARTIFACT_INTAKE_PROTOCOL_V1",
+  "created_at": "2026-10-23",
+  "status": "FROZEN_C2_PREFLIGHT_FOUR_SOURCES_EXTERNAL_INPUTS_ABSENT",
+  "purpose": "Provide one offline, hash-verifiable intake gate for CFTC, DFPI, SSC and HNX source artifacts or rights records without acquiring source bytes, opening enumeration, or creating labels.",
+  "inputs": [
+    {
+      "role": "c1_workstream",
+      "path": "configs/target_text_corpus_v1_parallel_c_workstream_v1.json",
+      "sha256": "b67c8cabe311acd465a1c9146b258817b932b75ae290545fcbb18ca5854d5dae"
+    },
+    {
+      "role": "prior_manual_packet",
+      "path": "configs/target_text_corpus_v1_manual_acquisition_packet_v1.json",
+      "sha256": "bc555ab3456d5e8bcbfe271e0357bed37f652fe7d10926e1eb39313e6ae78e31"
+    },
+    {
+      "role": "prior_cftc_prerequisite_intake",
+      "path": "configs/target_text_corpus_v1_acquisition_prerequisite_intake_v1.json",
+      "sha256": "e11af0357b0f3bb2b1e64b17a10edd04185c99db37bfdb13e56cbf2f526b1551"
+    },
+    {
+      "role": "vietnamese_channel_terms",
+      "path": "configs/target_text_corpus_v1_vietnamese_channel_terms_v1.json",
+      "sha256": "84a53656b6d2bcd30395a874c05284faed99a11b60349f7c176c061e60a5ac63"
+    },
+    {
+      "role": "capacity_gap_v4",
+      "path": "registry/analyses/target_text_corpus_v1_capacity_gap_v4.json",
+      "sha256": "87629387de99be6b6726c5ba1ada29cad6e2fc97c9ce79d7da815ba2b43e6097"
+    },
+    {
+      "role": "submission_schema",
+      "path": "schemas/target_text_c2_external_artifact_intake_submission_v1.schema.json",
+      "sha256": "b8975141c9ead98613a92f87b72a9f194b3fbccc1c0553b37aa498cb6d724f84"
+    }
+  ],
+  "storage_contract": {
+    "data_root": "D:\\nckh 2026-2027\\ISI_Data",
+    "maximum_items_per_submission": 20,
+    "original_bytes_required": true,
+    "overwrite_allowed": false,
+    "sha256_required": true,
+    "protected_source_content_allowed_in_public_repository": false,
+    "permission_identity_or_document_contents_allowed_in_public_repository": false
+  },
+  "source_contracts": [
+    {
+      "source_id": "cftc_red_list",
+      "official_urls": [
+        "https://www.cftc.gov/LearnAndProtect/Resources/Check/redlist.htm",
+        "https://www.cftc.gov/WebPolicy/index.htm"
+      ],
+      "allowed_hosts": ["www.cftc.gov", "cftc.gov"],
+      "source_artifact_relative_directory": "raw/cftc_red_list",
+      "rights_evidence_relative_directory": "governance/target_text_corpus_v1/external_rights_evidence/cftc_red_list",
+      "artifact_phase": "ARTIFACT_OR_RIGHTS_RECORD_MAY_ENTER_QA",
+      "allowed_source_artifact_modes": ["USER_SUPPLIED_UNTOUCHED_ARTIFACT", "EXPLICIT_OFFICIAL_EXPORT"],
+      "allowed_rights_record_modes": ["OFFICIAL_TERMS_RECORD", "WRITTEN_PERMISSION"],
+      "allowed_rights_basis_types": ["FIRST_PARTY_PUBLIC_RECORD_INTERNAL_RESEARCH", "EXPLICIT_OFFICIAL_EXPORT_TERMS", "OFFICIAL_PUBLIC_TERMS", "WRITTEN_PERMISSION"],
+      "source_role": "CONFIRMED_REFERENCE_ONLY_NO_AUTOMATIC_GROUND_TRUTH",
+      "target_groups": 75
+    },
+    {
+      "source_id": "dfpi_crypto_scam_tracker",
+      "official_urls": [
+        "https://dfpi.ca.gov/consumers/crypto/crypto-scam-tracker/",
+        "https://dfpi.ca.gov/conditions-of-use/"
+      ],
+      "allowed_hosts": ["dfpi.ca.gov"],
+      "source_artifact_relative_directory": "raw/dfpi_crypto_scam_tracker",
+      "rights_evidence_relative_directory": "governance/target_text_corpus_v1/external_rights_evidence/dfpi_crypto_scam_tracker",
+      "artifact_phase": "ARTIFACT_OR_RIGHTS_RECORD_MAY_ENTER_QA",
+      "allowed_source_artifact_modes": ["USER_SAVED_FIRST_PARTY_ARTIFACT", "EXPLICIT_OFFICIAL_EXPORT"],
+      "allowed_rights_record_modes": ["OFFICIAL_TERMS_RECORD", "WRITTEN_PERMISSION"],
+      "allowed_rights_basis_types": ["FIRST_PARTY_PUBLIC_RECORD_INTERNAL_RESEARCH", "EXPLICIT_OFFICIAL_EXPORT_TERMS", "OFFICIAL_PUBLIC_TERMS", "WRITTEN_PERMISSION"],
+      "source_role": "UNCERTAIN_CASE_SEED_ONLY_NO_AUTOMATIC_GROUND_TRUTH",
+      "target_groups": null
+    },
+    {
+      "source_id": "ssc_vietnam_investor_warnings",
+      "official_urls": [
+        "https://ssc.gov.vn/webcenter/portal/ubck/pages_r/m/nhadautu/khuyencaonhadautu"
+      ],
+      "allowed_hosts": ["ssc.gov.vn", "www.ssc.gov.vn"],
+      "source_artifact_relative_directory": "raw/ssc_vietnam_investor_warnings",
+      "rights_evidence_relative_directory": "governance/target_text_corpus_v1/external_rights_evidence/ssc_vietnam_investor_warnings",
+      "artifact_phase": "RIGHTS_RECORD_ONLY_UNTIL_SEPARATE_READINESS_LEDGER",
+      "allowed_source_artifact_modes": ["EXPLICIT_OFFICIAL_EXPORT"],
+      "allowed_rights_record_modes": ["OFFICIAL_TERMS_RECORD", "WRITTEN_PERMISSION"],
+      "allowed_rights_basis_types": ["EXPLICIT_OFFICIAL_EXPORT_TERMS", "OFFICIAL_PUBLIC_TERMS", "WRITTEN_PERMISSION"],
+      "source_role": "CONFIRMED_REFERENCE_ONLY_NO_AUTOMATIC_GROUND_TRUTH",
+      "target_groups": null
+    },
+    {
+      "source_id": "hnx_vietnam_issuer_profiles",
+      "official_urls": [
+        "https://www.hnx.vn/vi-vn/co-phieu-etfs/chung-khoan-ny-thong-tin.html"
+      ],
+      "allowed_hosts": ["www.hnx.vn", "hnx.vn", "www.gov.hnx.vn", "gov.hnx.vn"],
+      "source_artifact_relative_directory": "raw/hnx_vietnam_issuer_profiles",
+      "rights_evidence_relative_directory": "governance/target_text_corpus_v1/external_rights_evidence/hnx_vietnam_issuer_profiles",
+      "artifact_phase": "RIGHTS_RECORD_ONLY_UNTIL_SEPARATE_READINESS_LEDGER",
+      "allowed_source_artifact_modes": ["EXPLICIT_OFFICIAL_EXPORT"],
+      "allowed_rights_record_modes": ["OFFICIAL_TERMS_RECORD", "WRITTEN_PERMISSION"],
+      "allowed_rights_basis_types": ["EXPLICIT_OFFICIAL_EXPORT_TERMS", "OFFICIAL_PUBLIC_TERMS", "WRITTEN_PERMISSION"],
+      "source_role": "LEGITIMATE_IDENTITY_REFERENCE_ONLY_NO_AUTOMATIC_GROUND_TRUTH",
+      "target_groups": null
+    }
+  ],
+  "planned_outputs": {
+    "submission_template": "D:\\nckh 2026-2027\\ISI_Data\\governance\\target_text_corpus_v1\\external_artifact_intake_v1\\submission_template_v1.json",
+    "preparation_report": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\external_artifact_intake_preflight_v1\\preparation_report_v1.json",
+    "independent_tooling_qa": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\external_artifact_intake_preflight_v1\\independent_tooling_qa_v1.json",
+    "completed_submission": "D:\\nckh 2026-2027\\ISI_Data\\governance\\target_text_corpus_v1\\external_artifact_intake_v1\\completed_submission_v1.json",
+    "independent_submission_qa": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\external_artifact_intake_preflight_v1\\independent_submission_qa_v1.json",
+    "versioned_readiness_ledger": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\external_artifact_intake_preflight_v1\\source_readiness_ledger_v1.json"
+  },
+  "decision": {
+    "offline_template_and_verifier_preparation_allowed": true,
+    "completed_submission_exists_now": false,
+    "source_files_acquired_now": 0,
+    "rights_records_acquired_now": 0,
+    "submission_qa_passed_now": false,
+    "candidate_enumeration_allowed": false,
+    "network_access_allowed": false,
+    "candidate_domain_access_allowed": false,
+    "labels_may_be_inferred_from_source_membership": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "source_files_acquired": 0,
+    "rights_records_acquired": 0,
+    "candidate_records_enumerated": 0,
+    "labels_changed": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

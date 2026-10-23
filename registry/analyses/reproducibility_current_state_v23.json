@@ -1,0 +1,91 @@
+{
+  "analysis_id": "ISI_REPRODUCIBILITY_CURRENT_STATE_V23",
+  "created_at": "2026-10-23",
+  "status": "CURRENT_C2_C3_PREFLIGHTS_VERIFIED_EXTERNAL_AND_HUMAN_INPUTS_PENDING",
+  "purpose": "Replace V22 navigation with verified C2 and C3 offline preflights while preserving A/B timing, external-input, truthful-human, admission and model gates.",
+  "inputs": [
+    {
+      "role": "prior_reproducibility_state_v22",
+      "path": "registry/analyses/reproducibility_current_state_v22.json",
+      "sha256": "fa677f4719f05bdd905cc45d2e7a8065a129222d698763ed0c50d991c206a64c"
+    },
+    {
+      "role": "current_ledger_v26",
+      "path": "registry/analyses/project_state_gap_ledger_v26.json",
+      "sha256": "8eb37153cf8699ce5e79bc10ffc7fc5e5734c6b3f6d6770c41bdfbe7c5800d46"
+    },
+    {
+      "role": "c2_preflight_registry",
+      "path": "registry/analyses/target_text_corpus_v1_c2_external_artifact_intake_preflight_v1.json",
+      "sha256": "11874b4f034bfdcf443dd8ba605a55ebb3df35ccbc26e12a3b3bb99567fc0d98"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "human_readable_current_state",
+      "path": "docs/reproducibility-current-state-v23.md",
+      "sha256": "413fcf5078bc857a9fc1186796bdf7e9dfba59b3357944f34e0e583a859fe08b"
+    },
+    {
+      "role": "current_state_contract_tests",
+      "path": "tests/test_reproducibility_current_state_v23.py",
+      "sha256": "4f62303eecd22c5b33b6541fc22f48137ff8f24a3d6351c2e3fe40165d67158e"
+    }
+  ],
+  "current_state": {
+    "availability_resolved": 113,
+    "availability_total": 115,
+    "captured": 57,
+    "review_completed": 56,
+    "owner_accepted_legitimate": 42,
+    "fresh_cohort_assertions_verified": 42,
+    "c2_source_contracts": 4,
+    "c2_completed_submissions": 0,
+    "c2_source_files_acquired": 0,
+    "c2_rights_records_acquired": 0,
+    "c3_template_records": 42,
+    "language_tasks_pending_human_review": 42,
+    "language_tasks_completed_by_human": 0,
+    "fresh_v1_core_admitted_groups": 0,
+    "fresh_v1_core_required_groups": 300,
+    "conditional_owner_accepted_supply": 42,
+    "conditional_residual_gap": 258,
+    "cftc_target_groups_blocked": 75,
+    "ready_channel_availability_release_records": 70,
+    "ready_channel_availability_executed_records": 0,
+    "a1_cdx_network_executed": false,
+    "a2_v11_network_executed": false,
+    "training_eligible_records": 0
+  },
+  "decision": {
+    "current_navigation_ledger": "registry/analyses/project_state_gap_ledger_v26.json",
+    "current_c2_preflight_registry": "registry/analyses/target_text_corpus_v1_c2_external_artifact_intake_preflight_v1.json",
+    "current_c3_preflight_registry": "registry/analyses/target_text_corpus_v1_a5_language_review_response_preflight_v1.json",
+    "c1_complete": true,
+    "c2_preflight_complete": true,
+    "c2_intake_complete": false,
+    "c3_preflight_complete": true,
+    "c3_human_response_complete": false,
+    "a1_a2_b5_sequence_changed": false,
+    "network_execution_allowed_now": false,
+    "candidate_live_domain_access_allowed": false,
+    "candidate_enumeration_allowed": false,
+    "artifact_capture_allowed": false,
+    "partial_channel_contribution_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "A1 automation may run at its gate. C2/C3 tooling are complete and now wait for genuine external and truthful human inputs; C4 remains closed."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "human_decisions_fabricated": 0,
+    "source_files_acquired": 0,
+    "rights_records_acquired": 0,
+    "candidate_records_enumerated": 0,
+    "labels_changed": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

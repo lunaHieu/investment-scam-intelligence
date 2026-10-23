@@ -1,0 +1,56 @@
+{
+  "analysis_id": "ISI_REPRODUCIBILITY_CURRENT_STATE_V17",
+  "created_at": "2026-10-23",
+  "status": "CURRENT_B2_EXACT_70_QUEUE_A1_A2_A4_UNCHANGED",
+  "purpose": "Replace V16 navigation with B2's immutable exact-70 provenance queue and independent QA while preserving the established SEC/IAPD, admission, and model states.",
+  "inputs": [
+    {"role": "prior_reproducibility_state_v16", "path": "registry/analyses/reproducibility_current_state_v16.json", "sha256": "1332bcfd78d9c5c78907440bcb4c40e5bebc4375bb42b39b4e40cb00e9394b3f"},
+    {"role": "current_ledger_v20", "path": "registry/analyses/project_state_gap_ledger_v20.json", "sha256": "6f38afa16d10dcb97eaec6e697998c3a24048221c1f7a1d83bce2a2f011dd53f"},
+    {"role": "b2_ready_channel_queue", "path": "registry/analyses/target_text_corpus_v1_ready_channel_queue_v1.json", "sha256": "af130cf39e57e6b593059737d91f7575b4e192eb9d05af80aca3d5ce12efb6fa"}
+  ],
+  "implementation": [
+    {"role": "human_readable_current_state", "path": "docs/reproducibility-current-state-v17.md", "sha256": "774e680126d07105e046d4d2f0d6c16344b3256bb74aa5ed5affa00079d6100f"},
+    {"role": "current_state_contract_tests", "path": "tests/test_reproducibility_current_state_v17.py", "sha256": "d4cb9f11d14802515748aa6247be6113308c0f338eaa046be0303b4be779bc7c"}
+  ],
+  "current_state": {
+    "availability_resolved": 113,
+    "availability_total": 115,
+    "captured": 57,
+    "capture_planned": 58,
+    "review_completed": 56,
+    "owner_accepted_legitimate": 42,
+    "uncertain_retained": 14,
+    "fresh_v1_core_admitted_groups": 0,
+    "fresh_v1_core_required_groups": 300,
+    "v1_core_conditional_owner_accepted_supply": 42,
+    "v1_core_conditional_residual_gap": 258,
+    "owner_accepted_repair_population": 42,
+    "ready_channel_queue_records": 70,
+    "ready_channel_queue_development": 50,
+    "ready_channel_queue_external_holdout": 20,
+    "ready_channel_queue_uncertain": 70,
+    "ready_channel_queue_labels_created": 0,
+    "ready_channel_unique_hosts": 70,
+    "ready_channel_unique_normalized_entities": 70,
+    "a1_cdx_network_executed": false,
+    "a2_v11_concrete_release_created": false,
+    "a2_v11_network_executed": false,
+    "training_eligible_records": 0
+  },
+  "decision": {
+    "current_navigation_ledger": "registry/analyses/project_state_gap_ledger_v20.json",
+    "current_ready_channel_queue_registry": "registry/analyses/target_text_corpus_v1_ready_channel_queue_v1.json",
+    "b2_complete": true,
+    "a1_a2_archive_sequence_changed": false,
+    "b3_offline_release_preparation_allowed": true,
+    "network_execution_allowed": false,
+    "candidate_live_domain_access_allowed": false,
+    "artifact_capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "B3: prepare an exact-70 Wayback availability release and independent release QA without executing it."
+  },
+  "safety_contract": {"network_operations": 0, "candidate_domain_access_operations": 0, "wayback_queries": 0, "captures": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

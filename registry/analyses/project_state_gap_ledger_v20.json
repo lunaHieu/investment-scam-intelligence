@@ -1,0 +1,49 @@
+{
+  "analysis_id": "ISI_PROJECT_STATE_GAP_LEDGER_V20",
+  "created_at": "2026-10-23",
+  "base_commit": "cc1283d6545bc653fc88ef07337e65bd1df92bf7",
+  "status": "FROZEN_B2_EXACT_70_QUEUE_B3_OFFLINE_RELEASE_MAY_BE_PREPARED",
+  "purpose": "Replace ledger V19 with B2's exact independently reproduced two-channel provenance queue while preserving A1-A4 and every closed network, capture, labeling, and model gate.",
+  "inputs": [
+    {"role": "prior_state_v19", "path": "registry/analyses/project_state_gap_ledger_v19.json", "sha256": "bfe21126d949610863d2fe6c7b8bca78353681e570ed4e11f2653f1e4bce314c"},
+    {"role": "b2_ready_channel_queue", "path": "registry/analyses/target_text_corpus_v1_ready_channel_queue_v1.json", "sha256": "af130cf39e57e6b593059737d91f7575b4e192eb9d05af80aca3d5ce12efb6fa"}
+  ],
+  "implementation": [
+    {"role": "human_readable_ledger", "path": "docs/project-state-gap-ledger-v20.md", "sha256": "b6ea53e79ff390bb9c22ade6ed7453882c01d905b16d80d740a9c1690c233dec"},
+    {"role": "ledger_contract_tests", "path": "tests/test_project_state_gap_ledger_v20.py", "sha256": "1a1b88e69e665a06d05cb110dcdea58484ad875c7b834cf0fb76614f082473e6"}
+  ],
+  "state_amendments": {
+    "P1_SEC_IAPD": {"availability_resolved": 113, "availability_total": 115, "a1_cdx_network_executed": false, "a2_v11_concrete_release_created": false},
+    "P2_A4_ADMISSION_REPAIR": {"conditional_records": 42, "fields_credited_now": 0, "v1_core_admitted_records": 0},
+    "P2_B1_READY_CHANNEL_ENUMERATION": {"ready_channels": 2, "confirmed_regulator_eligible_after_exclusions": 12045, "legitimate_iapd_eligible_after_exclusions": 3522},
+    "P2_B2_READY_CHANNEL_QUEUE": {
+      "candidate_records": 70,
+      "development_records": 50,
+      "external_holdout_records": 20,
+      "confirmed_regulator_records": 35,
+      "legitimate_iapd_records": 35,
+      "unique_candidate_ids": 70,
+      "unique_hosts": 70,
+      "unique_normalized_entities": 70,
+      "development_holdout_host_overlap": 0,
+      "development_holdout_entity_overlap": 0,
+      "uncertain_records": 70,
+      "labels_created": 0,
+      "membership_and_order_independently_reproduced": true
+    }
+  },
+  "decision": {
+    "b2_complete": true,
+    "b3_offline_release_preparation_allowed": true,
+    "network_execution_allowed": false,
+    "candidate_domain_access_allowed": false,
+    "wayback_query_allowed": false,
+    "capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "B3: freeze and independently verify an exact-70 Wayback availability-query release; network execution requires its own later gate."
+  },
+  "safety_contract": {"network_operations": 0, "candidate_domain_access_operations": 0, "wayback_queries": 0, "captures": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

@@ -1,0 +1,51 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_READY_CHANNEL_QUEUE_V1",
+  "created_at": "2026-10-23",
+  "status": "PASS_B2_EXACT_70_QUEUE_INDEPENDENTLY_REPRODUCED_CAPTURE_CLOSED",
+  "purpose": "Register B2's immutable deterministic 70-row two-channel provenance queue and its independent full-membership recomputation without opening any network, capture, labeling, or model gate.",
+  "inputs": [
+    {"role": "b1_ready_channel_enumeration", "path": "registry/analyses/target_text_corpus_v1_ready_channel_enumeration_v1.json", "sha256": "268d2b78dafa6990562ee20304f51013fe5f0b29f6909a3dfb40db980785afe4"},
+    {"role": "b1_preflight", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_enumeration_release_v1\\preflight_v1.json", "sha256": "24492f7bf62560bcf914f532766eb233bc9d06c14e45cdf364a2f069b8b5bdff"}
+  ],
+  "implementation": [
+    {"role": "queue_release", "path": "configs/target_text_corpus_v1_ready_channel_queue_release_v1.json", "sha256": "e7cae50a20e7d514027f6afcfcbc11db3c54ebfb53bce6e9a12808c59a8940e7"},
+    {"role": "queue_builder", "path": "scripts/build_target_text_corpus_v1_ready_channel_queue_v1.py", "sha256": "a7770b160db8d78d1fabe35014aa017ee70f693e72124368d9b5a8c127cb3b1a"},
+    {"role": "independent_verifier", "path": "scripts/verify_target_text_corpus_v1_ready_channel_queue_v1.py", "sha256": "b9f39f6199de27f10a4b84c730a38c48b482b6769a89c52cfe3cb86775327caf"},
+    {"role": "queue_tests", "path": "tests/test_target_text_corpus_v1_ready_channel_queue_v1.py", "sha256": "003f0bf4653a8267973d7efa8f8cefe1272fa13d6208eb904d66f940eeb6867e"},
+    {"role": "documentation", "path": "docs/target-text-corpus-v1-ready-channel-queue-v1.md", "sha256": "78cd3f143cd80bcac06d9dbd546f1445b81b5f1de4bf0d6d18d8620634018718"}
+  ],
+  "outputs": [
+    {"role": "candidate_queue", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_enumeration_release_v1\\candidate_queue_v1.jsonl", "sha256": "2f030006d9ab1d4dcac7c45f6217372ab374cac355ef2a3ab893e11c4c3e6550"},
+    {"role": "enumeration_report", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_enumeration_release_v1\\enumeration_report_v1.json", "sha256": "40964df22cea0e8a9ad6eb3eab6a92e62962a3540c6d6cebb20baf6ff6f0d17b"},
+    {"role": "independent_queue_qa", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_enumeration_release_v1\\independent_queue_qa_v1.json", "sha256": "3986d43a105c2eab6fdb1f05cbbc362c15673d824e0e82a402c762a838d84efa"}
+  ],
+  "result": {
+    "candidate_records": 70,
+    "development_records": 50,
+    "external_holdout_records": 20,
+    "confirmed_regulator_records": 35,
+    "legitimate_iapd_records": 35,
+    "unique_candidate_ids": 70,
+    "unique_hosts": 70,
+    "unique_normalized_entities": 70,
+    "development_holdout_host_overlap": 0,
+    "development_holdout_entity_overlap": 0,
+    "membership_and_order_independently_reproduced": true,
+    "uncertain_records": 70,
+    "labels_created": 0
+  },
+  "decision": {
+    "b2_complete": true,
+    "b3_offline_wayback_availability_release_may_be_prepared": true,
+    "network_execution_performed": false,
+    "candidate_domain_access_allowed": false,
+    "wayback_query_allowed": false,
+    "artifact_capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "B3: prepare and independently verify a separate Wayback availability-query release for exactly these 70 identities; do not execute network access under B2."
+  },
+  "safety_contract": {"network_operations": 0, "candidate_domain_access_operations": 0, "wayback_queries": 0, "captures": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

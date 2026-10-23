@@ -1,0 +1,52 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_OWNER_ACCEPTED_A5_PACKETS_V1",
+  "created_at": "2026-10-23",
+  "status": "PASS_A5_EXACT_42_SEPARATE_PACKETS_FRESH_QA_COMPLETE_LANGUAGE_HUMAN_REVIEW_PENDING",
+  "purpose": "Register the two separately verified A5 packets for the exact 42 owner-accepted records without claiming human language review or creating V1-Core admission credit.",
+  "inputs": [
+    {"role": "a4_registry", "path": "registry/analyses/target_text_corpus_v1_owner_accepted_admission_repair_v1.json", "sha256": "a4db3f15bb7d70ff575568dc589bd9961dfbc5f70998ad2e1f64087c71475bbe"}
+  ],
+  "implementation": [
+    {"role": "packet_protocol", "path": "configs/target_text_corpus_v1_owner_accepted_a5_packet_protocol_v1.json", "sha256": "eef3794d6c060ffa1b0afcca7a6cb874fbbd3f294b5a56271b21654f599605da"},
+    {"role": "packet_builder", "path": "scripts/build_target_text_corpus_v1_owner_accepted_a5_packets_v1.py", "sha256": "39c49bf977fee7a7ca81cf55c73bce78da1b9369e9dacadbac0da642cfee70af"},
+    {"role": "language_packet_verifier", "path": "scripts/verify_target_text_corpus_v1_owner_accepted_a5_language_packet_v1.py", "sha256": "d5a67662a47c72ca5592f8a0680276074ae8abb94e5e64d56a5a027be7644968"},
+    {"role": "fresh_cohort_verifier", "path": "scripts/verify_target_text_corpus_v1_owner_accepted_a5_fresh_cohort_v1.py", "sha256": "e72665a9652760ff54826ec5f51aae78d87b7ba914dbcf88e72740953f1382c8"},
+    {"role": "tooling_tests", "path": "tests/test_target_text_corpus_v1_owner_accepted_a5_packets_v1.py", "sha256": "81b2c6da4a448027767465b7f155d17c05eff2592aeb4a7c3d0eb6f2b43e6601"},
+    {"role": "documentation", "path": "docs/target-text-corpus-v1-owner-accepted-a5-packets-v1.md", "sha256": "ead98d61d31c9c46cd3da3c196644b16b9d99fe70f6e2a24ad26fa6f7055610c"}
+  ],
+  "outputs": [
+    {"role": "language_review_packet", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\owner_accepted_admission_a5_v1\\language_review_packet_v1.jsonl", "sha256": "201e9ad829bc36cc1987debebc13538b6bca5ff7f75058a9e7ddd24239517a67"},
+    {"role": "language_packet_report", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\owner_accepted_admission_a5_v1\\language_review_packet_report_v1.json", "sha256": "ade76be29ec7f1af797e2024fedaa9285c953e4e40f77f9c7de27913cf757c0f"},
+    {"role": "language_packet_independent_qa", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\owner_accepted_admission_a5_v1\\language_review_packet_independent_qa_v1.json", "sha256": "5fcc40b43cd56be7acf7a1e482ac2048a26c990a863709641b5bbc272caf2c75"},
+    {"role": "fresh_cohort_packet", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\owner_accepted_admission_a5_v1\\fresh_cohort_assertion_packet_v1.jsonl", "sha256": "143469e197b6ee5c8a0beb8430725fec87b1578d9cc1804b78a9421540b67cce"},
+    {"role": "fresh_cohort_report", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\owner_accepted_admission_a5_v1\\fresh_cohort_assertion_report_v1.json", "sha256": "b805d3fb7cac770ce72fdb235a350c5e5ea140d4fdc94a3c66b80691f1947b46"},
+    {"role": "fresh_cohort_independent_qa", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\owner_accepted_admission_a5_v1\\fresh_cohort_assertion_independent_qa_v1.json", "sha256": "c9c8eea58c5894be769077756745ff4adb68c566aeede65c9258d860eb9e8eda"}
+  ],
+  "result": {
+    "records": 42,
+    "development_records": 33,
+    "external_holdout_records": 9,
+    "language_packet_records": 42,
+    "language_records_pending_human_review": 42,
+    "human_language_decisions_created": 0,
+    "fresh_cohort_assertions": 42,
+    "fresh_cohort_assertions_independently_verified": 42,
+    "release_records_materialized": 0,
+    "admission_credit_now": 0,
+    "network_operations": 0
+  },
+  "decision": {
+    "a5_packet_preparation_complete": true,
+    "language_packet_qa_passed": true,
+    "human_language_review_complete": false,
+    "fresh_cohort_packet_qa_passed": true,
+    "fresh_cohort_assertion_may_be_reused_only_after_hash_reverification": true,
+    "candidate_manifest_created": false,
+    "partial_channel_contribution_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "A truthful human reviewer may complete the exact-42 language packet; independently, C1 may be formally scoped as an offline-only parallel branch while A1 and B5 remain timed."
+  },
+  "safety_contract": {"network_operations": 0, "candidate_domain_access_operations": 0, "labels_changed": 0, "model_operations": 0, "training_allowed": false}
+}

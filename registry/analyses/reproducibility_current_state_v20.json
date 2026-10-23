@@ -1,0 +1,59 @@
+{
+  "analysis_id": "ISI_REPRODUCIBILITY_CURRENT_STATE_V20",
+  "created_at": "2026-10-23",
+  "status": "CURRENT_A5_EXACT_42_PACKETS_FRESH_QA_PASS_LANGUAGE_HUMAN_REVIEW_PENDING",
+  "purpose": "Replace V19 navigation with A5's separate exact-42 language-review and fresh-cohort packets while keeping admission and every model gate closed.",
+  "inputs": [
+    {"role": "prior_reproducibility_state_v19", "path": "registry/analyses/reproducibility_current_state_v19.json", "sha256": "f28c731736e18a0cd194d4c1ffdac07761ebb34389aeb8b467ff6657e315af64"},
+    {"role": "current_ledger_v23", "path": "registry/analyses/project_state_gap_ledger_v23.json", "sha256": "24f96534e6e95fb75db6319b4f2b4a63719d14b9d115d0f68d1d5080a45550b1"},
+    {"role": "a5_packet_registry", "path": "registry/analyses/target_text_corpus_v1_owner_accepted_a5_packets_v1.json", "sha256": "2d7a50476a761459885a22aea7c7f373dbc448949633178a5c414b05cdaebe1d"}
+  ],
+  "implementation": [
+    {"role": "human_readable_current_state", "path": "docs/reproducibility-current-state-v20.md", "sha256": "1ef6277fdec92c289b70b4cd0201c9d166c5d6921f0cc9bdb0e3914c82290a01"},
+    {"role": "current_state_contract_tests", "path": "tests/test_reproducibility_current_state_v20.py", "sha256": "82ca5da9a3acc0ae7b08289a2d23e43d841c5764024d5c7b90a5104100b474c4"}
+  ],
+  "current_state": {
+    "availability_resolved": 113,
+    "availability_total": 115,
+    "captured": 57,
+    "capture_planned": 58,
+    "review_completed": 56,
+    "owner_accepted_legitimate": 42,
+    "uncertain_retained": 14,
+    "fresh_cohort_assertions_verified": 42,
+    "language_tasks_pending_human_review": 42,
+    "human_language_decisions_created": 0,
+    "fresh_v1_core_admitted_groups": 0,
+    "fresh_v1_core_required_groups": 300,
+    "v1_core_conditional_owner_accepted_supply": 42,
+    "v1_core_conditional_residual_gap": 258,
+    "ready_channel_queue_records": 70,
+    "ready_channel_availability_plan_records": 70,
+    "ready_channel_availability_release_records": 70,
+    "ready_channel_availability_executed_records": 0,
+    "ready_channel_network_requests": 0,
+    "a1_cdx_network_executed": false,
+    "a2_v11_concrete_release_created": false,
+    "a2_v11_network_executed": false,
+    "training_eligible_records": 0
+  },
+  "decision": {
+    "current_navigation_ledger": "registry/analyses/project_state_gap_ledger_v23.json",
+    "current_a5_packet_registry": "registry/analyses/target_text_corpus_v1_owner_accepted_a5_packets_v1.json",
+    "a5_packet_preparation_complete": true,
+    "human_language_review_complete": false,
+    "c1_offline_scope_may_be_frozen": true,
+    "a1_a2_archive_sequence_changed": false,
+    "b5_execution_conditionally_prepared": true,
+    "network_execution_allowed_now": false,
+    "candidate_live_domain_access_allowed": false,
+    "artifact_capture_allowed": false,
+    "partial_channel_contribution_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Complete truthful exact-42 human language review when available, or freeze C1's offline-only scope while A1 and B5 remain timed."
+  },
+  "safety_contract": {"network_operations": 0, "candidate_domain_access_operations": 0, "captures": 0, "labels_changed": 0, "model_operations": 0, "training_allowed": false}
+}

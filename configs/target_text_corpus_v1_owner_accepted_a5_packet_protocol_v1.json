@@ -1,0 +1,63 @@
+{
+  "protocol_id": "ISI_TARGET_TEXT_CORPUS_V1_OWNER_ACCEPTED_A5_PACKET_PROTOCOL_V1",
+  "created_at": "2026-10-23",
+  "status": "FROZEN_EXACT_42_SEPARATE_OFFLINE_PACKETS_NO_ADMISSION_RELEASE",
+  "purpose": "Prepare separate hash-bound language-review and fresh-cohort assertion packets for the exact 42 owner-accepted SEC EDGAR records without materializing a V1-Core record or claiming human review.",
+  "inputs": [
+    {"role": "a4_registry", "path": "registry/analyses/target_text_corpus_v1_owner_accepted_admission_repair_v1.json", "sha256": "a4db3f15bb7d70ff575568dc589bd9961dfbc5f70998ad2e1f64087c71475bbe"},
+    {"role": "a4_independent_qa", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\owner_accepted_admission_repair_v1\\independent_qa_v1.json", "sha256": "a137f8b372a83c176be5f1fccf09dcba61926f3aed784d7e32fb5de31237886c"},
+    {"role": "owner_accepted_records", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_post_capture_grouping_result_v2\\owner_accepted_records_v2.json", "sha256": "3b66a9198944be005e460b050119a17c58f3efc4ef8c3bed825c0d1e63ded153"},
+    {"role": "exact_text_manifest", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_exact_text_result_v2\\manifest_v2.jsonl", "sha256": "cc7d9b19705d3e6523761e8d60001dacd3e2b9fa65cbcf19a690b4cfe7494022"},
+    {"role": "post_capture_grouping", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_post_capture_grouping_result_v2\\post_capture_exclusion_grouping_v2.json", "sha256": "15d17dddf0315018cd781b19cad209ee9e3fd40c733bae86893a33d09acc7180"},
+    {"role": "manual_group_review", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_post_capture_grouping_result_v2\\manual_group_review_v2.json", "sha256": "dabd63e14c80fbb9041d3d10ad8113b16e9b8b2af59692bb36b9a59500df7607"}
+  ],
+  "population_contract": {
+    "ordered_record_ids_sha256": "b34e792785fe932c5dfd48792e104933cc87616c2908d4a02e14c5092ec22566",
+    "record_count": 42,
+    "development_count": 33,
+    "external_holdout_count": 9,
+    "target_status": "LEGITIMATE",
+    "channel_id": "LEGITIMATE_SEC_EDGAR_LINKED_WAYBACK_WEBSITE",
+    "population_expansion_allowed": false,
+    "population_reordering_allowed": false
+  },
+  "language_review_contract": {
+    "human_review_required": true,
+    "automatic_or_ai_hint_is_final_evidence": false,
+    "builder_may_set_language_code": false,
+    "builder_may_set_human_reviewed_language_true": false,
+    "initial_review_status": "PENDING_HUMAN_LANGUAGE_REVIEW",
+    "reviewer_must_inspect_hash_verified_visible_text": true
+  },
+  "fresh_cohort_contract": {
+    "required_acquisition_namespace": "TTCV1_EDGAR_AVAIL",
+    "availability_plan_id_must_equal_record_id": true,
+    "opened_overlap_lists_must_be_empty": true,
+    "cross_cohort_collision_must_be_false": true,
+    "manual_group_decision_required": "KEEP_PROVISIONALLY_DISTINCT",
+    "assertion_value": true,
+    "admission_credit_now": 0,
+    "release_record_materialization_allowed": false
+  },
+  "planned_outputs": {
+    "language_packet": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\owner_accepted_admission_a5_v1\\language_review_packet_v1.jsonl",
+    "language_report": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\owner_accepted_admission_a5_v1\\language_review_packet_report_v1.json",
+    "language_independent_qa": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\owner_accepted_admission_a5_v1\\language_review_packet_independent_qa_v1.json",
+    "fresh_packet": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\owner_accepted_admission_a5_v1\\fresh_cohort_assertion_packet_v1.jsonl",
+    "fresh_report": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\owner_accepted_admission_a5_v1\\fresh_cohort_assertion_report_v1.json",
+    "fresh_independent_qa": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\owner_accepted_admission_a5_v1\\fresh_cohort_assertion_independent_qa_v1.json"
+  },
+  "decision": {
+    "offline_packet_materialization_allowed": true,
+    "human_language_decisions_created_by_builder": false,
+    "fresh_assertion_may_receive_independent_packet_qa": true,
+    "repaired_candidate_manifest_allowed": false,
+    "partial_channel_contribution_allowed": false,
+    "network_access_allowed": false,
+    "candidate_domain_access_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false
+  }
+}

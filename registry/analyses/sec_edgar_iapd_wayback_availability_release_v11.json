@@ -1,0 +1,37 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_IAPD_WAYBACK_AVAILABILITY_RELEASE_V11",
+  "created_at": "2026-10-23",
+  "status": "FROZEN_V11_RELEASE_VERIFIED_NETWORK_GATE_CLOSED",
+  "purpose": "Register the exact-two-row V11 availability retry release bound to the latest A1 archive request and its 24-hour cooldown.",
+  "inputs": [
+    {"role": "release", "path": "configs/sec_edgar_iapd_wayback_availability_release_v11.json", "sha256": "bd6d1d8f7bd8675d26742a0260bd3e6631083aeb12fbb1e1f53369405f6780de"},
+    {"role": "protocol_registry", "path": "registry/analyses/sec_edgar_iapd_wayback_availability_v11_protocol_v1.json", "sha256": "882ef79572381f6653502c1928b1564521c7120b59869c339c5230d4e237b600"}
+  ],
+  "implementation": [
+    {"role": "release_verifier", "path": "scripts/verify_sec_edgar_iapd_wayback_availability_release_v11.py", "sha256": "7d6981778784979c7f4770d16ab26041bdc8a3f540dcfaf360a75c9e57cbab36"},
+    {"role": "release_tests", "path": "tests/test_verify_sec_edgar_iapd_wayback_availability_release_v11.py", "sha256": "1fd7cb3a2536a150493daed8fe2e6a2f498d5eb9939a3272969bcb8145ba5bd6"},
+    {"role": "registry_tests", "path": "tests/test_sec_edgar_iapd_wayback_availability_release_registry_v11.py", "sha256": "3b3a81db35c7bd8f61f532dd8b1599eb525a8a59fb4e6119d1aad1042b7973a5"},
+    {"role": "documentation", "path": "docs/sec-edgar-iapd-wayback-availability-release-v11.md", "sha256": "858abd54b36c81ede1048a63c8ae09c0d18e34b9c7ae28a806e083bdd9d45f41"}
+  ],
+  "outputs": [
+    {"role": "protocol_qa", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_availability_result_v1\\independent_protocol_qa_v11.json", "sha256": "15f34b36105f11e1ddde4bca9dc5850f96cf9f52671a7d8c228701c1120befb8"},
+    {"role": "release_qa", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_availability_result_v1\\independent_release_qa_v1.json", "sha256": "56ee8ca89ba81a6a46627b9e165d3703cfc9f4e09c9cd1bee3255520b1a49a68"}
+  ],
+  "result": {
+    "ordered_retry_ids": ["TTCV1_EDGAR_AVAIL_HOLDOUT_011", "TTCV1_EDGAR_AVAIL_HOLDOUT_018"],
+    "not_before": "2026-10-24T21:39:37.725131+07:00",
+    "minimum_cooldown_seconds": 86400,
+    "network_execution_allowed_at_registration": false
+  },
+  "decision": {
+    "a2_v11_release_verified": true,
+    "network_execution_allowed_at_registration": false,
+    "a2_network_gate_open_at_snapshot": false,
+    "capture_plan_mutation_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {"network_operations_at_registration": 0, "candidate_domain_access_operations": 0, "archived_page_downloads": 0, "captures": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

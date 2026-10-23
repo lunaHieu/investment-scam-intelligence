@@ -1,0 +1,51 @@
+{
+  "analysis_id": "ISI_REPRODUCIBILITY_CURRENT_STATE_V25",
+  "created_at": "2026-10-23",
+  "status": "CURRENT_A1_COMPLETE_A2_V11_COOLDOWN_ACTIVE",
+  "purpose": "Navigate from A1's independently verified canonical empty CDX response to the frozen exact-two-row A2 V11 release without reopening any historical or model gate.",
+  "inputs": [
+    {"role": "prior_reproducibility_state_v24", "path": "registry/analyses/reproducibility_current_state_v24.json", "sha256": "b0fbeccfaa51490d7ac40fafee19f47d8e70f16f32e048115e8379f2243434cf"},
+    {"role": "current_ledger_v28", "path": "registry/analyses/project_state_gap_ledger_v28.json", "sha256": "103f1b295ba8e816153962409f5ebe9b02aa04102c1eb97a24b46f3dce13df29"},
+    {"role": "a1_result_registry", "path": "registry/analyses/sec_edgar_iapd_wayback_alternate_snapshot_cdx_owner_override_result_v1.json", "sha256": "4a8c76bb69ddbfc7637d4a676e30eb16cc4cbacee0d558e5f32e54ce4e63f95f"},
+    {"role": "a2_v11_release_registry", "path": "registry/analyses/sec_edgar_iapd_wayback_availability_release_v11.json", "sha256": "69855bab3c652337f2317626db065556760015d82d6f8541db5b1f98b2cdd800"}
+  ],
+  "implementation": [
+    {"role": "human_readable_current_state", "path": "docs/reproducibility-current-state-v25.md", "sha256": "1b7052492918784f9f2878537a859d09ccb560da93af7379b89232c338c88018"},
+    {"role": "current_state_contract_tests", "path": "tests/test_reproducibility_current_state_v25.py", "sha256": "1c0f0501c7517e8af977174cd7a9cb9db696bbdd6fc217276f1fdeddf78892ef"}
+  ],
+  "current_state": {
+    "availability_resolved": 113,
+    "availability_total": 115,
+    "a1_complete": true,
+    "a1_network_requests": 1,
+    "a1_cdx_alternate_rows": 0,
+    "a1_quarantine_remains": true,
+    "a2_v11_release_verified": true,
+    "a2_v11_retry_rows": 2,
+    "a2_v11_network_executed": false,
+    "a2_v11_not_before": "2026-10-24T21:39:37.725131+07:00",
+    "c2_preflight_complete": true,
+    "c2_completed_submissions": 0,
+    "c3_preflight_complete": true,
+    "language_tasks_completed_by_human": 0,
+    "fresh_v1_core_admitted_groups": 0,
+    "conditional_owner_accepted_supply": 42,
+    "training_eligible_records": 0
+  },
+  "decision": {
+    "current_navigation_ledger": "registry/analyses/project_state_gap_ledger_v28.json",
+    "a1_complete": true,
+    "a1_same_query_retry_allowed": false,
+    "a2_v11_release_verified": true,
+    "a2_v11_network_gate_open_at_snapshot": false,
+    "candidate_live_domain_access_allowed": false,
+    "archived_page_download_allowed": false,
+    "capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Wait for the V11 not_before at 2026-10-24T21:39:37.725131+07:00, then execute the exact-two-row archive-availability retry once under the frozen release."
+  },
+  "safety_contract": {"network_operations": 0, "candidate_domain_access_operations": 0, "archived_page_downloads": 0, "captures": 0, "labels_changed": 0, "model_operations": 0, "training_allowed": false}
+}

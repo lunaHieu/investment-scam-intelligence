@@ -1,0 +1,91 @@
+{
+  "release_id": "ISI_SEC_EDGAR_IAPD_WAYBACK_AVAILABILITY_RELEASE_V11",
+  "created_at": "2026-10-23T21:42:18.574246+07:00",
+  "status": "FROZEN_EXACT_TWO_HOLDOUT_ROWS_NOT_BEFORE_GATE",
+  "purpose": "Freeze one exact-two-row V11 archive-availability retry bound to the actual A1 owner-override CDX request, without executing V11 before its new 24-hour cooldown.",
+  "basis": [
+    {"role": "release_verifier_v11", "path": "scripts/verify_sec_edgar_iapd_wayback_availability_release_v11.py", "sha256": "7d6981778784979c7f4770d16ab26041bdc8a3f540dcfaf360a75c9e57cbab36"},
+    {"role": "executor_v11", "path": "scripts/retry_sec_edgar_iapd_wayback_availability_v11.py", "sha256": "a96349cffbadea7fc94cd42f107fbfa035b0746708ee57d3f831b394e8f380ea"},
+    {"role": "result_verifier_v11", "path": "scripts/verify_sec_edgar_iapd_wayback_availability_result_v11.py", "sha256": "8d1ffd91eb56cf1613fe4dda94cf2aaad60280935b731eb06a7919eb01b342c1"}
+  ],
+  "inputs": {
+    "protocol": {
+      "path": "configs/sec_edgar_iapd_wayback_availability_v11_protocol_v1.json",
+      "sha256": "b9e90cef48376f4dc76d8490e7ad97059f5a4c0db798ce3d8dde64dca9b2a9f1",
+      "absolute": false
+    },
+    "protocol_qa": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_availability_result_v1\\independent_protocol_qa_v11.json",
+      "sha256": "15f34b36105f11e1ddde4bca9dc5850f96cf9f52671a7d8c228701c1120befb8",
+      "absolute": true
+    },
+    "latest_actual_archive_request_report": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_alternate_snapshot_cdx_v1\\cdx_enumeration_report_v1.json",
+      "sha256": "b96285436a7e293614bd90576af096806ec08fab35d5c781366159e2c7adb5c4",
+      "absolute": true
+    }
+  },
+  "ordered_retry_rows": [
+    {
+      "availability_plan_id": "TTCV1_EDGAR_AVAIL_HOLDOUT_011",
+      "shortlist_id": "TTCV1_EDGAR_HOLDOUT_012",
+      "cohort": "EXTERNAL_HOLDOUT",
+      "candidate_host": "murphyllc.com",
+      "candidate_url": "https://murphyllc.com/",
+      "query_timestamp": "20261003"
+    },
+    {
+      "availability_plan_id": "TTCV1_EDGAR_AVAIL_HOLDOUT_018",
+      "shortlist_id": "TTCV1_EDGAR_HOLDOUT_021",
+      "cohort": "EXTERNAL_HOLDOUT",
+      "candidate_host": "wealthmanage.net",
+      "candidate_url": "https://wealthmanage.net/",
+      "query_timestamp": "20261003"
+    }
+  ],
+  "cooldown_contract": {
+    "latest_actual_archive_request_created_at": "2026-10-23T21:39:37.725131+07:00",
+    "minimum_cooldown_seconds": 86400,
+    "not_before": "2026-10-24T21:39:37.725131+07:00"
+  },
+  "network_contract": {
+    "endpoint": "https://archive.org/wayback/available",
+    "allowed_network_hosts": ["archive.org", "web.archive.org"],
+    "descriptive_user_agent": "ISI-Research/2.0 (gpt-5; https://github.com/lunaHieu/investment-scam-intelligence)",
+    "minimum_delay_seconds": 60.0,
+    "request_rate_per_second_maximum": 0.0166666667,
+    "maximum_retry_rows": 2,
+    "maximum_logical_attempts_per_row": 1,
+    "timeout_seconds": 30,
+    "maximum_redirects": 3,
+    "maximum_response_bytes": 2097152,
+    "required_content_type_prefix": "application/json",
+    "https_only": true,
+    "automatic_external_redirect_following": false,
+    "stop_on_http_429": true,
+    "errors_are_preserved": true,
+    "errors_are_not_interpreted_as_no_snapshot": true,
+    "partial_journal_reserved_before_network": true,
+    "partial_journal_auto_resume_allowed": false,
+    "output_overwrite_allowed": false,
+    "preserved_response_headers": ["Retry-After", "Date", "Server", "Content-Type", "X-Archive-Wayback-Runtime-Error"]
+  },
+  "planned_output": {
+    "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_availability_result_v1\\availability_report_v11.json",
+    "report_id": "ISI_SEC_EDGAR_IAPD_ALL_FILER_WAYBACK_AVAILABILITY_REPORT_V11",
+    "partial_journal_suffix": ".partial"
+  },
+  "decision": {
+    "exact_two_row_availability_execution_allowed_after_not_before": true,
+    "network_execution_allowed_at_release_time": false,
+    "candidate_live_domain_access_allowed": false,
+    "archived_page_download_allowed": false,
+    "capture_plan_mutation_allowed": false,
+    "newly_available_rows_require_separate_supplemental_capture_plan": true,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {"network_operations_during_preparation": 0, "candidate_live_domain_access_operations": 0, "archived_page_downloads": 0, "captures": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

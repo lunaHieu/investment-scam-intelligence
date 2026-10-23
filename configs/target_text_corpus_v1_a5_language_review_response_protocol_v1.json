@@ -1,0 +1,82 @@
+{
+  "protocol_id": "ISI_TARGET_TEXT_CORPUS_V1_A5_LANGUAGE_REVIEW_RESPONSE_PROTOCOL_V1",
+  "created_at": "2026-10-23",
+  "status": "FROZEN_C3_PREFLIGHT_EXACT_42_HUMAN_RESPONSE_REQUIRED",
+  "purpose": "Prepare a hash-bound response template and independent verifier for the exact 42 A5 language tasks without impersonating a human reviewer or changing labels, cohorts, admission, or model gates.",
+  "inputs": [
+    {
+      "role": "c1_workstream",
+      "path": "configs/target_text_corpus_v1_parallel_c_workstream_v1.json",
+      "sha256": "b67c8cabe311acd465a1c9146b258817b932b75ae290545fcbb18ca5854d5dae"
+    },
+    {
+      "role": "a5_packet_protocol",
+      "path": "configs/target_text_corpus_v1_owner_accepted_a5_packet_protocol_v1.json",
+      "sha256": "eef3794d6c060ffa1b0afcca7a6cb874fbbd3f294b5a56271b21654f599605da"
+    },
+    {
+      "role": "language_packet",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\owner_accepted_admission_a5_v1\\language_review_packet_v1.jsonl",
+      "sha256": "201e9ad829bc36cc1987debebc13538b6bca5ff7f75058a9e7ddd24239517a67"
+    },
+    {
+      "role": "language_packet_independent_qa",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\owner_accepted_admission_a5_v1\\language_review_packet_independent_qa_v1.json",
+      "sha256": "5fcc40b43cd56be7acf7a1e482ac2048a26c990a863709641b5bbc272caf2c75"
+    },
+    {
+      "role": "response_schema",
+      "path": "schemas/target_text_a5_language_review_response_v1.schema.json",
+      "sha256": "14531b8e151bfca484914c4b5d05c2f569651eef5903c17d03cd8668de91f261"
+    }
+  ],
+  "population_contract": {
+    "record_count": 42,
+    "development_count": 33,
+    "external_holdout_count": 9,
+    "ordered_record_ids_sha256": "b34e792785fe932c5dfd48792e104933cc87616c2908d4a02e14c5092ec22566",
+    "language_packet_sha256": "201e9ad829bc36cc1987debebc13538b6bca5ff7f75058a9e7ddd24239517a67",
+    "population_expansion_allowed": false,
+    "population_reordering_allowed": false
+  },
+  "human_review_contract": {
+    "reviewer_type_required": "HUMAN",
+    "reviewer_must_inspect_each_hash_verified_visible_text": true,
+    "automatic_or_ai_hint_may_be_final": false,
+    "language_code_pattern": "^[a-z]{2,3}(?:-[a-z0-9]{2,8})*$",
+    "exact_coverage_required": true,
+    "partial_response_accepted": false,
+    "response_status_required": "COMPLETED_HUMAN_LANGUAGE_REVIEW_PENDING_INDEPENDENT_QA",
+    "verified_response_status": "PASS_EXACT_42_HUMAN_LANGUAGE_RESPONSE_HASH_RECOMPUTED",
+    "ground_truth_status_may_change": false,
+    "cohort_may_change": false
+  },
+  "planned_outputs": {
+    "response_template": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\owner_accepted_admission_a5_language_response_v1\\language_review_response_template_v1.json",
+    "preparation_report": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\owner_accepted_admission_a5_language_response_v1\\preparation_report_v1.json",
+    "independent_tooling_qa": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\owner_accepted_admission_a5_language_response_v1\\independent_tooling_qa_v1.json",
+    "completed_response": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\owner_accepted_admission_a5_language_response_v1\\completed_language_review_response_v1.json",
+    "independent_response_qa": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\owner_accepted_admission_a5_language_response_v1\\independent_response_qa_v1.json",
+    "language_supply_report": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\owner_accepted_admission_a5_language_response_v1\\language_supply_report_v1.json"
+  },
+  "decision": {
+    "offline_template_and_verifier_preparation_allowed": true,
+    "human_response_created_by_tooling": false,
+    "completed_response_exists_now": false,
+    "language_supply_credit_now": 0,
+    "v1_core_admission_credit_now": 0,
+    "labels_changed": 0,
+    "network_access_allowed": false,
+    "candidate_domain_access_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "human_decisions_fabricated": 0,
+    "labels_changed": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

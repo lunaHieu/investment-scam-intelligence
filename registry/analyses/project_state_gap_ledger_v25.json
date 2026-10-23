@@ -1,0 +1,88 @@
+{
+  "analysis_id": "ISI_PROJECT_STATE_GAP_LEDGER_V25",
+  "created_at": "2026-10-23",
+  "base_commit": "a1f7c033a9068424c8881daf8b904c643e5bb717",
+  "status": "CURRENT_C3_PREFLIGHT_COMPLETE_HUMAN_AND_EXTERNAL_INPUT_GATES_PRESERVED",
+  "purpose": "Replace V24 with the independently verified C3 language-response preflight while preserving A/B timing, truthful-human, external-artifact, admission and model gates.",
+  "inputs": [
+    {
+      "role": "prior_state_v24",
+      "path": "registry/analyses/project_state_gap_ledger_v24.json",
+      "sha256": "f88c7d2c0d749ee7c65f721a63e0ed88e01a88d0e726ae6e2cebcbb7872d0b5b"
+    },
+    {
+      "role": "c3_preflight_registry",
+      "path": "registry/analyses/target_text_corpus_v1_a5_language_review_response_preflight_v1.json",
+      "sha256": "1826bf08db34193c534cc70fc40a68e2b762cae338441db3a640afa99d5b64cd"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "human_readable_ledger",
+      "path": "docs/project-state-gap-ledger-v25.md",
+      "sha256": "901ea33093a1f942033bc936b4d9623e772e6a4fa5858a02c12b2b5520b29f2f"
+    },
+    {
+      "role": "ledger_contract_tests",
+      "path": "tests/test_project_state_gap_ledger_v25.py",
+      "sha256": "5087497843b00b5c5aff76508cfce2ad90ff8605b744d8fe6e923012d69aedeb"
+    }
+  ],
+  "state_amendments": {
+    "P1_SEC_IAPD": {
+      "availability_resolved": 113,
+      "availability_total": 115,
+      "a1_cdx_network_executed": false,
+      "a2_v11_concrete_release_created": false
+    },
+    "P2_A5_OWNER_ACCEPTED_ADMISSION_PACKETS": {
+      "population_records": 42,
+      "fresh_cohort_assertions_verified": 42,
+      "language_tasks_pending_human_review": 42,
+      "v1_core_admitted_records": 0
+    },
+    "P2_B4_READY_CHANNEL_AVAILABILITY_EXECUTION": {
+      "release_records": 70,
+      "availability_results": 0,
+      "network_operations": 0,
+      "dynamic_a1_report_cooldown_required": true
+    },
+    "P3_C3_LANGUAGE_RESPONSE_PREFLIGHT": {
+      "template_records": 42,
+      "development_records": 33,
+      "external_holdout_records": 9,
+      "hash_bound_visible_text_records": 42,
+      "human_decisions_materialized": 0,
+      "completed_response_files": 0,
+      "language_supply_credit": 0,
+      "network_operations": 0
+    }
+  },
+  "decision": {
+    "c1_complete": true,
+    "c2_requires_real_external_artifact_or_rights_record": true,
+    "c3_preflight_complete": true,
+    "c3_human_language_response_required": true,
+    "c3_human_response_complete": false,
+    "c4_requires_capacity_terms_and_rights_pass": true,
+    "network_execution_allowed_now": false,
+    "candidate_domain_access_allowed": false,
+    "candidate_enumeration_allowed": false,
+    "capture_allowed": false,
+    "partial_channel_contribution_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Continue A1/A2/B5 under their independent timing. C3 tooling is ready but a truthful exact-42 human response remains required; C2 still waits for a genuine lawful artifact or rights record."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "human_decisions_fabricated": 0,
+    "source_files_acquired": 0,
+    "candidate_records_enumerated": 0,
+    "labels_changed": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

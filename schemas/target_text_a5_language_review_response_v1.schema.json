@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.isi.example/schemas/target_text_a5_language_review_response_v1.schema.json",
+  "title": "Target Text Corpus V1 A5 exact-42 human language review response",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "response_id",
+    "protocol_id",
+    "status",
+    "created_at",
+    "language_packet_sha256",
+    "ordered_record_ids_sha256",
+    "reviewer",
+    "records"
+  ],
+  "properties": {
+    "response_id": {"type": "string", "minLength": 1},
+    "protocol_id": {"const": "ISI_TARGET_TEXT_CORPUS_V1_A5_LANGUAGE_REVIEW_RESPONSE_PROTOCOL_V1"},
+    "status": {"const": "COMPLETED_HUMAN_LANGUAGE_REVIEW_PENDING_INDEPENDENT_QA"},
+    "created_at": {"type": "string", "format": "date-time"},
+    "language_packet_sha256": {"const": "201e9ad829bc36cc1987debebc13538b6bca5ff7f75058a9e7ddd24239517a67"},
+    "ordered_record_ids_sha256": {"const": "b34e792785fe932c5dfd48792e104933cc87616c2908d4a02e14c5092ec22566"},
+    "reviewer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reviewer_id",
+        "reviewer_type",
+        "independent_human_attestation",
+        "hash_verified_visible_text_attestation",
+        "automatic_or_ai_hint_used_as_final"
+      ],
+      "properties": {
+        "reviewer_id": {"type": "string", "minLength": 1},
+        "reviewer_type": {"const": "HUMAN"},
+        "independent_human_attestation": {"const": true},
+        "hash_verified_visible_text_attestation": {"const": true},
+        "automatic_or_ai_hint_used_as_final": {"const": false}
+      }
+    },
+    "records": {
+      "type": "array",
+      "minItems": 42,
+      "maxItems": 42,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "review_item_id",
+          "record_id",
+          "cohort",
+          "source_text_path",
+          "source_text_sha256",
+          "non_whitespace_text_characters",
+          "language_code",
+          "human_reviewed_language",
+          "review_status",
+          "reviewed_at",
+          "rationale"
+        ],
+        "properties": {
+          "review_item_id": {"type": "string", "pattern": "^A5_LANGUAGE_[0-9]{3}$"},
+          "record_id": {"type": "string", "minLength": 1},
+          "cohort": {"enum": ["DEVELOPMENT", "EXTERNAL_HOLDOUT"]},
+          "source_text_path": {"type": "string", "minLength": 1},
+          "source_text_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "non_whitespace_text_characters": {"type": "integer", "minimum": 1},
+          "language_code": {"type": "string", "pattern": "^[a-z]{2,3}(?:-[a-z0-9]{2,8})*$"},
+          "human_reviewed_language": {"const": true},
+          "review_status": {"const": "COMPLETED_HUMAN_LANGUAGE_REVIEW"},
+          "reviewed_at": {"type": "string", "format": "date-time"},
+          "rationale": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  }
+}

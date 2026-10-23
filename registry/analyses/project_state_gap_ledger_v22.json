@@ -1,0 +1,51 @@
+{
+  "analysis_id": "ISI_PROJECT_STATE_GAP_LEDGER_V22",
+  "created_at": "2026-10-23",
+  "base_commit": "fd97fbe2b8eb79a02da9cce0775145d3540a64f6",
+  "status": "FROZEN_B4_CRASH_SAFE_EXACT_70_EXECUTION_RELEASE_B5_DYNAMIC_GATE_CLOSED",
+  "purpose": "Replace ledger V21 with B4's independently verified crash-safe exact-70 execution release while preserving A1-A4, B2-B3, and every closed network, capture, labeling, and model gate.",
+  "inputs": [
+    {"role": "prior_state_v21", "path": "registry/analyses/project_state_gap_ledger_v21.json", "sha256": "a60e4a423bce8d927626e0bee486132390d51d12a9703da4c8de19590673c862"},
+    {"role": "b4_execution_release", "path": "registry/analyses/target_text_corpus_v1_ready_channel_wayback_availability_execution_v1.json", "sha256": "fe70cc19d7904b696e6cf548e158cfc7ff540fbfb8845e448670e16432f7df99"}
+  ],
+  "implementation": [
+    {"role": "human_readable_ledger", "path": "docs/project-state-gap-ledger-v22.md", "sha256": "e51d2563039b9dc8e6ebd7f2ed0e46113ff1b39a7fbef0276b9edb807cd8e625"},
+    {"role": "ledger_contract_tests", "path": "tests/test_project_state_gap_ledger_v22.py", "sha256": "57c21fb64084fe56326a936f5134aee7caa8cc14508e48fdabd57a61ed5f8d0a"}
+  ],
+  "state_amendments": {
+    "P1_SEC_IAPD": {"availability_resolved": 113, "availability_total": 115, "a1_cdx_network_executed": false, "a2_v11_concrete_release_created": false},
+    "P2_A4_ADMISSION_REPAIR": {"conditional_records": 42, "fields_credited_now": 0, "v1_core_admitted_records": 0},
+    "P2_B2_READY_CHANNEL_QUEUE": {"candidate_records": 70, "development_records": 50, "external_holdout_records": 20, "uncertain_records": 70, "labels_created": 0},
+    "P2_B3_READY_CHANNEL_AVAILABILITY_PLAN": {"plan_records": 70, "development_records": 50, "external_holdout_records": 20, "unique_hosts": 70, "unique_normalized_entities": 70, "development_holdout_host_overlap": 0, "development_holdout_entity_overlap": 0, "network_operations": 0},
+    "P2_B4_READY_CHANNEL_AVAILABILITY_EXECUTION": {
+      "release_records": 70,
+      "development_records": 50,
+      "external_holdout_records": 20,
+      "absolute_not_before_floor": "2026-10-25T00:00:00+07:00",
+      "dynamic_a1_report_cooldown_required": true,
+      "minimum_a1_cooldown_seconds": 86400,
+      "minimum_delay_seconds": 60.0,
+      "maximum_attempts_per_candidate": 1,
+      "partial_journal_reserved_before_network": true,
+      "partial_journal_auto_resume_allowed": false,
+      "stop_on_http_429": true,
+      "stop_on_any_http_or_transport_error": true,
+      "network_operations": 0,
+      "availability_results": 0
+    }
+  },
+  "decision": {
+    "b4_complete": true,
+    "b5_execution_conditionally_prepared": true,
+    "network_execution_allowed_now": false,
+    "candidate_domain_access_allowed": false,
+    "wayback_query_execution_allowed_now": false,
+    "capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "B5: only after A1 completes successfully with independent QA and the later of the absolute floor or A1 report created_at plus 86400 seconds has passed, execute the immutable B4 release once if no final or partial output exists."
+  },
+  "safety_contract": {"network_operations": 0, "candidate_domain_access_operations": 0, "wayback_queries": 0, "archived_page_downloads": 0, "captures": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

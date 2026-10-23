@@ -1,0 +1,57 @@
+{
+  "analysis_id": "ISI_REPRODUCIBILITY_CURRENT_STATE_V19",
+  "created_at": "2026-10-23",
+  "status": "CURRENT_B4_CRASH_SAFE_EXACT_70_EXECUTION_RELEASE_NETWORK_CLOSED",
+  "purpose": "Replace V18 navigation with B4's immutable crash-safe exact-70 availability execution release and independent QA while preserving the established SEC/IAPD, admission, queue, and model states.",
+  "inputs": [
+    {"role": "prior_reproducibility_state_v18", "path": "registry/analyses/reproducibility_current_state_v18.json", "sha256": "011bbba20bc9861d4bb1926b374e3d1dc66c3ecb5bb380e48ec2df3134bc3297"},
+    {"role": "current_ledger_v22", "path": "registry/analyses/project_state_gap_ledger_v22.json", "sha256": "de520b24bd540e78788618c7afb773811d92be2a23c94adfacc26584b984c093"},
+    {"role": "b4_execution_release", "path": "registry/analyses/target_text_corpus_v1_ready_channel_wayback_availability_execution_v1.json", "sha256": "fe70cc19d7904b696e6cf548e158cfc7ff540fbfb8845e448670e16432f7df99"}
+  ],
+  "implementation": [
+    {"role": "human_readable_current_state", "path": "docs/reproducibility-current-state-v19.md", "sha256": "ced37dd743b0757e4f2c4198957d42cbe676bb56dec4e7bdeb9eb7bc47faffc4"},
+    {"role": "current_state_contract_tests", "path": "tests/test_reproducibility_current_state_v19.py", "sha256": "badd6158b7c7e8249ac789d16c3d6f4522ae2b4711d8d6113f9de8cf209089f2"}
+  ],
+  "current_state": {
+    "availability_resolved": 113,
+    "availability_total": 115,
+    "captured": 57,
+    "capture_planned": 58,
+    "review_completed": 56,
+    "owner_accepted_legitimate": 42,
+    "uncertain_retained": 14,
+    "fresh_v1_core_admitted_groups": 0,
+    "fresh_v1_core_required_groups": 300,
+    "v1_core_conditional_owner_accepted_supply": 42,
+    "v1_core_conditional_residual_gap": 258,
+    "ready_channel_queue_records": 70,
+    "ready_channel_queue_uncertain": 70,
+    "ready_channel_availability_plan_records": 70,
+    "ready_channel_availability_release_records": 70,
+    "ready_channel_availability_executed_records": 0,
+    "ready_channel_network_requests": 0,
+    "ready_channel_unique_hosts": 70,
+    "ready_channel_unique_normalized_entities": 70,
+    "a1_cdx_network_executed": false,
+    "a2_v11_concrete_release_created": false,
+    "a2_v11_network_executed": false,
+    "training_eligible_records": 0
+  },
+  "decision": {
+    "current_navigation_ledger": "registry/analyses/project_state_gap_ledger_v22.json",
+    "current_ready_channel_availability_execution_registry": "registry/analyses/target_text_corpus_v1_ready_channel_wayback_availability_execution_v1.json",
+    "b4_complete": true,
+    "a1_a2_archive_sequence_changed": false,
+    "b5_execution_conditionally_prepared": true,
+    "network_execution_allowed_now": false,
+    "candidate_live_domain_access_allowed": false,
+    "wayback_query_execution_allowed_now": false,
+    "artifact_capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "B5: execute the exact B4 release only after successful independently verified A1 and the dynamic 24-hour cooldown plus absolute floor; no network execution is part of B4."
+  },
+  "safety_contract": {"network_operations": 0, "candidate_domain_access_operations": 0, "wayback_queries": 0, "archived_page_downloads": 0, "captures": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

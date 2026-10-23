@@ -1,0 +1,54 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_READY_CHANNEL_WAYBACK_AVAILABILITY_EXECUTION_V1",
+  "created_at": "2026-10-23",
+  "status": "PASS_B4_CRASH_SAFE_EXACT_70_EXECUTION_RELEASE_PREPARED_NETWORK_CLOSED",
+  "purpose": "Register B4's crash-safe exact-70 availability executor, future result verifier, dynamic A1 cooldown, and immutable release QA without performing a network request.",
+  "inputs": [
+    {"role": "b3_availability_plan", "path": "registry/analyses/target_text_corpus_v1_ready_channel_wayback_availability_plan_v1.json", "sha256": "962111e7435469c196646c6af128a9a036a8fc048c4052faaf59380f306e107a"},
+    {"role": "availability_plan", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_availability_plan_v1\\availability_plan_v1.jsonl", "sha256": "d6d5c4d63f1cea4be175222eceff0a330437f06dbb4223aab472cfb91b040d43"},
+    {"role": "a1_cdx_release", "path": "configs/sec_edgar_iapd_wayback_alternate_snapshot_cdx_release_v1.json", "sha256": "f06cc1933572173f111aa7adf97eda6c8aa9a461e4a6c0fc1c0fa6dc9a90f971"}
+  ],
+  "implementation": [
+    {"role": "execution_release", "path": "configs/target_text_corpus_v1_ready_channel_wayback_availability_execution_release_v1.json", "sha256": "fcb42133653dafb339e3b6f21181ee129921709012267a685f1005b5cacac909"},
+    {"role": "release_verifier", "path": "scripts/verify_target_text_corpus_v1_ready_channel_wayback_availability_execution_release_v1.py", "sha256": "9d75964f2d5842ed0ed8e48e7224501fc234d82aba0a99517e49c8f54c2ef120"},
+    {"role": "crash_safe_executor", "path": "scripts/execute_target_text_corpus_v1_ready_channel_wayback_availability_v1.py", "sha256": "2770b4b65861c94bf63da97ff7bb06136c873840c1424bf667535c849eda7e01"},
+    {"role": "future_result_verifier", "path": "scripts/verify_target_text_corpus_v1_ready_channel_wayback_availability_result_v1.py", "sha256": "3a106552265a616443bb25ce080a9e78b417ae68fc7b621e540ed8ec9be1c631"},
+    {"role": "synthetic_execution_tests", "path": "tests/test_target_text_corpus_v1_ready_channel_wayback_availability_execution_v1.py", "sha256": "d4d7ae03e35a7257a083281afb9221cee2ce0970395e2891a4c0acdb4c684fb3"},
+    {"role": "documentation", "path": "docs/target-text-corpus-v1-ready-channel-wayback-availability-execution-v1.md", "sha256": "6b86dc7c9256f639506d12bf75f9cc014ed52f2098f70c70087fd2739ec55993"}
+  ],
+  "outputs": [
+    {"role": "independent_execution_release_qa", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_availability_plan_v1\\independent_execution_release_qa_v1.json", "sha256": "dd8114b1fea71045c562365399a9ed72ff392022673123fa7d9a23f7a3772cf1"}
+  ],
+  "result": {
+    "release_qa_status": "PASS_B4_EXACT_70_EXECUTION_RELEASE_PREPARED_DYNAMIC_A1_COOLDOWN_REQUIRED",
+    "plan_records": 70,
+    "development_records": 50,
+    "external_holdout_records": 20,
+    "minimum_delay_seconds": 60.0,
+    "maximum_attempts_per_candidate": 1,
+    "absolute_not_before_floor": "2026-10-25T00:00:00+07:00",
+    "dynamic_a1_report_cooldown_required": true,
+    "minimum_cooldown_seconds_after_a1": 86400,
+    "partial_journal_reserved_before_network": true,
+    "partial_journal_auto_resume_allowed": false,
+    "stop_on_http_429": true,
+    "stop_on_any_http_or_transport_error": true,
+    "retry_after_preserved": true,
+    "network_requests_executed": 0
+  },
+  "decision": {
+    "b4_complete": true,
+    "execution_tooling_ready": true,
+    "b5_execution_may_run_only_after_dynamic_gate": true,
+    "network_execution_allowed_now": false,
+    "candidate_live_domain_access_allowed": false,
+    "archived_page_download_allowed": false,
+    "artifact_capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "B5: after A1 completes successfully and both the absolute floor and A1-created-at plus 24 hours have passed, rerun all offline checks and execute this exact release once only if neither final nor partial output exists."
+  },
+  "safety_contract": {"network_operations": 0, "candidate_domain_access_operations": 0, "wayback_queries": 0, "archived_page_downloads": 0, "captures": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

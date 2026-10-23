@@ -1,0 +1,87 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_IAPD_WAYBACK_ALTERNATE_SNAPSHOT_CDX_OWNER_OVERRIDE_V1",
+  "created_at": "2026-10-23",
+  "status": "FROZEN_OWNER_TIMING_ONLY_OVERRIDE_INDEPENDENT_QA_PASS_EXECUTION_PENDING",
+  "purpose": "Register the project owner's explicit one-time A1 not_before exception while retaining every non-timing release safeguard and keeping execution separately auditable.",
+  "inputs": [
+    {
+      "role": "owner_timing_override",
+      "path": "configs/sec_edgar_iapd_wayback_alternate_snapshot_cdx_owner_timing_override_v1.json",
+      "sha256": "2fa75a526fea0eb73dbcf785e9031eab5b89921a6b9b0a9d4a864d5ce35d2e2e"
+    },
+    {
+      "role": "frozen_cdx_release_v1",
+      "path": "configs/sec_edgar_iapd_wayback_alternate_snapshot_cdx_release_v1.json",
+      "sha256": "f06cc1933572173f111aa7adf97eda6c8aa9a461e4a6c0fc1c0fa6dc9a90f971"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "owner_override_executor",
+      "path": "scripts/execute_sec_edgar_iapd_wayback_alternate_snapshot_cdx_owner_override_v1.py",
+      "sha256": "3b807003c2b57fb22b51eb9699b5c13783f52b176e2023fd9487fb7765629c76"
+    },
+    {
+      "role": "owner_override_verifier",
+      "path": "scripts/verify_sec_edgar_iapd_wayback_alternate_snapshot_cdx_owner_override_v1.py",
+      "sha256": "87ef8137e5d2fcf5e77b3c9eaf6c94d54fc88ec431228c7544c05dbe67a8e463"
+    },
+    {
+      "role": "owner_override_result_verifier",
+      "path": "scripts/verify_sec_edgar_iapd_wayback_alternate_snapshot_cdx_owner_override_result_v1.py",
+      "sha256": "5ff68f3f42264ebbfdd1d5fcd7d178017d251ffa2c7506df2e832e07629d5132"
+    },
+    {
+      "role": "tests",
+      "path": "tests/test_sec_edgar_iapd_wayback_alternate_snapshot_cdx_owner_override_v1.py",
+      "sha256": "8ee7032d98f17848274cd3d69d831cfed28a15bf69cb8c69749e4d180524d7a3"
+    },
+    {
+      "role": "registry_tests",
+      "path": "tests/test_sec_edgar_iapd_wayback_alternate_snapshot_cdx_owner_override_registry_v1.py",
+      "sha256": "8bbda6c6081ba93f01e966660ca960e6ffd659a4ca67b8c8c5714ea804fb1d7b"
+    },
+    {
+      "role": "documentation",
+      "path": "docs/sec-edgar-iapd-wayback-alternate-snapshot-cdx-owner-timing-override-v1.md",
+      "sha256": "6acac0cf8fdaec2aa2b521c83d82a0eb0bd50854a2571e05ab2531f2db88696f"
+    }
+  ],
+  "outputs": [
+    {
+      "role": "independent_owner_override_qa",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_alternate_snapshot_cdx_v1\\independent_owner_timing_override_qa_v1.json",
+      "sha256": "513679b33adbd20f293ecc8e0805117f0dbdd521c77c713d0c288ac846957a60"
+    }
+  ],
+  "result": {
+    "override_scope": "NOT_BEFORE_ONLY",
+    "original_not_before": "2026-10-23T23:35:43.595958+07:00",
+    "effective_not_before": "2026-10-23T21:30:50.846253+07:00",
+    "maximum_logical_requests": 1,
+    "minimum_delay_seconds": 60.0,
+    "independent_qa_status": "PASS_EXPLICIT_OWNER_TIMING_ONLY_OVERRIDE_ONE_REQUEST_SAFETY_UNCHANGED"
+  },
+  "decision": {
+    "owner_timing_override_verified": true,
+    "execution_may_start_now": true,
+    "network_executed": false,
+    "original_release_mutated": false,
+    "candidate_live_domain_access_allowed": false,
+    "archived_page_download_allowed": false,
+    "capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "candidate_domain_access_operations": 0,
+    "archived_page_downloads": 0,
+    "captures": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "analysis_id": "ISI_REPRODUCIBILITY_CURRENT_STATE_V24",
+  "created_at": "2026-10-23",
+  "status": "CURRENT_A1_OWNER_TIMING_OVERRIDE_READY_EXECUTION_PENDING",
+  "purpose": "Replace V23 navigation with the independently verified A1 timing-only override while preserving all non-timing state.",
+  "inputs": [
+    {"role": "prior_reproducibility_state_v23", "path": "registry/analyses/reproducibility_current_state_v23.json", "sha256": "d405a5f9b288b5be1d3b591aa5d11ed5a468b08ccf52fb4d4ae13e91031dd575"},
+    {"role": "current_ledger_v27", "path": "registry/analyses/project_state_gap_ledger_v27.json", "sha256": "ca3817f0625274e1bfc3bf60fed1c104b49cc7434aac3bbc0b7f1e5b019d7759"},
+    {"role": "a1_owner_override_registry", "path": "registry/analyses/sec_edgar_iapd_wayback_alternate_snapshot_cdx_owner_override_v1.json", "sha256": "85c97a294c05c613cda58e071180a197be6e13b0fd41eef6b8d699d9fac4e764"}
+  ],
+  "implementation": [
+    {"role": "human_readable_current_state", "path": "docs/reproducibility-current-state-v24.md", "sha256": "5a1648223bb66450d670987428ba84feaf28641df3e20b515241ef601898a281"},
+    {"role": "current_state_contract_tests", "path": "tests/test_reproducibility_current_state_v24.py", "sha256": "d46bec6318faa102006549331598d81eeed157e5b0fa08362d3bcdd14f6324d5"}
+  ],
+  "current_state": {
+    "availability_resolved": 113,
+    "availability_total": 115,
+    "a1_owner_timing_override_verified": true,
+    "a1_network_executed": false,
+    "a2_v11_network_executed": false,
+    "c2_preflight_complete": true,
+    "c2_completed_submissions": 0,
+    "c3_preflight_complete": true,
+    "language_tasks_completed_by_human": 0,
+    "fresh_v1_core_admitted_groups": 0,
+    "conditional_owner_accepted_supply": 42,
+    "training_eligible_records": 0
+  },
+  "decision": {
+    "current_navigation_ledger": "registry/analyses/project_state_gap_ledger_v27.json",
+    "a1_owner_timing_override_verified": true,
+    "a1_may_execute_now_once": true,
+    "candidate_live_domain_access_allowed": false,
+    "archived_page_download_allowed": false,
+    "capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Execute A1 owner override once, independently verify the report, and replace this navigation snapshot."
+  },
+  "safety_contract": {"network_operations": 0, "candidate_domain_access_operations": 0, "archived_page_downloads": 0, "captures": 0, "labels_changed": 0, "model_operations": 0, "training_allowed": false}
+}

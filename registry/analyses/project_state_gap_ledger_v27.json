@@ -1,0 +1,37 @@
+{
+  "analysis_id": "ISI_PROJECT_STATE_GAP_LEDGER_V27",
+  "created_at": "2026-10-23",
+  "base_commit": "e17090f9ef82c91f11714422b40e98152f3ad386",
+  "status": "CURRENT_A1_OWNER_TIMING_OVERRIDE_VERIFIED_EXECUTION_PENDING",
+  "purpose": "Replace V26 after independently verifying the explicit A1 not_before-only owner override without changing any other branch or safety gate.",
+  "inputs": [
+    {"role": "prior_state_v26", "path": "registry/analyses/project_state_gap_ledger_v26.json", "sha256": "8eb37153cf8699ce5e79bc10ffc7fc5e5734c6b3f6d6770c41bdfbe7c5800d46"},
+    {"role": "a1_owner_override_registry", "path": "registry/analyses/sec_edgar_iapd_wayback_alternate_snapshot_cdx_owner_override_v1.json", "sha256": "85c97a294c05c613cda58e071180a197be6e13b0fd41eef6b8d699d9fac4e764"}
+  ],
+  "implementation": [
+    {"role": "human_readable_ledger", "path": "docs/project-state-gap-ledger-v27.md", "sha256": "20c716596e78f0467092f850165dbe4afcd00357dbbed26beef975b7a0eb4322"},
+    {"role": "ledger_contract_tests", "path": "tests/test_project_state_gap_ledger_v27.py", "sha256": "f1b6cb0ceb56144439aada71c1e86d895fd7d7ebeedbc445ab7eb6ffff778ed0"}
+  ],
+  "state_amendments": {
+    "P1_A1_OWNER_TIMING_OVERRIDE": {"scope": "NOT_BEFORE_ONLY", "maximum_logical_requests": 1, "effective_not_before": "2026-10-23T21:30:50.846253+07:00", "network_requests": 0, "archived_page_downloads": 0},
+    "P2_C2_C3_PREFLIGHTS": {"c2_preflight_complete": true, "c2_completed_submissions": 0, "c3_preflight_complete": true, "c3_human_responses": 0},
+    "P3_V1_CORE": {"required_groups": 300, "admitted_groups": 0, "conditional_owner_accepted_supply": 42}
+  },
+  "decision": {
+    "a1_owner_timing_override_verified": true,
+    "a1_network_executed": false,
+    "a1_may_execute_now_once": true,
+    "a2_v11_concrete_release_created": false,
+    "c2_preflight_complete": true,
+    "c3_preflight_complete": true,
+    "candidate_live_domain_access_allowed": false,
+    "archived_page_download_allowed": false,
+    "capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Run the independently verified one-request A1 owner override exactly once, then independently verify and register the result."
+  },
+  "safety_contract": {"network_operations": 0, "candidate_domain_access_operations": 0, "archived_page_downloads": 0, "captures": 0, "labels_changed": 0, "model_operations": 0, "training_allowed": false}
+}

@@ -1,0 +1,78 @@
+{
+  "override_id": "ISI_SEC_EDGAR_IAPD_WAYBACK_ALTERNATE_SNAPSHOT_CDX_OWNER_TIMING_OVERRIDE_V1",
+  "created_at": "2026-10-23T21:33:08.376746+07:00",
+  "status": "FROZEN_EXPLICIT_OWNER_TIMING_ONLY_OVERRIDE_ONE_REQUEST",
+  "purpose": "Record the project owner's explicit instruction to execute A1 a few hours early while preserving the immutable V1 release, its one-request archive-metadata-only scope, pacing, rate-limit stop, no-overwrite and every data/model safety gate.",
+  "owner_authorization_record": {
+    "received_at": "2026-10-23T21:30:50.846253+07:00",
+    "instruction": "lâu quá, luôn giờ đi, tôi cho phép, chỉ thiếu vài tiếng thôi",
+    "interpreted_scope": "Waive only the remaining A1 not_before interval for one execution; no other release, safety, acquisition, labeling or model constraint is waived."
+  },
+  "inputs": {
+    "frozen_release": {
+      "path": "C:\\Users\\hieu\\Documents\\ChatGPT\\invesment scam intelligence\\configs\\sec_edgar_iapd_wayback_alternate_snapshot_cdx_release_v1.json",
+      "sha256": "f06cc1933572173f111aa7adf97eda6c8aa9a461e4a6c0fc1c0fa6dc9a90f971"
+    },
+    "frozen_release_qa": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_alternate_snapshot_cdx_v1\\independent_release_qa_v1.json",
+      "sha256": "0515b8828e534c5660fb3bee55b22d8880cc83fc7d3193d8f2b94e736359d8f2"
+    }
+  },
+  "implementation": [
+    {
+      "role": "owner_override_executor",
+      "path": "scripts/execute_sec_edgar_iapd_wayback_alternate_snapshot_cdx_owner_override_v1.py",
+      "sha256": "3b807003c2b57fb22b51eb9699b5c13783f52b176e2023fd9487fb7765629c76"
+    },
+    {
+      "role": "owner_override_verifier",
+      "path": "scripts/verify_sec_edgar_iapd_wayback_alternate_snapshot_cdx_owner_override_v1.py",
+      "sha256": "87ef8137e5d2fcf5e77b3c9eaf6c94d54fc88ec431228c7544c05dbe67a8e463"
+    },
+    {
+      "role": "owner_override_result_verifier",
+      "path": "scripts/verify_sec_edgar_iapd_wayback_alternate_snapshot_cdx_owner_override_result_v1.py",
+      "sha256": "5ff68f3f42264ebbfdd1d5fcd7d178017d251ffa2c7506df2e832e07629d5132"
+    }
+  ],
+  "timing_override": {
+    "explicit_owner_authorization": true,
+    "scope": "NOT_BEFORE_ONLY",
+    "authorized_at": "2026-10-23T21:30:50.846253+07:00",
+    "effective_not_before": "2026-10-23T21:30:50.846253+07:00",
+    "original_not_before": "2026-10-23T23:35:43.595958+07:00",
+    "remaining_seconds_waived_at_authorization": 7492.749705,
+    "one_execution_only": true,
+    "maximum_logical_requests": 1,
+    "all_non_timing_safety_contracts_unchanged": true,
+    "stop_on_http_429_unchanged": true,
+    "no_overwrite_unchanged": true,
+    "no_live_candidate_domain_access_unchanged": true,
+    "no_archived_page_download_unchanged": true
+  },
+  "planned_outputs": {
+    "owner_override_qa": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_alternate_snapshot_cdx_v1\\independent_owner_timing_override_qa_v1.json",
+    "cdx_report": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_alternate_snapshot_cdx_v1\\cdx_enumeration_report_v1.json",
+    "owner_override_result_qa": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_alternate_snapshot_cdx_v1\\independent_result_qa_owner_override_v1.json"
+  },
+  "decision": {
+    "one_cdx_metadata_request_allowed_under_override": true,
+    "original_release_mutation_allowed": false,
+    "candidate_live_domain_access_allowed": false,
+    "archived_page_download_allowed": false,
+    "capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {
+    "maximum_archive_metadata_requests": 1,
+    "candidate_live_domain_access_operations": 0,
+    "archived_page_downloads": 0,
+    "captures": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

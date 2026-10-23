@@ -1,0 +1,61 @@
+{
+  "plan_id": "ISI_TARGET_TEXT_CORPUS_V1_PARALLEL_C_WORKSTREAM_V1",
+  "created_at": "2026-10-23",
+  "status": "FROZEN_C1_OFFLINE_SCOPE_EXTERNAL_ARTIFACT_GATES_PRESERVED",
+  "purpose": "Define the C workstream as offline governance and intake preparation for blocked/manual sources and pending human language review while A1/A2 and B5 retain their independent timed gates.",
+  "inputs": [
+    {"role": "sampling_matrix", "path": "configs/target_text_corpus_v1_sampling_matrix_v1.json", "sha256": "19faaa4e2e0edfd87a403f6e39df96c763a7e0ae5890cebe6cc3adbb3c40176b"},
+    {"role": "capacity_gap_v4", "path": "registry/analyses/target_text_corpus_v1_capacity_gap_v4.json", "sha256": "87629387de99be6b6726c5ba1ada29cad6e2fc97c9ce79d7da815ba2b43e6097"},
+    {"role": "acquisition_wave_plan_v2", "path": "registry/analyses/target_text_corpus_v1_acquisition_wave_plan_v2.json", "sha256": "1c72e2a01d8bfbde73abfc2214085dfc74cdf64f5364c469f32ccbf92616d53d"},
+    {"role": "manual_acquisition_packet_v1", "path": "registry/analyses/target_text_corpus_v1_manual_acquisition_packet_v1.json", "sha256": "775ce6c3aa8ac2eef9803736eed65c5b8925128b8f3db04e22f112f39cfb050f"},
+    {"role": "vietnamese_terms_v1", "path": "registry/analyses/target_text_corpus_v1_vietnamese_channel_terms_v1.json", "sha256": "2704c69378ceee00a7a5b39c456069ec1684a52d11facea4fef0b09e24d4c081"},
+    {"role": "a5_packets_v1", "path": "registry/analyses/target_text_corpus_v1_owner_accepted_a5_packets_v1.json", "sha256": "2d7a50476a761459885a22aea7c7f373dbc448949633178a5c414b05cdaebe1d"},
+    {"role": "b4_execution_v1", "path": "registry/analyses/target_text_corpus_v1_ready_channel_wayback_availability_execution_v1.json", "sha256": "fe70cc19d7904b696e6cf548e158cfc7ff540fbfb8845e448670e16432f7df99"}
+  ],
+  "capacity_boundary": {
+    "required_groups": 300,
+    "admitted_groups": 0,
+    "conditional_owner_accepted_supply": 42,
+    "conditional_residual_gap": 258,
+    "audited_language_credit": 0,
+    "required_vietnamese_groups": 16
+  },
+  "c1_scope": [
+    {"source_or_task": "CFTC_RED_REFERENCE_CAPACITY", "state": "BLOCKED_DOCUMENTED_LAWFUL_CAPACITY_ROUTE_OR_UNTOUCHED_ARTIFACT_REQUIRED", "target_groups": 75, "may_prepare_offline": ["intake_validation", "hash_registration", "capacity_audit"], "network_allowed": false},
+    {"source_or_task": "DFPI_FIRST_PARTY_OR_OFFICIAL_EXPORT", "state": "WAITING_USER_SUPPLIED_LAWFUL_ARTIFACT", "target_groups": null, "may_prepare_offline": ["submission_validation", "hash_registration", "source_role_audit"], "network_allowed": false},
+    {"source_or_task": "SSC_VIETNAM_CONFIRMED_REFERENCE", "state": "BLOCKED_EXPLICIT_OFFICIAL_EXPORT_OR_WRITTEN_REUSE_BASIS_REQUIRED", "target_groups": null, "may_prepare_offline": ["rights_evidence_validation", "hash_registration", "source_role_audit"], "network_allowed": false},
+    {"source_or_task": "HNX_VIETNAM_LEGITIMATE_REFERENCE", "state": "BLOCKED_EXPLICIT_OFFICIAL_EXPORT_OR_WRITTEN_REUSE_BASIS_REQUIRED", "target_groups": null, "may_prepare_offline": ["rights_evidence_validation", "hash_registration", "source_role_audit"], "network_allowed": false},
+    {"source_or_task": "A5_EXACT_42_LANGUAGE_REVIEW", "state": "PACKET_READY_TRUTHFUL_HUMAN_REVIEW_PENDING", "target_groups": 42, "may_prepare_offline": ["review_response_schema", "response_verifier", "language_quota_recomputation"], "network_allowed": false}
+  ],
+  "ordered_follow_on_gates": [
+    {"gate": "C2_EXTERNAL_ARTIFACT_INTAKE", "entry": "One or more lawful source artifacts or written reuse records are supplied", "allowed_action": "Validate bytes, hashes, rights evidence and exact source identity; create a new versioned readiness ledger"},
+    {"gate": "C3_LANGUAGE_REVIEW_RESPONSE", "entry": "A truthful human completes the exact A5 packet", "allowed_action": "Verify exact coverage, text hashes and language-code syntax; recompute language supply without changing labels"},
+    {"gate": "C4_MATRIX_AND_ENUMERATION_RELEASE", "entry": "Relevant source capacity, terms and rights gates pass", "allowed_action": "Freeze a new sampling matrix or source-specific enumeration release; network remains separately gated"}
+  ],
+  "branch_isolation": {
+    "a1_a2_outputs_may_be_mutated": false,
+    "b2_b4_outputs_may_be_mutated": false,
+    "b5_may_be_executed_by_c_workstream": false,
+    "owner_accepted_labels_may_be_changed": false,
+    "language_may_be_inferred_from_domain_or_country": false,
+    "missing_artifact_may_be_replaced_by_web_search": false,
+    "shortfall_borrowing_between_channels_allowed": false
+  },
+  "planned_output": {
+    "independent_qa": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\parallel_c_workstream_v1\\independent_qa_v1.json"
+  },
+  "decision": {
+    "c1_scope_freeze_allowed": true,
+    "offline_schema_and_verifier_preparation_allowed": true,
+    "external_artifact_intake_execution_allowed_without_artifact": false,
+    "candidate_enumeration_allowed": false,
+    "network_execution_allowed": false,
+    "candidate_domain_access_allowed": false,
+    "capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {"network_operations": 0, "source_files_acquired": 0, "candidate_records_enumerated": 0, "captures": 0, "labels_changed": 0, "model_operations": 0, "training_allowed": false}
+}

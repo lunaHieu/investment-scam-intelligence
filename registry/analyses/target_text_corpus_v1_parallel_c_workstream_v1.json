@@ -1,0 +1,48 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_PARALLEL_C_WORKSTREAM_V1",
+  "created_at": "2026-10-23",
+  "status": "PASS_C1_OFFLINE_SCOPE_FROZEN_EXTERNAL_GATES_PRESERVED",
+  "purpose": "Register C1 as an offline-only governance and intake-preparation branch for blocked/manual sources and pending human language review without overlapping A1/A2 or B2-B5.",
+  "inputs": [
+    {"role": "current_ledger_v23", "path": "registry/analyses/project_state_gap_ledger_v23.json", "sha256": "24f96534e6e95fb75db6319b4f2b4a63719d14b9d115d0f68d1d5080a45550b1"},
+    {"role": "current_reproducibility_v20", "path": "registry/analyses/reproducibility_current_state_v20.json", "sha256": "c635819c432b087d999fb49fbc1195f1529ae8989b47bbdda7adf888304abeb9"}
+  ],
+  "implementation": [
+    {"role": "c1_plan", "path": "configs/target_text_corpus_v1_parallel_c_workstream_v1.json", "sha256": "b67c8cabe311acd465a1c9146b258817b932b75ae290545fcbb18ca5854d5dae"},
+    {"role": "independent_verifier", "path": "scripts/verify_target_text_corpus_v1_parallel_c_workstream_v1.py", "sha256": "dd33c8b21a26a120d6d2959cfa612d3eedb0f7487cae1b8447a32d41640fe577"},
+    {"role": "verifier_tests", "path": "tests/test_target_text_corpus_v1_parallel_c_workstream_v1.py", "sha256": "f911ea62303153c214ac539c41c14d719ba85051defd8b1e2680a400c363b4fd"},
+    {"role": "documentation", "path": "docs/target-text-corpus-v1-parallel-c-workstream-v1.md", "sha256": "8f429ec7646a8d66ccad3a87f05024b46ca9e3cc6df6c6d2288d3f7eae582c8f"}
+  ],
+  "outputs": [
+    {"role": "independent_qa", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\parallel_c_workstream_v1\\independent_qa_v1.json", "sha256": "0d0e89032fa77462bf1f2ea31bbe6adc5783d85d887dcb46e8cfe71c647985dd"}
+  ],
+  "result": {
+    "scope_items": 5,
+    "follow_on_gates": 3,
+    "required_groups": 300,
+    "admitted_groups": 0,
+    "conditional_owner_accepted_supply": 42,
+    "conditional_residual_gap": 258,
+    "cftc_target_groups_blocked": 75,
+    "pending_human_language_tasks": 42,
+    "lawful_external_artifacts_acquired": 0,
+    "network_operations": 0
+  },
+  "decision": {
+    "c1_complete": true,
+    "c2_may_run_only_after_real_external_artifact_or_rights_record": true,
+    "c3_may_run_only_after_truthful_human_language_response": true,
+    "c4_requires_source_capacity_terms_and_rights_pass": true,
+    "a1_a2_mutation_allowed": false,
+    "b2_b5_mutation_allowed": false,
+    "candidate_enumeration_allowed": false,
+    "network_execution_allowed": false,
+    "capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Wait for a genuine lawful artifact/rights record for C2 or a truthful exact-42 human language response for C3; continue independent timed A1/A2/B5 work separately."
+  },
+  "safety_contract": {"network_operations": 0, "source_files_acquired": 0, "candidate_records_enumerated": 0, "captures": 0, "labels_changed": 0, "model_operations": 0, "training_allowed": false}
+}

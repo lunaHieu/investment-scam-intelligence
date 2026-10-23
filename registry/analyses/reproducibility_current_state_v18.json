@@ -1,0 +1,56 @@
+{
+  "analysis_id": "ISI_REPRODUCIBILITY_CURRENT_STATE_V18",
+  "created_at": "2026-10-23",
+  "status": "CURRENT_B3_EXACT_70_AVAILABILITY_PLAN_A1_A2_A4_UNCHANGED",
+  "purpose": "Replace V17 navigation with B3's immutable exact-70 Wayback availability plan and independent QA while preserving the established SEC/IAPD, admission, queue, and model states.",
+  "inputs": [
+    {"role": "prior_reproducibility_state_v17", "path": "registry/analyses/reproducibility_current_state_v17.json", "sha256": "28b2eaa160b68d59fc5a671083515ad41c7af9590832e490300b0d86b14c1cec"},
+    {"role": "current_ledger_v21", "path": "registry/analyses/project_state_gap_ledger_v21.json", "sha256": "a60e4a423bce8d927626e0bee486132390d51d12a9703da4c8de19590673c862"},
+    {"role": "b3_availability_plan", "path": "registry/analyses/target_text_corpus_v1_ready_channel_wayback_availability_plan_v1.json", "sha256": "962111e7435469c196646c6af128a9a036a8fc048c4052faaf59380f306e107a"}
+  ],
+  "implementation": [
+    {"role": "human_readable_current_state", "path": "docs/reproducibility-current-state-v18.md", "sha256": "e3a93cf958e0f3d7e0b3550f3d1e53be2bfdbabe1e7ccb950a1a7d0048bc88d7"},
+    {"role": "current_state_contract_tests", "path": "tests/test_reproducibility_current_state_v18.py", "sha256": "c252a64cb2516f450580e1561f6189be01596369358cfcf2bfd8805eeb88dbc7"}
+  ],
+  "current_state": {
+    "availability_resolved": 113,
+    "availability_total": 115,
+    "captured": 57,
+    "capture_planned": 58,
+    "review_completed": 56,
+    "owner_accepted_legitimate": 42,
+    "uncertain_retained": 14,
+    "fresh_v1_core_admitted_groups": 0,
+    "fresh_v1_core_required_groups": 300,
+    "v1_core_conditional_owner_accepted_supply": 42,
+    "v1_core_conditional_residual_gap": 258,
+    "ready_channel_queue_records": 70,
+    "ready_channel_queue_uncertain": 70,
+    "ready_channel_availability_plan_records": 70,
+    "ready_channel_availability_executed_records": 0,
+    "ready_channel_network_requests": 0,
+    "ready_channel_unique_hosts": 70,
+    "ready_channel_unique_normalized_entities": 70,
+    "a1_cdx_network_executed": false,
+    "a2_v11_concrete_release_created": false,
+    "a2_v11_network_executed": false,
+    "training_eligible_records": 0
+  },
+  "decision": {
+    "current_navigation_ledger": "registry/analyses/project_state_gap_ledger_v21.json",
+    "current_ready_channel_availability_plan_registry": "registry/analyses/target_text_corpus_v1_ready_channel_wayback_availability_plan_v1.json",
+    "b3_complete": true,
+    "a1_a2_archive_sequence_changed": false,
+    "b4_execution_release_preparation_allowed": true,
+    "network_execution_allowed": false,
+    "candidate_live_domain_access_allowed": false,
+    "wayback_query_execution_allowed": false,
+    "artifact_capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "B4: prepare and independently verify crash-safe exact-70 availability execution tooling and a concrete timed release; do not execute it as part of B3."
+  },
+  "safety_contract": {"network_operations": 0, "candidate_domain_access_operations": 0, "wayback_queries": 0, "archived_page_downloads": 0, "captures": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

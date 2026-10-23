@@ -1,0 +1,57 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_READY_CHANNEL_WAYBACK_AVAILABILITY_PLAN_V1",
+  "created_at": "2026-10-23",
+  "status": "PASS_B3_EXACT_70_AVAILABILITY_PLAN_INDEPENDENTLY_VERIFIED_NETWORK_CLOSED",
+  "purpose": "Register B3's immutable exact-70 archive-only Wayback availability plan and independent row-by-row verification without executing any request or opening capture, labeling, or model gates.",
+  "inputs": [
+    {"role": "b2_ready_channel_queue", "path": "registry/analyses/target_text_corpus_v1_ready_channel_queue_v1.json", "sha256": "af130cf39e57e6b593059737d91f7575b4e192eb9d05af80aca3d5ce12efb6fa"},
+    {"role": "b2_candidate_queue", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_enumeration_release_v1\\candidate_queue_v1.jsonl", "sha256": "2f030006d9ab1d4dcac7c45f6217372ab374cac355ef2a3ab893e11c4c3e6550"}
+  ],
+  "implementation": [
+    {"role": "plan_release", "path": "configs/target_text_corpus_v1_ready_channel_wayback_availability_plan_release_v1.json", "sha256": "d0ec8e56162ac052b94cc3787d71b89636439d13a39f52d38ce1419886a8a573"},
+    {"role": "plan_builder", "path": "scripts/build_target_text_corpus_v1_ready_channel_wayback_availability_plan_v1.py", "sha256": "2f88e28d0e7d5ad316eb529d097e9acde654520276b7281695072a52fa9db074"},
+    {"role": "independent_plan_verifier", "path": "scripts/verify_target_text_corpus_v1_ready_channel_wayback_availability_plan_v1.py", "sha256": "96a2e33213abb6372e7de58f4b66a38c66d1f3f6bb824d3f63b9ad7d979a923d"},
+    {"role": "plan_tests", "path": "tests/test_target_text_corpus_v1_ready_channel_wayback_availability_plan_v1.py", "sha256": "8482656b358cbb10b4800422e8fec2a1429c685833fe827fb95ffbbcafb346bb"},
+    {"role": "documentation", "path": "docs/target-text-corpus-v1-ready-channel-wayback-availability-plan-v1.md", "sha256": "ae898f858c4e03edd7a8fed334f880a4e766a29333519eda612894ccfa5b49b8"}
+  ],
+  "outputs": [
+    {"role": "availability_plan", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_availability_plan_v1\\availability_plan_v1.jsonl", "sha256": "d6d5c4d63f1cea4be175222eceff0a330437f06dbb4223aab472cfb91b040d43"},
+    {"role": "plan_report", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_availability_plan_v1\\plan_report_v1.json", "sha256": "20d7cad1004243cc18d5d7b6195c0a91759d67a035e1de6832355489992cc883"},
+    {"role": "independent_plan_qa", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_availability_plan_v1\\independent_plan_qa_v1.json", "sha256": "d6d54eeb1736256dfabd0969bbb1cdf8fff6c9792475840d96a146dbc5820a64"}
+  ],
+  "result": {
+    "plan_records": 70,
+    "development_records": 50,
+    "external_holdout_records": 20,
+    "confirmed_regulator_records": 35,
+    "legitimate_iapd_records": 35,
+    "unique_plan_ids": 70,
+    "unique_candidate_ids": 70,
+    "unique_hosts": 70,
+    "unique_normalized_entities": 70,
+    "development_holdout_host_overlap": 0,
+    "development_holdout_entity_overlap": 0,
+    "candidate_order_preserved": true,
+    "planned_request_urls_round_trip": true,
+    "target_timestamp": "20261003",
+    "future_minimum_delay_seconds": 60.0,
+    "future_maximum_attempts_per_candidate": 1,
+    "ground_truth_status": "UNCERTAIN"
+  },
+  "decision": {
+    "b3_complete": true,
+    "b4_crash_safe_execution_release_preparation_allowed": true,
+    "network_execution_performed": false,
+    "network_execution_allowed": false,
+    "candidate_live_domain_access_allowed": false,
+    "wayback_query_execution_allowed": false,
+    "archived_page_download_allowed": false,
+    "artifact_capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "B4: create, test, freeze, and independently verify crash-safe execution tooling and a concrete timed release for exactly this 70-row plan; do not execute it under B3."
+  },
+  "safety_contract": {"network_operations": 0, "candidate_domain_access_operations": 0, "wayback_queries": 0, "archived_page_downloads": 0, "captures": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

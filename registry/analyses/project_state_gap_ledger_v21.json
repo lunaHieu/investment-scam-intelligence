@@ -1,0 +1,53 @@
+{
+  "analysis_id": "ISI_PROJECT_STATE_GAP_LEDGER_V21",
+  "created_at": "2026-10-23",
+  "base_commit": "82f4c2677e864f5896f2f4b79f66dc5d7f5826f2",
+  "status": "FROZEN_B3_EXACT_70_AVAILABILITY_PLAN_B4_EXECUTION_RELEASE_MAY_BE_PREPARED",
+  "purpose": "Replace ledger V20 with B3's exact independently verified Wayback availability plan while preserving A1-A4, B2, and every closed network, capture, labeling, and model gate.",
+  "inputs": [
+    {"role": "prior_state_v20", "path": "registry/analyses/project_state_gap_ledger_v20.json", "sha256": "6f38afa16d10dcb97eaec6e697998c3a24048221c1f7a1d83bce2a2f011dd53f"},
+    {"role": "b3_availability_plan", "path": "registry/analyses/target_text_corpus_v1_ready_channel_wayback_availability_plan_v1.json", "sha256": "962111e7435469c196646c6af128a9a036a8fc048c4052faaf59380f306e107a"}
+  ],
+  "implementation": [
+    {"role": "human_readable_ledger", "path": "docs/project-state-gap-ledger-v21.md", "sha256": "1a3acf86f76528ca19f13b8b6cb5626cc48eb49b41f134312da3f0335099f4bf"},
+    {"role": "ledger_contract_tests", "path": "tests/test_project_state_gap_ledger_v21.py", "sha256": "168d3033eae22b0c6df3b25d1bdbd861e148efe7a26186fde1acfc79fdc63834"}
+  ],
+  "state_amendments": {
+    "P1_SEC_IAPD": {"availability_resolved": 113, "availability_total": 115, "a1_cdx_network_executed": false, "a2_v11_concrete_release_created": false},
+    "P2_A4_ADMISSION_REPAIR": {"conditional_records": 42, "fields_credited_now": 0, "v1_core_admitted_records": 0},
+    "P2_B2_READY_CHANNEL_QUEUE": {"candidate_records": 70, "development_records": 50, "external_holdout_records": 20, "uncertain_records": 70, "labels_created": 0},
+    "P2_B3_READY_CHANNEL_AVAILABILITY_PLAN": {
+      "plan_records": 70,
+      "development_records": 50,
+      "external_holdout_records": 20,
+      "confirmed_regulator_records": 35,
+      "legitimate_iapd_records": 35,
+      "unique_plan_ids": 70,
+      "unique_candidate_ids": 70,
+      "unique_hosts": 70,
+      "unique_normalized_entities": 70,
+      "development_holdout_host_overlap": 0,
+      "development_holdout_entity_overlap": 0,
+      "candidate_order_preserved": true,
+      "planned_request_urls_round_trip": true,
+      "target_timestamp": "20261003",
+      "future_minimum_delay_seconds": 60.0,
+      "network_operations": 0,
+      "wayback_queries": 0
+    }
+  },
+  "decision": {
+    "b3_complete": true,
+    "b4_execution_release_preparation_allowed": true,
+    "network_execution_allowed": false,
+    "candidate_domain_access_allowed": false,
+    "wayback_query_execution_allowed": false,
+    "capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "B4: create crash-safe exact-70 availability executor tooling and a separately timed, independently verified execution release; B3 outputs remain immutable."
+  },
+  "safety_contract": {"network_operations": 0, "candidate_domain_access_operations": 0, "wayback_queries": 0, "archived_page_downloads": 0, "captures": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

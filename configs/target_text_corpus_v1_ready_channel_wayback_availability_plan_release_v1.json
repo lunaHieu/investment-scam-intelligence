@@ -1,0 +1,68 @@
+{
+  "release_id": "ISI_TARGET_TEXT_CORPUS_V1_READY_CHANNEL_WAYBACK_AVAILABILITY_PLAN_RELEASE_V1",
+  "created_at": "2026-10-23T09:10:25.8970202+07:00",
+  "status": "FROZEN_EXACT_70_OFFLINE_AVAILABILITY_PLAN_RELEASE_NETWORK_CLOSED",
+  "purpose": "Materialize and independently verify an archive-only Wayback availability plan for exactly the 70 B2 candidates without making a network request, accessing a candidate domain, downloading archived content, creating a label, or opening a model gate.",
+  "inputs": {
+    "b2_registry": {"path": "registry/analyses/target_text_corpus_v1_ready_channel_queue_v1.json", "sha256": "af130cf39e57e6b593059737d91f7575b4e192eb9d05af80aca3d5ce12efb6fa"},
+    "b2_queue_release": {"path": "configs/target_text_corpus_v1_ready_channel_queue_release_v1.json", "sha256": "e7cae50a20e7d514027f6afcfcbc11db3c54ebfb53bce6e9a12808c59a8940e7"},
+    "candidate_queue": {"path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_enumeration_release_v1\\candidate_queue_v1.jsonl", "sha256": "2f030006d9ab1d4dcac7c45f6217372ab374cac355ef2a3ab893e11c4c3e6550", "record_count": 70},
+    "enumeration_report": {"path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_enumeration_release_v1\\enumeration_report_v1.json", "sha256": "40964df22cea0e8a9ad6eb3eab6a92e62962a3540c6d6cebb20baf6ff6f0d17b"},
+    "independent_queue_qa": {"path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_enumeration_release_v1\\independent_queue_qa_v1.json", "sha256": "3986d43a105c2eab6fdb1f05cbbc362c15673d824e0e82a402c762a838d84efa", "required_status": "PASS_EXACT_70_QUEUE_REPRODUCED_CAPTURE_REMAINS_CLOSED"}
+  },
+  "population_contract": {
+    "expected_records": 70,
+    "expected_development_records": 50,
+    "expected_external_holdout_records": 20,
+    "expected_per_channel": {"CONFIRMED_REGULATOR_LINKED_WEBSITE": 35, "LEGITIMATE_REGISTER_LINKED_WEBSITE": 35},
+    "preserve_candidate_queue_order": true,
+    "unique_candidate_id_required": true,
+    "unique_host_required": true,
+    "unique_normalized_entity_required": true,
+    "development_holdout_host_overlap_required": 0,
+    "development_holdout_entity_overlap_required": 0,
+    "required_ground_truth_status": "UNCERTAIN",
+    "required_label_created": false,
+    "required_training_eligible": "NO"
+  },
+  "availability_contract": {
+    "endpoint": "https://archive.org/wayback/available",
+    "target_timestamp": "20261003",
+    "target_timestamp_basis": "Frozen reference observation date shared by all 70 B2 records; avoids post-reference drift.",
+    "query_parameters": ["url", "timestamp"],
+    "allowed_network_hosts_for_future_execution": ["archive.org", "web.archive.org"],
+    "minimum_delay_seconds_for_future_execution": 60.0,
+    "request_rate_per_second_maximum_for_future_execution": 0.0166666667,
+    "maximum_attempts_per_candidate_for_future_execution": 1,
+    "timeout_seconds_for_future_execution": 30,
+    "maximum_redirects_for_future_execution": 3,
+    "maximum_response_bytes_for_future_execution": 2097152,
+    "descriptive_user_agent_required": true,
+    "partial_journal_reserved_before_network_required": true,
+    "automatic_resume_allowed": false,
+    "stop_on_http_429": true,
+    "preserve_retry_after_and_archive_diagnostics": true,
+    "errors_are_not_interpreted_as_no_snapshot": true,
+    "archived_page_download_allowed": false,
+    "candidate_live_domain_access_allowed": false
+  },
+  "outputs": {
+    "directory": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_availability_plan_v1",
+    "plan_filename": "availability_plan_v1.jsonl",
+    "report_filename": "plan_report_v1.json",
+    "independent_qa_filename": "independent_plan_qa_v1.json"
+  },
+  "decision": {
+    "plan_materialization_allowed": true,
+    "b4_crash_safe_execution_release_preparation_allowed_after_plan_qa": true,
+    "network_execution_allowed": false,
+    "candidate_live_domain_access_allowed": false,
+    "wayback_query_execution_allowed": false,
+    "archived_page_download_allowed": false,
+    "artifact_capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false
+  }
+}

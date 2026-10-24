@@ -1,0 +1,39 @@
+{
+  "analysis_id": "ISI_PROJECT_STATE_GAP_LEDGER_V29",
+  "created_at": "2026-10-24",
+  "base_commit": "104f7f038717f7701f06abe0d1c26c6860fb9df5",
+  "status": "CURRENT_V11_COMPLETE_SUPPLEMENTAL_AVAILABILITY_CAPTURE_PLAN_UNCHANGED",
+  "purpose": "Replace V28 with the independently verified complete V11 supplemental availability result while preserving all historical capture, review, owner-acceptance, and model gates.",
+  "inputs": [
+    {"role": "prior_state_v28", "path": "registry/analyses/project_state_gap_ledger_v28.json", "sha256": "103f1b295ba8e816153962409f5ebe9b02aa04102c1eb97a24b46f3dce13df29"},
+    {"role": "v11_result_registry", "path": "registry/analyses/sec_edgar_iapd_wayback_availability_result_v11.json", "sha256": "fd252620c8d2b1084e20b69d951c43d37e14504845538ec0fa15ffb12b95f7ca"}
+  ],
+  "implementation": [
+    {"role": "human_readable_ledger", "path": "docs/project-state-gap-ledger-v29.md", "sha256": "e0b79f08d29858bb039ab1ca042eb5a4cb66d694d9da212e4ed081ab3e76486f"},
+    {"role": "ledger_contract_tests", "path": "tests/test_project_state_gap_ledger_v29.py", "sha256": "727c4cfd1fcb4758169d87b2ac22a86657f74fa59abe27a1a1305ff3b33ddbb4"}
+  ],
+  "state_amendments": {
+    "P1_A1": {"network_requests": 1, "http_status": 200, "canonical_empty_cdx": true, "alternate_rows": 0, "quarantine_remains": true, "retry_needed": false},
+    "P1_A2_V11": {"retry_rows": 2, "resolved_results": 115, "available_results": 60, "unavailable_results": 55, "unresolved_results": 0, "logical_retry_attempts": 2, "network_requests": 2, "stopped_on_http_429": false, "supplemental_complete": true, "original_capture_plan_mutated": false},
+    "P2_C2_C3": {"c2_preflight_complete": true, "c2_completed_submissions": 0, "c3_preflight_complete": true, "c3_human_responses": 0},
+    "P3_V1_CORE": {"required_groups": 300, "admitted_groups": 0, "conditional_owner_accepted_supply": 42}
+  },
+  "decision": {
+    "a1_complete": true,
+    "a1_same_query_retry_allowed": false,
+    "a1_quarantine_remains": true,
+    "a2_v11_release_verified": true,
+    "a2_v11_execution_complete": true,
+    "a2_v11_supplemental_availability_complete": true,
+    "original_capture_plan_mutation_allowed": false,
+    "supplemental_capture_plan_may_be_prepared": true,
+    "candidate_live_domain_access_allowed": false,
+    "archived_page_download_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Prepare and independently verify a separate supplemental capture plan for the two newly available holdout rows; never mutate the frozen 58-row capture plan."
+  },
+  "safety_contract": {"network_operations": 0, "candidate_live_domain_access_operations": 0, "archived_page_downloads": 0, "captures": 0, "labels_changed": 0, "model_operations": 0, "training_allowed": false}
+}

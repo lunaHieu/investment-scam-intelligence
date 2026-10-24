@@ -1,0 +1,58 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_IAPD_WAYBACK_AVAILABILITY_RESULT_V11",
+  "created_at": "2026-10-24",
+  "status": "INDEPENDENTLY_VERIFIED_COMPLETE_SUPPLEMENTAL_AVAILABILITY_CAPTURE_PLAN_UNCHANGED",
+  "purpose": "Register the immutable V11 exact-two-row supplemental availability result without mutating the frozen 58-row capture, 56-row review, or owner-acceptance snapshots.",
+  "inputs": [
+    {"role": "retry_release_v11", "path": "configs/sec_edgar_iapd_wayback_availability_release_v11.json", "sha256": "bd6d1d8f7bd8675d26742a0260bd3e6631083aeb12fbb1e1f53369405f6780de"},
+    {"role": "release_registry_v11", "path": "registry/analyses/sec_edgar_iapd_wayback_availability_release_v11.json", "sha256": "69855bab3c652337f2317626db065556760015d82d6f8541db5b1f98b2cdd800"},
+    {"role": "parent_result_registry_v10", "path": "registry/analyses/sec_edgar_iapd_wayback_availability_result_v10.json", "sha256": "df49745dcde32b7f086c11d708ad32d3ec6e3a5cc9a1b263e9fe022718b202bd"}
+  ],
+  "implementation": [
+    {"role": "authoritative_executor_v11", "path": "scripts/retry_sec_edgar_iapd_wayback_availability_v11.py", "sha256": "a96349cffbadea7fc94cd42f107fbfa035b0746708ee57d3f831b394e8f380ea"},
+    {"role": "independent_result_verifier_v11", "path": "scripts/verify_sec_edgar_iapd_wayback_availability_result_v11.py", "sha256": "8d1ffd91eb56cf1613fe4dda94cf2aaad60280935b731eb06a7919eb01b342c1"},
+    {"role": "executor_tests_v11", "path": "tests/test_retry_sec_edgar_iapd_wayback_availability_v11.py", "sha256": "77cf33b45c0849a2b068b2224e9edb1e5a6af5002617ca6d837e202ee00f4fee"},
+    {"role": "result_verifier_tests_v11", "path": "tests/test_verify_sec_edgar_iapd_wayback_availability_result_v11.py", "sha256": "d2c5b9aa71b9aa2731aadff09a399cf152eb0f9d8b387af773b47c3413de5155"},
+    {"role": "registry_test_v11", "path": "tests/test_sec_edgar_iapd_wayback_availability_result_registry_v11.py", "sha256": "a7e9b4a18643a7b8e44b129ea218c41e8ada783613027b2ac65bf55f0400584a"},
+    {"role": "documentation", "path": "docs/sec-edgar-iapd-wayback-availability-result-v11.md", "sha256": "2a1b84d7a1bc9f9a021ef1cd7442bde44c5154dad983e62b10c2d251e7b9bc10"}
+  ],
+  "outputs": [
+    {"role": "availability_report_v11", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_availability_result_v1\\availability_report_v11.json", "sha256": "ee1ed9962ab6a0318c3b103989f5303d189949d51e7ab699b4144421a35522bd"},
+    {"role": "independent_qa_v11", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_availability_result_v1\\independent_qa_v11.json", "sha256": "41cd0806860abce3474450fa401fef3b53a3f553deb3d7f64f373d61f545107b"}
+  ],
+  "findings": {
+    "total_plan_rows": 115,
+    "resolved_v10_results_preserved": 113,
+    "resolved_results": 115,
+    "available_results": 60,
+    "unavailable_results": 55,
+    "unresolved_results": 0,
+    "retried_availability_plan_ids": ["TTCV1_EDGAR_AVAIL_HOLDOUT_011", "TTCV1_EDGAR_AVAIL_HOLDOUT_018"],
+    "logical_retry_attempts_v11": 2,
+    "network_requests_v11": 2,
+    "cumulative_network_requests": 170,
+    "stopped_on_http_429": false,
+    "supplemental_availability_complete": true,
+    "independent_qa_status": "PASS_COMPLETE_SUPPLEMENTAL_AVAILABILITY_RESULT_CAPTURE_PLAN_UNCHANGED"
+  },
+  "decision": {
+    "v11_result_registered": true,
+    "v11_must_never_be_rerun": true,
+    "original_capture_plan_mutation_allowed": false,
+    "newly_available_rows_require_separate_supplemental_capture_plan": true,
+    "candidate_live_domain_access_allowed": false,
+    "archived_page_download_allowed": false,
+    "labels_created": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {
+    "candidate_live_domain_access_operations": 0,
+    "archived_page_downloads": 0,
+    "artifact_captures": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

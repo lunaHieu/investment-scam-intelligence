@@ -1,0 +1,49 @@
+{
+  "analysis_id": "ISI_REPRODUCIBILITY_CURRENT_STATE_V26",
+  "created_at": "2026-10-24",
+  "status": "CURRENT_V11_COMPLETE_SUPPLEMENTAL_AVAILABILITY_CAPTURE_PLAN_UNCHANGED",
+  "purpose": "Navigate from the complete independently verified V11 supplemental availability result to a separate capture-plan preparation step without mutating historical artifacts or opening model gates.",
+  "inputs": [
+    {"role": "prior_reproducibility_state_v25", "path": "registry/analyses/reproducibility_current_state_v25.json", "sha256": "0f70ebd3e1ba85a8c037147189fca94359dd16f2d0305d8c303365df9d5d3f71"},
+    {"role": "current_ledger_v29", "path": "registry/analyses/project_state_gap_ledger_v29.json", "sha256": "160a4854cd9c2ee55d51fff703d72f7bee3dd343b2ca18db6fbb142aaaf1ee27"},
+    {"role": "v11_result_registry", "path": "registry/analyses/sec_edgar_iapd_wayback_availability_result_v11.json", "sha256": "fd252620c8d2b1084e20b69d951c43d37e14504845538ec0fa15ffb12b95f7ca"}
+  ],
+  "implementation": [
+    {"role": "human_readable_current_state", "path": "docs/reproducibility-current-state-v26.md", "sha256": "79bcbf5862a263503e96ffb41a2e6fc63c8b8bf890b17cabd1795ab65588c358"},
+    {"role": "current_state_contract_tests", "path": "tests/test_reproducibility_current_state_v26.py", "sha256": "663df61c6c6ad91f755a01f8f855dd0bbfcd656def6755b1df0360a1dad8000e"}
+  ],
+  "current_state": {
+    "availability_total": 115,
+    "availability_resolved": 115,
+    "availability_available": 60,
+    "availability_unavailable": 55,
+    "availability_unresolved": 0,
+    "v11_logical_retry_attempts": 2,
+    "v11_network_requests": 2,
+    "v11_stopped_on_http_429": false,
+    "v11_supplemental_complete": true,
+    "original_capture_plan_mutated": false,
+    "a1_complete": true,
+    "a1_quarantine_remains": true,
+    "c2_preflight_complete": true,
+    "c3_preflight_complete": true,
+    "language_tasks_completed_by_human": 0,
+    "fresh_v1_core_admitted_groups": 0,
+    "conditional_owner_accepted_supply": 42,
+    "training_eligible_records": 0
+  },
+  "decision": {
+    "current_navigation_ledger": "registry/analyses/project_state_gap_ledger_v29.json",
+    "v11_result_verified": true,
+    "supplemental_capture_plan_may_be_prepared": true,
+    "original_capture_plan_mutation_allowed": false,
+    "candidate_live_domain_access_allowed": false,
+    "archived_page_download_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Prepare and independently verify a separate supplemental capture plan for the two newly available holdout rows."
+  },
+  "safety_contract": {"network_operations": 0, "candidate_live_domain_access_operations": 0, "archived_page_downloads": 0, "captures": 0, "labels_changed": 0, "model_operations": 0, "training_allowed": false}
+}

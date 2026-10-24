@@ -1,0 +1,33 @@
+{
+  "analysis_id": "ISI_REPRODUCIBILITY_CURRENT_STATE_V27",
+  "created_at": "2026-10-25",
+  "status": "CURRENT_V11_SUPPLEMENTAL_CAPTURE_RELEASE_FROZEN",
+  "supersedes": {"path": "registry/analyses/reproducibility_current_state_v26.json", "sha256": "6760864a8f9541db76eef1699aeab5cd6f1b733a1897ee5c5ffb3ed2ab977c8e"},
+  "implementation": [
+    {"role": "human_readable_reproducibility_state", "path": "docs/reproducibility-current-state-v27.md", "sha256": "ea9f569dc9c7d635584ce65fb0cd4ad3a9784f786cb850c2bfa17206c398fb2a"},
+    {"role": "reproducibility_contract_tests", "path": "tests/test_reproducibility_current_state_v27.py", "sha256": "87926a2febc010433e465f943c5d5efb5f0cdd2ef417d3683b29f44675041c33"}
+  ],
+  "current_state": {
+    "availability_total": 115,
+    "availability_available": 60,
+    "availability_unavailable": 55,
+    "availability_unresolved": 0,
+    "supplemental_plan_rows": 2,
+    "supplemental_plan_ids": ["TTCV1_EDGAR_AVAIL_HOLDOUT_011", "TTCV1_EDGAR_AVAIL_HOLDOUT_018"],
+    "supplemental_capture_not_before": "2026-10-26T05:39:42.463320+07:00",
+    "owner_accepted_legitimate": 42,
+    "owner_accepted_uncertain": 14,
+    "training_eligible": 0
+  },
+  "decision": {
+    "original_capture_plan_mutation_allowed": false,
+    "original_review_population_mutation_allowed": false,
+    "capture_allowed_now": false,
+    "text_extraction_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {"network_operations": 0, "archived_page_downloads": 0, "candidate_live_domain_access_operations": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

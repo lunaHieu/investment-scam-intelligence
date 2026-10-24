@@ -1,0 +1,50 @@
+{
+  "analysis_id": "ISI_SEC_EDGAR_IAPD_V11_SUPPLEMENTAL_CAPTURE_PLAN_RELEASE_V1",
+  "created_at": "2026-10-25",
+  "status": "FROZEN_TWO_ROW_SUPPLEMENTAL_CAPTURE_RELEASE_WAITING_NOT_BEFORE",
+  "purpose": "Register the independently verified two-row V11 supplemental capture plan and archive-only release without mutating the frozen 58-row capture/review snapshot.",
+  "inputs": [
+    {"role": "v11_availability_result_registry", "path": "registry/analyses/sec_edgar_iapd_wayback_availability_result_v11.json", "sha256": "fd252620c8d2b1084e20b69d951c43d37e14504845538ec0fa15ffb12b95f7ca"},
+    {"role": "v11_availability_report", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_availability_result_v1\\availability_report_v11.json", "sha256": "ee1ed9962ab6a0318c3b103989f5303d189949d51e7ab699b4144421a35522bd"},
+    {"role": "v11_independent_availability_qa", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_availability_result_v1\\independent_qa_v11.json", "sha256": "41cd0806860abce3474450fa401fef3b53a3f553deb3d7f64f373d61f545107b"}
+  ],
+  "implementation": [
+    {"role": "supplemental_capture_plan_builder", "path": "scripts/build_sec_edgar_iapd_v11_supplemental_capture_plan.py", "sha256": "0b1420ac3bd3d8636cddc7b8e51048d5444a91578ac64d846096af3468aa8460"},
+    {"role": "independent_supplemental_plan_verifier", "path": "scripts/verify_sec_edgar_iapd_v11_supplemental_capture_plan.py", "sha256": "c88f11aefacd4c05bc9d2ef51ba0da66b85befca740a79e121efc1b1470ed333"},
+    {"role": "supplemental_capture_release_builder", "path": "scripts/build_sec_edgar_iapd_v11_supplemental_capture_release.py", "sha256": "59d332d78751909c3a3ebc17c2414605b7d73f384a742deb90b8b46333b162df"},
+    {"role": "independent_supplemental_release_verifier", "path": "scripts/verify_sec_edgar_iapd_v11_supplemental_capture_release.py", "sha256": "2c94462f68ea2c4bfe88c00135a95de9ec1d6d7680e34e91a38e4f0e5c31be9e"},
+    {"role": "synthetic_supplemental_tooling_tests", "path": "tests/test_sec_edgar_iapd_v11_supplemental_capture.py", "sha256": "6c659758864b17426a20605dbd59bb6749cf1c1e4f07c45ebf91e5b52ba5b6db"},
+    {"role": "documentation", "path": "docs/sec-edgar-iapd-v11-supplemental-capture-plan-release-v1.md", "sha256": "0ba5c2fca6a3f5a7f1f10655a474de4f28db6af2186104db5417a84ceb71dbef"}
+  ],
+  "outputs": [
+    {"role": "supplemental_capture_plan_v1", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_v11_supplemental_capture_plan_v1\\capture_plan_v1.json", "sha256": "3bab858b4c9a03ee5544981c64b4082b4dafa4440ba25293b2b65dad42f65286"},
+    {"role": "independent_supplemental_plan_qa_v1", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_v11_supplemental_capture_plan_v1\\independent_qa_v1.json", "sha256": "8095f5c663cbdc42a46d9ff7a51f7ef59b10a38f958ec4195c268e88849cfc21"},
+    {"role": "supplemental_capture_release_v1", "path": "configs/sec_edgar_iapd_v11_supplemental_capture_release_v1.json", "sha256": "51e5139aa7a7facdc13b9a8c37c8fa9cb95a42a8969dd79bd00824d4e0ade4e2"},
+    {"role": "independent_supplemental_release_qa_v1", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_v11_supplemental_capture_plan_v1\\independent_release_qa_v1.json", "sha256": "6e5980ad0e523e0af4cf6f1c246eb5cfb0e1f46e764254b2685ec8242b2c7aaf"}
+  ],
+  "findings": {
+    "source_candidate_count": 115,
+    "planned_capture_count": 2,
+    "planned_by_cohort": {"EXTERNAL_HOLDOUT": 2},
+    "ordered_plan_ids": ["TTCV1_EDGAR_AVAIL_HOLDOUT_011", "TTCV1_EDGAR_AVAIL_HOLDOUT_018"],
+    "plan_qa_status": "PASS_EXACT_TWO_ROW_SUPPLEMENTAL_CAPTURE_PLAN",
+    "release_qa_status": "PASS_ARCHIVE_ONLY_V11_SUPPLEMENTAL_CAPTURE_RELEASE",
+    "not_before": "2026-10-26T05:39:42.463320+07:00",
+    "minimum_delay_seconds": 30.0,
+    "maximum_attempts_per_snapshot": 1,
+    "original_capture_plan_mutated": false,
+    "original_review_population_mutated": false
+  },
+  "decision": {
+    "capture_plan_qa_passed": true,
+    "capture_allowed_now": false,
+    "capture_allowed_at_or_after_not_before": true,
+    "candidate_live_domain_access_allowed": false,
+    "text_extraction_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "training_allowed": false,
+    "next_gate": "At or after not_before, execute the exact two-row supplemental archive-only release once if no final or partial report exists."
+  },
+  "safety_contract": {"network_operations": 0, "archived_page_downloads": 0, "candidate_domain_access_operations": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

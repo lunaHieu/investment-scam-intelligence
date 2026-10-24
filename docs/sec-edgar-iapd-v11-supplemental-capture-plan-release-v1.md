@@ -21,6 +21,8 @@ artifacts are immutable and are not enlarged by this release.
    `2026-10-26T05:39:42.463320+07:00`.
 4. The independent release verifier passed with
    `PASS_ARCHIVE_ONLY_V11_SUPPLEMENTAL_CAPTURE_RELEASE`.
+5. A dedicated supplemental executor and raw-byte result verifier were
+   prepared and hash-registered; they remain gate-closed until `not_before`.
 
 No archive page was downloaded during this preparation gate. The release is
 limited to raw `web.archive.org` replay, one attempt per snapshot, at least 30
@@ -29,8 +31,10 @@ before network access, no automatic resume, and no overwrite.
 
 ## Next permitted gate
 
-At or after the frozen `not_before`, execute the supplemental capture exactly
-once only when neither its final report nor partial journal exists. Independently
+At or after the frozen `not_before`, run
+`scripts.execute_sec_edgar_iapd_v11_supplemental_capture` exactly once only
+when neither its final report nor partial journal exists. Then run
+`scripts.verify_sec_edgar_iapd_v11_supplemental_capture_result` to independently
 verify every raw byte/hash. If the capture is complete, create a separate
 supplemental exact-text/grouping/review path; never silently merge these rows
 into the frozen 56-row snapshot. If it is partial or rate-limited, preserve the

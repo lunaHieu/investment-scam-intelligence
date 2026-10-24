@@ -6,7 +6,7 @@
   "purpose": "Record the independently verified two-row V11 supplemental capture plan/release while preserving the frozen original capture and review populations.",
   "inputs": [
     {"role": "prior_state_v29", "path": "registry/analyses/project_state_gap_ledger_v29.json", "sha256": "160a4854cd9c2ee55d51fff703d72f7bee3dd343b2ca18db6fbb142aaaf1ee27"},
-    {"role": "supplemental_capture_plan_release_registry", "path": "registry/analyses/sec_edgar_iapd_v11_supplemental_capture_plan_release_v1.json", "sha256": "5ac0ab52f40b9404aa2cc1431d8553ea9f94920ca736352d38a8a580d44d9f09"}
+    {"role": "supplemental_capture_plan_release_registry", "path": "registry/analyses/sec_edgar_iapd_v11_supplemental_capture_plan_release_v1.json", "sha256": "f24c0fc33abadde4592cd0635685b823dffa258c2015c08a2dd9b6bcad3bf55b"}
   ],
   "implementation": [
     {"role": "human_readable_ledger", "path": "docs/project-state-gap-ledger-v30.md", "sha256": "38bb8618d48ada85f5232785fe59fb01f9a97b077185d10e7b814b72f8e2014c"},

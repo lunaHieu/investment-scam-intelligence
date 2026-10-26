@@ -1,0 +1,45 @@
+{
+  "analysis_id": "ISI_REPRODUCIBILITY_CURRENT_STATE_V30",
+  "created_at": "2026-10-26",
+  "status": "CURRENT_V11_METADATA_RECOVERY_RELEASE_FROZEN_24H_GATE",
+  "supersedes": {"path": "registry/analyses/reproducibility_current_state_v29.json", "sha256": "ff8e252bb8ba82d0fb6d8188fd6e701e32423d50a02bef1608b7ff4101929447"},
+  "implementation": [
+    {"role": "human_readable_reproducibility_state", "path": "docs/reproducibility-current-state-v30.md", "sha256": "1734f9ece9146128d2c68e276b3f9e048d139216b307d03ab2b31bc7fea40587"},
+    {"role": "metadata_recovery_release_builder", "path": "scripts/build_sec_edgar_iapd_v11_metadata_recovery_release.py", "sha256": "250ab52621ed62262559f744e860c47d1636ecf4d3d5def8e09d7106035c11c4"},
+    {"role": "independent_metadata_recovery_release_verifier", "path": "scripts/verify_sec_edgar_iapd_v11_metadata_recovery_release.py", "sha256": "9d80de4b495c2ed9ace74a6f3729d008e63e80dd66ca2920bbed6319eff1799c"},
+    {"role": "metadata_recovery_capture_executor", "path": "scripts/execute_sec_edgar_iapd_v11_metadata_recovery.py", "sha256": "da7dd31c4d994de474d883cdcd7d6f4d8f2a3b478b3c90cd3b1a7ff3b2c8bcf9"}
+  ],
+  "frozen_release": {
+    "release_path": "configs/sec_edgar_iapd_v11_metadata_recovery_release_v1.json",
+    "release_sha256": "ce9877d80bea9e5116a9d45aafa9f693887bc05b8474d811456ca4e0c18c0322",
+    "independent_qa_path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_v11_metadata_recovery_plan_v1\\independent_release_qa_v3.json",
+    "independent_qa_sha256": "74c71c83c99a39f21cc448c23399dd49a03370e5244962d7d707db69c2f95a15",
+    "not_before": "2026-10-27T08:42:13.975064+07:00",
+    "planned_rows": ["TTCV1_EDGAR_AVAIL_HOLDOUT_011", "TTCV1_EDGAR_AVAIL_HOLDOUT_018"],
+    "network_operations": 0
+  },
+  "current_state": {
+    "availability_total": 115,
+    "availability_available": 60,
+    "availability_unavailable": 55,
+    "availability_unresolved": 0,
+    "supplemental_repaired_rows": 2,
+    "recovery_release_status": "PASS_ARCHIVE_ONLY_V11_METADATA_RECOVERY_RELEASE",
+    "strict_capture_qa_open": false,
+    "owner_accepted_legitimate": 42,
+    "owner_accepted_uncertain": 14,
+    "training_eligible": 0
+  },
+  "decision": {
+    "original_capture_plan_mutation_allowed": false,
+    "original_review_population_mutation_allowed": false,
+    "recovery_network_allowed_before_not_before": false,
+    "text_extraction_allowed": false,
+    "grouping_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {"network_operations": 0, "raw_files_modified": 0, "reservation_overwritten": false, "candidate_live_domain_access_operations": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

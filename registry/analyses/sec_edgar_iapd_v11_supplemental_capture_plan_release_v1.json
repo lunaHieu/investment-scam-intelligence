@@ -1,8 +1,8 @@
 {
   "analysis_id": "ISI_SEC_EDGAR_IAPD_V11_SUPPLEMENTAL_CAPTURE_PLAN_RELEASE_V1",
   "created_at": "2026-10-25",
-  "status": "V11_SUPPLEMENTAL_REPAIRED_BYTES_QA_METADATA_INCOMPLETE",
-  "purpose": "Register the independently verified two-row V11 supplemental capture plan/release, raw-byte reconciliation, and metadata-limited offline repair without mutating the frozen 58-row capture/review snapshot.",
+  "status": "V11_SUPPLEMENTAL_METADATA_RECOVERY_RELEASE_FROZEN_24H_GATE",
+  "purpose": "Register the independently verified two-row V11 supplemental capture plan/release, raw-byte reconciliation, metadata-limited offline repair, and separately frozen metadata-recovery release without mutating the frozen 58-row capture/review snapshot.",
   "inputs": [
     {"role": "v11_availability_result_registry", "path": "registry/analyses/sec_edgar_iapd_wayback_availability_result_v11.json", "sha256": "fd252620c8d2b1084e20b69d951c43d37e14504845538ec0fa15ffb12b95f7ca"},
     {"role": "v11_availability_report", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_all_filer_wayback_availability_result_v1\\availability_report_v11.json", "sha256": "ee1ed9962ab6a0318c3b103989f5303d189949d51e7ab699b4144421a35522bd"},
@@ -13,18 +13,24 @@
     {"role": "independent_supplemental_plan_verifier", "path": "scripts/verify_sec_edgar_iapd_v11_supplemental_capture_plan.py", "sha256": "c88f11aefacd4c05bc9d2ef51ba0da66b85befca740a79e121efc1b1470ed333"},
     {"role": "supplemental_capture_release_builder", "path": "scripts/build_sec_edgar_iapd_v11_supplemental_capture_release.py", "sha256": "59d332d78751909c3a3ebc17c2414605b7d73f384a742deb90b8b46333b162df"},
     {"role": "independent_supplemental_release_verifier", "path": "scripts/verify_sec_edgar_iapd_v11_supplemental_capture_release.py", "sha256": "2c94462f68ea2c4bfe88c00135a95de9ec1d6d7680e34e91a38e4f0e5c31be9e"},
-    {"role": "supplemental_capture_executor", "path": "scripts/execute_sec_edgar_iapd_v11_supplemental_capture.py", "sha256": "8af5ffef33d5dbe5f243c01fef25939e16dffd2109e5241ea72eceb0ebd9f414"},
+    {"role": "supplemental_capture_executor", "path": "scripts/execute_sec_edgar_iapd_v11_supplemental_capture.py", "sha256": "2baa8a527294926cd1111edd7f90b46efb2445d94f732c7cfac93d6ff1ca2112"},
     {"role": "independent_supplemental_capture_result_verifier", "path": "scripts/verify_sec_edgar_iapd_v11_supplemental_capture_result.py", "sha256": "23fc953359c9c60bf0d9845a4b16b40980ab88ea78dc4ccd2a27c6b7085b4d3a"},
     {"role": "offline_raw_byte_reconciliation", "path": "scripts/reconcile_sec_edgar_iapd_v11_supplemental_capture.py", "sha256": "66593912556834f8643fb95ca0de28b3084a9ecddb328d5ef991b71b2c718833"},
     {"role": "offline_repaired_result_builder", "path": "scripts/repair_sec_edgar_iapd_v11_supplemental_capture_result.py", "sha256": "bcece1e09027adc9df5e70c03bbc4f4e20ed11b31b5114e8008d8b2e2f694bb1"},
     {"role": "independent_repaired_result_verifier", "path": "scripts/verify_sec_edgar_iapd_v11_supplemental_capture_repaired_result.py", "sha256": "784dc3b05e7e316f642e950b5f2a9d2faf4767eff60fb69180d9c881e6635c6f"},
     {"role": "supplemental_exact_text_release_builder", "path": "scripts/build_sec_edgar_iapd_v11_supplemental_exact_text_release.py", "sha256": "2e10db1888a8019665b079b7e97205cf644f1e43e9f0fe0608ae72c60d3e56e7"},
     {"role": "independent_supplemental_exact_text_release_verifier", "path": "scripts/verify_sec_edgar_iapd_v11_supplemental_exact_text_release.py", "sha256": "fad3799f6c72d1ed6b817e7cbf8d1b97920057095c9aad3b20f20a4e2714cf8a"},
+    {"role": "metadata_recovery_release_builder", "path": "scripts/build_sec_edgar_iapd_v11_metadata_recovery_release.py", "sha256": "250ab52621ed62262559f744e860c47d1636ecf4d3d5def8e09d7106035c11c4"},
+    {"role": "independent_metadata_recovery_release_verifier", "path": "scripts/verify_sec_edgar_iapd_v11_metadata_recovery_release.py", "sha256": "9d80de4b495c2ed9ace74a6f3729d008e63e80dd66ca2920bbed6319eff1799c"},
+    {"role": "metadata_recovery_capture_executor", "path": "scripts/execute_sec_edgar_iapd_v11_metadata_recovery.py", "sha256": "da7dd31c4d994de474d883cdcd7d6f4d8f2a3b478b3c90cd3b1a7ff3b2c8bcf9"},
     {"role": "synthetic_supplemental_tooling_tests", "path": "tests/test_sec_edgar_iapd_v11_supplemental_capture.py", "sha256": "6c659758864b17426a20605dbd59bb6749cf1c1e4f07c45ebf91e5b52ba5b6db"},
     {"role": "supplemental_capture_execution_tests", "path": "tests/test_sec_edgar_iapd_v11_supplemental_capture_execution.py", "sha256": "45821db11727c9e5242557b2969d9cfb9fe028d3d41ea5f57eb568484680d090"},
     {"role": "raw_byte_reconciliation_tests", "path": "tests/test_sec_edgar_iapd_v11_supplemental_capture_reconciliation.py", "sha256": "bd8093513f569bb289ed74dabb89ffbbcdaaf7f086a6f5bdef37939bd2f37adc"},
     {"role": "repaired_result_tests", "path": "tests/test_sec_edgar_iapd_v11_supplemental_capture_repaired_result.py", "sha256": "e1793b5d4198a6284a4139634af4fbb4e86afa9cd312a414c9fd312b93132fa5"},
     {"role": "supplemental_exact_text_release_tests", "path": "tests/test_sec_edgar_iapd_v11_supplemental_exact_text_release.py", "sha256": "dbf742de215714c59da13d05aaf7a2cdec82701fbfba7d24aec55dc9083af511"},
+    {"role": "metadata_recovery_release_tests", "path": "tests/test_sec_edgar_iapd_v11_metadata_recovery_release.py", "sha256": "622e4043bda9041b2ac3df8a4935866eb35ae4388b87912bc89d7188a6b05822"},
+    {"role": "metadata_recovery_release_verifier_tests", "path": "tests/test_sec_edgar_iapd_v11_metadata_recovery_release_verifier.py", "sha256": "0d664fa5f48be4875654afa293e382d4626587b7aa6479c467c269599c86ed7d"},
+    {"role": "metadata_recovery_execution_tests", "path": "tests/test_sec_edgar_iapd_v11_metadata_recovery_execution.py", "sha256": "589fed6fa4d4d20595d35f37247e0e3e0194b6ba57ec1b8970e986b9c8de7ad2"},
     {"role": "documentation", "path": "docs/sec-edgar-iapd-v11-supplemental-capture-plan-release-v1.md", "sha256": "b85dc525fa66b1c5568a73dbf42bbf1a690aa1dc985a8c2b16e78a1b2e626dc1"}
   ],
   "outputs": [
@@ -37,6 +43,10 @@
     {"role": "raw_byte_reconciliation_v1", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_v11_supplemental_capture_result_v1\\raw_byte_reconciliation_v1.json", "sha256": "5f242e38cf38467317129c63a099611b5685475c2e671d6c961fceb60f60677b"}
     ,{"role": "repaired_capture_report_v1", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_v11_supplemental_capture_result_v1\\capture_report_v1.repaired.json", "sha256": "769682570170960340a951c22e86a709772663e25048df1dac9c75abc1b4f4cf"}
     ,{"role": "repaired_capture_qa_v1", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_v11_supplemental_capture_result_v1\\independent_capture_qa_v1.repaired.json", "sha256": "9f3748798f3c04cf0afc9394b4097fb9d193148b4f4a27d6d6a69bbdbef6bcc7"}
+    ,{"role": "metadata_recovery_plan_v1", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_v11_metadata_recovery_plan_v1\\capture_plan_v1.json", "sha256": "a0e4d05a2349aa35bce5c1a3fca6652c8913ed2ac2df6980eae3f3810014d695"}
+    ,{"role": "metadata_recovery_plan_qa_v1", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_v11_metadata_recovery_plan_v1\\independent_qa_v1.json", "sha256": "8b3be6ccefea77e31b2e62fecdbbf4ce86beb79694587a432442d9e63030f5cc"}
+    ,{"role": "metadata_recovery_release_v1", "path": "configs/sec_edgar_iapd_v11_metadata_recovery_release_v1.json", "sha256": "ce9877d80bea9e5116a9d45aafa9f693887bc05b8474d811456ca4e0c18c0322"}
+    ,{"role": "metadata_recovery_independent_release_qa_v3", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_v11_metadata_recovery_plan_v1\\independent_release_qa_v3.json", "sha256": "74c71c83c99a39f21cc448c23399dd49a03370e5244962d7d707db69c2f95a15"}
   ],
   "findings": {
     "source_candidate_count": 115,
@@ -50,6 +60,7 @@
     "raw_byte_reconciliation_status": "PASS_RAW_BYTES_IDENTITY_RECONCILIATION_CAPTURE_METADATA_INCOMPLETE",
     "repaired_result_qa_status": "PASS_REPAIRED_RAW_BYTES_METADATA_INCOMPLETE_EXTRACTION_CLOSED",
     "supplemental_exact_text_tooling_status": "PREPARED_GATE_CLOSED",
+    "metadata_recovery_release_status": "FROZEN_24H_GATE_RELEASE_QA_PASS_NO_NETWORK_EXECUTED",
     "raw_bytes": {"rows": 2, "network_operations_verified_by_reconciliation": 0, "labels_created": 0, "model_operations": 0},
     "not_before": "2026-10-26T05:39:42.463320+07:00",
     "minimum_delay_seconds": 30.0,
@@ -66,7 +77,7 @@
     "labeling_allowed": false,
     "validation_or_test_opening_allowed": false,
     "training_allowed": false,
-    "next_gate": "Supplemental exact-text tooling is prepared but gate-closed; strict capture QA with persisted HTTP metadata is required before any extraction."
+    "next_gate": "Metadata-recovery release is independently verified and gate-closed until 2026-10-27T08:42:13.975064+07:00; no network request or extraction is permitted before that gate."
   },
   "safety_contract": {"network_operations": 0, "archived_page_downloads": 0, "candidate_domain_access_operations": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
 }

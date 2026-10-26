@@ -41,14 +41,14 @@ def _headers(headers: Any) -> dict[str, str]:
     return {name: str(headers.get(name) or "") for name in ALLOWED_DIAGNOSTIC_HEADERS if headers.get(name) is not None}
 
 
-def fetch_archive(url: str, *, timeout_seconds: int, delay_seconds: float, request_counter: list[int], max_redirects: int) -> tuple[bytes, str, int, str, dict[str, str]]:
+def fetch_archive(url: str, *, timeout_seconds: int, delay_seconds: float, request_counter: list[int], max_redirects: int, user_agent: str = USER_AGENT) -> tuple[bytes, str, int, str, dict[str, str]]:
     opener = urllib.request.build_opener(NoRedirect())
     current = url
     redirects = 0
     while True:
         assert_archive_url(current)
         time.sleep(delay_seconds)
-        request = urllib.request.Request(current, headers={"User-Agent": USER_AGENT}, method="GET")
+        request = urllib.request.Request(current, headers={"User-Agent": user_agent}, method="GET")
         request_counter[0] += 1
         try:
             response = opener.open(request, timeout=timeout_seconds)

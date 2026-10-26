@@ -1,0 +1,32 @@
+{
+  "analysis_id": "ISI_PROJECT_STATE_GAP_LEDGER_V36",
+  "created_at": "2026-10-26",
+  "status": "CURRENT_B5_V3_FINAL_TRIGGER_ROW_RETRY_GATE_PENDING",
+  "purpose": "Replace the obsolete execution-pending B5 state with the independently verified second HTTP 429 result and bounded one-hour V3 gate.",
+  "inputs": [
+    {"role": "prior_state_v35", "path": "registry/analyses/project_state_gap_ledger_v35.json", "sha256": "050c140cbd6159729323575848cf5ebeb691a6f46683671dd9c10d29d342b0b7"},
+    {"role": "current_reproducibility_v33", "path": "registry/analyses/reproducibility_current_state_v33.json", "sha256": "9d6b337e99310adef557973f125578cd5e551424c484b6aed0164c7b09ed3f64"}
+  ],
+  "implementation": [
+    {"role": "human_readable_ledger", "path": "docs/project-state-gap-ledger-v36.md", "sha256": "3f9e2d50dc48f54b39fc5528daac3c11fe0bf330f3eabc94767e63fb02df03b3"}
+  ],
+  "state_amendments": {
+    "B5_READY_CHANNEL_AVAILABILITY": {"rows": 70, "development": 50, "external_holdout": 20, "network_requests_total": 2, "consecutive_http_429": 2, "unresolved": 70, "partial_journal": false},
+    "B5_ACTIVE_RELEASE": {"version": "V3", "not_before": "2026-10-26T10:49:40.978852+07:00", "triggering_row_final_identical_attempt": true},
+    "RETRY_POLICY": {"bounded": true, "universal_24h": false, "maximum_attempts_per_artifact_family": 3}
+  },
+  "decision": {
+    "b5_v3_execution_allowed_at_or_after_not_before": true,
+    "earlier_release_rerun_allowed": false,
+    "fourth_identical_trigger_row_attempt_allowed": false,
+    "candidate_live_domain_access_allowed": false,
+    "archived_page_download_allowed": false,
+    "capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Execute V3 once at or after its one-hour adaptive gate; complete availability may open capture planning, while another HTTP 429 exhausts and quarantines the triggering row."
+  },
+  "safety_contract": {"candidate_domain_access_operations": 0, "archived_page_downloads": 0, "captures": 0, "labels_changed": 0, "model_operations": 0, "training_allowed": false}
+}

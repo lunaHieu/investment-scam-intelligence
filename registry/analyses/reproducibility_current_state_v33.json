@@ -1,0 +1,38 @@
+{
+  "analysis_id": "ISI_REPRODUCIBILITY_CURRENT_STATE_V33",
+  "created_at": "2026-10-26",
+  "status": "CURRENT_B5_V3_FINAL_TRIGGER_ROW_RETRY_ONE_HOUR_GATE_PENDING",
+  "supersedes": {"path": "registry/analyses/reproducibility_current_state_v32.json", "sha256": "f63184c322c8c58bf3d2a0dacb82f5cddcc38b8a3c11d0cd892ac07f64b7fff9"},
+  "implementation": [
+    {"role": "human_readable_state", "path": "docs/reproducibility-current-state-v33.md", "sha256": "4e5f715f54d9b9d944b21f7c32c45cc7639d204a604ea8aa73f2bb820b0afd61"},
+    {"role": "b5_retry_result_v2", "path": "registry/analyses/target_text_corpus_v1_ready_channel_wayback_availability_retry_result_v2.json", "sha256": "690bb5aac0b114783ffc534de886190faf2bd0309d06b6efd1f49a0f2de62c9d"},
+    {"role": "b5_retry_release_v3", "path": "registry/analyses/target_text_corpus_v1_ready_channel_wayback_availability_retry_release_v3.json", "sha256": "fd35e5291be202377e2e6e1500855cace0387dc0669b6e576cccfb287b2e8987"}
+  ],
+  "current_state": {
+    "b5_plan_rows": 70,
+    "b5_development_rows": 50,
+    "b5_external_holdout_rows": 20,
+    "b5_total_network_requests": 2,
+    "b5_consecutive_http_429": 2,
+    "b5_retry_after_header": null,
+    "b5_unresolved_rows": 70,
+    "b5_active_release": "V3",
+    "b5_v3_not_before": "2026-10-26T10:49:40.978852+07:00",
+    "b5_v3_is_triggering_row_final_identical_attempt": true,
+    "b5_partial_journal_exists": false
+  },
+  "decision": {
+    "b5_v3_execution_allowed_at_or_after_not_before": true,
+    "earlier_release_rerun_allowed": false,
+    "another_identical_trigger_row_retry_if_v3_fails": false,
+    "universal_fixed_24h_retry_chain_allowed": false,
+    "candidate_live_domain_access_allowed": false,
+    "archived_page_download_allowed": false,
+    "capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {"candidate_domain_access_operations": 0, "archived_page_downloads": 0, "captures": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

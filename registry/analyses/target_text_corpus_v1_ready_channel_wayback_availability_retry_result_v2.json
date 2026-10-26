@@ -1,0 +1,37 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_READY_CHANNEL_WAYBACK_AVAILABILITY_RETRY_RESULT_V2",
+  "created_at": "2026-10-26",
+  "status": "PASS_PARTIAL_RETRY_ERRORS_PRESERVED_CAPTURE_PLAN_BLOCKED",
+  "purpose": "Register the immutable result of the first adaptive exact-70 B5 retry and independently preserve the second consecutive HTTP 429 without Retry-After.",
+  "inputs": [
+    {"role": "retry_release_v2", "path": "configs/target_text_corpus_v1_ready_channel_wayback_availability_retry_release_v2.json", "sha256": "ffb190999e4e943e704456b01ea28604b11240288719be6afef2602c75a67f58"},
+    {"role": "retry_release_qa_v2", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_availability_plan_v1\\independent_retry_release_qa_v2.json", "sha256": "49a678ad217c7accf06fc475e93493700860d7c1306a86d8e9aafe68a13caeea"}
+  ],
+  "outputs": [
+    {"role": "availability_report_v2", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_availability_retry_result_v2\\availability_report_v2.json", "sha256": "61cd04680d8595f706b11bfc6f70c9d3c50ffb276e03df8fe411b88abff4ef13"},
+    {"role": "independent_result_qa_v2", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_availability_retry_result_v2\\independent_result_qa_v2.json", "sha256": "65651b6dc9c2ac974d0a280cf1d5a6587e40734a4c8762b16008311d21d3b95f"}
+  ],
+  "result": {
+    "requested_rows": 70,
+    "logical_attempts": 1,
+    "network_requests": 1,
+    "available_rows": 0,
+    "unavailable_rows": 0,
+    "unresolved_rows": 70,
+    "stopped_on_http_429": true,
+    "retry_after_header": null,
+    "partial_journal_exists": false,
+    "created_at": "2026-10-26T09:49:40.978852+07:00",
+    "next_adaptive_not_before": "2026-10-26T10:49:40.978852+07:00"
+  },
+  "decision": {
+    "v2_release_rerun_allowed": false,
+    "v3_separate_retry_release_allowed_at_not_before": true,
+    "universal_fixed_24h_retry_allowed": false,
+    "capture_plan_preparation_allowed": false,
+    "capture_allowed": false,
+    "labeling_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {"candidate_domain_access_operations": 0, "archived_page_downloads": 0, "captures": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

@@ -1,0 +1,42 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_READY_CHANNEL_WAYBACK_AVAILABILITY_RETRY_RELEASE_V3",
+  "created_at": "2026-10-26",
+  "status": "PASS_B5_EXACT_70_V3_RETRY_PREPARED_ONE_HOUR_GATE_PENDING",
+  "purpose": "Register the separate second adaptive retry as the third and final identical network attempt for the triggering B5 row.",
+  "inputs": [
+    {"role": "availability_report_v2", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_availability_retry_result_v2\\availability_report_v2.json", "sha256": "61cd04680d8595f706b11bfc6f70c9d3c50ffb276e03df8fe411b88abff4ef13"},
+    {"role": "independent_result_qa_v2", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_availability_retry_result_v2\\independent_result_qa_v2.json", "sha256": "65651b6dc9c2ac974d0a280cf1d5a6587e40734a4c8762b16008311d21d3b95f"}
+  ],
+  "implementation": [
+    {"role": "retry_release_v3", "path": "configs/target_text_corpus_v1_ready_channel_wayback_availability_retry_release_v3.json", "sha256": "13dfa61039c78d83501d3d4f05d0f1375bd337f1c23d6b3701c81bf5323b06ed"},
+    {"role": "release_verifier", "path": "scripts/verify_target_text_corpus_v1_ready_channel_wayback_availability_retry_release_v3.py", "sha256": "5d7e6f1ddfcc3234317553693209bcdbc95cc3d82bebdd02a18e192ce56009dc"},
+    {"role": "retry_executor", "path": "scripts/execute_target_text_corpus_v1_ready_channel_wayback_availability_retry_v3.py", "sha256": "b7af7fa5251b10c5d80b1a71e24f1d4910bd7d3d72dfea23480b0b8856cf2e0b"},
+    {"role": "result_verifier", "path": "scripts/verify_target_text_corpus_v1_ready_channel_wayback_availability_retry_result_v3.py", "sha256": "ddc9026415911f1be28c05f4e676ea2275007942ae899d7c69e5020978af26f1"},
+    {"role": "tests", "path": "tests/test_target_text_corpus_v1_ready_channel_wayback_availability_retry_v3.py", "sha256": "70b62e659ae7944f0ca176945f33297069e1a159a874db5f81ab0b025b17574e"},
+    {"role": "documentation", "path": "docs/target-text-corpus-v1-ready-channel-wayback-availability-retry-v3.md", "sha256": "d6434ebe5291bfc833e04b45c27ebbe919a1b8d24a8389dfdda571f557a05800"}
+  ],
+  "outputs": [
+    {"role": "independent_retry_release_qa_v3", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_availability_plan_v1\\independent_retry_release_qa_v3.json", "sha256": "e96aba8d6c4d5013e31b557e5f03251fc8b9c8d0c9a6021b57b6bee9c70ce13f"}
+  ],
+  "result": {
+    "plan_rows": 70,
+    "development_rows": 50,
+    "external_holdout_rows": 20,
+    "prior_trigger_row_attempts": 2,
+    "prior_consecutive_http_429": 2,
+    "retry_after_header": null,
+    "adaptive_not_before": "2026-10-26T10:49:40.978852+07:00",
+    "minimum_delay_seconds": 60.0,
+    "network_requests_executed_by_preparation": 0
+  },
+  "decision": {
+    "v3_execution_allowed_at_or_after_not_before": true,
+    "previous_release_rerun_allowed": false,
+    "another_identical_trigger_row_retry_if_v3_fails": false,
+    "universal_fixed_24h_retry_allowed": false,
+    "capture_allowed": false,
+    "labeling_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {"network_operations": 0, "candidate_domain_access_operations": 0, "archived_page_downloads": 0, "captures": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

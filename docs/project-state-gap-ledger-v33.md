@@ -14,6 +14,8 @@ prior V11 finalization gap without mutating historical artifacts.
   project User-Agent.
 - An independent result verifier and a separate exact-text release gate are
   prepared offline; neither can open extraction before complete recovery QA.
+- The recovery-specific extractor and independent byte-regeneration verifier
+  are prepared and tested with temporary fixtures only.
 - Offline tests and registry validation pass. No recovery network operation
   has occurred.
 

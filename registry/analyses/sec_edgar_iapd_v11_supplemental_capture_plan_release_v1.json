@@ -26,6 +26,8 @@
     {"role": "independent_metadata_recovery_result_verifier", "path": "scripts/verify_sec_edgar_iapd_v11_metadata_recovery_result.py", "sha256": "b65c82f148b102cb323a65ce5d9829d544209ec643037afc637fb0d35b2e36db"},
     {"role": "metadata_recovery_exact_text_release_builder", "path": "scripts/build_sec_edgar_iapd_v11_metadata_recovery_exact_text_release.py", "sha256": "e9c7f9966632745bed6384177a43ac30d57d7a5152738dface64da81504c8fd7"},
     {"role": "independent_metadata_recovery_exact_text_release_verifier", "path": "scripts/verify_sec_edgar_iapd_v11_metadata_recovery_exact_text_release.py", "sha256": "c6d89deeeb3ce65d41bd09fa5d1f12bb5cf5981a329d81783a17353ad8452bd2"},
+    {"role": "metadata_recovery_exact_text_extractor", "path": "scripts/extract_sec_edgar_iapd_v11_metadata_recovery_exact_text.py", "sha256": "b6da26e40d3080e7a30e1f7631d4a257f315bdefaa3b2010141d65866546d092"},
+    {"role": "independent_metadata_recovery_exact_text_result_verifier", "path": "scripts/verify_sec_edgar_iapd_v11_metadata_recovery_exact_text_result.py", "sha256": "dea58c242a0fa350a39d310521417a1a8aa9d5227217f560e94da83e1158db7f"},
     {"role": "synthetic_supplemental_tooling_tests", "path": "tests/test_sec_edgar_iapd_v11_supplemental_capture.py", "sha256": "6c659758864b17426a20605dbd59bb6749cf1c1e4f07c45ebf91e5b52ba5b6db"},
     {"role": "supplemental_capture_execution_tests", "path": "tests/test_sec_edgar_iapd_v11_supplemental_capture_execution.py", "sha256": "45821db11727c9e5242557b2969d9cfb9fe028d3d41ea5f57eb568484680d090"},
     {"role": "raw_byte_reconciliation_tests", "path": "tests/test_sec_edgar_iapd_v11_supplemental_capture_reconciliation.py", "sha256": "bd8093513f569bb289ed74dabb89ffbbcdaaf7f086a6f5bdef37939bd2f37adc"},
@@ -36,6 +38,7 @@
     {"role": "metadata_recovery_execution_tests", "path": "tests/test_sec_edgar_iapd_v11_metadata_recovery_execution.py", "sha256": "589fed6fa4d4d20595d35f37247e0e3e0194b6ba57ec1b8970e986b9c8de7ad2"},
     {"role": "metadata_recovery_result_tests", "path": "tests/test_sec_edgar_iapd_v11_metadata_recovery_result.py", "sha256": "c750e94ac3738fcec7d958df2aebbef75445ce9ec578a98966449a4321e3a707"},
     {"role": "metadata_recovery_exact_text_release_tests", "path": "tests/test_sec_edgar_iapd_v11_metadata_recovery_exact_text_release.py", "sha256": "3c8b49d52bb9a91ef29e00603b5870b5f774889c8e28c7963c57697a9318a7d5"},
+    {"role": "metadata_recovery_exact_text_tests", "path": "tests/test_sec_edgar_iapd_v11_metadata_recovery_exact_text.py", "sha256": "12b236434d64eb430c3cf64de08bc9d7ab1b4b3a812608153471db8e97d507f3"},
     {"role": "documentation", "path": "docs/sec-edgar-iapd-v11-supplemental-capture-plan-release-v1.md", "sha256": "b85dc525fa66b1c5568a73dbf42bbf1a690aa1dc985a8c2b16e78a1b2e626dc1"}
   ],
   "outputs": [

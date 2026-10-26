@@ -24,6 +24,8 @@ the historical capture result and uses new output paths.
 - An independent recovery-result verifier and a separate exact-text release
   builder/verifier are prepared. The exact-text builder remains closed until a
   complete metadata-verified recovery result exists.
+- The recovery-specific offline extractor and byte-regeneration verifier are
+  also prepared; they remain unreachable until exact-text release QA passes.
 
 ## Gate decision
 

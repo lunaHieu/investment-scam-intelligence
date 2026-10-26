@@ -1,0 +1,87 @@
+{
+  "amendment_id": "ISI_TARGET_TEXT_CORPUS_V1_READY_CHANNEL_WAYBACK_AVAILABILITY_EXECUTION_AMENDMENT_V2",
+  "created_at": "2026-10-26T09:30:00+07:00",
+  "status": "FROZEN_B5_CANONICAL_EMPTY_A1_NONBLOCKING_ADAPTIVE_RETRY",
+  "purpose": "Allow the immutable exact-70 B5 release to proceed after independently proving that A1 ended in a terminal HTTP-200 canonical-empty parser limitation rather than a network failure or rate limit.",
+  "parent_release": {
+    "path": "configs/target_text_corpus_v1_ready_channel_wayback_availability_execution_release_v1.json",
+    "sha256": "fcb42133653dafb339e3b6f21181ee129921709012267a685f1005b5cacac909",
+    "mutation_allowed": false
+  },
+  "parent_release_qa": {
+    "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_availability_plan_v1\\independent_execution_release_qa_v1.json",
+    "sha256": "dd8114b1fea71045c562365399a9ed72ff392022673123fa7d9a23f7a3772cf1"
+  },
+  "a1_canonical_empty_evidence": {
+    "owner_override": {
+      "path": "configs/sec_edgar_iapd_wayback_alternate_snapshot_cdx_owner_timing_override_v1.json",
+      "sha256": "2fa75a526fea0eb73dbcf785e9031eab5b89921a6b9b0a9d4a864d5ce35d2e2e"
+    },
+    "owner_override_qa": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_alternate_snapshot_cdx_v1\\independent_owner_timing_override_qa_v1.json",
+      "sha256": "513679b33adbd20f293ecc8e0805117f0dbdd521c77c713d0c288ac846957a60"
+    },
+    "execution_report": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_alternate_snapshot_cdx_v1\\cdx_enumeration_report_v1.json",
+      "sha256": "b96285436a7e293614bd90576af096806ec08fab35d5c781366159e2c7adb5c4"
+    },
+    "v1_result_qa": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_alternate_snapshot_cdx_v1\\independent_result_qa_owner_override_v1.json",
+      "sha256": "90cacf6948c1626693386f2ea62c890a7968fb8eac0b705131e474dfc05f6bd8"
+    },
+    "v2_result_qa": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_alternate_snapshot_cdx_v1\\independent_result_qa_owner_override_v2.json",
+      "sha256": "21391d26338a09e4ddda35894e55a4d28d8a5f2b9b9fb6b65500a706cd7da300"
+    }
+  },
+  "coordination_contract": {
+    "a1_outcome": "HTTP_200_CANONICAL_EMPTY_JSON_TERMINAL_PARSER_LIMITATION",
+    "a1_network_failure": false,
+    "a1_rate_limit": false,
+    "a1_retry_needed": false,
+    "inherited_cooldown_seconds": 86400,
+    "absolute_not_before_floor": "2026-10-25T00:00:00+07:00",
+    "effective_not_before": "2026-10-25T00:00:00+07:00",
+    "old_a1_error_free_requirement_replaced": true,
+    "old_missing_qa_path_replaced_by_v2_qa": true
+  },
+  "retry_policy": {
+    "policy_id": "ISI_ARCHIVE_RETRY_POLICY_V1",
+    "universal_fixed_24h_retry_forbidden": true,
+    "maximum_network_attempts_per_artifact_family": 3,
+    "honor_valid_retry_after": true,
+    "bounded_exponential_backoff": true,
+    "a1_identical_retry_allowed": false,
+    "b5_same_release_rerun_allowed": false
+  },
+  "authoritative_tooling": [
+    {"role": "amendment_verifier", "path": "scripts/verify_target_text_corpus_v1_ready_channel_wayback_availability_execution_amendment_v2.py", "sha256": "a606a4098b8b6a6a991af46e0175242bfb994f84b553b20c7e724363f3c6ab71"},
+    {"role": "v2_coordination_executor", "path": "scripts/execute_target_text_corpus_v1_ready_channel_wayback_availability_v2.py", "sha256": "09f45d9506b76f92b7dd2fe330ff6119c68f26af5305276199e5b80e11cd6c3a"},
+    {"role": "immutable_v1_crash_safe_run_plan", "path": "scripts/execute_target_text_corpus_v1_ready_channel_wayback_availability_v1.py", "sha256": "2770b4b65861c94bf63da97ff7bb06136c873840c1424bf667535c849eda7e01"},
+    {"role": "adaptive_retry_policy", "path": "scripts/archive_retry_policy_v1.py", "sha256": "40ad28b0f3bef4881da34a1d86f8b6d9300da2b5e62ce3f3cb8ee4b858263c73"}
+  ],
+  "planned_amendment_qa": {
+    "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_availability_plan_v1\\independent_execution_amendment_qa_v2.json",
+    "required_status": "PASS_B5_V2_CANONICAL_EMPTY_A1_NONBLOCKING_EXECUTION_AMENDMENT"
+  },
+  "decision": {
+    "a1_canonical_empty_is_terminal_nonblocking": true,
+    "b5_execution_allowed_at_or_after_effective_not_before": true,
+    "candidate_live_domain_access_allowed": false,
+    "archived_page_download_allowed": false,
+    "artifact_capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "candidate_domain_access_operations": 0,
+    "archived_page_downloads": 0,
+    "captures": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

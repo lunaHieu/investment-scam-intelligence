@@ -1,0 +1,46 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_READY_CHANNEL_WAYBACK_AVAILABILITY_EXECUTION_AMENDMENT_V2",
+  "created_at": "2026-10-26",
+  "status": "PASS_B5_V2_AMENDMENT_GATE_OPEN_NETWORK_NOT_YET_EXECUTED",
+  "purpose": "Replace B5's obsolete A1 error-free coordination requirement with independently verified canonical-empty terminal evidence while preserving the immutable exact-70 release.",
+  "inputs": [
+    {"role": "execution_amendment", "path": "configs/target_text_corpus_v1_ready_channel_wayback_availability_execution_amendment_v2.json", "sha256": "10c184db18f9d5986e4c0ded39488421c87f67047ae83ade12ff1351a51866e4"},
+    {"role": "parent_execution_release", "path": "configs/target_text_corpus_v1_ready_channel_wayback_availability_execution_release_v1.json", "sha256": "fcb42133653dafb339e3b6f21181ee129921709012267a685f1005b5cacac909"}
+  ],
+  "implementation": [
+    {"role": "amendment_verifier", "path": "scripts/verify_target_text_corpus_v1_ready_channel_wayback_availability_execution_amendment_v2.py", "sha256": "a606a4098b8b6a6a991af46e0175242bfb994f84b553b20c7e724363f3c6ab71"},
+    {"role": "v2_coordination_executor", "path": "scripts/execute_target_text_corpus_v1_ready_channel_wayback_availability_v2.py", "sha256": "09f45d9506b76f92b7dd2fe330ff6119c68f26af5305276199e5b80e11cd6c3a"},
+    {"role": "tests", "path": "tests/test_target_text_corpus_v1_ready_channel_wayback_availability_execution_amendment_v2.py", "sha256": "f0e5b8e44f24d2345dbff2b4ee33654a0625aaa92814fdbd06a34a9d4a1b67b7"},
+    {"role": "documentation", "path": "docs/target-text-corpus-v1-ready-channel-wayback-availability-execution-amendment-v2.md", "sha256": "0ef3314444af3721f51a35e8b0ebdcb622067d782428bee554bc5e6661a7065c"}
+  ],
+  "outputs": [
+    {"role": "independent_amendment_qa", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_availability_plan_v1\\independent_execution_amendment_qa_v2.json", "sha256": "c7277b02040d1e7a057d75e0b36bb124131a1d86bc3aae192f49e6c4539c3166"}
+  ],
+  "result": {
+    "plan_rows": 70,
+    "development_rows": 50,
+    "external_holdout_rows": 20,
+    "a1_http_status": 200,
+    "a1_canonical_empty": true,
+    "a1_rate_limit": false,
+    "a1_retry_needed": false,
+    "effective_not_before": "2026-10-25T00:00:00+07:00",
+    "gate_open": true,
+    "network_requests_executed": 0
+  },
+  "decision": {
+    "b5_v2_preparation_complete": true,
+    "b5_execution_allowed_now": true,
+    "same_release_rerun_allowed": false,
+    "universal_fixed_24h_retry_chain_allowed": false,
+    "candidate_live_domain_access_allowed": false,
+    "archived_page_download_allowed": false,
+    "capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Execute the exact-70 availability release once through the V2 wrapper; then independently verify the immutable final result or classify the preserved failure through the adaptive retry policy."
+  },
+  "safety_contract": {"network_operations": 0, "candidate_domain_access_operations": 0, "archived_page_downloads": 0, "captures": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

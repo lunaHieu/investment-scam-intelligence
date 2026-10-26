@@ -1,0 +1,32 @@
+{
+  "analysis_id": "ISI_PROJECT_STATE_GAP_LEDGER_V35",
+  "created_at": "2026-10-26",
+  "status": "CURRENT_B5_EXACT_70_V2_GATE_OPEN_EXECUTION_PENDING",
+  "purpose": "Advance from nonblocking archive controls to a safely executable exact-70 B5 availability release.",
+  "inputs": [
+    {"role": "prior_state_v34", "path": "registry/analyses/project_state_gap_ledger_v34.json", "sha256": "6286433c1331837960418d9acf3f23283b84986c2c3d5f6c4dd30762453e027a"},
+    {"role": "current_reproducibility_v32", "path": "registry/analyses/reproducibility_current_state_v32.json", "sha256": "f63184c322c8c58bf3d2a0dacb82f5cddcc38b8a3c11d0cd892ac07f64b7fff9"}
+  ],
+  "implementation": [
+    {"role": "human_readable_ledger", "path": "docs/project-state-gap-ledger-v35.md", "sha256": "55c68d080a8685bdee3cf47fe51d1c7765890ca12149b41b70ca39ff0ef5b679"}
+  ],
+  "state_amendments": {
+    "B5_READY_CHANNEL_AVAILABILITY": {"rows": 70, "development": 50, "external_holdout": 20, "gate_open": true, "network_executed": false, "authoritative_wrapper": "scripts.execute_target_text_corpus_v1_ready_channel_wayback_availability_v2"},
+    "A1_COORDINATION": {"http_status": 200, "canonical_empty": true, "rate_limit": false, "retry_needed": false, "blocks_b5": false},
+    "V11_METADATA_RECOVERY": {"rows": 2, "supplemental": true, "blocks_b5": false, "blocks_project": false}
+  },
+  "decision": {
+    "b5_execution_allowed_now": true,
+    "b5_same_release_rerun_allowed": false,
+    "adaptive_failure_policy_required": true,
+    "candidate_live_domain_access_allowed": false,
+    "archived_page_download_allowed": false,
+    "capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Execute exact-70 B5 availability once through V2; independently verify the final result before capture-plan preparation."
+  },
+  "safety_contract": {"network_operations": 0, "candidate_domain_access_operations": 0, "archived_page_downloads": 0, "captures": 0, "labels_changed": 0, "model_operations": 0, "training_allowed": false}
+}

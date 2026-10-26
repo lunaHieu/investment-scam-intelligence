@@ -1,0 +1,35 @@
+{
+  "analysis_id": "ISI_REPRODUCIBILITY_CURRENT_STATE_V32",
+  "created_at": "2026-10-26",
+  "status": "CURRENT_B5_EXACT_70_V2_GATE_OPEN_NETWORK_PENDING",
+  "supersedes": {"path": "registry/analyses/reproducibility_current_state_v31.json", "sha256": "a93ac5011c0c0ff1ecda7d3797529f2136c70de9b4eaad42f3e0bbe617240802"},
+  "implementation": [
+    {"role": "human_readable_state", "path": "docs/reproducibility-current-state-v32.md", "sha256": "8961b2089006bb09a10d893f9a85098603a8068b2c980be4eeb79485b550263c"},
+    {"role": "b5_v2_amendment_registry", "path": "registry/analyses/target_text_corpus_v1_ready_channel_wayback_availability_execution_amendment_v2.json", "sha256": "9170d6bef84f54cdf0578c5e540522aec91d20e3467f99c8b5803b91057e508d"}
+  ],
+  "current_state": {
+    "b5_plan_rows": 70,
+    "b5_development_rows": 50,
+    "b5_external_holdout_rows": 20,
+    "b5_gate_open": true,
+    "b5_network_requests": 0,
+    "b5_final_report_exists": false,
+    "b5_partial_journal_exists": false,
+    "a1_canonical_empty_terminal": true,
+    "a1_rate_limit": false,
+    "v11_recovery_lane_blocks_b5": false
+  },
+  "decision": {
+    "b5_v2_execution_allowed_now": true,
+    "b5_same_release_rerun_allowed": false,
+    "universal_fixed_24h_retry_chain_allowed": false,
+    "candidate_live_domain_access_allowed": false,
+    "archived_page_download_allowed": false,
+    "capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {"network_operations": 0, "candidate_domain_access_operations": 0, "archived_page_downloads": 0, "captures": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

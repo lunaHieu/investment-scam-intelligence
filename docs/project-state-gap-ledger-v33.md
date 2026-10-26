@@ -16,6 +16,8 @@ prior V11 finalization gap without mutating historical artifacts.
   prepared offline; neither can open extraction before complete recovery QA.
 - The recovery-specific extractor and independent byte-regeneration verifier
   are prepared and tested with temporary fixtures only.
+- Opened-cohort exclusion and disjoint grouping tooling for the two-row
+  recovery path is prepared and tested without producing labels.
 - Offline tests and registry validation pass. No recovery network operation
   has occurred.
 

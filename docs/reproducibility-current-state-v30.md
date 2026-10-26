@@ -26,6 +26,9 @@ the historical capture result and uses new output paths.
   complete metadata-verified recovery result exists.
 - The recovery-specific offline extractor and byte-regeneration verifier are
   also prepared; they remain unreachable until exact-text release QA passes.
+- The recovery-specific grouping release, analyzer, and independent
+  recomputation verifier are prepared; manual review remains closed until
+  grouping QA passes.
 
 ## Gate decision
 

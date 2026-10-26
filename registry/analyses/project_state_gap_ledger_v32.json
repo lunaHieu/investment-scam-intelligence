@@ -6,7 +6,7 @@
   "purpose": "Record the metadata-limited V11 supplemental result repair while preserving all historical capture, review, and model boundaries.",
   "inputs": [
     {"role": "prior_state_v31", "path": "registry/analyses/project_state_gap_ledger_v31.json", "sha256": "a111161547865b967a67f6996ea0d9769b82fd4129854ea261e9b2a94b68ba9e"},
-    {"role": "supplemental_plan_release_registry", "path": "registry/analyses/sec_edgar_iapd_v11_supplemental_capture_plan_release_v1.json", "sha256": "3afd045e7c7563f999fb5e263b07e83f489b2734b416f9d0f5ad6aa41e29e0af"}
+    {"role": "supplemental_plan_release_registry", "path": "registry/analyses/sec_edgar_iapd_v11_supplemental_capture_plan_release_v1.json", "sha256": "2bc799fecc75cb2269dda0ff3e94af187057010540e86c39095f312714910b36"}
   ],
   "implementation": [
     {"role": "human_readable_ledger", "path": "docs/project-state-gap-ledger-v32.md", "sha256": "60d01ce6a4a842450b49351f7f0ea2cd6b4b8fbcd62220236733898547f94eac"},

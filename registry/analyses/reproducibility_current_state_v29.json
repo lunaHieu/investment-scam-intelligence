@@ -4,7 +4,7 @@
   "status": "CURRENT_V11_SUPPLEMENTAL_REPAIRED_BYTES_QA_METADATA_INCOMPLETE",
   "supersedes": {"path": "registry/analyses/reproducibility_current_state_v28.json", "sha256": "91b39fbcdcbaf7b5926c975bd68fc04542d0af017b2963f207ce24cb47bccd40"},
   "implementation": [
-    {"role": "human_readable_reproducibility_state", "path": "docs/reproducibility-current-state-v29.md", "sha256": "00a2c46391486f3c2e89214b0aa5fe6fcd9bf8f116efd556dae402350b1cf2ef"},
+    {"role": "human_readable_reproducibility_state", "path": "docs/reproducibility-current-state-v29.md", "sha256": "ff8e252bb8ba82d0fb6d8188fd6e701e32423d50a02bef1608b7ff4101929447"},
     {"role": "offline_repaired_result_builder", "path": "scripts/repair_sec_edgar_iapd_v11_supplemental_capture_result.py", "sha256": "bcece1e09027adc9df5e70c03bbc4f4e20ed11b31b5114e8008d8b2e2f694bb1"},
     {"role": "independent_repaired_result_verifier", "path": "scripts/verify_sec_edgar_iapd_v11_supplemental_capture_repaired_result.py", "sha256": "784dc3b05e7e316f642e950b5f2a9d2faf4767eff60fb69180d9c881e6635c6f"}
   ],

@@ -13,6 +13,7 @@ SHA-256 hashes, but it does not recreate HTTP response headers or redirects.
 - Supplemental repaired report: 2 ordered `EXTERNAL_HOLDOUT` rows, raw-byte
   hashes independently verified.
 - Repaired QA: `PASS_REPAIRED_RAW_BYTES_METADATA_INCOMPLETE_EXTRACTION_CLOSED`.
+- Supplemental exact-text builder/verifier are prepared and explicitly gate-closed.
 - Capture QA in the strict HTTP sense remains closed because the executor did
   not persist response metadata.
 

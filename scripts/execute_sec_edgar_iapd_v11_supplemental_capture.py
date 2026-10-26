@@ -114,13 +114,17 @@ def _base_row(source: dict[str, Any]) -> dict[str, Any]:
 
 
 def execute(release_path: Path, qa_path: Path, now: datetime | None = None) -> dict[str, Any]:
-    release, plan = validate_release(release_path, qa_path)
+    # Check the temporal gate before output-state validation.  This guarantees
+    # a closed gate always fails safely without inspecting, reserving, or
+    # attempting to overwrite an existing result from a prior execution.
+    release_for_gate = load_object(release_path)
     current = now or datetime.now(timezone.utc).astimezone()
     if current.tzinfo is None:
         raise ValueError("Current time must include a timezone")
-    not_before = parse_time(str(release["execution_contract"]["not_before"]))
+    not_before = parse_time(str(release_for_gate["execution_contract"]["not_before"]))
     if current < not_before:
         raise PermissionError(f"Supplemental capture not-before gate is closed for {(not_before - current).total_seconds():.0f} seconds")
+    release, plan = validate_release(release_path, qa_path)
     report_path = Path(str(release["planned_output"]["path"]))
     partial = report_path.with_suffix(report_path.suffix + ".partial")
     reservation = {
@@ -187,7 +191,19 @@ def execute(release_path: Path, qa_path: Path, now: datetime | None = None) -> d
         "results": results,
         "safety_contract": {"candidate_live_domain_access_operations": 0, "only_web_archive_host_accessed": True, "raw_replay_modifier_used": True, "automatic_external_redirect_following": False, "labels_created": 0, "model_operations": 0, "training_allowed": False},
     }
-    partial.replace(report_path)
+    # Use a distinct finalized temporary file and read it back.  This makes a
+    # failed finalization visible instead of returning COMPLETE while leaving
+    # only the pre-network reservation on disk.
+    finalized = report_path.with_suffix(report_path.suffix + ".finalizing")
+    if finalized.exists():
+        raise FileExistsError("Refusing to overwrite supplemental finalization staging file")
+    finalized.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    finalized.replace(report_path)
+    persisted = load_object(report_path)
+    if persisted.get("status") != report.get("status") or persisted.get("results") != report.get("results"):
+        raise RuntimeError("Supplemental capture report finalization readback mismatch")
+    if partial.exists():
+        raise RuntimeError("Supplemental capture reservation remained after finalization")
     return report
 
 

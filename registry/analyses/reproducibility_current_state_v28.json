@@ -1,0 +1,35 @@
+{
+  "analysis_id": "ISI_REPRODUCIBILITY_CURRENT_STATE_V28",
+  "created_at": "2026-10-26",
+  "status": "CURRENT_V11_SUPPLEMENTAL_CAPTURE_RECONCILIATION_REQUIRED",
+  "supersedes": {"path": "registry/analyses/reproducibility_current_state_v27.json", "sha256": "8c7fbe66ba6f126627a55ce3cac035d0a71937d060b4b792c40a862dddbe0c3b"},
+  "implementation": [
+    {"role": "human_readable_reproducibility_state", "path": "docs/reproducibility-current-state-v28.md", "sha256": "705e2960dcf8df17b138a69cfec7107e91b01dfdd4522e14b12081525bea38c2"},
+    {"role": "offline_reconciliation_tool", "path": "scripts/reconcile_sec_edgar_iapd_v11_supplemental_capture.py", "sha256": "66593912556834f8643fb95ca0de28b3084a9ecddb328d5ef991b71b2c718833"},
+    {"role": "reconciliation_tests", "path": "tests/test_sec_edgar_iapd_v11_supplemental_capture_reconciliation.py", "sha256": "bd8093513f569bb289ed74dabb89ffbbcdaaf7f086a6f5bdef37939bd2f37adc"}
+  ],
+  "current_state": {
+    "availability_total": 115,
+    "availability_available": 60,
+    "availability_unavailable": 55,
+    "availability_unresolved": 0,
+    "supplemental_plan_rows": 2,
+    "supplemental_raw_files_present": 2,
+    "supplemental_capture_qa_status": "FAIL_PRESERVED_REPORT_FINALIZATION_MISMATCH",
+    "supplemental_raw_byte_reconciliation_status": "PASS_RAW_BYTES_IDENTITY_RECONCILIATION_CAPTURE_METADATA_INCOMPLETE",
+    "owner_accepted_legitimate": 42,
+    "owner_accepted_uncertain": 14,
+    "training_eligible": 0
+  },
+  "decision": {
+    "original_capture_plan_mutation_allowed": false,
+    "original_review_population_mutation_allowed": false,
+    "recapture_allowed": false,
+    "text_extraction_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {"network_operations": 0, "raw_files_modified": 0, "reservation_overwritten": false, "candidate_live_domain_access_operations": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

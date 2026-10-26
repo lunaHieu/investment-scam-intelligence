@@ -1,0 +1,41 @@
+{
+  "analysis_id": "ISI_PROJECT_STATE_GAP_LEDGER_V31",
+  "created_at": "2026-10-26",
+  "base_commit": "fc224b6010eb4361a006e493ba6d1ed2df78b4cf",
+  "status": "CURRENT_V11_SUPPLEMENTAL_CAPTURE_RECONCILIATION_REQUIRED",
+  "purpose": "Record the V11 supplemental capture finalization failure and offline raw-byte reconciliation without mutating the frozen original populations.",
+  "inputs": [
+    {"role": "prior_state_v30", "path": "registry/analyses/project_state_gap_ledger_v30.json", "sha256": "6daafab4a9b4277d188c84148eb4e9dd3dbb89eac63a4b16b081bb487438e0e8"},
+    {"role": "supplemental_plan_release_registry", "path": "registry/analyses/sec_edgar_iapd_v11_supplemental_capture_plan_release_v1.json", "sha256": "658e22edfd0fbd2b380cb354bf55403943a975cf57601a5fc22c3fa2f7062cfe"}
+  ],
+  "implementation": [
+    {"role": "human_readable_ledger", "path": "docs/project-state-gap-ledger-v31.md", "sha256": "053785f4a8627c191e30c646f34e3cf030c7bf30c937c330ac71eef741489f53"},
+    {"role": "ledger_contract_tests", "path": "tests/test_project_state_gap_ledger_v30.py", "sha256": "a52f5a71eee8f3a83f2045f86cc8070481c28a0dd0965b1ae2130ed81b052697"}
+  ],
+  "state_amendments": {
+    "P1_A1": {"network_requests": 1, "http_status": 200, "canonical_empty_cdx": true, "alternate_rows": 0, "quarantine_remains": true, "retry_needed": false},
+    "P1_A2_V11": {"retry_rows": 2, "resolved_results": 115, "available_results": 60, "unavailable_results": 55, "unresolved_results": 0, "logical_retry_attempts": 2, "network_requests": 2, "stopped_on_http_429": false, "supplemental_complete": true, "original_capture_plan_mutated": false},
+    "P1_SUPPLEMENTAL_CAPTURE_EXECUTION": {"planned_rows": 2, "executor_reported_captured_rows": 2, "persisted_report_status": "RESERVED_BEFORE_NETWORK_NON_RESUMABLE", "capture_qa_status": "FAIL_PRESERVED_REPORT_FINALIZATION_MISMATCH", "raw_byte_reconciliation_status": "PASS_RAW_BYTES_IDENTITY_RECONCILIATION_CAPTURE_METADATA_INCOMPLETE", "recapture_allowed": false},
+    "P2_C2_C3": {"c2_preflight_complete": true, "c2_completed_submissions": 0, "c3_preflight_complete": true, "c3_human_responses": 0},
+    "P3_V1_CORE": {"required_groups": 300, "admitted_groups": 0, "conditional_owner_accepted_supply": 42}
+  },
+  "decision": {
+    "a1_complete": true,
+    "a2_v11_execution_complete": true,
+    "supplemental_capture_plan_qa_passed": true,
+    "supplemental_capture_release_qa_passed": true,
+    "supplemental_capture_result_qa_passed": false,
+    "original_capture_plan_mutation_allowed": false,
+    "original_review_population_mutation_allowed": false,
+    "recapture_allowed": false,
+    "candidate_live_domain_access_allowed": false,
+    "archived_page_download_allowed_now": false,
+    "text_extraction_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Offline result-finalization repair with explicit metadata limitation; no recapture."
+  },
+  "safety_contract": {"network_operations": 0, "candidate_live_domain_access_operations": 0, "archived_page_downloads": 0, "captures": 0, "labels_changed": 0, "model_operations": 0, "training_allowed": false}
+}

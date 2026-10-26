@@ -16,11 +16,14 @@ class SecEdgarIapdV11SupplementalCaptureExecutionTests(unittest.TestCase):
     def test_pre_gate_fails_before_reserving_partial(self) -> None:
         release = json.loads(RELEASE.read_text(encoding="utf-8"))
         not_before = parse_time(release["execution_contract"]["not_before"])
+        report = Path(release["planned_output"]["path"])
+        partial = report.with_suffix(report.suffix + ".partial")
+        report_before = report.read_bytes() if report.exists() else None
+        partial_before = partial.read_bytes() if partial.exists() else None
         with self.assertRaises(PermissionError):
             execute(RELEASE, RELEASE_QA, now=not_before - timedelta(seconds=1))
-        report = Path(release["planned_output"]["path"])
-        self.assertFalse(report.exists())
-        self.assertFalse(report.with_suffix(report.suffix + ".partial").exists())
+        self.assertEqual(report.read_bytes() if report.exists() else None, report_before)
+        self.assertEqual(partial.read_bytes() if partial.exists() else None, partial_before)
 
     def test_user_agent_is_identifying_and_archive_only(self) -> None:
         self.assertIn("ISI-V11-Supplemental-Capture/1.0", USER_AGENT)

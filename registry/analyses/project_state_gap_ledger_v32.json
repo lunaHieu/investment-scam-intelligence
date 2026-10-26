@@ -1,0 +1,36 @@
+{
+  "analysis_id": "ISI_PROJECT_STATE_GAP_LEDGER_V32",
+  "created_at": "2026-10-26",
+  "base_commit": "c5580cb5624212fce497172f450de68c170180bd",
+  "status": "CURRENT_V11_SUPPLEMENTAL_REPAIRED_BYTES_QA_METADATA_INCOMPLETE",
+  "purpose": "Record the metadata-limited V11 supplemental result repair while preserving all historical capture, review, and model boundaries.",
+  "inputs": [
+    {"role": "prior_state_v31", "path": "registry/analyses/project_state_gap_ledger_v31.json", "sha256": "a111161547865b967a67f6996ea0d9769b82fd4129854ea261e9b2a94b68ba9e"},
+    {"role": "supplemental_plan_release_registry", "path": "registry/analyses/sec_edgar_iapd_v11_supplemental_capture_plan_release_v1.json", "sha256": "3afd045e7c7563f999fb5e263b07e83f489b2734b416f9d0f5ad6aa41e29e0af"}
+  ],
+  "implementation": [
+    {"role": "human_readable_ledger", "path": "docs/project-state-gap-ledger-v32.md", "sha256": "60d01ce6a4a842450b49351f7f0ea2cd6b4b8fbcd62220236733898547f94eac"},
+    {"role": "repaired_result_verifier", "path": "scripts/verify_sec_edgar_iapd_v11_supplemental_capture_repaired_result.py", "sha256": "784dc3b05e7e316f642e950b5f2a9d2faf4767eff60fb69180d9c881e6635c6f"}
+  ],
+  "state_amendments": {
+    "P1_SUPPLEMENTAL_CAPTURE_EXECUTION": {"planned_rows": 2, "repaired_rows": 2, "repaired_qa_status": "PASS_REPAIRED_RAW_BYTES_METADATA_INCOMPLETE_EXTRACTION_CLOSED", "strict_capture_qa_open": false, "recapture_allowed": false},
+    "P3_V1_CORE": {"required_groups": 300, "admitted_groups": 0, "conditional_owner_accepted_supply": 42}
+  },
+  "decision": {
+    "supplemental_capture_result_qa_passed": false,
+    "supplemental_repaired_raw_bytes_qa_passed": true,
+    "original_capture_plan_mutation_allowed": false,
+    "original_review_population_mutation_allowed": false,
+    "recapture_allowed": false,
+    "candidate_live_domain_access_allowed": false,
+    "archived_page_download_allowed_now": false,
+    "text_extraction_allowed": false,
+    "grouping_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "A separately justified release that persists full response metadata; no implicit recapture or merge."
+  },
+  "safety_contract": {"network_operations": 0, "candidate_live_domain_access_operations": 0, "archived_page_downloads": 0, "captures": 0, "labels_changed": 0, "model_operations": 0, "training_allowed": false}
+}

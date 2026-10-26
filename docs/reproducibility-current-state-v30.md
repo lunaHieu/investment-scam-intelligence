@@ -21,6 +21,9 @@ the historical capture result and uses new output paths.
   separate from both the historical reservation and the repaired raw files.
 - Release QA is `PASS_ARCHIVE_ONLY_V11_METADATA_RECOVERY_RELEASE`; no network
   operation has been performed for this release.
+- An independent recovery-result verifier and a separate exact-text release
+  builder/verifier are prepared. The exact-text builder remains closed until a
+  complete metadata-verified recovery result exists.
 
 ## Gate decision
 

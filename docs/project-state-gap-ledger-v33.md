@@ -12,6 +12,8 @@ prior V11 finalization gap without mutating historical artifacts.
 - The new archive-only recovery release is independently verified with a
   24-hour cooldown from the V11 availability evidence and a descriptive
   project User-Agent.
+- An independent result verifier and a separate exact-text release gate are
+  prepared offline; neither can open extraction before complete recovery QA.
 - Offline tests and registry validation pass. No recovery network operation
   has occurred.
 

@@ -6,13 +6,14 @@
   "purpose": "Record the separately frozen V11 metadata-recovery release while preserving historical capture, review, repair, and model boundaries.",
   "inputs": [
     {"role": "prior_state_v32", "path": "registry/analyses/project_state_gap_ledger_v32.json", "sha256": "3e94c3a2901f65987d3a45ddcb5f70d8779f63dcf37d8b67d4a1a059b280fd45"},
-    {"role": "supplemental_plan_release_registry", "path": "registry/analyses/sec_edgar_iapd_v11_supplemental_capture_plan_release_v1.json", "sha256": "5d41c075a86912fe0da70d8fca70e25bba5bf5c621b058eea8a54aa18a2e97a5"},
-    {"role": "metadata_recovery_release_registry", "path": "registry/analyses/reproducibility_current_state_v30.json", "sha256": "47755943cf6b2164e4d27f41e49c7773c3923a9acc494aaac68e032608407197"}
+    {"role": "supplemental_plan_release_registry", "path": "registry/analyses/sec_edgar_iapd_v11_supplemental_capture_plan_release_v1.json", "sha256": "a97b246ad65a7a3329b0d6dbb3feac9e134d9184cf64106c535bdf2b4b75f303"},
+    {"role": "metadata_recovery_release_registry", "path": "registry/analyses/reproducibility_current_state_v30.json", "sha256": "d5803563a14799308ffa604da1b23caafa2f7a4346eecd9a3da52505d9104e80"}
   ],
   "implementation": [
-    {"role": "human_readable_ledger", "path": "docs/project-state-gap-ledger-v33.md", "sha256": "1f21b863125b7e528538f54c1dfe7e75e15df3212608e2d0fcfa98189d9b73e9"},
+    {"role": "human_readable_ledger", "path": "docs/project-state-gap-ledger-v33.md", "sha256": "a300eca309bea36ad2cc080f924f48e8ef7d885ee9ce2d84d188493659c54c52"},
     {"role": "metadata_recovery_release_verifier", "path": "scripts/verify_sec_edgar_iapd_v11_metadata_recovery_release.py", "sha256": "9d80de4b495c2ed9ace74a6f3729d008e63e80dd66ca2920bbed6319eff1799c"},
-    {"role": "metadata_recovery_result_verifier", "path": "scripts/verify_sec_edgar_iapd_v11_metadata_recovery_result.py", "sha256": "b65c82f148b102cb323a65ce5d9829d544209ec643037afc637fb0d35b2e36db"}
+    {"role": "metadata_recovery_result_verifier", "path": "scripts/verify_sec_edgar_iapd_v11_metadata_recovery_result.py", "sha256": "b65c82f148b102cb323a65ce5d9829d544209ec643037afc637fb0d35b2e36db"},
+    {"role": "metadata_recovery_exact_text_release_verifier", "path": "scripts/verify_sec_edgar_iapd_v11_metadata_recovery_exact_text_release.py", "sha256": "c6d89deeeb3ce65d41bd09fa5d1f12bb5cf5981a329d81783a17353ad8452bd2"}
   ],
   "state_amendments": {
     "P1_SUPPLEMENTAL_CAPTURE_EXECUTION": {"historical_rows": 2, "repaired_rows": 2, "recovery_rows": 2, "recovery_release_qa_status": "PASS_ARCHIVE_ONLY_V11_METADATA_RECOVERY_RELEASE", "recovery_gate_open": false, "strict_capture_qa_open": false},

@@ -4,12 +4,15 @@
   "status": "CURRENT_V11_METADATA_RECOVERY_RELEASE_FROZEN_24H_GATE",
   "supersedes": {"path": "registry/analyses/reproducibility_current_state_v29.json", "sha256": "ff8e252bb8ba82d0fb6d8188fd6e701e32423d50a02bef1608b7ff4101929447"},
   "implementation": [
-    {"role": "human_readable_reproducibility_state", "path": "docs/reproducibility-current-state-v30.md", "sha256": "1734f9ece9146128d2c68e276b3f9e048d139216b307d03ab2b31bc7fea40587"},
+    {"role": "human_readable_reproducibility_state", "path": "docs/reproducibility-current-state-v30.md", "sha256": "7c16056f55b7cfb4acfc31619a438530f5503454678852a4534d64468448cfd3"},
     {"role": "metadata_recovery_release_builder", "path": "scripts/build_sec_edgar_iapd_v11_metadata_recovery_release.py", "sha256": "250ab52621ed62262559f744e860c47d1636ecf4d3d5def8e09d7106035c11c4"},
     {"role": "independent_metadata_recovery_release_verifier", "path": "scripts/verify_sec_edgar_iapd_v11_metadata_recovery_release.py", "sha256": "9d80de4b495c2ed9ace74a6f3729d008e63e80dd66ca2920bbed6319eff1799c"},
     {"role": "metadata_recovery_capture_executor", "path": "scripts/execute_sec_edgar_iapd_v11_metadata_recovery.py", "sha256": "da7dd31c4d994de474d883cdcd7d6f4d8f2a3b478b3c90cd3b1a7ff3b2c8bcf9"},
     {"role": "independent_metadata_recovery_result_verifier", "path": "scripts/verify_sec_edgar_iapd_v11_metadata_recovery_result.py", "sha256": "b65c82f148b102cb323a65ce5d9829d544209ec643037afc637fb0d35b2e36db"},
-    {"role": "metadata_recovery_result_tests", "path": "tests/test_sec_edgar_iapd_v11_metadata_recovery_result.py", "sha256": "c750e94ac3738fcec7d958df2aebbef75445ce9ec578a98966449a4321e3a707"}
+    {"role": "metadata_recovery_result_tests", "path": "tests/test_sec_edgar_iapd_v11_metadata_recovery_result.py", "sha256": "c750e94ac3738fcec7d958df2aebbef75445ce9ec578a98966449a4321e3a707"},
+    {"role": "metadata_recovery_exact_text_release_builder", "path": "scripts/build_sec_edgar_iapd_v11_metadata_recovery_exact_text_release.py", "sha256": "e9c7f9966632745bed6384177a43ac30d57d7a5152738dface64da81504c8fd7"},
+    {"role": "independent_metadata_recovery_exact_text_release_verifier", "path": "scripts/verify_sec_edgar_iapd_v11_metadata_recovery_exact_text_release.py", "sha256": "c6d89deeeb3ce65d41bd09fa5d1f12bb5cf5981a329d81783a17353ad8452bd2"},
+    {"role": "metadata_recovery_exact_text_release_tests", "path": "tests/test_sec_edgar_iapd_v11_metadata_recovery_exact_text_release.py", "sha256": "3c8b49d52bb9a91ef29e00603b5870b5f774889c8e28c7963c57697a9318a7d5"}
   ],
   "frozen_release": {
     "release_path": "configs/sec_edgar_iapd_v11_metadata_recovery_release_v1.json",

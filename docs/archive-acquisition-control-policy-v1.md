@@ -1,6 +1,6 @@
 # Archive acquisition control policy V1
 
-Date: 2026-10-26  
+Date: 2026-10-26
 Status: active for new archive operations; historical releases remain immutable
 
 ## Problem addressed

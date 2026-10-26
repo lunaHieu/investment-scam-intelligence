@@ -5,7 +5,7 @@
   "purpose": "Replace the project-wide fixed-24-hour interpretation with finite, failure-class-aware archive acquisition controls.",
   "inputs": [
     {"role": "prior_state_v33", "path": "registry/analyses/project_state_gap_ledger_v33.json", "sha256": "5b4cc1d676516bdc9c53cb6de7c380714ad1d8c5f89680837ddfc238682c145b"},
-    {"role": "current_reproducibility_v31", "path": "registry/analyses/reproducibility_current_state_v31.json", "sha256": "10973b30721645b8c8786d485083421c3a62d272e43d4eac6beadc2758ea96c4"},
+    {"role": "current_reproducibility_v31", "path": "registry/analyses/reproducibility_current_state_v31.json", "sha256": "a93ac5011c0c0ff1ecda7d3797529f2136c70de9b4eaad42f3e0bbe617240802"},
     {"role": "archive_control_policy", "path": "registry/analyses/archive_acquisition_control_policy_v1.json", "sha256": "3f7390a3a9d2cfc9f4b96428186c301ab200a59fdcf9172871e609a5fb529d66"}
   ],
   "implementation": [

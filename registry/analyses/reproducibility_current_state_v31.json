@@ -8,7 +8,7 @@
   },
   "implementation": [
     {"role": "human_readable_state", "path": "docs/reproducibility-current-state-v31.md", "sha256": "ae7a559724c7dde67a519aa9fc87392f8abab533210c0cd4db371ae219b056d9"},
-    {"role": "archive_control_policy", "path": "docs/archive-acquisition-control-policy-v1.md", "sha256": "4a575b65ffd4100a4ae50543df54d6e2971e7b9bad1971ac3caf8d8ca151db9f"},
+    {"role": "archive_control_policy", "path": "docs/archive-acquisition-control-policy-v1.md", "sha256": "350a4a8aed3c4d11a203b4f31dc4b1d45ced8b96bb6834236a08e8b959786715"},
     {"role": "archive_control_registry", "path": "registry/analyses/archive_acquisition_control_policy_v1.json", "sha256": "3f7390a3a9d2cfc9f4b96428186c301ab200a59fdcf9172871e609a5fb529d66"},
     {"role": "execution_amendment", "path": "configs/sec_edgar_iapd_v11_metadata_recovery_execution_amendment_v2.json", "sha256": "6f3fc6504ae81986a58f0f8940f91795f2e9bcf7b3640689bb22a3b729f5aed1"},
     {"role": "adaptive_retry_policy", "path": "scripts/archive_retry_policy_v1.py", "sha256": "40ad28b0f3bef4881da34a1d86f8b6d9300da2b5e62ce3f3cb8ee4b858263c73"},

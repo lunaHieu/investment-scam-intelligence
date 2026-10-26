@@ -1,0 +1,80 @@
+{
+  "release_id": "ISI_TARGET_TEXT_CORPUS_V1_READY_CHANNEL_WAYBACK_AVAILABILITY_CONTINUATION_RELEASE_V1",
+  "created_at": "2026-10-26T17:25:00+07:00",
+  "status": "FROZEN_EXACT_69_CONTINUATION_AFTER_TRIGGER_ROW_QUARANTINE_ENDPOINT_CIRCUIT_BREAKER",
+  "purpose": "Continue B5 on the 69 never-attempted identities after quarantining TTCV1_B3_AVAIL_001 at its three-attempt budget, using a six-hour endpoint circuit breaker after three consecutive HTTP 429 responses.",
+  "inputs": {
+    "availability_plan": {"path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_availability_plan_v1\\availability_plan_v1.jsonl", "sha256": "d6d5c4d63f1cea4be175222eceff0a330437f06dbb4223aab472cfb91b040d43", "source_record_count": 70},
+    "v3_release": {"path": "configs/target_text_corpus_v1_ready_channel_wayback_availability_retry_release_v3.json", "sha256": "13dfa61039c78d83501d3d4f05d0f1375bd337f1c23d6b3701c81bf5323b06ed"},
+    "v3_release_qa": {"path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_availability_plan_v1\\independent_retry_release_qa_v3.json", "sha256": "e96aba8d6c4d5013e31b557e5f03251fc8b9c8d0c9a6021b57b6bee9c70ce13f"},
+    "v3_report": {"path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_availability_retry_result_v3\\availability_report_v3.json", "sha256": "fb9f56e428dbf1e42e4c9f1da95757b649a67c2c2a120fba7cb00d0539cbed31"},
+    "v3_result_qa": {"path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_availability_retry_result_v3\\independent_result_qa_v3.json", "sha256": "648ed39fae4ce0236a7845eabb7a2317cf5cea7df3ebe4b80f001208b5b0f927", "required_status": "PASS_PARTIAL_V3_RETRY_ERRORS_PRESERVED_TRIGGER_ROW_BUDGET_EXHAUSTED"}
+  },
+  "quarantine_contract": {
+    "excluded_availability_plan_ids": ["TTCV1_B3_AVAIL_001"],
+    "reason": "THREE_CONSECUTIVE_ARCHIVE_ENDPOINT_HTTP_429_RESPONSES_TRIGGER_ROW_RETRY_BUDGET_EXHAUSTED",
+    "identical_retry_allowed": false,
+    "label_inference_allowed": false,
+    "project_blocking": false
+  },
+  "identity_contract": {
+    "expected_candidate_count": 69,
+    "expected_development_count": 49,
+    "expected_external_holdout_count": 20,
+    "ordered_identity_source": "inputs.availability_plan excluding quarantine_contract.excluded_availability_plan_ids",
+    "expected_first_availability_plan_id": "TTCV1_B3_AVAIL_002",
+    "expected_last_availability_plan_id": "TTCV1_B3_AVAIL_070"
+  },
+  "circuit_breaker_policy": {
+    "policy_id": "ISI_ARCHIVE_RETRY_POLICY_V1",
+    "failure_class": "HTTP_429",
+    "observed_at": "2026-10-26T17:20:12.335732+07:00",
+    "continuation_rows_prior_network_attempts": 0,
+    "endpoint_consecutive_failures": 3,
+    "retry_after_header": null,
+    "action": "RETRY_AFTER_RATE_LIMIT",
+    "not_before": "2026-10-26T23:20:12.335732+07:00",
+    "delay_seconds": 21600,
+    "universal_fixed_24h_retry_forbidden": true
+  },
+  "execution_contract": {
+    "endpoint": "https://archive.org/wayback/available",
+    "allowed_network_hosts": ["archive.org", "web.archive.org"],
+    "expected_candidate_count": 69,
+    "expected_development_count": 49,
+    "expected_external_holdout_count": 20,
+    "minimum_delay_seconds": 60.0,
+    "maximum_attempts_per_candidate": 1,
+    "timeout_seconds": 30,
+    "maximum_redirects": 3,
+    "maximum_response_bytes": 2097152,
+    "required_content_type_prefix": "application/json",
+    "descriptive_user_agent_required": true,
+    "partial_journal_reserved_before_network": true,
+    "partial_journal_auto_resume_allowed": false,
+    "stop_on_http_429": true,
+    "stop_on_any_http_or_transport_error": true,
+    "errors_are_preserved": true,
+    "errors_are_not_interpreted_as_no_snapshot": true,
+    "output_overwrite_allowed": false,
+    "preserved_response_headers": ["Retry-After", "Date", "Server", "Content-Type", "X-Archive-Wayback-Runtime-Error"]
+  },
+  "planned_output": {
+    "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_availability_continuation_result_v1\\availability_report_continuation_v1.json",
+    "report_id": "ISI_TARGET_TEXT_CORPUS_V1_READY_CHANNEL_WAYBACK_AVAILABILITY_CONTINUATION_REPORT_V1",
+    "partial_journal_suffix": ".partial",
+    "independent_result_qa_path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_availability_continuation_result_v1\\independent_result_qa_v1.json"
+  },
+  "decision": {
+    "continuation_allowed_at_or_after_not_before": true,
+    "quarantined_trigger_row_retry_allowed": false,
+    "candidate_live_domain_access_allowed": false,
+    "archived_page_download_allowed": false,
+    "artifact_capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {"network_operations_during_preparation": 0, "candidate_domain_access_operations": 0, "archived_page_downloads": 0, "captures": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

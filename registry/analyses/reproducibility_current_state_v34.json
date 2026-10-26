@@ -1,0 +1,14 @@
+{
+  "analysis_id": "ISI_REPRODUCIBILITY_CURRENT_STATE_V34",
+  "created_at": "2026-10-26",
+  "status": "CURRENT_B5_EXACT_69_CONTINUATION_CIRCUIT_BREAKER_PENDING",
+  "supersedes": {"path": "registry/analyses/reproducibility_current_state_v33.json", "sha256": "9d6b337e99310adef557973f125578cd5e551424c484b6aed0164c7b09ed3f64"},
+  "implementation": [
+    {"role": "human_readable_state", "path": "docs/reproducibility-current-state-v34.md", "sha256": "2d96fa1ef8d4e1f5443bbed0d7ed6f6e5f8d28790afaf79ba0212cd61eb5e7fa"},
+    {"role": "b5_v3_result", "path": "registry/analyses/target_text_corpus_v1_ready_channel_wayback_availability_retry_result_v3.json", "sha256": "9748c3da4a9c6cb3e185a7725e58af47c192d01c158075e3ec1449e433030caa"},
+    {"role": "b5_continuation_release", "path": "registry/analyses/target_text_corpus_v1_ready_channel_wayback_availability_continuation_release_v1.json", "sha256": "f937b2e2215c5d0f76de8579ddbb449c40d777314cc9eda2e47459e6c69ffce7"}
+  ],
+  "current_state": {"b5_source_rows": 70, "b5_quarantined_rows": 1, "b5_continuation_rows": 69, "b5_continuation_development_rows": 49, "b5_continuation_external_holdout_rows": 20, "archive_endpoint_consecutive_http_429": 3, "quarantined_trigger_row_network_attempts": 3, "continuation_rows_prior_network_attempts": 0, "active_release": "CONTINUATION_V1", "active_not_before": "2026-10-26T23:20:12.335732+07:00", "partial_journal_exists": false},
+  "decision": {"continuation_execution_allowed_at_or_after_not_before": true, "quarantined_trigger_row_retry_allowed": false, "earlier_release_rerun_allowed": false, "universal_fixed_24h_retry_chain_allowed": false, "candidate_live_domain_access_allowed": false, "archived_page_download_allowed": false, "capture_allowed": false, "labeling_allowed": false, "validation_or_test_opening_allowed": false, "model_scoring_allowed": false, "training_allowed": false},
+  "safety_contract": {"candidate_domain_access_operations": 0, "archived_page_downloads": 0, "captures": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

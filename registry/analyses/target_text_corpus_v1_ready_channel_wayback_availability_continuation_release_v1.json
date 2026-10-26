@@ -1,0 +1,24 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_READY_CHANNEL_WAYBACK_AVAILABILITY_CONTINUATION_RELEASE_V1",
+  "created_at": "2026-10-26",
+  "status": "PASS_B5_EXACT_69_CONTINUATION_TRIGGER_ROW_QUARANTINED_CIRCUIT_BREAKER",
+  "purpose": "Register a nonblocking exact-69 continuation that excludes the exhausted trigger row and uses a bounded six-hour endpoint circuit breaker.",
+  "inputs": [
+    {"role": "v3_report", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_availability_retry_result_v3\\availability_report_v3.json", "sha256": "fb9f56e428dbf1e42e4c9f1da95757b649a67c2c2a120fba7cb00d0539cbed31"},
+    {"role": "v3_result_qa", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_availability_retry_result_v3\\independent_result_qa_v3.json", "sha256": "648ed39fae4ce0236a7845eabb7a2317cf5cea7df3ebe4b80f001208b5b0f927"}
+  ],
+  "implementation": [
+    {"role": "continuation_release", "path": "configs/target_text_corpus_v1_ready_channel_wayback_availability_continuation_release_v1.json", "sha256": "826bc11352445efeae81cc9bb9d2aca28920e010b7edcebec826783420a22157"},
+    {"role": "release_verifier", "path": "scripts/verify_target_text_corpus_v1_ready_channel_wayback_availability_continuation_release_v1.py", "sha256": "83987896ed6e17732ec8d42ac375b1cb885bd006f77664349a1aa34cd0433f6b"},
+    {"role": "executor", "path": "scripts/execute_target_text_corpus_v1_ready_channel_wayback_availability_continuation_v1.py", "sha256": "2e5f50257274a757eabe3c867ea13018e4c2ed64193c8ac8debda8252a0c2e55"},
+    {"role": "result_verifier", "path": "scripts/verify_target_text_corpus_v1_ready_channel_wayback_availability_continuation_result_v1.py", "sha256": "951bb60ae3159ad692a5b6b307943456a58836825438e528b607b1d4f9179fa1"},
+    {"role": "tests", "path": "tests/test_target_text_corpus_v1_ready_channel_wayback_availability_continuation_v1.py", "sha256": "a5551f352532a7705f94bd3bde7de69ecf08bd30dadcb2b92a1f14a973af1992"},
+    {"role": "documentation", "path": "docs/target-text-corpus-v1-ready-channel-wayback-availability-continuation-v1.md", "sha256": "0e10eec3891c0c7e4dc70325023c090a90a43b188931a482ac3e16e26495f612"}
+  ],
+  "outputs": [
+    {"role": "independent_continuation_release_qa", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_availability_plan_v1\\independent_continuation_release_qa_v1.json", "sha256": "7d8874f5b62d1b91a6ab4503992aa8fc85d8c3e55fdeeed9608d72e3fac844a3"}
+  ],
+  "result": {"source_rows": 70, "quarantined_rows": 1, "continuation_rows": 69, "development_rows": 49, "external_holdout_rows": 20, "continuation_prior_network_attempts": 0, "endpoint_consecutive_http_429": 3, "not_before": "2026-10-26T23:20:12.335732+07:00", "delay_seconds": 21600},
+  "decision": {"continuation_allowed_at_or_after_not_before": true, "quarantined_trigger_row_retry_allowed": false, "universal_fixed_24h_retry_allowed": false, "capture_allowed": false, "labeling_allowed": false, "training_allowed": false},
+  "safety_contract": {"network_operations": 0, "candidate_domain_access_operations": 0, "archived_page_downloads": 0, "captures": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

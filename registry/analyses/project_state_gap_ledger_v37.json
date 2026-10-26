@@ -1,0 +1,20 @@
+{
+  "analysis_id": "ISI_PROJECT_STATE_GAP_LEDGER_V37",
+  "created_at": "2026-10-26",
+  "status": "CURRENT_B5_CONTINUATION_69_CIRCUIT_BREAKER_PENDING",
+  "purpose": "Record the end of the repeated trigger-row retry loop and the independently verified exact-69 continuation path.",
+  "inputs": [
+    {"role": "prior_state_v36", "path": "registry/analyses/project_state_gap_ledger_v36.json", "sha256": "eef22f23a7888c23db7581fbf7818c65cd453a83f027e7ef9373fbc0cb129ca0"},
+    {"role": "current_reproducibility_v34", "path": "registry/analyses/reproducibility_current_state_v34.json", "sha256": "cf7ec26f87b583c850cc4827a65975dd8d352ca0d1f884a07d5e0340f960e16e"}
+  ],
+  "implementation": [
+    {"role": "human_readable_ledger", "path": "docs/project-state-gap-ledger-v37.md", "sha256": "fa68facecd842f6888f1ad25b446b62e079ba1d9b013d9cd635c0325820ce36c"}
+  ],
+  "state_amendments": {
+    "B5_TRIGGER_ROW": {"availability_plan_id": "TTCV1_B3_AVAIL_001", "network_attempts": 3, "http_429_responses": 3, "quarantined": true, "identical_retry_allowed": false, "project_blocking": false},
+    "B5_CONTINUATION": {"rows": 69, "development": 49, "external_holdout": 20, "prior_network_attempts": 0, "not_before": "2026-10-26T23:20:12.335732+07:00"},
+    "CIRCUIT_BREAKER": {"endpoint_consecutive_http_429": 3, "delay_seconds": 21600, "universal_24h": false}
+  },
+  "decision": {"continuation_execution_allowed_at_or_after_not_before": true, "quarantined_trigger_row_retry_allowed": false, "candidate_live_domain_access_allowed": false, "archived_page_download_allowed": false, "capture_allowed": false, "labeling_allowed": false, "validation_or_test_opening_allowed": false, "model_scoring_allowed": false, "training_allowed": false, "next_gate": "Execute the exact-69 continuation once after the endpoint circuit breaker; complete resolution may open capture-plan preparation with the trigger row retained in quarantine."},
+  "safety_contract": {"candidate_domain_access_operations": 0, "archived_page_downloads": 0, "captures": 0, "labels_changed": 0, "model_operations": 0, "training_allowed": false}
+}

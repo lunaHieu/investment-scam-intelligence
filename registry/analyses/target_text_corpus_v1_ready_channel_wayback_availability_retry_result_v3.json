@@ -1,0 +1,17 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_READY_CHANNEL_WAYBACK_AVAILABILITY_RETRY_RESULT_V3",
+  "created_at": "2026-10-26",
+  "status": "PASS_PARTIAL_V3_RETRY_ERRORS_PRESERVED_TRIGGER_ROW_BUDGET_EXHAUSTED",
+  "purpose": "Register the immutable third HTTP 429 for the B5 triggering row and close further identical retries for that row.",
+  "inputs": [
+    {"role": "retry_release_v3", "path": "configs/target_text_corpus_v1_ready_channel_wayback_availability_retry_release_v3.json", "sha256": "13dfa61039c78d83501d3d4f05d0f1375bd337f1c23d6b3701c81bf5323b06ed"},
+    {"role": "retry_release_qa_v3", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_availability_plan_v1\\independent_retry_release_qa_v3.json", "sha256": "e96aba8d6c4d5013e31b557e5f03251fc8b9c8d0c9a6021b57b6bee9c70ce13f"}
+  ],
+  "outputs": [
+    {"role": "availability_report_v3", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_availability_retry_result_v3\\availability_report_v3.json", "sha256": "fb9f56e428dbf1e42e4c9f1da95757b649a67c2c2a120fba7cb00d0539cbed31"},
+    {"role": "independent_result_qa_v3", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_availability_retry_result_v3\\independent_result_qa_v3.json", "sha256": "648ed39fae4ce0236a7845eabb7a2317cf5cea7df3ebe4b80f001208b5b0f927"}
+  ],
+  "result": {"requested_rows": 70, "logical_attempts": 1, "network_requests": 1, "available_rows": 0, "unavailable_rows": 0, "unresolved_rows": 70, "stopped_on_http_429": true, "retry_after_header": null, "partial_journal_exists": false, "created_at": "2026-10-26T17:20:12.335732+07:00", "triggering_row_total_attempts": 3},
+  "decision": {"v3_release_rerun_allowed": false, "triggering_row_identical_retry_allowed": false, "triggering_row_quarantined_nonblocking": true, "capture_plan_preparation_allowed": false, "capture_allowed": false, "labeling_allowed": false, "training_allowed": false},
+  "safety_contract": {"candidate_domain_access_operations": 0, "archived_page_downloads": 0, "captures": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

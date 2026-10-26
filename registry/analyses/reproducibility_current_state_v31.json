@@ -1,0 +1,45 @@
+{
+  "analysis_id": "ISI_REPRODUCIBILITY_CURRENT_STATE_V31",
+  "created_at": "2026-10-26",
+  "status": "CURRENT_ARCHIVE_ACQUISITION_NONBLOCKING_V2_CONTROL_ACTIVE",
+  "supersedes": {
+    "path": "registry/analyses/reproducibility_current_state_v30.json",
+    "sha256": "e193271643962a5a3dc95c3e1c0c5fbd7cf68031a1b732f2a314b9a28f1101e8"
+  },
+  "implementation": [
+    {"role": "human_readable_state", "path": "docs/reproducibility-current-state-v31.md", "sha256": "ae7a559724c7dde67a519aa9fc87392f8abab533210c0cd4db371ae219b056d9"},
+    {"role": "archive_control_policy", "path": "docs/archive-acquisition-control-policy-v1.md", "sha256": "4a575b65ffd4100a4ae50543df54d6e2971e7b9bad1971ac3caf8d8ca151db9f"},
+    {"role": "archive_control_registry", "path": "registry/analyses/archive_acquisition_control_policy_v1.json", "sha256": "3f7390a3a9d2cfc9f4b96428186c301ab200a59fdcf9172871e609a5fb529d66"},
+    {"role": "execution_amendment", "path": "configs/sec_edgar_iapd_v11_metadata_recovery_execution_amendment_v2.json", "sha256": "6f3fc6504ae81986a58f0f8940f91795f2e9bcf7b3640689bb22a3b729f5aed1"},
+    {"role": "adaptive_retry_policy", "path": "scripts/archive_retry_policy_v1.py", "sha256": "40ad28b0f3bef4881da34a1d86f8b6d9300da2b5e62ce3f3cb8ee4b858263c73"},
+    {"role": "atomic_finalizer", "path": "scripts/crash_safe_report_finalization_v1.py", "sha256": "0df4ca48a96575f03b33377c84079ee5ebe52b837b73855853d81d1d67bf2c5f"},
+    {"role": "authoritative_recovery_executor", "path": "scripts/execute_sec_edgar_iapd_v11_metadata_recovery_v2.py", "sha256": "2e675e4bf88f3dc0a115a7ec69733ff2c81f8cd5bdd20804fe2a65fcd36adcd5"}
+  ],
+  "current_state": {
+    "v11_recovery_rows": 2,
+    "v11_recovery_cohort": "EXTERNAL_HOLDOUT",
+    "v11_recovery_network_operations": 0,
+    "v11_original_not_before": "2026-10-27T08:42:13.975064+07:00",
+    "recovery_lane_blocks_project": false,
+    "maximum_network_attempts_per_artifact_family": 3,
+    "automatic_fixed_24h_retry_chain_allowed": false
+  },
+  "decision": {
+    "historical_release_mutation_allowed": false,
+    "v1_executor_allowed_for_pending_recovery": false,
+    "v2_executor_required": true,
+    "offline_reconciliation_preferred_over_redownload": true,
+    "text_extraction_allowed_before_complete_recovery_qa": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "candidate_domain_access_operations": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

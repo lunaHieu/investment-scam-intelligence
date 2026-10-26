@@ -1,0 +1,51 @@
+{
+  "amendment_id": "ISI_SEC_EDGAR_IAPD_V11_METADATA_RECOVERY_EXECUTION_AMENDMENT_V2",
+  "created_at": "2026-10-26T09:15:00+07:00",
+  "status": "FROZEN_V2_ATOMIC_FINALIZATION_ADAPTIVE_RETRY_NONBLOCKING",
+  "parent_release": {
+    "path": "configs/sec_edgar_iapd_v11_metadata_recovery_release_v1.json",
+    "sha256": "ce9877d80bea9e5116a9d45aafa9f693887bc05b8474d811456ca4e0c18c0322",
+    "original_not_before_unchanged": true
+  },
+  "authoritative_tooling": [
+    {
+      "role": "archive_retry_policy",
+      "path": "scripts/archive_retry_policy_v1.py",
+      "sha256": "40ad28b0f3bef4881da34a1d86f8b6d9300da2b5e62ce3f3cb8ee4b858263c73"
+    },
+    {
+      "role": "crash_safe_finalizer",
+      "path": "scripts/crash_safe_report_finalization_v1.py",
+      "sha256": "0df4ca48a96575f03b33377c84079ee5ebe52b837b73855853d81d1d67bf2c5f"
+    },
+    {
+      "role": "metadata_recovery_executor",
+      "path": "scripts/execute_sec_edgar_iapd_v11_metadata_recovery_v2.py",
+      "sha256": "2e675e4bf88f3dc0a115a7ec69733ff2c81f8cd5bdd20804fe2a65fcd36adcd5"
+    }
+  ],
+  "execution_contract": {
+    "authoritative_executor_module": "scripts.execute_sec_edgar_iapd_v11_metadata_recovery_v2",
+    "historical_v1_executor_forbidden": true,
+    "maximum_network_attempts_per_artifact_family": 3,
+    "fixed_24h_for_every_failure_forbidden": true,
+    "honor_valid_retry_after": true,
+    "bounded_exponential_backoff": true,
+    "offline_finalization_reconciliation_required_when_possible": true,
+    "automatic_identical_retry_after_parser_or_content_failure": false,
+    "acquisition_lane_blocks_project": false
+  },
+  "current_gate": {
+    "not_before": "2026-10-27T08:42:13.975064+07:00",
+    "early_execution_authorized": false,
+    "reason": "The amendment removes future artificial loops but does not rewrite the already frozen V1 temporal contract."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "candidate_live_domain_access_operations": 0,
+    "historical_artifacts_modified": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

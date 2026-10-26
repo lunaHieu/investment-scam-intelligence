@@ -1,0 +1,39 @@
+{
+  "analysis_id": "ISI_ARCHIVE_ACQUISITION_CONTROL_POLICY_V1",
+  "created_at": "2026-10-26",
+  "status": "ACTIVE_NONBLOCKING_ADAPTIVE_RETRY_POLICY",
+  "purpose": "Eliminate unbounded fixed-24-hour retry loops while preserving archive-service and artifact safety.",
+  "evidence": {
+    "root_cause": "docs/archive-rate-limit-root-cause-v1.md",
+    "policy": "docs/archive-acquisition-control-policy-v1.md",
+    "official_automation_guidance": "https://archive.org/developers/bots.html"
+  },
+  "controls": {
+    "maximum_network_attempts_per_artifact_family": 3,
+    "http_429_retry_after_precedence": true,
+    "http_429_fallback_backoff_seconds": [900, 3600, 21600, 86400],
+    "transient_backoff_seconds": [300, 900, 3600],
+    "local_finalization_network_retry_allowed": false,
+    "identical_parser_or_content_retry_allowed": false,
+    "project_blocked_by_quarantined_supplemental_artifact": false
+  },
+  "implementation": [
+    {"path": "scripts/archive_retry_policy_v1.py", "sha256": "40ad28b0f3bef4881da34a1d86f8b6d9300da2b5e62ce3f3cb8ee4b858263c73"},
+    {"path": "scripts/crash_safe_report_finalization_v1.py", "sha256": "0df4ca48a96575f03b33377c84079ee5ebe52b837b73855853d81d1d67bf2c5f"},
+    {"path": "scripts/execute_sec_edgar_iapd_v11_metadata_recovery_v2.py", "sha256": "2e675e4bf88f3dc0a115a7ec69733ff2c81f8cd5bdd20804fe2a65fcd36adcd5"},
+    {"path": "configs/sec_edgar_iapd_v11_metadata_recovery_execution_amendment_v2.json", "sha256": "6f3fc6504ae81986a58f0f8940f91795f2e9bcf7b3640689bb22a3b729f5aed1"}
+  ],
+  "decision": {
+    "current_v1_not_before_rewritten": false,
+    "v2_executor_required_for_future_recovery_execution": true,
+    "acquisition_is_nonblocking": true,
+    "training_allowed": false
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "candidate_domain_access_operations": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

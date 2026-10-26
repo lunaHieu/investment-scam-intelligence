@@ -1,0 +1,49 @@
+{
+  "analysis_id": "ISI_PROJECT_STATE_GAP_LEDGER_V34",
+  "created_at": "2026-10-26",
+  "status": "CURRENT_ARCHIVE_BOTTLENECK_CONTAINED_RECOVERY_NONBLOCKING",
+  "purpose": "Replace the project-wide fixed-24-hour interpretation with finite, failure-class-aware archive acquisition controls.",
+  "inputs": [
+    {"role": "prior_state_v33", "path": "registry/analyses/project_state_gap_ledger_v33.json", "sha256": "5b4cc1d676516bdc9c53cb6de7c380714ad1d8c5f89680837ddfc238682c145b"},
+    {"role": "current_reproducibility_v31", "path": "registry/analyses/reproducibility_current_state_v31.json", "sha256": "10973b30721645b8c8786d485083421c3a62d272e43d4eac6beadc2758ea96c4"},
+    {"role": "archive_control_policy", "path": "registry/analyses/archive_acquisition_control_policy_v1.json", "sha256": "3f7390a3a9d2cfc9f4b96428186c301ab200a59fdcf9172871e609a5fb529d66"}
+  ],
+  "implementation": [
+    {"role": "human_readable_ledger", "path": "docs/project-state-gap-ledger-v34.md", "sha256": "8a0da843d4356ccd79c2b6dff9005a513a0eff94139ce05ab51310d3c4c6beb2"}
+  ],
+  "state_amendments": {
+    "P1_V11_METADATA_RECOVERY": {
+      "rows": 2,
+      "cohort": "EXTERNAL_HOLDOUT",
+      "gate_scope": "RECOVERY_LANE_ONLY",
+      "project_blocked": false,
+      "authoritative_executor": "scripts.execute_sec_edgar_iapd_v11_metadata_recovery_v2",
+      "not_before": "2026-10-27T08:42:13.975064+07:00"
+    },
+    "ARCHIVE_RETRY_CONTROL": {
+      "retry_budget_per_artifact_family": 3,
+      "universal_fixed_24h_retry": false,
+      "server_retry_after_precedence": true,
+      "offline_finalization_reconciliation": true,
+      "quarantine_is_terminal_and_nonblocking": true
+    }
+  },
+  "decision": {
+    "archive_recovery_network_allowed_now": false,
+    "independent_project_work_allowed_now": true,
+    "new_identical_24h_retry_chain_allowed": false,
+    "candidate_live_domain_access_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_network_gate": "2026-10-27T08:42:13.975064+07:00 Asia/Saigon for the two-row supplemental recovery lane only"
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "candidate_domain_access_operations": 0,
+    "labels_changed": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_READY_CHANNEL_WAYBACK_AVAILABILITY_RETRY_RELEASE_V2",
+  "created_at": "2026-10-26",
+  "status": "PASS_B5_EXACT_70_ADAPTIVE_RETRY_PREPARED_GATE_PENDING",
+  "purpose": "Register a separately frozen exact-70 retry after the first B5 request received HTTP 429 without Retry-After, using the bounded adaptive policy rather than rerunning the parent release or imposing a universal 24-hour delay.",
+  "inputs": [
+    {"role": "availability_plan", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_availability_plan_v1\\availability_plan_v1.jsonl", "sha256": "d6d5c4d63f1cea4be175222eceff0a330437f06dbb4223aab472cfb91b040d43"},
+    {"role": "previous_report", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_availability_result_v1\\availability_report_v1.json", "sha256": "4e74dec3ffc732f01241d796de0376be550accd76e687835e3c3dabb2ed3c4cc"},
+    {"role": "previous_result_qa", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_availability_result_v1\\independent_result_qa_v1.json", "sha256": "b071e1453913b2c1fce8dbafcf0669a8f0e435712eed0d061a7ffcc133492c1a"}
+  ],
+  "implementation": [
+    {"role": "retry_release", "path": "configs/target_text_corpus_v1_ready_channel_wayback_availability_retry_release_v2.json", "sha256": "ffb190999e4e943e704456b01ea28604b11240288719be6afef2602c75a67f58"},
+    {"role": "release_verifier", "path": "scripts/verify_target_text_corpus_v1_ready_channel_wayback_availability_retry_release_v2.py", "sha256": "4e26d6c4d9db8205a4f42e88dac272fa896f69c222a7df7cb144b6c23eb099c7"},
+    {"role": "retry_executor", "path": "scripts/execute_target_text_corpus_v1_ready_channel_wayback_availability_retry_v2.py", "sha256": "a997c7fcee29e5fabb58c3660d6c8147f2d767a7f106349f86376103829c0d45"},
+    {"role": "result_verifier", "path": "scripts/verify_target_text_corpus_v1_ready_channel_wayback_availability_retry_result_v2.py", "sha256": "c5088333bc5add30b10d1b794587cfbe60d6b95ff1ee2592c42c4880dd371034"},
+    {"role": "tests", "path": "tests/test_target_text_corpus_v1_ready_channel_wayback_availability_retry_v2.py", "sha256": "bfcaf9cc2a0225461c222d71b9e76000532af8755cbe2fc9a52bed1d10123812"},
+    {"role": "documentation", "path": "docs/target-text-corpus-v1-ready-channel-wayback-availability-retry-v2.md", "sha256": "cedecd757706af6ff66a03781cf089f1584d520a1c079e38670a855a26b373d1"}
+  ],
+  "outputs": [
+    {"role": "independent_retry_release_qa", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_availability_plan_v1\\independent_retry_release_qa_v2.json", "sha256": "49a678ad217c7accf06fc475e93493700860d7c1306a86d8e9aafe68a13caeea"}
+  ],
+  "result": {
+    "release_qa_status": "PASS_B5_EXACT_70_FIRST_ADAPTIVE_HTTP_429_RETRY_RELEASE",
+    "plan_rows": 70,
+    "development_rows": 50,
+    "external_holdout_rows": 20,
+    "previous_logical_attempts": 1,
+    "previous_http_429": true,
+    "previous_retry_after_header": null,
+    "adaptive_not_before": "2026-10-26T09:48:38.369187+07:00",
+    "minimum_delay_seconds": 60.0,
+    "network_requests_executed_by_preparation": 0
+  },
+  "decision": {
+    "retry_allowed_at_or_after_not_before": true,
+    "parent_release_rerun_allowed": false,
+    "universal_fixed_24h_retry_allowed": false,
+    "candidate_live_domain_access_allowed": false,
+    "archived_page_download_allowed": false,
+    "capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "At or after the exact 15-minute adaptive gate, execute this release once and independently verify its immutable final result."
+  },
+  "safety_contract": {"network_operations": 0, "candidate_domain_access_operations": 0, "archived_page_downloads": 0, "captures": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

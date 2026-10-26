@@ -1,0 +1,74 @@
+{
+  "release_id": "ISI_TARGET_TEXT_CORPUS_V1_READY_CHANNEL_WAYBACK_AVAILABILITY_RETRY_RELEASE_V2",
+  "created_at": "2026-10-26T09:36:00+07:00",
+  "status": "FROZEN_EXACT_70_FIRST_ADAPTIVE_HTTP_429_RETRY",
+  "purpose": "Retry exactly the 70 unresolved B5 identities after the first request stopped on HTTP 429 without Retry-After, using the active bounded adaptive policy instead of a universal 24-hour gate.",
+  "inputs": {
+    "availability_plan": {"path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_availability_plan_v1\\availability_plan_v1.jsonl", "sha256": "d6d5c4d63f1cea4be175222eceff0a330437f06dbb4223aab472cfb91b040d43", "record_count": 70},
+    "parent_release": {"path": "configs/target_text_corpus_v1_ready_channel_wayback_availability_execution_release_v1.json", "sha256": "fcb42133653dafb339e3b6f21181ee129921709012267a685f1005b5cacac909"},
+    "execution_amendment": {"path": "configs/target_text_corpus_v1_ready_channel_wayback_availability_execution_amendment_v2.json", "sha256": "10c184db18f9d5986e4c0ded39488421c87f67047ae83ade12ff1351a51866e4"},
+    "previous_report": {"path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_availability_result_v1\\availability_report_v1.json", "sha256": "4e74dec3ffc732f01241d796de0376be550accd76e687835e3c3dabb2ed3c4cc"},
+    "previous_result_qa": {"path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_availability_result_v1\\independent_result_qa_v1.json", "sha256": "b071e1453913b2c1fce8dbafcf0669a8f0e435712eed0d061a7ffcc133492c1a", "required_status": "PASS_PARTIAL_ERRORS_PRESERVED_CAPTURE_PLAN_BLOCKED"}
+  },
+  "identity_contract": {
+    "expected_candidate_count": 70,
+    "expected_development_count": 50,
+    "expected_external_holdout_count": 20,
+    "ordered_identity_source": "inputs.availability_plan",
+    "resolved_rows_removed": 0,
+    "same_parent_release_rerun": false
+  },
+  "retry_policy": {
+    "policy_id": "ISI_ARCHIVE_RETRY_POLICY_V1",
+    "failure_class": "HTTP_429",
+    "observed_at": "2026-10-26T09:33:38.369187+07:00",
+    "network_attempts_for_triggering_row": 1,
+    "consecutive_failures": 1,
+    "retry_after_header": null,
+    "action": "RETRY_AFTER_RATE_LIMIT",
+    "not_before": "2026-10-26T09:48:38.369187+07:00",
+    "maximum_network_attempts_per_artifact_family": 3,
+    "universal_fixed_24h_retry_forbidden": true
+  },
+  "execution_contract": {
+    "endpoint": "https://archive.org/wayback/available",
+    "allowed_network_hosts": ["archive.org", "web.archive.org"],
+    "expected_candidate_count": 70,
+    "expected_development_count": 50,
+    "expected_external_holdout_count": 20,
+    "minimum_delay_seconds": 60.0,
+    "request_rate_per_second_maximum": 0.0166666667,
+    "maximum_attempts_per_candidate": 1,
+    "timeout_seconds": 30,
+    "maximum_redirects": 3,
+    "maximum_response_bytes": 2097152,
+    "required_content_type_prefix": "application/json",
+    "descriptive_user_agent_required": true,
+    "partial_journal_reserved_before_network": true,
+    "partial_journal_auto_resume_allowed": false,
+    "stop_on_http_429": true,
+    "stop_on_any_http_or_transport_error": true,
+    "errors_are_preserved": true,
+    "errors_are_not_interpreted_as_no_snapshot": true,
+    "output_overwrite_allowed": false,
+    "preserved_response_headers": ["Retry-After", "Date", "Server", "Content-Type", "X-Archive-Wayback-Runtime-Error"]
+  },
+  "planned_output": {
+    "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_availability_retry_result_v2\\availability_report_v2.json",
+    "report_id": "ISI_TARGET_TEXT_CORPUS_V1_READY_CHANNEL_WAYBACK_AVAILABILITY_REPORT_V2",
+    "partial_journal_suffix": ".partial",
+    "independent_result_qa_path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_availability_retry_result_v2\\independent_result_qa_v2.json"
+  },
+  "decision": {
+    "retry_allowed_at_or_after_not_before": true,
+    "parent_release_rerun_allowed": false,
+    "candidate_live_domain_access_allowed": false,
+    "archived_page_download_allowed": false,
+    "artifact_capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {"network_operations_during_preparation": 0, "candidate_domain_access_operations": 0, "archived_page_downloads": 0, "captures": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

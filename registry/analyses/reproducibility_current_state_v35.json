@@ -1,0 +1,13 @@
+{
+  "analysis_id": "ISI_REPRODUCIBILITY_CURRENT_STATE_V35",
+  "created_at": "2026-10-26",
+  "status": "CURRENT_B5_CONTINUATION_PENDING_CONDITIONAL_CDX_FALLBACK_PREPARED",
+  "supersedes": {"path": "registry/analyses/reproducibility_current_state_v34.json", "sha256": "cf7ec26f87b583c850cc4827a65975dd8d352ca0d1f884a07d5e0340f960e16e"},
+  "implementation": [
+    {"role": "human_readable_state", "path": "docs/reproducibility-current-state-v35.md", "sha256": "88629b25b36e779d288e7715bfaf72397434284f751487f73c867b14253de5d2"},
+    {"role": "conditional_fallback", "path": "registry/analyses/target_text_corpus_v1_ready_channel_archive_alternative_acquisition_protocol_v1.json", "sha256": "57e5f0ed6307e1e5f0b14a4441513a0783ed9b642925f7ff1d30c39aaf310705"}
+  ],
+  "current_state": {"active_release": "CONTINUATION_V1", "continuation_rows": 69, "continuation_not_before": "2026-10-26T23:20:12.335732+07:00", "quarantined_rows": 1, "conditional_fallback_prepared": true, "conditional_fallback_active": false, "conditional_cdx_canary_rows": 1, "conditional_cdx_canary_maximum_requests": 1},
+  "decision": {"continuation_must_execute_first": true, "fallback_activation_requires_partial_continuation_qa": true, "automatic_fallback_cascade_allowed": false, "quarantined_row_retry_allowed": false, "candidate_live_domain_access_allowed": false, "archived_page_download_allowed": false, "capture_allowed": false, "labeling_allowed": false, "validation_or_test_opening_allowed": false, "model_scoring_allowed": false, "training_allowed": false},
+  "safety_contract": {"network_operations_during_fallback_preparation": 0, "candidate_domain_access_operations": 0, "archived_page_downloads": 0, "captures": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

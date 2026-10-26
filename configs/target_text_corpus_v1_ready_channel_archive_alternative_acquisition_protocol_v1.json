@@ -1,0 +1,80 @@
+{
+  "protocol_id": "ISI_TARGET_TEXT_CORPUS_V1_READY_CHANNEL_ARCHIVE_ALTERNATIVE_ACQUISITION_PROTOCOL_V1",
+  "created_at": "2026-10-26T18:15:00+07:00",
+  "status": "FROZEN_OFFLINE_CONDITIONAL_FALLBACK_NETWORK_CLOSED",
+  "purpose": "Predeclare a finite metadata-only CDX fallback if the exact-69 availability continuation is independently verified partial, avoiding both a dead project and an unbounded retry chain against the failing availability endpoint.",
+  "inputs": {
+    "continuation_release": {"path": "configs/target_text_corpus_v1_ready_channel_wayback_availability_continuation_release_v1.json", "sha256": "826bc11352445efeae81cc9bb9d2aca28920e010b7edcebec826783420a22157"},
+    "continuation_release_qa": {"path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_availability_plan_v1\\independent_continuation_release_qa_v1.json", "sha256": "7d8874f5b62d1b91a6ab4503992aa8fc85d8c3e55fdeeed9608d72e3fac844a3"},
+    "source_plan": {"path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_availability_plan_v1\\availability_plan_v1.jsonl", "sha256": "d6d5c4d63f1cea4be175222eceff0a330437f06dbb4223aab472cfb91b040d43"},
+    "v3_result_qa": {"path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_availability_retry_result_v3\\independent_result_qa_v3.json", "sha256": "648ed39fae4ce0236a7845eabb7a2317cf5cea7df3ebe4b80f001208b5b0f927"}
+  },
+  "authoritative_components": [
+    {"role": "tested_cdx_metadata_executor", "path": "scripts/execute_sec_edgar_iapd_wayback_alternate_snapshot_cdx_v1.py", "sha256": "9a878003b2582d68306246971f768203f99fb776c050ce5ace3b678b242d7c28"},
+    {"role": "adaptive_retry_policy", "path": "scripts/archive_retry_policy_v1.py", "sha256": "40ad28b0f3bef4881da34a1d86f8b6d9300da2b5e62ce3f3cb8ee4b858263c73"},
+    {"role": "offline_finalization_policy", "path": "scripts/crash_safe_report_finalization_v1.py", "sha256": "0df4ca48a96575f03b33377c84079ee5ebe52b837b73855853d81d1d67bf2c5f"}
+  ],
+  "activation_contract": {
+    "continuation_must_execute_first": true,
+    "continuation_final_report_required": true,
+    "continuation_independent_result_qa_required": true,
+    "allowed_activation_statuses": ["PASS_PARTIAL_EXACT_69_CONTINUATION_ERRORS_PRESERVED_CAPTURE_PLAN_BLOCKED"],
+    "activation_requires_availability_endpoint_error": true,
+    "activation_on_complete_continuation_forbidden": true,
+    "network_operations_during_protocol_preparation": 0
+  },
+  "canary_contract": {
+    "target_availability_plan_id": "TTCV1_B3_AVAIL_002",
+    "target_must_be_first_never_attempted_continuation_row": true,
+    "endpoint": "https://web.archive.org/cdx/search/cdx",
+    "allowed_network_hosts": ["web.archive.org"],
+    "metadata_only": true,
+    "maximum_logical_requests": 1,
+    "maximum_attempts": 1,
+    "minimum_delay_seconds": 60.0,
+    "timeout_seconds": 30,
+    "maximum_redirects": 0,
+    "output": "json",
+    "fields": ["timestamp", "original", "statuscode", "mimetype", "digest"],
+    "filters": ["statuscode:200", "mimetype:text/html"],
+    "maximum_rows": 1000,
+    "stop_on_http_429": true,
+    "partial_journal_reserved_before_network": true,
+    "partial_journal_auto_resume_allowed": false,
+    "output_overwrite_allowed": false,
+    "archived_page_download_allowed": false
+  },
+  "branch_contract": {
+    "canary_http_200_valid_json": "PREPARE_SEPARATE_EXACT_UNRESOLVED_ONLY_CDX_METADATA_RELEASE",
+    "canary_http_429": "OPEN_ARCHIVE_PROVIDER_CIRCUIT_AND_ROUTE_ALL_REMAINING_ROWS_TO_NON_ARCHIVE_ALTERNATIVE_SOURCE_ASSESSMENT",
+    "canary_http_4xx_non_429": "QUARANTINE_CDX_PATH_NONBLOCKING",
+    "canary_invalid_content_or_parser_limitation": "PRESERVE_BYTES_AND_FIX_OFFLINE_WITHOUT_NEW_NETWORK_REQUEST",
+    "canary_empty_result": "RESOLVED_NO_ELIGIBLE_CDX_SNAPSHOT_NOT_A_LABEL",
+    "maximum_identical_canary_attempts": 1,
+    "automatic_fallback_cascade_allowed": false
+  },
+  "population_contract": {
+    "source_rows": 70,
+    "permanently_quarantined_availability_plan_ids": ["TTCV1_B3_AVAIL_001"],
+    "continuation_rows": 69,
+    "canary_rows": 1,
+    "post_canary_bulk_release_maximum_rows": 69,
+    "original_order_required": true,
+    "development_external_holdout_identity_preserved": true,
+    "prior_resolved_rows_must_be_removed_from_later_release": true
+  },
+  "decision": {
+    "fallback_preparation_complete": true,
+    "fallback_network_execution_allowed_now": false,
+    "continuation_bypassed": false,
+    "quarantined_row_retry_allowed": false,
+    "candidate_live_domain_access_allowed": false,
+    "archived_page_download_allowed": false,
+    "artifact_capture_allowed": false,
+    "availability_or_cdx_membership_as_label_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {"network_operations": 0, "candidate_domain_access_operations": 0, "archived_page_downloads": 0, "captures": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

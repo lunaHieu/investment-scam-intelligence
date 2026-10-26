@@ -1,0 +1,20 @@
+{
+  "analysis_id": "ISI_PROJECT_STATE_GAP_LEDGER_V38",
+  "created_at": "2026-10-26",
+  "status": "CURRENT_B5_CONTINUATION_PENDING_FINITE_CDX_FALLBACK_READY",
+  "purpose": "Record the finite conditional alternative path without bypassing the active exact-69 continuation.",
+  "inputs": [
+    {"role": "prior_state_v37", "path": "registry/analyses/project_state_gap_ledger_v37.json", "sha256": "8a343c605076ee66da22ed31375fcb0a172cffb7e2c63fec180ffc42b40f4ea9"},
+    {"role": "current_reproducibility_v35", "path": "registry/analyses/reproducibility_current_state_v35.json", "sha256": "6f23ab7e5366c17db996c8113de51f9186e796076a02c3458ec28ae0f01ad7a8"}
+  ],
+  "implementation": [
+    {"role": "human_readable_ledger", "path": "docs/project-state-gap-ledger-v38.md", "sha256": "71ab64407db7162a8248876aa938baf8abfab251725e579d4329e5eeae322775"}
+  ],
+  "state_amendments": {
+    "B5_CONTINUATION": {"rows": 69, "not_before": "2026-10-26T23:20:12.335732+07:00", "must_execute_before_fallback": true},
+    "CONDITIONAL_CDX_FALLBACK": {"prepared": true, "active": false, "canary_rows": 1, "maximum_requests": 1, "metadata_only": true, "automatic_cascade": false},
+    "QUARANTINE": {"availability_plan_ids": ["TTCV1_B3_AVAIL_001"], "identical_retry_allowed": false, "project_blocking": false}
+  },
+  "decision": {"continuation_execution_allowed_at_or_after_not_before": true, "fallback_activation_requires_partial_continuation_qa": true, "quarantined_trigger_row_retry_allowed": false, "candidate_live_domain_access_allowed": false, "archived_page_download_allowed": false, "capture_allowed": false, "labeling_allowed": false, "validation_or_test_opening_allowed": false, "model_scoring_allowed": false, "training_allowed": false, "next_gate": "Execute the exact-69 continuation; activate only the single metadata canary if independent QA confirms a partial endpoint error."},
+  "safety_contract": {"network_operations_during_fallback_preparation": 0, "candidate_domain_access_operations": 0, "archived_page_downloads": 0, "captures": 0, "labels_changed": 0, "model_operations": 0, "training_allowed": false}
+}

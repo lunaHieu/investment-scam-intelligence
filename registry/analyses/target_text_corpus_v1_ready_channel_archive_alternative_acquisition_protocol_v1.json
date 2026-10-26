@@ -1,0 +1,22 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_READY_CHANNEL_ARCHIVE_ALTERNATIVE_ACQUISITION_PROTOCOL_V1",
+  "created_at": "2026-10-26",
+  "status": "PASS_CONDITIONAL_CDX_METADATA_FALLBACK_PREPARED_NETWORK_CLOSED",
+  "purpose": "Register a finite conditional metadata-only fallback that can replace the failing availability endpoint without bypassing the active continuation or reopening the exhausted trigger row.",
+  "inputs": [
+    {"role": "continuation_release", "path": "configs/target_text_corpus_v1_ready_channel_wayback_availability_continuation_release_v1.json", "sha256": "826bc11352445efeae81cc9bb9d2aca28920e010b7edcebec826783420a22157"},
+    {"role": "continuation_release_qa", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_availability_plan_v1\\independent_continuation_release_qa_v1.json", "sha256": "7d8874f5b62d1b91a6ab4503992aa8fc85d8c3e55fdeeed9608d72e3fac844a3"}
+  ],
+  "implementation": [
+    {"role": "fallback_protocol", "path": "configs/target_text_corpus_v1_ready_channel_archive_alternative_acquisition_protocol_v1.json", "sha256": "f1a08b0738dc3cdb2d8fe1f4bcabcd3774597990348179a4f23afeab4814cbb4"},
+    {"role": "protocol_verifier", "path": "scripts/verify_target_text_corpus_v1_ready_channel_archive_alternative_acquisition_protocol_v1.py", "sha256": "84cb5bc0d64dddca56456937fbd52b92243ce650ed6a3d599e5fe6eb6e88b0ef"},
+    {"role": "tests", "path": "tests/test_target_text_corpus_v1_ready_channel_archive_alternative_acquisition_protocol_v1.py", "sha256": "3d3a8928ecdd2d5579066850edc942e5ac7192a26cb7a6244a19428b09f41258"},
+    {"role": "documentation", "path": "docs/target-text-corpus-v1-ready-channel-archive-alternative-acquisition-protocol-v1.md", "sha256": "3e12999f0e41a107579e698606155ff39df500f13d359c960b5bf631b204b6db"}
+  ],
+  "outputs": [
+    {"role": "independent_protocol_qa", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_availability_plan_v1\\independent_alternative_acquisition_protocol_qa_v1.json", "sha256": "988d2013d21195bdbeafa0c492afe05f8577a0b339b256b60f3a81ff9a3e9924"}
+  ],
+  "result": {"continuation_rows": 69, "canary_rows": 1, "canary_id": "TTCV1_B3_AVAIL_002", "maximum_canary_requests": 1, "metadata_only": true, "fallback_network_execution_allowed_now": false, "network_operations_during_preparation": 0},
+  "decision": {"continuation_must_execute_first": true, "activation_requires_partial_continuation_qa": true, "quarantined_row_retry_allowed": false, "automatic_fallback_cascade_allowed": false, "candidate_live_domain_access_allowed": false, "archived_page_download_allowed": false, "capture_allowed": false, "labeling_allowed": false, "training_allowed": false},
+  "safety_contract": {"network_operations": 0, "candidate_domain_access_operations": 0, "archived_page_downloads": 0, "captures": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

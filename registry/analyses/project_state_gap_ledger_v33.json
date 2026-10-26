@@ -6,12 +6,13 @@
   "purpose": "Record the separately frozen V11 metadata-recovery release while preserving historical capture, review, repair, and model boundaries.",
   "inputs": [
     {"role": "prior_state_v32", "path": "registry/analyses/project_state_gap_ledger_v32.json", "sha256": "3e94c3a2901f65987d3a45ddcb5f70d8779f63dcf37d8b67d4a1a059b280fd45"},
-    {"role": "supplemental_plan_release_registry", "path": "registry/analyses/sec_edgar_iapd_v11_supplemental_capture_plan_release_v1.json", "sha256": "6ac6e5d441bff08de3eb37195a72f8a20d53907aafdf14e5d2ca637afeda11d3"},
-    {"role": "metadata_recovery_release_registry", "path": "registry/analyses/reproducibility_current_state_v30.json", "sha256": "b1776eb38f9831c0c21af2c38b689aa8a2d082e78138fcdf279810a307a33dcf"}
+    {"role": "supplemental_plan_release_registry", "path": "registry/analyses/sec_edgar_iapd_v11_supplemental_capture_plan_release_v1.json", "sha256": "5d41c075a86912fe0da70d8fca70e25bba5bf5c621b058eea8a54aa18a2e97a5"},
+    {"role": "metadata_recovery_release_registry", "path": "registry/analyses/reproducibility_current_state_v30.json", "sha256": "47755943cf6b2164e4d27f41e49c7773c3923a9acc494aaac68e032608407197"}
   ],
   "implementation": [
     {"role": "human_readable_ledger", "path": "docs/project-state-gap-ledger-v33.md", "sha256": "1f21b863125b7e528538f54c1dfe7e75e15df3212608e2d0fcfa98189d9b73e9"},
-    {"role": "metadata_recovery_release_verifier", "path": "scripts/verify_sec_edgar_iapd_v11_metadata_recovery_release.py", "sha256": "9d80de4b495c2ed9ace74a6f3729d008e63e80dd66ca2920bbed6319eff1799c"}
+    {"role": "metadata_recovery_release_verifier", "path": "scripts/verify_sec_edgar_iapd_v11_metadata_recovery_release.py", "sha256": "9d80de4b495c2ed9ace74a6f3729d008e63e80dd66ca2920bbed6319eff1799c"},
+    {"role": "metadata_recovery_result_verifier", "path": "scripts/verify_sec_edgar_iapd_v11_metadata_recovery_result.py", "sha256": "b65c82f148b102cb323a65ce5d9829d544209ec643037afc637fb0d35b2e36db"}
   ],
   "state_amendments": {
     "P1_SUPPLEMENTAL_CAPTURE_EXECUTION": {"historical_rows": 2, "repaired_rows": 2, "recovery_rows": 2, "recovery_release_qa_status": "PASS_ARCHIVE_ONLY_V11_METADATA_RECOVERY_RELEASE", "recovery_gate_open": false, "strict_capture_qa_open": false},

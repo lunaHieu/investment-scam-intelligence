@@ -7,7 +7,9 @@
     {"role": "human_readable_reproducibility_state", "path": "docs/reproducibility-current-state-v30.md", "sha256": "1734f9ece9146128d2c68e276b3f9e048d139216b307d03ab2b31bc7fea40587"},
     {"role": "metadata_recovery_release_builder", "path": "scripts/build_sec_edgar_iapd_v11_metadata_recovery_release.py", "sha256": "250ab52621ed62262559f744e860c47d1636ecf4d3d5def8e09d7106035c11c4"},
     {"role": "independent_metadata_recovery_release_verifier", "path": "scripts/verify_sec_edgar_iapd_v11_metadata_recovery_release.py", "sha256": "9d80de4b495c2ed9ace74a6f3729d008e63e80dd66ca2920bbed6319eff1799c"},
-    {"role": "metadata_recovery_capture_executor", "path": "scripts/execute_sec_edgar_iapd_v11_metadata_recovery.py", "sha256": "da7dd31c4d994de474d883cdcd7d6f4d8f2a3b478b3c90cd3b1a7ff3b2c8bcf9"}
+    {"role": "metadata_recovery_capture_executor", "path": "scripts/execute_sec_edgar_iapd_v11_metadata_recovery.py", "sha256": "da7dd31c4d994de474d883cdcd7d6f4d8f2a3b478b3c90cd3b1a7ff3b2c8bcf9"},
+    {"role": "independent_metadata_recovery_result_verifier", "path": "scripts/verify_sec_edgar_iapd_v11_metadata_recovery_result.py", "sha256": "b65c82f148b102cb323a65ce5d9829d544209ec643037afc637fb0d35b2e36db"},
+    {"role": "metadata_recovery_result_tests", "path": "tests/test_sec_edgar_iapd_v11_metadata_recovery_result.py", "sha256": "c750e94ac3738fcec7d958df2aebbef75445ce9ec578a98966449a4321e3a707"}
   ],
   "frozen_release": {
     "release_path": "configs/sec_edgar_iapd_v11_metadata_recovery_release_v1.json",

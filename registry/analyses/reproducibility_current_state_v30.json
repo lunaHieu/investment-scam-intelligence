@@ -2,7 +2,7 @@
   "analysis_id": "ISI_REPRODUCIBILITY_CURRENT_STATE_V30",
   "created_at": "2026-10-26",
   "status": "CURRENT_V11_METADATA_RECOVERY_RELEASE_FROZEN_24H_GATE",
-  "supersedes": {"path": "registry/analyses/reproducibility_current_state_v29.json", "sha256": "ff8e252bb8ba82d0fb6d8188fd6e701e32423d50a02bef1608b7ff4101929447"},
+  "supersedes": {"path": "registry/analyses/reproducibility_current_state_v29.json", "sha256": "3f933f18933a8ca92c9e0fbd08df198e4ca6e2990d041084a9716a9ed9eec8c5"},
   "implementation": [
     {"role": "human_readable_reproducibility_state", "path": "docs/reproducibility-current-state-v30.md", "sha256": "7c16056f55b7cfb4acfc31619a438530f5503454678852a4534d64468448cfd3"},
     {"role": "metadata_recovery_release_builder", "path": "scripts/build_sec_edgar_iapd_v11_metadata_recovery_release.py", "sha256": "250ab52621ed62262559f744e860c47d1636ecf4d3d5def8e09d7106035c11c4"},

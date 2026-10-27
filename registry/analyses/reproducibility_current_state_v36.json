@@ -1,0 +1,86 @@
+{
+  "analysis_id": "ISI_REPRODUCIBILITY_CURRENT_STATE_V36",
+  "created_at": "2026-10-27",
+  "status": "CURRENT_B5_CDX_CANARY_FROZEN_ADAPTIVE_GATE_PENDING",
+  "purpose": "Supersede V35 after the exact-69 continuation closed partial and the finite one-row CDX metadata canary was independently frozen.",
+  "inputs": [
+    {
+      "role": "prior_state_v35",
+      "path": "registry/analyses/reproducibility_current_state_v35.json",
+      "sha256": "6f23ab7e5366c17db996c8113de51f9186e796076a02c3458ec28ae0f01ad7a8"
+    },
+    {
+      "role": "continuation_result_registry",
+      "path": "registry/analyses/target_text_corpus_v1_ready_channel_wayback_availability_continuation_result_v1.json",
+      "sha256": "f1e4b1fb5f56f5a977de6c54ba1d497c49a45e786ce2ae440504189b492230e9"
+    },
+    {
+      "role": "cdx_canary_release_registry",
+      "path": "registry/analyses/target_text_corpus_v1_ready_channel_cdx_canary_release_v1.json",
+      "sha256": "d517f98f0f26ebfdfa76959f99c53b75690d5f740b786d41c15fe04131a41bf7"
+    },
+    {
+      "role": "project_direction_plan_r2",
+      "path": "docs/project-direction-plan-r2.md",
+      "sha256": "fc1cd77b77d0fc7fb172bc34d2e8bc5c89ca629c25359abb76edce44719d9549"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "human_readable_state",
+      "path": "docs/reproducibility-current-state-v36.md",
+      "sha256": "5f25c40d0e1bc66e388eab74e2e8b3d117b6bf2853f95721bd7cdbad3307971c"
+    }
+  ],
+  "current_state": {
+    "continuation": {
+      "must_not_rerun": true,
+      "requested_rows": 69,
+      "network_requests": 1,
+      "unresolved_rows": 69,
+      "stopped_on_http_429": true,
+      "capture_plan_ready": false
+    },
+    "quarantine": {
+      "availability_plan_ids": ["TTCV1_B3_AVAIL_001"],
+      "identical_retry_allowed": false,
+      "project_blocking": false
+    },
+    "active_release": {
+      "release_id": "ISI_TARGET_TEXT_CORPUS_V1_READY_CHANNEL_CDX_CANARY_RELEASE_V1",
+      "target_availability_plan_id": "TTCV1_B3_AVAIL_002",
+      "not_before": "2026-10-28T09:32:33.798697+07:00",
+      "maximum_network_requests": 1,
+      "metadata_only": true
+    },
+    "data_sufficiency": {
+      "fresh_v1_core_admitted_groups": 0,
+      "fresh_v1_core_required_groups": 300,
+      "conditional_owner_accepted_supply": 42,
+      "conditional_residual_gap": 258,
+      "verified_vietnamese_groups": 0,
+      "minimum_vietnamese_groups": 16,
+      "compatible_image_assets": 0
+    }
+  },
+  "decision": {
+    "cdx_canary_execution_allowed_at_or_after_not_before": true,
+    "automatic_cascade_allowed": false,
+    "candidate_live_domain_access_allowed": false,
+    "archived_page_download_allowed": false,
+    "capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "At or after 2026-10-28T09:32:33.798697+07:00, execute the independently verified one-row CDX metadata canary once and branch finitely on its result."
+  },
+  "safety_contract": {
+    "candidate_domain_access_operations": 0,
+    "archived_page_downloads": 0,
+    "captures": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

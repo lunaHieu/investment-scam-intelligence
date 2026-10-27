@@ -1,0 +1,63 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_READY_CHANNEL_WAYBACK_AVAILABILITY_CONTINUATION_RESULT_V1",
+  "created_at": "2026-10-27",
+  "status": "PASS_PARTIAL_EXACT_69_CONTINUATION_ERRORS_PRESERVED_CAPTURE_PLAN_BLOCKED",
+  "purpose": "Register the immutable fail-closed exact-69 continuation result and its independent QA without interpreting availability or HTTP 429 as a label.",
+  "inputs": [
+    {
+      "role": "continuation_release",
+      "path": "configs/target_text_corpus_v1_ready_channel_wayback_availability_continuation_release_v1.json",
+      "sha256": "826bc11352445efeae81cc9bb9d2aca28920e010b7edcebec826783420a22157"
+    },
+    {
+      "role": "continuation_release_qa",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_availability_plan_v1\\independent_continuation_release_qa_v1.json",
+      "sha256": "7d8874f5b62d1b91a6ab4503992aa8fc85d8c3e55fdeeed9608d72e3fac844a3"
+    }
+  ],
+  "outputs": [
+    {
+      "role": "continuation_report",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_availability_continuation_result_v1\\availability_report_continuation_v1.json",
+      "sha256": "097cc6779a88a327bb3a402c49f10cf384d908f03b616f8a68d794979d28ddde"
+    },
+    {
+      "role": "independent_result_qa",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_availability_continuation_result_v1\\independent_result_qa_v1.json",
+      "sha256": "ad8734a0f4d05da5e889cccdf2568707de0968a0e90fd743a4d3c0387f20a8fd"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "documentation",
+      "path": "docs/target-text-corpus-v1-ready-channel-wayback-availability-continuation-result-v1.md",
+      "sha256": "e4e7c83dc1814d5fb68cfe6a1968aa17e985a25b665d05464a164d62ec86c3a8"
+    }
+  ],
+  "result": {
+    "requested_rows": 69,
+    "logical_attempts": 1,
+    "network_requests": 1,
+    "available": 0,
+    "unavailable": 0,
+    "unresolved": 69,
+    "stopped_on_http_429": true,
+    "capture_plan_ready": false
+  },
+  "decision": {
+    "continuation_must_not_be_rerun": true,
+    "row_001_remains_quarantined": true,
+    "conditional_cdx_canary_release_may_be_prepared": true,
+    "capture_allowed": false,
+    "labeling_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {
+    "candidate_domain_access_operations": 0,
+    "archived_page_downloads": 0,
+    "captures": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

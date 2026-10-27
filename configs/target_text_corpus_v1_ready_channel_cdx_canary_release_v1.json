@@ -1,0 +1,144 @@
+{
+  "release_id": "ISI_TARGET_TEXT_CORPUS_V1_READY_CHANNEL_CDX_CANARY_RELEASE_V1",
+  "created_at": "2026-10-27T09:36:25.043475+07:00",
+  "status": "FROZEN_ONE_ROW_METADATA_CANARY_NOT_BEFORE_GATE",
+  "purpose": "Execute one metadata-only CDX canary for the first unresolved B5 continuation row after independent QA confirmed an availability-endpoint HTTP 429 partial result, without reopening row 001 or creating another retry loop.",
+  "basis": [
+    {
+      "role": "release_verifier",
+      "path": "scripts/verify_target_text_corpus_v1_ready_channel_cdx_canary_release_v1.py",
+      "sha256": "d140da480acb56904bce841c14c8bc8da047383ef94c8dc8bd1edf5ba995bb27"
+    },
+    {
+      "role": "executor",
+      "path": "scripts/execute_target_text_corpus_v1_ready_channel_cdx_canary_v1.py",
+      "sha256": "2a21eb6f9628984b14f45194b9e37dfb39b71147f59ce8785dd8e71466265ebd"
+    },
+    {
+      "role": "result_verifier",
+      "path": "scripts/verify_target_text_corpus_v1_ready_channel_cdx_canary_result_v1.py",
+      "sha256": "07a5ca296ff2cf9b3d7ffd19332e5b549ee41b2db9a6856082566eea590aba13"
+    },
+    {
+      "role": "tests",
+      "path": "tests/test_target_text_corpus_v1_ready_channel_cdx_canary_v1.py",
+      "sha256": "faa8b45af61c32addcb497b5d516f6991ee7d0748e8513a30a3bd4dcfbd01929"
+    }
+  ],
+  "inputs": {
+    "fallback_protocol": {
+      "path": "configs/target_text_corpus_v1_ready_channel_archive_alternative_acquisition_protocol_v1.json",
+      "sha256": "f1a08b0738dc3cdb2d8fe1f4bcabcd3774597990348179a4f23afeab4814cbb4",
+      "absolute": false
+    },
+    "fallback_protocol_qa": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_availability_plan_v1\\independent_alternative_acquisition_protocol_qa_v1.json",
+      "sha256": "988d2013d21195bdbeafa0c492afe05f8577a0b339b256b60f3a81ff9a3e9924",
+      "absolute": true
+    },
+    "continuation_report": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_availability_continuation_result_v1\\availability_report_continuation_v1.json",
+      "sha256": "097cc6779a88a327bb3a402c49f10cf384d908f03b616f8a68d794979d28ddde",
+      "absolute": true
+    },
+    "continuation_result_qa": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_availability_continuation_result_v1\\independent_result_qa_v1.json",
+      "sha256": "ad8734a0f4d05da5e889cccdf2568707de0968a0e90fd743a4d3c0387f20a8fd",
+      "absolute": true
+    },
+    "source_plan": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_availability_plan_v1\\availability_plan_v1.jsonl",
+      "sha256": "d6d5c4d63f1cea4be175222eceff0a330437f06dbb4223aab472cfb91b040d43",
+      "absolute": true
+    }
+  },
+  "target_record": {
+    "availability_plan_id": "TTCV1_B3_AVAIL_002",
+    "candidate_id": "TTCV1_B2_CONF_REG_DEV_002",
+    "cohort": "DEVELOPMENT",
+    "channel_id": "CONFIRMED_REGULATOR_LINKED_WEBSITE",
+    "channel_target_stratum": "CONFIRMED",
+    "candidate_host": "carlylecapitalmanagement.com",
+    "candidate_url": "https://carlylecapitalmanagement.com/",
+    "target_timestamp": "20261003"
+  },
+  "adaptive_gate": {
+    "provider_consecutive_http_429_failures": 4,
+    "retry_after_header": null,
+    "not_before": "2026-10-28T09:32:33.798697+07:00",
+    "policy_decision": {
+      "policy_id": "ISI_ARCHIVE_RETRY_POLICY_V1",
+      "failure_class": "HTTP_429",
+      "observed_at": "2026-10-27T09:32:33.798697+07:00",
+      "network_attempts": 1,
+      "maximum_network_attempts": 3,
+      "project_blocked": false,
+      "same_request_allowed": true,
+      "not_before": "2026-10-28T09:32:33.798697+07:00",
+      "reason": "Honor Retry-After when valid; otherwise use bounded exponential backoff.",
+      "action": "RETRY_AFTER_RATE_LIMIT"
+    },
+    "universal_fixed_24h_retry_forbidden": true,
+    "why_delay_is_86400_seconds": "The deterministic bounded schedule selected its fourth and final rate-limit step after four consecutive provider HTTP 429 events; this is not a renewed identical availability retry."
+  },
+  "cdx_contract": {
+    "endpoint": "https://web.archive.org/cdx/search/cdx",
+    "allowed_network_hosts": ["web.archive.org"],
+    "minimum_delay_seconds": 60.0,
+    "maximum_logical_requests": 1,
+    "maximum_attempts_per_query": 1,
+    "timeout_seconds": 30,
+    "maximum_redirects": 0,
+    "maximum_response_bytes": 2097152,
+    "required_content_type_prefix": "application/json",
+    "stop_on_http_429": true,
+    "partial_journal_reserved_before_network": true,
+    "partial_journal_auto_resume_allowed": false,
+    "output_overwrite_allowed": false,
+    "archived_page_download_allowed": false,
+    "query": {
+      "url": "carlylecapitalmanagement.com/",
+      "matchType": "exact",
+      "output": "json",
+      "fields": ["timestamp", "original", "statuscode", "mimetype", "digest"],
+      "filters": ["statuscode:200", "mimetype:text/html"],
+      "maximum_rows": 1000
+    }
+  },
+  "planned_output": {
+    "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_cdx_canary_result_v1\\cdx_canary_report_v1.json",
+    "raw_response_path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_cdx_canary_result_v1\\cdx_canary_response_v1.bin",
+    "independent_result_qa_path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_cdx_canary_result_v1\\independent_result_qa_v1.json",
+    "report_id": "ISI_TARGET_TEXT_CORPUS_V1_READY_CHANNEL_CDX_CANARY_REPORT_V1",
+    "partial_journal_suffix": ".partial"
+  },
+  "branch_contract": {
+    "valid_json": "PREPARE_SEPARATE_EXACT_UNRESOLVED_ONLY_CDX_METADATA_RELEASE",
+    "http_429": "CLOSE_ARCHIVE_PROVIDER_BRANCH_AND_ROUTE_TO_NON_ARCHIVE_SOURCE_ASSESSMENT",
+    "invalid_content": "PRESERVE_BYTES_AND_RECONCILE_OFFLINE_WITHOUT_NEW_NETWORK_REQUEST",
+    "other_error": "QUARANTINE_CDX_PATH_NONBLOCKING",
+    "maximum_identical_canary_attempts": 1
+  },
+  "decision": {
+    "network_execution_allowed_at_release_time": false,
+    "metadata_canary_allowed_after_not_before": true,
+    "automatic_cascade_allowed": false,
+    "quarantined_row_001_retry_allowed": false,
+    "candidate_live_domain_access_allowed": false,
+    "archived_page_download_allowed": false,
+    "artifact_capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {
+    "network_operations_during_preparation": 0,
+    "candidate_live_domain_access_operations": 0,
+    "archived_page_downloads": 0,
+    "captures": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

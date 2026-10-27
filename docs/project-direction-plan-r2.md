@@ -41,7 +41,7 @@ original locked Core scope requires a separately recorded scope decision.
 | Verified Vietnamese supply | 0/16 minimum | Language coverage is a blocking corpus gap |
 | Compatible image assets | 0 | Multimodal modeling is not ready |
 | Text reference | word TF-IDF logistic OOF Macro-F1 0.721038 | Retain as reference; not deployment-ready |
-| Active acquisition | exact-69 B5 continuation pending | One trigger row is quarantined after three HTTP 429 responses |
+| Active acquisition | exact-69 continuation stopped on its first HTTP 429; CDX canary frozen | Archive metadata canary gate opens 2026-10-28 09:32:33 +07:00 |
 
 The executive completion estimate is approximately 35% for the complete
 research deliverable, while research-engineering foundations are approximately
@@ -422,7 +422,7 @@ Update this table only from independently verified artifacts.
 
 | Milestone | Baseline on 2026-10-26 | Target | Status |
 | --- | ---: | ---: | --- |
-| B5 continuation accounted | 1 quarantined; 69 pending | 70/70 accounted | pending |
+| B5 continuation accounted | final partial report: 1 request, 69 unresolved; row 001 remains quarantined | finite branch outcome | continuation closed; CDX canary pending |
 | Conditional accepted records made contract-complete | 0/42 | 42/42 | pending |
 | Fresh V1-Core admitted groups | 0 | 300 | blocked by supply/admission |
 | `CONFIRMED` groups | 0 | 150 | critical gap |
@@ -436,7 +436,8 @@ Update this table only from independently verified artifacts.
 
 ## 11. Next executable order
 
-1. Execute and independently verify the exact-69 B5 continuation at its gate.
+1. Execute and independently verify the one-row CDX metadata canary at or after
+   `2026-10-28T09:32:33.798697+07:00`.
 2. In parallel, complete admission and language fields for the 42 accepted
    SEC EDGAR records.
 3. Advance Crimson primary review without converting unsupported recommendations

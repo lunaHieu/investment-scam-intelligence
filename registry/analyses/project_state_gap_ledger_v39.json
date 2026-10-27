@@ -1,0 +1,81 @@
+{
+  "analysis_id": "ISI_PROJECT_STATE_GAP_LEDGER_V39",
+  "created_at": "2026-10-27",
+  "status": "CURRENT_B5_CONTINUATION_PARTIAL_CDX_CANARY_ADAPTIVE_GATE_PENDING",
+  "purpose": "Record the immutable partial continuation result, the finite one-row CDX metadata canary and the unchanged research-capacity gaps.",
+  "inputs": [
+    {
+      "role": "prior_ledger_v38",
+      "path": "registry/analyses/project_state_gap_ledger_v38.json",
+      "sha256": "dd75ba915aa19fd6f5eb60e951461594625fb5aca3fce8606204202d869c8cd4"
+    },
+    {
+      "role": "current_reproducibility_v36",
+      "path": "registry/analyses/reproducibility_current_state_v36.json",
+      "sha256": "d966ae0a89a882c76ee3a2594bab863906b9a0e5aed8de3ebd7ac8edb3281f94"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "human_readable_ledger",
+      "path": "docs/project-state-gap-ledger-v39.md",
+      "sha256": "82ecbc7a4ccdb56effbd393159a5689086214b2944f0fbf0b3a2a8f9bc86a233"
+    }
+  ],
+  "state_amendments": {
+    "B5_CONTINUATION": {
+      "final_report_exists": true,
+      "independent_qa_passed": true,
+      "requested_rows": 69,
+      "network_requests": 1,
+      "unresolved_rows": 69,
+      "stopped_on_http_429": true,
+      "must_not_rerun": true
+    },
+    "CDX_CANARY": {
+      "prepared": true,
+      "independently_verified": true,
+      "target_availability_plan_id": "TTCV1_B3_AVAIL_002",
+      "not_before": "2026-10-28T09:32:33.798697+07:00",
+      "maximum_network_requests": 1,
+      "metadata_only": true,
+      "automatic_cascade": false
+    },
+    "QUARANTINE": {
+      "availability_plan_ids": ["TTCV1_B3_AVAIL_001"],
+      "identical_retry_allowed": false,
+      "project_blocking": false
+    },
+    "RESEARCH_GAPS": {
+      "fresh_v1_core_admitted": 0,
+      "fresh_v1_core_required": 300,
+      "conditional_supply": 42,
+      "conditional_gap": 258,
+      "verified_vietnamese": 0,
+      "minimum_vietnamese": 16,
+      "compatible_image_assets": 0
+    }
+  },
+  "decision": {
+    "canary_execution_allowed_at_or_after_not_before": true,
+    "canary_http_429_closes_archive_provider_branch": true,
+    "continuation_rerun_allowed": false,
+    "candidate_live_domain_access_allowed": false,
+    "archived_page_download_allowed": false,
+    "capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Execute the one-row CDX metadata canary at its adaptive not-before, then either prepare a separate unresolved-only CDX release after valid JSON or close the archive-provider branch after HTTP 429."
+  },
+  "safety_contract": {
+    "network_operations_during_preparation": 0,
+    "candidate_domain_access_operations": 0,
+    "archived_page_downloads": 0,
+    "captures": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

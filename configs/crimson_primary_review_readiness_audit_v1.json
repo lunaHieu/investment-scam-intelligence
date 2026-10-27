@@ -1,0 +1,49 @@
+{
+  "audit_id": "ISI_CRIMSON_PRIMARY_REVIEW_READINESS_AUDIT_V1",
+  "created_at": "2026-10-27",
+  "audit_snapshot_at": "2026-10-27T19:57:55.146921+07:00",
+  "status": "FROZEN_OFFLINE_EXACT_39_READINESS_AUDIT",
+  "purpose": "Verify task and evidence integrity for the exact 39 pending Crimson primary reviews without creating human decisions, labels or network operations.",
+  "inputs": [
+    {"role": "first_review_pending", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\crimson_human_review_packets_v2\\first_review_pending_v2.jsonl", "sha256": "d8e4cc0dceec408f85c1de3be1d911b8f581c10353630cfe86691d3163f459cb"},
+    {"role": "official_reference_followup", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\crimson_human_review_packets_v2\\official_reference_followup_v2.jsonl", "sha256": "2995eba4f1985ee39975a5a33628adad68e48afa535e6ad38b85009c73e105a3"},
+    {"role": "sec_ai_first_pass", "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\crimson_external_reference_review_pilot_v1\\sec_ai_assisted_first_pass_v1.jsonl", "sha256": "314b283e3fb2ce224087a52d07f74b503cb5fbd377ab8f9f6bc370dc37e43465"},
+    {"role": "iosco_ai_first_pass", "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\crimson_external_reference_review_pilot_v1\\iosco_ai_assisted_first_pass_v1.jsonl", "sha256": "3120e1003ae2ac061731270f1b243770a7462ddfec4795b649fd9ed9795ba8dd"}
+  ],
+  "implementation": [
+    {"role": "readiness_auditor", "path": "scripts/audit_crimson_primary_review_readiness_v1.py", "sha256": "130811aba8887bca98d10312ec60a1d43e4fefc36c197e4027ef490d2f18ab57"},
+    {"role": "independent_result_verifier", "path": "scripts/verify_crimson_primary_review_readiness_v1.py", "sha256": "78bc7823b83335990d64d85fd3d5ab9a02d526f649b61f72838bd43a4cd5b50b"},
+    {"role": "tests", "path": "tests/test_crimson_primary_review_readiness_v1.py", "sha256": "2463a076e8e98adc0667f5fda8200649df21bcd0aff3f912cb69ba38b1e7df38"},
+    {"role": "documentation", "path": "docs/crimson-primary-review-readiness-audit-v1.md", "sha256": "3942046611f506f9b636638681771dd3231fbbd804e8db9a932012522181555c"}
+  ],
+  "expected": {
+    "pending_tasks": 39,
+    "official_followup_tasks": 15,
+    "ai_first_pass_records": 40,
+    "ready_without_followup": 24,
+    "followup_required": 15,
+    "second_review_required": 20
+  },
+  "planned_output": {
+    "report_path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\crimson_primary_review_readiness_v1\\readiness_report_v1.json",
+    "independent_qa_path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\crimson_primary_review_readiness_v1\\independent_qa_v1.json",
+    "overwrite_allowed": false
+  },
+  "decision": {
+    "offline_audit_allowed": true,
+    "human_review_allowed_by_this_audit": false,
+    "ai_may_impersonate_human_reviewer": false,
+    "official_reference_network_followup_allowed": false,
+    "crimson_host_access_allowed": false,
+    "labeling_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "crimson_host_access_operations": 0,
+    "human_decisions_created": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

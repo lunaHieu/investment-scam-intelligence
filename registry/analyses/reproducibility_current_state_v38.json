@@ -1,0 +1,34 @@
+{
+  "analysis_id": "ISI_REPRODUCIBILITY_CURRENT_STATE_V38",
+  "created_at": "2026-10-27",
+  "status": "CURRENT_CRIMSON_READINESS_AUDITED_B5_CDX_CANARY_PENDING",
+  "purpose": "Supersede V37 after independently verifying the exact-39 Crimson primary-review readiness population without opening any human-decision or model gate.",
+  "inputs": [
+    {"role": "prior_state_v37", "path": "registry/analyses/reproducibility_current_state_v37.json", "sha256": "b9cebd64af9d834583190e11de28597db4873b7fb68909e151edda151d82ab18"},
+    {"role": "crimson_readiness", "path": "registry/analyses/crimson_primary_review_readiness_v1.json", "sha256": "8724bc8c321814edcd8b48615c2ebe1ffa507cd2c66b229b38fab2b32ffdd9f4"},
+    {"role": "project_direction_plan_r4", "path": "docs/project-direction-plan-r4.md", "sha256": "59f1d7bc9128ffccfd7521c7a7b604b3804222ca88a89cc9d89c7cd29078f8ba"}
+  ],
+  "implementation": [
+    {"role": "human_readable_state", "path": "docs/reproducibility-current-state-v38.md", "sha256": "748a3bea5870f052f486a1ee1a97de04058b2917120e1ecd7338a301333da53a"}
+  ],
+  "current_state": {
+    "repository_quality": {"current_suite_tests_run": 1006, "failures": 0, "analysis_registries_validated": 260},
+    "crimson": {"pending_primary_tasks": 39, "ready_for_truthful_human_primary_review": 24, "official_reference_followup_required": 15, "second_review_required_after_primary": 20, "human_decisions_created": 0, "labels_created": 0},
+    "active_release": {"release_id": "ISI_TARGET_TEXT_CORPUS_V1_READY_CHANNEL_CDX_CANARY_RELEASE_V1", "not_before": "2026-10-28T09:32:33.798697+07:00", "maximum_network_requests": 1},
+    "data_sufficiency": {"fresh_v1_core_admitted_groups": 0, "fresh_v1_core_required_groups": 300, "conditional_owner_accepted_supply": 42, "conditional_residual_gap": 258, "verified_vietnamese_groups": 0, "minimum_vietnamese_groups": 16, "compatible_image_assets": 0}
+  },
+  "decision": {
+    "crimson_readiness_audit_complete": true,
+    "human_review_complete": false,
+    "cdx_canary_execution_allowed_at_or_after_not_before": true,
+    "candidate_live_domain_access_allowed": false,
+    "archived_page_download_allowed": false,
+    "capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Assign 24 ready Crimson tasks to a truthful human primary reviewer, resolve 15 listed official-reference follow-ups, and execute the separate CDX canary only after its gate."
+  },
+  "safety_contract": {"network_operations": 0, "human_decisions_created": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

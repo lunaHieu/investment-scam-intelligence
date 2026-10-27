@@ -1,0 +1,51 @@
+{
+  "analysis_id": "ISI_CRIMSON_PRIMARY_REVIEW_READINESS_V1",
+  "created_at": "2026-10-27",
+  "status": "PASS_39_PRIMARY_TASKS_VERIFIED_24_READY_15_OFFICIAL_FOLLOWUPS",
+  "purpose": "Register the independently recomputed offline readiness audit for all 39 pending Crimson primary-review tasks without recording a human decision or label.",
+  "inputs": [
+    {"role": "audit_config", "path": "configs/crimson_primary_review_readiness_audit_v1.json", "sha256": "e220321b13e4964a4071e485d403ddd48ebb191dd283cd3a26183da1e08b433f"},
+    {"role": "review_packet_registry", "path": "registry/analyses/crimson_human_review_packets_v2.json", "sha256": "4022a570984ed7567f36d56cd0aef20eab048a478a4d72e1e5459f44a67d58d5"}
+  ],
+  "implementation": [
+    {"role": "readiness_auditor", "path": "scripts/audit_crimson_primary_review_readiness_v1.py", "sha256": "130811aba8887bca98d10312ec60a1d43e4fefc36c197e4027ef490d2f18ab57"},
+    {"role": "independent_result_verifier", "path": "scripts/verify_crimson_primary_review_readiness_v1.py", "sha256": "78bc7823b83335990d64d85fd3d5ab9a02d526f649b61f72838bd43a4cd5b50b"},
+    {"role": "tests", "path": "tests/test_crimson_primary_review_readiness_v1.py", "sha256": "2463a076e8e98adc0667f5fda8200649df21bcd0aff3f912cb69ba38b1e7df38"},
+    {"role": "documentation", "path": "docs/crimson-primary-review-readiness-audit-v1.md", "sha256": "3942046611f506f9b636638681771dd3231fbbd804e8db9a932012522181555c"}
+  ],
+  "outputs": [
+    {"role": "readiness_report", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\crimson_primary_review_readiness_v1\\readiness_report_v1.json", "sha256": "adf4df47915f4dff4bc4175113d666a861896e97e73e2d4af69b9978ccf48120"},
+    {"role": "independent_qa", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\crimson_primary_review_readiness_v1\\independent_qa_v1.json", "sha256": "985dec275840e0c7f2973393f868aab619f73ff46e3e918fe55b7143fa95a18c"}
+  ],
+  "result": {
+    "pending_primary_tasks": 39,
+    "ready_for_truthful_human_primary_review": 24,
+    "official_reference_followup_required": 15,
+    "second_review_required_after_primary": 20,
+    "single_review_tasks": 19,
+    "ai_first_pass_records_verified": 40,
+    "human_decisions_created": 0,
+    "labels_created": 0,
+    "training_eligible_records": 0,
+    "independent_qa_status": "PASS_CRIMSON_PRIMARY_REVIEW_READINESS_FULLY_RECOMPUTED"
+  },
+  "decision": {
+    "readiness_audit_complete": true,
+    "human_review_complete": false,
+    "ready_tasks_may_be_assigned_to_truthful_human_reviewer": true,
+    "official_followup_must_use_listed_reference_urls_only": true,
+    "crimson_host_access_allowed": false,
+    "ai_may_impersonate_human_reviewer": false,
+    "labeling_allowed": false,
+    "training_allowed": false,
+    "next_gate": "A truthful human reviewer may complete the 24 ready primary tasks; 15 tasks require listed official-reference follow-up first, and 20 completed primaries will later require an independent second reviewer."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "crimson_host_access_operations": 0,
+    "human_decisions_created": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

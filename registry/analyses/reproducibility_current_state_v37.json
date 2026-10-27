@@ -1,0 +1,64 @@
+{
+  "analysis_id": "ISI_REPRODUCIBILITY_CURRENT_STATE_V37",
+  "created_at": "2026-10-27",
+  "status": "CURRENT_B5_CDX_CANARY_PENDING_REPOSITORY_LIFECYCLE_SUITE_GREEN",
+  "purpose": "Supersede V36 for navigation after introducing a bounded post-execution repository quality gate while preserving every acquisition and research boundary.",
+  "inputs": [
+    {"role": "prior_state_v36", "path": "registry/analyses/reproducibility_current_state_v36.json", "sha256": "d966ae0a89a882c76ee3a2594bab863906b9a0e5aed8de3ebd7ac8edb3281f94"},
+    {"role": "current_test_suite_lifecycle_v1", "path": "registry/analyses/current_test_suite_lifecycle_v1.json", "sha256": "382773e9c2cf8d18ffb7e3b45db3965f432956904984a8676061b2d335518ec3"},
+    {"role": "project_direction_plan_r2", "path": "docs/project-direction-plan-r2.md", "sha256": "fc1cd77b77d0fc7fb172bc34d2e8bc5c89ca629c25359abb76edce44719d9549"},
+    {"role": "project_direction_plan_r3_amendment", "path": "docs/project-direction-plan-r3.md", "sha256": "6f0741f52e3e1c1280007b306d4fe7f430fc3a605cef788de945cdec447b7de5"}
+  ],
+  "implementation": [
+    {"role": "human_readable_state", "path": "docs/reproducibility-current-state-v37.md", "sha256": "e725f4cc18329245e8393ed22990440fc9f40bd8fa1cb723683be75f9eb32579"}
+  ],
+  "current_state": {
+    "repository_quality": {
+      "current_suite_tests_run": 1002,
+      "current_suite_failures": 0,
+      "historical_preexecution_methods_superseded": 5,
+      "postexecution_replacement_methods": 5,
+      "historical_test_files_modified": 0,
+      "analysis_registries_validated": 257
+    },
+    "active_release": {
+      "release_id": "ISI_TARGET_TEXT_CORPUS_V1_READY_CHANNEL_CDX_CANARY_RELEASE_V1",
+      "target_availability_plan_id": "TTCV1_B3_AVAIL_002",
+      "not_before": "2026-10-28T09:32:33.798697+07:00",
+      "maximum_network_requests": 1,
+      "metadata_only": true
+    },
+    "data_sufficiency": {
+      "fresh_v1_core_admitted_groups": 0,
+      "fresh_v1_core_required_groups": 300,
+      "conditional_owner_accepted_supply": 42,
+      "conditional_residual_gap": 258,
+      "verified_vietnamese_groups": 0,
+      "minimum_vietnamese_groups": 16,
+      "compatible_image_assets": 0
+    }
+  },
+  "decision": {
+    "current_quality_gate_command": ".venv\\Scripts\\python.exe -m scripts.run_current_test_suite_v1",
+    "raw_unittest_discovery_is_historical_diagnostic": true,
+    "cdx_canary_execution_allowed_at_or_after_not_before": true,
+    "automatic_cascade_allowed": false,
+    "candidate_live_domain_access_allowed": false,
+    "archived_page_download_allowed": false,
+    "capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Continue offline G2 admission-field audit while executing the one-row CDX metadata canary only at or after its frozen not-before."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "candidate_domain_access_operations": 0,
+    "archived_page_downloads": 0,
+    "captures": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

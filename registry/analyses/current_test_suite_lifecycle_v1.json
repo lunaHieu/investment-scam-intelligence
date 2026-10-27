@@ -1,0 +1,50 @@
+{
+  "analysis_id": "ISI_CURRENT_TEST_SUITE_LIFECYCLE_V1",
+  "created_at": "2026-10-27",
+  "status": "PASS_EXACT_FIVE_PREEXECUTION_ASSERTIONS_SUPERSEDED_BY_POSTEXECUTION_CHECKS",
+  "purpose": "Define a bounded current-suite view after four one-shot artifact families transitioned from pre-execution output absence to immutable post-execution QA, without changing any frozen historical file.",
+  "historical_tests_preserved": [
+    {"path": "tests/test_sec_edgar_iapd_wayback_alternate_snapshot_cdx_owner_override_v1.py", "sha256": "8ee7032d98f17848274cd3d69d831cfed28a15bf69cb8c69749e4d180524d7a3"},
+    {"path": "tests/test_sec_edgar_iapd_wayback_alternate_snapshot_cdx_release_v1.py", "sha256": "b5a7b04fe9c6857fe26a3e7d6cb30b5047ce3022d4e5238172d62b865b40d138"},
+    {"path": "tests/test_target_text_corpus_v1_ready_channel_wayback_availability_execution_amendment_v2.py", "sha256": "f0e5b8e44f24d2345dbff2b4ee33654a0625aaa92814fdbd06a34a9d4a1b67b7"},
+    {"path": "tests/test_target_text_corpus_v1_ready_channel_wayback_availability_execution_v1.py", "sha256": "d4d7ae03e35a7257a083281afb9221cee2ce0970395e2891a4c0acdb4c684fb3"}
+  ],
+  "implementation": [
+    {"role": "bounded_current_suite_runner", "path": "scripts/run_current_test_suite_v1.py", "sha256": "a59da5b659b2fd3f9e3a2b26b84883da93e6338bd03a40278244bedad029691e"},
+    {"role": "postexecution_replacement_tests", "path": "tests/test_current_artifact_lifecycle_v1.py", "sha256": "45de20f2d8fb1c6346728d202f8b4a8bf3652ed4e8ec78f15ddb5ea6c8bb43c1"},
+    {"role": "bounded_mapping_tests", "path": "tests/test_current_test_suite_v1.py", "sha256": "a6c69fbbf74b3fa8b8e39c7305dfb092d3e7de80602a4fb4196b070de33e40ca"},
+    {"role": "documentation", "path": "docs/current-test-suite-lifecycle-v1.md", "sha256": "9883a5c3c697cae7cb6916bf4db6ecc801b70fcd3e4210d9b6c6a585628dc7bc"}
+  ],
+  "consumed_outputs": [
+    {"role": "a1_execution_report", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_alternate_snapshot_cdx_v1\\cdx_enumeration_report_v1.json", "sha256": "b96285436a7e293614bd90576af096806ec08fab35d5c781366159e2c7adb5c4"},
+    {"role": "a1_result_qa_v2", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\sec_edgar_iapd_alternate_snapshot_cdx_v1\\independent_result_qa_owner_override_v2.json", "sha256": "21391d26338a09e4ddda35894e55a4d28d8a5f2b9b9fb6b65500a706cd7da300"},
+    {"role": "b5_execution_report", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_availability_result_v1\\availability_report_v1.json", "sha256": "4e74dec3ffc732f01241d796de0376be550accd76e687835e3c3dabb2ed3c4cc"},
+    {"role": "b5_result_qa", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_availability_result_v1\\independent_result_qa_v1.json", "sha256": "b071e1453913b2c1fce8dbafcf0669a8f0e435712eed0d061a7ffcc133492c1a"}
+  ],
+  "findings": {
+    "historical_preexecution_test_methods": 5,
+    "historical_test_files_modified": 0,
+    "postexecution_replacement_test_methods": 5,
+    "exclusion_set_is_closed": true,
+    "missing_replacement_fails_suite_construction": true
+  },
+  "decision": {
+    "current_quality_gate_command": ".venv\\Scripts\\python.exe -m scripts.run_current_test_suite_v1",
+    "raw_unittest_discovery_is_historical_diagnostic": true,
+    "frozen_release_mutation_allowed": false,
+    "network_execution_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "candidate_domain_access_operations": 0,
+    "archived_page_downloads": 0,
+    "captures": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

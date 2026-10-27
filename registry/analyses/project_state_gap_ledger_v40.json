@@ -1,0 +1,66 @@
+{
+  "analysis_id": "ISI_PROJECT_STATE_GAP_LEDGER_V40",
+  "created_at": "2026-10-27",
+  "status": "CURRENT_REPOSITORY_SUITE_GREEN_B5_CANARY_PENDING_G2_AUDIT_NEXT",
+  "purpose": "Record completion of the bounded repository lifecycle-test repair while retaining V39 acquisition and corpus-capacity gaps.",
+  "inputs": [
+    {"role": "prior_ledger_v39", "path": "registry/analyses/project_state_gap_ledger_v39.json", "sha256": "c2d45b443ecd0d44abd8017d8f077548a524eac0ba684b123f857bf423e5cbdb"},
+    {"role": "current_reproducibility_v37", "path": "registry/analyses/reproducibility_current_state_v37.json", "sha256": "b9cebd64af9d834583190e11de28597db4873b7fb68909e151edda151d82ab18"},
+    {"role": "test_lifecycle_registry", "path": "registry/analyses/current_test_suite_lifecycle_v1.json", "sha256": "382773e9c2cf8d18ffb7e3b45db3965f432956904984a8676061b2d335518ec3"}
+  ],
+  "implementation": [
+    {"role": "human_readable_ledger", "path": "docs/project-state-gap-ledger-v40.md", "sha256": "67a8506c3fda5dec2aec081e0a06870b418a2b7e63abfbbca612903b3ecd50f5"}
+  ],
+  "state_amendments": {
+    "REPOSITORY_QUALITY": {
+      "current_suite_passed": true,
+      "tests_run": 1002,
+      "failures": 0,
+      "historical_preexecution_methods_superseded": 5,
+      "postexecution_replacements": 5,
+      "historical_test_files_modified": 0,
+      "analysis_registries_validated": 257
+    },
+    "CDX_CANARY": {
+      "prepared": true,
+      "independently_verified": true,
+      "target_availability_plan_id": "TTCV1_B3_AVAIL_002",
+      "not_before": "2026-10-28T09:32:33.798697+07:00",
+      "maximum_network_requests": 1,
+      "metadata_only": true,
+      "automatic_cascade": false
+    },
+    "RESEARCH_GAPS": {
+      "fresh_v1_core_admitted": 0,
+      "fresh_v1_core_required": 300,
+      "conditional_supply": 42,
+      "conditional_gap": 258,
+      "verified_vietnamese": 0,
+      "minimum_vietnamese": 16,
+      "compatible_image_assets": 0
+    }
+  },
+  "decision": {
+    "repository_lifecycle_test_repair_complete": true,
+    "g2_admission_field_audit_may_proceed_offline": true,
+    "canary_execution_allowed_at_or_after_not_before": true,
+    "continuation_rerun_allowed": false,
+    "candidate_live_domain_access_allowed": false,
+    "archived_page_download_allowed": false,
+    "capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "next_gate": "Audit all 42 owner-accepted SEC EDGAR records against G2 admission fields without fabricating human language decisions; execute the frozen canary only after its not-before."
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "candidate_domain_access_operations": 0,
+    "archived_page_downloads": 0,
+    "captures": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

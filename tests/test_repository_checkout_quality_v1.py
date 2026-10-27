@@ -31,9 +31,10 @@ class RepositoryCheckoutQualityV1Tests(unittest.TestCase):
     def test_current_state_pointer_targets_existing_artifacts(self) -> None:
         pointer = (ROOT / "CURRENT_STATE.md").read_text(encoding="utf-8")
         required = (
-            "docs/project-direction-plan-r2.md",
-            "docs/reproducibility-current-state-v36.md",
-            "registry/analyses/project_state_gap_ledger_v39.json",
+            "docs/project-direction-plan-r3.md",
+            "docs/reproducibility-current-state-v37.md",
+            "registry/analyses/project_state_gap_ledger_v40.json",
+            "docs/current-test-suite-lifecycle-v1.md",
             "registry/analyses/target_text_corpus_v1_ready_channel_wayback_availability_continuation_result_v1.json",
             "configs/target_text_corpus_v1_ready_channel_cdx_canary_release_v1.json",
         )

@@ -1,0 +1,21 @@
+{
+  "release_id":"ISI_TARGET_TEXT_CORPUS_V1_READY_CHANNEL_CAPTURE_CONTINUATION_RELEASE_V1",
+  "created_at":"2026-10-28T16:15:12.828724+07:00",
+  "status":"FROZEN_EXACT_49_NEVER_ATTEMPTED_CAPTURE_CONTINUATION",
+  "tooling":[
+    {"role":"release_verifier","path":"scripts/verify_target_text_corpus_v1_ready_channel_capture_continuation_release_v1.py","sha256":"77005a6f09151025b318be78f715fcafd028ca2d102c7424de0e16dfd6b53162"},
+    {"role":"executor","path":"scripts/execute_target_text_corpus_v1_ready_channel_capture_continuation_v1.py","sha256":"3524fd665941b6c1f55587c82362f1ecae7da869a170460252df0c1e51fb5612"},
+    {"role":"result_verifier","path":"scripts/verify_target_text_corpus_v1_ready_channel_capture_continuation_result_v1.py","sha256":"338ea9bb6abf4c21aeca416385e9a778e27010f0f1cf649ce449cdc3ee82e830"},
+    {"role":"tests","path":"tests/test_target_text_corpus_v1_ready_channel_capture_continuation_release_v1.py","sha256":"377d78eba7958d89b977a4e9922793a915e4d9f6c648044cb0e7ad0bb1ceab37"},
+    {"role":"documentation","path":"docs/target-text-corpus-v1-ready-channel-capture-continuation-release-v1.md","sha256":"bebbac819dc2e6d945ba87a4cdb25e202ee4210a492cc3ff1525ca5fe33e5682"}
+  ],
+  "inputs":{
+    "continuation_plan":{"path":"D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_capture_continuation_plan_v1\\capture_continuation_plan_v1.json","sha256":"c7ca76672726659564c5dba9595bdd46c5e295c9897932814ff86456dc215457"},
+    "independent_plan_qa":{"path":"D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_capture_continuation_plan_v1\\independent_plan_qa_v1.json","sha256":"87e58682839002f333852a9b1ab9d455cdc839f23330ef76a9b1828f1b23c4d1"}
+  },
+  "identity_contract":{"ordered_availability_plan_ids":["TTCV1_B3_AVAIL_010","TTCV1_B3_AVAIL_012","TTCV1_B3_AVAIL_013","TTCV1_B3_AVAIL_016","TTCV1_B3_AVAIL_018","TTCV1_B3_AVAIL_019","TTCV1_B3_AVAIL_020","TTCV1_B3_AVAIL_021","TTCV1_B3_AVAIL_023","TTCV1_B3_AVAIL_024","TTCV1_B3_AVAIL_025","TTCV1_B3_AVAIL_026","TTCV1_B3_AVAIL_027","TTCV1_B3_AVAIL_028","TTCV1_B3_AVAIL_029","TTCV1_B3_AVAIL_030","TTCV1_B3_AVAIL_031","TTCV1_B3_AVAIL_032","TTCV1_B3_AVAIL_033","TTCV1_B3_AVAIL_034","TTCV1_B3_AVAIL_035","TTCV1_B3_AVAIL_036","TTCV1_B3_AVAIL_038","TTCV1_B3_AVAIL_039","TTCV1_B3_AVAIL_040","TTCV1_B3_AVAIL_041","TTCV1_B3_AVAIL_042","TTCV1_B3_AVAIL_044","TTCV1_B3_AVAIL_045","TTCV1_B3_AVAIL_046","TTCV1_B3_AVAIL_047","TTCV1_B3_AVAIL_049","TTCV1_B3_AVAIL_050","TTCV1_B3_AVAIL_051","TTCV1_B3_AVAIL_052","TTCV1_B3_AVAIL_054","TTCV1_B3_AVAIL_056","TTCV1_B3_AVAIL_058","TTCV1_B3_AVAIL_059","TTCV1_B3_AVAIL_061","TTCV1_B3_AVAIL_062","TTCV1_B3_AVAIL_063","TTCV1_B3_AVAIL_064","TTCV1_B3_AVAIL_065","TTCV1_B3_AVAIL_066","TTCV1_B3_AVAIL_067","TTCV1_B3_AVAIL_068","TTCV1_B3_AVAIL_069","TTCV1_B3_AVAIL_070"],"record_count":49,"captured_rows_retried":false,"failed_row_009_included":false},
+  "execution_contract":{"not_before":"2026-10-28T16:15:12.828724+07:00","minimum_delay_seconds":30.0,"maximum_attempts_per_snapshot":1,"timeout_seconds":30,"maximum_redirects":3,"maximum_response_bytes":26214400,"minimum_response_bytes":1024,"required_content_type_prefix":"text/html","stop_on_any_error":true,"automatic_resume_allowed":false,"output_overwrite_allowed":false,"separate_invocation_required":true},
+  "planned_output":{"path":"D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_capture_continuation_result_v1\\capture_report_continuation_v1.json","independent_qa_path":"D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_capture_continuation_result_v1\\independent_result_qa_v1.json","report_id":"ISI_TARGET_TEXT_CORPUS_V1_READY_CHANNEL_CAPTURE_CONTINUATION_REPORT_V1"},
+  "decision":{"execution_allowed_after_release_qa_in_separate_invocation":true,"candidate_live_domain_access_allowed":false,"labeling_allowed":false,"training_allowed":false},
+  "safety_contract":{"network_operations_during_preparation":0,"captures":0,"labels_created":0,"model_operations":0,"training_allowed":false}
+}

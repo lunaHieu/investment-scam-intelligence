@@ -1,0 +1,9 @@
+{
+  "protocol_id":"ISI_TARGET_TEXT_CORPUS_V1_READY_CHANNEL_ROW009_RESPONSE_DIAGNOSTIC_PROTOCOL_V1",
+  "created_at":"2026-10-28",
+  "status":"FROZEN_OFFLINE_PROTOCOL_NETWORK_EXECUTION_NOT_AUTHORIZED",
+  "target":{"availability_plan_id":"TTCV1_B3_AVAIL_009","candidate_id":"TTCV1_B2_CONF_REG_DEV_009","observed_response_bytes":870,"prior_minimum_bytes":1024,"prior_outcome":"FAILED_BELOW_MINIMUM"},
+  "inputs":[{"path":"D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_capture_result_v1\\capture_report_v1.json","sha256":"6fffae3f13ebf60dc3733f10d89ada18a56b4c8d455858add8448857bb9df676"},{"path":"D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_capture_result_v1\\independent_result_qa_v1.json","sha256":"ecdd704723d9ca1af90eb5e3179c643ac5aad771bbd5178e3324e423d540d5b4"}],
+  "future_tooling_requirements":{"preserve_response_bytes_before_size_classification":true,"preserve_sha256_and_headers":true,"maximum_requests":1,"same_executor_reuse_allowed":false,"automatic_label_inference_allowed":false,"network_execution_authorized":false},
+  "decision":{"separate_release_required":true,"continuation_49_blocked_by_row009":false,"candidate_live_domain_access_allowed":false,"labeling_allowed":false,"training_allowed":false}
+}

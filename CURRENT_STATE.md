@@ -4,9 +4,9 @@ This file is the stable entry point for the project's current operational state.
 Historical reports and registries remain immutable and can therefore contain
 superseded next-step descriptions.
 
-- Project direction and progress plan: [`docs/project-direction-plan-r8.md`](docs/project-direction-plan-r8.md), incorporating unchanged R2-R7 content
-- Reproducibility guide: [`docs/reproducibility-current-state-v42.md`](docs/reproducibility-current-state-v42.md)
-- Current gap ledger: [`registry/analyses/project_state_gap_ledger_v45.json`](registry/analyses/project_state_gap_ledger_v45.json)
+- Project direction and progress plan: [`docs/project-direction-plan-r9.md`](docs/project-direction-plan-r9.md), incorporating unchanged R2-R8 content
+- Reproducibility guide: [`docs/reproducibility-current-state-v43.md`](docs/reproducibility-current-state-v43.md)
+- Current gap ledger: [`registry/analyses/project_state_gap_ledger_v46.json`](registry/analyses/project_state_gap_ledger_v46.json)
 - Current repository quality gate: [`docs/current-test-suite-lifecycle-v4.md`](docs/current-test-suite-lifecycle-v4.md)
 - Crimson primary-review readiness: [`registry/analyses/crimson_primary_review_readiness_v1.json`](registry/analyses/crimson_primary_review_readiness_v1.json)
 - Immutable B5 continuation result: [`registry/analyses/target_text_corpus_v1_ready_channel_wayback_availability_continuation_result_v1.json`](registry/analyses/target_text_corpus_v1_ready_channel_wayback_availability_continuation_result_v1.json)
@@ -15,6 +15,7 @@ superseded next-step descriptions.
 - Verified exact-53 capture plan: [`registry/analyses/target_text_corpus_v1_ready_channel_capture_plan_v1.json`](registry/analyses/target_text_corpus_v1_ready_channel_capture_plan_v1.json)
 - Verified exact-53 capture release: [`registry/analyses/target_text_corpus_v1_ready_channel_capture_release_v1.json`](registry/analyses/target_text_corpus_v1_ready_channel_capture_release_v1.json)
 - Immutable partial capture result: [`registry/analyses/target_text_corpus_v1_ready_channel_capture_result_v1.json`](registry/analyses/target_text_corpus_v1_ready_channel_capture_result_v1.json)
+- Verified exact-49 continuation release: [`registry/analyses/target_text_corpus_v1_ready_channel_capture_continuation_release_v1.json`](registry/analyses/target_text_corpus_v1_ready_channel_capture_continuation_release_v1.json)
 - Python dependency contract: [`docs/python-dependency-contract-v1.md`](docs/python-dependency-contract-v1.md)
 - Repository quality audit: [`docs/repository-quality-audit-v1.md`](docs/repository-quality-audit-v1.md)
 

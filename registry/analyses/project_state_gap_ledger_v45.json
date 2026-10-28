@@ -1,0 +1,15 @@
+{
+  "analysis_id": "ISI_PROJECT_STATE_GAP_LEDGER_V45",
+  "created_at": "2026-10-28",
+  "status": "CURRENT_EXACT_49_CONTINUATION_PREPARATION_NEXT",
+  "purpose": "Record partial capture QA and isolate the 49 never-attempted rows from the three successes and one below-minimum failure.",
+  "inputs": [
+    {"role": "prior_ledger_v44", "path": "registry/analyses/project_state_gap_ledger_v44.json", "sha256": "9723894c3e56bd11e691ea64e54f41d7147f37fc22a859562f69bfe2730be315"},
+    {"role": "current_reproducibility_v42", "path": "registry/analyses/reproducibility_current_state_v42.json", "sha256": "4437163125e1618a8135a849eae81719c7946914bc32034b2fba72e8a23e7c0e"},
+    {"role": "capture_result", "path": "registry/analyses/target_text_corpus_v1_ready_channel_capture_result_v1.json", "sha256": "f06c5f8d07f7d15f036d82de9ae416d87ca0ab1f71b4c6646ca4607dd03fe591"}
+  ],
+  "implementation": [{"role": "human_readable_ledger", "path": "docs/project-state-gap-ledger-v45.md", "sha256": "0608097763077236048235d4854e36dddbcd17c4f0d31503b8de2a36bd606e01"}],
+  "state_amendments": {"READY_CHANNEL_CAPTURE": {"captured": 3, "failed_small_response": 1, "not_attempted": 49, "exact_text_allowed": false}, "CONTINUATION": {"target_rows": 49, "prepared": false, "failed_row_009_included": false, "captured_rows_retried": false, "fixed_24h_delay_required": false}, "RESEARCH_GAPS": {"fresh_v1_core_admitted": 0, "fresh_v1_core_required": 300, "conditional_supply": 42, "conditional_gap": 258, "verified_vietnamese": 0, "minimum_vietnamese": 16, "compatible_image_assets": 0}},
+  "decision": {"exact_49_continuation_release_may_be_prepared": true, "original_release_rerun_allowed": false, "identical_failed_row_retry_allowed": false, "candidate_live_domain_access_allowed": false, "exact_text_allowed": false, "labeling_allowed": false, "training_allowed": false, "next_gate": "Build and independently verify the exact-49 continuation release."},
+  "safety_contract": {"network_operations": 0, "candidate_domain_access_operations": 0, "new_captures": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

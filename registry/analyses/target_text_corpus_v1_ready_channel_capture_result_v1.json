@@ -1,0 +1,13 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_READY_CHANNEL_CAPTURE_RESULT_V1",
+  "created_at": "2026-10-28",
+  "status": "PASS_PARTIAL_3_CAPTURED_1_SMALL_49_NOT_ATTEMPTED",
+  "inputs": [
+    {"role": "release", "path": "configs/target_text_corpus_v1_ready_channel_capture_release_v1.json", "sha256": "2395a9af60c947426303650126159b4ead6994837259659f34f7b6e952e8451b"},
+    {"role": "report", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_capture_result_v1\\capture_report_v1.json", "sha256": "6fffae3f13ebf60dc3733f10d89ada18a56b4c8d455858add8448857bb9df676"},
+    {"role": "independent_qa", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_capture_result_v1\\independent_result_qa_v1.json", "sha256": "ecdd704723d9ca1af90eb5e3179c643ac5aad771bbd5178e3324e423d540d5b4"}
+  ],
+  "findings": {"planned_rows": 53, "network_requests": 4, "captured_rows": 3, "failed_rows": 1, "not_attempted_rows": 49, "http_429": false, "transport_failure": false, "failure_plan_id": "TTCV1_B3_AVAIL_009", "failure_class": "BELOW_FROZEN_MINIMUM_RESPONSE_BYTES", "observed_bytes": 870, "minimum_bytes": 1024, "captured_byte_hashes_verified": true},
+  "decision": {"original_release_rerun_allowed": false, "identical_failed_row_retry_allowed": false, "exact_49_never_attempted_continuation_may_be_prepared": true, "universal_24h_delay_required": false, "exact_text_release_may_be_prepared": false, "candidate_live_domain_access_allowed": false, "labeling_allowed": false, "training_allowed": false},
+  "safety_contract": {"candidate_live_domain_access_operations": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

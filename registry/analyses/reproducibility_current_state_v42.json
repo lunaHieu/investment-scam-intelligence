@@ -1,0 +1,16 @@
+{
+  "analysis_id": "ISI_REPRODUCIBILITY_CURRENT_STATE_V42",
+  "created_at": "2026-10-28",
+  "status": "CURRENT_PARTIAL_CAPTURE_3_SUCCESS_1_SMALL_49_CONTINUATION_NEXT",
+  "purpose": "Supersede V41 after immutable partial capture QA and route never-attempted rows independently of the below-minimum failure.",
+  "inputs": [
+    {"role": "prior_state_v41", "path": "registry/analyses/reproducibility_current_state_v41.json", "sha256": "372101b56ac00a80a980620249bd719aeb3fd949d9a3e40daf4ab91ad9201d24"},
+    {"role": "capture_result", "path": "registry/analyses/target_text_corpus_v1_ready_channel_capture_result_v1.json", "sha256": "f06c5f8d07f7d15f036d82de9ae416d87ca0ab1f71b4c6646ca4607dd03fe591"},
+    {"role": "lifecycle_v4", "path": "registry/analyses/current_test_suite_lifecycle_v4.json", "sha256": "68654fabe6dc0257bde8b3e0095f107129e8e8c997da556ad9c6c36ea89db431"},
+    {"role": "project_direction_plan_r8", "path": "docs/project-direction-plan-r8.md", "sha256": "d58fce58ab48c98320a5cc5cc57c5216aafd8fb88cf759f396bd536be951ee87"}
+  ],
+  "implementation": [{"role": "human_readable_state", "path": "docs/reproducibility-current-state-v42.md", "sha256": "b3dda98e843a112f5b19487cac8e69de99df179f02930528d07cb0faad77205a"}],
+  "current_state": {"capture": {"planned": 53, "captured": 3, "failed_small_response": 1, "not_attempted": 49, "failure_plan_id": "TTCV1_B3_AVAIL_009", "observed_bytes": 870, "minimum_bytes": 1024, "original_release_rerun_allowed": false}, "next_branch": {"exact_never_attempted_rows": 49, "universal_24h_delay_required": false, "failed_row_included": false}, "data_sufficiency": {"fresh_v1_core_admitted_groups": 0, "fresh_v1_core_required_groups": 300, "conditional_owner_accepted_supply": 42, "conditional_residual_gap": 258}},
+  "decision": {"exact_49_continuation_release_may_be_prepared": true, "identical_row_009_retry_allowed": false, "exact_text_allowed": false, "candidate_live_domain_access_allowed": false, "labeling_allowed": false, "validation_or_test_opening_allowed": false, "model_scoring_allowed": false, "training_allowed": false, "next_gate": "Prepare and verify an exact-49 never-attempted capture continuation release."},
+  "safety_contract": {"network_operations_during_registration": 0, "candidate_domain_access_operations": 0, "new_captures": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

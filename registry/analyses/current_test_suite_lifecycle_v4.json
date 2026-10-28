@@ -1,0 +1,18 @@
+{
+  "analysis_id": "ISI_CURRENT_TEST_SUITE_LIFECYCLE_V4",
+  "created_at": "2026-10-28",
+  "status": "PASS_EXACT_ELEVEN_PREEXECUTION_ASSERTIONS_SUPERSEDED_BY_POSTEXECUTION_CHECKS",
+  "inputs": [{"role": "prior_lifecycle_v3", "path": "registry/analyses/current_test_suite_lifecycle_v3.json", "sha256": "36e11fcd09ed5a7f0ffe76f549cfb4652d812603e092dc07b7f41c647dd4378e"}],
+  "implementation": [
+    {"role": "runner", "path": "scripts/run_current_test_suite_v4.py", "sha256": "41fcf89c8b8a97386fd11c98cd8fc0e7beaf48c326861a6ebea04ddab51308ba"},
+    {"role": "postexecution_test", "path": "tests/test_current_artifact_lifecycle_v4.py", "sha256": "86bb7598f900a44312f9d3749af70ee1897d8ad5ae4e97af71fa6ef051320569"},
+    {"role": "mapping_tests", "path": "tests/test_current_test_suite_v4.py", "sha256": "b8902584a01845c61e13fa5e73371412ecd336ff2b1a3e98a264e07504465cde"},
+    {"role": "documentation", "path": "docs/current-test-suite-lifecycle-v4.md", "sha256": "062145d81d56defbfcf37c7a0b7ff223de16c98ed555c6f10d25e3a73e777a25"}
+  ],
+  "consumed_outputs": [
+    {"role": "capture_report", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_capture_result_v1\\capture_report_v1.json", "sha256": "6fffae3f13ebf60dc3733f10d89ada18a56b4c8d455858add8448857bb9df676"},
+    {"role": "capture_result_qa", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_capture_result_v1\\independent_result_qa_v1.json", "sha256": "ecdd704723d9ca1af90eb5e3179c643ac5aad771bbd5178e3324e423d540d5b4"}
+  ],
+  "findings": {"historical_preexecution_test_methods": 11, "postexecution_replacement_test_methods": 11, "historical_test_files_modified": 0, "exclusion_set_is_closed": true},
+  "decision": {"current_quality_gate_command": ".venv\\Scripts\\python.exe -m scripts.run_current_test_suite_v4", "frozen_release_mutation_allowed": false, "network_execution_allowed": false, "labeling_allowed": false, "training_allowed": false}
+}

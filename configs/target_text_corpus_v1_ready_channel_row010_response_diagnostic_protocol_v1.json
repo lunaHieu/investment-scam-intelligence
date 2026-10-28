@@ -1,0 +1,31 @@
+{
+  "protocol_id": "ISI_TARGET_TEXT_CORPUS_V1_READY_CHANNEL_ROW010_RESPONSE_DIAGNOSTIC_PROTOCOL_V1",
+  "created_at": "2026-10-28",
+  "status": "FROZEN_OFFLINE_PROTOCOL_NETWORK_EXECUTION_NOT_AUTHORIZED",
+  "target": {
+    "availability_plan_id": "TTCV1_B3_AVAIL_010",
+    "candidate_id": "TTCV1_B2_CONF_REG_DEV_010",
+    "observed_response_bytes": 114,
+    "prior_minimum_bytes": 1024,
+    "prior_outcome": "FAILED_BELOW_MINIMUM_RESPONSE_NOT_PRESERVED"
+  },
+  "inputs": [
+    {"path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_capture_continuation_result_v1\\capture_report_continuation_v1.json", "sha256": "d4e94a239535f96f3f51f4f63b6adffaf31f120a2beb97cbc2d912fbba741b25"},
+    {"path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_capture_continuation_result_v1\\independent_result_qa_v1.json", "sha256": "24be6216cf73921f5fb1707df338b090bc39b26fcdc1f6ba5fe9e8493ff629b5"}
+  ],
+  "root_cause": {
+    "proximate_cause": "HTTP response body was 114 bytes, below the frozen 1024-byte capture minimum",
+    "diagnostic_limitation": "V1 classified size before preserving failed response bytes, so exact response semantics cannot be recovered offline",
+    "provider_rate_limit_observed": false,
+    "transport_failure_observed": false
+  },
+  "future_tooling_requirements": {
+    "preserve_response_bytes_before_size_classification": true,
+    "preserve_sha256_and_headers": true,
+    "maximum_requests": 1,
+    "same_executor_reuse_allowed": false,
+    "automatic_label_inference_allowed": false,
+    "network_execution_authorized": false
+  },
+  "decision": {"separate_release_required": true, "continuation_48_blocked_by_row010": false, "candidate_live_domain_access_allowed": false, "labeling_allowed": false, "training_allowed": false}
+}

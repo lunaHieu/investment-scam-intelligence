@@ -1,0 +1,20 @@
+{
+  "analysis_id": "ISI_CURRENT_TEST_SUITE_LIFECYCLE_V5",
+  "created_at": "2026-10-28",
+  "status": "PASS_EXACT_TWELVE_PREEXECUTION_ASSERTIONS_SUPERSEDED_BY_POSTEXECUTION_CHECKS",
+  "inputs": [
+    {"role": "prior_lifecycle_v4", "path": "registry/analyses/current_test_suite_lifecycle_v4.json", "sha256": "68654fabe6dc0257bde8b3e0095f107129e8e8c997da556ad9c6c36ea89db431"}
+  ],
+  "implementation": [
+    {"role": "runner", "path": "scripts/run_current_test_suite_v5.py", "sha256": "f69d416883b25d76b3067668e449a3356b9f04307667f70094647f7e9677e6ba"},
+    {"role": "postexecution_test", "path": "tests/test_current_artifact_lifecycle_v5.py", "sha256": "78c1ec2d4ab8f52835cee43a84e6ca6e5645006db7f121899bacb44612d94c29"},
+    {"role": "mapping_tests", "path": "tests/test_current_test_suite_v5.py", "sha256": "92d6e3e828bfa268cc2027365aa5458150625018f7152a4c73de462f47f7f7a2"},
+    {"role": "documentation", "path": "docs/current-test-suite-lifecycle-v5.md", "sha256": "acf685f880ebce493534cd1397e2c30c4493ef8ac4560ae208802b1fb185d6a1"}
+  ],
+  "consumed_outputs": [
+    {"role": "continuation_report", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_capture_continuation_result_v1\\capture_report_continuation_v1.json", "sha256": "d4e94a239535f96f3f51f4f63b6adffaf31f120a2beb97cbc2d912fbba741b25"},
+    {"role": "continuation_result_qa", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_capture_continuation_result_v1\\independent_result_qa_v1.json", "sha256": "24be6216cf73921f5fb1707df338b090bc39b26fcdc1f6ba5fe9e8493ff629b5"}
+  ],
+  "findings": {"historical_preexecution_test_methods": 12, "postexecution_replacement_test_methods": 12, "historical_test_files_modified": 0, "exclusion_set_is_closed": true},
+  "decision": {"current_quality_gate_command": ".venv\\Scripts\\python.exe -m scripts.run_current_test_suite_v5", "frozen_release_mutation_allowed": false, "network_execution_allowed": false, "labeling_allowed": false, "training_allowed": false}
+}

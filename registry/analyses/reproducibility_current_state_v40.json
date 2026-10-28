@@ -1,0 +1,17 @@
+{
+  "analysis_id": "ISI_REPRODUCIBILITY_CURRENT_STATE_V40",
+  "created_at": "2026-10-28",
+  "status": "CURRENT_CDX_COMPLETE_EXACT_53_CAPTURE_PLAN_VERIFIED",
+  "purpose": "Supersede V39 after complete CDX bulk QA and offline full-recomputation QA of the all-and-only-eligible capture plan.",
+  "inputs": [
+    {"role": "prior_state_v39", "path": "registry/analyses/reproducibility_current_state_v39.json", "sha256": "e6a77b2ffb300d0250fe40faca6073b14f5258a55f718179301f1cc8a618bad1"},
+    {"role": "bulk_result", "path": "registry/analyses/target_text_corpus_v1_ready_channel_cdx_bulk_result_v1.json", "sha256": "1c1688fe723778ae2cf0451a840c690bb904bcb5f6b9559b9b6db590f8761c91"},
+    {"role": "capture_plan", "path": "registry/analyses/target_text_corpus_v1_ready_channel_capture_plan_v1.json", "sha256": "2482e858d26086d7d33347996ce669dbc33cbd4ce39c791cd080c4a461f1a7bf"},
+    {"role": "lifecycle_v3", "path": "registry/analyses/current_test_suite_lifecycle_v3.json", "sha256": "36e11fcd09ed5a7f0ffe76f549cfb4652d812603e092dc07b7f41c647dd4378e"},
+    {"role": "project_direction_plan_r6", "path": "docs/project-direction-plan-r6.md", "sha256": "45c9c9534266d7f108863c1b4ca376f8c680f5f9533f7903f83e345bf9207d9a"}
+  ],
+  "implementation": [{"role": "human_readable_state", "path": "docs/reproducibility-current-state-v40.md", "sha256": "cb81810e2b2a7322eed73e5e4f9056b187d78fc76a5a0614a5097ec25b315086"}],
+  "current_state": {"metadata": {"resolved_rows": 69, "eligible_rows": 53, "valid_empty_rows": 16, "rerun_allowed": false}, "capture_plan": {"planned_rows": 53, "development_rows": 37, "external_holdout_rows": 16, "independent_qa_passed": true, "capture_execution_authorized": false}, "crimson": {"ready_primary_tasks": 24, "official_reference_followups": 15}, "data_sufficiency": {"fresh_v1_core_admitted_groups": 0, "fresh_v1_core_required_groups": 300, "conditional_owner_accepted_supply": 42, "conditional_residual_gap": 258}},
+  "decision": {"capture_release_may_be_prepared": true, "capture_execution_authorized": false, "candidate_live_domain_access_allowed": false, "labeling_allowed": false, "validation_or_test_opening_allowed": false, "model_scoring_allowed": false, "training_allowed": false, "next_gate": "Prepare and independently verify a separate exact-53 capture execution release."},
+  "safety_contract": {"network_operations_during_plan_preparation": 0, "candidate_domain_access_operations": 0, "archived_page_downloads": 0, "captures": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

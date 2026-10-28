@@ -6,8 +6,8 @@ from scripts.verify_target_text_corpus_v1_source_capacity_amendment_protocol imp
 
 
 ROOT = Path(__file__).resolve().parents[1]
-STATE = ROOT / "registry" / "analyses" / "reproducibility_current_state_v39.json"
-LEDGER = ROOT / "registry" / "analyses" / "project_state_gap_ledger_v42.json"
+STATE = ROOT / "registry" / "analyses" / "reproducibility_current_state_v40.json"
+LEDGER = ROOT / "registry" / "analyses" / "project_state_gap_ledger_v43.json"
 
 
 def assert_hashes(test: unittest.TestCase, value: dict) -> None:
@@ -17,14 +17,14 @@ def assert_hashes(test: unittest.TestCase, value: dict) -> None:
         test.assertEqual(sha256_file(path), item["sha256"], item["path"])
 
 
-class CurrentNavigationV39Tests(unittest.TestCase):
+class CurrentNavigationV40Tests(unittest.TestCase):
     def test_state_and_ledger_hash_chains_reproduce(self) -> None:
         state = json.loads(STATE.read_text(encoding="utf-8"))
         ledger = json.loads(LEDGER.read_text(encoding="utf-8"))
         assert_hashes(self, state)
         assert_hashes(self, ledger)
-        self.assertTrue(state["current_state"]["canary"]["complete"])
-        self.assertEqual(ledger["state_amendments"]["CDX_BULK_RELEASE"]["target_rows"], 68)
+        self.assertEqual(state["current_state"]["capture_plan"]["planned_rows"], 53)
+        self.assertEqual(ledger["state_amendments"]["READY_CHANNEL_CAPTURE_PLAN"]["planned"], 53)
         self.assertEqual(ledger["state_amendments"]["CRIMSON"]["ready_primary_tasks"], 24)
 
     def test_research_and_network_gates_remain_closed(self) -> None:

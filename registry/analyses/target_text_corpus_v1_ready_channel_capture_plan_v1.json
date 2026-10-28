@@ -1,0 +1,13 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_READY_CHANNEL_CAPTURE_PLAN_V1",
+  "created_at": "2026-10-28",
+  "status": "PASS_EXACT_53_ELIGIBLE_CAPTURE_PLAN_SEPARATE_RELEASE_REQUIRED",
+  "inputs": [
+    {"role": "release", "path": "configs/target_text_corpus_v1_ready_channel_capture_plan_release_v1.json", "sha256": "f98745ca9f0240779ab5c4fcb1d886ad8335e9fa76b252531c74236dab1fabfb"},
+    {"role": "plan", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_capture_plan_v1\\capture_plan_v1.json", "sha256": "824b1bbad2f0d396e31128ba62a62588ee6192453a4c213e803c2a5e7fd54ddd"},
+    {"role": "independent_qa", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_capture_plan_v1\\independent_plan_qa_v1.json", "sha256": "50377c81d4a95ac257bd55f57d2da5f17bd8cc80e35e7eea1615b987991f2078"}
+  ],
+  "findings": {"resolved_metadata_rows": 69, "planned_capture_rows": 53, "valid_empty_metadata_rows": 16, "development_rows": 37, "external_holdout_rows": 16, "full_recomputation_match": true, "raw_replay_only": true},
+  "decision": {"capture_release_may_be_prepared": true, "capture_execution_authorized": false, "candidate_live_domain_access_allowed": false, "labeling_allowed": false, "training_allowed": false},
+  "safety_contract": {"network_operations": 0, "candidate_live_domain_access_operations": 0, "archived_page_downloads": 0, "captures": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

@@ -1,0 +1,15 @@
+{
+  "analysis_id": "ISI_PROJECT_STATE_GAP_LEDGER_V43",
+  "created_at": "2026-10-28",
+  "status": "CURRENT_EXACT_53_CAPTURE_RELEASE_PREPARATION_NEXT",
+  "purpose": "Record complete CDX metadata QA and the independently verified exact eligible capture plan without opening capture execution.",
+  "inputs": [
+    {"role": "prior_ledger_v42", "path": "registry/analyses/project_state_gap_ledger_v42.json", "sha256": "668fbb607c3fd3165a5958f84c3c4ace4140cc6f847247cf0a1d4a7214595cdc"},
+    {"role": "current_reproducibility_v40", "path": "registry/analyses/reproducibility_current_state_v40.json", "sha256": "cc43cf7e9f05be3d864869768f391bccfad488a056b4b18c976bac0c17871200"},
+    {"role": "capture_plan", "path": "registry/analyses/target_text_corpus_v1_ready_channel_capture_plan_v1.json", "sha256": "2482e858d26086d7d33347996ce669dbc33cbd4ce39c791cd080c4a461f1a7bf"}
+  ],
+  "implementation": [{"role": "human_readable_ledger", "path": "docs/project-state-gap-ledger-v43.md", "sha256": "73a7ceec588acb79eebd42563a0e7a9f26e5820b72dd70a62e57f7cb9a0d7ec2"}],
+  "state_amendments": {"READY_CHANNEL_METADATA": {"resolved": 69, "eligible": 53, "valid_empty": 16, "rerun_allowed": false}, "READY_CHANNEL_CAPTURE_PLAN": {"planned": 53, "development": 37, "external_holdout": 16, "qa_passed": true, "execution_authorized": false}, "CRIMSON": {"ready_primary_tasks": 24, "official_reference_followups": 15}, "RESEARCH_GAPS": {"fresh_v1_core_admitted": 0, "fresh_v1_core_required": 300, "conditional_supply": 42, "conditional_gap": 258, "verified_vietnamese": 0, "minimum_vietnamese": 16, "compatible_image_assets": 0}},
+  "decision": {"capture_release_may_be_prepared": true, "capture_execution_authorized": false, "candidate_live_domain_access_allowed": false, "archived_page_download_allowed": false, "labeling_allowed": false, "validation_or_test_opening_allowed": false, "model_scoring_allowed": false, "training_allowed": false, "next_gate": "Prepare an exact-53 capture execution release and independent release QA; do not capture in the same stage."},
+  "safety_contract": {"network_operations": 0, "candidate_domain_access_operations": 0, "archived_page_downloads": 0, "captures": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

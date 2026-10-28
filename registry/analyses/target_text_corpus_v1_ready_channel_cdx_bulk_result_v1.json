@@ -1,0 +1,13 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_READY_CHANNEL_CDX_BULK_RESULT_V1",
+  "created_at": "2026-10-28",
+  "status": "PASS_COMPLETE_68_METADATA_52_ELIGIBLE_16_EMPTY",
+  "inputs": [
+    {"role": "release", "path": "configs/target_text_corpus_v1_ready_channel_cdx_bulk_release_v1.json", "sha256": "dd8bbc10ff1a4c90b7e0f2ccd5f4fa123660d8aa21a41add337446ef80df574f"},
+    {"role": "report", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_cdx_bulk_result_v1\\cdx_bulk_report_v1.json", "sha256": "dbeaa62e7b03e63c8b50a514cdf29363e684a55fcfbfcd7e0c5feeb60d7bb105"},
+    {"role": "independent_qa", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_cdx_bulk_result_v1\\independent_result_qa_v1.json", "sha256": "cc2db264066e5e235bad5547d63331186ef476a8fe71951f403a1d0df265bb00"}
+  ],
+  "findings": {"target_rows": 68, "network_requests": 68, "http_200_json_rows": 68, "eligible_snapshot_rows": 52, "valid_empty_metadata_rows": 16, "http_429_rows": 0, "transport_errors": 0, "raw_byte_hashes_verified": true},
+  "decision": {"bulk_rerun_allowed": false, "empty_metadata_retry_allowed": false, "capture_plan_may_include_all_and_only_eligible": true, "capture_authorized": false, "candidate_live_domain_access_allowed": false, "labeling_allowed": false, "training_allowed": false},
+  "safety_contract": {"candidate_live_domain_access_operations": 0, "archived_page_download_operations": 0, "captures": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

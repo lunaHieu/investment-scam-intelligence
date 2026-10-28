@@ -1,0 +1,20 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_READY_CHANNEL_CDX_CANARY_RESULT_V1",
+  "created_at": "2026-10-28",
+  "status": "PASS_VALID_CDX_CANARY_BULK_RELEASE_PREPARATION_ALLOWED",
+  "purpose": "Register the immutable one-request valid-JSON canary result and its independent raw-byte/metadata QA without authorizing capture or labels.",
+  "inputs": [
+    {"role": "canary_release", "path": "configs/target_text_corpus_v1_ready_channel_cdx_canary_release_v1.json", "sha256": "bb46af2bc1969c4296e3a5fd6a0605645de4438e0b035d3b559de10e8a199afb"}
+  ],
+  "outputs": [
+    {"role": "raw_response", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_cdx_canary_result_v1\\cdx_canary_response_v1.bin", "sha256": "9d5a5996ebf4defa8016c08352f15268beabefe7bec60042be4d08196e1e09d8", "bytes": 286},
+    {"role": "canary_report", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_cdx_canary_result_v1\\cdx_canary_report_v1.json", "sha256": "0a139703b6d259fd115f2434653223b6fd4f91dace6629f8740ca32731143235"},
+    {"role": "independent_result_qa", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_cdx_canary_result_v1\\independent_result_qa_v1.json", "sha256": "2a4774f363d0684cdbe2f27eedc809045277615f06adf2a862dae8d929a46827"}
+  ],
+  "implementation": [
+    {"role": "documentation", "path": "docs/target-text-corpus-v1-ready-channel-cdx-canary-result-v1.md", "sha256": "ec8b5923689e8ad42f32a50dff7f9ae1c6ceb49c58731ae11f0467e12ad3ff25"}
+  ],
+  "result": {"target_availability_plan_id": "TTCV1_B3_AVAIL_002", "network_requests": 1, "http_status": 200, "returned_rows": 2, "eligible_rows": 2, "selected_timestamp": "20201029053313", "stopped_on_http_429": false, "independent_qa_status": "PASS_CDX_CANARY_VALID_BULK_RELEASE_MAY_BE_PREPARED"},
+  "decision": {"canary_complete": true, "canary_rerun_allowed": false, "bulk_cdx_release_may_be_prepared": true, "bulk_execution_in_same_run_allowed": false, "archive_provider_branch_closed": false, "capture_allowed": false, "labeling_allowed": false, "training_allowed": false},
+  "safety_contract": {"archive_metadata_requests": 1, "candidate_domain_access_operations": 0, "archived_page_downloads": 0, "captures": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

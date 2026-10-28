@@ -1,0 +1,23 @@
+{
+  "analysis_id": "ISI_REPRODUCIBILITY_CURRENT_STATE_V39",
+  "created_at": "2026-10-28",
+  "status": "CURRENT_CDX_CANARY_COMPLETE_EXACT_68_BULK_RELEASE_PREPARED",
+  "purpose": "Supersede V38 after successful canary QA and separate preparation of the exact unresolved-only CDX bulk release.",
+  "inputs": [
+    {"role": "prior_state_v38", "path": "registry/analyses/reproducibility_current_state_v38.json", "sha256": "998c66bf8ce742c7b2c6fb2480c458cd36441659d13967f86cd66378b7472f71"},
+    {"role": "canary_result", "path": "registry/analyses/target_text_corpus_v1_ready_channel_cdx_canary_result_v1.json", "sha256": "d68f28fd6ecf4a896aea83bb965983e2a246c58ce65a7630ec2202312d556d2f"},
+    {"role": "bulk_release", "path": "registry/analyses/target_text_corpus_v1_ready_channel_cdx_bulk_release_v1.json", "sha256": "71f788282a56e88c7d34aa761027cfebf1c218d8aa0346d1f711d637d5257351"},
+    {"role": "project_direction_plan_r5", "path": "docs/project-direction-plan-r5.md", "sha256": "e45205ea39ca74b8216bfab3d06e62af23241ed07846d2f1edf4f6506181bd9b"}
+  ],
+  "implementation": [
+    {"role": "human_readable_state", "path": "docs/reproducibility-current-state-v39.md", "sha256": "33d8fe05330470bd3e87d13769fbd6a338c1386dada41f0d591d619472aec6ea"}
+  ],
+  "current_state": {
+    "canary": {"complete": true, "must_not_rerun": true, "network_requests": 1, "http_status": 200, "eligible_metadata_rows": 2, "selected_timestamp": "20201029053313"},
+    "bulk_release": {"target_rows": 68, "development_rows": 48, "external_holdout_rows": 20, "first_target": "TTCV1_B3_AVAIL_003", "last_target": "TTCV1_B3_AVAIL_070", "network_requests_executed": 0, "separate_execution_required": true},
+    "crimson": {"ready_primary_tasks": 24, "official_reference_followups": 15},
+    "data_sufficiency": {"fresh_v1_core_admitted_groups": 0, "fresh_v1_core_required_groups": 300, "conditional_owner_accepted_supply": 42, "conditional_residual_gap": 258}
+  },
+  "decision": {"bulk_cdx_execution_may_run_in_separate_invocation": true, "canary_rerun_allowed": false, "candidate_live_domain_access_allowed": false, "capture_allowed": false, "labeling_allowed": false, "validation_or_test_opening_allowed": false, "model_scoring_allowed": false, "training_allowed": false, "next_gate": "Execute the exact-68 CDX release once in a separate invocation with 60-second pacing and immediate stop on any error."},
+  "safety_contract": {"network_operations_during_preparation": 0, "candidate_domain_access_operations": 0, "archived_page_downloads": 0, "captures": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

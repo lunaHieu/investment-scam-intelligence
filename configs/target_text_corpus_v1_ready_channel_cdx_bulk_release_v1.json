@@ -1,0 +1,78 @@
+{
+  "release_id": "ISI_TARGET_TEXT_CORPUS_V1_READY_CHANNEL_CDX_BULK_RELEASE_V1",
+  "created_at": "2026-10-28T09:46:44.911703+07:00",
+  "status": "FROZEN_EXACT_68_UNRESOLVED_ONLY_METADATA_RELEASE_SEPARATE_EXECUTION",
+  "purpose": "Freeze a separate metadata-only CDX release for every and only unresolved ready-channel row after the successful row-002 canary, without executing bulk requests in the preparation run.",
+  "basis": [
+    {"role": "release_verifier", "path": "scripts/verify_target_text_corpus_v1_ready_channel_cdx_bulk_release_v1.py", "sha256": "413cf09f7450d42f99146a6141c004fcbf4e93368abd2c484a978fe96b140025"},
+    {"role": "executor", "path": "scripts/execute_target_text_corpus_v1_ready_channel_cdx_bulk_v1.py", "sha256": "29b908c9ad922ce3885278ef1b98c6b477bc5bc0bb08e55fe995a0de0cb2851e"},
+    {"role": "result_verifier", "path": "scripts/verify_target_text_corpus_v1_ready_channel_cdx_bulk_result_v1.py", "sha256": "c8563d82925c6ac9135e758144bcaa9f0d8594f601c8da2bd7ff02174733bf20"},
+    {"role": "tests", "path": "tests/test_target_text_corpus_v1_ready_channel_cdx_bulk_v1.py", "sha256": "9b01ab601e90724f9aa839ae3d9aa5677839a9b1371c7643d24234a4aef4a6df"},
+    {"role": "documentation", "path": "docs/target-text-corpus-v1-ready-channel-cdx-bulk-release-v1.md", "sha256": "406b953c92b49b22225f8198acbd6088b659994d4f19362452d98278d3e50f1b"}
+  ],
+  "inputs": {
+    "source_plan": {"path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_availability_plan_v1\\availability_plan_v1.jsonl", "sha256": "d6d5c4d63f1cea4be175222eceff0a330437f06dbb4223aab472cfb91b040d43", "absolute": true},
+    "canary_release": {"path": "configs/target_text_corpus_v1_ready_channel_cdx_canary_release_v1.json", "sha256": "bb46af2bc1969c4296e3a5fd6a0605645de4438e0b035d3b559de10e8a199afb", "absolute": false},
+    "canary_report": {"path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_cdx_canary_result_v1\\cdx_canary_report_v1.json", "sha256": "0a139703b6d259fd115f2434653223b6fd4f91dace6629f8740ca32731143235", "absolute": true},
+    "canary_result_qa": {"path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_cdx_canary_result_v1\\independent_result_qa_v1.json", "sha256": "2a4774f363d0684cdbe2f27eedc809045277615f06adf2a862dae8d929a46827", "absolute": true}
+  },
+  "population_contract": {
+    "source_rows": 70,
+    "excluded_availability_plan_ids": ["TTCV1_B3_AVAIL_001", "TTCV1_B3_AVAIL_002"],
+    "exclusion_reasons": {"TTCV1_B3_AVAIL_001": "PERMANENT_IDENTICAL_AVAILABILITY_REQUEST_QUARANTINE", "TTCV1_B3_AVAIL_002": "VALID_CDX_CANARY_ALREADY_RESOLVED"},
+    "target_rows": 68,
+    "first_target": "TTCV1_B3_AVAIL_003",
+    "last_target": "TTCV1_B3_AVAIL_070",
+    "development_rows": 48,
+    "external_holdout_rows": 20,
+    "confirmed_regulator_rows": 33,
+    "legitimate_iapd_rows": 35,
+    "preserve_source_order": true,
+    "preserve_cohorts": true
+  },
+  "execution_gate": {
+    "not_before": "2026-10-28T09:44:32.729005+07:00",
+    "basis": "CANARY_REPORT_CREATED_AT",
+    "separate_invocation_required": true,
+    "same_preparation_run_execution_forbidden": true,
+    "provider_cooldown_inferred": false
+  },
+  "cdx_contract": {
+    "endpoint": "https://web.archive.org/cdx/search/cdx",
+    "allowed_network_hosts": ["web.archive.org"],
+    "minimum_delay_seconds": 60.0,
+    "maximum_attempts_per_query": 1,
+    "maximum_logical_requests": 68,
+    "timeout_seconds": 30,
+    "maximum_redirects": 0,
+    "maximum_response_bytes": 2097152,
+    "required_content_type_prefix": "application/json",
+    "stop_on_http_429": true,
+    "stop_on_any_http_or_transport_error": true,
+    "partial_journal_reserved_before_network": true,
+    "partial_journal_auto_resume_allowed": false,
+    "output_overwrite_allowed": false,
+    "archived_page_download_allowed": false,
+    "query_template": {"matchType": "exact", "output": "json", "fields": ["timestamp", "original", "statuscode", "mimetype", "digest"], "filters": ["statuscode:200", "mimetype:text/html"], "maximum_rows": 1000}
+  },
+  "planned_output": {
+    "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_cdx_bulk_result_v1\\cdx_bulk_report_v1.json",
+    "raw_response_directory": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_cdx_bulk_result_v1\\raw_responses",
+    "independent_result_qa_path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_cdx_bulk_result_v1\\independent_result_qa_v1.json",
+    "report_id": "ISI_TARGET_TEXT_CORPUS_V1_READY_CHANNEL_CDX_BULK_REPORT_V1",
+    "partial_journal_suffix": ".partial"
+  },
+  "decision": {
+    "release_prepared": true,
+    "network_execution_allowed_in_preparation_run": false,
+    "separate_execution_invocation_required": true,
+    "candidate_live_domain_access_allowed": false,
+    "archived_page_download_allowed": false,
+    "capture_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {"network_operations_during_preparation": 0, "candidate_domain_access_operations": 0, "archived_page_downloads": 0, "captures": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

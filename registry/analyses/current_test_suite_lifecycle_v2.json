@@ -1,0 +1,38 @@
+{
+  "analysis_id": "ISI_CURRENT_TEST_SUITE_LIFECYCLE_V2",
+  "created_at": "2026-10-28",
+  "status": "PASS_EXACT_SIX_PREEXECUTION_ASSERTIONS_SUPERSEDED_BY_POSTEXECUTION_CHECKS",
+  "purpose": "Supersede V1 after the one-shot CDX canary transitioned from output-absence preflight to immutable post-execution QA, without modifying historical tests.",
+  "inputs": [
+    {"role": "prior_lifecycle_v1", "path": "registry/analyses/current_test_suite_lifecycle_v1.json", "sha256": "382773e9c2cf8d18ffb7e3b45db3965f432956904984a8676061b2d335518ec3"}
+  ],
+  "implementation": [
+    {"role": "bounded_current_suite_runner", "path": "scripts/run_current_test_suite_v2.py", "sha256": "7fabd38e48d761ba27d30ee33b271afd33778628f4d333aed01e33d2ca86d919"},
+    {"role": "postexecution_replacement_test", "path": "tests/test_current_artifact_lifecycle_v2.py", "sha256": "b34f162910a5247ea656b0769348e68ca563c27b7984ca0a50029a00faf442ea"},
+    {"role": "bounded_mapping_tests", "path": "tests/test_current_test_suite_v2.py", "sha256": "5b744d9edbd79c9fc82ab79fb9aab38c2c0efc15daa3f36266b81d81807e4d86"},
+    {"role": "documentation", "path": "docs/current-test-suite-lifecycle-v2.md", "sha256": "457eb85212e897211c183b761dc82b4b7a818d247341294b1e55c4412e1c45b6"}
+  ],
+  "consumed_outputs": [
+    {"role": "cdx_canary_report", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_cdx_canary_result_v1\\cdx_canary_report_v1.json", "sha256": "0a139703b6d259fd115f2434653223b6fd4f91dace6629f8740ca32731143235"},
+    {"role": "cdx_canary_independent_qa", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_cdx_canary_result_v1\\independent_result_qa_v1.json", "sha256": "2a4774f363d0684cdbe2f27eedc809045277615f06adf2a862dae8d929a46827"}
+  ],
+  "findings": {
+    "historical_preexecution_test_methods": 6,
+    "historical_test_files_modified": 0,
+    "postexecution_replacement_test_methods": 6,
+    "exclusion_set_is_closed": true,
+    "missing_replacement_fails_suite_construction": true
+  },
+  "decision": {
+    "current_quality_gate_command": ".venv\\Scripts\\python.exe -m scripts.run_current_test_suite_v2",
+    "raw_unittest_discovery_is_historical_diagnostic": true,
+    "frozen_release_mutation_allowed": false,
+    "network_execution_allowed": false,
+    "candidate_live_domain_access_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {"network_operations": 0, "candidate_domain_access_operations": 0, "archived_page_downloads": 0, "captures": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

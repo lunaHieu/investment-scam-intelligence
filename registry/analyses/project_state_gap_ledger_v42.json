@@ -1,0 +1,22 @@
+{
+  "analysis_id": "ISI_PROJECT_STATE_GAP_LEDGER_V42",
+  "created_at": "2026-10-28",
+  "status": "CURRENT_CDX_CANARY_SUCCESS_EXACT_68_BULK_EXECUTION_NEXT",
+  "purpose": "Record the successful finite canary and separately verified exact-68 unresolved-only bulk release while retaining all research gaps.",
+  "inputs": [
+    {"role": "prior_ledger_v41", "path": "registry/analyses/project_state_gap_ledger_v41.json", "sha256": "ae674b58d849906d281226825b469e1a4e817f8c4a3b7109c7dbca4aa50d2877"},
+    {"role": "current_reproducibility_v39", "path": "registry/analyses/reproducibility_current_state_v39.json", "sha256": "e6a77b2ffb300d0250fe40faca6073b14f5258a55f718179301f1cc8a618bad1"},
+    {"role": "bulk_release", "path": "registry/analyses/target_text_corpus_v1_ready_channel_cdx_bulk_release_v1.json", "sha256": "71f788282a56e88c7d34aa761027cfebf1c218d8aa0346d1f711d637d5257351"}
+  ],
+  "implementation": [
+    {"role": "human_readable_ledger", "path": "docs/project-state-gap-ledger-v42.md", "sha256": "40a4e82eb45e946e340880203becab9c4f6d7159f4b23251aa2aae6478748b01"}
+  ],
+  "state_amendments": {
+    "CDX_CANARY": {"complete": true, "must_not_rerun": true, "network_requests": 1, "eligible_metadata_rows": 2},
+    "CDX_BULK_RELEASE": {"prepared": true, "independently_verified": true, "target_rows": 68, "development_rows": 48, "external_holdout_rows": 20, "network_requests_executed": 0},
+    "CRIMSON": {"ready_primary_tasks": 24, "official_reference_followups": 15},
+    "RESEARCH_GAPS": {"fresh_v1_core_admitted": 0, "fresh_v1_core_required": 300, "conditional_supply": 42, "conditional_gap": 258, "verified_vietnamese": 0, "minimum_vietnamese": 16, "compatible_image_assets": 0}
+  },
+  "decision": {"bulk_cdx_execution_may_run_in_separate_invocation": true, "canary_rerun_allowed": false, "capture_plan_preparation_allowed": false, "candidate_live_domain_access_allowed": false, "archived_page_download_allowed": false, "capture_allowed": false, "labeling_allowed": false, "validation_or_test_opening_allowed": false, "model_scoring_allowed": false, "training_allowed": false, "next_gate": "Execute exact rows 003-070 once with minimum 60-second pacing; complete QA is required before any capture plan."},
+  "safety_contract": {"network_operations_during_preparation": 0, "candidate_domain_access_operations": 0, "archived_page_downloads": 0, "captures": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

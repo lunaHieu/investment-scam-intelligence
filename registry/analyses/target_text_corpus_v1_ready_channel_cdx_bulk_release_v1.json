@@ -1,0 +1,23 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_READY_CHANNEL_CDX_BULK_RELEASE_V1",
+  "created_at": "2026-10-28",
+  "status": "PASS_EXACT_68_UNRESOLVED_ONLY_CDX_RELEASE_PREPARED_NOT_EXECUTED",
+  "purpose": "Register the independently verified separate exact-68 unresolved-only CDX metadata release after the successful row-002 canary.",
+  "inputs": [
+    {"role": "canary_result", "path": "registry/analyses/target_text_corpus_v1_ready_channel_cdx_canary_result_v1.json", "sha256": "d68f28fd6ecf4a896aea83bb965983e2a246c58ce65a7630ec2202312d556d2f"}
+  ],
+  "implementation": [
+    {"role": "bulk_release", "path": "configs/target_text_corpus_v1_ready_channel_cdx_bulk_release_v1.json", "sha256": "dd8bbc10ff1a4c90b7e0f2ccd5f4fa123660d8aa21a41add337446ef80df574f"},
+    {"role": "release_verifier", "path": "scripts/verify_target_text_corpus_v1_ready_channel_cdx_bulk_release_v1.py", "sha256": "413cf09f7450d42f99146a6141c004fcbf4e93368abd2c484a978fe96b140025"},
+    {"role": "executor", "path": "scripts/execute_target_text_corpus_v1_ready_channel_cdx_bulk_v1.py", "sha256": "29b908c9ad922ce3885278ef1b98c6b477bc5bc0bb08e55fe995a0de0cb2851e"},
+    {"role": "result_verifier", "path": "scripts/verify_target_text_corpus_v1_ready_channel_cdx_bulk_result_v1.py", "sha256": "c8563d82925c6ac9135e758144bcaa9f0d8594f601c8da2bd7ff02174733bf20"},
+    {"role": "tests", "path": "tests/test_target_text_corpus_v1_ready_channel_cdx_bulk_v1.py", "sha256": "9b01ab601e90724f9aa839ae3d9aa5677839a9b1371c7643d24234a4aef4a6df"},
+    {"role": "documentation", "path": "docs/target-text-corpus-v1-ready-channel-cdx-bulk-release-v1.md", "sha256": "406b953c92b49b22225f8198acbd6088b659994d4f19362452d98278d3e50f1b"}
+  ],
+  "outputs": [
+    {"role": "independent_release_qa", "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_availability_plan_v1\\independent_cdx_bulk_release_qa_v1.json", "sha256": "b6f39f90ee303b92b7d1e71138aca846321c57c4fd08437871999cb1988e3b13"}
+  ],
+  "result": {"target_rows": 68, "development_rows": 48, "external_holdout_rows": 20, "confirmed_regulator_rows": 33, "legitimate_iapd_rows": 35, "first_target": "TTCV1_B3_AVAIL_003", "last_target": "TTCV1_B3_AVAIL_070", "minimum_delay_seconds": 60.0, "maximum_network_requests": 68, "network_requests_executed": 0, "release_qa_status": "PASS_FROZEN_EXACT_68_UNRESOLVED_ONLY_CDX_METADATA_RELEASE"},
+  "decision": {"release_prepared": true, "same_run_execution_allowed": false, "separate_execution_invocation_required": true, "candidate_live_domain_access_allowed": false, "archived_page_download_allowed": false, "capture_allowed": false, "labeling_allowed": false, "training_allowed": false, "next_gate": "In a separate invocation, reverify the exact-68 release and execute once with 60-second pacing; stop immediately on any error or HTTP 429."},
+  "safety_contract": {"network_operations_during_preparation": 0, "candidate_domain_access_operations": 0, "archived_page_downloads": 0, "captures": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

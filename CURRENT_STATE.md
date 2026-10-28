@@ -4,9 +4,9 @@ This file is the stable entry point for the project's current operational state.
 Historical reports and registries remain immutable and can therefore contain
 superseded next-step descriptions.
 
-- Project direction and progress plan: [`docs/project-direction-plan-r11.md`](docs/project-direction-plan-r11.md), incorporating unchanged R2-R10 content
-- Reproducibility guide: [`docs/reproducibility-current-state-v45.md`](docs/reproducibility-current-state-v45.md)
-- Current gap ledger: [`registry/analyses/project_state_gap_ledger_v48.json`](registry/analyses/project_state_gap_ledger_v48.json)
+- Project direction and progress plan: [`docs/project-direction-plan-r12.md`](docs/project-direction-plan-r12.md), incorporating unchanged R2-R11 content
+- Reproducibility guide: [`docs/reproducibility-current-state-v46.md`](docs/reproducibility-current-state-v46.md)
+- Current gap ledger: [`registry/analyses/project_state_gap_ledger_v49.json`](registry/analyses/project_state_gap_ledger_v49.json)
 - Current repository quality gate: [`docs/current-test-suite-lifecycle-v6.md`](docs/current-test-suite-lifecycle-v6.md)
 - Crimson primary-review readiness: [`registry/analyses/crimson_primary_review_readiness_v1.json`](registry/analyses/crimson_primary_review_readiness_v1.json)
 - Immutable B5 continuation result: [`registry/analyses/target_text_corpus_v1_ready_channel_wayback_availability_continuation_result_v1.json`](registry/analyses/target_text_corpus_v1_ready_channel_wayback_availability_continuation_result_v1.json)
@@ -17,6 +17,7 @@ superseded next-step descriptions.
 - Immutable partial capture result: [`registry/analyses/target_text_corpus_v1_ready_channel_capture_result_v1.json`](registry/analyses/target_text_corpus_v1_ready_channel_capture_result_v1.json)
 - Immutable exact-49 continuation result: [`registry/analyses/target_text_corpus_v1_ready_channel_capture_continuation_result_v1.json`](registry/analyses/target_text_corpus_v1_ready_channel_capture_continuation_result_v1.json)
 - Immutable exact-48 continuation result V2: [`registry/analyses/target_text_corpus_v1_ready_channel_capture_continuation_result_v2.json`](registry/analyses/target_text_corpus_v1_ready_channel_capture_continuation_result_v2.json)
+- Verified exact-42 continuation plan V3: [`registry/analyses/target_text_corpus_v1_ready_channel_capture_continuation_plan_v3.json`](registry/analyses/target_text_corpus_v1_ready_channel_capture_continuation_plan_v3.json)
 - Python dependency contract: [`docs/python-dependency-contract-v1.md`](docs/python-dependency-contract-v1.md)
 - Repository quality audit: [`docs/repository-quality-audit-v1.md`](docs/repository-quality-audit-v1.md)
 
@@ -26,7 +27,8 @@ and one below-minimum response; its exact-49 continuation then stopped on a
 second below-minimum response, leaving 48 rows unattempted. Both failed rows are
 quarantined. Exact-48 V2 then captured five rows and preserved one row-local
 HTTP 404 before stopping, leaving 42 never-attempted rows. No capture release is
-currently open; the next permitted step is an exact-42 V3 plan and tooling.
+currently open; the exact-42 V3 plan is verified and the next permitted step is
+its separately frozen release and tooling.
 The referenced artifacts, hashes, cohort identities and
 no-overwrite rules are authoritative. The current repository suite uses the
 verified V6 bounded lifecycle-aware runner. The direction plan is a tracking guide, not a

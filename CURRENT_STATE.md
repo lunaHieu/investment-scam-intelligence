@@ -4,10 +4,10 @@ This file is the stable entry point for the project's current operational state.
 Historical reports and registries remain immutable and can therefore contain
 superseded next-step descriptions.
 
-- Project direction and progress plan: [`docs/project-direction-plan-r13.md`](docs/project-direction-plan-r13.md), incorporating unchanged R2-R12 content
-- Reproducibility guide: [`docs/reproducibility-current-state-v47.md`](docs/reproducibility-current-state-v47.md)
-- Current gap ledger: [`registry/analyses/project_state_gap_ledger_v50.json`](registry/analyses/project_state_gap_ledger_v50.json)
-- Current repository quality gate: [`docs/current-test-suite-lifecycle-v6.md`](docs/current-test-suite-lifecycle-v6.md)
+- Project direction and progress plan: [`docs/project-direction-plan-r14.md`](docs/project-direction-plan-r14.md), incorporating unchanged R2-R13 content
+- Reproducibility guide: [`docs/reproducibility-current-state-v48.md`](docs/reproducibility-current-state-v48.md)
+- Current gap ledger: [`registry/analyses/project_state_gap_ledger_v51.json`](registry/analyses/project_state_gap_ledger_v51.json)
+- Current repository quality gate: [`docs/current-test-suite-lifecycle-v7.md`](docs/current-test-suite-lifecycle-v7.md)
 - Crimson primary-review readiness: [`registry/analyses/crimson_primary_review_readiness_v1.json`](registry/analyses/crimson_primary_review_readiness_v1.json)
 - Immutable B5 continuation result: [`registry/analyses/target_text_corpus_v1_ready_channel_wayback_availability_continuation_result_v1.json`](registry/analyses/target_text_corpus_v1_ready_channel_wayback_availability_continuation_result_v1.json)
 - Immutable one-row CDX canary result: [`registry/analyses/target_text_corpus_v1_ready_channel_cdx_canary_result_v1.json`](registry/analyses/target_text_corpus_v1_ready_channel_cdx_canary_result_v1.json)
@@ -19,6 +19,7 @@ superseded next-step descriptions.
 - Immutable exact-48 continuation result V2: [`registry/analyses/target_text_corpus_v1_ready_channel_capture_continuation_result_v2.json`](registry/analyses/target_text_corpus_v1_ready_channel_capture_continuation_result_v2.json)
 - Verified exact-42 continuation plan V3: [`registry/analyses/target_text_corpus_v1_ready_channel_capture_continuation_plan_v3.json`](registry/analyses/target_text_corpus_v1_ready_channel_capture_continuation_plan_v3.json)
 - Verified exact-42 continuation release V3: [`registry/analyses/target_text_corpus_v1_ready_channel_capture_continuation_release_v3.json`](registry/analyses/target_text_corpus_v1_ready_channel_capture_continuation_release_v3.json)
+- Raw-artifact security incident: [`registry/analyses/target_text_corpus_v1_ready_channel_raw_artifact_security_incident_v1.json`](registry/analyses/target_text_corpus_v1_ready_channel_raw_artifact_security_incident_v1.json)
 - Python dependency contract: [`docs/python-dependency-contract-v1.md`](docs/python-dependency-contract-v1.md)
 - Repository quality audit: [`docs/repository-quality-audit-v1.md`](docs/repository-quality-audit-v1.md)
 
@@ -28,10 +29,11 @@ and one below-minimum response; its exact-49 continuation then stopped on a
 second below-minimum response, leaving 48 rows unattempted. Both failed rows are
 quarantined. Exact-48 V2 then captured five rows and preserved one row-local
 HTTP 404 before stopping, leaving 42 never-attempted rows. No capture release is
-currently open except the exact-42 V3 release, which is independently verified
-and is the only permitted next capture execution.
+closed. V3 completed its network population, but Defender quarantined a captured
+HTML Trojan during independent verification. Raw QA and every downstream gate
+remain closed; no Defender bypass or artifact restoration is authorized.
 The referenced artifacts, hashes, cohort identities and
 no-overwrite rules are authoritative. The current repository suite uses the
-verified V6 bounded lifecycle-aware runner. The direction plan is a tracking guide, not a
+verified V7 bounded lifecycle-aware runner. The direction plan is a tracking guide, not a
 release authorization. This pointer does not open any data, labeling,
 validation, test, training, scoring or deployment gate.

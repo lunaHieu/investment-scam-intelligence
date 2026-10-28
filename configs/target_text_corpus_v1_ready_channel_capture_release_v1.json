@@ -1,0 +1,27 @@
+{
+  "release_id": "ISI_TARGET_TEXT_CORPUS_V1_READY_CHANNEL_CAPTURE_RELEASE_V1",
+  "created_at": "2026-10-28T15:56:01.096123+07:00",
+  "status": "FROZEN_EXACT_53_ARCHIVE_ONLY_CAPTURE_SEPARATE_INVOCATION",
+  "purpose": "Authorize one later archive-only attempt for every and only the 53 independently verified eligible snapshots, without a universal cooldown and without executing capture in the preparation stage.",
+  "tooling": [
+    {"role": "release_verifier", "path": "scripts/verify_target_text_corpus_v1_ready_channel_capture_release_v1.py", "sha256": "a4d6776bc7aab083257596e77c85edf4308f28dbda8cb1ec08f940c0abc60e84"},
+    {"role": "executor", "path": "scripts/execute_target_text_corpus_v1_ready_channel_capture_v1.py", "sha256": "bac9e76bcd8b57701db8192361aa0eb6a79e251908c0d5515b923e1ade75b278"},
+    {"role": "result_verifier", "path": "scripts/verify_target_text_corpus_v1_ready_channel_capture_result_v1.py", "sha256": "0147ef2406c04925ccb98a37b7b2b9fc76a5d59c95d504e692ede37ca8f28f81"},
+    {"role": "tests", "path": "tests/test_target_text_corpus_v1_ready_channel_capture_release_v1.py", "sha256": "d9e27c31c2368f82f0d7e488a58d60bc222870a632625d69d2e70c6a233db76a"},
+    {"role": "documentation", "path": "docs/target-text-corpus-v1-ready-channel-capture-release-v1.md", "sha256": "efe3c9f162c45ddf471e40afa60e620d3d5957e988c458ee567d7ae77422f5b3"}
+  ],
+  "inputs": {
+    "capture_plan": {"path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_capture_plan_v1\\capture_plan_v1.json", "sha256": "824b1bbad2f0d396e31128ba62a62588ee6192453a4c213e803c2a5e7fd54ddd", "record_count": 53},
+    "independent_plan_qa": {"path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_capture_plan_v1\\independent_plan_qa_v1.json", "sha256": "50377c81d4a95ac257bd55f57d2da5f17bd8cc80e35e7eea1615b987991f2078", "required_status": "PASS_EXACT_53_ELIGIBLE_CAPTURE_PLAN_SEPARATE_RELEASE_MAY_BE_PREPARED"}
+  },
+  "identity_contract": {
+    "ordered_availability_plan_ids": ["TTCV1_B3_AVAIL_002","TTCV1_B3_AVAIL_003","TTCV1_B3_AVAIL_005","TTCV1_B3_AVAIL_009","TTCV1_B3_AVAIL_010","TTCV1_B3_AVAIL_012","TTCV1_B3_AVAIL_013","TTCV1_B3_AVAIL_016","TTCV1_B3_AVAIL_018","TTCV1_B3_AVAIL_019","TTCV1_B3_AVAIL_020","TTCV1_B3_AVAIL_021","TTCV1_B3_AVAIL_023","TTCV1_B3_AVAIL_024","TTCV1_B3_AVAIL_025","TTCV1_B3_AVAIL_026","TTCV1_B3_AVAIL_027","TTCV1_B3_AVAIL_028","TTCV1_B3_AVAIL_029","TTCV1_B3_AVAIL_030","TTCV1_B3_AVAIL_031","TTCV1_B3_AVAIL_032","TTCV1_B3_AVAIL_033","TTCV1_B3_AVAIL_034","TTCV1_B3_AVAIL_035","TTCV1_B3_AVAIL_036","TTCV1_B3_AVAIL_038","TTCV1_B3_AVAIL_039","TTCV1_B3_AVAIL_040","TTCV1_B3_AVAIL_041","TTCV1_B3_AVAIL_042","TTCV1_B3_AVAIL_044","TTCV1_B3_AVAIL_045","TTCV1_B3_AVAIL_046","TTCV1_B3_AVAIL_047","TTCV1_B3_AVAIL_049","TTCV1_B3_AVAIL_050","TTCV1_B3_AVAIL_051","TTCV1_B3_AVAIL_052","TTCV1_B3_AVAIL_054","TTCV1_B3_AVAIL_056","TTCV1_B3_AVAIL_058","TTCV1_B3_AVAIL_059","TTCV1_B3_AVAIL_061","TTCV1_B3_AVAIL_062","TTCV1_B3_AVAIL_063","TTCV1_B3_AVAIL_064","TTCV1_B3_AVAIL_065","TTCV1_B3_AVAIL_066","TTCV1_B3_AVAIL_067","TTCV1_B3_AVAIL_068","TTCV1_B3_AVAIL_069","TTCV1_B3_AVAIL_070"],
+    "record_count": 53, "development_rows": 37, "external_holdout_rows": 16, "preserve_order": true, "preserve_cohorts": true
+  },
+  "execution_contract": {
+    "not_before": "2026-10-28T15:56:01.096123+07:00", "allowed_network_hosts": ["web.archive.org"], "minimum_delay_seconds": 30.0, "maximum_attempts_per_snapshot": 1, "timeout_seconds": 30, "maximum_redirects": 3, "maximum_response_bytes": 26214400, "minimum_response_bytes": 1024, "required_content_type_prefix": "text/html", "raw_replay_modifier_required": true, "stop_on_any_error": true, "partial_journal_reserved_before_network": true, "automatic_resume_allowed": false, "output_overwrite_allowed": false, "separate_invocation_required": true
+  },
+  "planned_output": {"path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_capture_result_v1\\capture_report_v1.json", "independent_qa_path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\target_text_corpus_v1_reference_inputs\\ready_channel_wayback_capture_result_v1\\independent_result_qa_v1.json", "report_id": "ISI_TARGET_TEXT_CORPUS_V1_READY_CHANNEL_CAPTURE_REPORT_V1"},
+  "decision": {"capture_allowed_after_release_qa_in_separate_invocation": true, "candidate_live_domain_access_allowed": false, "text_extraction_allowed": false, "labeling_allowed": false, "validation_or_test_opening_allowed": false, "training_allowed": false},
+  "safety_contract": {"network_operations_during_preparation": 0, "candidate_domain_access_operations": 0, "archived_page_downloads": 0, "captures": 0, "labels_created": 0, "model_operations": 0, "training_allowed": false}
+}

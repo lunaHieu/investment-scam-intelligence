@@ -1,0 +1,64 @@
+{
+  "addendum_id":"ISI_TARGET_TEXT_CORPUS_V1_NEXVISION_SYNTHETIC_AUXILIARY_SOURCE_REGISTRATION_ADDENDUM_V1",
+  "created_at":"2026-10-29",
+  "status":"FROZEN_PROPOSED_REGISTRATION_NO_ACQUISITION",
+  "inputs":[
+    {"path":"configs/target_text_corpus_v1_sanitized_text_source_review_reconciliation_v1.json","sha256":"f59a824ccb4b7bbec6f2bf28b2d9ab2d3b5d1d55f15e603bde8e802f6e73960f"},
+    {"path":"registry/sources.json","sha256":"37cb19e4b329b642a8a61f487e20d257b6f8e771a1f6bf60babb888d9d0b5609"}
+  ],
+  "proposed_source": {
+    "source_id":"nexvision_scamintel_2026",
+    "tier":"AUX",
+    "name":"NexVision ScamIntel Synthetic Research Corpus",
+    "url":"https://github.com/NexvisionLab/Automated-Investment-and-Recruitment-Fraud-Detection-Engine",
+    "source_type":"synthetic_dataset",
+    "default_evidence_level":"SYNTHETIC_ONLY",
+    "raw_label_semantics":"deterministically generated synthetic investment and recruitment scam scenarios plus synthetic legitimate and ambiguity controls; not observed incidents",
+    "allowed_uses":["pipeline_regression","taxonomy_prototype","controlled_augmentation_research"],
+    "gold_eligible":false
+  },
+  "license_contract": {
+    "license":"PolyForm-Noncommercial-1.0.0",
+    "commercial_use_allowed":false,
+    "academic_noncommercial_assessment_only":true,
+    "attribution_and_notice_retention_required":true,
+    "license_text_must_be_retained_before_acquisition":true
+  },
+  "role_limits": {
+    "fresh_v1_core_credit":0,
+    "gold_ground_truth_allowed":false,
+    "external_validation_allowed":false,
+    "independent_benchmark_allowed":false,
+    "real_world_prevalence_claims_allowed":false,
+    "replacement_for_real_world_data_allowed":false,
+    "training_allowed_by_this_addendum":false
+  },
+  "required_before_activation": [
+    "pin an immutable repository commit or signed release identifier",
+    "retain and hash DATA_LICENSE.md, dataset card, release manifest and checksums",
+    "enumerate exact inert JSONL files without downloading them",
+    "verify real, translated, synthetic and reviewed partitions remain distinct",
+    "define a no-code-execution acquisition path for data files only",
+    "freeze malware and file-type gates with abandon-on-detection",
+    "freeze a separate acquisition release and independent QA",
+    "freeze an auxiliary-only experiment protocol before any model operation"
+  ],
+  "security_contract": {
+    "allowed_file_types":["UTF8_JSONL","UTF8_JSON","UTF8_CSV","UTF8_TXT"],
+    "repository_clone_allowed":false,
+    "code_execution_allowed":false,
+    "html_or_javascript_intake_allowed":false,
+    "archive_intake_allowed":false,
+    "malware_or_pua_policy":"ABANDON_BATCH_NO_RESTORE_NO_WHITELIST",
+    "candidate_live_domain_access_allowed":false
+  },
+  "decision": {
+    "proposed_registration_frozen":true,
+    "source_registry_mutation_allowed":false,
+    "metadata_evidence_release_may_be_prepared":true,
+    "dataset_acquisition_release_may_be_prepared":false,
+    "source_download_allowed":false,
+    "labeling_allowed":false,
+    "training_allowed":false
+  }
+}

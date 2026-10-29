@@ -1,0 +1,11 @@
+{
+  "protocol_id":"ISI_TARGET_TEXT_CORPUS_V1_SANITIZED_TEXT_ONLY_INTAKE_PROTOCOL_V1",
+  "created_at":"2026-10-29",
+  "status":"FROZEN_OFFLINE_PROTOCOL_NO_ACQUISITION_AUTHORIZED",
+  "scope":{"allowed_source_artifact_types":["UTF8_TXT","UTF8_CSV","UTF8_JSON","UTF8_JSONL"],"forbidden_types":["HTML","MHTML","SVG","JAVASCRIPT","EXECUTABLE","MACRO_ENABLED_OFFICE","ARCHIVE_WITH_ACTIVE_CONTENT"],"candidate_live_domain_access_allowed":false,"link_following_allowed":false,"document_rendering_allowed":false},
+  "pre_parse_gates":["source identity/version/URL/date/license-or-terms manifest complete","cryptographic hash recorded before parsing","endpoint security scan returns clean","file type and MIME agree with allowlist","parser runs with no network and no code execution"],
+  "sanitization":["decode strict UTF-8 or reject","remove NUL and disallowed control characters while recording counts","normalize Unicode to NFC while retaining original hash","treat URLs/emails as inert strings and never resolve them","escape spreadsheet-formula prefixes on any reviewer export","bound record and field sizes","reject embedded binary payloads or markup requiring rendering"],
+  "provenance_and_labeling":["preserve source row identifier and immutable source hash","keep evidence source separate from content artifact","never map registry membership, warning presence, malware detection or absence to a label","require primary review, blind second review and reconciliation for real-world labels","keep external holdout identities disjoint and sealed"],
+  "failure_policy":{"malware_or_pua_detection":"ABANDON_BATCH_NO_RESTORE_NO_WHITELIST","type_mismatch":"REJECT_BATCH","terms_unknown":"BLOCK_INTAKE","insufficient_evidence":"UNCERTAIN","duplicate_or_leakage":"QUARANTINE_GROUP"},
+  "decision":{"protocol_prepared":true,"acquisition_authorized":false,"admission_authorized":false,"validation_or_test_opening_allowed":false,"training_allowed":false}
+}

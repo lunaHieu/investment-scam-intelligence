@@ -1,0 +1,27 @@
+{
+  "inventory_id": "ISI_TARGET_TEXT_CORPUS_V1_SANITIZED_TEXT_ONLY_INVENTORY_V1",
+  "created_at": "2026-10-29",
+  "status": "FROZEN_OFFLINE_INVENTORY_NO_NEW_ADMISSION",
+  "inputs": [
+    {"path":"registry/sources.json","sha256":"37cb19e4b329b642a8a61f487e20d257b6f8e771a1f6bf60babb888d9d0b5609"},
+    {"path":"registry/manifests/mendeley_investment_deceptive_2026__v2__2026-09-07.json","sha256":"2991888803d52f6d65686af3d760abdeb4219b1d63b238f1d4dcccf979c001a9"},
+    {"path":"registry/analyses/data_sufficiency_audit_v2.json","sha256":"dd6ddce5d0f8ff9325c3f59ade8d7d599563e0df13fbc6eabec43d59c410cc84"},
+    {"path":"registry/analyses/iosco_warning_reference_index_v1.json","sha256":"b9e9426c49ee85f8a7a39e54a5dd408c0da29a1a190e7c245ad061818ba74a8a"},
+    {"path":"registry/analyses/text_baseline_v2_external_readiness_v1.json","sha256":"2a8347576cc64ff93a20425a78a0a4bff2de65b38df908914f38b7d43baf8b0a"},
+    {"path":"registry/analyses/target_text_corpus_v1_raw_html_branch_abandonment_v1.json","sha256":"edad580c6be714f7f8bbf5dd2f94cb9ef9809c6196c6fcd7aa3056123af9ec20"}
+  ],
+  "inventory": [
+    {"source_id":"mendeley_investment_deceptive_2026","artifact":"published CSV","raw_rows":16202,"safe_text_present":true,"license":"CC BY 4.0","current_role":"HISTORICAL_BASELINE_ONLY","authorized_train_rows":3916,"sealed_validation_rows":838,"sealed_test_rows":838,"v1_core_credit":0,"reason":"labels are harmonized deceptive/suspicious behavior, not verified per-record scam ground truth; historical cohort is not fresh"},
+    {"source_id":"iosco_i_scan","artifact":"visible portal CSV export","raw_rows":47001,"safe_text_present":false,"current_role":"REFERENCE_METADATA_ONLY","authorized_train_rows":0,"v1_core_credit":0,"reason":"warning/entity metadata is evidence, not solicitation text or a conviction label"},
+    {"source_id":"crimson_www_2025","artifact":"pinned JSON domain inventory","raw_rows":43572,"safe_text_present":false,"current_role":"UNLABELED_DISCOVERY_METADATA_ONLY","authorized_train_rows":0,"v1_core_credit":0,"reason":"zero observed text rows; research-detected domains are not legal findings"},
+    {"source_id":"sec_iapd","artifact":"reference metadata and abandoned raw-HTML derivatives","raw_rows":null,"safe_text_present":false,"current_role":"REFERENCE_METADATA_ONLY_RAW_HTML_ABANDONED","authorized_train_rows":0,"v1_core_credit":0,"reason":"registration is not a content label and all raw-HTML derivatives are permanently abandoned"},
+    {"source_id":"external_wayback_text_artifacts","artifact":"historical visible-text pilots and benchmarks","raw_rows":null,"safe_text_present":false,"current_role":"ABANDONED_WITH_RAW_HTML_BRANCH","authorized_train_rows":0,"v1_core_credit":0,"reason":"derived from the abandoned raw-HTML route"},
+    {"source_id":"dfpi_crypto_scam_tracker","artifact":null,"raw_rows":0,"safe_text_present":false,"current_role":"NOT_ACQUIRED_TEXT_ONLY_CANDIDATE","authorized_train_rows":0,"v1_core_credit":0,"reason":"potential complaint/case narratives require source terms, export method, sanitization and evidence review"},
+    {"source_id":"ubcknn_warnings","artifact":null,"raw_rows":0,"safe_text_present":false,"current_role":"NOT_ACQUIRED_TEXT_ONLY_CANDIDATE","authorized_train_rows":0,"v1_core_credit":0,"reason":"Vietnamese official warnings need text-only lawful acquisition and human evidence review"},
+    {"source_id":"fca_warning_list","artifact":null,"raw_rows":0,"safe_text_present":false,"current_role":"NOT_ACQUIRED_TEXT_ONLY_CANDIDATE","authorized_train_rows":0,"v1_core_credit":0,"reason":"warning list requires text-only acquisition and cannot directly imply content labels"},
+    {"source_id":"multi_agent_fraud_bench","artifact":null,"raw_rows":0,"safe_text_present":false,"current_role":"SYNTHETIC_EXCLUDED_FROM_GROUND_TRUTH","authorized_train_rows":0,"v1_core_credit":0,"reason":"synthetic scenarios cannot enter Gold or the fresh real-world corpus"}
+  ],
+  "totals": {"safe_text_raw_rows_present":16202,"authorized_historical_train_rows":3916,"fresh_v1_core_admitted_groups":0,"new_training_rows_authorized":0},
+  "priority": ["Define a sanitizer/provenance gate for non-HTML text files.","Assess DFPI for a lawful text-only export or documented public dataset.","Assess UBCKNN text/PDF extraction without retaining active HTML.","Assess FCA/IOSCO narrative fields only as evidence-linked candidates, never direct labels."],
+  "decision": {"inventory_complete":true,"new_acquisition_authorized":false,"network_execution_allowed":false,"validation_or_test_opening_allowed":false,"training_allowed":false}
+}

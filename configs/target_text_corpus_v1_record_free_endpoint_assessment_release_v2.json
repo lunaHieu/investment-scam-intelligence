@@ -1,0 +1,17 @@
+{
+  "release_id":"ISI_TARGET_TEXT_CORPUS_V1_RECORD_FREE_ENDPOINT_ASSESSMENT_RELEASE_V2",
+  "created_at":"2026-10-29",
+  "not_before":"2026-10-29T00:00:00+07:00",
+  "status":"FROZEN_V2_HEAD_ONLY_INCREMENTAL_JOURNAL_RELEASE",
+  "inputs":[
+    {"path":"configs/target_text_corpus_v1_record_free_endpoint_assessment_release_v1.json","sha256":"23ef87a078014ff1305141e3f5c6e2bee54217b248ce5b20afb2a1a7477732d8"},
+    {"path":"registry/analyses/target_text_corpus_v1_record_free_endpoint_assessment_execution_incident_v1.json","sha256":"c07f6fe3ce4208fd0d8bc482d833b662429a1e46be55345c88c8bea976d3e64a"},
+    {"path":"registry/analyses/target_text_corpus_v1_record_free_endpoint_assessment_result_v1.json.partial","sha256":"e1c20236996778d49602f68b9c7124c3cc7ffe59d3aac2658489786e1a9e4611"}
+  ],
+  "endpoints_source":"configs/target_text_corpus_v1_record_free_endpoint_assessment_release_v1.json",
+  "endpoint_ids":["RFE01","RFE02","RFE03","RFE04","RFE05","RFE06","RFE07","RFE08"],
+  "execution_contract":{"exact_head_requests":8,"minimum_seconds_between_requests":2,"follow_redirects":false,"response_body_read_allowed":false,"response_body_retention_allowed":false,"incremental_journal_after_each_request":true,"atomic_journal_replacement":true,"result_assembly_smoke_test_required":true,"get_requests_allowed":false,"dataset_landing_or_viewer_pages_allowed":false,"dataset_download_allowed":false,"repository_clone_allowed":false,"candidate_live_domain_access_allowed":false,"no_overwrite":true,"auto_resume_allowed":false},
+  "planned_output":"registry/analyses/target_text_corpus_v1_record_free_endpoint_assessment_result_v2.json",
+  "planned_partial":"registry/analyses/target_text_corpus_v1_record_free_endpoint_assessment_result_v2.json.partial",
+  "decision":{"v1_partial_must_remain_unchanged":true,"v2_execution_allowed_after_independent_qa":true,"content_get_release_allowed":false,"dataset_acquisition_allowed":false,"training_allowed":false}
+}

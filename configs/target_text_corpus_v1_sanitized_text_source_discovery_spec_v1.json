@@ -1,0 +1,66 @@
+{
+  "specification_id": "ISI_TARGET_TEXT_CORPUS_V1_SANITIZED_TEXT_SOURCE_DISCOVERY_SPEC_V1",
+  "created_at": "2026-10-29",
+  "status": "FROZEN_OFFLINE_SPECIFICATION_NO_NETWORK_AUTHORIZED",
+  "purpose": "Define a bounded, auditable search for lawful datasets containing observed investment-related text after DFPI, UBCKNN and FCA were confirmed to be evidence-only channels.",
+  "inputs": [
+    {"path":"registry/analyses/target_text_corpus_v1_sanitized_text_source_assessment_v1.json","sha256":"cad2418972735038a072f52961baa55c826e835e3931196e8923e94fb1bd924d"},
+    {"path":"registry/analyses/target_text_corpus_v1_sanitized_text_only_intake_protocol_v1.json","sha256":"da4ab1284592fd7a977ced9ab62437b1c31701acd1d597a38fe1f6a17cdcae75"},
+    {"path":"registry/sources.json","sha256":"37cb19e4b329b642a8a61f487e20d257b6f8e771a1f6bf60babb888d9d0b5609"},
+    {"path":"docs/project-direction-plan-r17.md","sha256":"ccc8db609000b57b4c1b1ca996bb7413fde7657ff4cf7c4e0a429d714562aefa"}
+  ],
+  "target_roles": [
+    {"role":"CONFIRMED_CANDIDATE_TEXT","required_content":"observed investment-related post, message or website copy","required_evidence":"independent official or primary evidence distinct from the text artifact"},
+    {"role":"LEGITIMATE_CANDIDATE_TEXT","required_content":"observed communication or website copy from a bounded legitimate entity","required_evidence":"official identity plus contradiction and impersonation review distinct from the text artifact"}
+  ],
+  "search_strata": [
+    "English investment-scam posts or messages with primary provenance",
+    "English legitimate investment communications with official provenance",
+    "Vietnamese investment-scam posts or messages with primary provenance",
+    "Vietnamese legitimate investment communications with official provenance",
+    "multilingual investment-fraud research datasets with record-level source identifiers"
+  ],
+  "candidate_eligibility": {
+    "required": [
+      "publisher or repository identity is explicit",
+      "license, terms or academic-use basis is available before download",
+      "distribution includes UTF-8 TXT, CSV, JSON or JSONL without active content",
+      "records contain observed content rather than only entity or warning metadata",
+      "record-level provenance and stable identifiers are present",
+      "labels can be audited independently of the text and are not malware-derived",
+      "group or campaign identifiers can be created before splitting"
+    ],
+    "reject": [
+      "HTML-only or executable distribution",
+      "synthetic-only corpus proposed as real-world ground truth",
+      "warning-list or registry prose without a distinct observed artifact",
+      "license or reuse basis unavailable",
+      "candidate live-domain access required",
+      "dataset overlaps Mendeley V2 but lacks stable deduplication identifiers",
+      "validation or test content would need to be opened during discovery"
+    ]
+  },
+  "future_network_release_limits": {
+    "maximum_search_queries": 12,
+    "maximum_shortlisted_sources": 20,
+    "allowed_pages": ["search result metadata","official dataset landing page","publisher documentation","license or terms page","paper abstract or dataset card"],
+    "forbidden_actions": ["download source bytes","open candidate live domains","render or retain raw HTML","follow dataset-contained links","create labels","train or score a model"],
+    "required_output_fields": ["candidate_id","publisher","landing_url","format_claim","license_or_terms_url","observed_text_claim","provenance_claim","language_claim","role_claim","risks","disposition","evidence_urls"]
+  },
+  "promotion_gate": [
+    "independent second review of every shortlisted source",
+    "explicit source registration addendum",
+    "separate hash-bound acquisition release",
+    "endpoint security scan and file-type verification before parsing",
+    "zero credit to fresh V1-Core until review, reconciliation and owner acceptance"
+  ],
+  "decision": {
+    "offline_specification_complete": true,
+    "bounded_discovery_release_may_be_prepared": true,
+    "network_execution_allowed_by_this_specification": false,
+    "source_download_allowed": false,
+    "candidate_live_domain_access_allowed": false,
+    "labeling_allowed": false,
+    "training_allowed": false
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "packet_id": "ISI_TARGET_TEXT_CORPUS_V1_SANITIZED_TEXT_SOURCE_BLIND_SECOND_REVIEW_PACKET_V1",
+  "created_at": "2026-10-29",
+  "status": "FROZEN_BLIND_REVIEW_PACKET_PRIMARY_DECISIONS_OMITTED",
+  "purpose": "Obtain an independent source-level review of six discovery candidates without exposing primary dispositions.",
+  "blindness_contract": {
+    "primary_dispositions_included": false,
+    "primary_risks_included": false,
+    "primary_ranking_included": false,
+    "reviewer_must_not_open": [
+      "registry/analyses/target_text_corpus_v1_sanitized_text_source_discovery_result_v1.json",
+      "docs/target-text-corpus-v1-sanitized-text-source-discovery-result-v1.md",
+      "docs/project-direction-plan-r20.md"
+    ]
+  },
+  "review_contract": {
+    "allowed": ["read this packet","open only listed evidence URLs","read dataset cards, documentation, terms and papers","record source-level findings"],
+    "forbidden": ["download dataset files","open candidate live domains","follow links contained inside dataset records","retain raw HTML","create record labels","train or score a model"],
+    "verdicts": ["ADVANCE_TO_RECONCILIATION","HOLD_FOR_MISSING_EVIDENCE","REJECT_SOURCE"],
+    "required_checks": ["format_safety","license_or_terms","observed_text_status","record_provenance","label_independence","investment_scope","legitimate_comparator","leakage_groupability","privacy_and_ethics"]
+  },
+  "candidates": [
+    {"candidate_id":"DISC_V1_001","publisher":"Shouninger / Hugging Face","landing_url":"https://huggingface.co/datasets/Shouninger/ScamBench","claims":["CSV files exist for scam and non-scam investment messages","dataset card reports victim-reported scam incidents and legitimate counterparts","license shown as CC BY-NC 4.0","file access requires accepting repository conditions"],"evidence_urls":["https://huggingface.co/datasets/Shouninger/ScamBench"]},
+    {"candidate_id":"DISC_V1_002","publisher":"Vietnamese SMS Dataset research team / Hugging Face","landing_url":"https://huggingface.co/datasets/trannguyenthaituan/vietnamese_sms_dataset","claims":["full_dataset.csv contains 2,991 Vietnamese messages","dataset card says messages are real, consented and PII-normalized","binary labels are legitimate versus spam/scam","license shown as CC BY 4.0"],"evidence_urls":["https://huggingface.co/datasets/trannguyenthaituan/vietnamese_sms_dataset"]},
+    {"candidate_id":"DISC_V1_003","publisher":"Sting9 Research Initiative","landing_url":"https://sting9.org/dataset","claims":["anonymized email, SMS and messaging-app submissions include body text","submission UUID and message metadata are documented","landing page states CC0","bulk option is a PostgreSQL dump and an API is documented"],"evidence_urls":["https://sting9.org/dataset"]},
+    {"candidate_id":"DISC_V1_004","publisher":"PhishVN authors / Zenodo","landing_url":"https://zenodo.org/records/23634300","claims":["dataset card reports 1,919 Vietnamese page-visible-text records","207 phishing and 1,712 benign page records are described","message corpus is synthetic and separable","capture identifiers and evidence tiers are described"],"evidence_urls":["https://zenodo.org/records/23634300","https://doi.org/10.1016/j.dib.2026.113195"]},
+    {"candidate_id":"DISC_V1_005","publisher":"NexVision Lab","landing_url":"https://github.com/NexvisionLab/Automated-Investment-and-Recruitment-Fraud-Detection-Engine","claims":["repository describes multilingual investment and recruitment scam messages","real, translated, synthetic and reviewed partitions are stated as distinct","project is PolyForm Noncommercial 1.0.0","dataset size, partition counts and upstream evidence require confirmation"],"evidence_urls":["https://github.com/NexvisionLab/Automated-Investment-and-Recruitment-Fraud-Detection-Engine","https://github.com/NexvisionLab/Automated-Investment-and-Recruitment-Fraud-Detection-Engine/blob/main/DATA_LICENSE.md"]},
+    {"candidate_id":"DISC_V1_006","publisher":"When the Fed Speaks","landing_url":"https://www.whenthefedspeaks.com/about","claims":["free citable corpus includes metadata and full text","compiled data is CC BY 4.0","underlying Federal Reserve material is described as public domain","content consists of official Federal Reserve communications"],"evidence_urls":["https://www.whenthefedspeaks.com/about","https://doi.org/10.5281/zenodo.21429749"]}
+  ],
+  "response_contract": {
+    "planned_output": "registry/analyses/target_text_corpus_v1_sanitized_text_source_blind_second_review_response_v1.json",
+    "one_row_per_candidate": true,
+    "preserve_candidate_order": true,
+    "required_fields": ["candidate_id","checks","verdict","rationale","evidence_urls_reviewed","residual_unknowns"],
+    "no_overwrite": true
+  },
+  "decision": {"blind_review_packet_ready":true,"acquisition_allowed":false,"candidate_live_domain_access_allowed":false,"labeling_allowed":false,"training_allowed":false}
+}

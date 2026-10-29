@@ -4,9 +4,9 @@ This file is the stable entry point for the project's current operational state.
 Historical reports and registries remain immutable and can therefore contain
 superseded next-step descriptions.
 
-- Project direction and progress plan: [`docs/project-direction-plan-r31.md`](docs/project-direction-plan-r31.md), incorporating unchanged R2-R30 content
-- Reproducibility guide: [`docs/reproducibility-current-state-v65.md`](docs/reproducibility-current-state-v65.md)
-- Current gap ledger: [`registry/analyses/project_state_gap_ledger_v68.json`](registry/analyses/project_state_gap_ledger_v68.json)
+- Project direction and progress plan: [`docs/project-direction-plan-r32.md`](docs/project-direction-plan-r32.md), incorporating unchanged R2-R31 content
+- Reproducibility guide: [`docs/reproducibility-current-state-v66.md`](docs/reproducibility-current-state-v66.md)
+- Current gap ledger: [`registry/analyses/project_state_gap_ledger_v69.json`](registry/analyses/project_state_gap_ledger_v69.json)
 - Current repository quality gate: [`docs/current-test-suite-lifecycle-v7.md`](docs/current-test-suite-lifecycle-v7.md)
 - Crimson primary-review readiness: [`registry/analyses/crimson_primary_review_readiness_v1.json`](registry/analyses/crimson_primary_review_readiness_v1.json)
 - Immutable B5 continuation result: [`registry/analyses/target_text_corpus_v1_ready_channel_wayback_availability_continuation_result_v1.json`](registry/analyses/target_text_corpus_v1_ready_channel_wayback_availability_continuation_result_v1.json)
@@ -39,6 +39,7 @@ superseded next-step descriptions.
 - Record-free endpoint assessment release: [`registry/analyses/target_text_corpus_v1_record_free_endpoint_assessment_release_v1.json`](registry/analyses/target_text_corpus_v1_record_free_endpoint_assessment_release_v1.json)
 - Record-free endpoint V1 incident: [`registry/analyses/target_text_corpus_v1_record_free_endpoint_assessment_execution_incident_v1.json`](registry/analyses/target_text_corpus_v1_record_free_endpoint_assessment_execution_incident_v1.json)
 - Record-free endpoint assessment V2 release: [`registry/analyses/target_text_corpus_v1_record_free_endpoint_assessment_release_v2.json`](registry/analyses/target_text_corpus_v1_record_free_endpoint_assessment_release_v2.json)
+- Verified record-free endpoint V2 result: [`registry/analyses/target_text_corpus_v1_record_free_endpoint_assessment_result_v2.json`](registry/analyses/target_text_corpus_v1_record_free_endpoint_assessment_result_v2.json)
 - Python dependency contract: [`docs/python-dependency-contract-v1.md`](docs/python-dependency-contract-v1.md)
 - Repository quality audit: [`docs/repository-quality-audit-v1.md`](docs/repository-quality-audit-v1.md)
 
@@ -66,7 +67,8 @@ Lane A V1 is consumed after a fail-closed automatic record-preview exposure;
 no record was retained or used and no evidence state changed. Next is a safer
 record-free endpoint assessment. V1 failed during local result assembly and its
 partial is preserved; V2 is frozen with incremental journaling for one HEAD-only
-execution. Acquisition remains closed.
+execution. V2 completed 8/8 HEAD requests with zero body reads; next is a
+parser-bound content release, while GET and acquisition remain closed.
 The referenced artifacts, hashes, cohort identities and
 no-overwrite rules are authoritative. The current repository suite uses the
 verified V7 bounded lifecycle-aware runner. The direction plan is a tracking guide, not a

@@ -1,0 +1,69 @@
+{
+  "release_id":"ISI_TARGET_TEXT_CORPUS_V1_PUBLIC_METADATA_GAP_RESOLUTION_RELEASE_V1",
+  "created_at":"2026-10-29",
+  "not_before":"2026-10-29T00:00:00+07:00",
+  "status":"FROZEN_LANE_A_PUBLIC_METADATA_RELEASE",
+  "inputs":[
+    {"path":"configs/target_text_corpus_v1_metadata_evidence_gap_resolution_plan_v1.json","sha256":"63eebdc0a40711cf058be3dfbc41fa0d3d20866aba04b26fbea67b0d26027651"},
+    {"path":"registry/analyses/target_text_corpus_v1_metadata_evidence_gap_resolution_plan_v1.json","sha256":"79b21880f0916a4ae0c165ffcb44ebd78813300072129bd7e45e0914b6f0adff"},
+    {"path":"registry/analyses/target_text_corpus_v1_metadata_evidence_result_qa_v1.json","sha256":"65dadb336eee2aa21771881154f9141c4c227ea8e73d21ab1996f310117c239b"}
+  ],
+  "tasks":[
+    {
+      "task_id":"A01","targets":["NX01"],
+      "pages":["https://api.github.com/repos/NexvisionLab/Automated-Investment-and-Recruitment-Fraud-Detection-Engine/commits/main"],
+      "allowed_content":"official commit metadata only"
+    },
+    {
+      "task_id":"A02","targets":["NX02","NX05","NX06","NX07"],
+      "pages":[
+        "https://github.com/NexvisionLab/Automated-Investment-and-Recruitment-Fraud-Detection-Engine/blob/main/metadata/release_manifest.json",
+        "https://github.com/NexvisionLab/Automated-Investment-and-Recruitment-Fraud-Detection-Engine/blob/main/metadata/checksums.json"
+      ],
+      "allowed_content":"official manifest and checksum metadata documents only"
+    },
+    {
+      "task_id":"A03","targets":["SB02","SB04","SB05","SB06"],
+      "pages":["https://aclanthology.org/2026.findings-emnlp.404.pdf"],
+      "allowed_content":"peer-reviewed paper text only; no dataset appendix records"
+    },
+    {
+      "task_id":"A04","targets":["VS02","VS03","VS04","VS05","VS06"],
+      "pages":[
+        "https://huggingface.co/datasets/trannguyenthaituan/vietnamese_sms_dataset/blob/main/QUICKSTART_GUIDE.md",
+        "https://huggingface.co/datasets/trannguyenthaituan/vietnamese_sms_dataset/commits/main",
+        "https://huggingface.co/datasets/trannguyenthaituan/vietnamese_sms_phishing_sample"
+      ],
+      "metadata_query":{"query_id":"PMQ01","query":"\"Vietnamese SMS Dataset with Quality Assurance\" 2026 IEEE Access"},
+      "allowed_content":"official markdown documentation, revision metadata, sample dataset card and paper landing metadata only"
+    }
+  ],
+  "execution_contract":{
+    "maximum_search_queries":1,
+    "maximum_non_pdf_page_reads":8,
+    "maximum_pdf_pages_inspected":24,
+    "maximum_total_read_operations":32,
+    "allowed_authorities":["api.github.com","github.com","aclanthology.org","huggingface.co","ieeexplore.ieee.org","doi.org"],
+    "exact_pages_only_except_pmq01_primary_result":true,
+    "identical_prior_query_or_page_retry_allowed":false,
+    "manifest_and_checksum_text_may_be_read":true,
+    "paper_text_may_be_read":true,
+    "dataset_download_allowed":false,
+    "repository_clone_allowed":false,
+    "dataset_record_open_allowed":false,
+    "csv_or_jsonl_open_allowed":false,
+    "raw_html_retention_allowed":false,
+    "candidate_live_domain_access_allowed":false,
+    "gated_condition_acceptance_allowed":false,
+    "author_contact_allowed":false,
+    "code_execution_allowed":false,
+    "labeling_allowed":false,
+    "validation_or_test_open_allowed":false,
+    "model_operations_allowed":false,
+    "no_overwrite":true,
+    "malware_or_pua_policy":"ABANDON_ARTIFACT_OR_BATCH_NO_RESTORE_NO_WHITELIST",
+    "unresolved_policy":"RETAIN_UNRESOLVED_NO_INFERENCE"
+  },
+  "planned_output":"registry/analyses/target_text_corpus_v1_public_metadata_gap_resolution_result_v1.json",
+  "decision":{"release_frozen":true,"execution_allowed_after_independent_qa":true,"lane_b_allowed":false,"lane_c_allowed":false,"dataset_acquisition_allowed":false,"training_allowed":false}
+}

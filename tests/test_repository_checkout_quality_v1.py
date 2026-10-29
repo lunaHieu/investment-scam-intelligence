@@ -31,9 +31,9 @@ class RepositoryCheckoutQualityV1Tests(unittest.TestCase):
     def test_current_state_pointer_targets_existing_artifacts(self) -> None:
         pointer = (ROOT / "CURRENT_STATE.md").read_text(encoding="utf-8")
         required = (
-            "docs/project-direction-plan-r27.md",
-            "docs/reproducibility-current-state-v61.md",
-            "registry/analyses/project_state_gap_ledger_v64.json",
+            "docs/project-direction-plan-r28.md",
+            "docs/reproducibility-current-state-v62.md",
+            "registry/analyses/project_state_gap_ledger_v65.json",
             "docs/current-test-suite-lifecycle-v7.md",
             "registry/analyses/crimson_primary_review_readiness_v1.json",
             "registry/analyses/target_text_corpus_v1_ready_channel_wayback_availability_continuation_result_v1.json",
@@ -47,6 +47,7 @@ class RepositoryCheckoutQualityV1Tests(unittest.TestCase):
             "registry/analyses/target_text_corpus_v1_metadata_evidence_release_v1.json",
             "registry/analyses/target_text_corpus_v1_metadata_evidence_result_v1.json",
             "registry/analyses/target_text_corpus_v1_metadata_evidence_gap_resolution_plan_v1.json",
+            "registry/analyses/target_text_corpus_v1_public_metadata_gap_resolution_release_v1.json",
         )
         for relative in required:
             self.assertIn(relative, pointer)

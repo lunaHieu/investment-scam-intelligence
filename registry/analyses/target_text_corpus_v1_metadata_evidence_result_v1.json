@@ -1,0 +1,94 @@
+{
+  "analysis_id":"ISI_TARGET_TEXT_CORPUS_V1_METADATA_EVIDENCE_RESULT_V1",
+  "created_at":"2026-10-29",
+  "status":"IMMUTABLE_BOUNDED_METADATA_EVIDENCE_RESULT_REQUIRES_INDEPENDENT_QA",
+  "inputs":[
+    {"role":"release","path":"configs/target_text_corpus_v1_metadata_evidence_release_v1.json","sha256":"38d5137d1ee9035a06489749c100feb9025ee263d70b33244ad6a7c743be7d79"},
+    {"role":"release_qa","path":"registry/analyses/target_text_corpus_v1_metadata_evidence_release_qa_v1.json","sha256":"38563a588c87a9d1c7c5cbf513cbf9e880f22b8558dcc7664f234a6b96db0ccd"}
+  ],
+  "execution":{
+    "query_ids_executed":["MEQ01","MEQ02","MEQ03","MEQ04","MEQ05","MEQ06"],
+    "search_queries_executed":6,
+    "page_reads_attempted":18,
+    "page_reads_succeeded":16,
+    "page_read_errors":2,
+    "followed_document_links":{"NEXVISION_METADATA":2,"SCAMBENCH_METADATA":1,"VIETNAMESE_SMS_METADATA":0},
+    "source_files_downloaded":0,
+    "repositories_cloned":0,
+    "raw_dataset_files_opened":0,
+    "raw_html_files_retained":0,
+    "candidate_live_domain_access_operations":0,
+    "author_contacts":0,
+    "labels_created":0,
+    "validation_or_test_rows_opened":0,
+    "model_operations":0,
+    "output_overwritten":false
+  },
+  "branches":[
+    {
+      "branch_id":"NEXVISION_METADATA",
+      "candidate_id":"DISC_V1_005",
+      "source_state_before":"PROPOSED_INACTIVE_SYNTHETIC_AUXILIARY",
+      "evidence_sources":[
+        {"url":"https://github.com/NexvisionLab/Automated-Investment-and-Recruitment-Fraud-Detection-Engine","publisher":"NexVision Lab / GitHub","retrieved_at":"2026-10-29","scope":"repository landing page, README and file-tree metadata"},
+        {"url":"https://github.com/NexvisionLab/Automated-Investment-and-Recruitment-Fraud-Detection-Engine/blob/main/DATA_LICENSE.md","publisher":"NexVision Lab / GitHub","retrieved_at":"2026-10-29","scope":"dataset licence notice"},
+        {"url":"https://github.com/NexvisionLab/Automated-Investment-and-Recruitment-Fraud-Detection-Engine/blob/main/DATASET_CARD.md","publisher":"NexVision Lab / GitHub","retrieved_at":"2026-10-29","scope":"dataset construction, labels, splitting and limitations"}
+      ],
+      "evidence_items":[
+        {"evidence_id":"NX01","status":"UNRESOLVED","finding":"The public pages showed main and a 30-commit history, but the bounded renderer did not expose a complete immutable commit hash or signed release identifier.","supporting_urls":["https://github.com/NexvisionLab/Automated-Investment-and-Recruitment-Fraud-Detection-Engine"],"inference_from_absence":false},
+        {"evidence_id":"NX02","status":"PARTIAL","finding":"Official documentation enumerates inert sample and metadata paths including samples/taxonomy_sample_320.jsonl, its CSV form, samples/curated_eval_512.jsonl, metadata/dataset_stats.json, metadata/checksums.json and metadata/release_manifest.json. The canonical 64,000-row data/records.jsonl is generated locally and is not committed, so an exact acquirable inert-file allowlist is not yet established.","supporting_urls":["https://github.com/NexvisionLab/Automated-Investment-and-Recruitment-Fraud-Detection-Engine"],"inference_from_absence":false},
+        {"evidence_id":"NX03","status":"RESOLVED","finding":"DATA_LICENSE.md states PolyForm Noncommercial 1.0.0 for permitted non-commercial research, education, testing and evaluation and requires separate written authorization for commercial use, paid services, commercial redistribution, production deployment, model-as-a-service, hosted services or commercial products.","supporting_urls":["https://github.com/NexvisionLab/Automated-Investment-and-Recruitment-Fraud-Detection-Engine/blob/main/DATA_LICENSE.md"],"inference_from_absence":false},
+        {"evidence_id":"NX04","status":"RESOLVED","finding":"An official dataset card documents intended and out-of-scope uses, deterministic synthetic construction, labels, campaign/variant-family splitting, limitations and required independent real-world validation.","supporting_urls":["https://github.com/NexvisionLab/Automated-Investment-and-Recruitment-Fraud-Detection-Engine/blob/main/DATASET_CARD.md"],"inference_from_absence":false},
+        {"evidence_id":"NX05","status":"PARTIAL","finding":"README documents metadata/checksums.json and metadata/release_manifest.json and states the release manifest contains SHA-256 inventory for distributed files. Their actual contents and coverage were not opened by this metadata-only release.","supporting_urls":["https://github.com/NexvisionLab/Automated-Investment-and-Recruitment-Fraud-Detection-Engine"],"inference_from_absence":false},
+        {"evidence_id":"NX06","status":"PARTIAL","finding":"The dataset card says version 1.2.0 is entirely synthetic, distinguishes review_status, confines campaign and variant families to one split and requires future real samples to remain in separate licence/provenance partitions. The exact translated/reviewed partition manifest was not inspected.","supporting_urls":["https://github.com/NexvisionLab/Automated-Investment-and-Recruitment-Fraud-Detection-Engine/blob/main/DATASET_CARD.md"],"inference_from_absence":false},
+        {"evidence_id":"NX07","status":"PARTIAL","finding":"Individual inert sample and metadata paths are publicly enumerated, allowing a later data-file-only design in principle, but the canonical corpus is generated locally and no hash-pinned no-code acquisition allowlist has yet been frozen.","supporting_urls":["https://github.com/NexvisionLab/Automated-Investment-and-Recruitment-Fraud-Detection-Engine"],"inference_from_absence":false}
+      ],
+      "state_after":"PROPOSED_INACTIVE_SYNTHETIC_AUXILIARY_METADATA_PARTIAL",
+      "acquisition_ready":false
+    },
+    {
+      "branch_id":"SCAMBENCH_METADATA",
+      "candidate_id":"DISC_V1_001",
+      "source_state_before":"HOLD_GATED_TERMS_PROVENANCE_PRIVACY_AND_GROUPING",
+      "evidence_sources":[
+        {"url":"https://huggingface.co/datasets/Shouninger/ScamBench","publisher":"ScamBench authors / Hugging Face","retrieved_at":"2026-10-29","scope":"gated dataset card, schema, ethics and license"},
+        {"url":"https://huggingface.co/datasets/Shouninger/ScamBench/tree/main","publisher":"ScamBench authors / Hugging Face","retrieved_at":"2026-10-29","scope":"gated repository file-tree metadata"},
+        {"url":"https://aclanthology.org/2026.findings-emnlp.404/","publisher":"Association for Computational Linguistics","retrieved_at":"2026-10-29","scope":"peer-reviewed paper landing page and abstract"}
+      ],
+      "evidence_items":[
+        {"evidence_id":"SB01","status":"PARTIAL","finding":"The public page identifies CC BY-NC 4.0 and requires users to share Hugging Face information and accept conditions before file access, but the unauthenticated public view does not expose the complete gated conditions.","supporting_urls":["https://huggingface.co/datasets/Shouninger/ScamBench","https://huggingface.co/datasets/Shouninger/ScamBench/tree/main"],"inference_from_absence":false},
+        {"evidence_id":"SB02","status":"PARTIAL","finding":"The ACL paper establishes 1,836 victim-reported scam messages and 1,834 legitimate examples and a human-AI annotation pipeline. The inspected public metadata does not establish detailed upstream source identities or record-level linkage.","supporting_urls":["https://aclanthology.org/2026.findings-emnlp.404/"],"inference_from_absence":false},
+        {"evidence_id":"SB03","status":"UNRESOLVED","finding":"The public schema documents message, loss, location, report date, business name, annotation and category fields, but the bounded evidence does not establish a stable incident, source, report, campaign or family identifier for leakage-safe grouping.","supporting_urls":["https://huggingface.co/datasets/Shouninger/ScamBench"],"inference_from_absence":false},
+        {"evidence_id":"SB04","status":"PARTIAL","finding":"The card says scam records derive from public scam reports and that location may be anonymized or missing. A complete PII-removal, consent/public-report basis and privacy-review procedure was not established by the inspected metadata.","supporting_urls":["https://huggingface.co/datasets/Shouninger/ScamBench"],"inference_from_absence":false},
+        {"evidence_id":"SB05","status":"PARTIAL","finding":"The peer-reviewed abstract documents a human-AI collaborative pipeline using expert-labeled examples to calibrate and validate LLM-assisted annotation, but the bounded evidence does not fully establish independent adjudication or label-evidence independence for every record.","supporting_urls":["https://aclanthology.org/2026.findings-emnlp.404/"],"inference_from_absence":false},
+        {"evidence_id":"SB06","status":"PARTIAL","finding":"Each scam CSV row documents both description and rewrite_description, providing direct original-to-rewrite linkage. No stable group identifier or explicit all-variants-in-one-split rule was established.","supporting_urls":["https://huggingface.co/datasets/Shouninger/ScamBench"],"inference_from_absence":false},
+        {"evidence_id":"SB07","status":"PARTIAL","finding":"The gated tree exposes Scam and Non-scam directories plus README and LICENSE sizes, and the card lists category CSV names and a 10.2 MB total. Per-file sizes and cryptographic checksums were not established.","supporting_urls":["https://huggingface.co/datasets/Shouninger/ScamBench/tree/main","https://huggingface.co/datasets/Shouninger/ScamBench"],"inference_from_absence":false}
+      ],
+      "state_after":"HOLD_GATED_TERMS_PROVENANCE_PRIVACY_AND_GROUPING_METADATA_PARTIAL",
+      "acquisition_ready":false
+    },
+    {
+      "branch_id":"VIETNAMESE_SMS_METADATA",
+      "candidate_id":"DISC_V1_002",
+      "source_state_before":"HOLD_INVESTMENT_SCOPE_AND_GROUPING",
+      "evidence_sources":[
+        {"url":"https://huggingface.co/datasets/trannguyenthaituan/vietnamese_sms_dataset","publisher":"Vietnamese SMS Dataset research team / Hugging Face","retrieved_at":"2026-10-29","scope":"official dataset card, schema, ethics, license and split counts"},
+        {"url":"https://huggingface.co/datasets/trannguyenthaituan/vietnamese_sms_dataset/tree/main","publisher":"Vietnamese SMS Dataset research team / Hugging Face","retrieved_at":"2026-10-29","scope":"official file-tree metadata, repository commit prefix and file sizes"}
+      ],
+      "evidence_items":[
+        {"evidence_id":"VS01","status":"UNRESOLVED","finding":"The official card defines only binary labels 0=legitimate and 1=spam/scam. The bounded public metadata does not establish a publisher-defined investment-scam subtype, category field or immutable investment subset.","supporting_urls":["https://huggingface.co/datasets/trannguyenthaituan/vietnamese_sms_dataset"],"inference_from_absence":false},
+        {"evidence_id":"VS02","status":"PARTIAL","finding":"The card names multiple team members who co-developed annotation guidelines and performed annotation and describes manual PII QA and Jaccard-based duplicate filtering. It does not publish the detailed annotation guide, independent adjudication outcomes or inter-annotator agreement in the inspected metadata.","supporting_urls":["https://huggingface.co/datasets/trannguyenthaituan/vietnamese_sms_dataset"],"inference_from_absence":false},
+        {"evidence_id":"VS03","status":"PARTIAL","finding":"The card states messages came from multiple legitimate sources with contributor consent and full_dataset.csv carries message_id and date, but no privacy-safe per-record contributor/source provenance field is documented.","supporting_urls":["https://huggingface.co/datasets/trannguyenthaituan/vietnamese_sms_dataset"],"inference_from_absence":false},
+        {"evidence_id":"VS04","status":"PARTIAL","finding":"A Jaccard similarity threshold of at least 0.85 is documented for near-duplicate removal, but no campaign, sender, template, contributor or duplicate-family grouping key is established.","supporting_urls":["https://huggingface.co/datasets/trannguyenthaituan/vietnamese_sms_dataset"],"inference_from_absence":false},
+        {"evidence_id":"VS05","status":"PARTIAL","finding":"The tree identifies test.csv as a 119 kB file and the card fixes its role and size at 597 rows; the repository tree shows verified commit prefix a90e2bd. A full immutable file hash for sealing was not established.","supporting_urls":["https://huggingface.co/datasets/trannguyenthaituan/vietnamese_sms_dataset/tree/main","https://huggingface.co/datasets/trannguyenthaituan/vietnamese_sms_dataset"],"inference_from_absence":false},
+        {"evidence_id":"VS06","status":"PARTIAL","finding":"The official tree identifies full_dataset.csv (778 kB), train.csv (602 kB) and test.csv (119 kB), while the card fixes their row counts at 2,991, 2,394 and 597. Cryptographic checksums were not established.","supporting_urls":["https://huggingface.co/datasets/trannguyenthaituan/vietnamese_sms_dataset/tree/main","https://huggingface.co/datasets/trannguyenthaituan/vietnamese_sms_dataset"],"inference_from_absence":false},
+        {"evidence_id":"VS07","status":"RESOLVED","finding":"The official card documents CC BY 4.0, IRB Exemption IRB-2026-NLP-0428, voluntary informed consent and replacement of PII with standardized placeholder tokens followed by manual residual-PII checks.","supporting_urls":["https://huggingface.co/datasets/trannguyenthaituan/vietnamese_sms_dataset"],"inference_from_absence":false}
+      ],
+      "state_after":"HOLD_INVESTMENT_SCOPE_AND_GROUPING_METADATA_PARTIAL",
+      "acquisition_ready":false
+    }
+  ],
+  "summary":{"branches":3,"evidence_items":21,"resolved":3,"partial":15,"unresolved":3,"real_world_acquisition_ready_sources":0,"synthetic_auxiliary_activation_ready_sources":0,"fresh_v1_core_credit":0,"new_training_rows_authorized":0},
+  "decision":{"metadata_execution_complete":true,"independent_result_qa_required":true,"any_acquisition_release_may_be_prepared":false,"author_contact_release_may_be_considered_separately":true,"dataset_download_allowed":false,"candidate_live_domain_access_allowed":false,"labeling_allowed":false,"validation_or_test_open_allowed":false,"training_allowed":false},
+  "safety_contract":{"network_operations":0,"metadata_search_queries":6,"metadata_page_read_attempts":18,"project_data_network_acquisition_operations":0,"source_files_acquired":0,"candidate_domain_access_operations":0,"labels_created":0,"model_operations":0,"training_allowed":false,"note":"network_operations counts project-data acquisition operations. Only bounded metadata search and permitted public documentation reads occurred; no external file bytes were persisted in the project data store."}
+}

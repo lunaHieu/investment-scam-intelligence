@@ -4,9 +4,9 @@ This file is the stable entry point for the project's current operational state.
 Historical reports and registries remain immutable and can therefore contain
 superseded next-step descriptions.
 
-- Project direction and progress plan: [`docs/project-direction-plan-r28.md`](docs/project-direction-plan-r28.md), incorporating unchanged R2-R27 content
-- Reproducibility guide: [`docs/reproducibility-current-state-v62.md`](docs/reproducibility-current-state-v62.md)
-- Current gap ledger: [`registry/analyses/project_state_gap_ledger_v65.json`](registry/analyses/project_state_gap_ledger_v65.json)
+- Project direction and progress plan: [`docs/project-direction-plan-r29.md`](docs/project-direction-plan-r29.md), incorporating unchanged R2-R28 content
+- Reproducibility guide: [`docs/reproducibility-current-state-v63.md`](docs/reproducibility-current-state-v63.md)
+- Current gap ledger: [`registry/analyses/project_state_gap_ledger_v66.json`](registry/analyses/project_state_gap_ledger_v66.json)
 - Current repository quality gate: [`docs/current-test-suite-lifecycle-v7.md`](docs/current-test-suite-lifecycle-v7.md)
 - Crimson primary-review readiness: [`registry/analyses/crimson_primary_review_readiness_v1.json`](registry/analyses/crimson_primary_review_readiness_v1.json)
 - Immutable B5 continuation result: [`registry/analyses/target_text_corpus_v1_ready_channel_wayback_availability_continuation_result_v1.json`](registry/analyses/target_text_corpus_v1_ready_channel_wayback_availability_continuation_result_v1.json)
@@ -35,6 +35,7 @@ superseded next-step descriptions.
 - Immutable metadata-evidence result: [`registry/analyses/target_text_corpus_v1_metadata_evidence_result_v1.json`](registry/analyses/target_text_corpus_v1_metadata_evidence_result_v1.json)
 - Metadata-evidence gap-resolution plan: [`registry/analyses/target_text_corpus_v1_metadata_evidence_gap_resolution_plan_v1.json`](registry/analyses/target_text_corpus_v1_metadata_evidence_gap_resolution_plan_v1.json)
 - Lane A public-metadata release: [`registry/analyses/target_text_corpus_v1_public_metadata_gap_resolution_release_v1.json`](registry/analyses/target_text_corpus_v1_public_metadata_gap_resolution_release_v1.json)
+- Fail-closed Lane A result: [`registry/analyses/target_text_corpus_v1_public_metadata_gap_resolution_result_v1.json`](registry/analyses/target_text_corpus_v1_public_metadata_gap_resolution_result_v1.json)
 - Python dependency contract: [`docs/python-dependency-contract-v1.md`](docs/python-dependency-contract-v1.md)
 - Repository quality audit: [`docs/repository-quality-audit-v1.md`](docs/repository-quality-audit-v1.md)
 
@@ -58,8 +59,9 @@ public Metadata Evidence Release V1 has executed and its result passed
 independent recomputation: 3/21 items resolved, 15 partial and 3 unresolved.
 No source is acquisition-ready. The gap-resolution plan is frozen with four
 public metadata tasks, one gated task and two publisher-clarification tasks.
-The Lane A release is frozen and verified for one finite execution; acquisition
-remains closed.
+Lane A V1 is consumed after a fail-closed automatic record-preview exposure;
+no record was retained or used and no evidence state changed. Next is a safer
+record-free endpoint assessment; acquisition remains closed.
 The referenced artifacts, hashes, cohort identities and
 no-overwrite rules are authoritative. The current repository suite uses the
 verified V7 bounded lifecycle-aware runner. The direction plan is a tracking guide, not a

@@ -1,0 +1,40 @@
+{
+  "analysis_id":"ISI_TARGET_TEXT_CORPUS_V1_PUBLIC_METADATA_GAP_RESOLUTION_RESULT_V1",
+  "created_at":"2026-10-29",
+  "status":"IMMUTABLE_FAIL_CLOSED_FORBIDDEN_DATASET_PREVIEW_EXPOSURE",
+  "inputs":[
+    {"role":"release","path":"configs/target_text_corpus_v1_public_metadata_gap_resolution_release_v1.json","sha256":"7d5cff0d73a5e2f1a3e34771c4df03a623cea5afdf98ae12ae867f8554aa3a91"},
+    {"role":"release_qa","path":"registry/analyses/target_text_corpus_v1_public_metadata_gap_resolution_release_qa_v1.json","sha256":"1c1529c5ce7fe24d911354bd1627620c9f47c7d76a03e7fa43c04dc896b71243"}
+  ],
+  "execution":{
+    "query_ids_executed":["PMQ01"],
+    "search_queries_executed":1,
+    "page_reads_attempted":7,
+    "page_reads_succeeded":1,
+    "page_read_errors":6,
+    "successful_page":"https://huggingface.co/datasets/trannguyenthaituan/vietnamese_sms_phishing_sample",
+    "automatic_dataset_record_preview_exposures":1,
+    "dataset_preview_used_as_evidence":false,
+    "source_files_downloaded":0,
+    "repositories_cloned":0,
+    "raw_html_files_retained":0,
+    "candidate_live_domain_access_operations":0,
+    "gated_conditions_accepted":0,
+    "author_contacts":0,
+    "labels_created":0,
+    "validation_or_test_rows_used":0,
+    "model_operations":0,
+    "output_overwritten":false,
+    "stop_reason":"The permitted sample dataset-card URL automatically rendered dataset-record previews. This violated the release's dataset_record_open_allowed=false contract, so the execution stopped fail-closed and no displayed records were used as evidence."
+  },
+  "task_results":[
+    {"task_id":"A01","status":"NO_VALID_NEW_EVIDENCE_TOOL_ACCESS_ERROR","targets":["NX01"],"retry_same_page_allowed":false},
+    {"task_id":"A02","status":"NO_VALID_NEW_EVIDENCE_TOOL_CACHE_ERRORS","targets":["NX02","NX05","NX06","NX07"],"retry_same_page_allowed":false},
+    {"task_id":"A03","status":"NO_VALID_NEW_EVIDENCE_TOOL_ACCESS_ERROR","targets":["SB02","SB04","SB05","SB06"],"retry_same_page_allowed":false},
+    {"task_id":"A04","status":"INVALIDATED_BY_FORBIDDEN_AUTOMATIC_RECORD_PREVIEW","targets":["VS02","VS03","VS04","VS05","VS06"],"retry_same_page_allowed":false}
+  ],
+  "evidence_state_changes":[],
+  "summary":{"tasks":4,"validly_advanced_tasks":0,"new_resolved_items":0,"new_partial_items":0,"record_preview_exposure_pages":1,"project_data_files_acquired":0,"new_training_rows_authorized":0},
+  "decision":{"release_consumed_never_rerun":true,"result_requires_independent_qa":true,"same_page_retry_allowed":false,"safer_metadata_endpoint_release_may_be_prepared":true,"lane_b_allowed":false,"lane_c_allowed":false,"dataset_acquisition_allowed":false,"labeling_allowed":false,"training_allowed":false},
+  "safety_contract":{"network_operations":0,"metadata_query_operations":1,"metadata_page_read_attempts":7,"project_data_network_acquisition_operations":0,"source_files_acquired":0,"candidate_domain_access_operations":0,"labels_created":0,"model_operations":0,"training_allowed":false,"note":"No file or page bytes were persisted in the project data store. One page automatically rendered record previews; execution was invalidated immediately and those records were not used as evidence."}
+}

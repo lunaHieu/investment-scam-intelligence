@@ -4,9 +4,9 @@ This file is the stable entry point for the project's current operational state.
 Historical reports and registries remain immutable and can therefore contain
 superseded next-step descriptions.
 
-- Project direction and progress plan: [`docs/project-direction-plan-r16.md`](docs/project-direction-plan-r16.md), incorporating unchanged R2-R15 content
-- Reproducibility guide: [`docs/reproducibility-current-state-v50.md`](docs/reproducibility-current-state-v50.md)
-- Current gap ledger: [`registry/analyses/project_state_gap_ledger_v53.json`](registry/analyses/project_state_gap_ledger_v53.json)
+- Project direction and progress plan: [`docs/project-direction-plan-r17.md`](docs/project-direction-plan-r17.md), incorporating unchanged R2-R16 content
+- Reproducibility guide: [`docs/reproducibility-current-state-v51.md`](docs/reproducibility-current-state-v51.md)
+- Current gap ledger: [`registry/analyses/project_state_gap_ledger_v54.json`](registry/analyses/project_state_gap_ledger_v54.json)
 - Current repository quality gate: [`docs/current-test-suite-lifecycle-v7.md`](docs/current-test-suite-lifecycle-v7.md)
 - Crimson primary-review readiness: [`registry/analyses/crimson_primary_review_readiness_v1.json`](registry/analyses/crimson_primary_review_readiness_v1.json)
 - Immutable B5 continuation result: [`registry/analyses/target_text_corpus_v1_ready_channel_wayback_availability_continuation_result_v1.json`](registry/analyses/target_text_corpus_v1_ready_channel_wayback_availability_continuation_result_v1.json)
@@ -23,6 +23,7 @@ superseded next-step descriptions.
 - Raw-HTML branch abandonment: [`registry/analyses/target_text_corpus_v1_raw_html_branch_abandonment_v1.json`](registry/analyses/target_text_corpus_v1_raw_html_branch_abandonment_v1.json)
 - Sanitized text-only inventory: [`registry/analyses/target_text_corpus_v1_sanitized_text_only_inventory_v1.json`](registry/analyses/target_text_corpus_v1_sanitized_text_only_inventory_v1.json)
 - Sanitized text-only intake protocol: [`registry/analyses/target_text_corpus_v1_sanitized_text_only_intake_protocol_v1.json`](registry/analyses/target_text_corpus_v1_sanitized_text_only_intake_protocol_v1.json)
+- Sanitized text-source assessment: [`registry/analyses/target_text_corpus_v1_sanitized_text_source_assessment_v1.json`](registry/analyses/target_text_corpus_v1_sanitized_text_source_assessment_v1.json)
 - Python dependency contract: [`docs/python-dependency-contract-v1.md`](docs/python-dependency-contract-v1.md)
 - Repository quality audit: [`docs/repository-quality-audit-v1.md`](docs/repository-quality-audit-v1.md)
 
@@ -34,8 +35,9 @@ quarantined. Exact-48 V2 then captured five rows and preserved one row-local
 HTTP 404 before stopping, leaving 42 never-attempted rows. No capture release is
 closed. After Defender quarantined a severe HTML Trojan, the owner permanently
 abandoned the complete raw-HTML branch. No restoration, whitelist, transfer or
-processing is authorized. The text-only inventory and offline intake protocol
-are complete; next is offline assessment of DFPI, UBCKNN and FCA source routes.
+processing is authorized. The text-only inventory, intake protocol and offline
+DFPI/UBCKNN/FCA assessment are complete. All three are evidence-only rather than
+fresh observed-text channels; next is an offline new-source discovery specification.
 The referenced artifacts, hashes, cohort identities and
 no-overwrite rules are authoritative. The current repository suite uses the
 verified V7 bounded lifecycle-aware runner. The direction plan is a tracking guide, not a

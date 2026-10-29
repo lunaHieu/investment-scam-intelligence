@@ -1,0 +1,71 @@
+{
+  "assessment_id": "ISI_TARGET_TEXT_CORPUS_V1_SANITIZED_TEXT_SOURCE_ASSESSMENT_V1",
+  "created_at": "2026-10-29",
+  "status": "FROZEN_OFFLINE_ASSESSMENT_ZERO_FRESH_TEXT_CHANNELS_READY",
+  "purpose": "Determine whether DFPI, UBCKNN or FCA can supply fresh observed investment-artifact text under the sanitized text-only protocol without network access.",
+  "inputs": [
+    {"path":"registry/sources.json","sha256":"37cb19e4b329b642a8a61f487e20d257b6f8e771a1f6bf60babb888d9d0b5609"},
+    {"path":"registry/source_readiness.md","sha256":"05d062ebd77cd00605e643504fead3a35f6cda5a1b4135621a3e795cbbfeaa52"},
+    {"path":"registry/pilots/dfpi_sec_curated_intake_template.json","sha256":"36addcded8b17987cedcd5c6c38a31c5a755ac37ae905db69478206381f09e5a"},
+    {"path":"registry/pilots/ubcknn_warning_seed_2026-09-08.json","sha256":"f6673a2c427c9ebacc94a2a28af06dd277c453ab85bfff535e2f7ca7986050fa"},
+    {"path":"registry/analyses/manual_source_owner_checklist_v1.json","sha256":"a3162d679a6a911d1ed2442e36dd05cc6ee2ec54a15187f504ea339c3d934ef6"},
+    {"path":"configs/target_text_corpus_v1_source_capacity_amendment_protocol_v1.json","sha256":"6ae98618cbd7c67084c072d88bf9ad820e7cd5370ab52cc85f0feb46cb516aed"},
+    {"path":"configs/target_text_corpus_v1_sanitized_text_only_intake_protocol_v1.json","sha256":"d74155723add4b6d5cae7abcee781a36a7f54b4e9ad478b2634fada34ea91f6a"},
+    {"path":"docs/target-text-corpus-v1-channel-terms-review.md","sha256":"c0ad8e2566228d344018821b2d1664d3e58f843134a368c297288506f6d5668a"}
+  ],
+  "source_assessments": [
+    {
+      "source_id": "dfpi_crypto_scam_tracker",
+      "local_source_artifacts": 0,
+      "observed_artifact_text_records": 0,
+      "permitted_role": "CASE_SEED_AND_EVIDENCE_LINKING_ONLY",
+      "binding_limit": "Complaint narratives are unverified reports and are not authorized as model input.",
+      "safe_future_intake": "User-supplied first-party TXT/CSV/JSON/JSONL or explicit official export may enter evidence QA only.",
+      "status": "CONDITIONAL_EVIDENCE_ONLY_NOT_FRESH_TRAIN_TEXT"
+    },
+    {
+      "source_id": "ubcknn_warnings",
+      "local_warning_documents": 5,
+      "observed_artifact_text_records": 0,
+      "current_case_status": "5_UNCERTAIN",
+      "permitted_role": "VIETNAMESE_CASE_CURATION_AND_ENTITY_VERIFICATION_ONLY",
+      "binding_limit": "An official warning page is evidence and is not the separate solicitation artifact to be predicted.",
+      "safe_future_intake": "An official text export with a retained reuse basis may enter evidence QA only.",
+      "status": "EVIDENCE_ONLY_NOT_FRESH_TRAIN_TEXT"
+    },
+    {
+      "source_id": "fca_warning_list",
+      "local_sanitized_source_artifacts": 0,
+      "observed_artifact_text_records": 0,
+      "permitted_role": "ENTITY_VERIFICATION_AND_URL_CROSS_CHECK_ONLY",
+      "binding_limit": "Warning-list membership or warning narrative cannot substitute for observed solicitation content or create a content label.",
+      "safe_future_intake": "A first-party text export may enter evidence QA only; abandoned archived HTML derivatives remain excluded.",
+      "status": "EVIDENCE_ONLY_NOT_FRESH_TRAIN_TEXT"
+    }
+  ],
+  "findings": {
+    "sources_assessed": 3,
+    "sources_ready_for_network_acquisition": 0,
+    "sources_ready_for_fresh_model_text": 0,
+    "new_training_rows_authorized": 0,
+    "fresh_v1_core_admitted_groups": 0,
+    "root_cause": "The three prioritized sources provide regulator or complaint evidence, not a distinct observed POST, MESSAGE or WEBSITE_SNAPSHOT artifact in an allowed inert text format."
+  },
+  "next_source_requirements": [
+    "first-party or explicitly redistributable TXT/CSV/JSON/JSONL",
+    "contains observed investment-related post, message or website-copy text rather than registry prose alone",
+    "has record-level provenance and stable source identifiers",
+    "supports evidence review without visiting candidate live domains",
+    "keeps confirmed and legitimate evidence independent from the text artifact",
+    "can be grouped for leakage control before any split"
+  ],
+  "decision": {
+    "offline_assessment_complete": true,
+    "dfpi_ubcknn_fca_acquisition_release_may_be_prepared": false,
+    "new_sanitized_text_source_discovery_required": true,
+    "network_execution_allowed": false,
+    "candidate_live_domain_access_allowed": false,
+    "labeling_allowed": false,
+    "training_allowed": false
+  }
+}

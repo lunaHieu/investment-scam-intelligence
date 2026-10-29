@@ -1,0 +1,61 @@
+{
+  "audit_id": "ISI_TARGET_TEXT_CORPUS_V1_PARSER_BOUND_EXECUTION_READINESS_AUDIT_LOCAL_V1",
+  "created_at": "2026-10-29",
+  "status": "PASS_STACK_INTEGRITY_VERIFIED_EXECUTION_REMAINS_CLOSED",
+  "scope": "PRE_COMMIT_SNAPSHOT_WITH_POST_COMMIT_RECOMPUTATION_SUPPORTED",
+  "git": {
+    "pre_commit_head": "8183a7eaf05e8e0aed944fa900937e923ce3a9ea",
+    "pre_commit_origin_main": "8183a7eaf05e8e0aed944fa900937e923ce3a9ea",
+    "supported_git_sync_states": ["HEAD_EQUALS_ORIGIN_MAIN", "HEAD_EXACTLY_ONE_COMMIT_AHEAD"],
+    "tracked_change_count": 0
+  },
+  "recomputation": {
+    "qa_hashes_verified_after_report_registration": 22,
+    "managed_files": 23,
+    "supported_repository_states": ["PRE_COMMIT_LOCAL", "COMMITTED_TRACKED"],
+    "planned_outputs_absent": true,
+    "release_inputs_verified": true,
+    "local_file_set_exact": true
+  },
+  "authorities": [
+    "aclanthology.org",
+    "api.github.com",
+    "huggingface.co",
+    "raw.githubusercontent.com"
+  ],
+  "network_surface": {
+    "urllib_request_imports": [
+      "scripts/http_transport_target_text_corpus_v1_parser_bound_content_v1.py"
+    ],
+    "build_opener_calls": [
+      "scripts/http_transport_target_text_corpus_v1_parser_bound_content_v1.py"
+    ],
+    "forbidden_clients": [],
+    "capability_gate_required": true,
+    "execution_preflight_required": true
+  },
+  "pdf_runtime": {
+    "bundle_version": "26.1025.11240",
+    "pypdf": "6.10.0",
+    "pdfplumber": "0.11.9",
+    "pdftoppm_exists": true,
+    "pdfinfo_exists": true,
+    "visual_review_status": "PENDING_REQUIRED"
+  },
+  "decision": {
+    "ready_for_commit_review": true,
+    "commit_authorized_by_owner_on_2026_10_30": true,
+    "push_authorized_by_owner_on_2026_10_30": true,
+    "execution_allowed": false,
+    "commit_allowed_by_audit": false,
+    "push_allowed_by_audit": false,
+    "dataset_acquisition_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {
+    "network_operations_performed_by_audit": 0,
+    "candidate_domain_access_operations": 0,
+    "labels_created": 0,
+    "model_operations": 0
+  }
+}

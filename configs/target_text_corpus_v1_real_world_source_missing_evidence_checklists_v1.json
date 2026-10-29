@@ -1,0 +1,54 @@
+{
+  "checklist_id":"ISI_TARGET_TEXT_CORPUS_V1_REAL_WORLD_SOURCE_MISSING_EVIDENCE_CHECKLISTS_V1",
+  "created_at":"2026-10-29",
+  "status":"FROZEN_CHECKLISTS_ZERO_ACQUISITION_AUTHORIZED",
+  "inputs":[
+    {"path":"configs/target_text_corpus_v1_sanitized_text_source_review_reconciliation_v1.json","sha256":"f59a824ccb4b7bbec6f2bf28b2d9ab2d3b5d1d55f15e603bde8e802f6e73960f"},
+    {"path":"registry/analyses/target_text_corpus_v1_sanitized_text_source_blind_second_review_response_v1.json","sha256":"2c3f083ecae7a45a764abd733ac670741fc76dec4db788f12c417f788903686b"}
+  ],
+  "evidence_intake_contract": {
+    "allowed_evidence":["official dataset card","publisher documentation","license or access-conditions text","peer-reviewed paper or author manuscript","publisher-provided manifest or checksum list","written publisher or author clarification","user-supplied screenshot or text export of gated access conditions"],
+    "forbidden_evidence":["downloaded dataset records","candidate live-domain content","raw HTML files","inferred labels from text inspection","malware or warning-list membership"],
+    "evidence_must_have":["source URL","retrieval or receipt date","issuer or publisher identity","immutable local hash when a file is retained","scope statement"],
+    "no_overwrite":true
+  },
+  "sources": [
+    {
+      "candidate_id":"DISC_V1_001",
+      "source_name":"ScamBench",
+      "landing_url":"https://huggingface.co/datasets/Shouninger/ScamBench",
+      "current_state":"HOLD_GATED_TERMS_PROVENANCE_PRIVACY_AND_GROUPING",
+      "requirements":[
+        {"evidence_id":"SB01","requirement":"Complete gated repository access conditions and confirmation that academic non-commercial local analysis is permitted.","blocking":true,"status":"MISSING"},
+        {"evidence_id":"SB02","requirement":"Dataset paper or methodology identifying upstream victim-report and legitimate-message sources.","blocking":true,"status":"MISSING"},
+        {"evidence_id":"SB03","requirement":"Record-level source, incident, report, campaign or family identifiers sufficient for leakage-safe grouping.","blocking":true,"status":"MISSING"},
+        {"evidence_id":"SB04","requirement":"PII removal, consent/public-report basis and privacy review procedure.","blocking":true,"status":"MISSING"},
+        {"evidence_id":"SB05","requirement":"Independent annotation/adjudication procedure and evidence that scam labels are not created solely from the message text.","blocking":true,"status":"MISSING"},
+        {"evidence_id":"SB06","requirement":"Explicit original-to-rewrite linkage and a rule keeping each original and all rewrites in one group.","blocking":true,"status":"PARTIALLY_DOCUMENTED"},
+        {"evidence_id":"SB07","requirement":"Publisher file manifest, exact CSV names, sizes and checksums before acquisition.","blocking":true,"status":"MISSING"}
+      ],
+      "resolution_rule":"All seven requirements must be independently verified before any acquisition release. Synthetic rewrites remain excluded from real-world ground truth.",
+      "fallback":"If record provenance or privacy/adjudication evidence cannot be obtained, reject for V1 rather than infer missing facts."
+    },
+    {
+      "candidate_id":"DISC_V1_002",
+      "source_name":"Vietnamese SMS Dataset",
+      "landing_url":"https://huggingface.co/datasets/trannguyenthaituan/vietnamese_sms_dataset",
+      "current_state":"HOLD_INVESTMENT_SCOPE_AND_GROUPING",
+      "requirements":[
+        {"evidence_id":"VS01","requirement":"Publisher-defined investment-scam subtype, category field or documented investment subset that can be selected without relabeling messages.","blocking":true,"status":"MISSING"},
+        {"evidence_id":"VS02","requirement":"Detailed annotation guide, adjudication independence and inter-annotator agreement or equivalent quality evidence.","blocking":true,"status":"MISSING"},
+        {"evidence_id":"VS03","requirement":"Per-record source or contributor provenance that can be retained without exposing personal data.","blocking":true,"status":"MISSING"},
+        {"evidence_id":"VS04","requirement":"Campaign, sender, template, contributor or near-duplicate family keys suitable for group-level splitting.","blocking":true,"status":"MISSING"},
+        {"evidence_id":"VS05","requirement":"Immutable identification of the publisher's 597-row official test so it can remain sealed and excluded from development.","blocking":true,"status":"PARTIALLY_DOCUMENTED"},
+        {"evidence_id":"VS06","requirement":"Publisher manifest and checksums for full_dataset.csv, train.csv and test.csv.","blocking":true,"status":"MISSING"},
+        {"evidence_id":"VS07","requirement":"Retained CC BY 4.0 license, consent/ethics statement and PII-normalization procedure.","blocking":true,"status":"DOCUMENTED_ON_DATASET_CARD_NEEDS_HASHED_RETENTION"}
+      ],
+      "resolution_rule":"Investment-specific admission requires VS01 plus independent verification of VS02-VS07. The official test must remain sealed.",
+      "fallback":"If VS01 does not exist, the source may only be reconsidered under a separate general Vietnamese scam auxiliary protocol with zero fresh V1-Core credit; do not create investment labels from keyword filtering."
+    }
+  ],
+  "planned_evidence_response":"registry/analyses/target_text_corpus_v1_real_world_source_missing_evidence_response_v1.json",
+  "summary":{"sources":2,"requirements":14,"fully_resolved":0,"acquisition_ready_sources":0,"fresh_v1_core_credit":0},
+  "decision":{"checklists_complete":true,"bounded_metadata_evidence_release_may_be_prepared":true,"author_contact_allowed_by_this_checklist":false,"dataset_download_allowed":false,"candidate_live_domain_access_allowed":false,"labeling_allowed":false,"training_allowed":false}
+}

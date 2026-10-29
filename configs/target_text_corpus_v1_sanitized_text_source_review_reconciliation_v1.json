@@ -1,0 +1,20 @@
+{
+  "reconciliation_id":"ISI_TARGET_TEXT_CORPUS_V1_SANITIZED_TEXT_SOURCE_REVIEW_RECONCILIATION_V1",
+  "created_at":"2026-10-29",
+  "status":"FROZEN_RECONCILIATION_ZERO_REAL_WORLD_ACQUISITION_READY",
+  "inputs":[
+    {"role":"primary_review","path":"registry/analyses/target_text_corpus_v1_sanitized_text_source_discovery_result_v1.json","sha256":"0a56db490af4cb90926cd24747645f27db2b76b82aa3723553c889f00b2b8fbd"},
+    {"role":"blind_packet","path":"configs/target_text_corpus_v1_sanitized_text_source_blind_second_review_packet_v1.json","sha256":"eaf48dc2e6a8ebf3755266eedc08f9be58668328d8e56fb6e849a2b2f08c93f8"},
+    {"role":"blind_response","path":"registry/analyses/target_text_corpus_v1_sanitized_text_source_blind_second_review_response_v1.json","sha256":"2c3f083ecae7a45a764abd733ac670741fc76dec4db788f12c417f788903686b"}
+  ],
+  "rows":[
+    {"candidate_id":"DISC_V1_001","primary_state":"SHORTLIST_PRIMARY","blind_verdict":"HOLD_FOR_MISSING_EVIDENCE","reconciled_state":"HOLD_GATED_TERMS_PROVENANCE_PRIVACY_AND_GROUPING","role":"REAL_WORLD_BOTH_CLASSES_CANDIDATE","fresh_v1_core_credit":0,"next_action":"Obtain complete gated conditions, record-level source/incident identifiers, privacy procedure and independent adjudication evidence before acquisition."},
+    {"candidate_id":"DISC_V1_002","primary_state":"SHORTLIST_PRIMARY_CONDITIONAL","blind_verdict":"HOLD_FOR_MISSING_EVIDENCE","reconciled_state":"HOLD_INVESTMENT_SCOPE_AND_GROUPING","role":"REAL_WORLD_VIETNAMESE_MESSAGE_CANDIDATE","fresh_v1_core_credit":0,"next_action":"Require a publisher-defined investment subset or an approved evidence-preserving filter that does not create new labels; retain official test sealed."},
+    {"candidate_id":"DISC_V1_003","primary_state":"SHORTLIST_CONDITIONAL","blind_verdict":"REJECT_SOURCE","reconciled_state":"REJECT_LICENSE_CONFLICT_NO_INVESTMENT_SCOPE_NO_COMPARATOR","role":"GENERAL_SCAM_MESSAGE_SOURCE","fresh_v1_core_credit":0,"next_action":"No acquisition or retry under V1."},
+    {"candidate_id":"DISC_V1_004","primary_state":"SHORTLIST_CONDITIONAL_VISIBLE_TEXT_ONLY","blind_verdict":"HOLD_FOR_MISSING_EVIDENCE","reconciled_state":"HOLD_LICENSE_AND_INVESTMENT_SCOPE","role":"VIETNAMESE_VISIBLE_WEB_TEXT_CANDIDATE","fresh_v1_core_credit":0,"next_action":"Require explicit dataset license, investment-specific publisher metadata and independent page-label methodology; raw HTML remains permanently excluded."},
+    {"candidate_id":"DISC_V1_005","primary_state":"SHORTLIST_SECONDARY_CONDITIONAL","blind_verdict":"ADVANCE_TO_RECONCILIATION","reconciled_state":"ADVANCE_SYNTHETIC_AUXILIARY_ASSESSMENT_ONLY","role":"SYNTHETIC_PIPELINE_AND_AUGMENTATION_CANDIDATE","fresh_v1_core_credit":0,"next_action":"Prepare a separate source-registration addendum and synthetic-only auxiliary protocol; never use as Gold, external validation or fresh V1-Core credit."},
+    {"candidate_id":"DISC_V1_006","primary_state":"SHORTLIST_REFERENCE_ONLY","blind_verdict":"HOLD_FOR_MISSING_EVIDENCE","reconciled_state":"HOLD_REFERENCE_ONLY_GENRE_AND_SCHEMA","role":"LEGITIMATE_FINANCIAL_REFERENCE","fresh_v1_core_credit":0,"next_action":"Require exact archive schema, duplicate-family keys and evidence that selected units match target message genre before any comparator proposal."}
+  ],
+  "summary":{"reviewed_sources":6,"real_world_acquisition_ready_sources":0,"synthetic_auxiliary_assessment_ready_sources":1,"held_sources":4,"rejected_sources":1,"fresh_v1_core_admitted_groups":0,"new_training_rows_authorized":0},
+  "decision":{"reconciliation_complete":true,"real_world_acquisition_release_may_be_prepared":false,"synthetic_auxiliary_registration_may_be_prepared":true,"candidate_live_domain_access_allowed":false,"labeling_allowed":false,"validation_or_test_opening_allowed":false,"training_allowed":false}
+}

@@ -1,0 +1,329 @@
+{
+  "reviews": [
+    {
+      "candidate_id": "DISC_V1_001",
+      "checks": {
+        "format_safety": {
+          "status": "PASS",
+          "finding": "The evidence page documents CSV files with message-text fields; no executable or raw-HTML payload is described. File access was not attempted."
+        },
+        "license_or_terms": {
+          "status": "PARTIAL",
+          "finding": "The page states CC BY-NC 4.0, but repository files require accepting conditions that are visible only after authentication, so the complete access terms were not reviewable."
+        },
+        "observed_text_status": {
+          "status": "PASS",
+          "finding": "Original scam descriptions are described as victim-reported real-world messages; reduced-cue rewrites are separately identified, and legitimate messages are stored separately."
+        },
+        "record_provenance": {
+          "status": "PARTIAL",
+          "finding": "The card says scam records come from publicly available victim reports and legitimate records from legitimate sources, but it does not expose source-level identifiers or a collection manifest."
+        },
+        "label_independence": {
+          "status": "PARTIAL",
+          "finding": "Scam and non-scam classes are separated by source folders and additional annotations are documented, but no independent adjudication protocol or inter-annotator evidence is shown."
+        },
+        "investment_scope": {
+          "status": "PASS",
+          "finding": "Separate Investment CSV files are documented for both scam and non-scam records."
+        },
+        "legitimate_comparator": {
+          "status": "PASS",
+          "finding": "The card reports 1,834 legitimate-source messages and an Investment non-scam file."
+        },
+        "leakage_groupability": {
+          "status": "PARTIAL",
+          "finding": "Original and rewritten scam text are explicitly distinct fields, which supports grouping, but no stable incident, source, campaign, or family identifier is documented."
+        },
+        "privacy_and_ethics": {
+          "status": "PARTIAL",
+          "finding": "The card cites public scam reports, research-only rewrites, and possible anonymization of location, but it does not document a systematic PII audit or consent basis for every source."
+        }
+      },
+      "verdict": "HOLD_FOR_MISSING_EVIDENCE",
+      "rationale": "The source is directly relevant and includes authentic-looking investment positives and legitimate comparators, but the gated repository conditions, record-level provenance, privacy controls, and leakage-group keys must be documented before reconciliation can approve acquisition.",
+      "evidence_urls_reviewed": [
+        "https://huggingface.co/datasets/Shouninger/ScamBench"
+      ],
+      "residual_unknowns": [
+        "Full gated-access conditions",
+        "Source and incident identifiers for grouping",
+        "PII-redaction and consent procedures",
+        "Independent label-adjudication evidence"
+      ]
+    },
+    {
+      "candidate_id": "DISC_V1_002",
+      "checks": {
+        "format_safety": {
+          "status": "PASS",
+          "finding": "The evidence page documents CSV files with message, label, date, and message_id fields and standardized PII placeholders."
+        },
+        "license_or_terms": {
+          "status": "PASS",
+          "finding": "The dataset card states Creative Commons Attribution 4.0 International."
+        },
+        "observed_text_status": {
+          "status": "PASS",
+          "finding": "The card states that all messages are real-world Vietnamese SMS, not AI-generated and not translated."
+        },
+        "record_provenance": {
+          "status": "PARTIAL",
+          "finding": "The card says messages came from multiple legitimate sources and voluntary contributors with consent, but per-record source provenance is not documented on the evidence page."
+        },
+        "label_independence": {
+          "status": "PARTIAL",
+          "finding": "Human annotation roles and a labeling/verification reference set of malicious URLs are described, but detailed rules, agreement statistics, and independence from message artifacts are not shown."
+        },
+        "investment_scope": {
+          "status": "FAIL",
+          "finding": "The binary target merges spam and scam, and the evidence page does not identify an investment-scam subtype or an investment-specific subset."
+        },
+        "legitimate_comparator": {
+          "status": "PASS",
+          "finding": "Label 0 is explicitly legitimate SMS and the dataset includes authentic Vietnamese service and transaction notifications."
+        },
+        "leakage_groupability": {
+          "status": "PARTIAL",
+          "finding": "A message_id is present, the test set is described as leakage-minimized, and Jaccard duplicate removal at 0.85 is reported, but campaign, sender, template, and contributor group identifiers are not documented."
+        },
+        "privacy_and_ethics": {
+          "status": "PASS",
+          "finding": "The card states informed consent, an ethics review with IRB exemption, standardized PII replacement, and manual spot checks for residual PII."
+        }
+      },
+      "verdict": "HOLD_FOR_MISSING_EVIDENCE",
+      "rationale": "This is a well-documented Vietnamese SMS source with strong privacy evidence and legitimate comparators, but its positive class conflates spam and scam and no investment-specific subset or campaign-level grouping evidence is established.",
+      "evidence_urls_reviewed": [
+        "https://huggingface.co/datasets/trannguyenthaituan/vietnamese_sms_dataset"
+      ],
+      "residual_unknowns": [
+        "Whether investment-scam records can be isolated without creating new labels",
+        "Per-record collection-source provenance",
+        "Campaign, sender, template, and contributor grouping keys",
+        "Inter-annotator agreement and detailed adjudication protocol"
+      ]
+    },
+    {
+      "candidate_id": "DISC_V1_003",
+      "checks": {
+        "format_safety": {
+          "status": "PARTIAL",
+          "finding": "The schema describes PII-redacted body text, defanged URLs, and metadata-only attachments, but the only bulk option is a full PostgreSQL dump and sender domains are retained."
+        },
+        "license_or_terms": {
+          "status": "FAIL",
+          "finding": "The page body says CC0, while the footer says the dataset is released under ODC-BY-NC; this is a material unresolved license contradiction."
+        },
+        "observed_text_status": {
+          "status": "PASS",
+          "finding": "The schema represents submitted email, SMS, and messaging-app scam/phishing content with subject_text and body_text fields."
+        },
+        "record_provenance": {
+          "status": "PARTIAL",
+          "finding": "Submission UUIDs, message and submission timestamps, sender metadata, and manual-verification flags are documented, but upstream collection source, consent, and chain of custody are not."
+        },
+        "label_independence": {
+          "status": "FAIL",
+          "finding": "The schema mixes manually verified status with an ML confidence score, without documenting how attack_type and threat labels are adjudicated independently of model output."
+        },
+        "investment_scope": {
+          "status": "FAIL",
+          "finding": "The documented taxonomy covers phishing, smishing, BEC, romance scams, and similar threats, but no investment-scam category or isolatable investment subset is shown."
+        },
+        "legitimate_comparator": {
+          "status": "FAIL",
+          "finding": "The dataset is described as phishing, smishing, and scam submissions; no legitimate-message comparator corpus is documented."
+        },
+        "leakage_groupability": {
+          "status": "PARTIAL",
+          "finding": "Submission IDs, timestamps, sender domains, and hashes may support grouping, but no campaign or duplicate-family identifier and no split policy are documented."
+        },
+        "privacy_and_ethics": {
+          "status": "PARTIAL",
+          "finding": "Automated PII redaction, defanged URLs, and a non-reidentification guideline are stated, but sender domains remain and no consent, retention, or redaction-audit evidence is provided."
+        }
+      },
+      "verdict": "REJECT_SOURCE",
+      "rationale": "The source lacks a documented investment subset and legitimate comparator, has an unresolved CC0 versus ODC-BY-NC license conflict, and does not establish label independence or sufficiently auditable provenance.",
+      "evidence_urls_reviewed": [
+        "https://sting9.org/dataset"
+      ],
+      "residual_unknowns": [
+        "Controlling dataset license",
+        "Independent label-adjudication procedure",
+        "Submission consent and chain of custody",
+        "Campaign-level grouping keys"
+      ]
+    },
+    {
+      "candidate_id": "DISC_V1_004",
+      "checks": {
+        "format_safety": {
+          "status": "PASS",
+          "finding": "The dataset uses CSV and xz-compressed CSV; the page corpus contains visible text and derived features while raw HTML, scripts, and screenshots are expressly excluded."
+        },
+        "license_or_terms": {
+          "status": "FAIL",
+          "finding": "The Zenodo record's Rights section does not display a license, and the listed article DOI could not be retrieved through the review tool."
+        },
+        "observed_text_status": {
+          "status": "PASS",
+          "finding": "The record clearly separates a fully synthetic SMS/e-mail message corpus from crawled page-visible text and separately identifies LLM rewrites."
+        },
+        "record_provenance": {
+          "status": "PASS",
+          "finding": "Page records are described with capture identifiers and evidence tiers; synthetic source messages, rewrite variants, pilot/extension membership, and hashes are separately documented."
+        },
+        "label_independence": {
+          "status": "PARTIAL",
+          "finding": "Web-page labels have evidence tiers and capture identifiers, but the synthetic message classes were authored by one LLM and the evidence page does not establish independent adjudication for every page label."
+        },
+        "investment_scope": {
+          "status": "FAIL",
+          "finding": "The evidence describes general phishing lures and Vietnamese web pages, not an investment-scam category or investment-specific subset."
+        },
+        "legitimate_comparator": {
+          "status": "PASS",
+          "finding": "The record includes synthetic benign service notifications and 1,712 benign Vietnamese-content page records."
+        },
+        "leakage_groupability": {
+          "status": "PASS",
+          "finding": "Capture identifiers, evidence tiers, source-versus-rewrite relationships, rewrite variants, pilot/extension IDs, and file hashes provide explicit grouping and lineage signals."
+        },
+        "privacy_and_ethics": {
+          "status": "PASS",
+          "finding": "Version 1.1.0 masks e-mail addresses, phone numbers, and long digit runs in page text; synthetic links are inert placeholders, and raw HTML is excluded."
+        }
+      },
+      "verdict": "HOLD_FOR_MISSING_EVIDENCE",
+      "rationale": "The source has strong format safety, provenance, masking, and leakage controls, but no displayed license and no demonstrated investment-scam scope; the inaccessible article DOI leaves label methodology incompletely reviewed.",
+      "evidence_urls_reviewed": [
+        "https://zenodo.org/records/23634300",
+        "https://doi.org/10.1016/j.dib.2026.113195"
+      ],
+      "residual_unknowns": [
+        "Dataset license or binding reuse terms",
+        "Article-level label methodology because the DOI endpoint was not retrievable",
+        "Whether any page or scenario subset is specifically investment-related",
+        "Independent adjudication coverage for page labels"
+      ]
+    },
+    {
+      "candidate_id": "DISC_V1_005",
+      "checks": {
+        "format_safety": {
+          "status": "PASS",
+          "finding": "The documented corpus is deterministic JSONL with reserved .invalid and .example domains, no real credentials or PII, an offline generator, validation gates, and release hashes."
+        },
+        "license_or_terms": {
+          "status": "PASS",
+          "finding": "The repository and DATA_LICENSE.md consistently state PolyForm Noncommercial 1.0.0, define permitted non-commercial research uses, and list redistribution obligations and commercial restrictions."
+        },
+        "observed_text_status": {
+          "status": "PASS",
+          "finding": "The current 64,000-record corpus is explicitly synthetic and deterministic; external real datasets are named only in a manifest and are not redistributed."
+        },
+        "record_provenance": {
+          "status": "PASS",
+          "finding": "The generator, taxonomy, provenance fields, audit translations, release manifest, checksums, validation report, and external-source separation are documented."
+        },
+        "label_independence": {
+          "status": "PARTIAL",
+          "finding": "Labels, rationale fields, annotation guidance, and review templates are explicit, but labels arise from the deterministic generator/taxonomy rather than independent observation, and native-speaker review remains incomplete."
+        },
+        "investment_scope": {
+          "status": "PASS",
+          "finding": "The corpus expressly targets investment and recruitment fraud, balances the two top-level domains, and provides a 32-leaf scam taxonomy."
+        },
+        "legitimate_comparator": {
+          "status": "PASS",
+          "finding": "The composition includes 22,000 legitimate hard negatives plus awareness, negated, ambiguous, and out-of-distribution cases."
+        },
+        "leakage_groupability": {
+          "status": "PASS",
+          "finding": "variant_family_id, campaign grouping, deterministic split membership, and an explicit rule that families and campaigns remain in one split are documented."
+        },
+        "privacy_and_ethics": {
+          "status": "PASS",
+          "finding": "The corpus is synthetic, excludes personal data and operational scam infrastructure, uses reserved domains, distinguishes provenance partitions, and disclaims use as real-incident evidence."
+        }
+      },
+      "verdict": "ADVANCE_TO_RECONCILIATION",
+      "rationale": "This is the only reviewed candidate with directly documented investment scope, legitimate hard negatives, deterministic safe generation, explicit leakage groups, strong provenance, and consistent reuse terms. Reconciliation should preserve its synthetic-only status and noncommercial restrictions and should not treat it as independent real-world validation.",
+      "evidence_urls_reviewed": [
+        "https://github.com/NexvisionLab/Automated-Investment-and-Recruitment-Fraud-Detection-Engine",
+        "https://github.com/NexvisionLab/Automated-Investment-and-Recruitment-Fraud-Detection-Engine/blob/main/DATA_LICENSE.md"
+      ],
+      "residual_unknowns": [
+        "Extent and outcome of native-speaker review by language",
+        "Independent human validation of synthetic labels",
+        "Suitability beyond augmentation, regression testing, and pipeline development"
+      ]
+    },
+    {
+      "candidate_id": "DISC_V1_006",
+      "checks": {
+        "format_safety": {
+          "status": "PARTIAL",
+          "finding": "The page promises metadata plus full text, but the exact archive format, record boundaries, and executable-content exclusions are not documented on the listed evidence pages."
+        },
+        "license_or_terms": {
+          "status": "PASS",
+          "finding": "The about page states CC BY 4.0 for the compiled data and public-domain status for underlying U.S. federal-government material."
+        },
+        "observed_text_status": {
+          "status": "PASS",
+          "finding": "The corpus is described as authentic Federal Reserve communications, including OCR-derived text where only scanned PDFs were available."
+        },
+        "record_provenance": {
+          "status": "PASS",
+          "finding": "Named sources include federalreserve.gov, FRASER, and all twelve regional Reserve Bank public-affairs sites, with normalized speaker names and roles and a citable archive DOI."
+        },
+        "label_independence": {
+          "status": "NOT_APPLICABLE",
+          "finding": "No scam or fraud labels are claimed; the corpus would only be considered as a legitimate comparator source."
+        },
+        "investment_scope": {
+          "status": "PARTIAL",
+          "finding": "The material is finance- and monetary-policy-related but is not investment solicitation and contains no investment-scam examples."
+        },
+        "legitimate_comparator": {
+          "status": "PASS",
+          "finding": "Official Federal Reserve communications are a high-authority legitimate finance comparator, though their long-document genre differs from scam-message text."
+        },
+        "leakage_groupability": {
+          "status": "PARTIAL",
+          "finding": "The page states that metadata and normalized speaker identities are available, but it does not document document-family, event, duplicate, source-edition, or split-group keys."
+        },
+        "privacy_and_ethics": {
+          "status": "PASS",
+          "finding": "The content is official public Federal Reserve communication retrieved with permission and rate-limit compliance; no private-message collection is described."
+        }
+      },
+      "verdict": "HOLD_FOR_MISSING_EVIDENCE",
+      "rationale": "The source is credible and potentially valuable as a legitimate finance comparator, but its exact data format, grouping keys, and record granularity are not established, and the long-form official-document genre may create an easy negative shortcut rather than a matched investment-message comparator.",
+      "evidence_urls_reviewed": [
+        "https://www.whenthefedspeaks.com/about",
+        "https://doi.org/10.5281/zenodo.21429749"
+      ],
+      "residual_unknowns": [
+        "Exact archive format and record schema",
+        "Stable document-family and duplicate-group keys",
+        "Whether short message-like excerpts can be defined without new labeling",
+        "Zenodo record details because the DOI endpoint was not retrievable"
+      ]
+    }
+  ],
+  "safety_contract": {
+    "dataset_downloads": 0,
+    "candidate_domain_access_operations": 0,
+    "raw_html_files_retained": 0,
+    "labels_created": 0,
+    "model_operations": 0
+  },
+  "decision": {
+    "acquisition_allowed": false,
+    "training_allowed": false
+  }
+}

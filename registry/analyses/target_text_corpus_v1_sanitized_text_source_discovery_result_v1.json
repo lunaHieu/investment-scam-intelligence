@@ -1,0 +1,98 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_SANITIZED_TEXT_SOURCE_DISCOVERY_RESULT_V1",
+  "created_at": "2026-10-29",
+  "status": "PRELIMINARY_SHORTLIST_REQUIRES_INDEPENDENT_SECOND_REVIEW",
+  "inputs": [
+    {"role":"release","path":"configs/target_text_corpus_v1_sanitized_text_source_discovery_release_v1.json","sha256":"b7f5b275cd4efe9aecdc8c9ff69d0f1bb6e89a54b4abc059247c8c92d7aa6afc"},
+    {"role":"release_qa","path":"registry/analyses/target_text_corpus_v1_sanitized_text_source_discovery_release_qa_v1.json","sha256":"91c2d9c9ad9e34e6e7a29bcad0e69fe30948d76496847a6dc2683a0c10eaac0c"}
+  ],
+  "execution": {
+    "query_ids_executed": ["Q01","Q02","Q03","Q04","Q05","Q06","Q07","Q08","Q09","Q10","Q11","Q12"],
+    "search_queries_executed": 12,
+    "source_files_downloaded": 0,
+    "candidate_live_domain_access_operations": 0,
+    "raw_html_files_retained": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "output_overwritten": false
+  },
+  "candidates": [
+    {
+      "candidate_id":"DISC_V1_001","publisher":"Shouninger / Hugging Face","landing_url":"https://huggingface.co/datasets/Shouninger/ScamBench","format_claim":"CSV; separate Scam/Investment.csv and Non-scam/Investment.csv","license_or_terms_url":"https://huggingface.co/datasets/Shouninger/ScamBench","observed_text_claim":"1,836 victim-reported scam messages and 1,834 legitimate counterparts; investment files exist in both classes","provenance_claim":"Dataset card says scam messages derive from publicly available victim reports; exact record-level upstream linkage needs confirmation","language_claim":"English","role_claim":"BOTH_CONFIRMED_AND_LEGITIMATE_CANDIDATE_TEXT","risks":["gated access requires accepting conditions","rewritten research variants must be excluded","independent evidence and group identifiers require verification","CC BY-NC 4.0"],"disposition":"SHORTLIST_PRIMARY","evidence_urls":["https://huggingface.co/datasets/Shouninger/ScamBench"]
+    },
+    {
+      "candidate_id":"DISC_V1_002","publisher":"Vietnamese SMS Dataset research team / Hugging Face","landing_url":"https://huggingface.co/datasets/trannguyenthaituan/vietnamese_sms_dataset","format_claim":"CSV; full_dataset.csv has 2,991 rows","license_or_terms_url":"https://huggingface.co/datasets/trannguyenthaituan/vietnamese_sms_dataset","observed_text_claim":"Real Vietnamese SMS, binary legitimate versus spam/scam, PII replaced with placeholders","provenance_claim":"Dataset card states contributor consent and manual annotation; record-level source evidence and investment subset require audit","language_claim":"Vietnamese","role_claim":"VIETNAMESE_OBSERVED_MESSAGE_CANDIDATE","risks":["broad spam/scam labels are not investment-specific","597-row official test must remain sealed","50,000-URL signal used in label QA needs semantic review","investment subset size unknown"],"disposition":"SHORTLIST_PRIMARY_CONDITIONAL","evidence_urls":["https://huggingface.co/datasets/trannguyenthaituan/vietnamese_sms_dataset"]
+    },
+    {
+      "candidate_id":"DISC_V1_003","publisher":"Sting9 Research Initiative","landing_url":"https://sting9.org/dataset","format_claim":"PostgreSQL dump or REST API containing message body text and metadata","license_or_terms_url":"https://sting9.org/dataset","observed_text_claim":"Anonymized email, SMS and messaging-app submissions with body text","provenance_claim":"Submission UUID and message-type metadata are documented; submitter evidence and investment taxonomy need verification","language_claim":"Unspecified/multilingual","role_claim":"OBSERVED_SCAM_MESSAGE_CANDIDATE","risks":["SQL dump is outside current intake allowlist","investment-specific category not documented on landing page","benign comparator availability unclear"],"disposition":"SHORTLIST_CONDITIONAL","evidence_urls":["https://sting9.org/dataset"]
+    },
+    {
+      "candidate_id":"DISC_V1_004","publisher":"PhishVN authors / Zenodo","landing_url":"https://zenodo.org/records/23634300","format_claim":"Compressed CSV with 1,919 page-visible-text records plus simulated message files","license_or_terms_url":"https://zenodo.org/records/23634300","observed_text_claim":"207 phishing and 1,712 benign Vietnamese page texts; SMS/e-mail portion is entirely synthetic","provenance_claim":"Capture identifiers, evidence tiers and labels are described","language_claim":"Vietnamese","role_claim":"VIETNAMESE_WEB_TEXT_RESEARCH_CANDIDATE","risks":["raw-HTML branch remains abandoned","compressed container needs a separately approved safe extraction path","investment subset unknown","synthetic messages must be excluded","JavaScript feature columns must be excluded"],"disposition":"SHORTLIST_CONDITIONAL_VISIBLE_TEXT_ONLY","evidence_urls":["https://zenodo.org/records/23634300","https://doi.org/10.1016/j.dib.2026.113195"]
+    },
+    {
+      "candidate_id":"DISC_V1_005","publisher":"NexVision Lab","landing_url":"https://github.com/NexvisionLab/Automated-Investment-and-Recruitment-Fraud-Detection-Engine","format_claim":"Repository declares multilingual research dataset and distinct provenance partitions","license_or_terms_url":"https://github.com/NexvisionLab/Automated-Investment-and-Recruitment-Fraud-Detection-Engine/blob/main/DATA_LICENSE.md","observed_text_claim":"Investment, job, task and related scam messages; mixture of imported-real, translated, synthetic and reviewed material","provenance_claim":"Project explicitly requires separate provenance partitions","language_claim":"English, Singlish, Chinese, Malay/Indonesian, Tamil","role_claim":"MULTILINGUAL_INVESTMENT_MESSAGE_CANDIDATE","risks":["small development seed","mixed real/synthetic content","PolyForm Noncommercial restrictions","source partitions and row counts need independent audit"],"disposition":"SHORTLIST_SECONDARY_CONDITIONAL","evidence_urls":["https://github.com/NexvisionLab/Automated-Investment-and-Recruitment-Fraud-Detection-Engine"]
+    },
+    {
+      "candidate_id":"DISC_V1_006","publisher":"When the Fed Speaks","landing_url":"https://www.whenthefedspeaks.com/about","format_claim":"Free citable metadata plus full-text corpus","license_or_terms_url":"https://www.whenthefedspeaks.com/about","observed_text_claim":"Official Federal Reserve communications","provenance_claim":"Underlying federal material is public domain; compiled data is CC BY 4.0","language_claim":"English","role_claim":"LEGITIMATE_FINANCIAL_LANGUAGE_REFERENCE","risks":["policy speech is not an investment solicitation modality","may be unsuitable as a direct negative class","grouping by speaker/event/date required"],"disposition":"SHORTLIST_REFERENCE_ONLY","evidence_urls":["https://www.whenthefedspeaks.com/about","https://doi.org/10.5281/zenodo.21429749"]
+    },
+    {
+      "candidate_id":"DISC_V1_007","publisher":"UGM thesis repository","landing_url":"https://etd.repository.ugm.ac.id/penelitian/detail/225948","format_claim":"Paper reports 2,996 plus 210 Indonesian Telegram investment messages; dataset file not exposed","license_or_terms_url":"https://etd.repository.ugm.ac.id/penelitian/detail/225948","observed_text_claim":"Legal and illegal investment messages from Telegram","provenance_claim":"Academic thesis describes collection but public data provenance is unavailable","language_claim":"Indonesian","role_claim":"BOTH_CLASSES_RESEARCH_LEAD","risks":["no public dataset link","reuse terms unknown","platform-consent and record-level evidence unknown"],"disposition":"BLOCK_PENDING_AUTHOR_OR_REPOSITORY_DATA_RELEASE","evidence_urls":["https://etd.repository.ugm.ac.id/penelitian/detail/225948"]
+    },
+    {
+      "candidate_id":"DISC_V1_008","publisher":"University research team / Like, Comment, Get Scammed","landing_url":"https://like-comment-get-scammed.github.io/paper/youtube_scam_paper-23nov16.pdf","format_claim":"Paper describes 50 real scam conversations; public text dataset not established","license_or_terms_url":"https://like-comment-get-scammed.github.io/","observed_text_claim":"Direct conversations with scammers, including cryptocurrency investment scams","provenance_claim":"Controlled research interactions described in peer-reviewed paper","language_claim":"English","role_claim":"CONFIRMED_INVESTMENT_CONVERSATION_RESEARCH_LEAD","risks":["dataset availability and license unknown","PII and ethical-release constraints","no legitimate comparator","only a subset is investment-related"],"disposition":"BLOCK_PENDING_DATA_AND_ETHICS_STATEMENT","evidence_urls":["https://like-comment-get-scammed.github.io/paper/youtube_scam_paper-23nov16.pdf"]
+    },
+    {
+      "candidate_id":"DISC_V1_009","publisher":"Crypto social-media research authors","landing_url":"https://arxiv.org/abs/2001.10289","format_claim":"Paper reports more than 50M messages from Twitter, Telegram and Discord","license_or_terms_url":"https://arxiv.org/abs/2001.10289","observed_text_claim":"Crypto discussions including Ponzi and pump-and-dump channels and legitimate discussions","provenance_claim":"Academic collection methodology and channel-level topics are documented","language_claim":"Multilingual/unspecified","role_claim":"CRYPTO_MANIPULATION_RESEARCH_LEAD","risks":["dataset access and redistribution terms not confirmed","labels are channel/topic level rather than record-level scam evidence","platform terms and deletions may constrain reuse","extreme scale"],"disposition":"BLOCK_PENDING_DATA_CARD_AND_LICENSE","evidence_urls":["https://arxiv.org/abs/2001.10289"]
+    },
+    {
+      "candidate_id":"DISC_V1_010","publisher":"Coordinated crypto campaign research authors","landing_url":"https://arxiv.org/abs/2301.06601","format_claim":"15.8K bounty events, 185K participants, 10M forum comments and 82M URLs","license_or_terms_url":"https://arxiv.org/abs/2301.06601","observed_text_claim":"Crypto bounty and coordinated-hype forum content","provenance_claim":"BitcoinTalk-derived academic dataset with event and participant structure","language_claim":"English/multilingual unspecified","role_claim":"MANIPULATIVE_CAMPAIGN_RESEARCH_LEAD","risks":["not necessarily scam ground truth","dataset access/license not confirmed","large overlap and campaign grouping risk"],"disposition":"BLOCK_PENDING_DATA_CARD_AND_LABEL_SEMANTICS","evidence_urls":["https://arxiv.org/abs/2301.06601"]
+    },
+    {
+      "candidate_id":"DISC_V1_011","publisher":"ScamEncyclopedia","landing_url":"https://scamencyclopedia.org/data","format_claim":"CSV/JSON warning, taxonomy and pattern-example APIs","license_or_terms_url":"https://scamencyclopedia.org/data","observed_text_claim":"Mostly warning metadata, taxonomy and editorial pattern examples","provenance_claim":"Regulator rows preserve source URLs and licenses","language_claim":"English/multijurisdiction metadata","role_claim":"EVIDENCE_REFERENCE_ONLY","risks":["not a distinct observed solicitation corpus","message API license not clearly specified","warning membership cannot create labels"],"disposition":"REJECT_FOR_MODEL_TEXT_KEEP_AS_REFERENCE","evidence_urls":["https://scamencyclopedia.org/data"]
+    },
+    {
+      "candidate_id":"DISC_V1_012","publisher":"RockENZO","landing_url":"https://github.com/RockENZO/data","format_claim":"CSV plus provenance JSONL and manifest; 194,913 final rows","license_or_terms_url":"https://github.com/RockENZO/data","observed_text_claim":"Mixed email, SMS, job advertisements, popups and real/synthetic dialogues","provenance_claim":"Row hashes and source paths documented, but upstream definitions and licenses vary","language_claim":"Multilingual/unspecified","role_claim":"GENERAL_FRAUD_CORPUS","risks":["spam is mapped to fraud","real and synthetic sources mixed","upstream licenses differ","prior train/test exports combined"],"disposition":"REJECT_FOR_V1_FRESH_CORE_MIXED_SEMANTICS","evidence_urls":["https://github.com/RockENZO/data"]
+    },
+    {
+      "candidate_id":"DISC_V1_013","publisher":"FredZhang7 / Hugging Face","landing_url":"https://huggingface.co/datasets/FredZhang7/all-scam-spam","format_claim":"CSV, 42,619 messages and emails","license_or_terms_url":"https://huggingface.co/datasets/FredZhang7/all-scam-spam","observed_text_claim":"Human messages and emails across 43 languages, with an additional manually collected/ChatGPT-assisted subset","provenance_claim":"Multiple spam corpora are combined","language_claim":"43 languages","role_claim":"GENERAL_SPAM_CORPUS","risks":["spam is not investment scam","ChatGPT-assisted content mixed in","record-level investment evidence absent"],"disposition":"REJECT_FOR_V1_FRESH_CORE_BROAD_SPAM","evidence_urls":["https://huggingface.co/datasets/FredZhang7/all-scam-spam"]
+    },
+    {
+      "candidate_id":"DISC_V1_014","publisher":"Bolewara / Hugging Face","landing_url":"https://huggingface.co/datasets/bolewara/hinglish-scam-text-dataset","format_claim":"JSON, 3,787 examples","license_or_terms_url":"https://huggingface.co/datasets/bolewara/hinglish-scam-text-dataset","observed_text_claim":"SMS-spam-derived English examples plus hand-written scam patterns","provenance_claim":"Dataset card identifies source families but includes manually invented examples","language_claim":"English and Hinglish","role_claim":"GENERAL_FINANCIAL_SCAM_PROTOTYPE","risks":["hand-written synthetic patterns","not investment-specific","upstream overlap with common SMS spam corpora"],"disposition":"REJECT_FOR_REAL_WORLD_GROUND_TRUTH","evidence_urls":["https://huggingface.co/datasets/bolewara/hinglish-scam-text-dataset"]
+    },
+    {
+      "candidate_id":"DISC_V1_015","publisher":"CryptoScamTracker research authors","landing_url":"https://www.securitee.org/files/cryptoscams_ndss2023.pdf","format_claim":"Paper reports 10,079 captured cryptocurrency scam web pages","license_or_terms_url":"https://www.securitee.org/files/cryptoscams_ndss2023.pdf","observed_text_claim":"Human-reviewed giveaway-scam web pages","provenance_claim":"Research capture and analyst review process documented","language_claim":"English/unspecified","role_claim":"CONFIRMED_CRYPTO_SCAM_WEB_RESEARCH","risks":["raw website capture route conflicts with permanent raw-HTML abandonment","public sanitized text export and license not established","no legitimate comparator"],"disposition":"REJECT_RAW_WEB_CAPTURE_ROUTE","evidence_urls":["https://www.securitee.org/files/cryptoscams_ndss2023.pdf"]
+    },
+    {
+      "candidate_id":"DISC_V1_016","publisher":"When the Fed Speaks / Strux / ViFinQA comparison","landing_url":"https://struxdata.github.io/dataset/","format_claim":"Structured earnings-call transcripts","license_or_terms_url":"https://struxdata.github.io/dataset/","observed_text_claim":"Prepared remarks and Q&A from earnings calls","provenance_claim":"Ticker/date/participant structure documented","language_claim":"English","role_claim":"LEGITIMATE_INVESTMENT_LANGUAGE_LEAD","risks":["license absent on landing page","source transcript rights unclear","earnings calls differ from target solicitation/message modality"],"disposition":"BLOCK_LICENSE_AND_SOURCE_RIGHTS_UNKNOWN","evidence_urls":["https://struxdata.github.io/dataset/"]
+    }
+  ],
+  "summary": {
+    "candidates_considered": 16,
+    "shortlisted_for_independent_second_review": 6,
+    "primary_shortlist_ids": ["DISC_V1_001","DISC_V1_002"],
+    "conditional_shortlist_ids": ["DISC_V1_003","DISC_V1_004","DISC_V1_005","DISC_V1_006"],
+    "blocked_research_leads": 5,
+    "rejected": 5,
+    "fresh_v1_core_admitted_groups": 0,
+    "new_training_rows_authorized": 0
+  },
+  "decision": {
+    "discovery_execution_complete": true,
+    "independent_second_review_required": true,
+    "acquisition_release_may_be_prepared": false,
+    "downloads_allowed": false,
+    "candidate_live_domain_access_allowed": false,
+    "labeling_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {
+    "metadata_search_queries_executed": 12,
+    "project_data_network_acquisition_operations": 0,
+    "source_files_acquired": 0,
+    "candidate_domain_access_operations": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "training_allowed": false,
+    "note":"Search and permitted landing-page reads occurred through the bounded metadata discovery tool; no external bytes were persisted in the project data store."
+  }
+}

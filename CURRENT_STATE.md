@@ -4,9 +4,9 @@ This file is the stable entry point for the project's current operational state.
 Historical reports and registries remain immutable and can therefore contain
 superseded next-step descriptions.
 
-- Project direction and progress plan: [`docs/project-direction-plan-r19.md`](docs/project-direction-plan-r19.md), incorporating unchanged R2-R18 content
-- Reproducibility guide: [`docs/reproducibility-current-state-v53.md`](docs/reproducibility-current-state-v53.md)
-- Current gap ledger: [`registry/analyses/project_state_gap_ledger_v56.json`](registry/analyses/project_state_gap_ledger_v56.json)
+- Project direction and progress plan: [`docs/project-direction-plan-r20.md`](docs/project-direction-plan-r20.md), incorporating unchanged R2-R19 content
+- Reproducibility guide: [`docs/reproducibility-current-state-v54.md`](docs/reproducibility-current-state-v54.md)
+- Current gap ledger: [`registry/analyses/project_state_gap_ledger_v57.json`](registry/analyses/project_state_gap_ledger_v57.json)
 - Current repository quality gate: [`docs/current-test-suite-lifecycle-v7.md`](docs/current-test-suite-lifecycle-v7.md)
 - Crimson primary-review readiness: [`registry/analyses/crimson_primary_review_readiness_v1.json`](registry/analyses/crimson_primary_review_readiness_v1.json)
 - Immutable B5 continuation result: [`registry/analyses/target_text_corpus_v1_ready_channel_wayback_availability_continuation_result_v1.json`](registry/analyses/target_text_corpus_v1_ready_channel_wayback_availability_continuation_result_v1.json)
@@ -26,6 +26,7 @@ superseded next-step descriptions.
 - Sanitized text-source assessment: [`registry/analyses/target_text_corpus_v1_sanitized_text_source_assessment_v1.json`](registry/analyses/target_text_corpus_v1_sanitized_text_source_assessment_v1.json)
 - Sanitized text-source discovery specification: [`registry/analyses/target_text_corpus_v1_sanitized_text_source_discovery_spec_v1.json`](registry/analyses/target_text_corpus_v1_sanitized_text_source_discovery_spec_v1.json)
 - Sanitized text-source discovery release: [`registry/analyses/target_text_corpus_v1_sanitized_text_source_discovery_release_v1.json`](registry/analyses/target_text_corpus_v1_sanitized_text_source_discovery_release_v1.json)
+- Sanitized text-source discovery result: [`registry/analyses/target_text_corpus_v1_sanitized_text_source_discovery_result_v1.json`](registry/analyses/target_text_corpus_v1_sanitized_text_source_discovery_result_v1.json)
 - Python dependency contract: [`docs/python-dependency-contract-v1.md`](docs/python-dependency-contract-v1.md)
 - Repository quality audit: [`docs/repository-quality-audit-v1.md`](docs/repository-quality-audit-v1.md)
 
@@ -40,8 +41,9 @@ abandoned the complete raw-HTML branch. No restoration, whitelist, transfer or
 processing is authorized. The text-only inventory, intake protocol and offline
 DFPI/UBCKNN/FCA assessment and new-source discovery specification are complete.
 All three are evidence-only rather than fresh observed-text channels. The
-bounded 12-query discovery release is frozen and verified; next is its single
-metadata-only execution.
+bounded 12-query discovery release has executed once: 16 candidates were
+assessed and six entered a preliminary shortlist. Next is independent second
+review; acquisition remains closed.
 The referenced artifacts, hashes, cohort identities and
 no-overwrite rules are authoritative. The current repository suite uses the
 verified V7 bounded lifecycle-aware runner. The direction plan is a tracking guide, not a

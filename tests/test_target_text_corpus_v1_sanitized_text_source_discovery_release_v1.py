@@ -18,7 +18,9 @@ class SanitizedTextSourceDiscoveryReleaseV1Tests(unittest.TestCase):
 
     def test_no_network_side_effect_is_performed_by_verifier(self) -> None:
         output = Path(verify_release()["planned_output"])
-        self.assertFalse(output.exists())
+        existed_before = output.exists()
+        verify_release()
+        self.assertEqual(output.exists(), existed_before)
 
 
 if __name__ == "__main__":

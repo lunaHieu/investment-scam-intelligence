@@ -4,9 +4,9 @@ This file is the stable entry point for the project's current operational state.
 Historical reports and registries remain immutable and can therefore contain
 superseded next-step descriptions.
 
-- Project direction and progress plan: [`docs/project-direction-plan-r24.md`](docs/project-direction-plan-r24.md), incorporating unchanged R2-R23 content
-- Reproducibility guide: [`docs/reproducibility-current-state-v58.md`](docs/reproducibility-current-state-v58.md)
-- Current gap ledger: [`registry/analyses/project_state_gap_ledger_v61.json`](registry/analyses/project_state_gap_ledger_v61.json)
+- Project direction and progress plan: [`docs/project-direction-plan-r25.md`](docs/project-direction-plan-r25.md), incorporating unchanged R2-R24 content
+- Reproducibility guide: [`docs/reproducibility-current-state-v59.md`](docs/reproducibility-current-state-v59.md)
+- Current gap ledger: [`registry/analyses/project_state_gap_ledger_v62.json`](registry/analyses/project_state_gap_ledger_v62.json)
 - Current repository quality gate: [`docs/current-test-suite-lifecycle-v7.md`](docs/current-test-suite-lifecycle-v7.md)
 - Crimson primary-review readiness: [`registry/analyses/crimson_primary_review_readiness_v1.json`](registry/analyses/crimson_primary_review_readiness_v1.json)
 - Immutable B5 continuation result: [`registry/analyses/target_text_corpus_v1_ready_channel_wayback_availability_continuation_result_v1.json`](registry/analyses/target_text_corpus_v1_ready_channel_wayback_availability_continuation_result_v1.json)
@@ -31,6 +31,7 @@ superseded next-step descriptions.
 - Source review reconciliation: [`registry/analyses/target_text_corpus_v1_sanitized_text_source_review_reconciliation_v1.json`](registry/analyses/target_text_corpus_v1_sanitized_text_source_review_reconciliation_v1.json)
 - NexVision synthetic-only proposed addendum: [`registry/analyses/target_text_corpus_v1_nexvision_synthetic_auxiliary_source_registration_addendum_v1.json`](registry/analyses/target_text_corpus_v1_nexvision_synthetic_auxiliary_source_registration_addendum_v1.json)
 - Real-world source missing-evidence checklists: [`registry/analyses/target_text_corpus_v1_real_world_source_missing_evidence_checklists_v1.json`](registry/analyses/target_text_corpus_v1_real_world_source_missing_evidence_checklists_v1.json)
+- Bounded metadata-evidence release: [`registry/analyses/target_text_corpus_v1_metadata_evidence_release_v1.json`](registry/analyses/target_text_corpus_v1_metadata_evidence_release_v1.json)
 - Python dependency contract: [`docs/python-dependency-contract-v1.md`](docs/python-dependency-contract-v1.md)
 - Repository quality audit: [`docs/repository-quality-audit-v1.md`](docs/repository-quality-audit-v1.md)
 
@@ -49,8 +50,9 @@ bounded 12-query discovery release has executed once: 16 candidates were
 assessed and six entered a preliminary shortlist. A blinded six-source review
 packet, independent response and reconciliation are complete. No real-world
 source is acquisition-ready. NexVision has a proposed synthetic-only addendum,
-and ScamBench/Vietnamese SMS have 14 blocking evidence checks. Next is a bounded
-public metadata-evidence release. Acquisition remains closed.
+and ScamBench/Vietnamese SMS have 14 blocking evidence checks. The bounded
+public Metadata Evidence Release V1 is frozen and verified for one execution.
+Acquisition remains closed.
 The referenced artifacts, hashes, cohort identities and
 no-overwrite rules are authoritative. The current repository suite uses the
 verified V7 bounded lifecycle-aware runner. The direction plan is a tracking guide, not a

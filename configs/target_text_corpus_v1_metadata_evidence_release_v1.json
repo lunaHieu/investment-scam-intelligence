@@ -1,0 +1,99 @@
+{
+  "release_id": "ISI_TARGET_TEXT_CORPUS_V1_METADATA_EVIDENCE_RELEASE_V1",
+  "created_at": "2026-10-29",
+  "not_before": "2026-10-29T00:00:00+07:00",
+  "status": "FROZEN_BOUNDED_PUBLIC_METADATA_EVIDENCE_RELEASE",
+  "inputs": [
+    {"path":"configs/target_text_corpus_v1_real_world_source_missing_evidence_checklists_v1.json","sha256":"6df411f8ae2ea32ba0afdc1d4d4dab3ec74a15658f74fab445153d59990fec4b"},
+    {"path":"configs/target_text_corpus_v1_nexvision_synthetic_auxiliary_source_registration_addendum_v1.json","sha256":"e91c6e180f5e2b8fcbfa454c476dc50dda91c907cb6546fc88ad57be7081f19f"},
+    {"path":"configs/target_text_corpus_v1_sanitized_text_source_review_reconciliation_v1.json","sha256":"f59a824ccb4b7bbec6f2bf28b2d9ab2d3b5d1d55f15e603bde8e802f6e73960f"}
+  ],
+  "branches": [
+    {
+      "branch_id":"NEXVISION_METADATA",
+      "candidate_id":"DISC_V1_005",
+      "source_name":"NexVision ScamIntel Synthetic Research Corpus",
+      "initial_pages":[
+        "https://github.com/NexvisionLab/Automated-Investment-and-Recruitment-Fraud-Detection-Engine",
+        "https://github.com/NexvisionLab/Automated-Investment-and-Recruitment-Fraud-Detection-Engine/blob/main/DATA_LICENSE.md",
+        "https://github.com/NexvisionLab/Automated-Investment-and-Recruitment-Fraud-Detection-Engine/commits/main/"
+      ],
+      "evidence_items":[
+        {"evidence_id":"NX01","question":"What immutable repository commit or signed release identifies the reviewed source state?"},
+        {"evidence_id":"NX02","question":"What exact inert JSON, JSONL, CSV or TXT dataset paths are declared, without downloading their contents?"},
+        {"evidence_id":"NX03","question":"What license text and attribution or notice-retention terms govern the dataset?"},
+        {"evidence_id":"NX04","question":"Does an official dataset card describe origin, generation method, limitations and intended use?"},
+        {"evidence_id":"NX05","question":"Does an official manifest enumerate file sizes and cryptographic checksums?"},
+        {"evidence_id":"NX06","question":"Are real, translated, synthetic and reviewed partitions explicitly separated?"},
+        {"evidence_id":"NX07","question":"Can a later acquisition be restricted to inert data files without cloning or executing repository code?"}
+      ]
+    },
+    {
+      "branch_id":"SCAMBENCH_METADATA",
+      "candidate_id":"DISC_V1_001",
+      "source_name":"ScamBench",
+      "initial_pages":[
+        "https://huggingface.co/datasets/Shouninger/ScamBench",
+        "https://huggingface.co/datasets/Shouninger/ScamBench/tree/main"
+      ],
+      "evidence_items":[
+        {"evidence_id":"SB01","question":"What complete gated access conditions apply to academic non-commercial local analysis?"},
+        {"evidence_id":"SB02","question":"What official paper or methodology identifies upstream victim-report and legitimate-message sources?"},
+        {"evidence_id":"SB03","question":"Which record-level incident, source, report, campaign or family identifiers are documented?"},
+        {"evidence_id":"SB04","question":"What PII removal, consent or public-report basis and privacy review are documented?"},
+        {"evidence_id":"SB05","question":"What independent annotation and adjudication method supports the scam labels?"},
+        {"evidence_id":"SB06","question":"How are originals and rewrites linked and grouped to prevent leakage?"},
+        {"evidence_id":"SB07","question":"What publisher manifest gives exact file names, sizes and checksums?"}
+      ]
+    },
+    {
+      "branch_id":"VIETNAMESE_SMS_METADATA",
+      "candidate_id":"DISC_V1_002",
+      "source_name":"Vietnamese SMS Dataset",
+      "initial_pages":[
+        "https://huggingface.co/datasets/trannguyenthaituan/vietnamese_sms_dataset",
+        "https://huggingface.co/datasets/trannguyenthaituan/vietnamese_sms_dataset/tree/main"
+      ],
+      "evidence_items":[
+        {"evidence_id":"VS01","question":"Is there a publisher-defined investment-scam subtype, category field or immutable subset?"},
+        {"evidence_id":"VS02","question":"What annotation guide, adjudication process and inter-annotator agreement are documented?"},
+        {"evidence_id":"VS03","question":"What privacy-safe per-record source or contributor provenance is documented?"},
+        {"evidence_id":"VS04","question":"Which campaign, sender, template, contributor or duplicate-family grouping keys are documented?"},
+        {"evidence_id":"VS05","question":"How is the publisher's 597-row official test immutably identified for sealing?"},
+        {"evidence_id":"VS06","question":"What manifest and checksums cover full_dataset.csv, train.csv and test.csv?"},
+        {"evidence_id":"VS07","question":"What retained CC BY 4.0, consent or ethics and PII-normalization evidence exists?"}
+      ]
+    }
+  ],
+  "metadata_queries": [
+    {"query_id":"MEQ01","query":"site:github.com/NexvisionLab/Automated-Investment-and-Recruitment-Fraud-Detection-Engine dataset card manifest checksum"},
+    {"query_id":"MEQ02","query":"site:github.com/NexvisionLab/Automated-Investment-and-Recruitment-Fraud-Detection-Engine DATA_LICENSE provenance synthetic translated reviewed"},
+    {"query_id":"MEQ03","query":"site:huggingface.co/datasets/Shouninger/ScamBench methodology privacy annotation grouping manifest"},
+    {"query_id":"MEQ04","query":"ScamBench dataset paper methodology Shouninger"},
+    {"query_id":"MEQ05","query":"site:huggingface.co/datasets/trannguyenthaituan/vietnamese_sms_dataset annotation consent investment test 597"},
+    {"query_id":"MEQ06","query":"Vietnamese SMS Dataset trannguyenthaituan paper annotation inter annotator agreement"}
+  ],
+  "execution_contract": {
+    "maximum_search_queries":6,
+    "maximum_page_reads":18,
+    "maximum_followed_document_links_per_source":3,
+    "allowed_authorities":["github.com","huggingface.co","doi.org","arxiv.org","aclanthology.org","ieeexplore.ieee.org","dl.acm.org","springer.com","sciencedirect.com"],
+    "allowed_page_roles":["official repository landing page","official dataset card","official license or access-conditions page","official commit or release metadata page","official repository file-tree metadata page","publisher documentation","peer-reviewed paper landing page or abstract","publisher manifest or checksum page"],
+    "primary_sources_only_for_evidence":true,
+    "metadata_claims_only":true,
+    "dataset_download_allowed":false,
+    "repository_clone_allowed":false,
+    "raw_dataset_file_open_allowed":false,
+    "raw_html_retention_allowed":false,
+    "candidate_live_domain_access_allowed":false,
+    "author_contact_allowed":false,
+    "code_execution_allowed":false,
+    "labeling_allowed":false,
+    "validation_or_test_open_allowed":false,
+    "model_operations_allowed":false,
+    "no_overwrite":true,
+    "unresolved_policy":"RETAIN_UNRESOLVED_NO_INFERENCE"
+  },
+  "planned_output":"registry/analyses/target_text_corpus_v1_metadata_evidence_result_v1.json",
+  "decision":{"release_frozen":true,"execution_allowed_after_independent_qa":true,"dataset_acquisition_allowed":false,"training_allowed":false}
+}

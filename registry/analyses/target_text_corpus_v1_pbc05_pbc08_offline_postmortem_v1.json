@@ -1,0 +1,96 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_PBC05_PBC08_OFFLINE_POSTMORTEM_V1",
+  "created_at": "2026-10-30",
+  "status": "PASS_BOUNDED_OFFLINE_POSTMORTEM_EXACT_CAUSES_NOT_OVERCLAIMED",
+  "inputs": [
+    {
+      "role": "supplemental_result",
+      "path": "registry/analyses/target_text_corpus_v1_parser_bound_content_supplemental_result_v1.json",
+      "sha256": "e4b351618437205d0cf688bbf5656fbd0f0250c8fcb62a0e2a97330a2796d17a"
+    },
+    {
+      "role": "pdf_extractor",
+      "path": "scripts/extract_scambench_pdf_sections_v1.py",
+      "sha256": "f43c156e2adaa8e6b86fc9ae9d647d00b481a5f3cad3e7c5af9a06d7b54d1a13"
+    },
+    {
+      "role": "metadata_parsers",
+      "path": "scripts/execute_target_text_corpus_v1_parser_bound_content_v1.py",
+      "sha256": "c9ac563989e9869df8e2376f76d10718ea0c896fa1b2859fe4902a5374cae9c5"
+    }
+  ],
+  "pbc05": {
+    "confirmed": {
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "response_bytes": 1906912,
+      "response_sha256": "11be0eb75a64c1b61ac24fe1e45489bd497246409d834fc1da3869edc002287b",
+      "failure_stage": "SECTION_EXTRACTION",
+      "subprocess_returncode": 1,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 759,
+      "stderr_sha256": "7010f9e77fe119f2d896a88a680762c36a08e832ed08ff33fc13e5dea5f56337",
+      "raw_pdf_retained": false,
+      "temporary_artifacts_remaining": 0
+    },
+    "bounded_hypotheses": [
+      {
+        "candidate": "PDFPLUMBER_OPEN_OR_PAGE_EXTRACTION_EXCEPTION",
+        "status": "PLAUSIBLE_NOT_CONFIRMED"
+      },
+      {
+        "candidate": "MAXIMUM_PAGE_LIMIT_VALUE_ERROR",
+        "status": "PLAUSIBLE_NOT_CONFIRMED"
+      },
+      {
+        "candidate": "BUNDLED_IMPORT_OR_RUNTIME_ERROR",
+        "status": "LOWER_PROBABILITY_NOT_EXCLUDED",
+        "reason": "The same pinned runtime passed self-check and synthetic extraction, but that does not prove the live document path."
+      }
+    ],
+    "exact_exception_recoverable_offline": false,
+    "reason": "The raw PDF and stderr text were intentionally deleted; retained hashes cannot reconstruct exception text.",
+    "recommended_change": "Wrap extraction exceptions and emit only exception class plus bounded stage code as structured diagnostics; do not retain message text or raw PDF."
+  },
+  "pbc08": {
+    "confirmed": {
+      "http_status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "response_bytes": 2781,
+      "response_sha256": "45e80332128724f860215f709ab938d386d4f63ee1ea42bdf5b32598c5261111",
+      "diagnostic_code": "PARSER_REJECTED_VALUEERROR",
+      "raw_response_retained": false
+    },
+    "bounded_hypotheses": [
+      {
+        "candidate": "FORBIDDEN_DATASET_LIKE_KEY_PRESENT",
+        "examples": ["message", "text", "content", "rows", "examples", "preview"],
+        "status": "PLAUSIBLE_NOT_CONFIRMED"
+      },
+      {
+        "candidate": "NO_COMMIT_LIST_AT_ROOT_OR_COMMITS_FIELD",
+        "status": "PLAUSIBLE_NOT_CONFIRMED"
+      },
+      {
+        "candidate": "NON_OBJECT_COMMIT_ENTRY",
+        "status": "PLAUSIBLE_NOT_CONFIRMED"
+      },
+      {
+        "candidate": "COMMIT_ID_NOT_40_HEX",
+        "status": "PLAUSIBLE_NOT_CONFIRMED"
+      }
+    ],
+    "exact_value_error_recoverable_offline": false,
+    "reason": "V1 retained only the exception class and discarded response content after rejection.",
+    "recommended_change": "Return an allowlisted reason code for each parser guard before discarding the body; retain no rejected JSON fields or exception text."
+  },
+  "decision": {
+    "retry_authorized_by_postmortem": false,
+    "pbc05_evidence_accepted": false,
+    "pbc08_evidence_accepted": false,
+    "malware_detected": false,
+    "labels_created": 0,
+    "training_allowed": false
+  }
+}

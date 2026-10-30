@@ -1,0 +1,65 @@
+{
+  "verification_id": "ISI_TARGET_TEXT_CORPUS_V1_PARSER_BOUND_POSTMORTEM_AND_REGISTRATION_QA_V1",
+  "created_at": "2026-10-30",
+  "status": "PASS_OFFLINE_POSTMORTEM_AND_EXACT_TWO_SUCCESS_REGISTRATION",
+  "inputs": [
+    {
+      "role": "supplemental_result",
+      "path": "registry/analyses/target_text_corpus_v1_parser_bound_content_supplemental_result_v1.json",
+      "sha256": "e4b351618437205d0cf688bbf5656fbd0f0250c8fcb62a0e2a97330a2796d17a"
+    },
+    {
+      "role": "bounded_postmortem",
+      "path": "registry/analyses/target_text_corpus_v1_pbc05_pbc08_offline_postmortem_v1.json",
+      "sha256": "7f1d4454c8a4b8b77697060d5bac6358f9df3fba0a013feacde7367bf95ba4df"
+    },
+    {
+      "role": "success_registration",
+      "path": "registry/analyses/target_text_corpus_v1_pbc06_pbc07_success_registration_v1.json",
+      "sha256": "637355c47f4de8d43dfb35faff06222d41ba9ede6077579f67fd3b31b1eb9dd6"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "independent_verifier",
+      "path": "scripts/verify_target_text_corpus_v1_parser_bound_postmortem_and_registration_v1.py",
+      "sha256": "63ae11ee1bf997d4f81a081c58bc9519f926881186758bc44ec361ebd5c04307"
+    },
+    {
+      "role": "tests",
+      "path": "tests/test_target_text_corpus_v1_parser_bound_postmortem_and_registration_v1.py",
+      "sha256": "584d69fa0f62e31e6ce63c78f4dce5dede408e1070fe38e56d0072e02b646a9d"
+    },
+    {
+      "role": "documentation",
+      "path": "docs/target-text-corpus-v1-pbc05-pbc08-offline-postmortem-and-pbc06-pbc07-registration-v1.md",
+      "sha256": "c35c65cfb94ce29f5af192115cfda8a0c8f470c8d7fe67a4acb3152f17f929ff"
+    }
+  ],
+  "checks": {
+    "postmortem_resources": ["PBC05", "PBC08"],
+    "registered_success_resources": ["PBC06", "PBC07"],
+    "pbc05_confirmed_stage": "SECTION_EXTRACTION",
+    "pbc05_exact_exception_recoverable_offline": false,
+    "pbc08_exact_value_error_recoverable_offline": false,
+    "hypotheses_promoted_to_facts": 0,
+    "dataset_rows_admitted": 0,
+    "labels_created": 0
+  },
+  "decision": {
+    "offline_postmortem_complete": true,
+    "metadata_documentation_registration_complete": true,
+    "retry_authorized": false,
+    "dataset_download_allowed": false,
+    "evidence_acceptance_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_operations_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "raw_artifacts_retained": 0,
+    "labels_created": 0,
+    "model_operations": 0
+  }
+}

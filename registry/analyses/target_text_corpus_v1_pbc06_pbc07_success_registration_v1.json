@@ -1,0 +1,56 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_PBC06_PBC07_SUCCESS_REGISTRATION_V1",
+  "created_at": "2026-10-30",
+  "status": "PASS_TWO_METADATA_DOCUMENTATION_ARTIFACTS_REGISTERED_NO_DATA_ADMISSION",
+  "inputs": [
+    {
+      "role": "supplemental_result",
+      "path": "registry/analyses/target_text_corpus_v1_parser_bound_content_supplemental_result_v1.json",
+      "sha256": "e4b351618437205d0cf688bbf5656fbd0f0250c8fcb62a0e2a97330a2796d17a"
+    }
+  ],
+  "registrations": [
+    {
+      "resource_id": "PBC06",
+      "source_endpoint_id": "RFE06",
+      "artifact_class": "DATASET_REPOSITORY_METADATA",
+      "response_sha256": "b9e1bf8b643a266d9c3a635ab665d81785d4fb3f5d38fbdd2a86dc2788827e59",
+      "response_bytes": 2261,
+      "repository_id": "trannguyenthaituan/vietnamese_sms_dataset",
+      "revision_sha": "a90e2bd7e8df2376939658075ba8094dcee488ad",
+      "last_modified": "2026-08-07T15:23:53Z",
+      "private": false,
+      "gated": false,
+      "disabled": false,
+      "declared_license": "cc-by-4.0",
+      "sibling_paths": [".gitattributes", "QUICKSTART_GUIDE.md", "README.md", "full_dataset.csv", "test.csv", "train.csv"],
+      "registered_tags": ["task_categories:text-classification", "language:vi", "license:cc-by-4.0", "size_categories:1K<n<10K", "format:csv", "modality:text", "library:datasets", "library:pandas", "library:polars", "library:mlcroissant", "region:us", "vietnamese", "sms-spam", "phishing", "cybersecurity", "nlp"]
+    },
+    {
+      "resource_id": "PBC07",
+      "source_endpoint_id": "RFE07",
+      "artifact_class": "BOUNDED_DATASET_DOCUMENTATION_METADATA",
+      "response_sha256": "6823cb60501118f0b3affbba728cc70e062df2a566f5718c1d500c31d1f21816",
+      "response_bytes": 8067,
+      "revision_sha": "a90e2bd7e8df2376939658075ba8094dcee488ad",
+      "retained_section_names": ["splits"],
+      "raw_document_retained": false
+    }
+  ],
+  "interpretation_limits": {
+    "repository_identity_is_not_dataset_quality_evidence": true,
+    "declared_license_requires_separate_legal_review_before_data_use": true,
+    "file_names_do_not_prove_record_schema_or_label_quality": true,
+    "documentation_section_does_not_admit_dataset_rows": true,
+    "source_identity_does_not_create_legitimate_or_scam_labels": true
+  },
+  "decision": {
+    "metadata_registration_complete": true,
+    "dataset_download_allowed": false,
+    "dataset_rows_admitted": 0,
+    "labels_created": 0,
+    "validation_or_test_opening_allowed": false,
+    "model_operations_allowed": false,
+    "training_allowed": false
+  }
+}

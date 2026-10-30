@@ -1,0 +1,36 @@
+{
+  "analysis_id": "ISI_PROJECT_STATE_GAP_LEDGER_V70",
+  "created_at": "2026-10-30",
+  "status": "CURRENT_PBC_POSTMORTEM_AND_DIAGNOSTIC_REMEDIATION_VERIFIED",
+  "inputs": [
+    {
+      "role": "prior",
+      "path": "registry/analyses/project_state_gap_ledger_v69.json",
+      "sha256": "38d021d02926a2c4871af0dcb114536fe3f73187b1227936cf27bb4d1ad00b6e"
+    },
+    {
+      "role": "state",
+      "path": "registry/analyses/reproducibility_current_state_v67.json",
+      "sha256": "6f77e0cd53a9b2e414c25d962cd35b78a0f136546695164be68af5066ad3a63f"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "ledger",
+      "path": "docs/project-state-gap-ledger-v70.md",
+      "sha256": "e46db8f4c060a05c1b4e4c762ed0248aef46bdeaf10edc471936accdf9e6282b"
+    }
+  ],
+  "state_amendments": {
+    "PBC05": {"parser_rejected": true, "exact_failure_recoverable": false},
+    "PBC06_PBC07": {"metadata_registered": true, "dataset_rows_admitted": 0, "labels_created": 0},
+    "PBC08": {"parser_rejected": true, "exact_failure_recoverable": false},
+    "PARSER_DIAGNOSTIC_REMEDIATION": {"focused_tests_passed": 9, "current_suite_passed": 1156}
+  },
+  "decision": {
+    "additional_source_requests_allowed": false,
+    "dataset_download_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {"network_operations": 0, "candidate_domain_access_operations": 0, "labels_created": 0, "training_allowed": false}
+}

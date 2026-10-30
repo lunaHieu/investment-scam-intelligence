@@ -33,6 +33,22 @@ class PdfLifecycleProcessError(RuntimeError):
             "stderr_bytes": len(stderr),
             "stderr_sha256": hashlib.sha256(stderr).hexdigest(),
         }
+        self.diagnostic_code = None
+        if stage == "SECTION_EXTRACTION":
+            try:
+                payload = json.loads(completed.stdout or "{}")
+                code = payload.get("diagnostic_code")
+                allowed_codes = {
+                    "PDF_INVALID_MAGIC",
+                    "PDF_OPEN_OR_PARSE_ERROR",
+                    "PDF_PAGE_LIMIT_EXCEEDED",
+                    "PDF_PAGE_TEXT_EXTRACTION_ERROR",
+                    "PDF_EXTRACTION_RUNTIME_ERROR",
+                }
+                if payload.get("status") == "PDF_EXTRACTION_REJECTED" and code in allowed_codes:
+                    self.diagnostic_code = code
+            except (json.JSONDecodeError, AttributeError, TypeError):
+                pass
         super().__init__(f"{stage} returned {self.returncode}")
 
 

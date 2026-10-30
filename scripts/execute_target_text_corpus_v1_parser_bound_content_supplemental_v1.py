@@ -70,7 +70,7 @@ def _apply_pdf_processor(row: dict, resource: dict, body: bytes, pdf_processor: 
     except PdfLifecycleProcessError as error:
         row["outcome"] = "PARSER_REJECTED"
         row["structured_output"] = None
-        row["diagnostic_code"] = f"PDF_LIFECYCLE_{error.stage}_NONZERO"
+        row["diagnostic_code"] = f"PDF_LIFECYCLE_{error.diagnostic_code or error.stage + '_NONZERO'}"
         row["diagnostic_details"] = error.details
     except PdfLifecycleLaunchError as error:
         row["outcome"] = "PARSER_REJECTED"

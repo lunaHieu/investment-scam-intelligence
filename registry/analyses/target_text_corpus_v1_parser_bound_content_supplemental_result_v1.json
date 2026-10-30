@@ -1,0 +1,155 @@
+{
+  "created_at": "2026-10-30T11:08:01.214784+07:00",
+  "decision": {
+    "dataset_acquisition_allowed": false,
+    "evidence_acceptance_allowed": false,
+    "training_allowed": false
+  },
+  "inputs": [
+    {
+      "path": "configs/target_text_corpus_v1_parser_bound_content_supplemental_release_v1.json",
+      "role": "supplemental_release",
+      "sha256": "b030d8bc61b55846755c57dc8bb9e612a31654995e9a07f09f4c188cc4a59537"
+    },
+    {
+      "path": "registry/analyses/target_text_corpus_v1_parser_bound_content_supplemental_release_qa_v1.json",
+      "role": "supplemental_release_qa",
+      "sha256": "53aa44b710898d9959c5964f3599cc91693dd415adc3414ad372004918cf70f4"
+    },
+    {
+      "path": "registry/analyses/target_text_corpus_v1_parser_bound_content_result_v1.json",
+      "role": "immutable_v1_result",
+      "sha256": "987930b767e06ba78fa11747b963110ba0d60f67747b3129aebb22aa3f7668e2"
+    }
+  ],
+  "resources": [
+    {
+      "content_type": "application/pdf",
+      "diagnostic_code": "PDF_LIFECYCLE_SECTION_EXTRACTION_NONZERO",
+      "diagnostic_details": {
+        "returncode": 1,
+        "stage": "SECTION_EXTRACTION",
+        "stderr_bytes": 759,
+        "stderr_sha256": "7010f9e77fe119f2d896a88a680762c36a08e832ed08ff33fc13e5dea5f56337",
+        "stdout_bytes": 0,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "final_url": "https://aclanthology.org/2026.findings-emnlp.404.pdf",
+      "http_status": 200,
+      "outcome": "PARSER_REJECTED",
+      "parser": "PDF_SCAMBENCH_METHODS_V1",
+      "raw_response_retained": false,
+      "resource_id": "PBC05",
+      "response_bytes": 1906912,
+      "response_sha256": "11be0eb75a64c1b61ac24fe1e45489bd497246409d834fc1da3869edc002287b",
+      "source_endpoint_id": "RFE05",
+      "structured_output": null,
+      "url": "https://aclanthology.org/2026.findings-emnlp.404.pdf"
+    },
+    {
+      "content_type": "application/json; charset=utf-8",
+      "diagnostic_code": null,
+      "diagnostic_details": null,
+      "final_url": "https://huggingface.co/api/datasets/trannguyenthaituan/vietnamese_sms_dataset/revision/main",
+      "http_status": 200,
+      "outcome": "SUCCESS",
+      "parser": "HF_DATASET_REPOSITORY_METADATA_V1",
+      "raw_response_retained": false,
+      "resource_id": "PBC06",
+      "response_bytes": 2261,
+      "response_sha256": "b9e1bf8b643a266d9c3a635ab665d81785d4fb3f5d38fbdd2a86dc2788827e59",
+      "source_endpoint_id": "RFE06",
+      "structured_output": {
+        "disabled": false,
+        "gated": false,
+        "id": "trannguyenthaituan/vietnamese_sms_dataset",
+        "lastModified": "2026-08-07T15:23:53.000Z",
+        "license": "cc-by-4.0",
+        "private": false,
+        "sha": "a90e2bd7e8df2376939658075ba8094dcee488ad",
+        "sibling_paths": [
+          ".gitattributes",
+          "QUICKSTART_GUIDE.md",
+          "README.md",
+          "full_dataset.csv",
+          "test.csv",
+          "train.csv"
+        ],
+        "tags": [
+          "task_categories:text-classification",
+          "language:vi",
+          "license:cc-by-4.0",
+          "size_categories:1K<n<10K",
+          "format:csv",
+          "modality:text",
+          "library:datasets",
+          "library:pandas",
+          "library:polars",
+          "library:mlcroissant",
+          "region:us",
+          "vietnamese",
+          "sms-spam",
+          "phishing",
+          "cybersecurity",
+          "nlp"
+        ]
+      },
+      "url": "https://huggingface.co/api/datasets/trannguyenthaituan/vietnamese_sms_dataset/revision/main"
+    },
+    {
+      "content_type": "text/plain; charset=utf-8",
+      "diagnostic_code": null,
+      "diagnostic_details": null,
+      "final_url": "https://huggingface.co/api/resolve-cache/datasets/trannguyenthaituan/vietnamese_sms_dataset/a90e2bd7e8df2376939658075ba8094dcee488ad/QUICKSTART_GUIDE.md?%2Fdatasets%2Ftrannguyenthaituan%2Fvietnamese_sms_dataset%2Fresolve%2Fmain%2FQUICKSTART_GUIDE.md=&etag=%22fab1a688e5acf22574a771ceaa16d57a6208c9b6%22",
+      "http_status": 200,
+      "outcome": "SUCCESS",
+      "parser": "MARKDOWN_DOCUMENTATION_V1",
+      "raw_response_retained": false,
+      "resource_id": "PBC07",
+      "response_bytes": 8067,
+      "response_sha256": "6823cb60501118f0b3affbba728cc70e062df2a566f5718c1d500c31d1f21816",
+      "source_endpoint_id": "RFE07",
+      "structured_output": {
+        "sections": {
+          "splits": "train_df = dataset[\"train\"].to_pandas()\ntest_df = dataset[\"test\"].to_pandas()\n\nprint(f\"Training samples: {len(train_df)}\")\nprint(f\"Testing samples: {len(test_df)}\")\n```\n\n---"
+        }
+      },
+      "url": "https://huggingface.co/datasets/trannguyenthaituan/vietnamese_sms_dataset/resolve/main/QUICKSTART_GUIDE.md"
+    },
+    {
+      "content_type": "application/json; charset=utf-8",
+      "diagnostic_code": "PARSER_REJECTED_VALUEERROR",
+      "diagnostic_details": null,
+      "final_url": "https://huggingface.co/api/datasets/trannguyenthaituan/vietnamese_sms_dataset/commits/main",
+      "http_status": 200,
+      "outcome": "PARSER_REJECTED",
+      "parser": "HF_COMMIT_METADATA_V1",
+      "raw_response_retained": false,
+      "resource_id": "PBC08",
+      "response_bytes": 2781,
+      "response_sha256": "45e80332128724f860215f709ab938d386d4f63ee1ea42bdf5b32598c5261111",
+      "source_endpoint_id": "RFE08",
+      "structured_output": null,
+      "url": "https://huggingface.co/api/datasets/trannguyenthaituan/vietnamese_sms_dataset/commits/main"
+    }
+  ],
+  "result_id": "ISI_TARGET_TEXT_CORPUS_V1_PARSER_BOUND_CONTENT_SUPPLEMENTAL_RESULT_V1",
+  "safety_contract": {
+    "candidate_domain_access_operations": 0,
+    "dataset_files_downloaded": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "raw_responses_retained": 0,
+    "training_allowed": false,
+    "validation_or_test_rows_opened": 0
+  },
+  "summary": {
+    "http_error": 0,
+    "parser_rejected": 2,
+    "resources": 4,
+    "response_bytes": 1920021,
+    "skipped_after_failure": 0,
+    "success": 2,
+    "transport_error": 0
+  }
+}

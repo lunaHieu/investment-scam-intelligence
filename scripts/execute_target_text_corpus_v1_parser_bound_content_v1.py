@@ -19,6 +19,14 @@ HEX40 = re.compile(r"^[0-9a-f]{40}$")
 HEX64 = re.compile(r"^[0-9a-f]{64}$")
 
 
+class ParserRejection(ValueError):
+    """A parser guard with a safe, allowlisted diagnostic code."""
+
+    def __init__(self, code: str):
+        self.code = code
+        super().__init__(code)
+
+
 @dataclass(frozen=True)
 class TransportResponse:
     """A response supplied by an injected transport; it never opens a socket."""
@@ -108,7 +116,7 @@ def parse_checksums(value: Any) -> dict:
 def reject_forbidden_json(value: Any, forbidden: list[str]) -> None:
     overlap = _nested_keys(value).intersection(key.lower() for key in forbidden)
     if overlap:
-        raise ValueError(f"Forbidden dataset-like keys: {sorted(overlap)}")
+        raise ParserRejection("FORBIDDEN_DATASET_KEY_PRESENT")
 
 
 def parse_hf_repository(value: Any, forbidden: list[str]) -> dict:
@@ -129,12 +137,15 @@ def parse_hf_commits(value: Any, forbidden: list[str]) -> dict:
     reject_forbidden_json(value, forbidden)
     rows = value if isinstance(value, list) else value.get("commits") if isinstance(value, dict) else None
     if not isinstance(rows, list):
-        raise ValueError("HF commit metadata must be a list")
+        raise ParserRejection("COMMIT_LIST_MISSING_OR_INVALID")
     commits = []
     for item in rows:
         if not isinstance(item, dict):
-            raise ValueError("Invalid HF commit entry")
-        commits.append({"id":_require_sha(item.get("id"),40),"title":item.get("title"),"createdAt":item.get("createdAt"),"authors":[author.get("username") for author in item.get("authors",[]) if isinstance(author,dict)]})
+            raise ParserRejection("COMMIT_ENTRY_NOT_OBJECT")
+        commit_id = item.get("id")
+        if not isinstance(commit_id, str) or not HEX40.fullmatch(commit_id.lower()):
+            raise ParserRejection("COMMIT_ID_INVALID")
+        commits.append({"id":commit_id.lower(),"title":item.get("title"),"createdAt":item.get("createdAt"),"authors":[author.get("username") for author in item.get("authors",[]) if isinstance(author,dict)]})
     return {"commits":commits}
 
 
@@ -239,6 +250,8 @@ def process_transport_response(resource: dict, response: TransportResponse) -> d
         return _reject(row, "UNEXPECTED_FINAL_URL")
     try:
         row["structured_output"] = parse_resource(resource, response.body)
+    except ParserRejection as error:
+        return _reject(row, f"PARSER_REJECTED_{error.code}")
     except (UnicodeError, ValueError, TypeError, KeyError, json.JSONDecodeError) as error:
         return _reject(row, f"PARSER_REJECTED_{type(error).__name__.upper()}")
     row["outcome"] = "SUCCESS"

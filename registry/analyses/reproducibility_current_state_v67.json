@@ -1,0 +1,43 @@
+{
+  "analysis_id": "ISI_REPRODUCIBILITY_CURRENT_STATE_V67",
+  "created_at": "2026-10-30",
+  "status": "CURRENT_PBC_POSTMORTEM_AND_DIAGNOSTIC_REMEDIATION_VERIFIED",
+  "inputs": [
+    {
+      "role": "prior",
+      "path": "registry/analyses/reproducibility_current_state_v66.json",
+      "sha256": "f15383498b5fd728a68a72646cfd0b3b7962869573ae8a0f05d1d3baf36081ff"
+    },
+    {
+      "role": "remediation",
+      "path": "registry/analyses/target_text_corpus_v1_pbc_parser_diagnostic_remediation_v1.json",
+      "sha256": "b5e4f23a62d4b85def2ecfb77b414c4e044fb31f77362cfa5f0d906877887705"
+    },
+    {
+      "role": "direction_plan",
+      "path": "docs/project-direction-plan-r33.md",
+      "sha256": "7c74301493104512e4dc9cd004a92b0d7d6a616265dcb73377984a2cdb73982c"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "guide",
+      "path": "docs/reproducibility-current-state-v67.md",
+      "sha256": "7299815f7b8611c1ce160c29478a2ca53d0e990047327c177a75e062e37cc0fb"
+    }
+  ],
+  "current_state": {
+    "pbc05": {"outcome": "PARSER_REJECTED", "exact_reason_recoverable": false},
+    "pbc06_pbc07": {"metadata_registered": true, "rows_admitted": 0, "labels_created": 0},
+    "pbc08": {"outcome": "PARSER_REJECTED", "exact_reason_recoverable": false},
+    "diagnostic_remediation": {"focused_tests_passed": 9, "current_suite_v9_passed": 1156, "registry_validation": "PASS"}
+  },
+  "decision": {
+    "repeat_completed_pbc_requests": false,
+    "new_source_request_authorized": false,
+    "dataset_download_allowed": false,
+    "validation_or_test_access_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {"network_operations": 0, "labels_created": 0, "model_operations": 0}
+}

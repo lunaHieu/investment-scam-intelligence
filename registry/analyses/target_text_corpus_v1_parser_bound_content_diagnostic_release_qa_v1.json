@@ -1,0 +1,53 @@
+{
+  "verification_id": "ISI_TARGET_TEXT_CORPUS_V1_PARSER_BOUND_CONTENT_DIAGNOSTIC_RELEASE_QA_V1",
+  "created_at": "2026-10-30",
+  "status": "PASS_EXACT_TWO_ROW_DIAGNOSTIC_RELEASE_PREPARED_EXECUTION_CLOSED",
+  "release": {
+    "path": "configs/target_text_corpus_v1_parser_bound_content_diagnostic_release_v1.json",
+    "sha256": "d228e067756d039e2f4adadd6a5e6c79ae20895607f00a4b5df850a653a4eb3d"
+  },
+  "inputs": [
+    {
+      "role": "previous_supplemental_result",
+      "path": "registry/analyses/target_text_corpus_v1_parser_bound_content_supplemental_result_v1.json",
+      "sha256": "e4b351618437205d0cf688bbf5656fbd0f0250c8fcb62a0e2a97330a2796d17a"
+    },
+    {
+      "role": "diagnostic_remediation",
+      "path": "registry/analyses/target_text_corpus_v1_pbc_parser_diagnostic_remediation_v1.json",
+      "sha256": "b5e4f23a62d4b85def2ecfb77b414c4e044fb31f77362cfa5f0d906877887705"
+    }
+  ],
+  "implementation": {
+    "role": "release_verifier",
+    "path": "scripts/verify_target_text_corpus_v1_parser_bound_content_diagnostic_release_v1.py",
+    "sha256": "9e4ee90e951db0bc7665202a3b17780251701fa08970dd882708244e6ce39e6f"
+  },
+  "checks": {
+    "resource_ids": ["PBC05", "PBC08"],
+    "maximum_get_requests": 2,
+    "maximum_attempts_per_resource": 1,
+    "minimum_request_interval_seconds": 30,
+    "old_four_row_result_preserved": true,
+    "planned_outputs_absent": true,
+    "focused_or_full_tests_run_for_this_new_release": false
+  },
+  "decision": {
+    "release_prepared": true,
+    "network_execution_allowed_now": false,
+    "committed_executor_required": true,
+    "independent_result_verifier_required": true,
+    "separate_owner_execution_authorization_required": true,
+    "evidence_acceptance_allowed": false,
+    "dataset_download_allowed": false,
+    "labels_created": 0,
+    "training_allowed": false
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "raw_responses_retained": 0,
+    "dataset_files_downloaded": 0,
+    "validation_or_test_rows_opened": 0,
+    "model_operations": 0
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "authorization_id": "ISI_TARGET_TEXT_CORPUS_V1_PBC_DIAGNOSTIC_OWNER_AUTHORIZATION_V1",
+  "created_at": "2026-10-30",
+  "authorization": {
+    "received": true,
+    "scope": "EXECUTE_DIAGNOSTIC_RELEASE_EXACT_PBC05_PBC08",
+    "resource_ids": ["PBC05", "PBC08"],
+    "maximum_requests": 2,
+    "maximum_attempts_per_resource": 1,
+    "release_path": "configs/target_text_corpus_v1_parser_bound_content_diagnostic_release_v1.json",
+    "release_sha256": "d228e067756d039e2f4adadd6a5e6c79ae20895607f00a4b5df850a653a4eb3d",
+    "repeat_prior_release_allowed": false,
+    "retry_after_failure_allowed": false,
+    "purpose": "Obtain bounded parser diagnostics for the two previously rejected metadata resources."
+  },
+  "constraints": {
+    "candidate_live_domain_access_allowed": false,
+    "dataset_file_download_allowed": false,
+    "raw_response_retention_allowed": false,
+    "validation_or_test_open_allowed": false,
+    "labeling_allowed": false,
+    "model_operations_allowed": false,
+    "training_allowed": false
+  }
+}

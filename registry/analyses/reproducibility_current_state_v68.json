@@ -1,0 +1,50 @@
+{
+  "analysis_id": "ISI_REPRODUCIBILITY_CURRENT_STATE_V68",
+  "created_at": "2026-10-30",
+  "status": "CURRENT_EXACT_TWO_ROW_DIAGNOSTIC_RELEASE_PREPARED_CLOSED",
+  "inputs": [
+    {
+      "role": "prior",
+      "path": "registry/analyses/reproducibility_current_state_v67.json",
+      "sha256": "6f77e0cd53a9b2e414c25d962cd35b78a0f136546695164be68af5066ad3a63f"
+    },
+    {
+      "role": "release",
+      "path": "configs/target_text_corpus_v1_parser_bound_content_diagnostic_release_v1.json",
+      "sha256": "d228e067756d039e2f4adadd6a5e6c79ae20895607f00a4b5df850a653a4eb3d"
+    },
+    {
+      "role": "release_verification",
+      "path": "registry/analyses/target_text_corpus_v1_parser_bound_content_diagnostic_release_qa_v1.json",
+      "sha256": "dc54ff1f9a5ee219e671ce8492a7110490cced4a52ce6de7fba76c92cfda7ff6"
+    },
+    {
+      "role": "direction_plan",
+      "path": "docs/project-direction-plan-r34.md",
+      "sha256": "030a21a6bad9100d05bb88874cdb0121e3b8028af8fede2035a1622a7d62b29e"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "guide",
+      "path": "docs/reproducibility-current-state-v68.md",
+      "sha256": "94cc228939d183a98441d22fcc6dc7944972c66e11c3a38be4a5cc6745dc84e3"
+    }
+  ],
+  "current_state": {
+    "release_resource_ids": ["PBC05", "PBC08"],
+    "maximum_get_requests": 2,
+    "maximum_attempts_per_resource": 1,
+    "release_verification_status": "PASS_EXACT_TWO_ROW_DIAGNOSTIC_RELEASE_PREPARED_EXECUTION_CLOSED",
+    "planned_outputs_absent": true
+  },
+  "decision": {
+    "network_execution_allowed": false,
+    "committed_executor_required": true,
+    "independent_result_verifier_required": true,
+    "separate_owner_execution_authorization_required": true,
+    "dataset_download_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {"network_operations": 0, "labels_created": 0, "model_operations": 0}
+}

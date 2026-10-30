@@ -1,0 +1,50 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_PBC_DIAGNOSTIC_EXECUTION_TOOLING_QA_V1",
+  "created_at": "2026-10-30",
+  "status": "PASS_OFFLINE_TOOLING_PREFLIGHT_CLOSED_UNTIL_COMMITTED",
+  "inputs": [
+    {
+      "role": "diagnostic_release",
+      "path": "configs/target_text_corpus_v1_parser_bound_content_diagnostic_release_v1.json",
+      "sha256": "d228e067756d039e2f4adadd6a5e6c79ae20895607f00a4b5df850a653a4eb3d"
+    },
+    {
+      "role": "owner_authorization",
+      "path": "configs/target_text_corpus_v1_parser_bound_content_diagnostic_execution_authorization_v1.json",
+      "sha256": "cad52e75e8e0a51a02904a5f92dfb0b2e0326f35283a8427385f2cb25d552ba7"
+    },
+    {
+      "role": "release_qa",
+      "path": "registry/analyses/target_text_corpus_v1_parser_bound_content_diagnostic_release_qa_v1.json",
+      "sha256": "dc54ff1f9a5ee219e671ce8492a7110490cced4a52ce6de7fba76c92cfda7ff6"
+    }
+  ],
+  "implementation": [
+    {"path": "scripts/execute_target_text_corpus_v1_parser_bound_content_diagnostic_v1.py", "sha256": "71209b9738e860cb9ad5b742635c74989305e6b951c8cebafe163bf9c3e2fed9"},
+    {"path": "scripts/verify_target_text_corpus_v1_parser_bound_content_diagnostic_result_v1.py", "sha256": "a9e36c1bfa15f8062d7e16b0fe163c85d921806f43cca924a988ea56c3a685f6"},
+    {"path": "scripts/verify_target_text_corpus_v1_parser_bound_content_diagnostic_release_v1.py", "sha256": "9e4ee90e951db0bc7665202a3b17780251701fa08970dd882708244e6ce39e6f"},
+    {"path": "tests/test_target_text_corpus_v1_parser_bound_content_diagnostic_executor_v1.py", "sha256": "c17ff4e825bcb25946a6407c6cad73f78e09d4b58a2bf232395466ee21ce1532"},
+    {"path": "docs/target-text-corpus-v1-pbc-diagnostic-execution-tooling-v1.md", "sha256": "930ff89975ad608f7b9cb18e668660a29229a93782b72be387cbf832718f92f4"}
+  ],
+  "verification": {
+    "focused_tests_passed": 8,
+    "current_suite_command": "scripts.run_current_test_suite_v9",
+    "current_suite_tests_passed": 1158,
+    "registry_validation": "PASS_390_ANALYSIS_REGISTRIES",
+    "diff_check": "PASS",
+    "network_operations": 0,
+    "verify_only_preflight_execution_allowed": false,
+    "verify_only_preflight_reason": "Required files are not yet tracked and working tree is not clean."
+  },
+  "decision": {
+    "authorization_recorded_for_exact_release": true,
+    "network_execution_allowed_now": false,
+    "committed_tooling_required": true,
+    "independent_result_verifier_required": true,
+    "retry_after_failure_allowed": false,
+    "dataset_download_allowed": false,
+    "labels_created": 0,
+    "training_allowed": false
+  },
+  "safety_contract": {"network_operations": 0, "raw_responses_retained": 0, "labels_created": 0, "model_operations": 0}
+}

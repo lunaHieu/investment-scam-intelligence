@@ -1,0 +1,21 @@
+{
+  "analysis_id": "ISI_REPRODUCIBILITY_CURRENT_STATE_V69",
+  "created_at": "2026-10-30",
+  "status": "CURRENT_PBC_DIAGNOSTIC_RESULT_COMPLETE_RETRIES_CLOSED",
+  "inputs": [
+    {"role": "prior", "path": "registry/analyses/reproducibility_current_state_v68.json", "sha256": "2b90533c4ad1dc9a1e02bb8b84da193e8413a552772b07caa52f58b28c519586"},
+    {"role": "result", "path": "registry/analyses/target_text_corpus_v1_parser_bound_content_diagnostic_result_v1.json", "sha256": "5fcddbb84bb27867c139b972206e5483d78d8fefa91836cb5ffabf4f200fb07a"},
+    {"role": "result_qa", "path": "registry/analyses/target_text_corpus_v1_parser_bound_content_diagnostic_result_qa_v1.json", "sha256": "861366229ee8567ffcd328f58da5133d7de041083c3517a8df627ef6f02e37ce"},
+    {"role": "plan", "path": "docs/project-direction-plan-r35.md", "sha256": "b14e8e8f9091170c8b7c78d7193f24f1e9ec2c1419fc748bfd2c615e08a3ebd0"}
+  ],
+  "implementation": [
+    {"role": "guide", "path": "docs/reproducibility-current-state-v69.md", "sha256": "75dd59b9e9a3378cc8380a0ee4fa27bb97d7f28da91b8fa141738a1655ad3418"}
+  ],
+  "current_state": {
+    "PBC05": {"outcome": "PARSER_REJECTED", "diagnostic_code": "PDF_LIFECYCLE_SECTION_EXTRACTION_NONZERO", "stdout_bytes": 0, "same_response_hash_as_prior_attempt": true},
+    "PBC08": {"outcome": "PARSER_REJECTED", "diagnostic_code": "PARSER_REJECTED_FORBIDDEN_DATASET_KEY_PRESENT", "forbidden_key_retained": false},
+    "summary": {"rows": 2, "success": 0, "parser_rejected": 2, "http_error": 0, "transport_error": 0}
+  },
+  "decision": {"diagnostic_release_exhausted": true, "same_release_retry_allowed": false, "new_source_request_authorized": false, "dataset_download_allowed": false, "training_allowed": false},
+  "safety_contract": {"network_operations_after_result": 0, "raw_responses_retained": 0, "labels_created": 0, "model_operations": 0}
+}

@@ -1,0 +1,78 @@
+{
+  "created_at": "2026-10-30T15:54:05.736343+07:00",
+  "decision": {
+    "dataset_acquisition_allowed": false,
+    "evidence_acceptance_allowed": false,
+    "training_allowed": false
+  },
+  "inputs": [
+    {
+      "path": "configs/target_text_corpus_v1_parser_bound_content_diagnostic_release_v1.json",
+      "role": "diagnostic_release",
+      "sha256": "d228e067756d039e2f4adadd6a5e6c79ae20895607f00a4b5df850a653a4eb3d"
+    },
+    {
+      "path": "registry/analyses/target_text_corpus_v1_parser_bound_content_diagnostic_release_qa_v1.json",
+      "role": "release_qa",
+      "sha256": "dc54ff1f9a5ee219e671ce8492a7110490cced4a52ce6de7fba76c92cfda7ff6"
+    }
+  ],
+  "resources": [
+    {
+      "content_type": "application/pdf",
+      "diagnostic_code": "PDF_LIFECYCLE_SECTION_EXTRACTION_NONZERO",
+      "diagnostic_details": {
+        "returncode": 1,
+        "stage": "SECTION_EXTRACTION",
+        "stderr_bytes": 710,
+        "stderr_sha256": "daa76cb33104e32108abfcf053e9eaf097f5c5c63ce17e036d0efe4bc213eb62",
+        "stdout_bytes": 0,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "final_url": "https://aclanthology.org/2026.findings-emnlp.404.pdf",
+      "http_status": 200,
+      "outcome": "PARSER_REJECTED",
+      "parser": "PDF_SCAMBENCH_METHODS_V1",
+      "raw_response_retained": false,
+      "resource_id": "PBC05",
+      "response_bytes": 1906912,
+      "response_sha256": "11be0eb75a64c1b61ac24fe1e45489bd497246409d834fc1da3869edc002287b",
+      "source_endpoint_id": "RFE05",
+      "structured_output": null,
+      "url": "https://aclanthology.org/2026.findings-emnlp.404.pdf"
+    },
+    {
+      "content_type": "application/json; charset=utf-8",
+      "diagnostic_code": "PARSER_REJECTED_FORBIDDEN_DATASET_KEY_PRESENT",
+      "final_url": "https://huggingface.co/api/datasets/trannguyenthaituan/vietnamese_sms_dataset/commits/main",
+      "http_status": 200,
+      "outcome": "PARSER_REJECTED",
+      "parser": "HF_COMMIT_METADATA_V1",
+      "raw_response_retained": false,
+      "resource_id": "PBC08",
+      "response_bytes": 2781,
+      "response_sha256": "45e80332128724f860215f709ab938d386d4f63ee1ea42bdf5b32598c5261111",
+      "source_endpoint_id": "RFE08",
+      "structured_output": null,
+      "url": "https://huggingface.co/api/datasets/trannguyenthaituan/vietnamese_sms_dataset/commits/main"
+    }
+  ],
+  "result_id": "ISI_TARGET_TEXT_CORPUS_V1_PARSER_BOUND_CONTENT_DIAGNOSTIC_RESULT_V1",
+  "safety_contract": {
+    "candidate_domain_access_operations": 0,
+    "dataset_files_downloaded": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "raw_responses_retained": 0,
+    "validation_or_test_rows_opened": 0
+  },
+  "summary": {
+    "http_error": 0,
+    "parser_rejected": 2,
+    "resources": 2,
+    "response_bytes": 1909693,
+    "skipped_after_failure": 0,
+    "success": 0,
+    "transport_error": 0
+  }
+}

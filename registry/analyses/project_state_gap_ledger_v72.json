@@ -1,0 +1,20 @@
+{
+  "analysis_id": "ISI_PROJECT_STATE_GAP_LEDGER_V72",
+  "created_at": "2026-10-30",
+  "status": "CURRENT_PBC_DIAGNOSTIC_RESULT_COMPLETE_RETRIES_CLOSED",
+  "inputs": [
+    {"role": "prior", "path": "registry/analyses/project_state_gap_ledger_v71.json", "sha256": "d256293ab0575fee5b16ed20fdb374dce2be91dbafce3745fa60505682a28689"},
+    {"role": "state", "path": "registry/analyses/reproducibility_current_state_v69.json", "sha256": "f2562db9fee5abd9fc38c80b417e5bbad514d8ae6fec841156c9b25c687357da"},
+    {"role": "result_qa", "path": "registry/analyses/target_text_corpus_v1_parser_bound_content_diagnostic_result_qa_v1.json", "sha256": "861366229ee8567ffcd328f58da5133d7de041083c3517a8df627ef6f02e37ce"}
+  ],
+  "implementation": [
+    {"role": "ledger", "path": "docs/project-state-gap-ledger-v72.md", "sha256": "c4ccd664582d823f63e5bf8ea33a927d853ed9837fc2c1913fe37c99797c9333"}
+  ],
+  "state_amendments": {
+    "PBC05": {"parser_rejected": true, "section_extraction_failed": true, "structured_diagnostic_emitted": false, "retry_allowed": false},
+    "PBC08": {"parser_rejected": true, "forbidden_dataset_key_guard": true, "key_name_retained": false, "retry_allowed": false},
+    "population": {"rows_admitted": 0, "labels_created": 0}
+  },
+  "decision": {"same_release_retry_allowed": false, "new_source_request_authorized": false, "training_allowed": false},
+  "safety_contract": {"network_operations_after_result": 0, "candidate_domain_access_operations": 0, "labels_created": 0, "training_allowed": false}
+}

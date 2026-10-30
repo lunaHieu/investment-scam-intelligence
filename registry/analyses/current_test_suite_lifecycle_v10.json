@@ -1,0 +1,25 @@
+{
+  "analysis_id": "ISI_CURRENT_TEST_SUITE_LIFECYCLE_V10",
+  "created_at": "2026-10-30",
+  "status": "PASS_34_PREEXECUTION_ASSERTIONS_SUPERSEDED",
+  "inputs": [
+    {"role": "prior", "path": "registry/analyses/current_test_suite_lifecycle_v9.json", "sha256": "c0abffe7d2041f9b31987bb8f12dac841ad473330e3a909419ecb5525b5ab746"}
+  ],
+  "implementation": [
+    {"role": "runner", "path": "scripts/run_current_test_suite_v10.py", "sha256": "a19ee8afea7e227421dc899ff0501e644b280ba88daced881aec6b325bef9a8d"},
+    {"role": "postexecution_tests", "path": "tests/test_current_artifact_lifecycle_v10.py", "sha256": "432232c01ca80e6b43a5e06aafa659bf3436c06a6db050f7c636ca0cbfb9d2c3"},
+    {"role": "mapping_test", "path": "tests/test_current_test_suite_v10.py", "sha256": "dc15e24e350177655e3296a6d7c42fdc2f382b2cde38264d2c0a18cf4b8c8c50"},
+    {"role": "documentation", "path": "docs/current-test-suite-lifecycle-v10.md", "sha256": "8ae9bdcc78fc37699893dab5c75f0f9a7925fd10d3e6de540b667f61483a6b90"}
+  ],
+  "findings": {
+    "historical_preexecution_methods": 34,
+    "new_diagnostic_postexecution_replacements": 2,
+    "historical_test_files_modified": 0,
+    "current_suite_tests_passed": 1159
+  },
+  "decision": {
+    "current_quality_gate_command": ".venv\\Scripts\\python.exe -m scripts.run_current_test_suite_v10",
+    "network_execution_allowed": false,
+    "training_allowed": false
+  }
+}

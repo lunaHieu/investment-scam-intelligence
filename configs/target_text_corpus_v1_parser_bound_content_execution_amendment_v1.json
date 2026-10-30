@@ -1,0 +1,70 @@
+{
+  "amendment_id": "ISI_TARGET_TEXT_CORPUS_V1_PARSER_BOUND_CONTENT_EXECUTION_AMENDMENT_V1",
+  "created_at": "2026-10-30T10:06:54+07:00",
+  "status": "OWNER_AUTHORIZED_PENDING_COMMITTED_QA",
+  "purpose": "Authorize exactly one parser-bound acquisition attempt for the eight frozen resources without mutating the immutable V1 release.",
+  "inputs": [
+    {
+      "role": "authorization_protocol",
+      "path": "configs/target_text_corpus_v1_parser_bound_content_execution_authorization_protocol_v1.json",
+      "sha256": "9a066453c6be7ca8e8ad9835ee08aeb6e349a20ab94cdd3e3e56919624547711"
+    },
+    {
+      "role": "parser_bound_release",
+      "path": "configs/target_text_corpus_v1_parser_bound_content_release_v1.json",
+      "sha256": "92d66eaa5433dcfda5170c2cde64a7af85e39d834f2d0f71a5b43b18a15de391"
+    },
+    {
+      "role": "release_qa",
+      "path": "registry/analyses/target_text_corpus_v1_parser_bound_content_release_local_qa_v1.json",
+      "sha256": "e04a7bfa3d9326feb9cf8e568cfec9df446081451c70daad809af68b39868cac"
+    }
+  ],
+  "owner_authorization_record": {
+    "received": true,
+    "received_at": "2026-10-30T10:06:54+07:00",
+    "user_response": "được cho phép",
+    "user_response_sha256": "8faf5999e4d1848fa50309f9455843d0b87b591074229337e48da0abc5a91665",
+    "context": "Direct response to the explicit request to authorize exactly eight parser-bound GET requests without commit or push.",
+    "commit_authorized": false,
+    "push_authorized": false
+  },
+  "execution_binding": {
+    "implementation_commit": "e80b2027bc6e322e7665e04913d0a8169260a8d9",
+    "authorized_executor_module": "scripts.orchestrate_target_text_corpus_v1_parser_bound_content_v2",
+    "resource_ids": ["PBC01", "PBC02", "PBC03", "PBC04", "PBC05", "PBC06", "PBC07", "PBC08"],
+    "exact_get_requests": 8,
+    "maximum_total_response_bytes": 3148024,
+    "maximum_attempts_per_resource": 1,
+    "automatic_retry_allowed": false,
+    "automatic_resume_allowed": false,
+    "stop_after_first_failure": true,
+    "raw_response_retention_allowed": false,
+    "no_overwrite": true,
+    "candidate_live_domain_access_allowed": false,
+    "dataset_file_download_allowed": false,
+    "pdf_visual_review_required_before_evidence_acceptance": true
+  },
+  "activation_gate": {
+    "amendment_must_be_tracked": true,
+    "independent_qa_must_be_tracked": true,
+    "working_tree_must_be_clean": true,
+    "head_must_equal_origin_main": true,
+    "implementation_commit_must_be_ancestor_of_head": true,
+    "planned_outputs_must_be_absent": true,
+    "focused_and_current_full_tests_must_pass": true
+  },
+  "planned_independent_qa": "registry/analyses/target_text_corpus_v1_parser_bound_content_execution_amendment_qa_v1.json",
+  "decision": {
+    "owner_network_authorization_received": true,
+    "execution_scope_authorized": true,
+    "network_execution_allowed_before_committed_qa": false,
+    "commit_allowed_by_this_amendment": false,
+    "push_allowed_by_this_amendment": false,
+    "evidence_acceptance_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_operations_allowed": false,
+    "training_allowed": false
+  }
+}

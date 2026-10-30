@@ -1,0 +1,97 @@
+{
+  "verification_id": "ISI_TARGET_TEXT_CORPUS_V1_PARSER_BOUND_CONTENT_EXECUTION_AMENDMENT_QA_V1",
+  "created_at": "2026-10-30",
+  "status": "PASS_EXACT_EIGHT_OWNER_AUTHORIZED_AMENDMENT",
+  "amendment": {
+    "path": "configs/target_text_corpus_v1_parser_bound_content_execution_amendment_v1.json",
+    "sha256": "bbcf2b5b95820eaccda27ed15cab1878c1554b2c9b590dd2175217e144b8cb30"
+  },
+  "inputs": [
+    {
+      "role": "authorization_protocol",
+      "path": "configs/target_text_corpus_v1_parser_bound_content_execution_authorization_protocol_v1.json",
+      "sha256": "9a066453c6be7ca8e8ad9835ee08aeb6e349a20ab94cdd3e3e56919624547711"
+    },
+    {
+      "role": "frozen_release",
+      "path": "configs/target_text_corpus_v1_parser_bound_content_release_v1.json",
+      "sha256": "92d66eaa5433dcfda5170c2cde64a7af85e39d834f2d0f71a5b43b18a15de391"
+    },
+    {
+      "role": "frozen_release_qa",
+      "path": "registry/analyses/target_text_corpus_v1_parser_bound_content_release_local_qa_v1.json",
+      "sha256": "e04a7bfa3d9326feb9cf8e568cfec9df446081451c70daad809af68b39868cac"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "amendment_verifier",
+      "path": "scripts/verify_target_text_corpus_v1_parser_bound_content_execution_amendment_v1.py",
+      "sha256": "3dbe6efc8a3f0793b324d879dd8dab49e3a7cb8acaacb844bb9dbe135d34145d"
+    },
+    {
+      "role": "capability_gated_transport_v2",
+      "path": "scripts/http_transport_target_text_corpus_v1_parser_bound_content_v2.py",
+      "sha256": "ea5cd82a78773963c288dffcd30ebea91a2911d7fa0bc21c55f90b15dc60e549"
+    },
+    {
+      "role": "authorized_orchestrator_v2",
+      "path": "scripts/orchestrate_target_text_corpus_v1_parser_bound_content_v2.py",
+      "sha256": "e44c302ec52ec3dc44ed2bf06d08314cbf9ccaa63054b6e281f7976d32ea9ec8"
+    },
+    {
+      "role": "amendment_tests",
+      "path": "tests/test_target_text_corpus_v1_parser_bound_content_execution_amendment_v1.py",
+      "sha256": "2290fb9b5b299464cbb30f0bf9162649a97dfe3a1915149ca3ad3059b52cc0ae"
+    },
+    {
+      "role": "authorization_protocol_tests",
+      "path": "tests/test_target_text_corpus_v1_parser_bound_content_execution_authorization_protocol_v1.py",
+      "sha256": "ec5ca1206a92492010f36a5b86287c5f2ec30286d5d9abf13859af3c0ac74905"
+    },
+    {
+      "role": "amendment_documentation",
+      "path": "docs/target-text-corpus-v1-parser-bound-content-execution-amendment-v1.md",
+      "sha256": "ea47c9847e0906ecf325ef458c8faec1040306bbc6168c5f9ce39f824fce7e39"
+    },
+    {
+      "role": "authorization_protocol_documentation",
+      "path": "docs/target-text-corpus-v1-parser-bound-content-execution-authorization-protocol-v1.md",
+      "sha256": "1dc21821f89b845d79c80199bac8e6e873b44087b19a290b829c6b0ca7f2420b"
+    }
+  ],
+  "checks": {
+    "resource_count": 8,
+    "resource_ids": ["PBC01", "PBC02", "PBC03", "PBC04", "PBC05", "PBC06", "PBC07", "PBC08"],
+    "exact_get_requests": 8,
+    "maximum_attempts_per_resource": 1,
+    "maximum_total_response_bytes": 3148024,
+    "owner_network_authorization_received": true,
+    "commit_authorized": false,
+    "push_authorized": false,
+    "automatic_retry_allowed": false,
+    "automatic_resume_allowed": false,
+    "raw_response_retention_allowed": false,
+    "planned_outputs_absent": true,
+    "focused_tests_passed": 6
+  },
+  "decision": {
+    "amendment_verified": true,
+    "execution_allowed_only_after_amendment_and_qa_are_committed_and_pushed": true,
+    "network_execution_allowed_in_current_uncommitted_state": false,
+    "commit_allowed_by_this_qa": false,
+    "push_allowed_by_this_qa": false,
+    "evidence_acceptance_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_operations_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "raw_responses_retained": 0,
+    "dataset_files_downloaded": 0,
+    "labels_created": 0,
+    "model_operations": 0
+  }
+}

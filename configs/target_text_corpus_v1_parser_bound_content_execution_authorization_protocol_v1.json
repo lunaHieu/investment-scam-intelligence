@@ -1,0 +1,72 @@
+{
+  "protocol_id": "ISI_TARGET_TEXT_CORPUS_V1_PARSER_BOUND_CONTENT_EXECUTION_AUTHORIZATION_PROTOCOL_V1",
+  "created_at": "2026-10-30",
+  "status": "FROZEN_AUTHORIZATION_INTAKE_PREPARED_EXECUTION_CLOSED",
+  "purpose": "Bind any future live parser-bound acquisition to an explicit owner authorization that names the exact eight-request scope after the implementation commit is tracked and synchronized.",
+  "inputs": [
+    {
+      "role": "implementation_commit",
+      "commit": "e80b2027bc6e322e7665e04913d0a8169260a8d9"
+    },
+    {
+      "role": "parser_bound_release",
+      "path": "configs/target_text_corpus_v1_parser_bound_content_release_v1.json",
+      "sha256": "92d66eaa5433dcfda5170c2cde64a7af85e39d834f2d0f71a5b43b18a15de391"
+    },
+    {
+      "role": "local_release_qa",
+      "path": "registry/analyses/target_text_corpus_v1_parser_bound_content_release_local_qa_v1.json",
+      "sha256": "e04a7bfa3d9326feb9cf8e568cfec9df446081451c70daad809af68b39868cac"
+    },
+    {
+      "role": "execution_readiness_audit",
+      "path": "registry/analyses/target_text_corpus_v1_parser_bound_execution_readiness_audit_local_v1.json",
+      "sha256": "f2a17890feba494a90ca3ff719e7c52105bfcee37615f2b14f375bae4f58ab70"
+    }
+  ],
+  "authorization_scope": {
+    "resource_ids": ["PBC01", "PBC02", "PBC03", "PBC04", "PBC05", "PBC06", "PBC07", "PBC08"],
+    "exact_get_requests": 8,
+    "maximum_total_response_bytes": 3148024,
+    "allowed_authorities": ["aclanthology.org", "api.github.com", "huggingface.co", "raw.githubusercontent.com"],
+    "raw_response_retention_allowed": false,
+    "dataset_file_download_allowed": false,
+    "candidate_live_domain_access_allowed": false,
+    "repository_clone_allowed": false,
+    "automatic_retry_allowed": false,
+    "automatic_resume_allowed": false,
+    "stop_after_first_failure": true,
+    "no_overwrite": true,
+    "pdf_visual_review_required_before_evidence_acceptance": true
+  },
+  "required_owner_authorization": {
+    "must_be_explicit": true,
+    "must_name_network_execution": true,
+    "must_authorize_exact_eight_resource_scope": true,
+    "generic_continue_instruction_is_sufficient": false,
+    "received": false,
+    "received_at": null,
+    "authorization_text_sha256": null
+  },
+  "post_authorization_requirements": {
+    "create_separate_immutable_execution_amendment": true,
+    "independent_amendment_qa_required": true,
+    "clean_working_tree_required_before_live_execution": true,
+    "head_must_equal_origin_main_before_live_execution": true,
+    "implementation_commit_must_be_ancestor_of_head": true,
+    "focused_and_full_tests_required_before_live_execution": true,
+    "planned_final_partial_and_checkpoint_outputs_must_be_absent": true
+  },
+  "decision": {
+    "authorization_intake_prepared": true,
+    "owner_network_authorization_received": false,
+    "execution_amendment_may_be_created_now": false,
+    "network_execution_allowed_now": false,
+    "dataset_acquisition_allowed": false,
+    "evidence_acceptance_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_operations_allowed": false,
+    "training_allowed": false
+  }
+}

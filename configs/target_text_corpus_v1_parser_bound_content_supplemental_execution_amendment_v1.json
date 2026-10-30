@@ -1,0 +1,38 @@
+{
+  "amendment_id": "ISI_TARGET_TEXT_CORPUS_V1_PARSER_BOUND_CONTENT_SUPPLEMENTAL_EXECUTION_AMENDMENT_V1",
+  "created_at": "2026-10-30T11:01:46+07:00",
+  "status": "OWNER_AUTHORIZED_EXACT_PBC05_PBC08",
+  "protocol_sha256": "21d455918b22d755cd21185ab91a3bee0604f5950dd2fec7846d5ca4160e9254",
+  "release_sha256": "b030d8bc61b55846755c57dc8bb9e612a31654995e9a07f09f4c188cc4a59537",
+  "release_qa_sha256": "53aa44b710898d9959c5964f3599cc91693dd415adc3414ad372004918cf70f4",
+  "owner_authorization_record": {
+    "received": true,
+    "received_at": "2026-10-30T11:01:46+07:00",
+    "text": "Cho phép tạo owner amendment, commit và push toàn bộ supplemental workflow, sau đó chạy tối đa 4 GET cho PBC05–08; không chạy lại PBC01–04.",
+    "text_sha256": "c6d680b65987a5aa6c380f2b0f85099d0b1ead866842a4689500b7382adbb2f7",
+    "scope": "PBC05_PBC06_PBC07_PBC08_MAXIMUM_FOUR_GETS",
+    "commit_authorized": true,
+    "push_authorized": true,
+    "repeat_pbc01_through_pbc04_authorized": false
+  },
+  "execution_binding": {
+    "resource_ids": ["PBC05", "PBC06", "PBC07", "PBC08"],
+    "maximum_get_requests": 4,
+    "maximum_attempts_per_resource": 1,
+    "continue_after_row_local_parser_failure": true,
+    "stop_on_transport_or_provider_error": true,
+    "raw_response_retention_allowed": false,
+    "automatic_retry_allowed": false,
+    "automatic_resume_allowed": false,
+    "no_overwrite": true
+  },
+  "decision": {
+    "network_execution_allowed_after_committed_qa": true,
+    "same_run_execution_before_push_allowed": false,
+    "evidence_acceptance_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_operations_allowed": false,
+    "training_allowed": false
+  }
+}

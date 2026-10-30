@@ -1,0 +1,726 @@
+{
+  "created_at": "2026-10-30T10:18:23.203563+07:00",
+  "decision": {
+    "dataset_acquisition_allowed": false,
+    "evidence_acceptance_allowed": false,
+    "training_allowed": false
+  },
+  "inputs": [
+    {
+      "path": "configs/target_text_corpus_v1_parser_bound_content_release_v1.json",
+      "role": "release",
+      "sha256": "92d66eaa5433dcfda5170c2cde64a7af85e39d834f2d0f71a5b43b18a15de391"
+    },
+    {
+      "path": "registry/analyses/target_text_corpus_v1_parser_bound_content_release_local_qa_v1.json",
+      "role": "release_qa",
+      "sha256": "e04a7bfa3d9326feb9cf8e568cfec9df446081451c70daad809af68b39868cac"
+    }
+  ],
+  "resources": [
+    {
+      "content_type": "application/json; charset=utf-8",
+      "diagnostic_code": null,
+      "final_url": "https://api.github.com/repos/NexvisionLab/Automated-Investment-and-Recruitment-Fraud-Detection-Engine/commits/main",
+      "http_status": 200,
+      "outcome": "SUCCESS",
+      "parser": "GITHUB_COMMIT_METADATA_V1",
+      "raw_response_retained": false,
+      "resource_id": "PBC01",
+      "response_bytes": 8411,
+      "response_sha256": "33262f575348d20e83276ff247e21803222e33b96535f7954730e903ed53c087",
+      "source_endpoint_id": "RFE01",
+      "structured_output": {
+        "author_date": "2026-10-09T09:23:28Z",
+        "committer_date": "2026-10-09T09:23:28Z",
+        "html_url": "https://github.com/NexvisionLab/Automated-Investment-and-Recruitment-Fraud-Detection-Engine/commit/5f9f5269da94fa9d9463b689086dbe5da3c62757",
+        "parent_shas": [
+          "5d8cdb78aa9d491051361eef5ba2a687c134d257"
+        ],
+        "sha": "5f9f5269da94fa9d9463b689086dbe5da3c62757",
+        "tree_sha": "5971c9d0117baf6dcd819e1fe32d8f38d9438c65"
+      },
+      "url": "https://api.github.com/repos/NexvisionLab/Automated-Investment-and-Recruitment-Fraud-Detection-Engine/commits/main"
+    },
+    {
+      "content_type": "application/json; charset=utf-8",
+      "diagnostic_code": null,
+      "final_url": "https://api.github.com/repos/NexvisionLab/Automated-Investment-and-Recruitment-Fraud-Detection-Engine/git/trees/main?recursive=1",
+      "http_status": 200,
+      "outcome": "SUCCESS",
+      "parser": "GITHUB_TREE_METADATA_V1",
+      "raw_response_retained": false,
+      "resource_id": "PBC02",
+      "response_bytes": 28949,
+      "response_sha256": "b706658f9de1fb65fcc3789293ddb712c6d6e7e62842548053db0a4b820b2807",
+      "source_endpoint_id": "RFE02",
+      "structured_output": {
+        "entries": [
+          {
+            "mode": "100644",
+            "path": "DATASET_CARD.md",
+            "sha": "857e8227dde04d779e66c2aa04afb52ff4272611",
+            "size": 2988,
+            "type": "blob"
+          },
+          {
+            "mode": "100644",
+            "path": "DATA_LICENSE.md",
+            "sha": "f6a8e718bd055e89a18797ee0eb7225a6373e750",
+            "size": 1038,
+            "type": "blob"
+          },
+          {
+            "mode": "100644",
+            "path": "metadata/checksums.json",
+            "sha": "cd31d48b4ff613f7de350049c3a78c4270e9b3fe",
+            "size": 553,
+            "type": "blob"
+          },
+          {
+            "mode": "100644",
+            "path": "metadata/dataset_stats.json",
+            "sha": "d90b8adc257b4608b5e23ffb5e141afd07c124b3",
+            "size": 2049,
+            "type": "blob"
+          },
+          {
+            "mode": "100644",
+            "path": "metadata/evaluation_slices.json",
+            "sha": "2c08c2d1c84cfb7dc0df127465fa7fd5e5da949d",
+            "size": 1143,
+            "type": "blob"
+          },
+          {
+            "mode": "100644",
+            "path": "metadata/external_sources_manifest.csv",
+            "sha": "39b2002bbcfc21f827368b0639ff62eb3d92c33f",
+            "size": 1996,
+            "type": "blob"
+          },
+          {
+            "mode": "100644",
+            "path": "metadata/field_dictionary.csv",
+            "sha": "05b8b99896eb4ca88d913cdc25cc231d9beb228b",
+            "size": 1254,
+            "type": "blob"
+          },
+          {
+            "mode": "100644",
+            "path": "metadata/languages.json",
+            "sha": "58a92ce4827a8f09c76175376e4f531343125ad2",
+            "size": 1939,
+            "type": "blob"
+          },
+          {
+            "mode": "100644",
+            "path": "metadata/production_attestations.json",
+            "sha": "b9ad875b1dfb0e9267dbea525f3b691ca98bd036",
+            "size": 808,
+            "type": "blob"
+          },
+          {
+            "mode": "100644",
+            "path": "metadata/release_manifest.json",
+            "sha": "0ce1c53805e1027ec329e63c03c856c4f9f89d7b",
+            "size": 14254,
+            "type": "blob"
+          },
+          {
+            "mode": "100644",
+            "path": "samples/curated_eval_512.jsonl",
+            "sha": "067d3dde61bec1b8741330bac19a4ec72e2316d7",
+            "size": 888232,
+            "type": "blob"
+          },
+          {
+            "mode": "100644",
+            "path": "samples/curated_eval_512_index.csv",
+            "sha": "c75224fd13a8c335bdfa8bd76968e7bb2e77b2a5",
+            "size": 32884,
+            "type": "blob"
+          },
+          {
+            "mode": "100644",
+            "path": "samples/taxonomy_sample_320.csv",
+            "sha": "84ed6eecf3a6d605efd652d35ab2d8d4577e3150",
+            "size": 97385,
+            "type": "blob"
+          },
+          {
+            "mode": "100644",
+            "path": "samples/taxonomy_sample_320.jsonl",
+            "sha": "5ab3e5e1bfba0852d5825cb761221a208d6dc240",
+            "size": 669292,
+            "type": "blob"
+          }
+        ],
+        "sha": "5f9f5269da94fa9d9463b689086dbe5da3c62757",
+        "truncated": false
+      },
+      "url": "https://api.github.com/repos/NexvisionLab/Automated-Investment-and-Recruitment-Fraud-Detection-Engine/git/trees/main?recursive=1"
+    },
+    {
+      "content_type": "text/plain; charset=utf-8",
+      "diagnostic_code": null,
+      "final_url": "https://raw.githubusercontent.com/NexvisionLab/Automated-Investment-and-Recruitment-Fraud-Detection-Engine/main/metadata/release_manifest.json",
+      "http_status": 200,
+      "outcome": "SUCCESS",
+      "parser": "NEXVISION_RELEASE_MANIFEST_V1",
+      "raw_response_retained": false,
+      "resource_id": "PBC03",
+      "response_bytes": 14254,
+      "response_sha256": "8728d48ce7cbd99064f71e0d345d3904f0e0aea422162711768115739677e2b7",
+      "source_endpoint_id": "RFE03",
+      "structured_output": {
+        "files": [
+          {
+            "path": ".github/dependabot.yml",
+            "sha256": "6e34a7a3b405440a9711c08347013effeafefd1fdf19e90579fc96afa4a87be2",
+            "size": 200
+          },
+          {
+            "path": ".github/workflows/ci.yml",
+            "sha256": "d499e444ca9189d65a10a3c08702703b78622ae7a12e66cd78442ef9f6a78957",
+            "size": 1783
+          },
+          {
+            "path": "CHANGELOG.md",
+            "sha256": "fbf085d251377c2a7bf91ad1b3e090afb3ce7085d5a5e8adb5dcf9ef52826eb6",
+            "size": 8003
+          },
+          {
+            "path": "CITATION.cff",
+            "sha256": "8dbb8bbe571233f0712480775e8d5014f5cc3d2328ca78c06736f53d00952783",
+            "size": 478
+          },
+          {
+            "path": "CONTRIBUTING.md",
+            "sha256": "7d0e07bf783665708e71f2645723b132898449dd0037e8c17e153ebf60ca7a46",
+            "size": 1004
+          },
+          {
+            "path": "DATASET_CARD.md",
+            "sha256": "ce2c2137d35289dfd3ec817c812f0a3418cd936e8c0e2915ce74848f34fad86f",
+            "size": 2988
+          },
+          {
+            "path": "DATA_LICENSE.md",
+            "sha256": "d91dd5034ab3e83a1311279ea9783a8d237fe5c42cd8906b77fa37b1fd4b9d09",
+            "size": 1038
+          },
+          {
+            "path": "DEVELOPMENT_AUDIT_STANDARD.md",
+            "sha256": "c8697f4dd3218b3f22ad79bea1fb11657b81691caf7fb6e398b79ac644c6f8a8",
+            "size": 3529
+          },
+          {
+            "path": "LICENSE",
+            "sha256": "c6a4c4a5ddce79eedea91aefaf1eb42b8480cc41de2ba53b4b0fe4885d6506a8",
+            "size": 4567
+          },
+          {
+            "path": "METHODOLOGY.md",
+            "sha256": "805ff4149180ce2d72b57dbf5c5cd2bf9579d9750bf2c3cea565f6574f51ed58",
+            "size": 2999
+          },
+          {
+            "path": "PRODUCTION_READINESS.md",
+            "sha256": "43ea34d149ce62dc4695b991e28a16a5cb503f0088d4c1a572588625928fa182",
+            "size": 1387
+          },
+          {
+            "path": "PUBLIC_SECURITY_AUDIT.md",
+            "sha256": "edc079f58d91c7baf7e226dd76de73b979d945f5a52cb0641f946e011e0f6071",
+            "size": 3042
+          },
+          {
+            "path": "README.md",
+            "sha256": "3e3baa4dad5586b4e659852bb37eff40087da56d513f51208fdeddc7b976f6a9",
+            "size": 17161
+          },
+          {
+            "path": "RESEARCH_SOURCES.md",
+            "sha256": "ca44bdc9885a1df5f3d7fe7f548625be78091a6dc6784ccf2a86575b3d00d71e",
+            "size": 1301
+          },
+          {
+            "path": "SECURITY.md",
+            "sha256": "bad649215f95d32ecc3d18e7043b9d0167a5ae15cb787f45f399db491a598acb",
+            "size": 984
+          },
+          {
+            "path": "app/METHODOLOGY.md",
+            "sha256": "516dbb2bfa261eaef1f4df16a231a70ae1c202871cae492922e891a3657a23f4",
+            "size": 4903
+          },
+          {
+            "path": "app/QA_REPORT.md",
+            "sha256": "7979a2e1a604a3a83026aa1a9564f66025dd083e2d9745890121b777230a04f2",
+            "size": 2545
+          },
+          {
+            "path": "app/README.md",
+            "sha256": "af3bd43d0936a6aa902b4247ad7374d7f3d3d45ee0a0efc9006c28e042e36066",
+            "size": 5029
+          },
+          {
+            "path": "app/analyzer.py",
+            "sha256": "0324d4db7b61d9bc266ae0fb01c714c4b9b382c958011491755fe0773f58479f",
+            "size": 21512
+          },
+          {
+            "path": "app/classifier.py",
+            "sha256": "5b4f0ae700c10f25b2d33121ef752ab41c773ec991a3e4a49221e6d825214347",
+            "size": 6780
+          },
+          {
+            "path": "app/data/MPL-2.0-Public-Suffix-List.txt",
+            "sha256": "b2462e602b8aba362f2feb5e523e5b3eb58d3a66b9f92b73eba528827773fbf0",
+            "size": 16934
+          },
+          {
+            "path": "app/data/public_suffix_list.dat",
+            "sha256": "76e4a8d1e76dae8db6da3829024108c02203c4e4b5a4301b5717564b05c7966d",
+            "size": 218101
+          },
+          {
+            "path": "app/domain_intel.py",
+            "sha256": "67eb8fb46c195c0c53329f868a767a27f93c44bf000f75e521d777ad7b02376e",
+            "size": 30773
+          },
+          {
+            "path": "app/normalization.py",
+            "sha256": "1e14614f6701cf14b1078a90c0c34181944ea162758985bca708fbfd4eac4a13",
+            "size": 6562
+          },
+          {
+            "path": "app/ocr_local.py",
+            "sha256": "2189a05eafff17b77c151255a4ff6e08a8c6b8c5fc0596a14e02a5082c8a528d",
+            "size": 2086
+          },
+          {
+            "path": "app/reporting.py",
+            "sha256": "5be1fc0ccdb04ddca633e4609be02d8cbb053e2ad5b63c969cad82733b04bd8e",
+            "size": 8431
+          },
+          {
+            "path": "app/requirements.txt",
+            "sha256": "054e7483ed0899a13425d3ff89d0ae162290c88989825c77d22174ceb36f33f1",
+            "size": 17
+          },
+          {
+            "path": "app/rules.py",
+            "sha256": "4075663dd32997de3cd6bb88701ee9d6e3e2b95270afcb2a31dffc484da7aab9",
+            "size": 30731
+          },
+          {
+            "path": "app/rules_multilingual.py",
+            "sha256": "719725ba9a126504dd69634e4aac342b45037a89cab5222b6c11e30451e31c95",
+            "size": 51760
+          },
+          {
+            "path": "app/safehtml.py",
+            "sha256": "805a0130f78939ec84fc540f8222b07efd3cd62f6985b8c4a9a57fcd867cd0f4",
+            "size": 5870
+          },
+          {
+            "path": "app/server.py",
+            "sha256": "41569c90d08ca635c4af1eb1a4093e32c363fe3b57d18f8cc1159a423d663639",
+            "size": 7284
+          },
+          {
+            "path": "app/start.bat",
+            "sha256": "e74a40c6c288a06250161dfb67c93dd9271563c41b20ce9ba064ab7f7dd256ce",
+            "size": 51
+          },
+          {
+            "path": "app/start.sh",
+            "sha256": "31aabab431159c52436540dc845de19de58a03d69c8af4b96ca42e9190b0e7f1",
+            "size": 62
+          },
+          {
+            "path": "app/static/app.css",
+            "sha256": "2229b50a641f26a17b3f7699aa621d3943a72c6aea4a60f28672b6dd22a13b39",
+            "size": 8298
+          },
+          {
+            "path": "app/static/app.js",
+            "sha256": "cd026273b50d37adc5e893ee788c8dc291a5fafd5eb5430508b6f63e86904f31",
+            "size": 5760
+          },
+          {
+            "path": "app/static/index.html",
+            "sha256": "aa3d70ae5aa41f0e3d7e1cc66cddbd52a6e4d9c661bce8420fad33412948d8f8",
+            "size": 5950
+          },
+          {
+            "path": "app/tests/curated_cases.py",
+            "sha256": "d360ecd4be9560248aff98494da33eb35b82759502382fff789fdeb53ed95414",
+            "size": 4515
+          },
+          {
+            "path": "app/tests/data/multilingual_cases.json",
+            "sha256": "2e358d7a4d47109f24e30836e35d51d071080ae18d26173cd3a5fe0e0e8b0198",
+            "size": 203335
+          },
+          {
+            "path": "app/tests/data/multilingual_genuine_cases.json",
+            "sha256": "00cce4be0c95a0eaca58e7827009c8511c19c01eed40c6e00860357804cccf30",
+            "size": 91646
+          },
+          {
+            "path": "app/tests/test_analyzer.py",
+            "sha256": "eb02215c133f19f5425a53ca6cbe12751af4b4d0c5b588644ecc483d60da329d",
+            "size": 9402
+          },
+          {
+            "path": "app/tests/test_csv_benchmark_gaps.py",
+            "sha256": "3d74f905a35227a31b8445acba51765b5bf6a2d32c7659219a27ac5ee458ef7a",
+            "size": 11020
+          },
+          {
+            "path": "app/tests/test_domain_intel_verification.py",
+            "sha256": "09f8cbc707ff5789136c1758868f11cc153805c3cd1470e9a60219b5bedec4d8",
+            "size": 7705
+          },
+          {
+            "path": "app/tests/test_hardening.py",
+            "sha256": "bae3623af9868f817074fbd595f1f8a0aff0b14910b74e811500040033b5e572",
+            "size": 5105
+          },
+          {
+            "path": "app/tests/test_multilingual_nine_languages.py",
+            "sha256": "f6295ba40156764199627397e229eb1fa70e94ffb606291063bd27b501c5e9c4",
+            "size": 13675
+          },
+          {
+            "path": "app/tests/test_multilingual_rules.py",
+            "sha256": "5938f4a8dcd1352c289a7a28f47bc650afc59d8a41f5e6e939f8354bea42d023",
+            "size": 6856
+          },
+          {
+            "path": "app/tests/test_server.py",
+            "sha256": "f6c2a9e83f8cf4bc35e2204cf256d4a7ad7e9722b33bdde2ae5a4fba8aea596e",
+            "size": 5222
+          },
+          {
+            "path": "app/tests/test_v2.py",
+            "sha256": "6e04ff587dd1cbcb4ef93f15e7089f7d3bedb50ced3b104b0c295cd7f2e08ada",
+            "size": 3932
+          },
+          {
+            "path": "data/records.jsonl",
+            "sha256": "1386ec2824f2707ae3932cff16497a442b556dac74b2e8c75147c2c3019840a5",
+            "size": 123129288
+          },
+          {
+            "path": "docs/ARCHITECTURE.md",
+            "sha256": "6ce7613fd501b1f541eaae40a9febbaed220d9939dda895431d9db823d54e39e",
+            "size": 1714
+          },
+          {
+            "path": "metadata/checksums.json",
+            "sha256": "354033109732ae04799681c99489faedc0ff92d56f5e4382ff92b1c3a4cd6ff0",
+            "size": 553
+          },
+          {
+            "path": "metadata/dataset_stats.json",
+            "sha256": "900d093cacca1effc965753688d433cba3f694ec69e99acd0319afab274c02c1",
+            "size": 2049
+          },
+          {
+            "path": "metadata/evaluation_slices.json",
+            "sha256": "3cdca80578442c0ebd7113250c0712081bbfd178d543d14c6587662bb351b9fa",
+            "size": 1143
+          },
+          {
+            "path": "metadata/external_sources_manifest.csv",
+            "sha256": "08803061f4e208360738a2e1012a10865a9f79410417381ad5564b8daedcaaf2",
+            "size": 1996
+          },
+          {
+            "path": "metadata/field_dictionary.csv",
+            "sha256": "8cc3067027066ec27074bf362838fd12c24b174ab62cf2d7be77a738f852c8b9",
+            "size": 1254
+          },
+          {
+            "path": "metadata/languages.json",
+            "sha256": "04aedd52f10330d49480ce5c6b45a514b45c4d8859ebb15c5cdadbfb6dbacf32",
+            "size": 1939
+          },
+          {
+            "path": "metadata/production_attestations.json",
+            "sha256": "47b6cd417f0367745643ebb3ee01af9ed7f422eb747d2e035ec0d5cdbb499f03",
+            "size": 808
+          },
+          {
+            "path": "metadata/split_index.csv",
+            "sha256": "e616ba5c8d24401f6aa73eac8ca1524de9b13bd032d00d5569708eecd25384c2",
+            "size": 4633423
+          },
+          {
+            "path": "quality/ANNOTATION_GUIDELINES.md",
+            "sha256": "e905b5fafda7694075fd6ea48e83e394d707d3f41ca10c9c5f2eb085f5fb22b5",
+            "size": 1548
+          },
+          {
+            "path": "quality/BIAS_AND_RISK_ASSESSMENT.md",
+            "sha256": "e7c05105427af5d36c71bfd97dd541c6ee918601b2fed80525b922b86d3b84e5",
+            "size": 928
+          },
+          {
+            "path": "quality/CODE_AUDIT_REPORT.md",
+            "sha256": "39a62d9bb6350f6ffa26efcd6aebab808a9465b953a22b97e8d2f8be818c81bd",
+            "size": 15664
+          },
+          {
+            "path": "quality/PRODUCTION_READINESS_REPORT.md",
+            "sha256": "d69841e2509f57bbc496808bb8f9a16ea6f886f522b36ec4d7ca1535ac2472cc",
+            "size": 1913
+          },
+          {
+            "path": "quality/QA_REPORT.md",
+            "sha256": "7fdb9201605087d98a65c5645e95fa6a8e8cc1ca120dae5e8428280ba2d22a14",
+            "size": 1087
+          },
+          {
+            "path": "quality/inter_annotator_template.csv",
+            "sha256": "63508edc44696ce7a78c299edd29dc72e4c7b05059318976db9f0e5b947576ea",
+            "size": 160
+          },
+          {
+            "path": "quality/language_audit.json",
+            "sha256": "8a8b49166cd940545c33cee47e236b29a0a464dc9943a783b18a05ab2ed1117c",
+            "size": 340
+          },
+          {
+            "path": "quality/native_review_matrix.csv",
+            "sha256": "45a23dd742c91b732788977d12dd090fa8cded01ab15034b13b3d02e88eb8022",
+            "size": 1767
+          },
+          {
+            "path": "quality/production_readiness_report.json",
+            "sha256": "aacaf7c9d5abe7e6d8833826cca8789567e7c2098b017f883bc169cea94727b9",
+            "size": 2577
+          },
+          {
+            "path": "quality/validation_report.json",
+            "sha256": "1c8e69a5701295736e5385abaf3162226b2ca66f495ccd8d67f8ac63451046ec",
+            "size": 1978
+          },
+          {
+            "path": "samples/curated_eval_512.jsonl",
+            "sha256": "a9a0ade2045d404e00ad7733f6f02a8a6be9a8d54aace67e082f5fc4fc535c5c",
+            "size": 888232
+          },
+          {
+            "path": "samples/curated_eval_512_index.csv",
+            "sha256": "1779da3ab56a2ac9a1b69fe9d6cca029d7fa85782b1fcfb6db8a74d1f5e7cc5d",
+            "size": 32884
+          },
+          {
+            "path": "samples/taxonomy_sample_320.csv",
+            "sha256": "78c2af2c83565dd44a58d2e1c76ac0351b4c9aac6735b090389df13e4c0d313e",
+            "size": 97385
+          },
+          {
+            "path": "samples/taxonomy_sample_320.jsonl",
+            "sha256": "763e62f65dfedb81546ec96623c29b90ac949833176dedf8747281f16e7de21f",
+            "size": 669292
+          },
+          {
+            "path": "schema/record.schema.json",
+            "sha256": "81c61b46eaef1b81cddfebdf3c9cc5e7c7ea296b447ce810d5103f9135efb952",
+            "size": 3940
+          },
+          {
+            "path": "scripts/build_release.py",
+            "sha256": "10ace444795e12fc0ed38bd22a9f2be1610dc53dd787679b5a66e2be96a985cf",
+            "size": 5133
+          },
+          {
+            "path": "scripts/generate_dataset.py",
+            "sha256": "b83fd30f3167c841944fad7353847de229789c588aa34286a0be06ee3b190ab7",
+            "size": 48262
+          },
+          {
+            "path": "scripts/language_seed.py",
+            "sha256": "922a954b4cc43a38211b6d3d208af38c2903bf209fd8dcac1d589a6f14a6e522",
+            "size": 37699
+          },
+          {
+            "path": "scripts/materialize_splits.py",
+            "sha256": "a1a4317d32a7b4afd49b2946852e750276610e261acc23e783ec998caa827144",
+            "size": 2001
+          },
+          {
+            "path": "scripts/production_readiness.py",
+            "sha256": "95bf04b30fc9636b1dbc05731f9aac552ed832ff0688cc7e77e4b47d6a8c1f0a",
+            "size": 6660
+          },
+          {
+            "path": "scripts/release_manifest.py",
+            "sha256": "5eb4cb83f7bdd18dad2eb7967b87ca74b6b7223c6641b8fcc5a7e689762d0bb8",
+            "size": 3635
+          },
+          {
+            "path": "scripts/validate_dataset.py",
+            "sha256": "a7337251dbeff7b5cd485d951030dd35efda0288945a48aca3ea0b1995de0c8d",
+            "size": 9237
+          },
+          {
+            "path": "taxonomy/TAXONOMY.md",
+            "sha256": "a50aad8b6a0d326c54b14d6bf1961e4be41c205bdd261686d1830ea042c65a04",
+            "size": 4697
+          },
+          {
+            "path": "taxonomy/taxonomy.json",
+            "sha256": "ab2d31594b8a010808e1acd26a7ade81a9c9755cfd4e730698acde1f54c6f69b",
+            "size": 13710
+          },
+          {
+            "path": "tests/test_dataset.py",
+            "sha256": "6a4ad0ee23679a053cda54698455c9c6921086766638f117a0f30f14c76d4161",
+            "size": 2339
+          },
+          {
+            "path": "tests/test_production_controls.py",
+            "sha256": "62c1a8a38ca41a4073d470e6d3cb855e70207bd818c1b758c94a03166a8aa0d2",
+            "size": 2294
+          },
+          {
+            "path": "tests/test_release_hygiene.py",
+            "sha256": "dd4a589beb0d2f5de3f13059a91e2e7a7917167099c57ffbdbbb0790f513fc30",
+            "size": 5159
+          },
+          {
+            "path": "tests/test_word_boundaries.py",
+            "sha256": "ee22aa61dc1f148377dceb159fcb6cb6cced02e36659606358444ec9b2bb617c",
+            "size": 3422
+          }
+        ],
+        "generated_at": "2026-09-23",
+        "release_version": null
+      },
+      "url": "https://raw.githubusercontent.com/NexvisionLab/Automated-Investment-and-Recruitment-Fraud-Detection-Engine/main/metadata/release_manifest.json"
+    },
+    {
+      "content_type": "text/plain; charset=utf-8",
+      "diagnostic_code": null,
+      "final_url": "https://raw.githubusercontent.com/NexvisionLab/Automated-Investment-and-Recruitment-Fraud-Detection-Engine/main/metadata/checksums.json",
+      "http_status": 200,
+      "outcome": "SUCCESS",
+      "parser": "NEXVISION_CHECKSUMS_V1",
+      "raw_response_retained": false,
+      "resource_id": "PBC04",
+      "response_bytes": 553,
+      "response_sha256": "354033109732ae04799681c99489faedc0ff92d56f5e4382ff92b1c3a4cd6ff0",
+      "source_endpoint_id": "RFE04",
+      "structured_output": {
+        "entries": [
+          {
+            "path": "data/records.jsonl",
+            "sha256": "1386ec2824f2707ae3932cff16497a442b556dac74b2e8c75147c2c3019840a5"
+          },
+          {
+            "path": "metadata/split_index.csv",
+            "sha256": "e616ba5c8d24401f6aa73eac8ca1524de9b13bd032d00d5569708eecd25384c2"
+          },
+          {
+            "path": "samples/curated_eval_512.jsonl",
+            "sha256": "a9a0ade2045d404e00ad7733f6f02a8a6be9a8d54aace67e082f5fc4fc535c5c"
+          },
+          {
+            "path": "samples/taxonomy_sample_320.jsonl",
+            "sha256": "763e62f65dfedb81546ec96623c29b90ac949833176dedf8747281f16e7de21f"
+          },
+          {
+            "path": "taxonomy/taxonomy.json",
+            "sha256": "ab2d31594b8a010808e1acd26a7ade81a9c9755cfd4e730698acde1f54c6f69b"
+          }
+        ]
+      },
+      "url": "https://raw.githubusercontent.com/NexvisionLab/Automated-Investment-and-Recruitment-Fraud-Detection-Engine/main/metadata/checksums.json"
+    },
+    {
+      "content_type": "application/pdf",
+      "diagnostic_code": "PDF_LIFECYCLE_CALLEDPROCESSERROR",
+      "final_url": "https://aclanthology.org/2026.findings-emnlp.404.pdf",
+      "http_status": 200,
+      "outcome": "PARSER_REJECTED",
+      "parser": "PDF_SCAMBENCH_METHODS_V1",
+      "raw_response_retained": false,
+      "resource_id": "PBC05",
+      "response_bytes": 1906912,
+      "response_sha256": "11be0eb75a64c1b61ac24fe1e45489bd497246409d834fc1da3869edc002287b",
+      "source_endpoint_id": "RFE05",
+      "structured_output": null,
+      "url": "https://aclanthology.org/2026.findings-emnlp.404.pdf"
+    },
+    {
+      "content_type": null,
+      "diagnostic_code": "EARLIER_RESOURCE_FAILED",
+      "final_url": null,
+      "http_status": null,
+      "outcome": "SKIPPED_AFTER_FAILURE",
+      "parser": "HF_DATASET_REPOSITORY_METADATA_V1",
+      "raw_response_retained": false,
+      "resource_id": "PBC06",
+      "response_bytes": 0,
+      "response_sha256": null,
+      "source_endpoint_id": "RFE06",
+      "structured_output": null,
+      "url": "https://huggingface.co/api/datasets/trannguyenthaituan/vietnamese_sms_dataset/revision/main"
+    },
+    {
+      "content_type": null,
+      "diagnostic_code": "EARLIER_RESOURCE_FAILED",
+      "final_url": null,
+      "http_status": null,
+      "outcome": "SKIPPED_AFTER_FAILURE",
+      "parser": "MARKDOWN_DOCUMENTATION_V1",
+      "raw_response_retained": false,
+      "resource_id": "PBC07",
+      "response_bytes": 0,
+      "response_sha256": null,
+      "source_endpoint_id": "RFE07",
+      "structured_output": null,
+      "url": "https://huggingface.co/datasets/trannguyenthaituan/vietnamese_sms_dataset/resolve/main/QUICKSTART_GUIDE.md"
+    },
+    {
+      "content_type": null,
+      "diagnostic_code": "EARLIER_RESOURCE_FAILED",
+      "final_url": null,
+      "http_status": null,
+      "outcome": "SKIPPED_AFTER_FAILURE",
+      "parser": "HF_COMMIT_METADATA_V1",
+      "raw_response_retained": false,
+      "resource_id": "PBC08",
+      "response_bytes": 0,
+      "response_sha256": null,
+      "source_endpoint_id": "RFE08",
+      "structured_output": null,
+      "url": "https://huggingface.co/api/datasets/trannguyenthaituan/vietnamese_sms_dataset/commits/main"
+    }
+  ],
+  "result_id": "ISI_TARGET_TEXT_CORPUS_V1_PARSER_BOUND_CONTENT_RESULT_V1",
+  "safety_contract": {
+    "candidate_domain_access_operations": 0,
+    "dataset_files_downloaded": 0,
+    "labels_created": 0,
+    "model_operations": 0,
+    "raw_responses_retained": 0,
+    "training_allowed": false,
+    "validation_or_test_rows_opened": 0
+  },
+  "summary": {
+    "http_error": 0,
+    "parser_rejected": 1,
+    "resources": 8,
+    "response_bytes": 1959079,
+    "skipped_after_failure": 3,
+    "success": 4,
+    "transport_error": 0
+  }
+}

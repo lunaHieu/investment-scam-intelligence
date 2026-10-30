@@ -1,0 +1,134 @@
+{
+  "verification_id": "ISI_TARGET_TEXT_CORPUS_V1_PARSER_BOUND_CONTENT_SUPPLEMENTAL_RELEASE_QA_V1",
+  "created_at": "2026-10-30",
+  "status": "PASS_EXACT_PBC05_PBC08_SUPPLEMENTAL_RELEASE_EXECUTION_CLOSED",
+  "release": {
+    "path": "configs/target_text_corpus_v1_parser_bound_content_supplemental_release_v1.json",
+    "sha256": "b030d8bc61b55846755c57dc8bb9e612a31654995e9a07f09f4c188cc4a59537"
+  },
+  "inputs": [
+    {
+      "role": "immutable_v1_result",
+      "path": "registry/analyses/target_text_corpus_v1_parser_bound_content_result_v1.json",
+      "sha256": "987930b767e06ba78fa11747b963110ba0d60f67747b3129aebb22aa3f7668e2"
+    },
+    {
+      "role": "pbc05_postmortem",
+      "path": "registry/analyses/target_text_corpus_v1_pbc05_pdf_failure_postmortem_v1.json",
+      "sha256": "dc30a21e8394defa95819705ce4d9d52345b601f3decbb0c5b532fd5e1b7e149"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "pdf_lifecycle_v2",
+      "path": "scripts/process_target_text_corpus_v1_parser_bound_pdf_lifecycle_v2.py",
+      "sha256": "109a5f3e1141e3a4102a7da937090bb55ba3e3262e7bdccfa2c82ecd2ca9e84c"
+    },
+    {
+      "role": "supplemental_release_verifier",
+      "path": "scripts/verify_target_text_corpus_v1_parser_bound_content_supplemental_release_v1.py",
+      "sha256": "8a538d48255c4dad42e9c26f932c4347a6be36df16d06ef28c32025a74362f99"
+    },
+    {
+      "role": "supplemental_state_machine",
+      "path": "scripts/execute_target_text_corpus_v1_parser_bound_content_supplemental_v1.py",
+      "sha256": "0865400a4af341e38e02a282652ebfeb24ca80aa66b238d5fcb128f9f77b2a86"
+    },
+    {
+      "role": "supplemental_result_verifier",
+      "path": "scripts/verify_target_text_corpus_v1_parser_bound_content_supplemental_result_v1.py",
+      "sha256": "82d115cff8d65ec4da898ec5bff221596c18085d2bd333967d5d9931d4e32862"
+    },
+    {
+      "role": "supplemental_authorization_protocol",
+      "path": "configs/target_text_corpus_v1_parser_bound_content_supplemental_execution_authorization_protocol_v1.json",
+      "sha256": "21d455918b22d755cd21185ab91a3bee0604f5950dd2fec7846d5ca4160e9254"
+    },
+    {
+      "role": "supplemental_authorization_verifier",
+      "path": "scripts/verify_target_text_corpus_v1_parser_bound_content_supplemental_execution_authorization_v1.py",
+      "sha256": "6adfc852f54dba498b25ad520bcd6885350f45eb01008f77f626efd07c6eb05c"
+    },
+    {
+      "role": "supplemental_live_transport",
+      "path": "scripts/http_transport_target_text_corpus_v1_parser_bound_content_supplemental_v1.py",
+      "sha256": "e1e7a7ef11f9c4a5fc305b7f1ac141a1513895ccb4c5b8a3b0d76a8edf6b4992"
+    },
+    {
+      "role": "supplemental_live_orchestrator",
+      "path": "scripts/orchestrate_target_text_corpus_v1_parser_bound_content_supplemental_v1.py",
+      "sha256": "fd86ce762da7b9bbc652134cc2989fd06a80528fde6938a0352b5c59af88dd2a"
+    },
+    {
+      "role": "pdf_lifecycle_v2_tests",
+      "path": "tests/test_process_target_text_corpus_v1_parser_bound_pdf_lifecycle_v2.py",
+      "sha256": "eab4e0030ae4a46fc0209458d78e2c8b775bba0483dd0039861fd670a199dc7d"
+    },
+    {
+      "role": "supplemental_release_tests",
+      "path": "tests/test_target_text_corpus_v1_parser_bound_content_supplemental_release_v1.py",
+      "sha256": "2c83f6b852d52d83752f56f6c786d41ebfedcaba0d924d00fd87b160468d356b"
+    },
+    {
+      "role": "supplemental_state_machine_tests",
+      "path": "tests/test_execute_target_text_corpus_v1_parser_bound_content_supplemental_v1.py",
+      "sha256": "49a9a738b57e1eb552805bed86ecd60482e330169bf956827fa7cc36ab768c37"
+    },
+    {
+      "role": "supplemental_live_gate_tests",
+      "path": "tests/test_target_text_corpus_v1_parser_bound_content_supplemental_live_gate_v1.py",
+      "sha256": "4a141a342a4536960d97b2050aa2ff0b70ea4a6ad0d81a1e629232f1f9ac03b8"
+    },
+    {
+      "role": "postmortem_documentation",
+      "path": "docs/target-text-corpus-v1-pbc05-pdf-failure-postmortem-v1.md",
+      "sha256": "a5cd820803ace354ae21cdb026b4243b68e25091752265994c0a45974e257094"
+    },
+    {
+      "role": "supplemental_release_documentation",
+      "path": "docs/target-text-corpus-v1-parser-bound-content-supplemental-release-v1.md",
+      "sha256": "c617267d736a0d6b97ad28836d96d626473007746b43426b38f62cf3ddfef92d"
+    },
+    {
+      "role": "supplemental_live_gate_documentation",
+      "path": "docs/target-text-corpus-v1-parser-bound-content-supplemental-live-gate-v1.md",
+      "sha256": "97a4fa9b8b3a9fcdbd7a729c08075617d499e673fd1f449df9f8dfe53898f2c5"
+    }
+  ],
+  "checks": {
+    "resource_ids": ["PBC05", "PBC06", "PBC07", "PBC08"],
+    "maximum_get_requests": 4,
+    "maximum_attempts_per_resource": 1,
+    "repeat_pbc01_through_pbc04_allowed": false,
+    "continue_after_row_local_parser_failure": true,
+    "stop_on_transport_or_provider_error": true,
+    "hash_only_pdf_failure_diagnostics": true,
+    "pdf_fixture_pages_rendered": 2,
+    "pdf_fixture_pages_visually_reviewed": 2,
+    "pdf_fixture_visual_review_status": "PASS_NO_LAYOUT_DEFECTS",
+    "pdf_fixture_and_renders_deleted": true,
+    "focused_tests_passed": 9,
+    "planned_outputs_absent": true
+  },
+  "decision": {
+    "supplemental_release_verified": true,
+    "network_execution_allowed_now": false,
+    "committed_executor_and_result_verifier_required": true,
+    "supplemental_state_machine_implemented": true,
+    "live_network_capability_implemented": true,
+    "owner_supplemental_network_authorization_received": true,
+    "separate_owner_execution_authorization_required": true,
+    "evidence_acceptance_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_operations_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "raw_pdf_retained": false,
+    "temporary_pdf_or_render_artifacts_remaining": 0,
+    "labels_created": 0,
+    "model_operations": 0
+  }
+}

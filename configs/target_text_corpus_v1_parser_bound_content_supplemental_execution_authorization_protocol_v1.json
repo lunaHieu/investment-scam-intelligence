@@ -1,0 +1,43 @@
+{
+  "protocol_id": "ISI_TARGET_TEXT_CORPUS_V1_PARSER_BOUND_CONTENT_SUPPLEMENTAL_EXECUTION_AUTHORIZATION_PROTOCOL_V1",
+  "created_at": "2026-10-30",
+  "status": "FROZEN_AUTHORIZATION_INTAKE_PREPARED_EXECUTION_CLOSED",
+  "scope": {
+    "release_path": "configs/target_text_corpus_v1_parser_bound_content_supplemental_release_v1.json",
+    "release_sha256": "b030d8bc61b55846755c57dc8bb9e612a31654995e9a07f09f4c188cc4a59537",
+    "release_qa_path": "registry/analyses/target_text_corpus_v1_parser_bound_content_supplemental_release_qa_v1.json",
+    "resource_ids": ["PBC05", "PBC06", "PBC07", "PBC08"],
+    "maximum_get_requests": 4,
+    "maximum_attempts_per_resource": 1,
+    "repeat_pbc01_through_pbc04_allowed": false,
+    "raw_response_retention_allowed": false,
+    "automatic_retry_allowed": false,
+    "automatic_resume_allowed": false
+  },
+  "required_owner_authorization": {
+    "must_be_explicit": true,
+    "must_name_supplemental_network_execution": true,
+    "must_authorize_pbc05_through_pbc08_scope": true,
+    "generic_continue_instruction_is_sufficient": false,
+    "received": false
+  },
+  "activation_gate": {
+    "separate_amendment_path": "configs/target_text_corpus_v1_parser_bound_content_supplemental_execution_amendment_v1.json",
+    "separate_amendment_qa_path": "registry/analyses/target_text_corpus_v1_parser_bound_content_supplemental_execution_amendment_qa_v1.json",
+    "amendment_and_qa_must_be_tracked": true,
+    "working_tree_must_be_clean": true,
+    "head_must_equal_origin_main": true,
+    "planned_outputs_must_be_absent": true,
+    "focused_and_current_full_tests_must_pass": true
+  },
+  "decision": {
+    "authorization_intake_prepared": true,
+    "owner_network_authorization_received": false,
+    "network_execution_allowed_now": false,
+    "commit_allowed": false,
+    "push_allowed": false,
+    "evidence_acceptance_allowed": false,
+    "labeling_allowed": false,
+    "training_allowed": false
+  }
+}

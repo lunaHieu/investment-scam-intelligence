@@ -1,0 +1,58 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_PBC05_PDF_FAILURE_POSTMORTEM_V1",
+  "created_at": "2026-10-30",
+  "status": "ROOT_CAUSE_CLASS_CONFIRMED_STAGE_UNRECOVERABLE_FROM_V1",
+  "inputs": [
+    {
+      "role": "parser_bound_result",
+      "path": "registry/analyses/target_text_corpus_v1_parser_bound_content_result_v1.json",
+      "sha256": "987930b767e06ba78fa11747b963110ba0d60f67747b3129aebb22aa3f7668e2"
+    },
+    {
+      "role": "pdf_lifecycle_v1",
+      "path": "scripts/process_target_text_corpus_v1_parser_bound_pdf_lifecycle_v1.py",
+      "sha256": "48b21dd323aeac5990963fb1efe282df640bc6b4c04827a9807317bbe573b952"
+    }
+  ],
+  "observed": {
+    "resource_id": "PBC05",
+    "http_status": 200,
+    "content_type": "application/pdf",
+    "response_bytes": 1906912,
+    "response_sha256": "11be0eb75a64c1b61ac24fe1e45489bd497246409d834fc1da3869edc002287b",
+    "outcome": "PARSER_REJECTED",
+    "diagnostic_code": "PDF_LIFECYCLE_CALLEDPROCESSERROR",
+    "raw_response_retained": false,
+    "temporary_artifact_count_after_execution": 0,
+    "downstream_rows_skipped": ["PBC06", "PBC07", "PBC08"]
+  },
+  "root_cause_analysis": {
+    "confirmed_failure_class": "A subprocess launched by the bounded PDF lifecycle returned a non-zero exit code.",
+    "possible_stages": ["PDFINFO", "SECTION_EXTRACTION", "PDFTOPPM_RENDER"],
+    "exact_stage_recoverable_from_v1_artifacts": false,
+    "reason_exact_stage_is_unrecoverable": "V1 collapsed all subprocess failures to the Python exception class and intentionally deleted the raw PDF, rendered pages, stdout and stderr.",
+    "network_or_http_failure": false,
+    "content_type_or_byte_limit_failure": false,
+    "evidence_of_malware": false,
+    "silent_retry_justified": false
+  },
+  "corrective_actions": {
+    "pdf_lifecycle_v2_required": true,
+    "diagnostic_fields": ["stage", "returncode", "stdout_bytes", "stdout_sha256", "stderr_bytes", "stderr_sha256"],
+    "stdout_or_stderr_text_retention_allowed": false,
+    "raw_pdf_retention_allowed": false,
+    "supplemental_release_required": true,
+    "repeat_pbc01_through_pbc04_allowed": false,
+    "pbc06_through_pbc08_may_continue_after_row_local_pbc05_parser_failure": true,
+    "provider_or_transport_failure_still_stops_all": true
+  },
+  "decision": {
+    "current_result_remains_immutable": true,
+    "pbc05_remains_unaccepted": true,
+    "pbc06_through_pbc08_remain_unattempted": true,
+    "network_execution_allowed_by_this_postmortem": false,
+    "evidence_acceptance_allowed": false,
+    "labeling_allowed": false,
+    "training_allowed": false
+  }
+}

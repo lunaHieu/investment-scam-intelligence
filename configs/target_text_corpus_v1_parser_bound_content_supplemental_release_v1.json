@@ -1,0 +1,54 @@
+{
+  "release_id": "ISI_TARGET_TEXT_CORPUS_V1_PARSER_BOUND_CONTENT_SUPPLEMENTAL_RELEASE_V1",
+  "created_at": "2026-10-30",
+  "status": "FROZEN_PREPARATION_EXECUTION_CLOSED",
+  "purpose": "Retry PBC05 once with stage-specific hash-only PDF diagnostics and acquire the three never-attempted metadata resources without repeating PBC01 through PBC04.",
+  "inputs": [
+    {
+      "role": "immutable_v1_result",
+      "path": "registry/analyses/target_text_corpus_v1_parser_bound_content_result_v1.json",
+      "sha256": "987930b767e06ba78fa11747b963110ba0d60f67747b3129aebb22aa3f7668e2"
+    },
+    {
+      "role": "pbc05_postmortem",
+      "path": "registry/analyses/target_text_corpus_v1_pbc05_pdf_failure_postmortem_v1.json",
+      "sha256": "dc30a21e8394defa95819705ce4d9d52345b601f3decbb0c5b532fd5e1b7e149"
+    },
+    {
+      "role": "frozen_v1_release",
+      "path": "configs/target_text_corpus_v1_parser_bound_content_release_v1.json",
+      "sha256": "92d66eaa5433dcfda5170c2cde64a7af85e39d834f2d0f71a5b43b18a15de391"
+    }
+  ],
+  "resource_ids": ["PBC05", "PBC06", "PBC07", "PBC08"],
+  "execution_contract": {
+    "maximum_get_requests": 4,
+    "maximum_attempts_per_resource": 1,
+    "repeat_pbc01_through_pbc04_allowed": false,
+    "raw_response_retention_allowed": false,
+    "automatic_retry_allowed": false,
+    "automatic_resume_allowed": false,
+    "no_overwrite": true,
+    "continue_after_row_local_parser_failure": true,
+    "stop_on_transport_error": true,
+    "stop_on_provider_http_error": true,
+    "candidate_live_domain_access_allowed": false,
+    "dataset_file_download_allowed": false,
+    "pbc05_pdf_lifecycle": "scripts.process_target_text_corpus_v1_parser_bound_pdf_lifecycle_v2",
+    "pdf_diagnostic_text_retention_allowed": false,
+    "pdf_visual_review_required_before_evidence_acceptance": true
+  },
+  "planned_output": "registry/analyses/target_text_corpus_v1_parser_bound_content_supplemental_result_v1.json",
+  "planned_partial": "registry/analyses/target_text_corpus_v1_parser_bound_content_supplemental_result_v1.json.partial",
+  "decision": {
+    "release_prepared": true,
+    "network_execution_allowed_now": false,
+    "separate_committed_executor_and_result_verifier_required": true,
+    "separate_owner_execution_authorization_required": true,
+    "evidence_acceptance_allowed": false,
+    "labeling_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_operations_allowed": false,
+    "training_allowed": false
+  }
+}

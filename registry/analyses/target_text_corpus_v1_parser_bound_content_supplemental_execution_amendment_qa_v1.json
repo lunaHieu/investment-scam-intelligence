@@ -1,0 +1,37 @@
+{
+  "verification_id": "ISI_TARGET_TEXT_CORPUS_V1_PARSER_BOUND_CONTENT_SUPPLEMENTAL_EXECUTION_AMENDMENT_QA_V1",
+  "created_at": "2026-10-30",
+  "status": "PASS_SUPPLEMENTAL_OWNER_EXECUTION_AUTHORIZATION",
+  "amendment_path": "configs/target_text_corpus_v1_parser_bound_content_supplemental_execution_amendment_v1.json",
+  "amendment_sha256": "af77d1867ce8e2d3ed73c50331542d9ad8dea1a340d47a5b7f6939d94371d241",
+  "inputs": {
+    "protocol_sha256": "21d455918b22d755cd21185ab91a3bee0604f5950dd2fec7846d5ca4160e9254",
+    "release_sha256": "b030d8bc61b55846755c57dc8bb9e612a31654995e9a07f09f4c188cc4a59537",
+    "release_qa_sha256": "53aa44b710898d9959c5964f3599cc91693dd415adc3414ad372004918cf70f4"
+  },
+  "checks": {
+    "owner_authorization_received": true,
+    "resource_ids": ["PBC05", "PBC06", "PBC07", "PBC08"],
+    "maximum_get_requests": 4,
+    "maximum_attempts_per_resource": 1,
+    "repeat_pbc01_through_pbc04_allowed": false,
+    "continue_after_row_local_parser_failure": true,
+    "stop_on_transport_or_provider_error": true,
+    "raw_response_retention_allowed": false,
+    "automatic_retry_allowed": false,
+    "automatic_resume_allowed": false
+  },
+  "decision": {
+    "amendment_verified": true,
+    "network_execution_allowed_only_after_commit_push_and_clean_preflight": true,
+    "network_execution_allowed_in_current_uncommitted_state": false,
+    "evidence_acceptance_allowed": false,
+    "labeling_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "labels_created": 0,
+    "model_operations": 0
+  }
+}

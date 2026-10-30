@@ -1,0 +1,46 @@
+{
+  "analysis_id": "ISI_CURRENT_TEST_SUITE_LIFECYCLE_V8",
+  "created_at": "2026-10-30",
+  "status": "PASS_27_PREEXECUTION_ASSERTIONS_SUPERSEDED",
+  "inputs": [
+    {
+      "role": "prior",
+      "path": "registry/analyses/current_test_suite_lifecycle_v7.json",
+      "sha256": "18f6ec70f5fba278eaa6a0ea59ce51ac12ccbf2a63176e49cda56ccad503bc1b"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "runner",
+      "path": "scripts/run_current_test_suite_v8.py",
+      "sha256": "f82ceaa9686a3319338fd9bd5e0e725b75b68a6bd080cad247e451fae5eaa604"
+    },
+    {
+      "role": "postexecution_tests",
+      "path": "tests/test_current_artifact_lifecycle_v8.py",
+      "sha256": "3e53ae2b4eff36386cde7f76f8b09993bf9b36eacf0b70c7b2acd6acc99ec62b"
+    },
+    {
+      "role": "mapping_test",
+      "path": "tests/test_current_test_suite_v8.py",
+      "sha256": "06d2444d61fd6db03c681edcde211a1462ebe9852f8abc085d081064b886f23c"
+    },
+    {
+      "role": "documentation",
+      "path": "docs/current-test-suite-lifecycle-v8.md",
+      "sha256": "b92dced35e7da75c89770ff6fdd996a2cd152ed53abc91d1aea857dfd10d4e81"
+    }
+  ],
+  "findings": {
+    "historical_preexecution_methods": 27,
+    "new_parser_bound_postexecution_replacements": 8,
+    "historical_test_files_modified": 0
+  },
+  "decision": {
+    "current_quality_gate_command": ".venv\\Scripts\\python.exe -m scripts.run_current_test_suite_v8",
+    "supplemental_network_execution_allowed_only_after_committed_owner_amendment": true,
+    "evidence_acceptance_allowed": false,
+    "labeling_allowed": false,
+    "training_allowed": false
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "analysis_id": "ISI_REPRODUCIBILITY_CURRENT_STATE_V70",
+  "created_at": "2026-10-31",
+  "status": "CURRENT_PBC_OFFLINE_BOUNDARY_REVIEW_COMPLETE_RETRIES_CLOSED",
+  "inputs": [
+    {
+      "role": "prior_state",
+      "path": "registry/analyses/reproducibility_current_state_v69.json",
+      "sha256": "f2562db9fee5abd9fc38c80b417e5bbad514d8ae6fec841156c9b25c687357da"
+    },
+    {
+      "role": "offline_followup_analysis",
+      "path": "registry/analyses/target_text_corpus_v1_pbc_offline_followup_v1.json",
+      "sha256": "10972a7860d4571c942b6d0726857cc83119f59f63a6312c059fcabbbe607ffa"
+    },
+    {
+      "role": "direction_plan",
+      "path": "docs/project-direction-plan-r36.md",
+      "sha256": "b62b7f2a931dd27a277c40244fd85224370361b93fdf27175bb4c9599c8d75b6"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "offline_boundary_tests",
+      "path": "tests/test_target_text_corpus_v1_pbc_offline_boundary_review_v1.py",
+      "sha256": "747b3da4fb396d56125c64fbe3c95a544643749090b36034d7c1ab66068a824a"
+    },
+    {
+      "role": "offline_registry_test",
+      "path": "tests/test_target_text_corpus_v1_pbc_offline_followup_registry_v1.py",
+      "sha256": "da4292ffc7d805b2fde754199b2d028a803d50f6b1073247232c0456ad1edcaf"
+    }
+  ],
+  "output": {
+    "role": "current_state_guide",
+    "path": "docs/reproducibility-current-state-v70.md",
+      "sha256": "f12c06610092d56adc3b8de8f9df3b98b81f9acf270ff3be5b5d5792a7475111"
+  },
+  "current_entrypoint": "registry/analyses/project_state_gap_ledger_v73.json",
+  "current_pbc_state": {
+    "PBC05": {
+      "failure_stage": "SECTION_EXTRACTION",
+      "exact_cause_recoverable": false,
+      "same_release_retry_allowed": false
+    },
+    "PBC08": {
+      "forbidden_key_guard_confirmed": true,
+      "exact_live_key_recoverable": false,
+      "same_release_retry_allowed": false
+    },
+    "synthetic_boundary_tests_passed": 5
+  },
+  "decision": {
+    "new_source_request_authorized": false,
+    "dataset_acquisition_allowed": false,
+    "evidence_acceptance_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "candidate_domain_access_operations": 0,
+    "raw_responses_retained": 0,
+    "labels_created": 0,
+    "validation_or_test_rows_opened": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

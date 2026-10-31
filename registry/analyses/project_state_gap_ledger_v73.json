@@ -1,0 +1,65 @@
+{
+  "analysis_id": "ISI_PROJECT_STATE_GAP_LEDGER_V73",
+  "created_at": "2026-10-31",
+  "status": "CURRENT_PBC_OFFLINE_REVIEW_COMPLETE_EXACT_CAUSES_STILL_UNKNOWN",
+  "inputs": [
+    {
+      "role": "prior_ledger",
+      "path": "registry/analyses/project_state_gap_ledger_v72.json",
+      "sha256": "11b244265a3a2ca5d67191a3e557dea086a4bf98e0883a5c6b626d340a1de8cf"
+    },
+    {
+      "role": "current_reproducibility_state",
+      "path": "registry/analyses/reproducibility_current_state_v70.json",
+      "sha256": "d74c9406ea15b80a9e59659b3f233fc3fb900e955e9388aa47b5e326e4e68a88"
+    },
+    {
+      "role": "offline_followup_analysis",
+      "path": "registry/analyses/target_text_corpus_v1_pbc_offline_followup_v1.json",
+      "sha256": "10972a7860d4571c942b6d0726857cc83119f59f63a6312c059fcabbbe607ffa"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "ledger_guide",
+      "path": "docs/project-state-gap-ledger-v73.md",
+      "sha256": "7e1892f0452fee05817d22431773aeb53f25e032e825b1aaef8b7485c9774045"
+    },
+    {
+      "role": "synthetic_offline_tests",
+      "path": "tests/test_target_text_corpus_v1_pbc_offline_boundary_review_v1.py",
+      "sha256": "747b3da4fb396d56125c64fbe3c95a544643749090b36034d7c1ab66068a824a"
+    }
+  ],
+  "state_amendments": {
+    "PBC05": {
+      "child_returncode": 1,
+      "stdout_bytes": 0,
+      "stderr_bytes": 710,
+      "exact_cause_recoverable": false,
+      "same_release_retry_allowed": false
+    },
+    "PBC08": {
+      "recursive_case_insensitive_forbidden_key_guard": true,
+      "synthetic_allowlisted_schema_passed": true,
+      "exact_live_key_recoverable": false,
+      "same_release_retry_allowed": false
+    },
+    "synthetic_offline_tests_passed": 5,
+    "rows_admitted": 0,
+    "labels_created": 0
+  },
+  "decision": {
+    "same_release_retry_allowed": false,
+    "new_source_request_authorized": false,
+    "validation_or_test_access_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "candidate_domain_access_operations": 0,
+    "labels_created": 0,
+    "training_allowed": false
+  }
+}

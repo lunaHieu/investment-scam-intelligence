@@ -1,0 +1,116 @@
+{
+  "analysis_id": "ISI_TARGET_TEXT_CORPUS_V1_PBC_OFFLINE_FOLLOWUP_V1",
+  "created_at": "2026-10-31",
+  "status": "PASS_SYNTHETIC_BOUNDARIES_CHECKED_LIVE_EXACT_CAUSES_REMAIN_UNRECOVERABLE",
+  "inputs": [
+    {
+      "role": "parser_contract",
+      "path": "configs/target_text_corpus_v1_parser_bound_content_release_v1.json",
+      "sha256": "92d66eaa5433dcfda5170c2cde64a7af85e39d834f2d0f71a5b43b18a15de391"
+    },
+    {
+      "role": "transport_parser",
+      "path": "scripts/execute_target_text_corpus_v1_parser_bound_content_v1.py",
+      "sha256": "e532c60503e5e7729ea5e2b1edf0199df6d244209efc0f57e41430f3618bf057"
+    },
+    {
+      "role": "pdf_extractor",
+      "path": "scripts/extract_scambench_pdf_sections_v1.py",
+      "sha256": "62d963e5f5f957551b7af62b571777548f957a05de91162ab0d8e83878c05d3d"
+    },
+    {
+      "role": "pdf_lifecycle_v2",
+      "path": "scripts/process_target_text_corpus_v1_parser_bound_pdf_lifecycle_v2.py",
+      "sha256": "acf9c1291a33cc7d16f3d1bc7acaa8935fc2a1a3ee93a0b51c4a1540db3b01c9"
+    },
+    {
+      "role": "immutable_diagnostic_result",
+      "path": "registry/analyses/target_text_corpus_v1_parser_bound_content_diagnostic_result_v1.json",
+      "sha256": "5fcddbb84bb27867c139b972206e5483d78d8fefa91836cb5ffabf4f200fb07a"
+    },
+    {
+      "role": "independent_result_qa",
+      "path": "registry/analyses/target_text_corpus_v1_parser_bound_content_diagnostic_result_qa_v1.json",
+      "sha256": "861366229ee8567ffcd328f58da5133d7de041083c3517a8df627ef6f02e37ce"
+    },
+    {
+      "role": "prior_offline_postmortem",
+      "path": "registry/analyses/target_text_corpus_v1_pbc05_pbc08_offline_postmortem_v1.json",
+      "sha256": "7f1d4454c8a4b8b77697060d5bac6358f9df3fba0a013feacde7367bf95ba4df"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "synthetic_offline_boundary_tests",
+      "path": "tests/test_target_text_corpus_v1_pbc_offline_boundary_review_v1.py",
+      "sha256": "747b3da4fb396d56125c64fbe3c95a544643749090b36034d7c1ab66068a824a"
+    },
+    {
+      "role": "analysis_registry_test",
+      "path": "tests/test_target_text_corpus_v1_pbc_offline_followup_registry_v1.py",
+      "sha256": "da4292ffc7d805b2fde754199b2d028a803d50f6b1073247232c0456ad1edcaf"
+    }
+  ],
+  "pbc05": {
+    "observed": {
+      "stage": "SECTION_EXTRACTION",
+      "returncode": 1,
+      "stdout_bytes": 0,
+      "stderr_bytes": 710,
+      "stderr_sha256": "daa76cb33104e32108abfcf053e9eaf097f5c5c63ce17e036d0efe4bc213eb62",
+      "response_sha256": "11be0eb75a64c1b61ac24fe1e45489bd497246409d834fc1da3869edc002287b"
+    },
+    "code_path_findings": {
+      "handled_extractor_exception_emits_structured_stdout": true,
+      "handled_extractor_exception_exit_code": 2,
+      "parent_without_allowlisted_stdout_code_records_only_stage_and_hashes": true,
+      "observed_returncode_and_stdout_match_handled_extractor_exception": false
+    },
+    "root_cause_status": "EXACT_CAUSE_NOT_RECOVERABLE_FROM_RETAINED_HASH_ONLY_DIAGNOSTICS",
+    "bounded_interpretation": "The observation is consistent with failure before the extractor's structured exception handler completed or abnormal child termination; it does not establish which event occurred.",
+    "raw_pdf_or_stderr_recovered": false,
+    "retry_allowed": false
+  },
+  "pbc08": {
+    "observed": {
+      "diagnostic_code": "PARSER_REJECTED_FORBIDDEN_DATASET_KEY_PRESENT",
+      "response_sha256": "45e80332128724f860215f709ab938d386d4f63ee1ea42bdf5b32598c5261111",
+      "forbidden_key_name_retained": false
+    },
+    "synthetic_findings": {
+      "allowlisted_commit_metadata_schema_accepted": true,
+      "unselected_non_forbidden_fields_dropped": true,
+      "configured_forbidden_keys_checked_recursively_case_insensitively": true,
+      "forbidden_key_values_retained_or_reported": false
+    },
+    "configured_forbidden_keys": ["rows", "content", "text", "message", "examples", "preview"],
+    "exact_live_key_status": "NOT_IDENTIFIABLE_FROM_RETAINED_RESULT",
+    "broad_key_scan_risk": "A configured key such as message is rejected at any depth; the live response does not identify whether this or another configured key caused rejection.",
+    "retry_allowed": false
+  },
+  "execution": {
+    "focused_synthetic_tests_passed": 5,
+    "focused_registry_tests_passed": 3,
+    "current_full_suite": {
+      "command": ".venv\\Scripts\\python.exe -m scripts.run_current_test_suite_v10",
+      "passed": 1167,
+      "failed": 0
+    },
+    "registry_validation": {
+      "status": "PASS",
+      "analysis_registries": 399
+    },
+    "source_endpoint_requests": 0,
+    "candidate_domain_access_operations": 0,
+    "raw_responses_retained": 0,
+    "dataset_rows_or_labels_created": 0,
+    "validation_or_test_rows_opened": 0,
+    "model_operations": 0
+  },
+  "decision": {
+    "same_release_retry_allowed": false,
+    "new_source_request_authorized": false,
+    "evidence_acceptance_allowed": false,
+    "training_allowed": false
+  }
+}

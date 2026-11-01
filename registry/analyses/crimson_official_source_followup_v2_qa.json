@@ -1,0 +1,67 @@
+{
+  "verification_id": "ISI_CRIMSON_OFFICIAL_SOURCE_FOLLOWUP_V2_QA",
+  "created_at": "2026-11-01",
+  "status": "PASS_OFFICIAL_FACTS_PINNED_REVIEW_AND_ADMISSION_STILL_CLOSED",
+  "inputs": [
+    {
+      "role": "official_source_followup_registry",
+      "path": "C:\\Users\\hieu\\Documents\\ChatGPT\\invesment scam intelligence\\registry\\analyses\\crimson_official_source_followup_v2.json",
+      "sha256": "2029e6b417cd9836780034af80a500ee781d3a2a2f9cd55a685f77f253c1a75b"
+    },
+    {
+      "role": "workflow_config",
+      "path": "C:\\Users\\hieu\\Documents\\ChatGPT\\invesment scam intelligence\\configs\\crimson_official_source_followup_v2.json",
+      "sha256": "45c8d191d72815a8503b4e58b786587860db18e13da3293a7c341526bb7564b1"
+    },
+    {
+      "role": "materializer",
+      "path": "scripts/materialize_crimson_official_source_followup_v2.py",
+      "sha256": "de743e5348dbaf7917ddb5cefb1ec2ea1862dbbfabb78eb12c3e5d43c334d95e"
+    }
+  ],
+  "checks": {
+    "registered_outputs": [
+      {
+        "role": "official_source_fact_supplement",
+        "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\crimson_primary_review_readiness_v1\\official_source_followup_evidence_v2.jsonl",
+        "sha256": "5bcfb31902b00ebe7ec941bfd1922e887b6ea473cbfef6c0102f857c54148cd7",
+        "record_count": 12
+      },
+      {
+        "role": "official_source_access_status_supplement",
+        "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\crimson_primary_review_readiness_v1\\official_source_access_status_v2.jsonl",
+        "sha256": "392e3042f0760183a6961c8f072df1a2bac7a167e02eafb0f4695d23af5944bd",
+        "record_count": 15
+      }
+    ],
+    "official_source_fact_rows": 12,
+    "unique_pilots_with_new_facts": 11,
+    "unique_official_pages_directly_read": 11,
+    "followup_status_rows": 15,
+    "primary_reviews_completed": 0,
+    "independent_second_reviews_completed": 0,
+    "root_only_relationships_kept_unresolved": 3,
+    "same_url_retries": 0,
+    "candidate_domain_accesses": 0,
+    "labels_created": 0,
+    "dataset_rows_admitted": 0,
+    "training_eligible": 0
+  },
+  "errors": [],
+  "decision": {
+    "primary_review_required": true,
+    "independent_second_review_required_where_planned": true,
+    "reconciliation_performed": false,
+    "data_admission_allowed": false,
+    "label_materialization_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {
+    "network_operations_during_verification": 0,
+    "candidate_domain_access_operations": 0,
+    "raw_official_page_files_retained": 0,
+    "labels_created": 0,
+    "dataset_rows_admitted": 0,
+    "training_allowed": false
+  }
+}

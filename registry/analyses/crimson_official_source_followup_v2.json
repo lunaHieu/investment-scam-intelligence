@@ -1,0 +1,63 @@
+{
+  "analysis_id": "ISI_CRIMSON_OFFICIAL_SOURCE_FOLLOWUP_V2",
+  "created_at": "2026-11-01",
+  "status": "PASS_OFFICIAL_SOURCE_FACTS_PINNED_REVIEW_AND_ADMISSION_OPEN",
+  "inputs": [
+    {
+      "role": "frozen_workflow_config",
+      "path": "C:\\Users\\hieu\\Documents\\ChatGPT\\invesment scam intelligence\\configs\\crimson_official_source_followup_v2.json",
+      "sha256": "45c8d191d72815a8503b4e58b786587860db18e13da3293a7c341526bb7564b1"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "materializer",
+      "path": "scripts/materialize_crimson_official_source_followup_v2.py",
+      "sha256": "de743e5348dbaf7917ddb5cefb1ec2ea1862dbbfabb78eb12c3e5d43c334d95e"
+    }
+  ],
+  "outputs": [
+    {
+      "role": "official_source_fact_supplement",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\crimson_primary_review_readiness_v1\\official_source_followup_evidence_v2.jsonl",
+      "sha256": "5bcfb31902b00ebe7ec941bfd1922e887b6ea473cbfef6c0102f857c54148cd7",
+      "record_count": 12
+    },
+    {
+      "role": "official_source_access_status_supplement",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\crimson_primary_review_readiness_v1\\official_source_access_status_v2.jsonl",
+      "sha256": "392e3042f0760183a6961c8f072df1a2bac7a167e02eafb0f4695d23af5944bd",
+      "record_count": 15
+    }
+  ],
+  "counts": {
+    "official_source_fact_rows": 12,
+    "unique_candidate_pilots_with_new_direct_source_facts": 11,
+    "unique_direct_official_pages_read": 11,
+    "followup_status_rows": 15,
+    "primary_review_tasks_completed": 0,
+    "independent_second_reviews_completed": 0,
+    "labels_created": 0,
+    "dataset_rows_admitted": 0
+  },
+  "decision": {
+    "official_fact_collection_only": true,
+    "all_15_followup_primary_reviews_remain_pending": true,
+    "root_only_or_name_only_matches_resolved": false,
+    "blind_second_review_may_be_performed_by_this_primary_evidence_pass": false,
+    "data_admission_allowed": false,
+    "label_materialization_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "official_reference_page_reads": 11,
+    "candidate_domain_access_operations": 0,
+    "raw_official_page_files_retained": 0,
+    "labels_created": 0,
+    "dataset_rows_admitted": 0,
+    "validation_or_test_opened": false,
+    "model_scoring_or_training_performed": false,
+    "training_allowed": false
+  }
+}

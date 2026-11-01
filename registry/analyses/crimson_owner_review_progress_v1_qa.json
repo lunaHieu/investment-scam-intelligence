@@ -1,0 +1,85 @@
+{
+  "verification_id": "ISI_CRIMSON_OWNER_REVIEW_PROGRESS_V1_QA",
+  "created_at": "2026-11-01",
+  "status": "PASS_OWNER_PROGRESS_ARTIFACTS_AND_OPEN_GATES_VERIFIED",
+  "inputs": [
+    {
+      "role": "owner_progress_registry",
+      "path": "C:\\Users\\hieu\\Documents\\ChatGPT\\invesment scam intelligence\\registry\\analyses\\crimson_owner_review_progress_v1.json",
+      "sha256": "9750620991dfdb586e5e492ebe60a06d3e6f11642d2f9b86c0719f2df188ba3f"
+    },
+    {
+      "role": "workflow_config",
+      "path": "C:\\Users\\hieu\\Documents\\ChatGPT\\invesment scam intelligence\\configs\\crimson_owner_review_progress_v1.json",
+      "sha256": "e766da0b712a270e1dd34ccd129c4c6a4d6a8e856dbec7f30bb9300723494717"
+    },
+    {
+      "role": "materializer",
+      "path": "scripts/record_crimson_owner_review_progress_v1.py",
+      "sha256": "6f14f10ef081c67772b8da2e11f20f96e6a0ae8641a6c8e3b966a09714f36015"
+    }
+  ],
+  "checks": {
+    "registered_output_hashes_and_counts": [
+      {
+        "role": "owner_confirmed_primary_decisions",
+        "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\crimson_external_reference_review_pilot_v1\\owner_primary_review_confirmations_v1.jsonl",
+        "sha256": "791a006aee31d25b7861f6c1cba8e5957ff250af47f3385942922296865298a7",
+        "record_count": 24
+      },
+      {
+        "role": "blind_second_review_handoff",
+        "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\crimson_primary_review_readiness_v1\\blind_second_review_handoff_v2.jsonl",
+        "sha256": "f245b7b74479b8f241e96da4ee3e246118927ef49300475327713d3f39b20cc9",
+        "record_count": 9
+      },
+      {
+        "role": "single_review_reconciliation",
+        "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\crimson_primary_review_readiness_v1\\owner_reconciliation_v1.jsonl",
+        "sha256": "a3098a045a640e2dad33fc84f822af008e9be4bc0b5634a6ff76dff54f390157",
+        "record_count": 16
+      },
+      {
+        "role": "official_source_evidence",
+        "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\crimson_primary_review_readiness_v1\\official_source_followup_evidence_v1.jsonl",
+        "sha256": "a1caaa888b41632a5038df5b228d4859f617b5136e06961270dd40709a9a30ad",
+        "record_count": 6
+      },
+      {
+        "role": "official_source_access_status",
+        "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\crimson_primary_review_readiness_v1\\official_source_access_status_v1.jsonl",
+        "sha256": "bed6af13ba281d5b7df5a3250cced42bc6c00065857f888b9f0f133ed3c4f25b",
+        "record_count": 15
+      }
+    ],
+    "primary_confirmation_count": 24,
+    "single_review_reconciliation_count": 16,
+    "blind_second_handoff_count": 9,
+    "source_evidence_count": 6,
+    "official_followup_status_count": 15,
+    "blind_packet_primary_information_leaks": 0,
+    "labels_created": 0,
+    "training_eligible_records": 0
+  },
+  "materializer_console_diagnostic": {
+    "exit_code": 1,
+    "failure_class": "UnicodeEncodeError",
+    "failure_location": "printing the completed JSON result to the Windows console after artifacts and registry were written",
+    "artifact_integrity_checked_independently": true,
+    "materializer_was_not_rerun": true
+  },
+  "decision": {
+    "16_single_review_rows_reconciled_at_identity_evidence_level": true,
+    "9_independent_second_reviews_completed": false,
+    "15_primary_followups_open": true,
+    "label_materialization_allowed": false,
+    "training_allowed": false
+  },
+  "errors": [],
+  "safety_contract": {
+    "network_operations_during_verification": 0,
+    "candidate_domain_access_operations": 0,
+    "label_materialization_allowed": false,
+    "training_allowed": false
+  }
+}

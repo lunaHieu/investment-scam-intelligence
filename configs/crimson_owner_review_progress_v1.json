@@ -1,0 +1,129 @@
+{
+  "release_id": "ISI_CRIMSON_OWNER_REVIEW_PROGRESS_V1",
+  "frozen_at": "2026-11-01",
+  "status": "FROZEN_OWNER_CONFIRMATION_AND_OFFICIAL_SOURCE_STATUS_SNAPSHOT",
+  "inputs": {
+    "readiness_report": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\crimson_primary_review_readiness_v1\\readiness_report_v1.json",
+      "sha256": "adf4df47915f4dff4bc4175113d666a861896e97e73e2d4af69b9978ccf48120"
+    },
+    "sec_first_pass": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\crimson_external_reference_review_pilot_v1\\sec_ai_assisted_first_pass_v1.jsonl",
+      "sha256": "314b283e3fb2ce224087a52d07f74b503cb5fbd377ab8f9f6bc370dc37e43465"
+    },
+    "iosco_first_pass": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\crimson_external_reference_review_pilot_v1\\iosco_ai_assisted_first_pass_v1.jsonl",
+      "sha256": "3120e1003ae2ac061731270f1b243770a7462ddfec4795b649fd9ed9795ba8dd"
+    },
+    "review_plan": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\crimson_external_reference_review_pilot_v1\\human_review_plan_v1.jsonl",
+      "sha256": "dee1bfe1ee588d1fcec92049a6f8c5980a5806ea5bb812027696637e7e9d7e2c"
+    },
+    "existing_decisions": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\curated\\crimson_external_reference_review_pilot_v1\\human_review_decisions_v1.jsonl",
+      "sha256": "675689e236107a26a21f8590457bfd7dd49e564a157470c0a16b11452515f457"
+    },
+    "official_reference_followup": {
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\crimson_human_review_packets_v2\\official_reference_followup_v2.jsonl",
+      "sha256": "2995eba4f1985ee39975a5a33628adad68e48afa535e6ad38b85009c73e105a3"
+    }
+  },
+  "owner_confirmation": {
+    "reviewer": "Hieu",
+    "reviewed_date": "2026-11-01",
+    "confirmation_text": "tôi đã review crimson, và đồng ý với nó; nhánh crimson tôi đồng ý với quyết định của nó.",
+    "confirmation_source": "Explicit user statement in the current Codex conversation on 2026-11-01. Scope is limited to the pre-existing 24 READY recommendations; it does not cover the 15 official-reference follow-ups or certify an independent second review."
+  },
+  "official_source_observations": [
+    {
+      "pilot_id": "PILOT_CRIMSON_REF_009",
+      "source_url": "https://www.sfc.hk/en/alert-list/3010",
+      "source_title": "BitForex | Securities & Futures Commission of Hong Kong",
+      "retrieved_on": "2026-11-01",
+      "observed_facts": "The SFC alert identifies BitForex and lists bitforex.com. It describes the platform as suspected of fraudulent activities and reports users were unable to access accounts or withdraw assets. Add date shown: 2024-03-04.",
+      "interpretation_limit": "This is an official warning and reported user-access issue, not a court judgment; it does not by itself determine the current operator, current site content, or a model label."
+    },
+    {
+      "pilot_id": "PILOT_CRIMSON_REF_010",
+      "source_url": "https://www.fca.org.uk/news/warnings/ai-miningex",
+      "source_title": "Ai-MiningEx | FCA",
+      "retrieved_on": "2026-11-01",
+      "observed_facts": "The FCA page identifies Ai-MiningEx and aiminingex.com, states it is not FCA-authorised and may target UK consumers, and gives first-publication date 2025-05-23.",
+      "interpretation_limit": "The FCA warning is evidence about the named firm and UK authorisation status; it is not a conviction or an automatic label for all related domains or messages."
+    },
+    {
+      "pilot_id": "PILOT_CRIMSON_REF_011",
+      "source_url": "https://www.fca.org.uk/news/warnings/chainstackinvestcom",
+      "source_title": "Chainstackinvest.com | FCA",
+      "retrieved_on": "2026-11-01",
+      "observed_facts": "The FCA page identifies Chainstackinvest.com and chainstackinvest.com, states it is not FCA-authorised and may target UK consumers, and gives first-publication date 2025-07-11.",
+      "interpretation_limit": "The FCA warning is not a conviction and does not establish the contents or operator of any particular communication."
+    },
+    {
+      "pilot_id": "PILOT_CRIMSON_REF_017",
+      "source_url": "https://www.fca.org.uk/news/warnings/opentrading-platform",
+      "source_title": "OPENTRADING PLATFORM | FCA",
+      "retrieved_on": "2026-11-01",
+      "observed_facts": "The FCA page identifies OPENTRADING PLATFORM and opentrading-platform.com, states it is not FCA-authorised and may target UK consumers, and gives first-publication date 2025-08-14.",
+      "interpretation_limit": "The warning supports a regulator-warning relationship, not a conviction or an automatic scam label."
+    },
+    {
+      "pilot_id": "PILOT_CRIMSON_REF_020",
+      "source_url": "https://lautorite.qc.ca/en/general-public/media-centre/investor-warnings/investor-warnings-sheet/primewealth",
+      "source_title": "PrimeWealth | AMF Québec",
+      "retrieved_on": "2026-11-01",
+      "observed_facts": "The AMF Québec page, published 2025-10-17, states PrimeWealth is not registered with the AMF and is not authorized to solicit investors in Québec. It lists primewealthltd.com and the names Prime Wealth and PrimeWealth Limited.",
+      "interpretation_limit": "This is a jurisdiction-specific registration/solicitation warning, not a court judgment or a label for unrelated entities."
+    },
+    {
+      "pilot_id": "PILOT_CRIMSON_REF_026",
+      "source_url": "https://www.sec.gov/enforcement-litigation/public-alerts-unregistered-soliciting-entities/trade-xtix-coins",
+      "source_title": "Public Alert: Trade Xtix Coins | SEC",
+      "retrieved_on": "2026-11-01",
+      "observed_facts": "The SEC PAUSE page lists Trade Xtix Coins, the email domain tradextixcoins.com, and website tradextixcoins.com; the page is dated 2024-10-29 and explains the PAUSE list includes entities making false registration/licensing/location claims and impersonators.",
+      "interpretation_limit": "The page is an SEC public alert. It is not a criminal conviction and does not establish the content or operator of a specific subdomain or communication."
+    }
+  ],
+  "official_reference_access_status": [
+    {"url":"https://www.fma.govt.nz/library/warnings-and-alerts/entities-falsely-claiming-nz-registration/","status":"HTTP_429_PRIOR_ACCESS","checked_on":"2026-10-28","note":"The official FMA endpoint rate-limited the prior check; preserve this status and use a manual source copy or official access channel rather than repeating the same request.","same_url_retry_allowed":false},
+    {"url":"https://www.sfc.hk/en/alert-list/3010","status":"PAGE_CONTENT_REVIEWED","checked_on":"2026-11-01","note":"Official SFC page opened and relevant entity/domain fields recorded.","same_url_retry_allowed":false},
+    {"url":"https://www.mas.gov.sg/investor-alert-list?q=Bitforex Limited","status":"PRIOR_ACCESS_NOT_CONFIRMED","checked_on":"2026-10-28","note":"The retained status shows this source was not confirmed in the prior read-only review; no new request was made in this update.","same_url_retry_allowed":false},
+    {"url":"https://www.osc.ca/en/investors/warnings/bitforex","status":"HTTP_403_PRIOR_ACCESS","checked_on":"2026-10-28","note":"OSC page was blocked in the prior review; use an official saved page or authorized manual access path.","same_url_retry_allowed":false},
+    {"url":"https://www.fca.org.uk/news/warnings/ai-miningex","status":"PAGE_CONTENT_REVIEWED","checked_on":"2026-11-01","note":"Official FCA page opened and entity/domain/authorisation facts recorded.","same_url_retry_allowed":false},
+    {"url":"https://www.cnmv.es/portal/resultadobusqueda.aspx?tipo=1&idAdv=5147","status":"OFFICIAL_PAGE_INACCESSIBLE_PRIOR_ACCESS","checked_on":"2026-10-28","note":"Prior official-source check could not render the CNMV result; no retry made.","same_url_retry_allowed":false},
+    {"url":"https://www.fca.org.uk/news/warnings/chainstackinvestcom","status":"PAGE_CONTENT_REVIEWED","checked_on":"2026-11-01","note":"Official FCA page opened and entity/domain/authorisation facts recorded.","same_url_retry_allowed":false},
+    {"url":"https://www.cnmv.es/portal/resultadobusqueda.aspx?tipo=1&idAdv=5460","status":"OFFICIAL_PAGE_INACCESSIBLE_PRIOR_ACCESS","checked_on":"2026-10-28","note":"Prior official-source check could not render the CNMV result; no retry made.","same_url_retry_allowed":false},
+    {"url":"https://www.cftc.gov/node/245591","status":"HTTP_502_PRIOR_ACCESS","checked_on":"2026-10-28","note":"CFTC endpoint returned a server error in the prior check; do not repeat the same request.","same_url_retry_allowed":false},
+    {"url":"https://www.cftc.gov/node/245596","status":"HTTP_502_PRIOR_ACCESS","checked_on":"2026-10-28","note":"CFTC endpoint returned a server error in the prior check; do not repeat the same request.","same_url_retry_allowed":false},
+    {"url":"https://www.cftc.gov/node/245766","status":"HTTP_502_PRIOR_ACCESS","checked_on":"2026-10-28","note":"CFTC endpoint returned a server error in the prior check; do not repeat the same request.","same_url_retry_allowed":false},
+    {"url":"https://www.cftc.gov/node/245771","status":"HTTP_502_PRIOR_ACCESS","checked_on":"2026-10-28","note":"CFTC endpoint returned a server error in the prior check; do not repeat the same request.","same_url_retry_allowed":false},
+    {"url":"https://www.consob.it/web/consob-and-its-activities/warnings/latests","status":"OFFICIAL_BOT_CHALLENGE_NOT_FOLLOWED","checked_on":"2026-10-28","note":"The official page returned a bot challenge/redirect; it was not bypassed or followed.","same_url_retry_allowed":false},
+    {"url":"https://www.fca.org.uk/news/warnings/opentrading-platform","status":"PAGE_CONTENT_REVIEWED","checked_on":"2026-11-01","note":"Official FCA page opened and entity/domain/authorisation facts recorded.","same_url_retry_allowed":false},
+    {"url":"https://www.cnmv.es/portal/resultadobusqueda.aspx?tipo=1&idAdv=5430","status":"OFFICIAL_PAGE_INACCESSIBLE_PRIOR_ACCESS","checked_on":"2026-10-28","note":"Prior official-source check could not render the CNMV result; no retry made.","same_url_retry_allowed":false},
+    {"url":"https://lautorite.qc.ca/en/general-public/media-centre/investor-warnings/investor-warnings-sheet/primewealth","status":"PAGE_CONTENT_REVIEWED","checked_on":"2026-11-01","note":"Official AMF Québec page opened and entity/domain/registration facts recorded.","same_url_retry_allowed":false},
+    {"url":"https://www.osc.ca/en/investors/warnings/prime-wealth","status":"HTTP_403_PRIOR_ACCESS","checked_on":"2026-10-28","note":"OSC page was blocked in the prior review; no retry made.","same_url_retry_allowed":false},
+    {"url":"https://www.sc.com.my/investor-alert-list","status":"INDEX_OPENED_TARGET_NOT_VISIBLE","checked_on":"2026-10-28","note":"The official dynamic list loaded but the retained rendered view did not show this target; absence from the rendered view is not a negative finding.","same_url_retry_allowed":false},
+    {"url":"https://www.amf-france.org/en/warnings/blacklists/forex/wwwprimexbtcom","status":"HTTP_403_OR_CACHE_MISS_PRIOR_ACCESS","checked_on":"2026-10-28","note":"Prior official-page access was blocked or returned a cache miss; no retry made.","same_url_retry_allowed":false},
+    {"url":"https://www.cftc.gov/node/255441","status":"HTTP_502_PRIOR_ACCESS","checked_on":"2026-10-28","note":"CFTC endpoint returned a server error in the prior check; do not repeat the same request.","same_url_retry_allowed":false},
+    {"url":"https://www.sec.gov/enforcement-litigation/public-alerts-unregistered-soliciting-entities/trade-xtix-coins","status":"PAGE_CONTENT_REVIEWED","checked_on":"2026-11-01","note":"Official SEC PAUSE page opened and name/domain fields recorded.","same_url_retry_allowed":false},
+    {"url":"https://www.cftc.gov/node/245571","status":"HTTP_502_PRIOR_ACCESS","checked_on":"2026-10-28","note":"CFTC endpoint returned a server error in the prior check; do not repeat the same request.","same_url_retry_allowed":false},
+    {"url":"https://www.cftc.gov/node/245576","status":"HTTP_502_PRIOR_ACCESS","checked_on":"2026-10-28","note":"CFTC endpoint returned a server error in the prior check; do not repeat the same request.","same_url_retry_allowed":false},
+    {"url":"https://www.amf-france.org/en/warnings/blacklists/crypto-currencies/virtualcapitaltraderscom","status":"HTTP_403_OR_CACHE_MISS_PRIOR_ACCESS","checked_on":"2026-10-28","note":"Prior official-page access was blocked or returned a cache miss; no retry made.","same_url_retry_allowed":false},
+    {"url":"https://www.cnmv.es/portal/resultadobusqueda.aspx?tipo=1&idAdv=4983","status":"OFFICIAL_PAGE_INACCESSIBLE_PRIOR_ACCESS","checked_on":"2026-10-28","note":"Prior official-source check could not render the CNMV result; no retry made.","same_url_retry_allowed":false}
+  ],
+  "outputs": {
+    "owner_confirmed_primary_decisions": "D:\\nckh 2026-2027\\ISI_Data\\curated\\crimson_external_reference_review_pilot_v1\\owner_primary_review_confirmations_v1.jsonl",
+    "blind_second_review_handoff": "D:\\nckh 2026-2027\\ISI_Data\\derived\\crimson_primary_review_readiness_v1\\blind_second_review_handoff_v2.jsonl",
+    "single_review_reconciliation": "D:\\nckh 2026-2027\\ISI_Data\\derived\\crimson_primary_review_readiness_v1\\owner_reconciliation_v1.jsonl",
+    "official_source_evidence": "D:\\nckh 2026-2027\\ISI_Data\\derived\\crimson_primary_review_readiness_v1\\official_source_followup_evidence_v1.jsonl",
+    "official_source_access_status": "D:\\nckh 2026-2027\\ISI_Data\\derived\\crimson_primary_review_readiness_v1\\official_source_access_status_v1.jsonl"
+  },
+  "safety_contract": {
+    "candidate_domain_access_allowed": false,
+    "only_listed_official_reference_urls_accessed": true,
+    "retry_failed_urls": false,
+    "raw_official_source_pages_retained": false,
+    "labels_created": 0,
+    "training_allowed": false
+  }
+}

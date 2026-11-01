@@ -1,0 +1,75 @@
+{
+  "analysis_id": "ISI_REPRODUCIBILITY_CURRENT_STATE_V71",
+  "created_at": "2026-10-31",
+  "status": "CURRENT_OFFLINE_PBC_SAFE_DIAGNOSTICS_PREPARED_NO_EXECUTOR_AUTHORIZED",
+  "inputs": [
+    {
+      "role": "prior_state",
+      "path": "registry/analyses/reproducibility_current_state_v70.json",
+      "sha256": "d74c9406ea15b80a9e59659b3f233fc3fb900e955e9388aa47b5e326e4e68a88"
+    },
+    {
+      "role": "safe_diagnostic_contract",
+      "path": "registry/analyses/pbc_safe_diagnostic_contract_v1.json",
+      "sha256": "68157ceabc4b3a5cf3de83fce5331fed331792b5086acbc0f9b319753fea80ac"
+    },
+    {
+      "role": "direction_plan",
+      "path": "docs/project-direction-plan-r37.md",
+      "sha256": "a331b9bb8f7ce6bc8038d0a3ef21f3bbf15dfece249e3bf3980b476348cc2c1d"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "offline_diagnostic_module",
+      "path": "scripts/pbc_safe_diagnostic_contract_v1.py",
+      "sha256": "997cfe5c02b52c67bd14ac8798d47c9c5595dbc5334c4dd03c115578311911e9"
+    },
+    {
+      "role": "synthetic_tests",
+      "path": "tests/test_pbc_safe_diagnostic_contract_v1.py",
+      "sha256": "84839db03bcbf3f8c4aaba4fe0ea30991be2e41ae6d5ac5375935a69d67b31e4"
+    },
+    {
+      "role": "registry_tests",
+      "path": "tests/test_pbc_safe_diagnostic_contract_registry_v1.py",
+      "sha256": "e791d433a050be05bd3ac0c50e6dc833f4a0a9474e66005c3d00eed02bcf8158"
+    }
+  ],
+  "output": {
+    "role": "current_state_guide",
+    "path": "docs/reproducibility-current-state-v71.md",
+      "sha256": "ff33c67a5b45fc63e3695b1c7dbc7349eb8b05b89952227dd7d9ea5a22fe07ff"
+  },
+  "current_entrypoint": "registry/analyses/project_state_gap_ledger_v74.json",
+  "current_pbc_state": {
+    "diagnostic_contract": "PREPARED_OFFLINE",
+    "executor_wiring": false,
+    "same_release_retry_allowed": false,
+    "new_source_request_authorized": false
+  },
+  "quality": {
+    "focused_synthetic_tests_passed": 8,
+    "full_suite_passed": 1177,
+    "full_suite_failed": 0,
+    "registry_validation": "PASS",
+    "analysis_registries": 402
+  },
+  "decision": {
+    "network_execution_allowed": false,
+    "dataset_acquisition_allowed": false,
+    "evidence_acceptance_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "candidate_domain_access_operations": 0,
+    "raw_responses_retained": 0,
+    "labels_created": 0,
+    "validation_or_test_rows_opened": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

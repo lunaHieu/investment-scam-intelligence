@@ -1,0 +1,81 @@
+{
+  "analysis_id": "ISI_PBC_SAFE_DIAGNOSTIC_CONTRACT_V1",
+  "created_at": "2026-10-31",
+  "status": "PASS_SYNTHETIC_DIAGNOSTICS_ONLY_NOT_EXECUTOR_WIRED",
+  "inputs": [
+    {
+      "role": "prior_offline_pbc_analysis",
+      "path": "registry/analyses/target_text_corpus_v1_pbc_offline_followup_v1.json",
+      "sha256": "10972a7860d4571c942b6d0726857cc83119f59f63a6312c059fcabbbe607ffa"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "safe_diagnostic_contract",
+      "path": "scripts/pbc_safe_diagnostic_contract_v1.py",
+      "sha256": "997cfe5c02b52c67bd14ac8798d47c9c5595dbc5334c4dd03c115578311911e9"
+    },
+    {
+      "role": "synthetic_contract_tests",
+      "path": "tests/test_pbc_safe_diagnostic_contract_v1.py",
+      "sha256": "84839db03bcbf3f8c4aaba4fe0ea30991be2e41ae6d5ac5375935a69d67b31e4"
+    },
+    {
+      "role": "registry_and_navigation_tests",
+      "path": "tests/test_pbc_safe_diagnostic_contract_registry_v1.py",
+      "sha256": "e791d433a050be05bd3ac0c50e6dc833f4a0a9474e66005c3d00eed02bcf8158"
+    }
+  ],
+  "diagnostic_contract": {
+    "pbc08": {
+      "output_fields": ["diagnostic_code", "key_categories"],
+      "raw_key_names_paths_and_values_returned": false,
+      "recursive_case_insensitive_matching": true,
+      "unknown_configured_key_category": "UNKNOWN_CONFIGURED_KEY"
+    },
+    "pbc05": {
+      "output_fields": [
+        "status", "stage", "returncode", "diagnostic_code", "child_exception_class",
+        "stdout_bytes", "stdout_sha256", "stderr_bytes", "stderr_sha256"
+      ],
+      "allowed_stages": ["PDFINFO", "SECTION_EXTRACTION", "PDFTOPPM_RENDER"],
+      "exception_classes_allowlisted": true,
+      "unrecognized_exception_class_collapsed": "OTHER_EXCEPTION",
+      "stdout_json_parse_limit_bytes": 65536,
+      "stderr_exception_parse_tail_bytes": 4096,
+      "raw_stdout_or_stderr_returned": false
+    },
+    "integration_status": "NOT_WIRED_TO_EXECUTOR"
+  },
+  "tests": {
+    "focused_synthetic_tests": 8,
+    "passed": 8,
+    "failed": 0,
+    "current_full_suite": {
+      "command": ".venv\\Scripts\\python.exe -m scripts.run_current_test_suite_v10",
+      "passed": 1177,
+      "failed": 0
+    },
+    "registry_validation": {
+      "status": "PASS",
+      "analysis_registries": 402
+    }
+  },
+  "decision": {
+    "network_execution_allowed": false,
+    "same_release_retry_allowed": false,
+    "new_source_request_authorized": false,
+    "evidence_acceptance_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "candidate_domain_access_operations": 0,
+    "raw_responses_retained": 0,
+    "dataset_rows_or_labels_created": 0,
+    "labels_created": 0,
+    "validation_or_test_rows_opened": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "analysis_id": "ISI_REPRODUCIBILITY_CURRENT_STATE_V75",
+  "created_at": "2026-11-01",
+  "status": "PASS_PBC_OFFLINE_CLOSEOUT_AND_CRIMSON_OFFICIAL_FACTS_PINNED_REVIEW_GATES_OPEN",
+  "inputs": [
+    {
+      "role": "prior_gap_ledger",
+      "path": "registry/analyses/project_state_gap_ledger_v77.json",
+      "sha256": "82ace88117564bad62310f12e2e8f2747f2db150224c9eec4a100449005e3af4"
+    },
+    {
+      "role": "project_direction_r41",
+      "path": "docs/project-direction-plan-r41.md",
+      "sha256": "cda0d9be945bdf77d932f526459ae1bdcb2abba7dd383cc6a8c963135854d1f7"
+    },
+    {
+      "role": "crimson_owner_progress",
+      "path": "registry/analyses/crimson_owner_review_progress_v1.json",
+      "sha256": "9750620991dfdb586e5e492ebe60a06d3e6f11642d2f9b86c0719f2df188ba3f"
+    },
+    {
+      "role": "crimson_owner_progress_qa",
+      "path": "registry/analyses/crimson_owner_review_progress_v1_qa.json",
+      "sha256": "8c877302c3acfc02c8534bf70749eb1d220f2b1e85dce51204cd4daa3ef765cf"
+    },
+    {
+      "role": "crimson_official_source_followup_v2",
+      "path": "registry/analyses/crimson_official_source_followup_v2.json",
+      "sha256": "2029e6b417cd9836780034af80a500ee781d3a2a2f9cd55a685f77f253c1a75b"
+    },
+    {
+      "role": "crimson_official_source_followup_v2_qa",
+      "path": "registry/analyses/crimson_official_source_followup_v2_qa.json",
+      "sha256": "3646abf99d5d272d2627c2e1ab34fe7d928c7a614b0928bb704a9b9bdd07cf3d"
+    },
+    {
+      "role": "pbc_offline_closeout",
+      "path": "registry/analyses/pbc05_pbc08_offline_closeout_v2.json",
+      "sha256": "4c26b777fd9fb31c9ecb48a63772201bec657ae7e603ffa8d0f0fa98f7c6d3fd"
+    },
+    {
+      "role": "pbc_offline_closeout_qa",
+      "path": "registry/analyses/pbc05_pbc08_offline_closeout_v2_qa.json",
+      "sha256": "68ba91f15f3f3f13c3082ee57e1db0cc3e7f97b276148a786903350160a9b60d"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "current_state_guide",
+      "path": "docs/reproducibility-current-state-v75.md",
+      "sha256": "442a22aabaef10eb2d70d4e3ae6ea984dfb4e60be805f905589f8c87256c349c"
+    },
+    {
+      "role": "current_test_suite_v10",
+      "path": "scripts/run_current_test_suite_v10.py",
+      "sha256": "a19ee8afea7e227421dc899ff0501e644b280ba88daced881aec6b325bef9a8d"
+    },
+    {
+      "role": "registry_validator",
+      "path": "scripts/validate_registry.py",
+      "sha256": "9ae0e7e5651f514d3aad0f006f840cb2a57b5d0022e2d7be9cbb6c8c96f30c6e"
+    },
+    {
+      "role": "official_source_supplement_materializer",
+      "path": "scripts/materialize_crimson_official_source_followup_v2.py",
+      "sha256": "de743e5348dbaf7917ddb5cefb1ec2ea1862dbbfabb78eb12c3e5d43c334d95e"
+    },
+    {
+      "role": "official_source_supplement_verifier",
+      "path": "scripts/verify_crimson_official_source_followup_v2.py",
+      "sha256": "5a0236f5e48b61b5f3a6edfb28431395f5fd6345ef7de0822185ef69a71374c0"
+    },
+    {
+      "role": "official_source_supplement_test",
+      "path": "tests/test_crimson_official_source_followup_v2.py",
+      "sha256": "a8e0294b533384ca5e8134fe30dcdd304ee78ae840ae6e45276641948ff3249a"
+    }
+  ],
+  "state": {
+    "crimson": {
+      "owner_confirmed_primary": 24,
+      "single_review_reconciled_at_identity_evidence_level": 16,
+      "blind_second_review_ready": 9,
+      "blind_second_review_completed": 0,
+      "blind_second_review_waiting": 12,
+      "primary_review_open": 15,
+      "official_source_fact_rows_v1_and_v2": 18,
+      "distinct_direct_official_pages_v1_and_v2": 17,
+      "new_official_source_fact_rows": 12,
+      "new_official_source_pilots": 11,
+      "new_official_access_status_rows": 15,
+      "unresolved_official_url_occurrences_in_frozen_v1_list": 21,
+      "labels_created": 0,
+      "dataset_rows_admitted": 0,
+      "training_eligible": 0
+    },
+    "pbc05_pbc08": {
+      "PBC05_actual_attempts_in_pinned_history": 3,
+      "PBC08_actual_attempts_in_pinned_history": 2,
+      "PBC08_skipped_in_earliest_snapshot": true,
+      "exact_historic_causes_recovered": false,
+      "malware_scan_recorded": false,
+      "dataset_rows_admitted": 0,
+      "same_release_retry_allowed": false
+    }
+  },
+  "verification": {
+    "focused_official_source_tests": {
+      "command": ".venv\\Scripts\\python.exe -m unittest discover -s tests -p test_crimson_official_source_followup_v2.py",
+      "passed": 3,
+      "failed": 0
+    },
+    "official_source_followup_qa": "PASS_OFFICIAL_FACTS_PINNED_REVIEW_AND_ADMISSION_STILL_CLOSED",
+    "pbc_closeout_qa": "PASS_RESULT_HISTORY_RECONCILED_NO_CAUSE_OVERCLAIMED",
+    "crimson_owner_progress_qa": "PASS_OWNER_PROGRESS_ARTIFACTS_AND_OPEN_GATES_VERIFIED",
+    "registry_validation": {
+      "status": "PASS",
+      "analysis_registries": 418
+    },
+    "current_full_suite": {
+      "command": ".venv\\Scripts\\python.exe -m scripts.run_current_test_suite_v10",
+      "passed": 1200,
+      "failed": 0
+    }
+  },
+  "decision": {
+    "primary_review_of_new_facts_completed": false,
+    "independent_blind_second_review_completed": false,
+    "data_admission_allowed": false,
+    "label_materialization_allowed": false,
+    "validation_or_test_access_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false,
+    "PBC_same_release_retry_allowed": false
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "official_reference_pages_read_in_this_update": 11,
+    "candidate_domain_access_operations": 0,
+    "raw_source_pages_retained": 0,
+    "labels_created": 0,
+    "dataset_rows_admitted": 0,
+    "training_allowed": false
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "analysis_id": "ISI_PROJECT_STATE_GAP_LEDGER_V78",
+  "created_at": "2026-11-01",
+  "status": "PBC_OFFLINE_CLOSEOUT_VERIFIED_CRIMSON_OFFICIAL_FACTS_ADDED_HUMAN_REVIEW_GATES_OPEN",
+  "inputs": [
+    {
+      "role": "prior_ledger",
+      "path": "registry/analyses/project_state_gap_ledger_v77.json",
+      "sha256": "82ace88117564bad62310f12e2e8f2747f2db150224c9eec4a100449005e3af4"
+    },
+    {
+      "role": "current_reproducibility_state",
+      "path": "registry/analyses/reproducibility_current_state_v75.json",
+      "sha256": "45bf9f9ecbf6a23514cba264011000ea20a113e6dd7f2d27b71b096888560114"
+    },
+    {
+      "role": "project_direction_plan",
+      "path": "docs/project-direction-plan-r41.md",
+      "sha256": "cda0d9be945bdf77d932f526459ae1bdcb2abba7dd383cc6a8c963135854d1f7"
+    },
+    {
+      "role": "ledger_guide",
+      "path": "docs/project-state-gap-ledger-v78.md",
+      "sha256": "36f286ad2e0bef5f21874c9a747856fc3f4923dc7ab26eaa13ee5c388de6f6e7"
+    },
+    {
+      "role": "crimson_official_source_supplement",
+      "path": "registry/analyses/crimson_official_source_followup_v2.json",
+      "sha256": "2029e6b417cd9836780034af80a500ee781d3a2a2f9cd55a685f77f253c1a75b"
+    },
+    {
+      "role": "crimson_official_source_supplement_qa",
+      "path": "registry/analyses/crimson_official_source_followup_v2_qa.json",
+      "sha256": "3646abf99d5d272d2627c2e1ab34fe7d928c7a614b0928bb704a9b9bdd07cf3d"
+    },
+    {
+      "role": "crimson_owner_progress_qa",
+      "path": "registry/analyses/crimson_owner_review_progress_v1_qa.json",
+      "sha256": "8c877302c3acfc02c8534bf70749eb1d220f2b1e85dce51204cd4daa3ef765cf"
+    },
+    {
+      "role": "pbc_closeout_qa",
+      "path": "registry/analyses/pbc05_pbc08_offline_closeout_v2_qa.json",
+      "sha256": "68ba91f15f3f3f13c3082ee57e1db0cc3e7f97b276148a786903350160a9b60d"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "official_source_supplement_verifier",
+      "path": "scripts/verify_crimson_official_source_followup_v2.py",
+      "sha256": "5a0236f5e48b61b5f3a6edfb28431395f5fd6345ef7de0822185ef69a71374c0"
+    },
+    {
+      "role": "ledger_guide",
+      "path": "docs/project-state-gap-ledger-v78.md",
+      "sha256": "36f286ad2e0bef5f21874c9a747856fc3f4923dc7ab26eaa13ee5c388de6f6e7"
+    }
+  ],
+  "state": {
+    "crimson": {
+      "owner_primary_confirmations": 24,
+      "single_review_identity_evidence_reconciliations": 16,
+      "ready_independent_blind_second_reviews": 9,
+      "completed_independent_second_reviews": 0,
+      "waiting_second_reviews": 12,
+      "open_primary_reviews": 15,
+      "official_source_fact_rows_v1_and_v2": 18,
+      "distinct_direct_official_pages_v1_and_v2": 17,
+      "new_official_source_fact_rows": 12,
+      "new_official_source_pilots": 11,
+      "updated_official_source_access_status_rows": 15,
+      "root_only_relationships_unresolved": 3,
+      "name_only_relationships_unresolved": 1,
+      "unresolved_official_url_occurrences_in_frozen_v1_list": 21,
+      "labels_created": 0,
+      "usable_data_rows_admitted": 0,
+      "training_eligible": 0
+    },
+    "pbc05_pbc08": {
+      "offline_closeout_verified": true,
+      "PBC05_actual_attempts": 3,
+      "PBC08_actual_attempts": 2,
+      "PBC08_skipped_in_earliest_result": true,
+      "exact_root_causes_recovered": false,
+      "malware_scan_recorded": false,
+      "same_release_retry_allowed": false,
+      "new_source_request_created": false,
+      "dataset_rows_admitted": 0
+    },
+    "verification": {
+      "focused_official_source_tests_passed": 3,
+      "current_full_suite_passed": 1200,
+      "current_full_suite_failed": 0,
+      "registry_validation_status": "PASS",
+      "analysis_registry_count": 418
+    }
+  },
+  "decision": {
+    "human_primary_review_required": true,
+    "independent_human_second_review_required": true,
+    "reconciliation_performed_for_new_source_facts": false,
+    "data_admission_allowed": false,
+    "label_materialization_allowed": false,
+    "validation_or_test_access_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "official_reference_pages_read_this_update": 11,
+    "candidate_domain_access_operations": 0,
+    "raw_official_page_files_retained": 0,
+    "dataset_rows_admitted": 0,
+    "labels_created": 0,
+    "training_allowed": false
+  }
+}

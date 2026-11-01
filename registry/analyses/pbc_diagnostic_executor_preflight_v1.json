@@ -1,0 +1,79 @@
+{
+  "analysis_id": "ISI_PBC_DIAGNOSTIC_EXECUTOR_PREFLIGHT_V1",
+  "created_at": "2026-11-01",
+  "status": "PASS_SYNTHETIC_CANDIDATE_GATE_CHECKED_EXECUTION_ALWAYS_CLOSED",
+  "inputs": [
+    {
+      "role": "offline_harness_registration",
+      "path": "registry/analyses/pbc_offline_diagnostic_harness_v1.json",
+      "sha256": "9d7ec221432a844c24c7b6d3cad3e59e7c85dd4c131614736d7f9431c1b37fca"
+    },
+    {
+      "role": "immutable_prior_pbc_result",
+      "path": "registry/analyses/target_text_corpus_v1_parser_bound_content_diagnostic_result_v1.json",
+      "sha256": "5fcddbb84bb27867c139b972206e5483d78d8fefa91836cb5ffabf4f200fb07a"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "offline_candidate_preflight_verifier",
+      "path": "scripts/verify_pbc_diagnostic_executor_preflight_v1.py",
+      "sha256": "6ccf67c37d69eb3942adb33c1c63f91eb6c5966233233b9523b30ef6daff1490"
+    },
+    {
+      "role": "synthetic_preflight_tests",
+      "path": "tests/test_verify_pbc_diagnostic_executor_preflight_v1.py",
+      "sha256": "9411e04c7afdf00b8b7adde3f342f16d96c6654376c5eb2350e5682a966de854"
+    },
+    {
+      "role": "registry_and_navigation_tests",
+      "path": "tests/test_pbc_diagnostic_executor_preflight_registry_v1.py",
+      "sha256": "a50db3dc5a8cb8219d94e2ffa8a9d87245b07597a5313bcd7bc79370af44c5ae"
+    }
+  ],
+  "preflight_scope": {
+    "new_release_identity_required": true,
+    "prior_result_hash_pinned": true,
+    "technical_rationale_codes_required": [
+      "CHILD_FAILURE_DIAGNOSTIC_INCOMPLETE",
+      "FORBIDDEN_KEY_DIAGNOSTIC_INCOMPLETE"
+    ],
+    "tooling_hashes_pinned": true,
+    "exact_endpoint_identities_pinned": true,
+    "independent_qa_and_owner_authorization_bound_to_candidate_hash": true,
+    "one_attempt_per_row": true,
+    "minimum_request_interval_seconds": 60,
+    "redirects_retries_and_resume_disabled": true,
+    "no_overwrite_and_unique_paths_required": true,
+    "execution_gate_opened_by_preflight": false
+  },
+  "tests": {
+    "focused_preflight_tests_passed": 10,
+    "current_full_suite": {
+      "command": ".venv\\Scripts\\python.exe -m scripts.run_current_test_suite_v10",
+      "passed": 1197,
+      "failed": 0
+    },
+    "registry_validation": {
+      "status": "PASS",
+      "analysis_registries": 408
+    }
+  },
+  "decision": {
+    "network_execution_allowed": false,
+    "actual_release_created": false,
+    "same_release_retry_allowed": false,
+    "new_source_request_authorized": false,
+    "evidence_acceptance_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "candidate_domain_access_operations": 0,
+    "raw_responses_retained": 0,
+    "labels_created": 0,
+    "validation_or_test_rows_opened": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

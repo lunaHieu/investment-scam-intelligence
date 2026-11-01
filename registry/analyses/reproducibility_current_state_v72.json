@@ -1,0 +1,75 @@
+{
+  "analysis_id": "ISI_REPRODUCIBILITY_CURRENT_STATE_V72",
+  "created_at": "2026-11-01",
+  "status": "CURRENT_PBC_FIXTURE_HARNESS_COMPLETE_EXECUTION_CLOSED",
+  "inputs": [
+    {
+      "role": "prior_state",
+      "path": "registry/analyses/reproducibility_current_state_v71.json",
+      "sha256": "9a3db47ae5ae21f03f57f28d5000765ba6112545d4513bb07ea381c6103957f8"
+    },
+    {
+      "role": "offline_harness_analysis",
+      "path": "registry/analyses/pbc_offline_diagnostic_harness_v1.json",
+      "sha256": "9d7ec221432a844c24c7b6d3cad3e59e7c85dd4c131614736d7f9431c1b37fca"
+    },
+    {
+      "role": "direction_plan",
+      "path": "docs/project-direction-plan-r38.md",
+      "sha256": "eecd9e59091e474610b6d005960b2cc65f1b034c4a499de3bacec381f1c7f98a"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "offline_harness",
+      "path": "scripts/pbc_offline_diagnostic_harness_v1.py",
+      "sha256": "e1ef7b3921fe7ce9a33706ed2ff7a2f85ebf020dbe7a9068265b97ac2c5c16a2"
+    },
+    {
+      "role": "synthetic_integration_tests",
+      "path": "tests/test_pbc_offline_diagnostic_harness_v1.py",
+      "sha256": "2bd865752163bbe156749f91c18d02194e2ba4a13e85edd0ba44329cc7f364b3"
+    },
+    {
+      "role": "registry_tests",
+      "path": "tests/test_pbc_offline_diagnostic_harness_registry_v1.py",
+      "sha256": "efb4d33b7f89a3c5a3b40470341ffe570000e2d86b5e4ff0ec8dfed3c9b6c105"
+    }
+  ],
+  "output": {
+    "role": "current_state_guide",
+    "path": "docs/reproducibility-current-state-v72.md",
+      "sha256": "2b1ec60182cc18c496c150e2b1938ff630d52322e75881549d293058b7afca6f"
+  },
+  "current_entrypoint": "registry/analyses/project_state_gap_ledger_v75.json",
+  "quality": {
+    "focused_integration_tests_passed": 6,
+    "full_suite_passed": 1185,
+    "full_suite_failed": 0,
+    "registry_validation": "PASS",
+    "analysis_registries": 405
+  },
+  "current_pbc_state": {
+    "harness_status": "SYNTHETIC_ONLY",
+    "executor_wiring": false,
+    "same_release_retry_allowed": false,
+    "new_source_request_authorized": false
+  },
+  "decision": {
+    "network_execution_allowed": false,
+    "dataset_acquisition_allowed": false,
+    "evidence_acceptance_allowed": false,
+    "validation_or_test_opening_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "candidate_domain_access_operations": 0,
+    "raw_responses_retained": 0,
+    "labels_created": 0,
+    "validation_or_test_rows_opened": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

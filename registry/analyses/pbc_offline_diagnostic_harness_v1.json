@@ -1,0 +1,75 @@
+{
+  "analysis_id": "ISI_PBC_OFFLINE_DIAGNOSTIC_HARNESS_V1",
+  "created_at": "2026-11-01",
+  "status": "PASS_SYNTHETIC_INTEGRATION_ONLY_NO_EXECUTOR_WIRING",
+  "inputs": [
+    {
+      "role": "safe_diagnostic_contract_registration",
+      "path": "registry/analyses/pbc_safe_diagnostic_contract_v1.json",
+      "sha256": "68157ceabc4b3a5cf3de83fce5331fed331792b5086acbc0f9b319753fea80ac"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "fixture_only_harness",
+      "path": "scripts/pbc_offline_diagnostic_harness_v1.py",
+      "sha256": "e1ef7b3921fe7ce9a33706ed2ff7a2f85ebf020dbe7a9068265b97ac2c5c16a2"
+    },
+    {
+      "role": "synthetic_integration_tests",
+      "path": "tests/test_pbc_offline_diagnostic_harness_v1.py",
+      "sha256": "2bd865752163bbe156749f91c18d02194e2ba4a13e85edd0ba44329cc7f364b3"
+    },
+    {
+      "role": "registry_and_navigation_tests",
+      "path": "tests/test_pbc_offline_diagnostic_harness_registry_v1.py",
+      "sha256": "efb4d33b7f89a3c5a3b40470341ffe570000e2d86b5e4ff0ec8dfed3c9b6c105"
+    }
+  ],
+  "integration_contract": {
+    "PBC08": {
+      "existing_parser_called_with_synthetic_json": true,
+      "parsed_commit_values_returned": false,
+      "diagnostic_fields": ["status", "diagnostic_code", "key_categories"],
+      "unknown_parser_codes_collapsed": true
+    },
+    "PBC05": {
+      "synthetic_completed_process_only": true,
+      "child_process_launched": false,
+      "stderr_text_returned": false
+    },
+    "executor_wiring": false,
+    "file_or_network_io": false
+  },
+  "tests": {
+    "focused_synthetic_tests": 6,
+    "passed": 6,
+    "failed": 0,
+    "current_full_suite": {
+      "command": ".venv\\Scripts\\python.exe -m scripts.run_current_test_suite_v10",
+      "passed": 1185,
+      "failed": 0
+    },
+    "registry_validation": {
+      "status": "PASS",
+      "analysis_registries": 405
+    }
+  },
+  "decision": {
+    "network_execution_allowed": false,
+    "same_release_retry_allowed": false,
+    "new_source_request_authorized": false,
+    "evidence_acceptance_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "candidate_domain_access_operations": 0,
+    "raw_responses_retained": 0,
+    "dataset_rows_or_labels_created": 0,
+    "labels_created": 0,
+    "validation_or_test_rows_opened": 0,
+    "model_operations": 0,
+    "training_allowed": false
+  }
+}

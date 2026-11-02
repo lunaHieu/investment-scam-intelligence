@@ -1,0 +1,50 @@
+{
+  "brief_id": "PILOT_CRIMSON_REF_016_REVIEW_BRIEF_V1",
+  "created_at": "2026-11-02",
+  "pilot_id": "PILOT_CRIMSON_REF_016",
+  "pilot_rank": 16,
+  "crimson_host": "magnomicyieldltd.com",
+  "review_scope": "AI-assisted evidence assessment using the pinned official-source supplement only; no candidate host access.",
+  "previous_live_reference_status": "OFFICIAL_WARNINGS_PAGE_BLOCKED_BY_BOT_CHALLENGE",
+  "current_live_reference_status": "ALTERNATE_OFFICIAL_DOCUMENT_READ_NO_CANDIDATE_ACCESS",
+  "official_reference_checks": [
+    {
+      "regulator": "Commissione Nazionale per le Società e la Borsa (CONSOB)",
+      "url": "https://www.consob.it/documents/d/asset-library-1912910/press_20250620",
+      "status": "DIRECT_OFFICIAL_DOCUMENT_READ",
+      "notice_date": "2025-06-20",
+      "facts": [
+        "The English-language release says CONSOB ordered blocking of seven websites through which financial services/products were abusively provided.",
+        "The list names Magnomic Yield Ltd and the exact website magnomicyieldltd.com."
+      ]
+    }
+  ],
+  "evidence_consistency": {
+    "host_relation": "EXACT_HOST_LISTED_WITH_ENTITY_NAME",
+    "sources_agree_on_host": "ONE_DIRECT_OFFICIAL_SOURCE",
+    "explicit_clone_language_present": false,
+    "additional_contradictory_direct_source_reviewed": false
+  },
+  "recommended_human_decision": {
+    "official_reference_checked": "YES",
+    "identity_relationship": "SAME_ENTITY",
+    "evidence_assessment": "WARNING_RELEVANT",
+    "second_review_required": "YES",
+    "rationale": "The CONSOB release names the exact candidate host alongside Magnomic Yield Ltd and describes the listed sites as subject to blocking for abusive financial services/products. This supports a direct official-warning relationship for the named host, but does not establish any particular message's content or amount to a criminal conviction."
+  },
+  "assessment_provenance": {
+    "assessment_type": "AI_ASSISTED_RECOMMENDATION_ONLY",
+    "source_fact_record_id": "CRIMSON_OFFICIAL_FACT_V3_001",
+    "source_fact_registry": "registry/analyses/crimson_official_source_followup_v3.json",
+    "source_fact_sha256": "e2d155b9b7d269720174aee5c20b463a7887fb27280e59e259fabc96534dbf0b",
+    "human_confirmation_required": true
+  },
+  "workflow_state": {
+    "review_status": "IN_PROGRESS",
+    "adjudication_status": "NOT_READY",
+    "human_confirmation_required": true,
+    "second_human_review_required": true,
+    "training_eligible": "NO",
+    "label_created": false
+  }
+}

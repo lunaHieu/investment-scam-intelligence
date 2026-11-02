@@ -1,0 +1,75 @@
+{
+  "analysis_id": "ISI_CRIMSON_OFFICIAL_SOURCE_FOLLOWUP_V3",
+  "created_at": "2026-11-02",
+  "status": "PASS_ALTERNATE_OFFICIAL_FACT_PINNED_PRIMARY_REVIEW_STILL_PENDING",
+  "inputs": [
+    {
+      "role": "frozen_workflow_config",
+      "path": "configs/crimson_official_source_followup_v3.json",
+      "sha256": "050c0eb89b380d48e1b243f27228f168554836b2461c427fd91ba6e3ec6daed3"
+    },
+    {
+      "role": "prior_v2_supplement_registry",
+      "path": "registry/analyses/crimson_official_source_followup_v2.json",
+      "sha256": "2029e6b417cd9836780034af80a500ee781d3a2a2f9cd55a685f77f253c1a75b"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "materializer",
+      "path": "scripts/materialize_crimson_official_source_followup_v3.py",
+      "sha256": "55a703cecbd9d61e4eee160f8313e1be10a2ca7990b02ef74ec4a8d0321068bb"
+    }
+  ],
+  "source": {
+    "title": "Abusive financial services: Consob blacks out 7 abusive websites",
+    "url": "https://www.consob.it/documents/d/asset-library-1912910/press_20250620",
+    "publication_date": "2025-06-20",
+    "retrieved_on": "2026-11-02",
+    "access_mode": "DIRECT_OFFICIAL_DOCUMENT_READ",
+    "raw_page_retained": false
+  },
+  "outputs": [
+    {
+      "role": "official_source_fact_addendum",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\crimson_primary_review_readiness_v1\\official_source_followup_evidence_v3.jsonl",
+      "sha256": "6fbcfcad29ea37855e18fe349c89efd87d0d02873034a9ab77ebc7cb780f9f4b",
+      "record_count": 1
+    },
+    {
+      "role": "official_source_access_status_addendum",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\crimson_primary_review_readiness_v1\\official_source_access_status_v3.jsonl",
+      "sha256": "d687fefae9e9dff4ec9614303cf83d351e0f074c4f141b4e7f9b6513b31936b6",
+      "record_count": 1
+    }
+  ],
+  "counts": {
+    "new_fact_rows": 1,
+    "pilot_ids_with_new_direct_facts": 1,
+    "direct_official_documents_read": 1,
+    "primary_reviews_completed": 0,
+    "independent_second_reviews_completed": 0,
+    "labels_created": 0,
+    "dataset_rows_admitted": 0,
+    "training_eligible": 0
+  },
+  "decision": {
+    "source_fact_collection_only": true,
+    "pilot_crimson_ref_016_primary_review_completed": false,
+    "previously_blocked_url_retried": false,
+    "candidate_domain_access_allowed": false,
+    "data_admission_allowed": false,
+    "label_materialization_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {
+    "network_operations": 0,
+    "official_reference_documents_read_before_materialization": 1,
+    "candidate_domain_access_operations": 0,
+    "previously_blocked_url_retries": 0,
+    "raw_official_page_files_retained": 0,
+    "labels_created": 0,
+    "dataset_rows_admitted": 0,
+    "training_allowed": false
+  }
+}

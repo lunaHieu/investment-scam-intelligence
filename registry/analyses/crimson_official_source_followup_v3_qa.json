@@ -1,0 +1,69 @@
+{
+  "verification_id": "ISI_CRIMSON_OFFICIAL_SOURCE_FOLLOWUP_V3_QA",
+  "created_at": "2026-11-02",
+  "status": "PASS_ALTERNATE_OFFICIAL_FACT_PINNED_PRIMARY_REVIEW_STILL_PENDING",
+  "inputs": [
+    {
+      "role": "source_addendum_registry",
+      "path": "C:\\Users\\hieu\\Documents\\ChatGPT\\invesment scam intelligence\\registry\\analyses\\crimson_official_source_followup_v3.json",
+      "sha256": "e2d155b9b7d269720174aee5c20b463a7887fb27280e59e259fabc96534dbf0b"
+    },
+    {
+      "role": "workflow_config",
+      "path": "C:\\Users\\hieu\\Documents\\ChatGPT\\invesment scam intelligence\\configs\\crimson_official_source_followup_v3.json",
+      "sha256": "050c0eb89b380d48e1b243f27228f168554836b2461c427fd91ba6e3ec6daed3"
+    },
+    {
+      "role": "prior_v2_registry",
+      "path": "registry/analyses/crimson_official_source_followup_v2.json",
+      "sha256": "2029e6b417cd9836780034af80a500ee781d3a2a2f9cd55a685f77f253c1a75b"
+    },
+    {
+      "role": "materializer",
+      "path": "scripts/materialize_crimson_official_source_followup_v3.py",
+      "sha256": "55a703cecbd9d61e4eee160f8313e1be10a2ca7990b02ef74ec4a8d0321068bb"
+    }
+  ],
+  "checks": {
+    "registered_outputs": [
+      {
+        "role": "official_source_fact_addendum",
+        "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\crimson_primary_review_readiness_v1\\official_source_followup_evidence_v3.jsonl",
+        "sha256": "6fbcfcad29ea37855e18fe349c89efd87d0d02873034a9ab77ebc7cb780f9f4b",
+        "record_count": 1
+      },
+      {
+        "role": "official_source_access_status_addendum",
+        "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\crimson_primary_review_readiness_v1\\official_source_access_status_v3.jsonl",
+        "sha256": "d687fefae9e9dff4ec9614303cf83d351e0f074c4f141b4e7f9b6513b31936b6",
+        "record_count": 1
+      }
+    ],
+    "fact_rows": 1,
+    "pilot_ids_with_new_fact": 1,
+    "direct_official_documents_read": 1,
+    "primary_reviews_completed": 0,
+    "previously_blocked_url_retries": 0,
+    "candidate_domain_accesses": 0,
+    "labels_created": 0,
+    "dataset_rows_admitted": 0,
+    "training_eligible": 0
+  },
+  "errors": [],
+  "decision": {
+    "primary_review_required": true,
+    "independent_second_review_required_where_planned": true,
+    "data_admission_allowed": false,
+    "label_materialization_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {
+    "network_operations_during_verification": 0,
+    "candidate_domain_access_operations": 0,
+    "previously_blocked_url_retries": 0,
+    "raw_official_page_files_retained": 0,
+    "labels_created": 0,
+    "dataset_rows_admitted": 0,
+    "training_allowed": false
+  }
+}

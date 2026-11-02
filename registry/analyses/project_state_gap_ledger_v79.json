@@ -1,0 +1,95 @@
+{
+  "analysis_id": "ISI_PROJECT_STATE_GAP_LEDGER_V79",
+  "created_at": "2026-11-02",
+  "status": "CRIMSON_CONSOB_ALTERNATE_DIRECT_SOURCE_ADDED_PRIMARY_REVIEW_GATES_OPEN",
+  "inputs": [
+    {
+      "role": "prior_ledger_v78",
+      "path": "registry/analyses/project_state_gap_ledger_v78.json",
+      "sha256": "36c337e12774970fbee3a118ef9023d946f08ac7c2deb1d4afe5de0b671fee52"
+    },
+    {
+      "role": "reproducibility_state_v76",
+      "path": "registry/analyses/reproducibility_current_state_v76.json",
+      "sha256": "258df9a66ac2048f97865f15a4beb9b937808c2db6b31fd5dec695b7ee3cb5e1"
+    },
+    {
+      "role": "reproducibility_guide_v76",
+      "path": "docs/reproducibility-current-state-v76.md",
+      "sha256": "98e67c1a505e3df375b185ca4b06d6ee4b493d3eabc8205e66c8281286ea824f"
+    },
+    {
+      "role": "project_direction_r42",
+      "path": "docs/project-direction-plan-r42.md",
+      "sha256": "d08feb1a6b294b439879cd69a545c88f7e7d1fca94d586f9f2c3e3c8d328e4c6"
+    },
+    {
+      "role": "ledger_guide_v79",
+      "path": "docs/project-state-gap-ledger-v79.md",
+      "sha256": "3aafbedf7a59227bfda06a35714397e20662392be2764b3385402b5c5b369dfc"
+    },
+    {
+      "role": "crimson_official_source_followup_v3",
+      "path": "registry/analyses/crimson_official_source_followup_v3.json",
+      "sha256": "e2d155b9b7d269720174aee5c20b463a7887fb27280e59e259fabc96534dbf0b"
+    },
+    {
+      "role": "crimson_official_source_followup_v3_qa",
+      "path": "registry/analyses/crimson_official_source_followup_v3_qa.json",
+      "sha256": "9d66a47e728e0821673cc9213009b74a78d9d14f42066777529236f2d17a27b9"
+    }
+  ],
+  "state": {
+    "crimson": {
+      "owner_confirmed_primary": 24,
+      "single_review_identity_evidence_reconciled": 16,
+      "blind_second_review_ready": 9,
+      "blind_second_review_completed": 0,
+      "blind_second_review_waiting": 12,
+      "primary_review_open": 15,
+      "official_fact_rows_v1_v2_v3": 19,
+      "distinct_direct_official_pages_v1_v2_v3": 18,
+      "fma_rows_without_direct_artifact": 2,
+      "new_v3_fact_rows": 1,
+      "new_v3_pilot_id": "PILOT_CRIMSON_REF_016",
+      "labels_created": 0,
+      "dataset_rows_admitted": 0,
+      "training_eligible": 0
+    },
+    "pbc05_pbc08": {
+      "offline_closeout_verified": true,
+      "PBC05_actual_attempts": 3,
+      "PBC08_actual_attempts": 2,
+      "exact_historical_causes_fully_recovered": false,
+      "malware_scan_recorded": false,
+      "same_release_retry_allowed": false,
+      "dataset_rows_admitted": 0
+    },
+    "verification": {
+      "v3_focused_tests_passed": 3,
+      "current_full_suite_passed": 1206,
+      "current_full_suite_failed": 0,
+      "registry_validation_status": "PASS",
+      "analysis_registry_count": 422
+    }
+  },
+  "decision": {
+    "new_source_fact_is_a_primary_review_decision": false,
+    "primary_reviews_completed_in_this_update": 0,
+    "independent_second_reviews_completed_in_this_update": 0,
+    "data_admission_allowed": false,
+    "label_materialization_allowed": false,
+    "validation_or_test_access_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {
+    "official_reference_documents_read_in_this_update": 1,
+    "candidate_domain_access_operations": 0,
+    "previously_blocked_url_retries": 0,
+    "raw_official_page_files_retained": 0,
+    "labels_created": 0,
+    "dataset_rows_admitted": 0,
+    "training_allowed": false
+  }
+}

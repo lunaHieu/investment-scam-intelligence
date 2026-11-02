@@ -1,0 +1,199 @@
+{
+  "analysis_id": "ISI_REPRODUCIBILITY_CURRENT_STATE_V76",
+  "created_at": "2026-11-02",
+  "status": "PASS_CRIMSON_CONSOB_ALTERNATE_SOURCE_FACT_PINNED_REVIEW_PENDING",
+  "baseline_commit": "17c2ebf1fec504985f9a7a52314be055d45615fb",
+  "inputs": [
+    {
+      "role": "prior_gap_ledger_v78",
+      "path": "registry/analyses/project_state_gap_ledger_v78.json",
+      "sha256": "36c337e12774970fbee3a118ef9023d946f08ac7c2deb1d4afe5de0b671fee52"
+    },
+    {
+      "role": "project_direction_r42",
+      "path": "docs/project-direction-plan-r42.md",
+      "sha256": "d08feb1a6b294b439879cd69a545c88f7e7d1fca94d586f9f2c3e3c8d328e4c6"
+    },
+    {
+      "role": "crimson_official_source_followup_v3",
+      "path": "registry/analyses/crimson_official_source_followup_v3.json",
+      "sha256": "e2d155b9b7d269720174aee5c20b463a7887fb27280e59e259fabc96534dbf0b"
+    },
+    {
+      "role": "crimson_official_source_followup_v3_qa",
+      "path": "registry/analyses/crimson_official_source_followup_v3_qa.json",
+      "sha256": "9d66a47e728e0821673cc9213009b74a78d9d14f42066777529236f2d17a27b9"
+    },
+    {
+      "role": "crimson_official_source_followup_v2",
+      "path": "registry/analyses/crimson_official_source_followup_v2.json",
+      "sha256": "2029e6b417cd9836780034af80a500ee781d3a2a2f9cd55a685f77f253c1a75b"
+    },
+    {
+      "role": "crimson_official_source_followup_v2_qa",
+      "path": "registry/analyses/crimson_official_source_followup_v2_qa.json",
+      "sha256": "3646abf99d5d272d2627c2e1ab34fe7d928c7a614b0928bb704a9b9bdd07cf3d"
+    },
+    {
+      "role": "crimson_owner_progress_qa",
+      "path": "registry/analyses/crimson_owner_review_progress_v1_qa.json",
+      "sha256": "8c877302c3acfc02c8534bf70749eb1d220f2b1e85dce51204cd4daa3ef765cf"
+    },
+    {
+      "role": "pbc_offline_closeout",
+      "path": "registry/analyses/pbc05_pbc08_offline_closeout_v2.json",
+      "sha256": "4c26b777fd9fb31c9ecb48a63772201bec657ae7e603ffa8d0f0fa98f7c6d3fd"
+    },
+    {
+      "role": "pbc_offline_closeout_qa",
+      "path": "registry/analyses/pbc05_pbc08_offline_closeout_v2_qa.json",
+      "sha256": "68ba91f15f3f3f13c3082ee57e1db0cc3e7f97b276148a786903350160a9b60d"
+    }
+  ],
+  "implementation": [
+    {
+      "role": "current_state_guide",
+      "path": "docs/reproducibility-current-state-v76.md",
+      "sha256": "98e67c1a505e3df375b185ca4b06d6ee4b493d3eabc8205e66c8281286ea824f"
+    },
+    {
+      "role": "source_addendum_config",
+      "path": "configs/crimson_official_source_followup_v3.json",
+      "sha256": "050c0eb89b380d48e1b243f27228f168554836b2461c427fd91ba6e3ec6daed3"
+    },
+    {
+      "role": "source_addendum_materializer",
+      "path": "scripts/materialize_crimson_official_source_followup_v3.py",
+      "sha256": "55a703cecbd9d61e4eee160f8313e1be10a2ca7990b02ef74ec4a8d0321068bb"
+    },
+    {
+      "role": "source_addendum_verifier",
+      "path": "scripts/verify_crimson_official_source_followup_v3.py",
+      "sha256": "c9b2685adee326b033b04a0a22bc691a49b7ecd8a80f2227b16460776c021598"
+    },
+    {
+      "role": "source_addendum_test",
+      "path": "tests/test_crimson_official_source_followup_v3.py",
+      "sha256": "a6014a5e018a6a1134f7285015a271f07e5bf85f857fcded2f1e405c8d5bed26"
+    },
+    {
+      "role": "source_addendum_report",
+      "path": "docs/crimson-consob-alternate-source-followup-v1.md",
+      "sha256": "f2b03731a9ad87d5679f4c9c0af94a667fb1814c690ebf8e2e7e1fcf54fca66d"
+    },
+    {
+      "role": "ref016_primary_review_brief_markdown",
+      "path": "reports/crimson_external_reference_review_pilot_v1/PILOT_CRIMSON_REF_016_review_brief_v1.md",
+      "sha256": "7b4769058f732861224ebb02d2433ef212e13570191dc34b9ee784fb3958800b"
+    },
+    {
+      "role": "ref016_primary_review_brief_json",
+      "path": "reports/crimson_external_reference_review_pilot_v1/PILOT_CRIMSON_REF_016_review_brief_v1.json",
+      "sha256": "8a7441bae8d6bcf32db7a6a17284cac46e4a3be2f90b436e68b8c76068605d63"
+    },
+    {
+      "role": "all_followup_ai_assessment_draft",
+      "path": "docs/crimson-primary-evidence-assessment-draft-v1.md",
+      "sha256": "6ea4278e993b7ae339f5dc968bcddb3f4d4f67f653b74e19fe8895c24474bf7b"
+    },
+    {
+      "role": "blind_second_review_handoff_v2",
+      "path": "docs/crimson-blind-second-review-handoff-v2.md",
+      "sha256": "9e3c482837d21db3eec20126bcdad187e0740f33746d76f6a6c95265c93db4d9"
+    },
+    {
+      "role": "registry_validator",
+      "path": "scripts/validate_registry.py",
+      "sha256": "9ae0e7e5651f514d3aad0f006f840cb2a57b5d0022e2d7be9cbb6c8c96f30c6e"
+    },
+    {
+      "role": "current_test_suite_v10",
+      "path": "scripts/run_current_test_suite_v10.py",
+      "sha256": "a19ee8afea7e227421dc899ff0501e644b280ba88daced881aec6b325bef9a8d"
+    },
+    {
+      "role": "navigation_snapshot_tests",
+      "path": "tests/test_project_navigation_v76_v79.py",
+      "sha256": "2a169c51d25fbc13cc8e4435c1517484f7f1bbde8ba933822999eafc35927289"
+    }
+  ],
+  "outputs": [
+    {
+      "role": "official_source_fact_addendum",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\crimson_primary_review_readiness_v1\\official_source_followup_evidence_v3.jsonl",
+      "sha256": "6fbcfcad29ea37855e18fe349c89efd87d0d02873034a9ab77ebc7cb780f9f4b",
+      "record_count": 1
+    },
+    {
+      "role": "official_source_access_status_addendum",
+      "path": "D:\\nckh 2026-2027\\ISI_Data\\derived\\crimson_primary_review_readiness_v1\\official_source_access_status_v3.jsonl",
+      "sha256": "d687fefae9e9dff4ec9614303cf83d351e0f074c4f141b4e7f9b6513b31936b6",
+      "record_count": 1
+    },
+    {
+      "role": "official_source_addendum_qa",
+      "path": "registry/analyses/crimson_official_source_followup_v3_qa.json",
+      "sha256": "9d66a47e728e0821673cc9213009b74a78d9d14f42066777529236f2d17a27b9"
+    }
+  ],
+  "state": {
+    "crimson": {
+      "owner_confirmed_primary": 24,
+      "single_review_identity_evidence_reconciled": 16,
+      "blind_second_review_ready": 9,
+      "blind_second_review_completed": 0,
+      "blind_second_review_waiting": 12,
+      "primary_review_open": 15,
+      "direct_official_fact_records_v1_v2_v3": 19,
+      "distinct_direct_official_documents_v1_v2_v3": 18,
+      "new_v3_direct_fact_rows": 1,
+      "new_v3_pilot_ids": 1,
+      "fma_artifacts_still_unresolved": 2,
+      "labels_created": 0,
+      "dataset_rows_admitted": 0,
+      "training_eligible": 0
+    },
+    "pbc05_pbc08": {
+      "offline_closeout_verified": true,
+      "PBC05_actual_attempts": 3,
+      "PBC08_actual_attempts": 2,
+      "exact_historic_causes_recovered": false,
+      "malware_scan_recorded": false,
+      "same_release_retry_allowed": false,
+      "dataset_rows_admitted": 0
+    }
+  },
+  "verification": {
+    "focused_v3_tests": {"passed": 3, "failed": 0},
+    "v3_independent_qa": "PASS_ALTERNATE_OFFICIAL_FACT_PINNED_PRIMARY_REVIEW_STILL_PENDING",
+    "current_full_suite": {
+      "command": ".venv\\Scripts\\python.exe -m scripts.run_current_test_suite_v10",
+      "passed": 1206,
+      "failed": 0
+    },
+    "registry_validation": {
+      "status": "PASS",
+      "analysis_registries": 422
+    }
+  },
+  "decision": {
+    "primary_review_of_v3_fact_completed": false,
+    "all_15_followup_primary_reviews_completed": false,
+    "independent_blind_second_review_completed": false,
+    "data_admission_allowed": false,
+    "label_materialization_allowed": false,
+    "validation_or_test_access_allowed": false,
+    "model_scoring_allowed": false,
+    "training_allowed": false
+  },
+  "safety_contract": {
+    "official_reference_documents_read_in_this_update": 1,
+    "programmatic_network_operations_during_materialization_and_verification": 0,
+    "candidate_domain_access_operations": 0,
+    "previously_blocked_url_retries": 0,
+    "raw_official_source_files_retained": 0,
+    "labels_created": 0,
+    "dataset_rows_admitted": 0,
+    "training_allowed": false
+  }
+}
